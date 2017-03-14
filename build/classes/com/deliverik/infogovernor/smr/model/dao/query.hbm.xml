@@ -1,0 +1,269 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.smr.model.entity">
+
+  <sql-query name="AnnualReportQuireVWDAO.searchMyAnnualReport">
+    <![CDATA[
+	select distinct a.*,c.prpdname prtitle,c.prid prid,e.psdname psdname,c.prstatus prstatus,'' flag
+		from REGULATORYREPORTINSTANCE a
+		inner join REGULATORYREPORTDETAIL b on a.instanceid = b.instanceid
+		inner join ig500 c on b.prid = c.prid
+		inner join ig337 d on c.prid = d.prid and c.prstatus=d.ppstatus and d.ppproctime is null
+		inner join ig333 e on c.prpdid = e.pdid and c.prstatus=e.psdcode
+		inner join userrole ur on d.pproleid = ur.roleid
+		where 1=1
+    ]]> 
+  </sql-query>
+  
+  
+   <sql-query name="AnnualReportQuireVWDAO.LookFillIn">
+    <![CDATA[
+		select distinct a.*,c.prpdname prtitle,c.prid prid,e.psdname psdname,c.prstatus prstatus,'' flag
+		from REGULATORYREPORTINSTANCE a
+		inner join REGULATORYREPORTDETAIL b on a.instanceid = b.instanceid
+		inner join ig500 c on b.prid = c.prid
+		left join ig333 e on c.prpdid = e.pdid and c.prstatus=e.psdcode
+		where 1=1 
+    ]]> 
+  </sql-query>
+  
+  
+    <sql-query name="AnnualReportQuireVWDAO.searchSecondAnnualReport">
+    <![CDATA[
+		select distinct a.*
+			from REGULATORYREPORTINSTANCE a
+			inner join REGULATORYREPORTDETAIL b on a.instanceid = b.instanceid
+			inner join ig500 c on b.prid = c.prid
+			inner join ig333 e on c.prpdid = e.pdid and c.prstatus = e.psdcode
+			inner join ig337 d on c.prid = d.prid and d.psdid = e.psdid
+			inner join userrole ur on d.pproleid = ur.roleid
+ 			where 1=1
+    ]]> 
+  </sql-query>
+  
+      <sql-query name="BatchExamineVWDAO.searchBatchExamine">
+		<![CDATA[
+			select pr.prid prid,
+				pr.prpdname prtitle,
+				pr.prstatus prstatus,
+				pr.prpdid prpdid,
+				max(psl1.rslclosetime) fillintime,
+				max(psl2.rslclosetime) examinetime,
+				max(psl3.rslclosetime) rejecttime,
+				'' fillinusername ,
+				'' exanimeusername,
+				'' flag,
+				'' ppusername
+				from ig500 pr
+					inner join RegulatoryReportDetail rrd on rrd.prid = pr.prid
+					inner join ig224 psl1 on pr.prid = psl1.prid and psl1.prstatus = 'Y'
+					inner join ig224 psl2 on pr.prid = psl2.prid and psl2.prstatus = 'X'                        
+					left join ig224 psl3 on pr.prid = psl3.prid and psl3.prstatus = 'W'  
+					where 1=1 
+		]]> 
+	</sql-query>
+  
+  <sql-query name="FillInQualityAssessDAO.FillInQualityAssess">
+	<![CDATA[
+		select 
+			row_number() over() as id,
+			substr(temp0.pporgid,0,10) pporgid,
+			org.orgname pporgname,      
+			temp0.ppuserid ppuserid,
+			temp0.ppusername username,
+			pp1.ppuserid ppuserid1,
+			pp2.ppuserid ppuserid2,
+			pp3.ppuserid ppuserid3,
+			case
+				when temp.limittime >= substr(pp1.ppproctime, 0, 10) then '1'
+				when temp.limittime < substr(pp1.ppproctime, 0, 10)   then '0'
+			else ''
+       		end timely1,
+			case
+				when temp.limittime >= substr(pp2.ppproctime, 0, 10) then '1'
+				when temp.limittime < substr(pp2.ppproctime, 0, 10) then '0'
+				else ''
+				end timely2,
+			case
+				when temp.limittime >= substr(pp3.ppproctime, 0, 10) then '1'
+				when temp.limittime < substr(pp3.ppproctime, 0, 10) then '0'
+			else ''
+			end timely3,
+			
+			case 
+				when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD1' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')>=2 then 
+					'1'
+				when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD1' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')=0 then
+					''
+				else '0'
+			end truely1,
+			
+       		case 
+				when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD2' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')>=2 then 
+				'1'
+					when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD2' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')=0 then
+				'' else '0'
+       			end truely2,
+       		case 
+		       when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD3' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')>=2 then 
+		       '1'
+       			when (select count(1) from ig036 rl where rl.prid=pr.prid and pr.prtype='WD3' and rl.rltype='1' and rl.rluserid = temp0.ppuserid and rl.psname='报表填报')=0 then
+				''
+				else '0'
+			end truely3
+		from ig500 pr
+			inner join ig333 ps on ps.pdid = pr.prpdid
+                    and ps.psdname = '报表填报'
+			inner join (select pp.ppuserid  ppuserid,
+                    pp.ppusername ppusername,
+                    ppr.prid     prid,
+                    pp.pporgid   pporgid,
+                    pp.pporgname pporgname
+               		from ig500 ppr
+              			inner join ig333 ps on ps.pdid = ppr.prpdid and ps.psdname = '报表填报'
+              			inner join ig337 pp on ppr.prid = pp.prid and ps.psdcode = pp.ppstatus
+						where ppr.prtype in ('WD1', 'WD2', 'WD3')) temp0 on temp0.prid = pr.prid
+					left join ig337 pp1 on pr.prid = pp1.prid
+						and pr.prtype = 'WD1'
+						and pp1.ppuserid = temp0.ppuserid
+						and ps.psdcode = pp1.ppstatus
+					left join ig337 pp2 on pr.prid = pp2.prid
+						and pr.prtype = 'WD2'
+						and pp2.ppuserid = temp0.ppuserid
+						and ps.psdcode = pp2.ppstatus
+  					left join ig337 pp3 on pr.prid = pp3.prid
+						and pr.prtype = 'WD3'
+						and ps.psdcode = pp3.ppstatus
+						and pp3.ppuserid = temp0.ppuserid
+				left join (select rrd.prid prid, rrs.limittime limittime
+               		from regulatoryreportinstance rrs
+					inner join regulatoryreportdetail rrd on rrs.instanceid = rrd.instanceid) temp on temp.prid = pr.prid
+					left join organization  org on org.orgsyscoding =  substr(temp0.pporgid,0,10) 
+					where pr.prstatus = 'C'
+    ]]> 
+  </sql-query>
+
+  <!--监管报表详细页面 -->
+  <sql-query name="FillInQualityAssessDAO.detail">
+    <![CDATA[
+	select 
+		case when one.name_y is not null  then one.userid_y
+		     when one.name_m is not null  then one.userid_m
+		     when one.name_z is not null  then one.userid_z
+		end userid,
+
+		case when one.name_y is not null  then one.username_y
+		     when one.name_m is not null  then one.username_m
+		     when one.name_z is not null  then one.username_z
+		end username,one.orgid,one.name_y,
+		
+		case when ji1.limittime >= substr(one.ppproctime_y, 0, 10) then 0
+			 when ji1.limittime < substr(one.ppproctime_y, 0, 10) then 1
+             end ontime_y,zh1.con1 con_y,one.name_m,
+		case
+			when ji2.limittime >= substr(one.ppproctime_m, 0, 10) then 0
+			when ji2.limittime < substr(one.ppproctime_m, 0, 10) then 1
+			end ontime_m, zh2.con2 con_m,one.name_z,
+		case
+           when ji3.limittime >= substr(one.ppproctime_z, 0, 10) then 0
+           when ji3.limittime < substr(one.ppproctime_z, 0, 10) then 1
+           end ontime_z,zh3.con3 con_z,rownum id
+		from (
+		  select 
+			  case when prtype='WD1'then b.ppuserid end userid_y,
+			  case when prtype='WD1'then b.ppusername end username_y,
+			  case when prtype='WD1'then b.ppstatus end status_y,
+			  case when prtype='WD1'then a.prtype end type_y,
+			  case when prtype='WD1'then a.prid end prid_y,
+			  case when prtype='WD1'then a.prpdname end name_y,
+			  case when prtype='WD1'then b.ppproctime end ppproctime_y,
+			  case when prtype='WD2'then b.ppuserid end userid_m,
+			  case when prtype='WD2'then b.ppusername end username_m,
+			  case when prtype='WD2'then b.ppstatus end status_m,
+			  case when prtype='WD2'then a.prtype end type_m,
+			  case when prtype='WD2'then a.prid end prid_m,
+			  case when prtype='WD2'then a.prpdname end name_m,
+			  case when prtype='WD2'then b.ppproctime end ppproctime_m,
+			  case when prtype='WD3'then b.ppuserid end userid_z,
+			  case when prtype='WD3'then b.ppusername end username_z,
+			  case when prtype='WD3'then b.ppstatus end status_z,
+			  case when prtype='WD3'then a.prtype end type_z,
+			  case when prtype='WD3'then a.prid end prid_z,
+			  case when prtype='WD3'then a.prpdname end name_z,
+			  case when prtype='WD3'then b.ppproctime end ppproctime_z,
+  				b.pporgid orgid 
+  				from ig500 a
+					inner join ig337 b on a.prid = b.prid
+					left join ig333 c on c.pdid = a.prpdid  and b.ppstatus = c.psdcode
+  					where a.prstatus = 'C' and a.prtype in ('WD1','WD2','WD3') and c.psdname='报表填报'
+  					group by b.ppuserid, b.ppstatus, a.prtype,a.prid,a.prpdname,b.ppproctime,b.pporgid,b.ppusername) one 
+					left join 
+						(select rrd.prid prid, rrs.limittime limittime
+						from regulatoryreportinstance rrs
+							inner join regulatoryreportdetail rrd on rrs.instanceid = rrd.instanceid) ji1 on ji1.prid = one.prid_y
+							left join 
+								(select rrd.prid prid, rrs.limittime limittime
+									from regulatoryreportinstance rrs
+									inner join regulatoryreportdetail rrd on rrs.instanceid = rrd.instanceid) ji2 on ji2.prid = one.prid_m
+									left join (select rrd.prid prid, rrs.limittime limittime
+									from regulatoryreportinstance rrs
+									inner join regulatoryreportdetail rrd on rrs.instanceid = rrd.instanceid) ji3 on ji3.prid = one.prid_z
+									left join (select count(m1.prid) as con1, m1.prid,m1.rluserid
+									from ig036 m1, ig500 n1
+              						where m1.prid = n1.prid
+					                and m1.rltype = '1'
+					                and m1.psname = '报表填报'
+					                and m1.pbdid = '10'
+					                and n1.prstatus = 'C'
+					                and n1.prtype = 'WD1'
+									group by m1.prid,m1.rluserid) zh1 on one.prid_y = zh1.prid and zh1.rluserid = one.userid_y
+									left join (select count(m2.prid) as con2, m2.prid,m2.rluserid
+								from ig036 m2, ig500 n2
+				              	where m2.prid = n2.prid
+				                and m2.rltype = '1'
+				                and m2.psname = '报表填报'
+				                and m2.pbdid = '10'
+				                and n2.prstatus = 'C'
+				                and n2.prtype = 'WD2'
+				             	group by m2.prid,m2.rluserid) zh2 on one.prid_m = zh2.prid and zh2.rluserid = one.userid_m
+							left join (select count(m3.prid) as con3, m3.prid,m3.rluserid
+								from ig036 m3, ig500 n3
+				              	where m3.prid = n3.prid
+				                and m3.rltype = '1'
+				                and m3.psname = '报表填报'
+				                and m3.pbdid = '10'
+				                and n3.prstatus = 'C'
+				                and n3.prtype = 'WD3'
+				             	group by m3.prid,m3.rluserid) zh3 on one.prid_z = zh3.prid and zh3.rluserid = one.userid_z
+    ]]> 
+  </sql-query>
+  
+  <sql-query name="ReportHistorySearch.searchprocess">
+    <![CDATA[
+		select pr.prid prid,
+		   pr.prstatus  prstatus,
+	       pr.prtitle    prtitle,
+	       pr.propentime prstarttime,
+	       pr.prusername prusername,
+	       pr.prpdid     prpdid,
+	       pr.prtype     prtype,
+	       ''fillinname,
+	       ''reportapprovename
+			from ig500 pr
+			left join ig898 bm on bm.prid = pr.prid and bm.pvcolname = '填报部门'
+			left join ig898 r on  r.prid = pr.prid and r.pvcolname = '填报人'
+			where 1=1
+    ]]> 
+  </sql-query>
+  
+  <!-- 查询指定监管报表key关联的流程 -->
+    <sql-query name="IG500DAO.searchDetailByKey">
+    <![CDATA[
+		select b.prid from regulatoryreportinstance a 
+			inner join regulatoryreportdetail b on a.instanceid=b.instanceid 
+    ]]>  
+    </sql-query>
+</hibernate-mapping>

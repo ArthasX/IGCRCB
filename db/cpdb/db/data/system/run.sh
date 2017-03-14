@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/data/system/import_sh.sql

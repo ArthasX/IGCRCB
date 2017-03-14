@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- DAO -->
+	<bean id="assessmentScoreVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.ram.model.dao.AssessmentScoreVWDAOImpl">
+	</bean>
+	<!-- taskBL -->
+	<!-- 风险评估评分视图查询BL -->
+	<bean id="assessmentScoreVWBL" class="com.deliverik.infogovernor.ram.bl.task.AssessmentScoreVWBLImpl">
+		<property name="assessmentScoreVWDAO">
+			<ref bean="assessmentScoreVWDAO"/>
+		</property>
+	</bean>
+	<!-- ctlBL -->
+    <bean id="igram01BL" class="com.deliverik.infogovernor.ram.bl.IGRAM01BLImpl">
+    	<property name="ig380BL">
+            <ref bean="ig380BL"/>
+        </property>
+        <property name="ig259BL">
+            <ref bean="ig259BL"/>
+        </property>
+    </bean>
+    <!-- 工作公共查询 -->
+	<bean id="igram05BL" class="com.deliverik.infogovernor.ram.bl.IGRAM05BLImpl">
+		<property name="ig108BL">
+			<ref bean="ig108BL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+	</bean>
+    <!-- 风险评估评分查询BL -->
+	<bean id="igram02BL" class="com.deliverik.infogovernor.ram.bl.IGRAM02BLImpl">
+		<property name="assessmentScoreVWBL">
+			<ref bean="assessmentScoreVWBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+	<!-- 风险评估部门统计BL -->
+	<bean id="igram03BL" class="com.deliverik.infogovernor.ram.bl.IGRAM03BLImpl">
+		<property name="assessmentScoreVWBL">
+			<ref bean="assessmentScoreVWBL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+	</bean>
+	<!-- 风险评估年度统计BL -->
+	<bean id="igram04BL" class="com.deliverik.infogovernor.ram.bl.IGRAM04BLImpl">
+		<property name="assessmentScoreVWBL">
+			<ref bean="assessmentScoreVWBL"/>
+		</property>
+	</bean>
+	 <bean id="igram0301excelBL" class="com.deliverik.infogovernor.xls.ram.bl.IGRAM0301ExcelBLImpl" >
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+    </bean>
+    <bean id="igram0401excelBL" class="com.deliverik.infogovernor.xls.ram.bl.IGRAM0401ExcelBLImpl" >
+       <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+    </bean>
+</beans>
+

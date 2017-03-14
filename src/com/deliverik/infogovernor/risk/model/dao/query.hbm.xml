@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.risk.model.dao">
+    <!-- 风险检查最近一次检查结果查询统计 -->
+    <sql-query name="RiskCheckResultDAOImpl.lastRiskCheckResultQuery">
+    <![CDATA[
+   		select t.* from  riskcheckResult t
+		left join riskcheck r on r.rcid = t.rcid
+ 		  where  1 = 1
+    ]]> 
+    </sql-query>
+    <sql-query name="RiskCheckResultDAOImpl.selCount">
+    <![CDATA[
+   		select count(1) from RiskCheckResult rcr,RiskCheck rc 
+ 		  where  rcr.rcid = rc.rcid and 1 = 1 
+    ]]> 
+    </sql-query>
+        <sql-query name="RiskCheckResultDAOImpl.selCountForRate">
+    <![CDATA[
+   		select count(1) from RiskCheckResult rcr,CheckworkInfoResult rc 
+ 		  where 1=1 and rcr.rcrid = rc.rcrid  
+    ]]> 
+    </sql-query>
+    <sql-query name="RiskCheckResultDAOImpl.sel">
+    <![CDATA[
+   		select rcr.* from RiskCheckResult rcr
+ 		  where 1 = 1 
+    ]]> 
+    </sql-query>
+    <!-- 首页检查工作查询 -->
+    <sql-query name="RiskCheckResultDAOImpl.riskCheckResultGoup">
+    <![CDATA[
+   		select rcr.* from RiskCheckResult rcr,RiskCheck rc 
+ 		  where  rcr.rcid = rc.rcid 
+ 		  and (rcr.rcrresult is null or rcr.rcrresult = '') 
+ 		  and 1 = 1
+    ]]> 
+    </sql-query>
+    <!-- 检查问题报表查询统计 -->
+    <sql-query name="CheckWorkDAo.ResultQuery">
+    <![CDATA[
+	    select rownumber() over() as id,t.RCID,t.rcname,t.rcdesc,t.rcfrequency,t.rcusername,t.rccategoryname,t.prtitle,
+	    		t.rcrtestmode,t.rcstartdate,t.attachid,
+	    	   t.rcstatus,t.rccreatetime,t.rcrcomment,t.rcrresult,
+	    	   t.rcrattch,t.rcrplandate,t.rcclass,'' as fingerPrint
+	    from ( 
+		 	select r.RCID,r.rcname,r.rcdesc,r.rcfrequency,r.rcusername,r.rccategoryname,r.rcrtestmode,att.ATTID as attachid,
+		 		   r.rcstatus,l.rcrrealtime as rccreatetime ,r.rcstartdate,l.rcrcomment,l.rcrresult,l.rcrplandate,
+		 		   att.ATTNAME as rcrattch,i.prtitle,r.rcclass
+		    from riskcheck r 
+			left join RISKCHECKRESULT l on l.RCID = r.RCID 
+			left join ig500 i on l.PRID = i.PRID 
+			left join attachment  att on att.ATTKEY = l.RCRATTCH
+			where l.rcrid is not null
+			) t
+		where 1 = 1 
+    ]]> 
+    </sql-query>
+    <sql-query name="RiskCheckResultDAOImpl.dbmsel">
+    <![CDATA[
+	    select * from riskcheckresult where  1=1
+    ]]> 
+    </sql-query>
+     <sql-query name="RiskCheckResultDAOImpl.dbmselByrcclass">
+    <![CDATA[
+	    select * from riskcheck t where  1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="RiskCheckResultDAOImpl.rcclass">
+    <![CDATA[
+	    select cid,cvalue from codedetail where ccid='143'
+    ]]> 
+    </sql-query>
+    <sql-query name="RiskCheckResultDAOImpl.getrcclassbymonth">
+    <![CDATA[
+	    select * from riskcheck where 1=1
+    ]]> 
+    </sql-query>
+</hibernate-mapping>

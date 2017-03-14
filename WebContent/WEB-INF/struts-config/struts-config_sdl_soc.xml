@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    
+        <!--   增加服务     -->
+        <action path="/IGSDL0105_Disp_SOC"
+        	type="com.deliverik.infogovernor.sdl.action.IGSDL0105Action"
+            input="/srv/sdl/IGSDL0105.jsp"
+            name="IGSDL0105Form"
+        	parameter="show_date"
+            scope="request">
+           	<forward name="DISP" path="/srv/sdl/IGSDL0105.jsp"/>
+        </action>
+        
+        <action path="/IGSDL0106_Disp_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0106Action"
+            	parameter="DISP"
+            	name="IGSCH0201Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/srv/sdl/IGSDL0106.jsp" />
+        </action>
+        
+        <action path="/IGSDL0106_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0106Action"
+            	parameter="INSERT"
+            	name="IGSCH0202Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/IGEXTWB0001_Quartz_SOC.do" />
+        </action>  
+        
+         <!-- 定时任务查询 -->
+        <action path="/IGSDL0110_Disp_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0110Action"
+            	parameter="DISP"
+            	scope="session">
+            	<forward name="DISP" path="/srv/sdl/IGSDL0110.jsp" />
+        </action>
+        
+        <action path="/IGSDL0110_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0110Action"
+            	parameter="SEARCH"
+            	name="IGSDL0110Form"
+            	scope="session">
+            	<forward name="DISP" path="/srv/sdl/IGSDL0110.jsp" />
+        </action>
+        
+        <action path="/IGSDL0110_BACK_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0110Action"
+            	parameter="SEARCH1"
+            	name="IGSDL0110Form"
+            	scope="session">
+            	<forward name="DISP" path="/srv/sdl/IGSDL0110.jsp" />
+        </action>
+        
+        <!-- 定时任务查看详细 -->
+        <action path="/IGSDL0111_List_SOC"
+            	type="com.deliverik.infogovernor.sdl.action.IGSDL0111Action"
+            	parameter="LIST"
+            	name="IGSCH0101Form"
+            	scope="session">
+            	<forward name="LISTW" path="/srv/sdl/IGSDL0111.jsp" />
+        </action>
+        
+        <!-- 定时器修改 -->
+		<action path="/IGSDL0111_Modify_SOC"
+			type="com.deliverik.infogovernor.sdl.action.IGSDL0111Action"
+			parameter="MODIFY_DISP" 
+			name="IGSCH0101Form"
+			scope="session">
+			<forward name="DISP" path="/srv/sdl/IGSDL0112.jsp" />
+			<forward name="MODIFY_ONCE" path="/srv/sdl/IGSDL0113.jsp" />
+		</action>
+		
+		<action path="/IGSDL0111_ModifyOk_SOC"
+			type="com.deliverik.infogovernor.sdl.action.IGSDL0111Action"
+			parameter="MODIFY" 
+			name="IGSCH0101Form"
+			scope="session">
+			<forward name="DISP" path="/IGSDL0110_BACK_SOC.do" />
+			<forward name="ERROR" path="/srv/sdl/IGSDL0114.jsp?type=error&amp;path=sms" />
+		</action>
+		
+		<!-- 定时任务删除 -->
+		<action path="/IGSDL0111_Del_SOC"
+			type="com.deliverik.infogovernor.sdl.action.IGSDL0111Action"
+			parameter="DELETE" 
+			name="IGSCH0101Form"
+			scope="session">
+			<forward name="DISP" path="/IGSDL0110_SOC.do" />
+		</action>
+
+    </action-mappings>
+
+</struts-config>

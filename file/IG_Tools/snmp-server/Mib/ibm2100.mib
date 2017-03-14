@@ -1,0 +1,467 @@
+--
+-- SNMP MIB Definition: 2100Seas.mib
+-- Level: 2.4.0.3  (-> "IBM2100-MIB DEFINITIONS" below)
+--
+-- COMPONENT_NAME: 2100Seas (2100 Storage Server SNMP Sub-agent)
+--
+-- (C) COPYRIGHT International Business Machines Corp. 1998
+-- All Rights Reserved
+-- US Government Users Restricted Rights - Use, duplication or
+-- disclosure restricted by GSA ADP Schedule Contract with IBM Corp.
+--
+-- Licensed Material - Property of IBM
+--
+
+
+
+Ibm2100-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+    OBJECT-TYPE
+      FROM RFC-1212
+   TRAP-TYPE
+      FROM RFC-1215
+    Counter, enterprises, TimeTicks
+      FROM RFC1155-SMI
+    DisplayString
+      FROM RFC1213-MIB;
+
+
+-- These Extension groups follow the structure of MIB-II
+-- Actual definition of MIB Subtree:
+
+ibm                       OBJECT IDENTIFIER ::= { enterprises 2 }
+ibmProd                   OBJECT IDENTIFIER ::= { ibm 6 }
+ibm2100                   OBJECT IDENTIFIER ::= { ibmProd 130 }
+
+--
+-- IBM 2100 Storage Server MIB groups
+--
+-- The ibm2100 MIB groups contain information that identifies a
+-- Storage Server unit, and information that further identifies the
+-- cause and unit status that is associated with a Trap message.
+--
+
+ssSystem   OBJECT IDENTIFIER ::= { ibm2100 1 } -- System level objects
+ssProblem  OBJECT IDENTIFIER ::= { ibm2100 2 } -- Problem records
+ssEvent    OBJECT IDENTIFIER ::= { ibm2100 3 } -- Event objects
+
+-- ******************************************************************
+
+--
+-- Storage Server system group
+--
+
+ssSystemAccess OBJECT-TYPE
+     SYNTAX Counter
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "A count of the number of times this private MIB variable
+          is accessed."
+     ::= { ssSystem 1 }
+
+ssSystemElapsed OBJECT-TYPE
+     SYNTAX TimeTicks
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The time (in hundredths of a second) since this ESS agent
+          was booted."
+     ::= { ssSystem 2 }
+
+ssSystemObjectId OBJECT-TYPE
+     SYNTAX OBJECT IDENTIFIER
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The object identifier of this MIB variable."
+     ::= { ssSystem 3 }
+
+ssSystemNumTraps OBJECT-TYPE
+     SYNTAX Counter
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "A count of the number of ssPbmTrap encountered."
+     ::= { ssSystem 4 }
+
+ssSystemSendTrap OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..1024))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Specific trap 1 format:
+          'day of week month day hour:minute:second year problem id dd, ESC eeee, description descr'
+          where descr is problem description.
+          Specific trap 2 format:
+          'yyyy/m/dd hh:mm:ss zzz\ndata\npartnumber\ndescription\n'
+          where \n is a return, zzz is a time zone indication, data is more information about the trap,
+          partnumber is FRU part number, and description is ESC and ESC description.
+          Check the problem id of this trap on both clusters. Truncated if greater than 1024 bytes.
+          Specific trap 3 format:
+          ’yyyy/MM/dd hh:mm:ss tzn\nManufacturer=IBM\nReportingMTMS=tttt-mmm*ppzzzzz\n
+	   ProbNm=nnnnn\nLparName=SFaESSbc\nFailingEnclosureMTMS=tttt-mmm*ppzzzzz\n
+	   SRC=ssssssssss\nEventText=79 char string\n
+	   Fru1Loc=71 char string\nFru2Loc=71 char string\nFru3Loc=71 char string\n'
+           Where: \n = RETURN, yyyy = year, MM = month, dd = day, hh = hour(24) ,
+	   mm = minute, ss = seconds, tzn = time zone, tttt = type number (e.g. 2107),
+	   mmm = model number (e.g. 921), pp = plant of manufacture (e.g. 75),
+	   zzzzz = sequence number (e.g. FA123), nnnnn = problem number,
+	   SFaESSbc = logical partition name, ssssssssss = system reference code
+	   FruNLoc = location code of FRU N, where n is 1,2,3"
+     ::= { ssSystem 5 }
+
+ssSystemMtMod OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..8))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The Storage Server Machine Type and Model."
+     ::= { ssSystem 6 }
+
+ssSystemSn OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..10))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The Storage Server Machine Serial Number."
+     ::= { ssSystem 7 }
+
+ssSystemDate OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..8))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The date of machine manufacture ddd/yyyy."
+     ::= { ssSystem 8 }
+
+ssSystemClID OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..1))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Storage Server local cluster ID 0/1."
+     ::= { ssSystem 9 }
+
+
+ssSystemLIC OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..17))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Storage Server local cluster LIC."
+     ::= { ssSystem 10 }
+
+-- ******************************************************************
+
+--
+-- Storage Server cluster problem group
+--
+
+ssProblemTable OBJECT-TYPE
+    SYNTAX SEQUENCE OF SsProblemEntry
+    ACCESS not-accessible
+    STATUS mandatory
+    DESCRIPTION
+        "The table of cluster problem records that
+        have status = Pending, meaning that service is required."
+    ::= { ssProblem 1 }
+
+ssProblemEntry OBJECT-TYPE
+    SYNTAX SsProblemEntry
+    ACCESS not-accessible
+    STATUS mandatory
+    DESCRIPTION
+        "A (conceptional) entry for one problem record."
+    INDEX { ssProblemIndex }
+    ::= { ssProblemTable 1 }
+
+SsProblemEntry ::= SEQUENCE {
+      ssProblemIndex          INTEGER,
+      ssProblemId             OCTET STRING,
+      ssProblemStatus         DisplayString,
+      ssProblemDate           DisplayString,
+      ssProblemCount          INTEGER,
+      ssProblemLast           DisplayString,
+      ssProblemPres           DisplayString,
+      ssProblemEsc            OCTET STRING,
+      ssProblemSrn            DisplayString,
+      ssProblemDescr          DisplayString,
+      ssProblemMessage        DisplayString,
+      ssProblemUAction        DisplayString
+     }
+
+ssProblemIndex OBJECT-TYPE
+     SYNTAX INTEGER (1..256)
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "A unique value for each problem record listed in the table."
+     ::= { ssProblemEntry 1 }
+
+ssProblemId OBJECT-TYPE
+     SYNTAX OCTET STRING (SIZE (0..3))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The problem record identifier in the cluster problem log.
+         Cluster 0 problem records have even number ID values.
+         Cluster 1 problem records have odd number ID values."
+     ::= { ssProblemEntry 2 }
+
+ssProblemStatus OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..16))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The problem record state in the Storage Server problem log."
+     ::= { ssProblemEntry 3 }
+
+ssProblemDate OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..24))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The time and date the first error occurred."
+     ::= { ssProblemEntry 4 }
+
+ssProblemCount OBJECT-TYPE
+     SYNTAX INTEGER (1..65535)
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The number of error events logged."
+     ::= { ssProblemEntry 5 }
+
+ssProblemLast OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..24))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The time and date the most recent error occurred."
+     ::= { ssProblemEntry 6 }
+
+ssProblemPres  OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..24))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The time and date of the most recent problem report."
+     ::= { ssProblemEntry 7 }
+
+ssProblemEsc OBJECT-TYPE
+     SYNTAX OCTET STRING (SIZE (0..3))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The Exception Symptom Code value for the problem ID."
+     ::= { ssProblemEntry 8 }
+
+ssProblemSrn OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..10))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "The System Reference Number for the problem ID."
+     ::= { ssProblemEntry 9 }
+
+ssProblemDescr OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..120))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Error condition description."
+     ::= { ssProblemEntry 10 }
+
+ssProblemMessage OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..128))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "An optional message that contains additional information."
+     ::= { ssProblemEntry 11 }
+ 
+ssProblemUAction OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..41))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Recommended actions for user/customer."
+     ::= { ssProblemEntry 12 }
+
+--
+-- ******************************************************************
+--
+-- Storage Server event group
+--
+
+
+ssEventLast OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..1032))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Contents of last event trap presented including:
+          generic trap and specific trap (xx-xxxx)
+          ssEventDescr
+          Truncated if greater than 1032 bytes."
+     ::= { ssEvent 1 }
+
+ssEventDescr OBJECT-TYPE
+     SYNTAX DisplayString (SIZE (0..1024))
+     ACCESS read-only
+     STATUS mandatory
+     DESCRIPTION
+         "Text describing certain SNMP traps. Format:
+          'yyyy/m/dd hh:mm:ss zzz\ndescription\ndata\n'
+           where \n is a return, zzz is a time zone indication,
+           description is a short textural description of the
+           trap, and data is more information about the trap.
+           Truncated if greater than 1024 bytes."
+     ::= { ssEvent 2 }
+  
+--
+-- ******************************************************************
+--
+-- Storage Server traps 
+--
+-- ******************************************************************
+
+ssPbmTrap TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssProblemId, ssProblemPres, ssProblemEsc, ssProblemDescr, ssProblemUAction }
+     DESCRIPTION
+         "A failure resource is detected"
+     ::=  1
+
+
+ssProblemTrap TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssSystemSendTrap }
+     DESCRIPTION
+         "A failure resource is detected"
+     ::=  2
+
+ssSystemNotifyTrap TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssSystemSendTrap }
+     DESCRIPTION
+         "This trap contains 1024 characters of unformatted data
+	 describing a Problem which was detected"
+     ::=  3
+
+ssEventTrap13 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Specialist Availability Change"
+     ::=  13
+
+ssEventTrap100 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "PPRC Links Degraded"
+     ::=  100
+
+ssEventTrap101 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "PPRC Links Down"
+     ::=  101
+
+ssEventTrap102 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "PPRC Links Up"
+     ::=  102
+
+ssEventTrap200 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "LSS-Pair Consistency Group PPRC-Pair Error"
+     ::=  200
+
+ssEventTrap202 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Primary PPRC Devices on LSS Suspended Due to Error"
+     ::=  202
+
+ssEventTrap210 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Initial Consistency Group Successfully Formed"
+     ::=  210
+
+ssEventTrap211 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Session is in a Fatal State"
+     ::=  211
+
+ssEventTrap212 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Consistency Group Failure - Retry will be attempted"
+     ::=  212
+
+ssEventTrap213 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Consistency Group Successful Recovery"
+     ::=  213
+
+ssEventTrap214 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Master Terminated"
+     ::=  214
+
+ssEventTrap215 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC FlashCopy at Remote Site Unsuccessful"
+     ::=  215
+
+ssEventTrap216 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Slave Termination Unsuccessful"
+     ::=  216
+
+ssEventTrap217 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Paused"
+     ::=  217
+
+ssEventTrap218 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC Number of Consistency Group failures exceed threshold"
+     ::=  218
+
+ssEventTrap219 TRAP-TYPE
+     ENTERPRISE ibm2100
+     VARIABLES  { ssEventDescr }
+     DESCRIPTION
+         "Asynchronous PPRC First successful Consistency Group after prior failures"
+     ::=  219
+
+-- ******************************************************************
+END

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+   <!-- 表单生成基类 -->
+   <bean id="formGeneratedTag" class="com.deliverik.infogovernor.taglib.util.FormGeneratedTagImpl">
+   		<property name="ig899BL">
+   			<ref bean="ig899BL"/>
+   		</property>
+   </bean>
+   
+   <bean id="assetFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.AssetFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="checkBoxFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.CheckBoxFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="dateFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.DateFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="numberFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.NumberFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="orgFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.OrgFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="orgTreeFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.OrgTreeFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="processFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.ProcessFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="projectFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.ProjectFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="radioElseFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.RadioElseFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="radioFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.RadioFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="roleFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.RoleFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="selectFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.SelectFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="textareaFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.TextareaFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="textFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.TextFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="timeFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.TimeFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="treeFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.TreeFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="tableFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.TableFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="labelFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.LabelFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="attachmentFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.AttachmentFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="checkBoxElseFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.CheckBoxElseFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="participantFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.ParticipantFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   <bean id="select2AssetFormGeneratedTagImpl" class="com.deliverik.infogovernor.taglib.util.Select2AssetFormGeneratedTagImpl" parent="formGeneratedTag">
+   </bean>
+   
+   <!-- 表单生成对象工厂类，该配置要写在其他表单生成对象配置的下面 -->
+   <bean id="formGeneratedTagFactory" class="com.deliverik.infogovernor.taglib.util.FormGeneratedTagFactory">
+   		<property name="formGenerateTagMap">
+   			<map>
+   				<entry key="4">
+   					<ref bean="assetFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="C">
+   					<ref bean="checkBoxFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="3">
+   					<ref bean="dateFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="7">
+   					<ref bean="numberFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="O">
+   					<ref bean="orgFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="G">
+   					<ref bean="orgTreeFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="5">
+   					<ref bean="processFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="6">
+   					<ref bean="projectFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="E">
+   					<ref bean="radioElseFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="B">
+   					<ref bean="radioFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="R">
+   					<ref bean="roleFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="2">
+   					<ref bean="selectFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="9">
+   					<ref bean="textareaFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="0">
+   					<ref bean="textFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="A">
+   					<ref bean="timeFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="T">
+   					<ref bean="treeFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="8">
+   					<ref bean="tableFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="L">
+   					<ref bean="labelFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="F">
+   					<ref bean="attachmentFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="S">
+   					<ref bean="checkBoxElseFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="P">
+   					<ref bean="participantFormGeneratedTagImpl"/>
+   				</entry>
+   				<entry key="W">
+   					<ref bean="select2AssetFormGeneratedTagImpl"/>
+   				</entry>
+   			</map>
+   		</property>
+   </bean>
+   <bean id="likeProcessQuery" class="com.deliverik.infogovernor.taglib.processquery.LikeProcessQuery">
+   </bean>
+   <bean id="equalsProcessQuery" class="com.deliverik.infogovernor.taglib.processquery.EqualsProcessQuery">
+   </bean>
+   <bean id="betweenProcessQuery" class="com.deliverik.infogovernor.taglib.processquery.BetweenProcessQuery">
+   </bean>
+   <bean id="splitLikeProcessQuery" class="com.deliverik.infogovernor.taglib.processquery.SplitLikeProcessQuery">
+   </bean>
+   
+   <bean id="processQueryFactory" class="com.deliverik.infogovernor.taglib.processquery.ProcessQueryFactory">
+   		<property name="map">
+   			<map>
+   				<entry key="like">
+   					<ref bean="likeProcessQuery"/>
+   				</entry>
+   				<entry key="eq">
+   					<ref bean="equalsProcessQuery"/>
+   				</entry>
+   				<entry key="bt">
+   					<ref bean="betweenProcessQuery"/>
+   				</entry>
+   				<entry key="sl">
+   					<ref bean="splitLikeProcessQuery"/>
+   				</entry>
+   			</map>
+   		</property>
+   </bean>
+</beans>

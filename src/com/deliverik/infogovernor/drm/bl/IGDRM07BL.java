@@ -1,0 +1,105 @@
+/*
+ * 北京递蓝科软件技术有限公司版权所有，保留所有权利。
+ * 
+ */
+
+package com.deliverik.infogovernor.drm.bl;
+
+import com.deliverik.framework.base.BLException;
+import com.deliverik.framework.base.BaseBL;
+import com.deliverik.infogovernor.drm.dto.IGDRM07DTO;
+
+/**
+ * 演练BL 
+ * 2015年3月6日09:14:09
+ */
+
+public interface IGDRM07BL extends BaseBL {
+	   /**
+     * @Description: 演练方案定义节点流程显示 
+     * @param dto
+     * @return
+     * @throws BLException    
+     * IGDRM07DTO    
+     * @throws
+     */
+	public IGDRM07DTO initIGDRM0701DefAction(IGDRM07DTO dto)throws BLException;
+	/**
+	 * @Description: 演练实施节点流程显示 
+	 * @param dto
+	 * @return
+	 * @throws BLException    
+	 * IGDRM07DTO    
+	 * @throws
+	 */
+	public IGDRM07DTO initIGDRM0701ImplAction(IGDRM07DTO dto)throws BLException;
+	/**
+	 * 资产项信息new查询
+	 * 
+	 * @param dto
+	 *            IGDRM07DTO
+	 * @return IGASM03DTO
+	 */
+	public IGDRM07DTO searchEntityItem0702Action(IGDRM07DTO dto) throws BLException;
+	/**
+	 * <p> 查询资产模型名称 </p>
+	 * 
+	 * @param dto
+	 *            IGDRM07DTO
+	 * @return IGDRM07DTO
+	 * @throws BLException
+	 */
+
+	public IGDRM07DTO searchEntityNameActionSOC(IGDRM07DTO dto) throws BLException;
+	/**
+	 * 关联关系资产项信息查询
+	 * 
+	 * @param dto
+	 *            IGDRM07DTO
+	 * @return IGDRM07DTO
+	 */
+	public IGDRM07DTO searchEntityItemRelation(IGDRM07DTO dto) throws BLException;
+	
+	/**
+	 * @Description: 演练实施节点流程显示 
+	 * @param dto
+	 * @return
+	 * @throws BLException    
+	 * IGDRM07DTO    
+	 * @throws
+	 */
+	public IGDRM07DTO searchProcess(IGDRM07DTO dto)throws BLException;
+	/**
+	 * @Description: 全面演练查询
+	 * @param dto
+	 * @return
+	 * @throws BLException    
+	 * IGDRM07DTO    
+	 * @throws
+	 */
+	public IGDRM07DTO initIGDRM0701ALLProcessAction(IGDRM07DTO dto)throws BLException;
+	
+	/**
+	 * 获取资产详细信息
+	 * 流程中资产表单
+	 * 
+	 * @param dto    IGDRM07DTO
+	 * @return IGDRM07DTO
+	 */
+	public IGDRM07DTO getEntityFullInfo(IGDRM07DTO dto) throws BLException;
+	
+	/**
+	 * 资产项信息查询,不分页
+	 *
+	 * @param dto IGCOM03DTO
+	 * @return IGCOM03DTO
+	 */
+	public IGDRM07DTO searchEntityItemActionNoPage(IGDRM07DTO dto) throws BLException;
+	
+	/** 查询场景定义流程节点与参与人信息 */
+	public IGDRM07DTO searchProcessDefineUser(IGDRM07DTO dto) throws BLException;
+	/** 查询组织架构下的角色与人 */
+	public IGDRM07DTO searchRoleAndUser(IGDRM07DTO dto) throws BLException;
+	/**查询演练基本信息*/
+	public IGDRM07DTO searchDrillDetail(IGDRM07DTO dto,String flowType) throws BLException;
+}

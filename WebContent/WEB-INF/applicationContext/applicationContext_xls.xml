@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+  
+	<bean id="igprj0108ExcelBL" class="com.deliverik.infogovernor.xls.prj.bl.IGPRJ0108ExcelBLImpl" parent="excelBaseBL">
+	</bean>
+	<bean id="igprj0101ExcelBL" class="com.deliverik.infogovernor.xls.prj.bl.IGPRJ0101ExcelBLImpl" parent="excelBaseBL">
+	</bean>
+	<bean id="igprj0110ExcelBL" class="com.deliverik.infogovernor.xls.prj.bl.IGPRJ0110ExcelBLImpl" parent="excelBaseBL">
+	</bean>
+    <bean id="igcim1102excelBL" class="com.deliverik.infogovernor.xls.soc.cim.bl.IGCIM1102ExcelBLImpl" parent="excelBaseBL">
+    </bean>
+    <bean id="igsvc0642ExcelBL" class="com.deliverik.infogovernor.xls.svc.bl.IGSVC0642ExcelBLImpl" parent="excelBaseBL">
+    </bean>
+    <bean id="igvir1401ExcelBL" class="com.deliverik.infogovernor.xls.soc.vir.bl.IGVIR1401ExcelBLImpl" parent="excelBaseBL">
+    </bean>
+    <bean id="igvir1402ExcelBL" class="com.deliverik.infogovernor.xls.soc.vir.bl.IGVIR1402ExcelBLImpl" parent="excelBaseBL">
+    </bean>
+</beans>

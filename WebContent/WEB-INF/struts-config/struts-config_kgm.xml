@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+
+
+
+<!-- ================================================ Form Bean Definitions
+-->
+
+    <form-beans>
+    	 <form-bean name="IGKGM0201Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0201Form"/>
+    	 <form-bean name="IGKGM0202Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0202Form"/>
+    	 <form-bean name="IGKGM0203Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0203Form"/>
+    	 <form-bean name="IGKGM0207Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0207Form"/>
+    	 <form-bean name="IGKGM0208Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0208Form"/>
+    	 <form-bean name="IGKGM0209Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0209Form"/>
+    	 <form-bean name="IGKGM0215Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0215Form"/>
+    	 <form-bean name="IGKGM0216Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0216Form"/>
+    	 <form-bean name="IGKGM0228Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0228Form"/>
+    	 <form-bean name="IGKGM0229Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0229Form"/>
+    	 <form-bean name="IGKGM0231Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0231Form"/>
+    	 <form-bean name="IGKGM0233Form" type="com.deliverik.infogovernor.kgm.form.IGKGM0233Form"/>
+
+    </form-beans>
+
+
+
+
+
+
+<!-- =========================================== Action Mapping Definitions
+-->
+
+    <action-mappings>
+    
+        
+        
+       
+        <!-- 知识登记  -->
+         <action path="/IGKGM0201_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form"
+        	parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0201.jsp"/>
+        </action>
+        
+         <!-- 知识登记  只保存不提交-->
+        <action path="/IGKGM0201_INSERT"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            parameter="INSERT"
+            input="/IGKGM0201_Disp.do"
+            name="IGKGM0201Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0203.jsp"/>
+        </action>
+        
+        <!-- 知识登记 保存同时提交  -->
+        <action path="/IGKGM0201_INITCHECK"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            parameter="INITCHECK"
+            input="/IGKGM0201_Disp.do"
+            name="IGKGM0201Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0203.jsp"/>
+        </action>
+        
+
+         <!-- 知识查询  -->
+         <action path="/IGKGM0202_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0202Action"
+            name="IGKGM0202Form"
+        	parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0202.jsp"/>
+        </action>
+        <!-- 知识查询  -->
+        <action path="/IGKGM0202_adddisp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form"
+        	parameter="ADD"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0221.jsp"/>
+        </action>
+         <action path="/IGKGM0202_add"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form"
+        	parameter="ADD"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0219.jsp"/>
+        </action>
+       <!-- 知识登记 保存同时提交  -->
+        <action path="/IGKGM0201_PROINITCHECK"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            parameter="PROINITCHECK"
+            input="/kgm/IGKGM0219.jsp"
+            name="IGKGM0201Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0220.jsp"/>
+        </action>
+               <!-- 知识登记 保存同时提交  -->
+        <action path="/IGKGM0201_PROINITSAVE"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            parameter="PROINITSAVE"
+            input="/kgm/IGKGM0219.jsp"
+            name="IGKGM0201Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0220.jsp"/>
+        </action>
+        <action path="/IGKGM0202"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0202Action"
+            parameter="SEARCH"
+            input="/kgm/IGKGM0201.jsp"
+            name="IGKGM0202Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0202.jsp"/>
+        </action>
+        <action path="/IGKGM0202_BACK"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0202Action"
+            parameter="SEARCH1"
+            input="/kgm/IGKGM0201.jsp"
+            name="IGKGM0202Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGKGM0202.do"/>
+        </action>
+       <!-- 知识登记 编辑 -->
+         <action path="/IGKGM0203_READ"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form"
+        	parameter="READ"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0204.jsp"/>
+        </action>
+       <!-- 知识登记 编辑保存 -->
+         <action path="/IGKGM0203_EDIT"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form" input="/IGKGM0203_READ.do"
+        	parameter="EDIT"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/IGKGM0202.do"/>
+        </action>
+        <!-- 知识登记 提交 -->
+         <action path="/IGKGM0201_CHECK"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form" input="/IGKGM0203_READ.do"
+        	parameter="CHECK"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/IGKGM0202_BACK.do"/>
+        </action>
+        <action path="/IGKGM0201_CHECKPASS"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form" input="/IGKGM0222_Disp.do"
+        	parameter="CHECKPASS"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/IGKGM0222.do"/>
+        </action>
+        <!-- 知识删除 -->
+         <action path="/IGKGM0202_DELETE"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0202Action"
+            name="IGKGM0202Form"
+        	parameter="DELETE"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DELETE"  path="/IGKGM0202_BACK.do"/>
+        </action>    
+
+		<!-- 知识查询显示  -->
+        <action path="/IGKGM0205_Disp"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            parameter="DISP"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0205.jsp"/>
+        </action>
+         
+        <action path="/IGKGM0205"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            parameter="SEARCH"
+            input="/IGKGM0205"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0205.jsp"/>
+        </action>
+         <action path="/IGKGM0205_BACK"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            parameter="SEARCH1"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0205.jsp"/>
+        </action>
+ 		<action path="/IGKGM0205_READ"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            name="IGKGM0203Form"
+        	parameter="READ"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0207.jsp"/>
+        </action>
+        <action path="/IGKGM0205_History"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            name="IGKGM0203Form"
+        	parameter="HISTORY"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0217.jsp"/>
+        </action>
+        <action path="/IGKGM0205_ProcessAndService"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            name="IGKGM0203Form"
+        	parameter="PROCESSANDSERVICE"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0218.jsp"/>
+        </action>
+ 		<action path="/IGKGM0205_Print"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0205Action"
+            name="IGKGM0203Form"
+        	parameter="PRINT"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0227.jsp"/>
+        </action>
+        <!-- 知识查询POPUP显示  -->
+        <action path="/IGKGM0206_Disp"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0206Action"
+            parameter="DISP"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0206.jsp"/>
+        </action>
+        
+        <!-- 知识查询POPUP显示  -->
+        <action path="/IGKGM0206_N_Disp"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0206Action"
+            parameter="DISP"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0230.jsp"/>
+        </action>
+         
+        <action path="/IGKGM0206"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0206Action"
+            parameter="SEARCH"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0206.jsp"/>
+        </action>
+        <action path="/IGKGM0230"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0206Action"
+            parameter="SEARCH"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0230.jsp"/>
+        </action>
+         <action path="/IGKGM0206_BACK"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0206Action"
+            parameter="SEARCH1"
+            name="IGKGM0203Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0206.jsp"/>
+        </action>
+        <action path="/IGKGM0214_Detail"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0214Action"
+        	parameter="DETAIL"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0214.jsp"/>
+        </action>
+          <!-- 首页知识库页面点击查看页面 -->
+         <action path="/IGKGM0214_LCHECK"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0214Action"
+        	parameter="DETAIL"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0234.jsp"/>
+        </action>
+        <action path="/IGKGM0214_CHECK"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0214Action"
+        	parameter="DETAIL"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0226.jsp"/>
+        </action>
+        
+        <!-- 存入知识库页面显示 -->
+       <!--  <action path="/IGKGM0222_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0222Action"
+        	parameter="DISP"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0222.jsp"/>
+        </action>--> 
+        <action path="/IGKGM0222_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0201Action"
+            name="IGKGM0201Form"
+        	parameter="READ"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0225.jsp"/>
+        </action>
+        
+        <!-- 存入知识库 -->
+        <action path="/IGKGM0222"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0222Action"
+        	parameter="ACTION"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0224.jsp"/>
+        </action>
+        
+        <!-- 知识驳回页面显示 -->
+        <action path="/IGKGM0223_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0223Action"
+        	parameter="DISP"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0223.jsp"/>
+        </action>
+        
+        <!-- 知识驳回 -->
+        <action path="/IGKGM0223"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0223Action"
+        	parameter="ACTION"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0224.jsp"/>
+        </action>
+
+		<action path="/IGKGM0215_Detail"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0215Action"
+        	parameter="DETAIL"
+        	name="IGKGM0215Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0215.jsp"/>
+        </action>
+        <!-- 知识审核画面初期显示  songhy-->
+        <action path="/IGKGM0208_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0208Action"
+            name="IGKGM0208Form"
+        	parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0208.jsp"/>
+        </action>
+        <action path="/IGKGM0208"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0208Action"
+            name="IGKGM0208Form"
+        	parameter="SEARCH"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0208.jsp"/>
+        </action>
+        <action path="/IGKGM0208_BACK"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0208Action"
+            name="IGKGM0208Form"
+        	parameter="SEARCH1"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0208.jsp"/>
+        </action>
+        
+        <action path="/IGKGM0208_REJECT"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0208Action"
+            parameter="REJECT"
+            name="IGKGM0208Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0213.jsp"/>
+        </action>
+		
+		<action path="/IGKGM0208_UPDATE"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0208Action"
+            parameter="UPDATE"
+            name="IGKGM0208Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0213.jsp"/>
+        </action>
+        
+        <!-- 知识管理画面初期显示  songhy-->
+        <action path="/IGKGM0209_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0209Action"
+            name="IGKGM0209Form"
+        	parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0209.jsp"/>
+        </action>
+        <action path="/IGKGM0209"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0209Action"
+            name="IGKGM0209Form"
+        	parameter="SEARCH"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0209.jsp"/>
+        </action>
+        <action path="/IGKGM0209_BACK"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0209Action"
+            name="IGKGM0209Form"
+        	parameter="SEARCH1"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0209.jsp"/>
+        </action>
+        
+        <action path="/IGKGM0209_DELETE"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0209Action"
+            parameter="DELETE"
+            name="IGKGM0209Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGKGM0209_BACK.do"/>
+        </action>
+		
+	    <action path="/IGKGM0209_UPDATE"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0209Action"
+            parameter="UPDATE"
+            name="IGKGM0209Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGKGM0209_BACK.do"/>
+        </action>
+        
+        
+        <action path="/IGKGM0207"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0207Action"
+            parameter="INSERT"
+            name="IGKGM0207Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGKGM0205_BACK.do"/>
+        </action>
+        <action path="/IGKGM0207_History"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0207Action"
+            parameter="SEARCH"
+            name="IGKGM0207Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0210.jsp"/>
+        </action>
+        
+        
+        <!-- 用户更新，查看 -->
+         <action path="/IGKGM0216_READ"
+                type="com.deliverik.infogovernor.kgm.action.IGKGM0216Action"
+            name="IGKGM0216Form"
+                parameter="READ"
+            scope="session">
+            <set-property key="auth" value="false"/>
+                   <forward name="DISP"  path="/kgm/IGKGM0216.jsp"/>
+                   <forward name="FORBIDEN"  path="/IGKGM0205.do"/>
+        </action>
+       <!-- 用户更新，保存 -->
+         <action path="/IGKGM0216_EDIT"
+                type="com.deliverik.infogovernor.kgm.action.IGKGM0216Action"
+            name="IGKGM0216Form" input="/IGKGM0216_READ.do"
+                parameter="EDIT"
+            scope="session">
+            <set-property key="auth" value="false"/>
+                   <forward name="DISP"  path="/kgm/IGKGM0200.jsp"/>
+        </action>
+        <!-- 用户更新，保存并提交 -->
+         <action path="/IGKGM0216_CHECK"
+                type="com.deliverik.infogovernor.kgm.action.IGKGM0216Action"
+            name="IGKGM0216Form" input="/IGKGM0216_READ.do"
+                parameter="CHECK"
+            scope="session">
+            <set-property key="auth" value="false"/>
+                   <forward name="DISP"  path="/kgm/IGKGM0200.jsp"/>
+        </action>
+        <!-- 知识查询批量导出 -->
+        <action path="/IGKGM0228_Report"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0228Action"
+            parameter="REPORT"
+            name="IGKGM0228Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0228.jsp"/>
+        </action>
+        
+        <!-- 全部知识下载 -->
+        <action path="/IGKGM0228_Down"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0228Action"
+            parameter="DOWN"
+            name="IGKGM0228Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0205.jsp"/>
+        </action>
+
+        <!-- 知识日志查询 -->
+        <action path="/IGKGM0229_READ"
+            type="com.deliverik.infogovernor.kgm.action.IGKGM0229Action"
+            name="IGKGM0229Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/kgm/IGKGM0229.jsp"/>
+        </action>
+       	 <!-- 知识贡献数量统计 -->
+        <action path="/IGKGM0231"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0231Action"
+        	parameter="SEARCH"
+        	input="/kgm/IGKGM0231.jsp"
+        	name="IGKGM0231Form"
+        	validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0231.jsp"/>
+        </action>
+         <!-- 知识贡献数量统计 -->
+        <action path="/IGKGM0232"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0232Action"
+        	parameter="SEARCH"
+        	input="/kgm/IGKGM0232.jsp"
+        	name="IGKGM0231Form"
+        	validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP"  path="/kgm/IGKGM0232.jsp"/>
+        </action>
+        
+        <!-- 业务系统 -->
+        <action path="/IGKGM0233_Disp"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0233Action"
+        	parameter="DISP"
+        	input="/kgm/IGKGM0233.jsp"
+        	name="IGKGM0233Form"
+        	validate="false">
+        	<forward name="DISP" path="/kgm/IGKGM0233.jsp"/>
+        </action>
+        <!-- 通过层次码获取该分类下所有末级分类的ajax 方法 -->
+        <action path="/IGKGM0233"
+        	type="com.deliverik.infogovernor.kgm.action.IGKGM0233Action"
+        	parameter="SEARCH"
+        	name="IGKGM0233Form"
+        	validate="false">
+        </action>
+    </action-mappings>
+</struts-config>
+

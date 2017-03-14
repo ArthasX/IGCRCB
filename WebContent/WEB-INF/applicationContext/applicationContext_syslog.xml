@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- DAO -->
+	<bean id="mss00001DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00001DAOImpl" />
+	<bean id="mss00002DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00002DAOImpl" />
+	<bean id="mss00003DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00003DAOImpl" />
+	<bean id="mss00004DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00004DAOImpl" />
+	<bean id="mss00005DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00005DAOImpl" />
+	<bean id="mss00006DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00006DAOImpl" />
+	<bean id="mss00007DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00007DAOImpl" />
+	<bean id="mss00008DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00008DAOImpl" />
+	<bean id="mss00009DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00009DAOImpl" />
+	<bean id="mss00011DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00011DAOImpl" />
+	<bean id="mss00012DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00012DAOImpl" />
+	<bean id="mss00013DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00013DAOImpl" />
+	<bean id="mss00014DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.syslog.model.dao.Mss00014DAOImpl" />
+	
+	
+	<!-- CtrolBL -->
+	<bean id="iglog00BL" class="com.deliverik.infogovernor.syslog.bl.IGLOG00BLImpl">
+		<property name="mss00005BL">
+			<ref bean="mss00005BL"/>
+		</property>
+		<property name="mss00006BL">
+			<ref bean="mss00006BL"/>
+		</property>
+		<property name="mss00007BL">
+			<ref bean="mss00007BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+	</bean>
+	<bean id="iglog01BL" class="com.deliverik.infogovernor.syslog.bl.IGLOG01BLImpl">
+		<property name="mss00008BL">
+			<ref bean="mss00008BL"/>
+		</property>
+		<property name="mss00009BL">
+			<ref bean="mss00009BL"/>
+		</property>
+		<property name="mss00012BL">
+			<ref bean="mss00012BL"/>
+		</property>
+		<property name="mss00013BL">
+			<ref bean="mss00013BL"/>
+		</property>
+		<property name="mss00014BL">
+			<ref bean="mss00014BL"/>
+		</property>
+		<property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+        <property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="iglog002BL" class="com.deliverik.infogovernor.syslog.bl.IGLOG002BLImpl">
+		<property name="mss00001BL">
+			<ref bean="mss00001BL"/>
+		</property>
+		<property name="mss00002BL">
+			<ref bean="mss00002BL"/>
+		</property>
+		<property name="mss00003BL">
+			<ref bean="mss00003BL"/>
+		</property>
+		<property name="mss00004BL">
+			<ref bean="mss00004BL"/>
+		</property>
+		<property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+        <property name="mss00011BL">
+			<ref bean="mss00011BL"/>
+		</property>
+	</bean>
+	<bean id="iglog004BL" class="com.deliverik.infogovernor.syslog.bl.IGLOG004BLImpl">
+		<property name="mss00001BL">
+			<ref bean="mss00001BL"/>
+		</property>
+		<property name="mss00004BL">
+			<ref bean="mss00004BL"/>
+		</property>
+		<property name="mss00003BL">
+			<ref bean="mss00003BL"/>
+		</property>
+		<property name="mss00002BL">
+			<ref bean="mss00002BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+	</bean>
+	
+	<!-- TaskBL -->
+	<bean id="mss00005BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00005BLImpl">
+		<property name="mss00005DAO">
+			<ref bean="mss00005DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00001BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00001BLImpl">
+		<property name="mss00001DAO">
+			<ref bean="mss00001DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00002BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00002BLImpl">
+		<property name="mss00002DAO">
+			<ref bean="mss00002DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00003BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00003BLImpl">
+		<property name="mss00003DAO">
+			<ref bean="mss00003DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00004BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00004BLImpl">
+		<property name="mss00004DAO">
+			<ref bean="mss00004DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00006BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00006BLImpl">
+		<property name="mss00006DAO">
+			<ref bean="mss00006DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00007BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00007BLImpl">
+		<property name="mss00007DAO">
+			<ref bean="mss00007DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00008BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00008BLImpl">
+		<property name="mss00008DAO">
+			<ref bean="mss00008DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00009BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00009BLImpl">
+		<property name="mss00009DAO">
+			<ref bean="mss00009DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00011BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00011BLImpl">
+		<property name="mss00011DAO">
+			<ref bean="mss00011DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00012BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00012BLImpl">
+		<property name="mss00012DAO">
+			<ref bean="mss00012DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00013BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00013BLImpl">
+		<property name="mss00013DAO">
+			<ref bean="mss00013DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="mss00014BL" class="com.deliverik.infogovernor.syslog.bl.task.Mss00014BLImpl">
+		<property name="mss00014DAO">
+			<ref bean="mss00014DAO"/>
+		</property>
+	</bean>
+</beans>
+

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   	<bean id="socprm00BL" class="com.deliverik.infogovernor.soc.prm.bl.IGPRM00BLImpl">
+   		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		<property name="ig222BL">
+			<ref bean="ig222BL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+	</bean>
+	<bean id="igprm00BL" class="com.deliverik.infogovernor.prm.bl.IGPRM00BLImpl">
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		<property name="ig222BL">
+			<ref bean="ig222BL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="ig911BL">
+			<ref bean="ig911BL" />
+		</property>
+		<property name="ig931BL">
+			<ref bean="ig931BL" />
+		</property>
+	</bean>
+	<bean id="IGPRM01BL" class="com.deliverik.infogovernor.prm.bl.IGPRM01BLImpl">
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL" />
+		</property>
+	</bean>
+</beans>
+

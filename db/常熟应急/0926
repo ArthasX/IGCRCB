@@ -1,0 +1,7 @@
+ db2 reorg table igalarm
+ 
+ db2 reorg table RESPONSESTRATEGY
+ 
+ db2 reorg table ig007
+ 
+ db2 reorg table ig380

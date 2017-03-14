@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.ram.model.dao">
+  
+    <!-- 风险评估年度统计 -->
+    <sql-query name="AssessmentScoreDAO.AssessmentOfYearReportVW">
+    <![CDATA[
+   		SELECT PT.PDNAME AS PDNAME,B.Jan, B.Feb,B.Mar,B.Apr,B.May,B.Jun,B.Jul,B.Aug,B.Sep,B.Oct,B.Nov,B.Dece FROM IG380 PT LEFT JOIN 
+			(SELECT * FROM ( SELECT PR.PRPDID AS PDID,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '01'   then 1  else 0 end) AS Jan,
+				  	SUM(case SUBSTR(PR.propentime,6,2) when  '02'   then 1  else 0 end) AS Feb,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '03'   then 1  else 0 end) AS Mar,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '04'   then 1  else 0 end) AS Apr,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '05'   then 1  else 0 end) AS May,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '06'   then 1  else 0 end) AS Jun,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '07'   then 1  else 0 end) AS Jul,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '08'   then 1  else 0 end) AS Aug,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '09'   then 1  else 0 end) AS Sep,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '10'   then 1  else 0 end) AS Oct,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '11'   then 1  else 0 end) AS Nov,
+					SUM(case SUBSTR(PR.propentime,6,2) when  '12'   then 1  else 0 end) AS Dece
+				FROM IG500  PR
+				WHERE PR.PRTYPE='WD4' 
+					AND PR.PROPENTIME LIKE :currentyear 
+					AND PR.PRSUBSTATUS IS NULL 
+				  GROUP BY PR.PRPDID) A ORDER BY A.PDID ) B
+					ON PT.PDID=B.PDID WHERE PT.PTID=17 ORDER BY PT.PDID
+    ]]> 
+    </sql-query>
+    <!-- 风险评估部门统计 -->
+    <sql-query name="AssessmentScoreDAO.AssessmentOfOrganizationReportVW">
+    <![CDATA[
+    	SELECT ORG.ORGNAME,A.PRJCREAT,A.PRJIMPLEMENT,A.PRJAFTSERVICE,A.SUPPLIER FROM ORGANIZATION ORG LEFT JOIN  (
+ 			SELECT  SUBSTR(PR.PPORGID,1,7) AS PPORGID,
+					SUM(CASE WHEN PR.PRPDID like :pdid4  THEN 1 ELSE 0 END) AS PRJCREAT,
+				  	SUM(CASE WHEN PR.PRPDID like :pdid1  THEN 1 ELSE 0 END) AS PRJIMPLEMENT,
+				  	SUM(CASE WHEN PR.PRPDID like :pdid2  THEN 1 ELSE 0 END) AS PRJAFTSERVICE,
+				  	SUM(CASE WHEN PR.PRPDID like :pdid3  THEN 1 ELSE 0 END) AS SUPPLIER
+				 FROM IG677 PR 
+					WHERE  PR.PPSTATUS='X' 
+						AND PR.PRTYPE='WD4'
+						AND PR.PPPROCTIME BETWEEN :BEGINTIME AND :ENDTIME
+						AND PR.PRSUBSTATUS IS NULL
+						AND PR.PRSTATUS<>'#' 
+				  GROUP BY SUBSTR(PR.PPORGID,1,7) 
+						)A  on ORG.ORGSYSCODING=A.PPORGID  WHERE ORG.ORGPAR like :toporgid
+    ]]> 
+    </sql-query>
+</hibernate-mapping>

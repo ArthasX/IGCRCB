@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.soc.vir.model.entity">
+   
+    <sql-query name="COUNT_USER_VIM03VWDAO.findByCond">
+    <![CDATA[
+		select a.userid||'_'||a.orgsyscoding as id, a.* from
+		(select username,userid,orgname,orgsyscoding,count(*) as count ,
+			sum(vmcpus*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalcpu ,
+			sum(vmmem*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalmem,
+			sum(vmdisk*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totaldisk
+		from vim03 where progress = '100' group by userid,username,orgname,orgsyscoding order by orgsyscoding) as a
+		where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="COUNT_ORG_VIM03VWDAO.findByCond">
+    <![CDATA[
+		select * from
+		(select orgname,orgsyscoding,count(*) as count ,
+		sum(vmcpus*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalcpu ,
+		sum(vmmem*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalmem,
+		sum(vmdisk*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totaldisk
+		from vim03 where progress = '100' group by orgsyscoding,orgname order by orgsyscoding) as a
+		where 1=1 
+    ]]> 
+    </sql-query>
+    <sql-query name="COUNT_PROJ_VIM03VWDAO.findByCond">
+    <![CDATA[
+		select * from
+		(select pid,pname,count(*) as count ,
+		sum(vmcpus*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalcpu ,
+		sum(vmmem*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totalmem,
+		sum(vmdisk*(date('now') - to_date(applytime,'yyyy/mm/dd'))) as totaldisk
+		from vim03 where progress = '100' group by pid,pname order by pname) as a
+		where 1=1 
+    ]]> 
+    </sql-query>
+    <sql-query name="COUNT_VIM03VWDAO.findByCond">
+    <![CDATA[
+		select count(1) from vim03 t where t.progress = '100'
+    ]]> 
+    </sql-query>
+    <sql-query name="VIM03DAOImpl.VMCount4HostCount">
+    <![CDATA[
+		select count(1) from (select hostname, count(1) from vim03 v03_ group by v03_.hostname ) this_ where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="VIM03DAOImpl.VMCount4Host">
+    <![CDATA[
+		select * from (select hostname, count(1) cou from vim03 v03_ group by v03_.hostname order by cou) this_ where 1=1
+    ]]> 
+    </sql-query>
+</hibernate-mapping>

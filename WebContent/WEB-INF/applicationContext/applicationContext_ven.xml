@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+	<!-- DAO -->
+	<bean id="monitoringWorkDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.ven.model.dao.MonitoringWorkDAOImpl">
+	</bean>
+	<bean id="riskMonitoringDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.ven.model.dao.RiskMonitoringDAOImpl">
+	</bean>
+	<bean id="riskStrategyDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.ven.model.dao.RiskStrategyDAOImpl">
+	</bean>
+	<bean id="strategyIndexRelationDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.ven.model.dao.StrategyIndexRelationDAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="monitoringWorkBL" class="com.deliverik.infogovernor.ven.bl.task.MonitoringWorkBLImpl">
+		<property name="monitoringWorkDAO">
+			<ref bean="monitoringWorkDAO"/>
+		</property>
+	</bean>
+	<bean id="riskMonitoringBL" class="com.deliverik.infogovernor.ven.bl.task.RiskMonitoringBLImpl">
+		<property name="riskMonitoringDAO">
+			<ref bean="riskMonitoringDAO"/>
+		</property>
+	</bean>
+	<bean id="riskStrategyBL" class="com.deliverik.infogovernor.ven.bl.task.RiskStrategyBLImpl">
+		<property name="riskStrategyDAO">
+			<ref bean="riskStrategyDAO"/>
+		</property>
+	</bean>
+	<bean id="strategyIndexRelationBL" class="com.deliverik.infogovernor.ven.bl.task.StrategyIndexRelationBLImpl">
+		<property name="strategyIndexRelationDAO">
+			<ref bean="strategyIndexRelationDAO"/>
+		</property>
+	</bean>
+	<!-- Control BL -->
+	<bean id="igven01BL" class="com.deliverik.infogovernor.ven.bl.IGVEN01BLImpl">
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL"/>
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="riskStrategyBL">
+			<ref bean="riskStrategyBL"/>
+		</property>
+		<property name="strategyIndexRelationBL">
+			<ref bean="strategyIndexRelationBL"/>
+		</property>
+		<property name="riskMonitoringBL">
+			<ref bean="riskMonitoringBL"/>
+		</property>
+		<property name="monitoringWorkBL">
+			<ref bean="monitoringWorkBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="riskIndexSearchVWBL">
+			<ref bean="riskIndexSearchVWBL"/>
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>	
+	<bean id="IGVEN02BL" class="com.deliverik.infogovernor.ven.bl.IGVEN02BLImpl">
+		<property name="riskMonitoringBL">
+			<ref bean="riskMonitoringBL"/>
+		</property>
+		<property name="monitoringWorkBL">
+			<ref bean="monitoringWorkBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL"/>
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+	</bean>
+</beans>

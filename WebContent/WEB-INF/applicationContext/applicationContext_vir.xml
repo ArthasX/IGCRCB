@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- DAO -->
+	<bean id="soc0154DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.vir.model.dao.SOC0154DAOImpl">
+	</bean>
+	<bean id="vim01DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.vir.model.dao.VIM01DAOImpl">
+	</bean>
+	<bean id="vim02DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM02DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim03DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM03DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim03CountByUserVWDAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM03CountByUserVWDAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim03CountByOrgVWDAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM03CountByOrgVWDAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim03CountByProjVWDAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM03CountByProjVWDAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim03CountVWDAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM03CountVWDAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim04DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM04DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim07DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM07DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="vcd01DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD01DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	<bean id="vcd02DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD02DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	<bean id="vcd03DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD03DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	<bean id="vcd04DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD04DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	<bean id="vcd05DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD05DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	<bean id="vcd06DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VCD06DAOImpl"  parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="vim05DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM05DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+	<bean id="vim06DAO" class="com.deliverik.infogovernor.soc.vir.model.dao.VIM06DAOImpl"
+	    parent="baseHibernateDAO">
+	</bean>
+		
+	<!-- Task BL -->
+	<bean id="soc0154BL" class="com.deliverik.infogovernor.soc.vir.bl.task.SOC0154BLImpl">
+		<property name="soc0154DAO">
+			<ref bean="soc0154DAO"/>
+		</property>
+	</bean>
+	<bean id="vim01BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM01BLImpl">
+		<property name="vim01DAO">
+			<ref bean="vim01DAO"/>
+		</property>
+	</bean>
+	<bean id="vim02BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM02BLImpl">
+		<property name="vim02DAO">
+			<ref bean="vim02DAO"/>
+		</property>
+	</bean>
+	<bean id="vim03BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM03BLImpl">
+		<property name="vim03DAO">
+			<ref bean="vim03DAO"/>
+		</property>
+	</bean>
+	<bean id="vim04BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM04BLImpl">
+		<property name="vim04DAO">
+			<ref bean="vim04DAO"/>
+		</property>
+	</bean>
+	<bean id="vim05BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM05BLImpl">
+		<property name="vim05DAO">
+			<ref bean="vim05DAO"/>
+		</property>
+	</bean>
+	<bean id="vim06BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM06BLImpl">
+		<property name="vim06DAO">
+			<ref bean="vim06DAO"/>
+		</property>
+	</bean>
+	<bean id="vim07BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM07BLImpl">
+		<property name="vim07DAO">
+			<ref bean="vim07DAO"/>
+		</property>
+	</bean>
+	<bean id="vimBL" class="com.deliverik.infogovernor.soc.vir.vim.VIMBLImpl">
+		<property name="vim01BL">
+			<ref bean="vim01BL"/>
+		</property>
+	</bean>
+	<bean id="vim03CountByUserVWBL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM03CountByUserVWBLImpl">
+		<property name="vim03CountByUserVWDAO">
+			<ref bean="vim03CountByUserVWDAO"/>
+		</property>
+	</bean>
+	<bean id="vim03CountByOrgVWBL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM03CountByOrgVWBLImpl">
+		<property name="vim03CountByOrgVWDAO">
+			<ref bean="vim03CountByOrgVWDAO"/>
+		</property>
+	</bean>
+	<bean id="vim03CountByProjVWBL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM03CountByProjVWBLImpl">
+		<property name="vim03CountByProjVWDAO">
+			<ref bean="vim03CountByProjVWDAO"/>
+		</property>
+	</bean>
+	<bean id="vim03CountVWBL" class="com.deliverik.infogovernor.soc.vir.bl.task.VIM03CountVWBLImpl">
+		<property name="vim03CountVWDAO">
+			<ref bean="vim03CountVWDAO"/>
+		</property>
+	</bean>
+		
+	<bean id="vcd01BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD01BLImpl">
+		<property name="vcd01DAO">
+			<ref bean="vcd01DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="vcd02BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD02BLImpl">
+		<property name="vcd02DAO">
+			<ref bean="vcd02DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="vcd03BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD03BLImpl">
+		<property name="vcd03DAO">
+			<ref bean="vcd03DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="vcd04BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD04BLImpl">
+		<property name="vcd04DAO">
+			<ref bean="vcd04DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="vcd05BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD05BLImpl">
+		<property name="vcd05DAO">
+			<ref bean="vcd05DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="vcd06BL" class="com.deliverik.infogovernor.soc.vir.bl.task.VCD06BLImpl">
+		<property name="vcd06DAO">
+			<ref bean="vcd06DAO"/>
+		</property>
+	</bean>
+
+	<bean id="vcdBL" class="com.deliverik.infogovernor.soc.vir.vcd.VCDBLImpl">
+		<property name="vcd01BL">
+			<ref bean="vcd01BL"/>
+		</property>
+	</bean>
+	<!-- Control BL -->
+	<bean id="igvir02BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR02BLImpl">
+		<property name="vimBL">
+			<ref bean="vimBL"/>
+		</property>
+		<property name="vim02BL">
+			<ref bean="vim02BL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="vim04BL">
+			<ref bean="vim04BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvir03BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR03BLImpl">
+		<property name="vimBL">
+			<ref bean="vimBL"/>
+		</property>
+		<property name="vim02BL">
+			<ref bean="vim02BL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="vim04BL">
+			<ref bean="vim04BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvir04BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR04BLImpl">
+		<property name="vim02BL">
+			<ref bean="vim02BL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="vim07BL">
+			<ref bean="vim07BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvir06BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR06BLImpl">
+	  	<property name="soc0118BL">
+            <ref bean="soc0118BL"/>
+        </property>
+        <property name="soc0119BL">
+            <ref bean="soc0119BL"/>
+        </property>
+        <property name="soc0111BL">
+            <ref bean="soc0111BL"/>
+        </property>
+        <property name="soc0110BL">
+            <ref bean="soc0110BL"/>
+        </property>
+        <property name="soc0117BL">
+            <ref bean="soc0117BL"/>
+        </property>
+        <property name="userRoleBL">
+            <ref bean="userRoleBL"/>
+        </property>
+        <property name="organizationBL">
+            <ref bean="organizationBL"/>
+        </property>
+        <property name="soc0107BL">
+            <ref bean="soc0107BL"/>
+        </property>
+        <property name="soc0126BL">
+            <ref bean="soc0126BL"/>
+        </property>
+        <property name="soc0112BL">
+            <ref bean="soc0112BL"/>
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+        <property name="soc0109BL">
+            <ref bean="soc0109BL"/>
+        </property>
+        <property name="soc0151BL">
+            <ref bean="soc0151BL"/>
+        </property>
+        <property name="fileUploadBL">
+            <ref bean="fileUploadBL"/>
+        </property>
+    </bean>
+    
+    <bean id="igvir07BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR07BLImpl">
+		<property name="vim01BL">
+			<ref bean="vim01BL"/>
+		</property>
+	</bean>
+	<bean id="igvir10BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR10BLImpl">
+		<property name="workFlowDefinitionBL" ref="workFlowDefinitionBL"/>
+		<property name="workFlowOperationBL" ref="workFlowOperationBL"/>
+		<property name="codeDetailBL" ref="codeDetailBL"/>
+		<property name="vim03BL" ref="vim03BL"/>
+		<property name="vim03CountVWBL" ref="vim03CountVWBL"/>
+		<property name="vimBL" ref="vimBL"/>
+		<property name="vim01BL" ref="vim01BL"/>
+		<property name="vim03CountByOrgVWBL" ref="vim03CountByOrgVWBL"/>
+		<property name="vim03CountByUserVWBL" ref="vim03CountByUserVWBL"/>
+		<property name="vim03CountByProjVWBL" ref="vim03CountByProjVWBL"/>
+		<property name="processInHandBL" ref="processInHandBL"/>
+		<property name="vim05BL">
+			<ref bean="vim05BL"/>
+		</property>
+		<property name="vim06BL">
+			<ref bean="vim06BL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+	</bean>
+	<bean id="igvir08BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR08BLImpl">
+		<property name="vim03CountByUserVWBL">
+			<ref bean="vim03CountByUserVWBL"/>
+		</property>
+		<property name="vim03CountByOrgVWBL">
+			<ref bean="vim03CountByOrgVWBL"/>
+		</property>
+		<property name="vim03CountByProjVWBL">
+			<ref bean="vim03CountByProjVWBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+	</bean>
+	<bean id="igvir09BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR09BLImpl">
+		<property name="vim05BL">
+			<ref bean="vim05BL"/>
+		</property>
+		<property name="vim06BL">
+			<ref bean="vim06BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+	</bean>
+	<bean id="igvir11BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR11BLImpl">
+		<property name="vim03CountByUserVWBL">
+			<ref bean="vim03CountByUserVWBL"/>
+		</property>
+		<property name="vim03CountByOrgVWBL">
+			<ref bean="vim03CountByOrgVWBL"/>
+		</property>
+		<property name="vim03CountByProjVWBL">
+			<ref bean="vim03CountByProjVWBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="vim05BL">
+			<ref bean="vim05BL"/>
+		</property>
+		<property name="vim06BL">
+			<ref bean="vim06BL"/>
+		</property>
+	</bean>
+		<bean id="igvir12BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR12BLImpl">
+		<property name="vim01BL">
+			<ref bean="vim01BL"/>
+		</property>
+		<property name="vimBL">
+			<ref bean="vimBL"/>
+		</property>
+	</bean>
+	<bean id="igvir13BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR13BLImpl">
+		<property name="vim01BL">
+			<ref bean="vim01BL"/>
+		</property>
+		<property name="vimBL">
+			<ref bean="vimBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+	</bean>
+	<bean id="igvir14BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR14BLImpl">
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="vimBL">
+			<ref bean="vimBL"/>
+		</property>
+		<property name="vim01BL">
+			<ref bean="vim01BL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+	</bean>
+	<bean id="igvir30BL" class="com.deliverik.infogovernor.soc.vir.bl.IGVIR30BLImpl">
+		<property name="vcdBL">
+			<ref bean="vcdBL"/>
+		</property>
+		<property name="vcd01BL">
+			<ref bean="vcd01BL"/>
+		</property>
+		<property name="vcd02BL">
+			<ref bean="vcd02BL"/>
+		</property>
+		<property name="vcd03BL">
+			<ref bean="vcd03BL"/>
+		</property>
+		<property name="vcd04BL">
+			<ref bean="vcd04BL"/>
+		</property>
+		<property name="vcd05BL">
+			<ref bean="vcd05BL"/>
+		</property>
+		<property name="vcd06BL">
+			<ref bean="vcd06BL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	
+</beans>
+

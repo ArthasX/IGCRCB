@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/cst/sql/cstuser_sh.sql

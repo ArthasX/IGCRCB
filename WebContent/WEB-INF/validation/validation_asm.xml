@@ -1,0 +1,1557 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<!-- Validator -->
+<form-validation>
+    <formset>
+       <form name="IGASM0102Form">
+            <field property="elabel" depends="maxbytes">
+           		<arg key="模型编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="ename" depends="required,maxbytes">
+                <arg key="模型名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="edesc" depends="maxbytes">
+                <arg key="模型说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eparname" depends="required">
+                <arg key="上级模型" resource="false"/>
+            </field>
+        </form>
+       <form name="IGASM0104Form">
+           
+            <field property="cname" depends="required,maxbytes">
+                <arg key="配置项名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="cdesc" depends="maxbytes">
+                <arg key="配置项说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="ccategory" depends="required">
+                <arg key="配置项类型" resource="false"/>
+            </field>
+            <field property="coption" depends="maxbytes">
+                <arg key="取值范围" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0202Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="资产编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="资产名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="资产说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM0204Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="资产说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0207Form">
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="资产编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+
+       <form name="IGASM0302Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="设备编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="设备名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="设备说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+            	<arg key="所属机构" resource="false"/>
+            </field>
+        </form>
+       <form name="IGASM0304Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="设备说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0307Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="设备编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		
+		<form name="IGASM0321Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="设备编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="设备名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="设备说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+            	<arg key="所属机构" resource="false"/>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+        </form>
+		
+       <form name="IGASM0402Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="合同编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="合同名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <!-- 
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+             -->
+            <field property="eidesc" depends="maxbytes">
+                <arg key="合同说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+       <form name="IGASM0404Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="合同说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0407Form">
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="合同编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		<form name="IGASM0412Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="合同编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="合同名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="合同说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+
+      <form name="IGASM0502Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="文档编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="文档名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="文档说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM0504Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="文档说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0507Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="文档编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        
+        <form name="IGASM0512Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="文档编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="文档名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="文档说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM0602Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="软件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="软件名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="软件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+           <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM0604Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="软件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0607Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="软件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		
+		<form name="IGASM0612Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="软件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="软件名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="软件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+           <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+		
+       <form name="IGASM0702Form">
+            <field property="elabel" depends="required,maxbytes">
+                <arg key="类型编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机房编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0704Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0707Form">
+            <field property="elabel" depends="required,maxbytes">
+                <arg key="类型编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机房配置项编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+
+       <form name="IGASM0802Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="应用编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="应用名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="应用说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM0804Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="应用说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0807Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="应用编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		<form name="IGASM0812Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="应用编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="应用名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="应用说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+	
+		
+       <form name="IGASM0902Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="服务商编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="服务商名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务商说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+       <form name="IGASM0904Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务商说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM0907Form">
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="服务商编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		 <form name="IGASM0912Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="服务商编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="服务商名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务商说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+		
+       <form name="IGASM1102Form">
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机房编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="机房名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="机房说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+
+       <form name="IGASM1112Form">
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机柜编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="机柜名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="机柜说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="x_value" depends="maxbytes,integer">
+                <arg key="机柜位置（X）" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>3</var-value>
+                </var>
+
+            </field>
+            <field property="y_value" depends="maxbytes,integer">
+                <arg key="机柜位置（Y）" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>3</var-value>
+                </var>
+
+            </field>
+            <field property="u_total" depends="required,maxbytes,integer">
+                <arg key="机柜高度（U）" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>2</var-value>
+                </var>
+
+            </field>
+            <field property="x_width" depends="required,maxbytes,integer">
+                <arg key="机柜横向宽" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>2</var-value>
+                </var>
+
+            </field>
+            <field property="y_width" depends="required,maxbytes,integer">
+                <arg key="机柜纵向宽" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>2</var-value>
+                </var>
+
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+
+       <form name="IGASM1202Form">
+            <field property="elabel" depends="required,maxbytes">
+                <arg key="类型编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机柜编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1204Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1207Form">
+            <field property="elabel" depends="required,maxbytes">
+                <arg key="类型编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="机柜配置项编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        
+         <form name="IGASM1402Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="服务记录编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="服务记录名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务记录说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+       <form name="IGASM1404Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务记录说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1407Form">
+            <field property="elabel" depends="required,maxbytes">
+                <arg key="服务记录编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="关联资产编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+		<form name="IGASM1412Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="服务记录编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="服务记录名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="服务记录说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+		
+		
+		<form name="IGASM1502Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="人员编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="人员 名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="人员说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+       <form name="IGASM1504Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="人员说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1507Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="人员编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        <form name="IGASM1512Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="人员编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="人员 名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="人员说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+        
+        
+		<form name="IGASM1602Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="数据编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="数据名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="数据说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+        
+         <form name="IGASM1604Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="数据说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1607Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="数据编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        <form name="IGASM1612Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="数据编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="数据名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="数据说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+           
+        </form>
+        
+        
+        <form name="IGASM1702Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="组件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="组件名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="数组件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+         <form name="IGASM1704Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="组件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1707Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="组件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        <form name="IGASM1712Form">
+            
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="组件编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="组件名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="组件说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+        </form>
+        
+        
+        <form name="IGASM1802Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="系统编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="系统名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="系统说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+       <form name="IGASM1804Form">
+            <field property="eidesc" depends="maxbytes">
+                <arg key="系统说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+        </form>
+       <form name="IGASM1807Form">
+             <field property="eilabel" depends="required,maxbytes">
+                <arg key="系统编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="eilabel" depends="required">
+                <arg key="关系资产编号" resource="false"/>
+            </field>
+            <field property="eirrelation" depends="required">
+                <arg key="关联关系" resource="false"/>
+            </field>
+            <field property="eirdesc" depends="maxbytes">
+                <arg key="关系说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+        </form>
+        
+        <form name="IGASM1812Form">
+           
+            <field property="eilabel" depends="required,maxbytes">
+                <arg key="系统编号" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>32</var-value>
+                </var>
+            </field>
+            <field property="einame" depends="required,maxbytes">
+                <arg key="系统名称" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>128</var-value>
+                </var>
+            </field>
+            <field property="eiorgname" depends="required">
+                <arg key="所属机构" resource="false"/>
+                
+            </field>
+            <field property="eidesc" depends="maxbytes">
+                <arg key="系统说明" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>256</var-value>
+                </var>
+            </field>
+            <field property="eiuserid" depends="required">
+            	<arg key="管理人" resource="false"/>
+            </field>
+            <field property="eiinsdate" depends="required,maxbytes">
+                <arg key="登记日" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>10</var-value>
+                </var>
+            </field>
+            
+        </form>
+        
+   </formset>
+</form-validation>

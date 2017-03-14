@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/data/csebank/import_sh.sql

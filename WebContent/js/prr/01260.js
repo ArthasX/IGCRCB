@@ -1,0 +1,4 @@
+//Òþ²ØÌí¼Ó¸½¼þ°´Å¥
+jQuery(function(){
+	jQuery("#att").hide();
+});

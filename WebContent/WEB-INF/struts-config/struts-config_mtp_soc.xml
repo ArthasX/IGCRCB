@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+		
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    	<!-- 日常运维计划登记画面初始化 -->
+    	<action path="/IGMTP0103_Disp_SOC"
+            	type="com.deliverik.infogovernor.mtp.action.IGMTP0103Action"
+            	parameter="DISP"
+            	name="IGMTP0101Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/srv/mtp/IGMTP0103.jsp" />
+        </action>
+        <!-- 日历选择显示  -->
+        <action path="/IGMTP0104_Disp_SOC"
+            type="com.deliverik.infogovernor.mtp.action.IGMTP0104Action"
+            parameter="DISP"
+            validate="true"
+            name="IGMTP0103Form"
+            scope="request">
+            <forward name="DISP"  path="/srv/mtp/IGMTP0104.jsp"/>
+        </action>
+        
+        <!-- 下一步提交  -->
+        <action path="/IGMTP0104_NEXT_SOC"
+            type="com.deliverik.infogovernor.mtp.action.IGMTP0104Action"
+            parameter="NEXT"
+            validate="true"
+            name="IGMTP0103Form"
+            scope="request">
+            <forward name="WA"  path="/IGEXTWA0001_Quartz_SOC.do"/>
+            <forward name="WB"  path="/IGEXTWB0001_Quartz_SOC.do"/>
+        </action>
+        
+        <!-- 日常运维计划（指派工作）登记-->
+		<action path="/IGMTP0101_SOC"
+            	type="com.deliverik.infogovernor.mtp.action.IGMTP0101Action"
+            	parameter="DISP"
+            	name="IGMTP0101Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/IGMTP0104_Disp_SOC.do" />
+            	<forward name="ONCE" path="/IGEXTWA0001_Quartz_SOC.do" />
+        </action>
+        
+         <!-- 日常运维计划（个人工作）登记-->
+		<action path="/IGMTP0102_SOC"
+            	type="com.deliverik.infogovernor.mtp.action.IGMTP0102Action"
+            	parameter="DISP"
+            	name="IGMTP0101Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/IGMTP0104_Disp_SOC.do" />
+            	<forward name="ONCE" path="/IGEXTWB0001_Quartz_SOC.do" />
+        </action>
+        
+         <!-- 日常运维计划（自定义工作）登记-->
+		<action path="/IGMTP0109_SOC"
+            	type="com.deliverik.infogovernor.mtp.action.IGMTP0109Action"
+            	parameter="DISP"
+            	name="IGMTP0101Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/IGMTP0104_Disp_SOC.do" />
+            	<forward name="ONCE" path="/IGPRR0202_Quartz_SOC.do" />
+        </action>
+        
+        <!-- 定时器修改 -->
+		<action path="/IGMTP0105_Modify_SOC"
+			type="com.deliverik.infogovernor.mtp.action.IGMTP0105Action"
+			parameter="MODIFY_DISP" 
+			name="IGMTP0104Form"
+			scope="session">
+			<forward name="DISP" path="/srv/mtp/IGMTP0105.jsp" />
+			<forward name="MODIFY_ONCE" path="/srv/sdl/IGSDL0113.jsp" />
+		</action>
+		
+		<action path="/IGMTP0106_SOC"
+			type="com.deliverik.infogovernor.mtp.action.IGMTP0106Action"
+			input="/srv/wkm/extwa/IGEXTWA0102.jsp"
+			parameter="MODIFY" 
+			name="IGMTP0106Form"
+			scope="session">
+			<forward name="DISP" path="/IGMTP0107_Disp_SOC.do" />
+		</action>
+	
+		<!-- 计划修改日历选择显示  -->
+        <action path="/IGMTP0107_Disp_SOC"
+            type="com.deliverik.infogovernor.mtp.action.IGMTP0107Action"
+            parameter="DISP"
+            validate="true"
+            name="IGMTP0107Form"
+            scope="request">
+            <forward name="DISP"  path="/srv/mtp/IGMTP0106.jsp"/>
+        </action>
+        
+        <action path="/IGMTP0107_NEXT_SOC"
+            type="com.deliverik.infogovernor.mtp.action.IGMTP0107Action"
+            parameter="NEXT"
+            validate="false"
+            name="IGMTP0107Form"
+            scope="request">
+            <forward name="DISP"  path="/IGMTP0108_SOC.do"/>
+        </action>
+         <!-- 修改下一步提交  -->
+        <action path="/IGMTP0108_SOC"
+            type="com.deliverik.infogovernor.mtp.action.IGMTP0108Action"
+            parameter="MODIFY"
+            validate="false"
+            name="IGMTP0107Form"
+            scope="request">
+            <forward name="DISP"  path="/IGSDL0110_BACK_SOC.do"/>
+        </action>
+   	</action-mappings>
+
+</struts-config>

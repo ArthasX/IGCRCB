@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- DAO -->
+	
+	<!-- Task BL -->
+	
+
+	 <!-- Control BL -->
+	  <bean id="igaff01BL" class="com.deliverik.infogovernor.soc.aff.bl.IGAFF01BLImpl">
+		
+<!--         <property name="soc0117BL"> -->
+<!--             <ref bean="soc0117BL"/> -->
+<!--         </property> -->
+        <property name="soc0118BL">
+            <ref bean="soc0118BL"/>
+        </property>
+        <property name="soc0114BL">
+            <ref bean="soc0114BL"/>
+        </property>
+<!--         <property name="soc0107BL"> -->
+<!--             <ref bean="soc0107BL"/> -->
+<!--         </property> -->
+        <property name="soc0119BL">
+            <ref bean="soc0119BL"/>
+        </property>
+<!--         <property name="codeDetailBL"> -->
+<!--             <ref bean="codeDetailBL"/> -->
+<!--         </property> -->
+       
+    </bean>
+   
+</beans>
+

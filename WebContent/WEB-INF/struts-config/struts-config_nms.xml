@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="IGNMS0101Form" type="com.deliverik.infogovernor.nms.form.IGNMS0101Form"/>
+		<form-bean name="IGNMS0102Form" type="com.deliverik.infogovernor.nms.form.IGNMS0102Form"/>
+		<form-bean name="IGNMS0103Form" type="com.deliverik.infogovernor.nms.form.IGNMS0103Form"/>
+		<form-bean name="IGNMS0104Form" type="com.deliverik.infogovernor.nms.form.IGNMS0104Form"/>
+	</form-beans>
+
+	<action-mappings>
+		<action path="/IGNMS0101_Disp"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="DISP"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+			<forward name="DISP" path="/nms/IGNMS0101.jsp"/>
+		</action>
+		<action path="/IGNMS0101_ShowTopo"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="GET_TOPOXML"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<action path="/IGNMS0101_UpdateAixs"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="UPDATE_AIXS"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<action path="/IGNMS0101_Save"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="SAVE"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<action path="/IGNMS0101_getPanelSize"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="GET_PANELSIZE"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<action path="/IGNMS0101_UpdatePanelSize"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="UPDATE_PANELSIZE"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<action path="/manualScanByAjax"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0101Action"
+			parameter="ManualScan"
+			scope="request"
+			validate="false"
+			name="IGNMS0101Form"
+			input="/nms/IGNMS0101.jsp">
+		</action>
+		<!-- SNMP配置显示 -->
+		<action path="/IGNMS0102_Disp"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0102Action"
+			parameter="DISP"
+			scope="request"
+			validate="false"
+			name="IGNMS0102Form"
+			input="/nms/IGNMS0102.jsp">
+			<forward name="DISP" path="/nms/IGNMS0102.jsp"/>
+		</action>
+		<!-- SNMP配置新增 -->
+		<action path="/IGNMS0102_Ins"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0102Action"
+			parameter="INS"
+			scope="request"
+			validate="false"
+			name="IGNMS0102Form"
+			input="/IGNMS0102_Disp.do">
+			<forward name="DISP" path="/IGNMS0102_Disp.do"/>
+		</action>
+		<!-- SNMP配置删除 -->
+		<action path="/IGNMS0102_Del"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0102Action"
+			parameter="DEL"
+			scope="request"
+			validate="false"
+			name="IGNMS0102Form"
+			input="/IGNMS0102_Disp.do">
+			<forward name="DISP" path="/IGNMS0102_Disp.do"/>
+		</action>
+		<!-- 任务配置显示 -->
+		<action path="/IGNMS0103_Disp"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0103Action"
+			parameter="DISP"
+			scope="request"
+			validate="false"
+			name="IGNMS0103Form"
+			input="/nms/IGNMS0103.jsp">
+			<forward name="DISP" path="/nms/IGNMS0103.jsp"/>
+		</action>
+		<!-- 任务配置新增 -->
+		<action path="/IGNMS0103_Ins"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0103Action"
+			parameter="INS"
+			scope="request"
+			validate="false"
+			name="IGNMS0103Form"
+			input="/IGNMS0103_Disp.do">
+			<forward name="DISP" path="/IGNMS0103_Disp.do"/>
+		</action>
+		<!-- 任务配置删除 -->
+		<action path="/IGNMS0103_Del"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0103Action"
+			parameter="DEL"
+			scope="request"
+			validate="false"
+			name="IGNMS0103Form"
+			input="/IGNMS0103_Disp.do">
+			<forward name="DISP" path="/IGNMS0103_Disp.do"/>
+		</action>
+		
+		<!-- 设备发现推送 -->
+		<action path="/IGNMS0104"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0104Action"
+			parameter="DISP"
+			scope="request"
+			validate="false"
+			name="IGNMS0104Form"
+			input="/IGNMS0103_Disp.do">
+		</action>
+		
+		<action path="/IGNMS0104_GETIMGURL"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0104Action"
+			parameter="GETIMGURL"
+			scope="request"
+			validate="false"
+			name="IGNMS0104Form"
+			input="/IGNMS0103_Disp.do">
+		</action>
+		
+		<action path="/IGNMS0104_GETDEVTYPE"
+			type="com.deliverik.infogovernor.nms.action.IGNMS0104Action"
+			parameter="GETDEVTYPE"
+			scope="request"
+			validate="false"
+			name="IGNMS0104Form"
+			input="/IGNMS0103_Disp.do">
+		</action>
+	</action-mappings>
+</struts-config>

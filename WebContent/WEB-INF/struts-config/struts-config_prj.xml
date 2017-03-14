@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    	 <form-bean name="IGPRJ0102Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0102Form"/>
+    	 <form-bean name="IGPRJ0101Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0101Form"/>
+    	 <form-bean name="IGPRJ0104Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0104Form"/>
+    	 <form-bean name="IGPRJ0107Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0107Form"/>
+    	 <form-bean name="IGPRJ0101DetailForm" type="com.deliverik.infogovernor.prj.form.IGPRJ0101DetailForm"/>
+    	 <form-bean name="ProjectPlanForm" type="com.deliverik.infogovernor.prj.form.ProjectPlanForm"/>
+    	 <form-bean name="ConfirmMSForm" type="com.deliverik.infogovernor.prj.form.ConfirmMSForm"/>
+		 <form-bean name="IGPRJ0109Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0109Form"/>
+		 <form-bean name="IGPRJ0110Form" type="com.deliverik.infogovernor.prj.form.IGPRJ0110Form"/>
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    
+		<!-- 项目管理事件登记画面初期显示 -->
+        <action path="/IGPRJ0102_Disp"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0102Action"
+            input="/prj/IGPRJ0102.jsp"
+        	parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ0102.jsp"/>
+        </action>
+               
+        <!-- 项目管理登记成功 -->
+        <action path="/IGPRJ0102"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0102Action"
+            input="/prj/IGPRJ0102.jsp"
+        	parameter="INSERT"
+        	name="IGPRJ0102Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ010202.jsp" />
+           	<forward name="ERROR" path="/prj/IGPRJ010201.jsp" />
+        </action>
+        
+        <!-- 项目查询初期显示页面 -->
+        <action path="/IGPRJ0101_Disp"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ0101.jsp" redirect="false"/>
+        </action>
+        
+        <!-- 项目修改初期显示页面 -->
+        <action path="/IGPRJ0901_EDIT"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0109Action"
+        	parameter="EDIT"
+            scope="request"
+            input="/prj/IGPRJ0101.jsp"
+            name="IGPRJ0109Form">
+           	<forward name="DISP" path="/prj/IGPRJ0109.jsp"/>
+        </action>
+        
+         <!-- 项目修改 -->
+        <action path="/IGPRJ0901_UPDATE"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0109Action"
+        	parameter="UPDATE"
+            scope="request"
+             input="/prj/IGPRJ010201.jsp"
+            name="IGPRJ0109Form">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ0100.jsp" redirect="false"/>
+        </action>
+        
+        <!-- 项目查询显示结果页面 -->
+        <action path="/IGPRJ0101"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="SEARCH"
+        	name="IGPRJ0101Form"
+        	cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ0101.jsp" redirect="false"/>
+        </action>
+        <action path="/IGPRJ0101_BACK"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="SEARCH1"
+        	name="IGPRJ0101Form"
+        	cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/prj/IGPRJ0101.jsp" redirect="false"/>
+        </action>
+        
+        <!-- 项目详细资料页面 -->
+        <action path="/IGPRJ0101_Detail"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="DETAIL"
+        	input="/IGPRJ0101_Detail.do"
+        	name="IGPRJ0101DetailForm"
+            scope="request">
+            <set-property key="auth" value="false"/>
+           	<forward name="DISP" path="/prj/IGPRJ010111.jsp" redirect="false"/>
+           	<forward name="ASSESS" path="/prj/IGPRJ010102.jsp"/>
+           	<forward name="CLOSE" path="/prj/IGPRJ010103.jsp"/>
+           	<forward name="PROJECTPLAN" path="/prj/IGPRJ010108.jsp"/>
+           	<forward name="CONFIRMMILESTONE" path="/prj/IGPRJ010104.jsp"/>
+           	<forward name="ADJUSTPROJECTPLAN" path="/prj/IGPRJ010101.jsp" redirect="false" />
+        	<forward name="VIEW_PROJECTPLAN" path="/prj/IGPRJ010110.jsp" redirect="false" />
+        </action>
+        
+        <!-- 项目详细资料点评提交 -->
+        <action path="/IGPRJ0101_Detail_Assess"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="INSERT_ASSESS"
+        	input="/IGPRJ0101_Detail.do?type=assess"
+        	name="IGPRJ0101DetailForm"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+        </action>
+        
+        <!-- 项目详细资料关闭提交 -->
+        <action path="/IGPRJ0101_Detail_Close"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="INSERT_CLOSE"
+        	input="/IGPRJ0101_Detail.do?type=close"
+        	name="IGPRJ0101DetailForm"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+        </action>
+        
+        <!-- 项目详细历史记录 -->
+		<action path="/IGPRJ0101_Detail_History"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="HISTORY" 
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prj/IGPRJ010107.jsp" />
+		</action>
+		<!-- 项目历史记录模糊查询 -->
+		<action path="/IGPRJ0101_DIM_History"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="HISTORYDIM" 
+			name="IGPRJ0101DetailForm"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prj/IGPRJ010107.jsp" />
+		</action>
+		
+		<!-- 项目详细项目计划提交 -->
+		<action path="/IGPRJ0101_Detail_ProjectPlan"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="PROJECTPLAN" 
+			name="ProjectPlanForm"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+		</action>
+		
+		<!-- 项目详细调整项目计划提交 -->
+		<action path="/IGPRJ0101_Detail_AdjustProjectPlan"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="ADJUST_PROJECTPLAN" 
+			name="ProjectPlanForm"
+			input="/IGPRJ0101_Detail.do?type=adjustProjectPlan"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+		</action>
+		
+		<!-- 项目详细项目进展提交 -->
+		<action path="/IGPRJ0101_Detail_ConfirmMilestone"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="CONFIRM_PROJECTPLAN" 
+			input="/IGPRJ0101_Detail.do?type=confirmMilestone"
+			name="ProjectPlanForm"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+		</action>
+		<!-- 项目详细项目进展提交 -->
+		<action path="/IGPRJ0101_Detail_UpdateMilestone"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="CONFIRM_PROJECTPLAN" 
+			name="ProjectPlanForm"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRJ0101_Detail.do" />
+		</action>
+		<!-- 附件下载 -->
+        <action path="/downloadPrjFile"
+        	type="com.deliverik.infogovernor.action.DownloadAction"
+            scope="request">
+        </action>
+        
+        <!-- 项目监控查询 -->
+		<action path="/IGPRJ0101_Detail_View"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0103Action"
+			parameter="MONITER_VIEW" 
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prj/IGPRJ010109.jsp" />
+		</action>
+		
+		<!-- 项目预算查询 -->
+		<action path="/IGPRJ0101_Detail_findFIN"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+			parameter="DETAIL_FINDFIN" 
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prj/IGPRJ010105.jsp" />
+		</action>
+
+		<!-- 跳转到项目负责人页面 -->
+		<action path="/IGPRJ0104_Disp"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0104Action" 
+			parameter="DISP" 
+			name="IGPRJ0104Form" 
+			scope="request">
+			<forward name="DISP" path="/prj/IGPRJ0104.jsp" />
+		</action>
+		
+		<!-- 项目负责人 -->
+		<action path="/IGPRJ0104"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0104Action"
+			input="/IGPRJ0104_Disp.do"
+			parameter="PRINCIPAL" 
+			name="IGPRJ0104Form"
+			scope="request">
+			<forward name="DISP" path="/prj/IGPRJ0105.jsp" />
+			<forward name="DELETE_ERROR" path="/prj/IGPRJ0106.jsp" />
+			<forward name="ADD_ERROR" path="/prj/IGPRJ0106.jsp" />
+		</action>
+		
+		<!-- 跳转到项目参与人页面 -->
+		<action path="/IGPRJ0107_Disp"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0107Action" 
+			parameter="DISP" 
+			name="IGPRJ0107Form" 
+			scope="request">
+			<forward name="DISP" path="/prj/IGPRJ0107.jsp" />
+		</action>
+		
+		<!-- 项目参与人 -->
+		<action path="/IGPRJ0107"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0107Action"
+			input="/IGPRJ0107_Disp.do"
+			parameter="PARTICIPANT" 
+			name="IGPRJ0107Form"
+			scope="request">
+			<forward name="DISP" path="/prj/IGPRJ0105.jsp" />
+			<forward name="DELETE_ERROR" path="/prj/IGPRJ0106.jsp" />
+			<forward name="ADD_ERROR" path="/prj/IGPRJ0106.jsp" />
+		</action>
+		
+		<!-- 项目日志导出 -->
+		<action path="/IGPRJ010107_EXPORT"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0108Action"
+			input="/IGPRJ0101_Detail_History.do"
+			parameter="EXPORT" name="IGPRJ0101DetailForm"
+			validate="false" scope="session">
+		</action>
+		<!-- 项目日志类别详细信息 -->
+		<action path="/IGPRJ010107_SEARCH"
+			type="com.deliverik.infogovernor.prj.action.IGPRJ0108Action"
+			input="/IGPRJ0101_Detail_History.do"
+			parameter="SEARCH" name="IGPRJ0101DetailForm"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prj/IGPRJ010112.jsp" />
+		</action>
+		<!-- 项目删除 -->
+		<action path="/IGPRJ0101_Del"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0101Action"
+        	parameter="DELETE"
+        	name="IGPRJ0101Form"
+        	cancellable="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP" path="/IGPRJ0101.do" />
+        </action>
+        <!-- 统计分析页初始化 -->
+		<action path="/IGPRJ0110_Disp"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0110Action"
+        	parameter="DISP"
+        	name="IGPRJ0110Form"
+        	cancellable="true"
+            scope="request">
+           	<forward name="DISP" path="/prj/IGPRJ0110.jsp" />
+        </action>
+        
+        <!-- 投资使用情况导出-->
+		<action path="/IGPRJ0110_IuseExport"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0110Action"
+        	parameter="IUSEEXPORT"
+        	name="IGPRJ0110Form"
+        	cancellable="true"
+            scope="request">
+        </action>
+        
+        <!-- 投资类合同明细导出 -->
+		<action path="/IGPRJ0110_CauseExport"
+        	type="com.deliverik.infogovernor.prj.action.IGPRJ0110Action"
+        	parameter="ICAEXPORT"
+        	name="IGPRJ0110Form"
+        	cancellable="true"
+            scope="request">
+        </action>
+    </action-mappings>
+
+</struts-config>
