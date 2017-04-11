@@ -8,7 +8,8 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html:html>
 <bean:define id="id" value="IGDRM04020" toScope="request"/>
-<bean:define id="title" value="应急资源管理画面" toScope="request"/>
+<bean:define id="title" value="资源管理画面" toScope="request"/>
+<title>应急资源管理内嵌页面IGDRM04020</title>
 <!-- header1 -->
 <jsp:include page="/include/header1.jsp"/>
 <link type="text/css" rel="stylesheet"	href="<html:rewrite forward='tree.css'/>">
@@ -93,7 +94,7 @@ function checkForm(){
 				<div class="img"></div>
 				<div class="conditions">
 					<div>
-						<label>应急资源名称：</label>
+						<label>资源名称：</label>
 						<html:text property="einame" styleId="einame" style="width:110px;"  errorStyleClass="inputError imeDisabled" size="10" />&nbsp;&nbsp;
 						<label>负责人：</label><html:text property="eiusername" styleId="eiusername" style="width:110px;" errorStyleClass="inputError imeDisabled" size="10" />
 						<br><span>时间：从</span><html:text property="propentime" styleId="propentime" errorStyleClass="inputError imeDisabled" size="16" readonly="true"/>
@@ -102,6 +103,8 @@ function checkForm(){
 						<img src="images/date.gif" align="middle" onclick="calendar($('prclosetime'))" border="0" style="cursor: hand" />
 							
 						<html:hidden property="eistatus" value="1"/>
+						<!-- 资源类型(1:应急,0:演练) -->
+						<html:hidden property="resourceType" styleId="resourceType"/>
 						<html:submit property="btn_search" value="查询" styleClass="button" onclick=""/>
 						<html:button property="btn_add" value="新增" styleClass="button" onclick="addEntity()"/>
 					</div>
@@ -120,8 +123,8 @@ function checkForm(){
 								<input type="checkbox" class="delFlag" name="allbox" id="allbox" onclick="selectAll('allbox','deleteEiid')"/>
 							</label>
 						</th>
-						<th style="text-align: left;padding-left: 60px;width: 30%">应急资源名称</th>
-						<th width="15%">应急资源模型</th>
+						<th style="text-align: left;padding-left: 60px;width: 30%"><c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源名称</th>
+						<th width="15%"><c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源模型</th>
 						<th width="12%">负责人</th>
 						<th width="15%">登记日期</th>
 						<th width="10%">删除</th>
@@ -237,14 +240,15 @@ function addEntity(){
 	var erid = jQuery("#erid").val();
 	var code = jQuery("#ercode").val();
 	var esyscode = jQuery("#esyscode").val();
+	var resourceType = jQuery("#resourceType").val();
 	if(code){
 		if(code=='000'){
-			alert("应急资源顶级模型不可选！");
+			alert("资源顶级模型不可选！");
 		}else{
-			window.openSubWindow("/IGDRM0402_Entity_Disp.do?ercode="+code+"&erid="+erid+"&esyscode="+esyscode,"_blank", 1100, 600);
+			window.openSubWindow("/IGDRM0402_Entity_Disp.do?resourceType="+resourceType+"&ercode="+code+"&erid="+erid+"&esyscode="+esyscode,"_blank", 1100, 600);
 		}
 	}else{
-		alert("请先选择应急资源模型！");
+		alert("请先选择资源模型！");
 	}
 }
 function openConfig(id,eiid){

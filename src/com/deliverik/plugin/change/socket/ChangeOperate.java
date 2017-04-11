@@ -215,7 +215,7 @@ public class ChangeOperate extends Thread {
 			//设定实体
 			dto.setInitTB(tb);
 			dto.setAttkey(attkey);
-			//调用bl插入数据       相当于一个日志
+			//调用bl插入数据
 			dto = ctlBL.saveInitiacteChangeAction(dto);
 			// 数据插入成功
 			if (dto.getIcid() != null) {

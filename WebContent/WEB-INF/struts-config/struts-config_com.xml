@@ -1099,9 +1099,15 @@
 	     	<forward name="IGDRM0104" path="/IGDRM0104.do" />
 	     	<!-- 应急资源 -->
 	     	<forward name="IGDRM0401" path="/IGDRM0401_Disp.do" />
-	     	<forward name="IGDRM0402" path="/IGDRM0402_Disp.do" />
+	     	<forward name="IGDRM0402" path="/IGDRM0402_Disp.do?resourceType=1" />
+	     	<!-- 演练资源管理 -->
+	     	<!--  2017年3月16日15:56:58  张剑  增加演练资源管理 -->
+	     	<forward name="IGDRM0421" path="/IGDRM0402_Disp.do?resourceType=0" />
 			<!-- 应急资源查询 -->
-	     	<forward name="IGDRM0403" path="/IGDRM04021_Disp.do" />
+	     	<forward name="IGDRM0403" path="/IGDRM04021_Disp.do?resourceType=1" />
+	     	<!-- 演练资源查询 -->
+	     	<!--  2017年3月16日15:56:58  张剑  增加演练资源管理 -->
+	     	<forward name="IGDRM0423" path="/IGDRM04021_Disp.do?resourceType=0" />
 			<!--应急资源模型定义-->
 			<forward name="IGDRM0412" path="/IGDRM0412_Disp.do"/>
 			<!--应急资源模型查询-->

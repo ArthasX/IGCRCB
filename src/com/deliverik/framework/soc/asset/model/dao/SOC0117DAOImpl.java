@@ -154,11 +154,11 @@ public class SOC0117DAOImpl extends BaseHibernateDAOImpl<SOC0117Info> implements
 	 * @param esyscoding
 	 * @return
 	 */
-	public List<Map<String, Object>> getEntityNumNEW(String rootErcode){
+	public List<Map<String, Object>> getEntityNumNEW(String rootErcode,String resourceType){
 		
 		Session session = getSession();
 		String sql = " SELECT a.erid , a.esyscoding ,  a.ername ,  a.ercode ,  a.erparcode,  COUNT(b.eiid) AS account "
-				+"FROM  emergencyresource a LEFT JOIN errelation b ON( b.ercode LIKE  '000%' AND b.deleteflag <> '1'  ) "
+				+"FROM  emergencyresource a LEFT JOIN errelation b ON( b.ercode LIKE  '000%' AND b.deleteflag <> '1' and b.fingerprint='"+resourceType+"' ) "
 				+" WHERE  a.ercode LIKE '000%' GROUP BY  a.erid ,  a.ername , a.esyscoding , a.ercode ,  a.erparcode ORDER BY  ercode";
 		if(!"allTree".equals(rootErcode)){
 			sql = session.getNamedQuery("SOC0117DAO.getEntityNumNEW").getQueryString();
@@ -168,6 +168,7 @@ public class SOC0117DAOImpl extends BaseHibernateDAOImpl<SOC0117Info> implements
 		
 		if(!"allTree".equals(rootErcode)){
 			q.setParameter("ercode", rootErcode+"%");
+			q.setParameter("resourceType", resourceType);
 		}		
 		q.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 		

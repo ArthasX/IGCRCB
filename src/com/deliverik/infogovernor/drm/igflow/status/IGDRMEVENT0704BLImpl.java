@@ -186,6 +186,11 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
 			
 	        relatetype = IGDRMCONSTANTS.DRILL_RELATE_SCENE;
 	        
+	     // 设置指挥流程类型为演练发起
+ 			Map<String, Object> map = new HashMap<String, Object>();
+ 			map.put("prurgency", "1");
+ 			flowSetBL.updateProcessRecord(prid, map);
+	        
 			// -----------------初始化签到信息----
 			signinBL.updateSigninForRestore(prInfo.getPrid(), prid);
 			

@@ -1262,6 +1262,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 		cond.setEiinsdate_lt(form.getPrclosetime());
 		cond.setEsyscoding_like(form.getErcode());
 		cond.setEiidNotIn(form.getEiidNotIn());
+		cond.setResourceType(form.getResourceType());
 		// 应急资源查询件数取得
 		int totalCount = this.soc0118VWBL.getEmergencyRelationCount(cond );
 		if (totalCount == 0) {
@@ -1338,7 +1339,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 	 */
 	public IGDRM04DTO initNewNodeMap(IGDRM04DTO dto)throws BLException{
 		
-		List<Map<String, Object>> soc0117List = soc0117BL.getEntityNumNEW(dto.getRootEsyscoding());
+		List<Map<String, Object>> soc0117List = soc0117BL.getEntityNumNEW(dto.getRootEsyscoding(),dto.getResourceType());
 		Hashtable<String,TreeNode> tempMap = new Hashtable<String, TreeNode>();
 		Map<String,TreeNode> allNode = new HashMap<String, TreeNode>();
 		for(Map<String, Object> map : soc0117List){
@@ -3200,6 +3201,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 		cond.setEiname(form.getEiname());
 		cond.setEsyscoding_like(form.getEsyscoding().split("_")[1]);
 		cond.setEiorgsyscoding(form.getEiorgsyscoding());
+		cond.setResourceType(form.getResourceType());
 		int totalCount = this.soc0118VWBL.getEntityItemSearchCount(cond);
 //		int totalCount = entityItemVWInfoList!=null&&entityItemVWInfoList.size()>0?entityItemVWInfoList.size():0;
 		if (totalCount == 0) {
@@ -3245,6 +3247,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 		ErRelationSearchCondImpl errCond = new ErRelationSearchCondImpl();
 		errCond.setErid(erid);
 		errCond.setErcode(ercode);
+		errCond.setResourceType(form.getResourceType());
 		for(String eiid : relationEiid){
 			errCond.setEiid(eiid);
 			List<ErRelationInfo> errList = erRelationBL.searchErRelation(errCond);
@@ -3260,6 +3263,9 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 				errTB.setErid(erid);;
 				errTB.setErcode(ercode);
 				errTB.setDeleteflag("0");
+				//占用 fingerprint字段存储 资源类型 (1:应急,0:演练);
+				//张剑 2017年3月17日11:04:03
+				errTB.setFingerPrint(form.getResourceType());
 				erRelationBL.registErRelation(errTB);
 			}
 			
@@ -3285,6 +3291,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 		for(String eiid : relationEiid){
 			errCond.setEiid(eiid.split("_")[0]+ "_" +eiid.split("_")[1]);
 			errCond.setErcode(eiid.split("_")[2]);
+			errCond.setResourceType(form.getResourceType());
 			List<ErRelationInfo> errList = erRelationBL.searchErRelation(errCond);
 			if(errList!=null&&errList.size()>0){
 				ErRelationTB errTB = (ErRelationTB) SerializationUtils.clone(errList.get(0));
@@ -3351,6 +3358,7 @@ public class IGDRM04BLImpl implements IGDRM04BL {
 		IGDRM0402Form form = dto.getIgdrm0402Form();
 		SOC0118VWSearchCondImpl cond = new SOC0118VWSearchCondImpl();
 		cond.setEsyscoding_like(form.getErcode());
+		cond.setResourceType(dto.getResourceType());
 		// 应急资源查询件数取得
 		int totalCount = this.soc0118VWBL.getEmergencyRelationCount(cond );
 		dto.setAjaxResult(totalCount + "");

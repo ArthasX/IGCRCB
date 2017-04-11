@@ -1091,9 +1091,21 @@ WorkFlowContext.Button = function(data,parent){
 			if(form && form.access == "3"){
 				var formData = {};
 				formData.value = form.getValue();
-				if(form.required=="1"&&!formData.value){
-					alert(form.name+"不能为空!");
-					return false;
+				
+//				(form.name=="处置说明"&&(alert(">"+formData.value+"<"+("changdu"+formData.value.length))));
+				
+				
+				
+				if(form.required=="1"&&(!formData.value||(form.name=="处置说明"&&formData.value.length==0))){
+					
+					//应急时不校验处置说明必填
+					if(window.prCategory!="1"&&form.name=="处置说明"){
+					}else{
+						
+						alert(form.name+"不能为空!");
+						return false;
+					}
+					
 				}else{
 					result.forms[form.id] = formData;
 				}
@@ -1199,8 +1211,9 @@ WorkFlowContext.prototype.get = function(prid,userid,status,fun){
 				if(data.prid){
 					_this.id = data.prid;
 				}
-				if(data.prCategory){
+				if(data.prCategory||data.prCategory=="0"){
 					_this.prCategory = data.prCategory;
+					window.prCategory = data.prCategory;
 				}
 				//设置标题
 				if(data.title){

@@ -81,5 +81,5 @@ public interface SOC0117DAO extends BaseHibernateDAO<SOC0117Info> {
 	 * @param esyscoding
 	 * @return
 	 */
-	public List<Map<String, Object>> getEntityNumNEW(String rootErcode);
+	public List<Map<String, Object>> getEntityNumNEW(String rootErcode,String resourceType);
 }

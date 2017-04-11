@@ -12,6 +12,8 @@ package com.deliverik.infogovernor.drm.model.condition;
   */
 public class ErRelationSearchCondImpl implements
 		ErRelationSearchCond {
+	
+
 	protected Integer errid;
 	
 	/** 应急资源主键 */
@@ -34,6 +36,21 @@ public class ErRelationSearchCondImpl implements
 
 	/** 删除标志 */
 	protected String deleteflag;
+	
+	/**
+	 * 资源类型(1:应急,0:演练)
+	 */
+	protected String resourceType;
+
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
+	}
+	/**
+	 * 资源类型(1:应急,0:演练)
+	 */
+	public String getResourceType() {
+		return resourceType;
+	}
 
 	/**
 	 * 主键取得

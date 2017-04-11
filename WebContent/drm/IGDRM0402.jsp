@@ -84,8 +84,9 @@ function getCount(){
 		jQuery.ajax({
 			type: "POST",
 			url:"IGDRM0402_Getcount.do",
-		 	data: {ercode:current.eid},
+		 	data: {ercode:current.eid,resourceType:"${resourceType}"},
 		    success: function(msg){
+		    	console.log(msg);
 		    	var text = current.text.substring(0,current.text.indexOf("("));
 		    	jQuery("#" + current.id + "-anchor").text(text + "(" + msg + ")");
 		    }
@@ -109,7 +110,7 @@ function getCount(){
 			<div style="width:240px;float:left;border:0px; border:1px solid #BB0500;height:530px; ">
 				<div class="conditions" >
 					<div>
-						<div class="titBox">应急资源分类</div>
+						<div class="titBox"><c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源分类</div>
 						<div id="treeBox" style="height:480px;margin: 10px 0px 0px 10px;overflow:auto;"></div>
 					</div>
 <%-- 							<html:hidden property="ercode" styleId="ercode"/> --%>
@@ -148,7 +149,7 @@ jQuery(function(){
 		tree.expand(); 
 		if(tree.childNodes[0]){
 			tree.childNodes[0].select();
-			jQ("#iframe").attr("src","IGDRM0402.do?ercode="+tree.childNodes[0].eid+"&erid="+tree.childNodes[0].remark.split("_")[0]+"&esyscode="+tree.childNodes[0].remark.split("_")[1]+"_"+tree.childNodes[0].remark.split("_")[3]);
+			jQ("#iframe").attr("src","IGDRM0402.do?resourceType=${resourceType}&ercode="+tree.childNodes[0].eid+"&erid="+tree.childNodes[0].remark.split("_")[0]+"&esyscode="+tree.childNodes[0].remark.split("_")[1]+"_"+tree.childNodes[0].remark.split("_")[3]);
 		} 
 	}
 	 //绑定树的点击事件
@@ -171,7 +172,7 @@ function submitForm(ercode , erid , esyscode){
 	
 }
 function changeIframe(ercode , erid , esyscode){
-	var url = "IGDRM0402.do?";
+	var url = "IGDRM0402.do?resourceType=${resourceType}&";
 	url = url + "ercode=" + ercode + "&erid=" + ercode +"&esyscode=" + esyscode;
 	jQ("#iframe").attr("src",url);
 }

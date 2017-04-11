@@ -133,7 +133,7 @@ jQuery(function(){
 		tree.expand(); 
 		if(tree.childNodes[0]){
 			tree.childNodes[0].select();
-			jQ("#iframe").attr("src","IGDRM0402_Search.do?ercode="+tree.childNodes[0].eid+"&erid="+tree.childNodes[0].remark.split("_")[0]+"&esyscode="+tree.childNodes[0].remark.split("_")[1]+"_"+tree.childNodes[0].remark.split("_")[3]);
+			jQ("#iframe").attr("src","IGDRM0402_Search.do?resourceType=${resourceType}&ercode="+tree.childNodes[0].eid+"&erid="+tree.childNodes[0].remark.split("_")[0]+"&esyscode="+tree.childNodes[0].remark.split("_")[1]+"_"+tree.childNodes[0].remark.split("_")[3]);
 		} 
 // 		console.log(nodeMap['000'].childTreeNodeMap['000001']);
 // 		getSelNode(tree,jQuery("#ercode").val());

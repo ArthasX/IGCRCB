@@ -160,7 +160,7 @@
 		</action>
 		<!-- 应急资源维护查询 -->
 		<action path="/IGDRM0402_Disp" 	type="com.deliverik.infogovernor.drm.action.IGDRM0402Action"
-			name="IGDRM0402Form" validate="false" parameter="DISP" scope="request">
+			name="IGDRM0402Form" validate="false" parameter="SEARCH" scope="request">
 			<set-property key="auth" value="false" />
 			<forward path="/drm/IGDRM0402.jsp" name="DISP"></forward>
 		</action>

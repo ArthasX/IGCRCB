@@ -20,6 +20,8 @@ public class SOC0118VWSearchCondImpl implements
 	/** 数据库ID */
 	protected Integer id;
 	
+	protected String resourceType;
+	
 	/** 资产模型ID */
 	protected String eid;
 	
@@ -716,6 +718,14 @@ public class SOC0118VWSearchCondImpl implements
 
 	public void setEiid_cld_yjzy(String eiid_cld_yjzy) {
 		this.eiid_cld_yjzy = eiid_cld_yjzy;
+	}
+
+	public String getResourceType() {
+		return resourceType;
+	}
+
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
 	}
 	
 }

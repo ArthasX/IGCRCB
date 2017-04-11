@@ -247,6 +247,7 @@
 			/WEB-INF/struts-config/struts-config_dwp.xml,
 			
 			/WEB-INF/struts-config/struts-config_wki.xml,
+			<!-- 科技服务请求菜单展示 -->
 			/WEB-INF/struts-config/struts-config_mnu.xml
 			</param-value>
 		</init-param>

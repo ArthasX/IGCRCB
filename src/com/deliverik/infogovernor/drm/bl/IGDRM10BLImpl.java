@@ -1278,6 +1278,9 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 				map.put("title", pr.getPrtitle());
 				map.put("prpdid", pr.getPrpdid());
 				map.put("prtype", pr.getPrtype());
+				
+				
+				
 				map.put("prCategory", pr.getPrurgency());
 				this.getRelProcess(map, prid);
 				Map<String, String> timeMap = new HashMap<String, String>();
@@ -2035,7 +2038,8 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 								}
 							}else{
 								tb.setPivarvalue("");
-								System.out.println(value);
+
+
 							}
 						} else if ("F".equals(tb.getPivartype())) {
 							String attKey = tb.getPivarvalue();

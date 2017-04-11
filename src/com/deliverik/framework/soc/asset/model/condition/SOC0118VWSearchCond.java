@@ -188,4 +188,11 @@ public interface SOC0118VWSearchCond {
 	public String getEiid_cld_yjzy();
 	
 	public String getEiname_q();
+	
+	/**
+	 * 应急资源专用
+	 * 资源类型(1:应急,0:演练)
+	 * @return
+	 */
+	public String getResourceType();
 }

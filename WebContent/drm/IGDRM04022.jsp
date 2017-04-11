@@ -7,6 +7,7 @@
 <%@ taglib uri="http://www.deliverik.com/ig-tags" prefix="ig"%>
 <html:html>
 <bean:define id="id" value="IGDRM04022" toScope="request"/>
+
 <bean:define id="title" value="资产管理画面" toScope="request"/>
 
 <!-- header1 -->
@@ -196,7 +197,7 @@
              onsubmit="return checkSubmit(this);">
             <div id="location">
                 <div class="image"></div>
-                    <p class="fonts1"><ig:navigation extname1="${urlable}"/>  >> 应急资源选择</p>
+                    <p class="fonts1"><ig:navigation extname1="${urlable}"/>  >> <c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源选择</p>
             </div>    
                 <div id="search">
 		             <div class="img"></div>
@@ -220,12 +221,14 @@
 			               &nbsp;&nbsp;<span class="subscribe">资产名称：</span><html:text property="einame" styleId="einame" errorStyleClass="inputError imeDisabled" size="10" ></html:text>&nbsp;&nbsp; 
 <!--                           </div> -->
 <!--                           <div style="margin-top:12px;"> -->
+							<html:hidden property="resourceType"/>
 	                        <span class="subscribe">登记日：</span><html:text property="eiupdtime_from" styleId="eiupdtime_from" errorStyleClass="inputError imeDisabled" size="12" readonly="true"/> 
 	                        <img src="images/date.gif" align="middle" onClick="calendar($('eiupdtime_from'))" border="0"/>
 	                      
 	                        <span>--</span><html:text property="eiupdtime_to" styleId="eiupdtime_to" errorStyleClass="inputError imeDisabled" size="12" readonly="true"/> 
                             <img src="images/date.gif" align="middle" onClick="calendar($('eiupdtime_to'))" border="0"/>
 	                        &nbsp;&nbsp;<html:submit property="btn_search" value="查询" styleClass="button" onclick="return checkForm();"/>
+                         
                           </div>
                     </div>
 		      </div>

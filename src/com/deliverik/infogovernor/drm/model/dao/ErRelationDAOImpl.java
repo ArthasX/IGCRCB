@@ -108,6 +108,11 @@ public class ErRelationDAOImpl extends
 				c.add(Restrictions.eq("deleteflag", cond.getDeleteflag()));
 			}
 		}
+		
+		if(StringUtils.isNotEmpty(cond.getResourceType())){
+			c.add(Restrictions.eq("fingerPrint", cond.getResourceType()));
+		}
+		
 		return c;
 	}
 

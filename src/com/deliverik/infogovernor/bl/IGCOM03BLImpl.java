@@ -101,6 +101,7 @@ public class IGCOM03BLImpl extends BaseBLImpl implements IGCOM03BL
 
 	/** EntityTB DAO */
 	protected IG117BL ig117BL;
+	
 
 	/** EntityItemBL */
 	protected IG013BL ig013BL;

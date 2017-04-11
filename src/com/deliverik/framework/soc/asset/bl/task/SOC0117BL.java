@@ -130,7 +130,7 @@ public interface SOC0117BL extends BaseBL{
 	 * @param esyscoding
 	 * @return
 	 */
-	public List<Map<String, Object>> getEntityNum(String rootEsyscoding);
+	public List<Map<String, Object>> getEntityNum(String rootEsyscoding );
 
 	/**
 	 *  获取可导出一级资产列表
@@ -143,5 +143,5 @@ public interface SOC0117BL extends BaseBL{
 	 * @param esyscoding
 	 * @return
 	 */
-	public List<Map<String, Object>> getEntityNumNEW(String rootErcode);
+	public List<Map<String, Object>> getEntityNumNEW(String rootErcode,String resourceType);
 }

@@ -66,4 +66,8 @@ public interface ErRelationSearchCond {
 	 * @return 删除标志
 	 */
 	public String getDeleteflag();
+	/**
+	 * 资源类型(1:应急,0:演练)
+	 */
+	public String getResourceType();
 }

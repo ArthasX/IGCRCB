@@ -86,6 +86,12 @@ public class IGDRM04DTO extends BaseDTO {
 	protected String ajaxResult;
 	
 	/**
+	 * 资源类型(1:应急,0:演练)
+	 * 张剑 2017年3月17日11:07:48
+	 */
+	protected String resourceType;
+	
+	/**
 	 * @return the igdrm0430Form
 	 */
 	public IGDRM0430Form getIgdrm0430Form() {
@@ -1422,6 +1428,16 @@ public class IGDRM04DTO extends BaseDTO {
 	 */
 	public void setAjaxResult(String ajaxResult) {
 		this.ajaxResult = ajaxResult;
+	}
+
+
+	public String getResourceType() {
+		return resourceType;
+	}
+
+
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
 	}
 
 }

@@ -182,10 +182,10 @@ public class IGDRMEVENT0101BLImpl extends BaseBLImpl implements WorkFlowEventHan
     				}
     				//当前状态节点psdid
     				String curPsdid = statusList.get(i).getPsdid();
-    				setFormAccessDef(stepPdid, curPsdid);
+    				setFormAccessDef(stepPdid, curPsdid,sceneClassify);
     			}
     		}
-    		}
+		}
     	//soc0118->
     	//流程发起人所在机构
     	String eiorgsyscoding = sysManageBL.searchUserInfo(bean.getCrtuserid()).getOrgid();
@@ -409,12 +409,11 @@ public class IGDRMEVENT0101BLImpl extends BaseBLImpl implements WorkFlowEventHan
 	 * 设定默认的表单
 	 * @param pidid
 	 * @param psdid
-	 * @param access //1、不可见；2、只读；3、可写
-	 * @param required//0、不必填；1、必填
+	 * @param sceneClassify 场景分类
 	 * @return
 	 * @throws BLException
 	 */
-	private void setFormAccessDef(String pdid, String psdid) throws BLException {
+	private void setFormAccessDef(String pdid, String psdid,String sceneClassify) throws BLException {
 		log.info("==========设置状态表单缺省权限信息开始=============");
         IG007SearchCondImpl ig007Cond = new IG007SearchCondImpl();
     	ig007Cond.setPdid(pdid);
@@ -434,10 +433,8 @@ public class IGDRMEVENT0101BLImpl extends BaseBLImpl implements WorkFlowEventHan
 				if("0".equals(isuse)){
 					access = "3";
 					if("处置说明".equals(ig007List.get(i).getPidname())){
-						required = "0";
-					}else{
 						required = "1";
-					}
+					} 
 				}
 				// 设定默认表单-表单权限
 				IG699TB descInfoTB = new IG699TB();

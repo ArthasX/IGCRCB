@@ -1214,6 +1214,7 @@
 		        ON(
 		        b.ercode LIKE a.ercode || '%'
 		        AND b.deleteflag <> '1'
+		        and b.fingerprint = :resourceType
 		    )
 		WHERE
 		    a.ercode LIKE :ercode AND a.erstatus = '1'

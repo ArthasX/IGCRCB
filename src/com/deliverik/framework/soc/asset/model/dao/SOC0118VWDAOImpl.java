@@ -1028,6 +1028,8 @@ public class SOC0118VWDAOImpl extends BaseHibernateDAOImpl<SOC0118VWInfo>
 		if (StringUtils.isNotEmpty(cond.getEsyscoding_like()))
 			sql = sql + " and err.ercode like '%" + cond.getEsyscoding_like()
 					+ "%' ";
+		if(StringUtils.isNotEmpty(cond.getResourceType()))
+			sql+=" and err.fingerprint = '"+cond.getResourceType()+"'";
 		if (StringUtils.isNotEmpty(cond.getEiname()))
 			sql = sql + " and vw.einame like '%" + cond.getEiname() + "%' ";
 		if (StringUtils.isNotEmpty(cond.getEiusername()))
@@ -1064,6 +1066,12 @@ public class SOC0118VWDAOImpl extends BaseHibernateDAOImpl<SOC0118VWInfo>
 		if (StringUtils.isNotEmpty(cond.getEsyscoding_like()))
 			sql = sql + " and err.ercode like '%" + cond.getEsyscoding_like()
 					+ "%' ";
+		if(StringUtils.isNotEmpty(cond.getResourceType())){
+			sql+= " and err.fingerprint = '"+cond.getResourceType()+"'";
+		}
+		
+		
+		
 		if (StringUtils.isNotEmpty(cond.getEiname()))
 			sql = sql + " and vw.einame like '%" + cond.getEiname() + "%' ";
 		if (StringUtils.isNotEmpty(cond.getEiusername()))

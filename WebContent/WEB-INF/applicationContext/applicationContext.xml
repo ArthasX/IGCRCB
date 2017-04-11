@@ -92,8 +92,6 @@
     
     <import resource="../plugin/alarmSocket/config/applicationContext.xml" />
     <import resource="../plugin/PluginMgr/config/applicationContext.xml" />
-    <import resource="applicationContext_wki.xml"/>
-    
     
     <!-- 阜新银行流程处理BL声明xml -->
      <import resource="applicationContext_dev_ext_drm_igflow_status.xml" />
@@ -876,9 +874,6 @@
 			    <value>com.deliverik.infogovernor.drm.model.entity.OptionSencesTB</value>
 			    <value>com.deliverik.infogovernor.drm.model.entity.SOC0509TB</value>
 			    <value>com.deliverik.infogovernor.drm.model.entity.SOC0507TB</value>
-			    
-			    <!-- 工作信息 -->
-			    <value>com.deliverik.infogovernor.wki.model.entity.WorkinfoTB</value>
 			</list>
 		</property>
 	</bean>

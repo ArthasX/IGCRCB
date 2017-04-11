@@ -18,7 +18,6 @@ import org.apache.struts.util.LabelValueBean;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;
-import org.snmp4j.security.SecurityLevel;
 import org.springframework.beans.BeanUtils;
 
 import com.deliverik.framework.base.BLException;
@@ -1379,12 +1378,12 @@ public class IGNMS01BLImpl extends NMSBaseBLImpl implements IGNMS01BL{
 		instance.setInstime(IGStringUtils.getCurrentDateTime());
 		if(StringUtils.isEmpty(instance.getSnmpPrivacyPassPhrase())) {
 			if(StringUtils.isEmpty(instance.getSnmpPassword())) {
-				instance.setSnmpSecurityLevel(SecurityLevel.NOAUTH_NOPRIV + "");
+//				instance.setSnmpSecurityLevel(SecurityLevel.NOAUTH_NOPRIV + "");
 			} else {
-				instance.setSnmpSecurityLevel(SecurityLevel.AUTH_NOPRIV + "");
+//				instance.setSnmpSecurityLevel(SecurityLevel.AUTH_NOPRIV + "");
 			}
 		} else {
-			instance.setSnmpSecurityLevel(SecurityLevel.AUTH_PRIV + "");
+//			instance.setSnmpSecurityLevel(SecurityLevel.AUTH_PRIV + "");
 		}
 		nms02BL.regist(instance);
 		dto.addMessage(new ActionMessage( "IGCO10000.I004", "≈‰÷√–≈œ¢") );

@@ -42,6 +42,17 @@ public class IGDRM0402Form extends BaseForm  implements SOC0124SearchCond{
 	private String[] civalues;
 	private FormFile files;
 	private String[] deleteEiid;
+
+	/**
+	 * 资源类型(1:应急,0:演练)
+	 */
+	private String resourceType;
+	public String getResourceType() {
+		return resourceType;
+	}
+	public void setResourceType(String resourceType) {
+		this.resourceType = resourceType;
+	}
 	/**开始时间*/
 	protected String propentime;
 	

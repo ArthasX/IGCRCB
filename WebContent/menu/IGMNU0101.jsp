@@ -44,12 +44,19 @@
 											<td><html:link action="${action.acturl}">
 													<span>${action.actlabel}</span>
 												</html:link></td>
+											<td>已启用</td>
 										</c:when>
-										<c:otherwise>
+										
+										<c:when test="${action.actdesc==0}">
 											<td><span>${action.actlabel}</span></td>
+											<td>未启用</td>
+										</c:when>
+										
+										<c:otherwise>
+											<!-- <td><span>${action.actlabel}</span></td> -->
 										</c:otherwise>
 									</c:choose>
-									<td>${action.actdesc}</td>
+
 								</tr>
 							</logic:iterate>
 						</logic:iterate>

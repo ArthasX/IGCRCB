@@ -8,7 +8,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html:html>
 <bean:define id="id" value="IGDRM04021" toScope="request"/>
-<bean:define id="title" value="应急资源查看画面" toScope="request"/>
+<bean:define id="title" value="资源查看画面" toScope="request"/>
 <!-- header1 -->
 <jsp:include page="/include/header1.jsp"/>
 <link type="text/css" rel="stylesheet"	href="<html:rewrite forward='tree.css'/>">
@@ -93,14 +93,14 @@ function checkForm(){
 				<div class="img"></div>
 				<div class="conditions">
 					<div>
-						<label>应急资源名称：</label>
+						<label>资源名称：</label>
 						<html:text property="einame" styleId="einame" style="width:110px;"  errorStyleClass="inputError imeDisabled" size="10" />&nbsp;&nbsp;
 						<label>负责人：</label><html:text property="eiusername" styleId="eiusername" style="width:110px;" errorStyleClass="inputError imeDisabled" size="10" />
 						<br><span>时间：从</span><html:text property="propentime" styleId="propentime" errorStyleClass="inputError imeDisabled" size="16" readonly="true"/>
 						<img src="images/date.gif" align="middle" onclick="calendar($('propentime'))" border="0" style="cursor: hand" />
 						<span>&nbsp;&nbsp;到</span><html:text property="prclosetime" styleId="prclosetime" errorStyleClass="inputError imeDisabled" size="16" readonly="true"/>
 						<img src="images/date.gif" align="middle" onclick="calendar($('prclosetime'))" border="0" style="cursor: hand" />
-							
+							<html:hidden property="resourceType" styleId="resourceType"/>
 						<html:hidden property="eistatus" value="1"/>
 						<html:submit property="btn_search" value="查询" styleClass="button" onclick=""/>
 					</div>
@@ -120,8 +120,8 @@ function checkForm(){
 							</label>
 						</th>
 <!-- 						<th width="20%">应急资产编号</th> -->
-						<th style="text-align: left;padding-left: 60px;width: 30%">应急资源名称</th>
-						<th width="15%">应急资源模型</th>
+						<th style="text-align: left;padding-left: 60px;width: 30%"><c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源名称</th>
+						<th width="15%"><c:if test="${resourceType =='1'}">应急</c:if><c:if test="${resourceType =='0'}">演练</c:if>资源模型</th>
 <!-- 						<th width="11%">资产模型</th> -->
 						<th width="12%">负责人</th>
 						<th width="15%">登记日期</th>
@@ -138,7 +138,7 @@ function checkForm(){
 <%-- 									<html:checkbox property="deleteEiid" styleClass="delFlag" value="${bean.id}_${bean.eiid}_${bean.fingerPrint.split('_')[0]}"/> --%>
 								<td>
 									<div class="nowrapDiv" style="text-align: left;">
-										<logic:empty name="bean" property="einame">&nbsp;</logic:empty>
+<%-- 										<c:if test="${bean.einame==null}">&nbsp;</c:if> --%>
 									<div style="padding-left:20px; width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">
 										${bean.einame}
 									</div>
@@ -154,14 +154,14 @@ function checkForm(){
 								<!-- 管理人-->
 								<td>
 									<div class="nowrapDiv">
-										<logic:empty name="bean" property="eiusername">&nbsp;</logic:empty>
+<%-- 										<logic:empty name="bean" property="eiusername">&nbsp;</logic:empty> --%>
 										${bean.eiusername}
 									</div>
 								</td>
 								<!-- 登记日期 -->
 								<td>
 									<div class="nowrapDiv">
-										<logic:empty name="bean" property="eiinsdate">&nbsp;</logic:empty>
+<%-- 										<logic:empty name="bean" property="eiinsdate">&nbsp;</logic:empty> --%>
 										${bean.eiinsdate}
 									</div>
 								</td>

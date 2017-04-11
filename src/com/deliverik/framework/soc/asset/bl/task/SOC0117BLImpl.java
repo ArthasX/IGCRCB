@@ -6,7 +6,6 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
-import com.deliverik.framework.soc.asset.bl.task.SOC0117BL;
 import com.deliverik.framework.base.BLException;
 import com.deliverik.framework.base.BaseBLImpl;
 import com.deliverik.framework.soc.asset.model.SOC0117Info;
@@ -436,8 +435,8 @@ public class SOC0117BLImpl extends BaseBLImpl implements SOC0117BL {
 	 * @param esyscoding
 	 * @return
 	 */
-	public List<Map<String, Object>> getEntityNumNEW(String rootErcode){
-		return soc0117DAO.getEntityNumNEW(rootErcode);
+	public List<Map<String, Object>> getEntityNumNEW(String rootErcode,String resourceType){
+		return soc0117DAO.getEntityNumNEW(rootErcode,resourceType);
 	}
 	
 	/**

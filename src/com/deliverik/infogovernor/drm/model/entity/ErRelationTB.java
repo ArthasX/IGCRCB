@@ -17,10 +17,10 @@ import com.deliverik.framework.base.BaseEntity;
 import com.deliverik.infogovernor.drm.model.ErRelationInfo;
 
 /**
-  * 概述: ErRelation实体
-  * 功能描述: ErRelation实体
+  * 概述: 应急资源关系实体
+  * 功能描述: 应急资源关系实体
   * 创建记录: 2016/06/14
-  * 修改记录: 
+  * 修改记录: 2017年3月16日15:48:17  使用fingerprint资源记录 资源类型(1:应急资源,0演练资源)
   */
 @SuppressWarnings("serial")
 @Entity

@@ -213,7 +213,58 @@ function setRoleParams(roleid,rolename) {
 function setRadio(index,obj){
 	$("pivarvalue[" + index + "]").value = obj.value;
 }
-
+//业务系统
+function entityChange(){
+	var eiidary = new Array();
+	jQ("#tbentity"+pdid+"026").find("input[name^='entityId']").each(function(){
+		if(jQ(this).val()){
+			eiidary.push(jQ(this).val().split("#")[1].split("_")[1]);
+		}
+	});
+	if(jQ("#pidid"+pdid+"026").parent().find("a[asm='"+pdid+"026']")){
+		jQ("#pidid"+pdid+"026").parent().find("a[asm='"+pdid+"026']").each(function(){
+			var eiid = jQ(this).attr("eiid");
+			if(eiid){
+				eiidary.push(eiid)
+			}
+		});
+	}
+	//清空原有的值
+	jQ("#assetSelector"+pdid+"016").empty();		
+	jQ("#assetSelector"+pdid+"015").empty();		
+	jQ("#select2-assetSelector"+pdid+"015-container").html("");		
+	jQ("#select2-assetSelector"+pdid+"016-container").html("");	
+	jQ("#entity"+pdid+"016").val("");
+// 	var oldVal = jQ("#entity"+pdid+"015").val();
+	jQ("#entity"+pdid+"015").val("");	
+	jQ("#pidid"+pdid+"015").val("");	
+	jQ("#pidid"+pdid+"016").val("");
+	//清空表格数据
+	jQ("#"+pdid+"027_tableForm tr th input[type='checkbox']").each(function(){this.checked = false;});
+	jQ("#"+pdid+"027_tableForm tr:not(:first)").remove("tr");
+	if(eiidary != null && eiidary.length > 0){
+		jQ.ajax({  
+			type: "post",  
+			url:"IGDRM0702_Ajax.do",
+	       	cache:false,  
+	       	dataType:'json',  
+	       	data:{pidid:pdid+"015",esyscoding:'888001',sp_eiid:eiidary.join(",")},
+	       	success: function(data){
+	       		if(data.length > 0){
+// 	       			if(jQ("#psdid").val()==jQ("#pdid").val()+"001"){
+// // 	       				jQ("#assetSelector"+pdid+"015").val(oldVla).select2();
+// // 	       				jQ("#entity"+pdid+"015").parent().find("img[onclick^='delSelect2SingleEntity']").trigger("click");
+// 	       			}
+	       			jQ("#assetSelector"+pdid+"015").select2({
+		       			 data:data,
+		       			 placeholder:'请选择'
+	       			}).trigger("change");
+	       			
+				}
+			}  
+		});
+	}
+}
 function setRadio_other(index,obj,obj2){
 	$("pivarvalue[" + index + "]").value = obj.value;
 	if(obj2 == 'other'){

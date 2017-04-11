@@ -64,6 +64,8 @@ public class IGDRM0402Action extends BaseAction {
 		IGDRM04DTO dto = new IGDRM04DTO();
 		dto.setIgdrm0402Form(form);
 		dto.setUser(user);
+		dto.setResourceType(form.getResourceType());
+		req.setAttribute("resourceType", req.getParameter("resourceType"));
 		//预置Gson
 		Gson g = new Gson();
 		
@@ -73,7 +75,7 @@ public class IGDRM0402Action extends BaseAction {
 			//页面初始化
 			log.debug("========页面初始化开始========");
 			dto.setRootEsyscoding("000");
-			
+			dto.setResourceType(req.getParameter("resourceType"));
 			ctlBL.initNewNodeMap(dto);
 			req.setAttribute("ercode", form.getErcode());
 			req.setAttribute("erid", form.getErid());
@@ -92,6 +94,9 @@ public class IGDRM0402Action extends BaseAction {
 			log.debug("========应急资源查询处理开始========");
 			//分页用DTO取得
 			getPaginDTO(req,"IGDRM0401");
+			
+			
+			log.info("canshu >>>"+req.getParameter("resourceType"));
 			
 			PagingDTO pDto;
 			
@@ -143,7 +148,7 @@ public class IGDRM0402Action extends BaseAction {
 			super.<IGDRM04021VO>setVO(req, vo);
 			
 			if(StringUtils.isNotEmpty(form.getOpenFlag())) forward = "OPEN";
-			log.debug("========应急资源查询处理终了========");
+			log.info("========应急资源查询处理终了========");
 		}
 //		if ("DELETE".equals(mapping.getParameter())){
 //			//文档删除处理

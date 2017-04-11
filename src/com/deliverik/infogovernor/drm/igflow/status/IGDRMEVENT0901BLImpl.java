@@ -4,7 +4,9 @@
  */
 package com.deliverik.infogovernor.drm.igflow.status;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
@@ -20,11 +22,13 @@ import com.deliverik.framework.igflow.parameter.PublicProcessInfoValue;
 import com.deliverik.framework.igflow.parameter.WorkFlowLog;
 import com.deliverik.framework.igflow.resultset.ProcessInfoEntityInfo;
 import com.deliverik.framework.igflow.resultset.ProcessRecordInfo;
+import com.deliverik.framework.platform.WebApplicationSupport;
 import com.deliverik.framework.utility.IGStringUtils;
 import com.deliverik.framework.workflow.IGPRDCONSTANTS;
 import com.deliverik.framework.workflow.WorkFlowOperationBL;
 import com.deliverik.framework.workflow.prd.bl.task.WorkFlowEventHandlerBL;
 import com.deliverik.framework.workflow.prd.bl.task.WorkFlowStatusEventBeanInfo;
+import com.deliverik.framework.workflow.prr.bl.task.IG500BL;
 import com.deliverik.infogovernor.drm.IGDRMCONSTANTS;
 import com.deliverik.infogovernor.drm.bl.task.EmergencyRelationBL;
 import com.deliverik.infogovernor.drm.bl.task.SigninBL;
@@ -191,6 +195,13 @@ public class IGDRMEVENT0901BLImpl extends BaseBLImpl implements WorkFlowEventHan
 				erTb.setPrrinstime(DateUtils.getCurrentTime());
 				erTb.setRelatetype(IGDRMCONSTANTS.DRILL_RELATE_SCENE);
 				emergencyRelationBL.registEmergencyRelationInfo(erTb);
+				
+				//设置处置流程与指挥流程相同的类型 (应急/演练)
+				Map<String, Object> map = new HashMap<String, Object>();
+	 			IG500BL i500BL = (IG500BL)WebApplicationSupport.getBean("ig500BL");
+	 			
+	 			map.put("prurgency", i500BL.searchIG500InfoByKey(prInfo.getPrid()).getPrurgency());
+	 			flowSetBL.updateProcessRecord(cldPrid, map);
 			}
 			this.flowOptBL.transitionProcess(cldPrid, bean.getLogInfo().getExecutorid(), "提交", IGStringUtils.getCurrentDateTime());
     	}

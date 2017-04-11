@@ -182,7 +182,8 @@ function setParamIGDRM0406(eid, elabel,ename,eiid, eilabel, einame, ecategory, p
 }
 //打开应急资源查询页面
 function selectEMEntityForm(eiids){
-	openSubWindow('/IGDRM0402.do?openFlag=1&eiidNotIn='+eiids, '', '850', '600');
+	var resourceType = jQuery("#pidid"+jQuery("#psdid").val().substr(0,7)+"018").val()=="应急场景"?"1":"0";
+	openSubWindow('/IGDRM0402.do?openFlag=1&resourceType='+resourceType+'&eiidNotIn='+eiids, '', '850', '600');
 }
 function setParamIGDRM04023(result) {
 	jQuery("#FlowManger")[0].setEntityValue(result);

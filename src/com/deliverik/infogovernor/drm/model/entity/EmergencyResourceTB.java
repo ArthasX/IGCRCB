@@ -17,8 +17,8 @@ import com.deliverik.framework.base.BaseEntity;
 import com.deliverik.infogovernor.drm.model.EmergencyResourceInfo;
 
 /**
-  * 概述: EmergencyResource实体
-  * 功能描述: EmergencyResource实体
+  * 概述: 应急资源模型定义实体
+  * 功能描述: 应急资源模型定义实体
   * 创建记录: 2016/06/14
   * 修改记录: 
   */

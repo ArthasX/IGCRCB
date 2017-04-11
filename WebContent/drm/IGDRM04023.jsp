@@ -8,7 +8,12 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html:html>
 <bean:define id="id" value="IGDRM04023" toScope="request"/>
+<logic:equal value="1" name="IGDRM0402Form" property="resourceType">
 <bean:define id="title" value="应急资源选择" toScope="request"/>
+</logic:equal>
+<logic:equal value="0" name="IGDRM0402Form" property="resourceType">
+<bean:define id="title" value="演练资源选择" toScope="request"/>
+</logic:equal>
 <!-- header1 -->
 <jsp:include page="/include/header1.jsp"/>
 <link type="text/css" rel="stylesheet"	href="<html:rewrite forward='tree.css'/>">
@@ -71,10 +76,21 @@
 				<div class="img"></div>
 				<div class="conditions">
 					<div>
-						<label for="Name">应急资源模型：</label>
+						<logic:equal value="1" name="IGDRM0402Form" property="resourceType">
+							<label for="Name">应急资源模型：</label>
+						</logic:equal>
+						<logic:equal value="0" name="IGDRM0402Form" property="resourceType">
+							<label for="Name">演练资源模型：</label>
+						</logic:equal>
+						
 						<html:text property="ername" style="width:85;" errorStyleClass="inputError" tabindex="5" readonly="true"/>
 						<img src="images/tree.gif" style="cursor: hand;" alt="资产模型" width="16" height="16" border="0" onclick="setEntity('IGDRM0412_Tree.do');"/>
-						&nbsp;&nbsp;<label>应急资源名称：</label>
+						<logic:equal value="1" name="IGDRM0402Form" property="resourceType">
+							&nbsp;&nbsp;<label>应急资源名称：</label>
+						</logic:equal>
+						<logic:equal value="0" name="IGDRM0402Form" property="resourceType">
+							&nbsp;&nbsp;<label>演练资源名称：</label>
+						</logic:equal>
 						<html:text property="einame" styleId="einame" style="width:110px;"  errorStyleClass="inputError imeDisabled" size="10" />&nbsp;&nbsp;
 						<label>负责人：</label><html:text property="eiusername" styleId="eiusername" style="width:110px;" errorStyleClass="inputError imeDisabled" size="10" />&nbsp;&nbsp;
 						<html:hidden property="esyscoding" styleId="esyscoding"/>
@@ -95,8 +111,10 @@
 								<input type="checkbox" class="delFlag" name="allbox" id="allbox" onclick="selectAll('allbox','relationEiid')"/>
 							</label>
 						</th>
-						<th width="35%">应急资源名称</th>
-						<th width="12%">应急资源模型</th>
+						<th width="35%">
+							<logic:equal value="1" name="IGDRM0402Form" property="resourceType">应急</logic:equal><logic:equal value="0" name="IGDRM0402Form" property="resourceType">演练</logic:equal>资源名称</th>
+						<th width="12%">
+							<logic:equal value="1" name="IGDRM0402Form" property="resourceType">应急</logic:equal><logic:equal value="0" name="IGDRM0402Form" property="resourceType">演练</logic:equal>资源模型</th>
 						<th width="11%">资产模型</th>
 						<th width="10%">负责人</th>
 						<th width="10%">登记日期</th>
