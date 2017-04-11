@@ -11,7 +11,8 @@
         </property>
         <!-- JDBC URL -->
         <property name="jdbcUrl">        	
-       	    <value>jdbc:db2://192.168.1.114:50000/IG</value>
+        	<value>jdbc:db2://192.168.88.235:50000/IG</value>
+       	      <!--<value>jdbc:db2://192.168.1.114:50000/IG</value>-->
             <!-- <value>jdbc:db2://192.168.1.204:50000/igpm</value> -->
         </property>
         <!-- Database -->

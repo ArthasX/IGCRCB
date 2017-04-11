@@ -1182,6 +1182,8 @@
            	<forward name="IGDBM1302_Disp" path="/IGDBM1302_Disp.do" />
            	<!-- 20170302工作信息查询 -->
            	<forward name="IGWKI0101_Disp" path="/IGWKI0101_Search.do" />
+           <!--  <forward name="IGMNU0101" path="/menu/IGMNU0101.jsp" /> -->
+           <forward name="IGMNU0101" path="/IGMNU0101.do" />
           </action>
         
         <action path="/IGCOM0402"

@@ -6,6 +6,7 @@
 package com.deliverik.framework.security;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -141,4 +142,26 @@ public class UserPermission implements Serializable {
 		this.actionList = actionList;
 	}
 
+	/**
+	 * @author 刘斌
+	 * @date 20170410
+	 * @param actName 菜单名
+	 * @param list  X级菜单列表    List &ltMap&ltAction,T&gt&gt
+	 * @return  &ltT&gt  X-1级菜单  
+	 */
+	public <T> T  getMenuList(String actName,List<Map<Action,T>> list){
+		//Action act;
+		for (int i = 0; i < list.size(); i++) {
+			Map<Action,T>  map = list.get(i);
+			for (Action act :map.keySet()) {
+				//act=(Action)a;
+				//log.info("M:"+act.getActname());
+				if (actName.equals(act.getActname())) {
+				//	log.info(act.getActname());					
+					return (T)map.get(act);
+				}
+			}
+		}
+		return null;
+	}
 }

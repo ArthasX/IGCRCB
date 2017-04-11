@@ -246,7 +246,8 @@
 			/WEB-INF/struts-config/struts-config_ven.xml,
 			/WEB-INF/struts-config/struts-config_dwp.xml,
 			
-			/WEB-INF/struts-config/struts-config_wki.xml
+			/WEB-INF/struts-config/struts-config_wki.xml,
+			/WEB-INF/struts-config/struts-config_mnu.xml
 			</param-value>
 		</init-param>
 		<init-param>

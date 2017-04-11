@@ -32,7 +32,7 @@ function onsearch() {
 	<div id="maincontent">
 		<jsp:include page="/include/header2.jsp" />
 	</div>
-
+	
 	<div id="container">
 		<!--content  右侧内容-->
 		<div id="contentWrap">
