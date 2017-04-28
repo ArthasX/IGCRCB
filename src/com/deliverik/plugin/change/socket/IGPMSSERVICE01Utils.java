@@ -12,6 +12,7 @@ import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.client.Stub;
 import org.apache.axis.encoding.XMLType;
+import org.apache.struts.util.MessageResources;
 
 /***
  * 调用pms平台的webService接口
@@ -24,10 +25,12 @@ import org.apache.axis.encoding.XMLType;
  */
 public class IGPMSSERVICE01Utils extends Stub {
 
-	
+	//static MessageResources resources;
 	
 	 public String ChangeTicketPhase(String ticketId ,String result) throws MalformedURLException {
-	        URL  endpoint = new URL("http://160.100.103.45/WebServicesCustom/Exchange/BizTicketService.asmx");
+		 
+//	        URL  endpoint = new URL(resources.getMessage("PP_WEBSERVICE_URL"));
+	        URL  endpoint = new URL(MessageResources.getMessageResources("ApplicationResources").getMessage("PP_WEBSERVICE_URL"));
 	        Service service = new Service();
 	        String   resp = null;
 	        Call call;

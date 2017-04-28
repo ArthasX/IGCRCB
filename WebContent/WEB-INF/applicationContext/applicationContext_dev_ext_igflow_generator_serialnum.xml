@@ -93,4 +93,8 @@
 	<bean id="igGENERATOR0901BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0901BLImpl">
 		<property name="flowSearchBL" ref="flowSearchBL" />
 	</bean>
+	<!-- 系统上线流程 -->
+	<bean id="igGENERATOR0118BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0118BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
 </beans>
