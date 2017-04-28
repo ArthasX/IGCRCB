@@ -1,6 +1,7 @@
 package com.deliverik.plugin.sms;
 
 import java.text.ParseException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -23,14 +24,15 @@ import com.deliverik.plugin.sms.model.entity.SendSmsLogTB;
 import com.ibm.icu.text.SimpleDateFormat;
 import com.openmind.service.SendServiceImpl;
 import com.openmind.service.SendServiceImplService;
-
+import java.text.*;
 /**
  * 微信线程run
  * @author Lu Jiayuan
  *
  */
 public class WXThread implements Runnable {
-	
+	Calendar calendar = Calendar.getInstance();
+	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	/**日志文件 **/
 	private static Log log = LogFactory.getLog(WXThread.class);
 	/** 微信是否开启 */
@@ -71,7 +73,7 @@ public class WXThread implements Runnable {
 				String smsContext = null;
 				if(smsList!=null){
 					for(SmsQueueInfo smsBean:smsList){
-						smsContext = smsBean.getSmsContext();
+						smsContext = smsBean.getSmsContext()+"\n消息发送时间：\n"+sdf.format(calendar.getTime());
 						//String result = sendSmsBySocket(sender,smsBean.getTel(),smsContext);
 						sendService.setMessageText(smsContext, 3, smsBean.getTel());
 						String result = sendService.send();
