@@ -38,4 +38,6 @@ encoding//db/\u5E38\u719F\u5E94\u6025/\u5347\u7EA7\u811A\u672C/update0913.sql=UT
 encoding//db/\u5E38\u719F\u5E94\u6025/\u5347\u7EA7\u811A\u672C/update0920.sql=UTF-8
 encoding//db/\u5E94\u6025\u5168\u811A\u672C/sql=UTF-8
 encoding//src/com/deliverik/framework/soc/asset/model/dao/SOC0124DAOImpl.java=UTF-8
+encoding//src/com/deliverik/infogovernor/prr/bl/IGPRR01BLImpl.java=GBK
 encoding//src/com/deliverik/plugin/alarmSocket/bl/IGAlarmSocketBLImpl.java=UTF-8
+encoding/<project>=GBK

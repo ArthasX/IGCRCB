@@ -512,4 +512,7 @@ public interface IG500SearchCond {
 
 	/** 处置类型(演练/应急) */
 	public String getDwpType();
+
+	/** 流程名*/
+	public String getPrpdname();
 }

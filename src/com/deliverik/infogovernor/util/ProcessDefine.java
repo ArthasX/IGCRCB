@@ -2,33 +2,28 @@ package com.deliverik.infogovernor.util;
 
 
 /**
- * Á÷³Ì°´±íµ¥ÖµÏÔÊ¾Í¼Æ¬³£Á¿¶¨Òå<br>
+ * æµç¨‹æŒ‰è¡¨å•å€¼æ˜¾ç¤ºå›¾ç‰‡å¸¸é‡å®šä¹‰<br>
  *
- * 
  *
- * @author 
+ *
+ * @author
  *
  */
 public enum ProcessDefine {
-	
-	/**¹ÊÕÏÉê±¨_Nokia £¨¹ÊÕÏµÈ¼¶£©*/
-	¹ÊÕÏÉê±¨_Nokia("¹ÊÕÏµÈ¼¶")
+
+	/**æ•…éšœç”³æŠ¥_Nokia ï¼ˆæ•…éšœç­‰çº§ï¼‰*/
+	æ•…éšœç”³æŠ¥_Nokia("æ•…éšœç­‰çº§")
 	;
-	
+
 	/** */
 	protected String pidname;
 
-	/**
-	 * 
-	 *
-	 * @param ccid
-	 */
 	private ProcessDefine(String pidname) {
 		this.pidname = pidname;
 	}
 
 	/**
-	 * 
+	 *
 	 *
 	 * @param id
 	 */

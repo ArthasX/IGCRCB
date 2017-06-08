@@ -73,7 +73,7 @@ public class WXThread implements Runnable {
 				String smsContext = null;
 				if(smsList!=null){
 					for(SmsQueueInfo smsBean:smsList){
-						smsContext = smsBean.getSmsContext()+"\n消息发送时间：\n"+sdf.format(calendar.getTime());
+						smsContext = smsBean.getSmsContext();//+"\n消息发送时间：\n"+sdf.format(calendar.getTime());
 						//String result = sendSmsBySocket(sender,smsBean.getTel(),smsContext);
 						sendService.setMessageText(smsContext, 3, smsBean.getTel());
 						String result = sendService.send();

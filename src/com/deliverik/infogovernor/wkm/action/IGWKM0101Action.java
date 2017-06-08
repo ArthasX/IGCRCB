@@ -19,6 +19,7 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
 import org.apache.struts.util.LabelValueBean;
+import org.apache.struts.util.MessageResources;
 
 import com.deliverik.framework.base.BaseAction;
 import com.deliverik.framework.base.PagingDTO;
@@ -38,52 +39,55 @@ import com.deliverik.infogovernor.wkm.vo.IGWKM01011VO;
  * <p>
  * Description: 流程管理_工作管理_个人工作查询ACTION
  * </p>
- *  
+ *
  * @author sunkaiyu@deliverik.com
  * @version 1.0
  */
 
 public class IGWKM0101Action extends BaseAction {
-	
-	static Log log = LogFactory.getLog(IGWKM0101Action.class);
-	
-	/**
-	 * <p>
-	 * Description: 个人工作action处理
-	 * </p>
-	 * 
-	 * @param mapping ActionMapping
-	 * @param form ActionForm
-	 * @param request HttpServletRequest
-	 * @param response HttpServletResponse
-	 * @return ActionForward
-	 * @throws Exception
-	 * @author sunkaiyu@deliverik.cjom
-	 * @update
-	 */
 
-	@Override
-	public ActionForward doProcess(ActionMapping mapping, ActionForm actionForm,
-			HttpServletRequest request, HttpServletResponse response) throws Exception {
-		//实例化FORM
-		IGWKM0101Form form = (IGWKM0101Form)actionForm;
-		//获取BL接口实例
-		IGWKM01BL ctlBL = (IGWKM01BL) getBean("igwkm01BL");
-		IGWKM01DTO dto = new IGWKM01DTO();
-		User user = (User)request.getSession().getAttribute(SESSION_KEY_LOGIN_USER);
-		dto.setPrtype(form.getPrtype());
-		//将查询类型标识放进dto中
-		dto.setType(form.getType());
-		//判断是否是定制查询页面
-		if(!"0".equals(form.getCustom())) {
-			dto.setPdid(form.getPrpdid());//设定流程定义ID
-			//获取流程查询页路径
-			dto = ctlBL.searchForwardJsp(dto);
-		}
-        UserPermission perm = (UserPermission)request.getSession().getAttribute("UserPermission");
-        String actname = request.getParameter("actname");//菜单ID取得
-        String actsortid = perm.getActsortid(actname);//获取指定菜单ID的ACTSORTID
-        //获取菜单名称
+    static Log log = LogFactory.getLog(IGWKM0101Action.class);
+
+    /**
+     * <p>
+     * Description: 个人工作action处理
+     * </p>
+     *
+     * @param mapping  ActionMapping
+     * @param form     ActionForm
+     * @param request  HttpServletRequest
+     * @param response HttpServletResponse
+     * @return ActionForward
+     * @throws Exception
+     * @author sunkaiyu@deliverik.cjom
+     * @update
+     */
+
+    @Override
+    public ActionForward doProcess(ActionMapping mapping,
+                                   ActionForm actionForm, HttpServletRequest request,
+                                   HttpServletResponse response) throws Exception {
+        // 实例化FORM
+        IGWKM0101Form form = (IGWKM0101Form) actionForm;
+        // 获取BL接口实例
+        IGWKM01BL ctlBL = (IGWKM01BL) getBean("igwkm01BL");
+        IGWKM01DTO dto = new IGWKM01DTO();
+        User user = (User) request.getSession().getAttribute(
+                SESSION_KEY_LOGIN_USER);
+        dto.setPrtype(form.getPrtype());
+        // 将查询类型标识放进dto中
+        dto.setType(form.getType());
+        // 判断是否是定制查询页面
+        if (!"0".equals(form.getCustom())) {
+            dto.setPdid(form.getPrpdid());// 设定流程定义ID
+            // 获取流程查询页路径
+            dto = ctlBL.searchForwardJsp(dto);
+        }
+        UserPermission perm = (UserPermission) request.getSession()
+                .getAttribute("UserPermission");
+        String actname = request.getParameter("actname");// 菜单ID取得
+        String actsortid = perm.getActsortid(actname);// 获取指定菜单ID的ACTSORTID
+        // 获取菜单名称
         dto.setUserPermission(perm);
         dto.setActname(actname);
         String actlabel = ctlBL.getActionName(dto);
@@ -144,156 +148,172 @@ public class IGWKM0101Action extends BaseAction {
 			log.debug("========查询画面初期显示处理开始========");
 			//为了动态取得页面上的导航信息添加的处理
 
-			
-			setSessionAttribute(request, "igactionid", actsortid);
-			IGWKM01011VO vo = new IGWKM01011VO();
-			dto.setPrtype(form.getPrtype());
-			dto.setPdid(form.getPrpdid());
-			if(request.getParameter("prpdid")!=null){
-				request.getSession().setAttribute("AD_prpdid", request.getParameter("prpdid"));
-			}else{
-				if(request.getSession().getAttribute("AD_prpdid")!=null){
-					request.removeAttribute("AD_prpdid");
-				}
-			}
-			
-			dto = ctlBL.getProcessTemplate(dto);
-			vo.setProcessDefinitionList(dto.getProcessDefinitionList());
-			vo.setActlabel(actlabel);//封装三级菜单名称
-			request.setAttribute("vo", vo);
-			addMessage(request, new ActionMessage("IGCO10000.I003"));
-			log.debug("========查询画面初期显示处理终了========");
-			//跳转到定制JSP
-			if(StringUtils.isNotEmpty(dto.getForwardJsp())){
-				return new ActionForward(dto.getForwardJsp());
-			} else {
-				return mapping.findForward("DISP");
-			}
-		}
-		
-		//工作查询
-		if( "SEARCH".equals(mapping.getParameter()) || "SEARCH1".equals(mapping.getParameter())){
-			
-			log.debug("========工作查询处理开始========");
-			
-			if(request.getSession().getAttribute("AD_prpdid")!=null&&StringUtils.isEmpty(form.getPrpdid())){
-				form.setPrpdid(String.valueOf(request.getSession().getAttribute("AD_prpdid")));
-			}
-			
-			form.setIsWork(1);
-			
-			//获取分页Bean
-			getPaginDTO(request,"IGWKM0101");
-			PagingDTO pDto;
-			pDto = (PagingDTO)request.getAttribute("PagingDTO");
-			
-			if ("SEARCH1".equals(mapping.getParameter())){
-				//由详细画面，编辑画面返回查询画面时的再检索处理
-				form = (IGWKM0101Form) request.getSession().getAttribute("IGWKM0101Form");
-				if ( form == null ) {
-					form = new IGWKM0101Form();
-				}else {
-					if (request.getParameter("PAGING") == null) {
-						pDto.setFromCount(form.getFromCount());
-					} else {
-						form.setFromCount(pDto.getFromCount());
-					}
-				}
-			} else {
-				
-					if (request.getParameter("PAGING") == null) {
-						pDto.setFromCount(0);
-						form = (IGWKM0101Form) request.getSession().getAttribute("IGWKM0101Form");
-						if (form !=null) {
-							form.setFromCount(0);
-						}
-					  }
-			}
-			
-			//pDto.setFromCount(form.getFromCount());
-			int maxCnt = getMaxDataCount("IGWKM0101");
-			form.setUserid_q(user.getUserid());
-			//排序标识取得
-			String orderVal = request.getParameter("orderVal");		
-			
-			//翻页时保存排序标识
-			if(StringUtils.isNotEmpty(orderVal)){
-				form.setOrder(orderVal);
-			}
+            setSessionAttribute(request, "igactionid", actsortid);
+            IGWKM01011VO vo = new IGWKM01011VO();
+            dto.setPrtype(form.getPrtype());
+            dto.setPdid(form.getPrpdid());
+            if (request.getParameter("prpdid") != null) {
+                request.getSession().setAttribute("AD_prpdid",
+                        request.getParameter("prpdid"));
+            } else {
+                if (request.getSession().getAttribute("AD_prpdid") != null) {
+                    request.removeAttribute("AD_prpdid");
+                }
+            }
 
-			//设定排序方式
-			if(StringUtils.isNotEmpty(form.getOrder())){
-				if(StringUtils.isNotEmpty(orderVal)){
-					if(orderVal.equals(form.getOrder())){
-						if("DESC".equals(form.getSing())){
-							form.setSing("ASC");
-						}else{
-							form.setSing("DESC");
-						}
-					}else{
-						form.setSing("ASC");
-					}
-				}
-			}else {//排序标识为空时默认按时间排序
-				form.setOrder("propentime");
-				form.setSing("DESC");
-			}
-			
-			//设定流程关闭状态查询条件
-			if ("0001".equals(form.getPrActive())) {
-			   // 未关闭 
-			   form.setPrActive("Y"); 
-			} else if ("0002".equals(form.getPrActive())) {
-			   // 已关闭 
-			   form.setPrActive("N"); 
-			}
-			dto.setUser(user);
-			IG500SearchCondImpl cond = new IG500SearchCondImpl();
-			try {
-				BeanUtils.copyProperties(cond,form);
-			} catch (Exception e) {
-				log.error("",e);
-			}
-			dto.setPrSearchCond(cond);
-			dto.setMaxSearchCount(maxCnt);
-			dto.setPagingDto(pDto);
-			//调用BL查询
-			dto = ctlBL.getProcessRecords(dto);
-			request.setAttribute("isAdmin",dto.getIsAdmin());
-			//构造VO
-			IGWKM01011VO vo = new IGWKM01011VO(dto.getProcessList());
-			vo.setNameURLMap(dto.getNameURLMap());
-			vo.setProcessTemplateList(dto.getProcessTemplateList());
-			vo.setProcessDefinitionList(dto.getProcessDefinitionList());
-			vo.setActlabel(actlabel);//封装三级菜单名称
-			super.<IGWKM01011VO>setVO(request, vo);
-			request.setAttribute("vo", vo);
-			request.setAttribute("showFlag", form.getShowFlag());
-			log.debug("========工作查询处理终了========");
-		}
-		if( "DEL".equals(mapping.getParameter())){
-			dto.setPrid(form.getDelprid());
-			dto = ctlBL.delProcessRecord(dto);
-			
-			//构造VO
-			IGWKM01011VO vo = new IGWKM01011VO(dto.getProcessList());
-			vo.setActlabel(actlabel);//封装三级菜单名称
-			super.<IGWKM01011VO>setVO(request, vo);
-			
-			request.setAttribute("vo", vo);
-		}
-		
-		List<ActionMessage> messageList = dto.getMessageList();
-		if( messageList != null && messageList.size() > 0 ) {
-			for (ActionMessage message : messageList) {	
-				addMessage(request, message);
-			}
-		}
-		//跳转到定制JSP
-		if(StringUtils.isNotEmpty(dto.getForwardJsp())){
-			return new ActionForward(dto.getForwardJsp());
-		} else {
-			return mapping.findForward("DISP");
-		}
-	}
+            dto = ctlBL.getProcessTemplate(dto);
+            vo.setProcessDefinitionList(dto.getProcessDefinitionList());
+            vo.setActlabel(actlabel);// 封装三级菜单名称
+            request.setAttribute("vo", vo);
+            addMessage(request, new ActionMessage("IGCO10000.I003"));
+            log.debug("========查询画面初期显示处理终了========");
+            // 跳转到定制JSP
+            if (StringUtils.isNotEmpty(dto.getForwardJsp())) {
+                return new ActionForward(dto.getForwardJsp());
+            } else {
+                return mapping.findForward("DISP");
+            }
+        }
+
+        // 工作查询
+        if ("SEARCH".equals(mapping.getParameter())
+                || "SEARCH1".equals(mapping.getParameter())) {
+
+            log.debug("========工作查询处理开始========");
+
+            if (request.getSession().getAttribute("AD_prpdid") != null
+                    && StringUtils.isEmpty(form.getPrpdid())) {
+                form.setPrpdid(String.valueOf(request.getSession()
+                        .getAttribute("AD_prpdid")));
+            }
+
+            form.setIsWork(1);
+
+            // 获取分页Bean
+            getPaginDTO(request, "IGWKM0101");
+            PagingDTO pDto;
+            pDto = (PagingDTO) request.getAttribute("PagingDTO");
+
+            if ("SEARCH1".equals(mapping.getParameter())) {
+                // 由详细画面，编辑画面返回查询画面时的再检索处理
+                form = (IGWKM0101Form) request.getSession().getAttribute(
+                        "IGWKM0101Form");
+                if (form == null) {
+                    form = new IGWKM0101Form();
+                } else {
+                    if (request.getParameter("PAGING") == null) {
+                        pDto.setFromCount(form.getFromCount());
+                    } else {
+                        form.setFromCount(pDto.getFromCount());
+                    }
+                }
+            } else {
+
+                if (request.getParameter("PAGING") == null) {
+                    pDto.setFromCount(0);
+                    form = (IGWKM0101Form) request.getSession().getAttribute(
+                            "IGWKM0101Form");
+                    if (form != null) {
+                        form.setFromCount(0);
+                    }
+                }
+            }
+
+            // pDto.setFromCount(form.getFromCount());
+            int maxCnt = getMaxDataCount("IGWKM0101");
+            form.setUserid_q(user.getUserid());
+            // 排序标识取得
+            String orderVal = request.getParameter("orderVal");
+
+            // 翻页时保存排序标识
+            if (StringUtils.isNotEmpty(orderVal)) {
+                form.setOrder(orderVal);
+            }
+
+            // 设定排序方式
+            if (StringUtils.isNotEmpty(form.getOrder())) {
+                if (StringUtils.isNotEmpty(orderVal)) {
+                    if (orderVal.equals(form.getOrder())) {
+                        if ("DESC".equals(form.getSing())) {
+                            form.setSing("ASC");
+                        } else {
+                            form.setSing("DESC");
+                        }
+                    } else {
+                        form.setSing("ASC");
+                    }
+                }
+            } else {// 排序标识为空时默认按时间排序
+                form.setOrder("propentime");
+                form.setSing("DESC");
+            }
+
+            // 设定流程关闭状态查询条件
+            if ("0001".equals(form.getPrActive())) {
+                // 未关闭
+                form.setPrActive("Y");
+            } else if ("0002".equals(form.getPrActive())) {
+                // 已关闭
+                form.setPrActive("N");
+            }
+            dto.setUser(user);
+            IG500SearchCondImpl cond = new IG500SearchCondImpl();
+            try {
+                BeanUtils.copyProperties(cond, form);
+            } catch (Exception e) {
+                log.error("", e);
+            }
+            /*
+			 * 20170602 原先科技服务请求拆分成多个请求，但是查询的时候独立 为了方便统计、查询，将查询合并，设置查询条件为 prpdid
+			 * 为null 以prpdid_like_or为条件 键ApplicationResources
+			 * SERVICE_REQUEST_COND
+			 */
+            if (cond.getPrpdid().equals("01100")) {
+                cond.setPrpdid(null);
+                cond.setPrpdid_like_or(MessageResources
+                        .getMessageResources("ApplicationResources")
+                        .getMessage("SERVICE_REQUEST_COND").split(","));
+            }
+            dto.setPrSearchCond(cond);
+            dto.setMaxSearchCount(maxCnt);
+            dto.setPagingDto(pDto);
+            // 调用BL查询
+            dto = ctlBL.getProcessRecords(dto);
+            request.setAttribute("isAdmin", dto.getIsAdmin());
+            // 构造VO
+            IGWKM01011VO vo = new IGWKM01011VO(dto.getProcessList());
+            vo.setNameURLMap(dto.getNameURLMap());
+            vo.setProcessTemplateList(dto.getProcessTemplateList());
+            vo.setProcessDefinitionList(dto.getProcessDefinitionList());
+            vo.setActlabel(actlabel);// 封装三级菜单名称
+            super.<IGWKM01011VO>setVO(request, vo);
+            request.setAttribute("vo", vo);
+            request.setAttribute("showFlag", form.getShowFlag());
+            log.debug("========工作查询处理终了========");
+        }
+        if ("DEL".equals(mapping.getParameter())) {
+            dto.setPrid(form.getDelprid());
+            dto = ctlBL.delProcessRecord(dto);
+
+            // 构造VO
+            IGWKM01011VO vo = new IGWKM01011VO(dto.getProcessList());
+            vo.setActlabel(actlabel);// 封装三级菜单名称
+            super.<IGWKM01011VO>setVO(request, vo);
+
+            request.setAttribute("vo", vo);
+        }
+
+        List<ActionMessage> messageList = dto.getMessageList();
+        if (messageList != null && messageList.size() > 0) {
+            for (ActionMessage message : messageList) {
+                addMessage(request, message);
+            }
+        }
+        // 跳转到定制JSP
+        if (StringUtils.isNotEmpty(dto.getForwardJsp())) {
+            return new ActionForward(dto.getForwardJsp());
+        } else {
+            return mapping.findForward("DISP");
+        }
+    }
 }

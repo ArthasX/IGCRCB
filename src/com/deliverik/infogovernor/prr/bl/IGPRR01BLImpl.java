@@ -77,6 +77,7 @@ import com.deliverik.framework.workflow.IGPRDCONSTANTS;
 import com.deliverik.framework.workflow.WorkFlowConstDefine;
 import com.deliverik.framework.workflow.WorkFlowDefinitionBL;
 import com.deliverik.framework.workflow.WorkFlowOperationBL;
+import com.deliverik.framework.workflow.prd.bl.task.IG222BL;
 import com.deliverik.framework.workflow.prd.bl.task.IG480BL;
 import com.deliverik.framework.workflow.prd.bl.task.WorkFlowEventHandlerBL;
 import com.deliverik.framework.workflow.prd.bl.task.WorkFlowInitFormHandlerBL;
@@ -823,6 +824,28 @@ public class IGPRR01BLImpl extends BaseBLImpl implements IGPRR01BL {
 		// 流程发起Form
 		IGPRR0101Form form = dto.getIgPRR0101Form();
 		User user = dto.getUser();
+		//判断roleid是否是流程管理员，如果是则查找用户其他角色，并且赋值,因为在变更批量处理的时候报错，所以需要更改。2017年5月23日10:48:19 张博
+		System.out.println(form.getPrpdid());
+		if("2".equals(form.getPrroleid())&&"01084".equals(form.getPrpdid().substring(0, form.getPrpdid().length()-2))){
+			//查询不是流程管理员角色并更改form中的值
+			List<UserRoleInfo> userRoles = userRoleBL.getUserRolesNotInProcess(user.getUserid());
+			//查询发起节点的处理角色
+			IG222SearchCondImpl ig222Cond = new IG222SearchCondImpl();
+			ig222Cond.setPsdid(form.getPsdid());
+			IG222BL ig222BL = (IG222BL) WebApplicationSupport.getBean("ig222BL");
+			List<IG222Info> ig222InfoList = ig222BL.searchIG222Info(ig222Cond);
+			if(ig222InfoList!=null && ig222InfoList.size()>0&&userRoles!=null && userRoles.size()>0){
+				for(IG222Info ig222Info:ig222InfoList){
+					for(UserRoleInfo userRoleInfo:userRoles){
+						if(ig222Info.getRoleid()==userRoleInfo.getRoleid()){
+							form.setPrroleid(userRoleInfo.getRoleid());
+							form.setPrrolename(userRoleInfo.getRolename());
+							break;
+						}
+					}
+				}
+			}
+		}
 		//查询流程表单定义
 		List<IG007Info> prinfoDefList = workFlowDefinitionBL.searchProcessInfoDefsByPdid(form.getPrpdid());
 		Map<String, IG007Info> prinfoMap = new HashMap<String, IG007Info>();

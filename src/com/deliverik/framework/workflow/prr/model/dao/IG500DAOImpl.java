@@ -1317,6 +1317,10 @@ public class IG500DAOImpl extends BaseHibernateDAOImpl<IG500Info> implements IG5
 				query.append(" and exists (select 1 from ig599 pp where pp.prid = pr.prid and pp.pivarname like '????????' and pp.pivarvalue  not like '?ид??????') ");
 			}
 		}
+
+		if(StringUtils.isNotBlank(cond.getPrpdname())){
+			query.append(" and pr.prpdname like '%' || :prpdname || '%' ");
+		}
 		
 	}
 	

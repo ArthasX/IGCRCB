@@ -20,7 +20,7 @@ import org.apache.struts.util.MessageResources;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "SendServiceImplService", targetNamespace = "http://service.openmind.com/", wsdlLocation = "http://127.0.0.1:9999/SendService?wsdl")
+@WebServiceClient(name = "SendServiceImplService", targetNamespace = "http://service.openmind.com/", wsdlLocation = "http://10.3.21.36:9999/SendService?wsdl")
 public class SendServiceImplService
     extends Service
 {

@@ -596,4 +596,8 @@ public class IGSVC0604Form extends BaseForm implements IG500SearchCond, IG677Sea
 		return null;
 	}
 
+	public String getPrpdname() {
+		return null;
+	}
+
 }

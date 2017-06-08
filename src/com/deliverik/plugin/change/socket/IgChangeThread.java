@@ -52,7 +52,9 @@ public class IgChangeThread implements Runnable {
 			//实例化推送变更工具类
 			IGPMSSERVICE01Utils utils = new IGPMSSERVICE01Utils();
 			/**开始推送变更信息*/ 
-			utils.ChangeTicketPhase(initDto.getTicketId(),"true");
+			String ticketId=initDto.getTicketId();
+			log.info("ticketId: "+ticketId);
+			log.info(utils.ChangeTicketPhase(initDto.getTicketId(),"true"));
 			
 		} catch (BLException e) {
 			e.printStackTrace();

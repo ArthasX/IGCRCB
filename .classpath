@@ -93,7 +93,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-cli-1.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-configuration-1.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-lang-2.6.jar" sourcepath="C:/Users/KJB-001064/.m2/repository/commons-lang/commons-lang/2.6/commons-lang-2.6-sources.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-logging-1.1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/rest-api-schemas-5.5.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/vcloud-java-sdk-5.5.0.jar"/>

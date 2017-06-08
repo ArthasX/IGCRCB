@@ -12,7 +12,10 @@ import org.apache.axis.client.Call;
 import org.apache.axis.client.Service;
 import org.apache.axis.client.Stub;
 import org.apache.axis.encoding.XMLType;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.struts.util.MessageResources;
+ 
 
 /***
  * 调用pms平台的webService接口
@@ -24,7 +27,7 @@ import org.apache.struts.util.MessageResources;
  *
  */
 public class IGPMSSERVICE01Utils extends Stub {
-
+	static Log log = LogFactory.getLog(IGPMSSERVICE01Utils.class);
 	//static MessageResources resources;
 	
 	 public String ChangeTicketPhase(String ticketId ,String result) throws MalformedURLException {
@@ -52,7 +55,7 @@ public class IGPMSSERVICE01Utils extends Stub {
 	                    ParameterMode.IN);// 参数模式：'IN' or 'OUT'
 	            // 设置返回值类型：
 	            call.setReturnType(XMLType.XSD_STRING);// 返回值类型：String          
-	 
+	            
 	            resp = (String) call.invoke(object);// 远程调用
 	        } catch (ServiceException e) {
 	            e.printStackTrace();

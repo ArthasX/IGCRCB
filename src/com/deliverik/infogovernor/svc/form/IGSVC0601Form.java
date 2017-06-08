@@ -564,4 +564,8 @@ public class IGSVC0601Form extends BaseForm implements IG500SearchCond {
 		return null;
 	}
 
+	public String getPrpdname() {
+		return null;
+	}
+
 }

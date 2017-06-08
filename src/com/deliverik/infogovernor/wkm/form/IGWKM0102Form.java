@@ -29,6 +29,10 @@ public class IGWKM0102Form extends BaseForm implements IG500SearchCond{
 		return null;
 	}
 
+	public String getPrpdname() {
+		return null;
+	}
+
 	private static final long serialVersionUID = 1L;
 
 	/**¹¤×÷±àºÅ*/

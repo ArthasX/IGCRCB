@@ -161,6 +161,8 @@ public class IGCRC05ExcelBLImpl extends ExcelBaseBLImpl implements
 				addCell(7, i, info.getPropentime());
 				// 填充关闭时间
 				addCell(8, i, info.getPrclosetime());
+				// 填充流程名 20170608
+				addCell(9,i,info.getPrpdname());
 			}
 		}
 		log.debug("=================获取科技服务请求管理导出结束=================");

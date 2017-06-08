@@ -31,6 +31,8 @@ public class IGWKM0101Form extends BaseForm{
 	/**工作状态*/
 	protected String prstatus;
 	
+	/**流程名**/
+	protected String prpdname;
 	/**流程类型*/
 	protected String prtype;
 	
@@ -784,4 +786,14 @@ public class IGWKM0101Form extends BaseForm{
 	public void setVarvalues_in(String[] varvalues_in) {
 		this.varvalues_in = varvalues_in;
 	}
+
+	
+	public String getPrpdname() {
+		return prpdname;
+	}
+
+	public void setPrpdname(String prpdname) {
+		this.prpdname = prpdname;
+	}
+	
 }

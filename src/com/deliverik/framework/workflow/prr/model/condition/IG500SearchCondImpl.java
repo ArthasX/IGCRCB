@@ -300,8 +300,11 @@ public class IG500SearchCondImpl implements IG500SearchCond {
 	
 	/** 表单值集合 */
 	protected String[] varvalues_in;
-    
-	
+
+	/**
+	 * 流程名
+	 */
+	protected String prpdname;
 
 	/**
 	 * 平台保留
@@ -1411,4 +1414,12 @@ public class IG500SearchCondImpl implements IG500SearchCond {
 		this.dwpType = dwpType;
 	}
 
+	/** 流程名 */
+	public String getPrpdname() {
+		return prpdname;
+	}
+
+	public void setPrpdname(String prpdname) {
+		this.prpdname = prpdname;
+	}
 }
