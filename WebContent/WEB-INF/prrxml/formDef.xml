@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<formList>
-<!-- pidname 表单名称 ;pidtype 表单类型; isuse 是否需要在场景定义中设置默认值(1不需要,0需要) -->
-	<formInfo pidname="应急资源" pidtype="4" isuse = "1" optarr="" />
-	<formInfo pidname="处置说明" pidtype="9" isuse = "0" optarr="" />
-	<formInfo pidname="处置结果" pidtype="2" isuse = "0" optarr="成功#失败" />
-	<formInfo pidname="业务系统" pidtype="4" isuse = "1" optarr=""/>
-	<formInfo pidname="附件" pidtype="F" isuse = "1" optarr="" />
-</formList>

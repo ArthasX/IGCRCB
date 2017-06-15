@@ -1,4 +1,0 @@
-1. 将dbscripts目录复制到/home/oracle根目录下
-2. 执行IG.sh
-3. 本程序ORACLE安装目录为/u01/app/oracle/product/11.2.0
-,如果ORACLE目录不是改目录需要修改文件中的目录配置

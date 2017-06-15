@@ -1,5 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<root>
-	<ENTITY>com.deliverik.plugin.sms.model.entity.SmsQueueTB</ENTITY>
-	<ENTITY>com.deliverik.plugin.sms.model.entity.SendSmsLogTB</ENTITY>
-</root>

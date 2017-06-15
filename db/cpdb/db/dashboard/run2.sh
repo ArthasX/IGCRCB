@@ -1,1 +1,0 @@
-sqlplus /nolog @/home/oracle/db/dashboard/run_sh.sql

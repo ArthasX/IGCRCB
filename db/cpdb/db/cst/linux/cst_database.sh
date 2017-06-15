@@ -1,1 +1,0 @@
-sqlplus /nolog @/home/oracle/db/cst/sql/CST/init_sh.sql

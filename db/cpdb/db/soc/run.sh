@@ -1,1 +1,0 @@
-sqlplus /nolog @/home/oracle/db/soc/init_sh.sql

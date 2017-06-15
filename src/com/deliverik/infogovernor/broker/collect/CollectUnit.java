@@ -1,8 +1,0 @@
-package com.deliverik.infogovernor.broker.collect;
-
-public enum CollectUnit {
-	
-	TRIGGER_NAME,JOB_GROUP_NAME,TRIGGER_GROUP_NAME,JOB_NAME,
-	UUID,TYPE,TIME_RULE,METRIC_NAMES,EXECUT_STATUS,RESOURCE_ID,STATUS,PERIOD_TYPE,
-	_ENABLE,_DISABLE
-}
