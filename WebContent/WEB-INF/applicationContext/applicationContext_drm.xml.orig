@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+   <!-- DAO IGDRM16DAOImpl -->
+   <bean id="erRelationDAO" class="com.deliverik.infogovernor.drm.model.dao.ErRelationDAOImpl" parent="baseHibernateDAO"></bean>
+   <bean id="emergencyResourceDAO" class="com.deliverik.infogovernor.drm.model.dao.EmergencyResourceDAOImpl" parent="baseHibernateDAO"></bean>
+   <bean id="eventssDAO" class="com.deliverik.infogovernor.drm.model.dao.EventssDAOImpl" parent="baseHibernateDAO"></bean>
+   <bean id="scopesDAO" class="com.deliverik.infogovernor.drm.model.dao.ScopesDAOImpl" parent="baseHibernateDAO"></bean>
+   <bean id="socDAO" class="com.deliverik.infogovernor.drm.model.dao.SocDAOImpl" parent="baseHibernateDAO"></bean>
+	<!-- DAO IGDRM01DAOImpl -->
+	<bean id="planDao" class="com.deliverik.infogovernor.drm.model.dao.PlanDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="statisticsDao" class="com.deliverik.infogovernor.drm.model.dao.StatisticsDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="responseStrategyDAO" class="com.deliverik.infogovernor.drm.model.dao.ResponseStrategyDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="optionSencesDAO" class="com.deliverik.infogovernor.drm.model.dao.OptionSencesDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="drillplanDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.DrillplanDAOImpl">
+	</bean>
+	<bean id="drillplanitemDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.DrillplanitemDAOImpl">
+	</bean>
+	<bean id="emergencyRelationDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.EmergencyRelationDAOImpl">
+	</bean>
+	<bean id="emergencyLogDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.EmergencyLogDAOImpl">
+	</bean>
+	<bean id="structureRoleDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.StructureRoleDAOImpl">
+	</bean>
+	<bean id="signinDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.SigninDAOImpl">
+	</bean>
+	<bean id="currentNodeDao" class="com.deliverik.infogovernor.drm.model.dao.CurrentNodeDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="customQueryDAO" class="com.deliverik.infogovernor.drm.model.dao.CustomQueryDAOImpl" parent="baseHibernateDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	<bean id="parentNodeDao" class="com.deliverik.infogovernor.drm.model.dao.ParentNodeDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="structureRoleBL" class="com.deliverik.infogovernor.drm.bl.task.StructureRoleBLImpl">
+    	<property name="structureRoleDAO">
+    		<ref bean="structureRoleDAO"/>
+    	</property>
+    </bean>
+    <!-- 培训记录DAO以及BL-->
+	<bean id="trainrecordDAO" class="com.deliverik.infogovernor.drm.model.dao.TrainrecordDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="trainparticipateDAO" class="com.deliverik.infogovernor.drm.model.dao.TrainparticipateDAOImpl" parent="baseHibernateDAO"></bean>
+	<!-- 专项预案BL -->
+	<bean id="specialPlanDAO" class="com.deliverik.infogovernor.drm.model.dao.SpecialPlanDAOImpl" parent="baseHibernateDAO">
+	</bean>	
+	<bean id="trainparticipateBL" class="com.deliverik.infogovernor.drm.bl.task.TrainparticipateBLImpl">
+		<property name="trainparticipateDAO">
+			<ref bean="trainparticipateDAO"/>
+		</property>
+	</bean>
+	<bean id="trainrecordBL" class="com.deliverik.infogovernor.drm.bl.task.TrainrecordBLImpl">
+		<property name="trainrecordDAO">
+			<ref bean="trainrecordDAO"/>
+		</property>
+	</bean>
+	<bean id="socBL" class="com.deliverik.infogovernor.drm.bl.task.SocBLImpl">
+		<property name="socDAO">
+			<ref bean="socDAO"/>
+		</property>
+	</bean>
+	<bean id="evaluationContentDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.EvaluationContentDAOImpl">
+	</bean>
+	<bean id="drillplanBL" class="com.deliverik.infogovernor.drm.bl.task.DrillplanBLImpl">
+    	<property name="drillplanDAO">
+    		<ref bean="drillplanDAO"/>
+    	</property>
+    </bean>
+	<bean id="emergencyLogBL" class="com.deliverik.infogovernor.drm.bl.task.EmergencyLogBLImpl">
+    	<property name="emergencyLogDAO">
+    		<ref bean="emergencyLogDAO"/>
+    	</property>
+    </bean>
+	<bean id="drillplanitemBL" class="com.deliverik.infogovernor.drm.bl.task.DrillplanitemBLImpl">
+    	<property name="drillplanitemDAO">
+    		<ref bean="drillplanitemDAO"/>
+    	</property>
+    </bean>
+	<bean id="signinBL" class="com.deliverik.infogovernor.drm.bl.task.SigninBLImpl">
+    	<property name="signinDAO">
+    		<ref bean="signinDAO"/>
+    	</property>
+    	<property name="ig222DAO">
+    		<ref bean="ig222DAO"/>
+    	</property>
+    	<property name="userRoleVWDAO">
+    		<ref bean="userRoleVWDAO"/>
+    	</property>
+    	<property name="ig481DAO">
+    		<ref bean="ig481DAO"/>
+    	</property>
+    </bean>
+    <bean id="parentNodeBL" class="com.deliverik.infogovernor.drm.bl.task.ParentNodeBLImpl">
+		<property name="parentNodeDao" ref="parentNodeDao" />
+	</bean>
+	<bean id="currentNodeBL" class="com.deliverik.infogovernor.drm.bl.task.CurrentNodeBLImpl">
+		<property name="currentNodeDao" ref="currentNodeDao" />
+	</bean>
+	<bean id="customQueryBL" class="com.deliverik.infogovernor.drm.bl.task.CustomQueryBLImpl">
+		<property name="customQueryDAO" ref="customQueryDAO" />
+	</bean>
+	<bean id="statisticsBL" class="com.deliverik.infogovernor.drm.bl.task.StatisticsBLImpl">
+		<property name="statisticsDao" ref="statisticsDao" />
+	</bean>
+	<bean id="emergencyRelationBL" class="com.deliverik.infogovernor.drm.bl.task.EmergencyRelationBLImpl">
+			<property name="emergencyRelationDao" ref="emergencyRelationDAO" />
+	</bean>
+	<!-- 场景触发策略BL -->
+	<bean id="responseStrategyBL" class="com.deliverik.infogovernor.drm.bl.task.ResponseStrategyBLImpl" >
+		<property name="responseStrategyDAO" ref="responseStrategyDAO"></property>
+	</bean>
+	<!-- 应急指挥备选场景 -->
+	<bean id="optionSencesBL" class="com.deliverik.infogovernor.drm.bl.task.OptionSencesBLImpl" >
+		<property name="optionSencesDAO" ref="optionSencesDAO"></property>
+	</bean>
+	
+	<bean id="evaluationContentBL" class="com.deliverik.infogovernor.drm.bl.task.EvaluationContentBLImpl">
+		<property name="evaluationContentDAO" ref="evaluationContentDAO" />
+	</bean>
+	<!-- 专项预案BL -->
+	<bean id="specialPlanBL" class="com.deliverik.infogovernor.drm.bl.task.SpecialPlanBLImpl">
+		<property name="specialPlanDAO">
+			<ref bean="specialPlanDAO"/>
+		</property>
+	</bean>
+	<!-- 培训记录taskBL -->
+	<bean id="igdrm17BL" class="com.deliverik.infogovernor.drm.bl.IGDRM17BLImpl">
+		<property name="trainrecordBL">
+			<ref bean="trainrecordBL" />
+		</property>	
+		<property name="trainparticipateBL">
+			<ref bean="trainparticipateBL" />
+		</property>	
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+	</bean>
+	<!--应急场景 -->
+	<bean id="igdrm01BL" class="com.deliverik.infogovernor.drm.bl.IGDRM01BLImpl"> 
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL"/>
+		</property>
+		
+		<property name="soc0118VWBL">
+			<ref bean="soc0118VWBL"/>
+		</property>
+		<property name="ig222BL">
+			<ref bean="ig222BL"/>
+		</property>
+		 <property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+         <property name="userBL">
+            <ref bean="userBL" />
+        </property>
+         <property name="roleBL">
+            <ref bean="roleBL" />
+        </property>
+        <property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="soc0151BL">
+			<ref bean="soc0151BL" />
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL" />
+		</property>
+		<property name="planBL">
+			<ref bean="planBL" />
+		</property>
+		 <property name="codeCategoryDefiBL">
+            <ref bean="codeCategoryDefiBL" />
+        </property>
+        <property name="codeDetailDefBL">
+            <ref bean="codeDetailDefBL" />
+        </property>
+         <property name="structureRoleBL">
+            <ref bean="structureRoleBL" />
+        </property>
+         <property name="flowSetBL">
+            <ref bean="flowSetBL" />
+        </property>
+         <property name="flowSearchBL">
+            <ref bean="flowSearchBL" />
+        </property>
+        <property name="ig560BL">
+            <ref bean="ig560BL" />
+        </property>
+         <property name="ig561BL">
+            <ref bean="ig561BL" />
+        </property>
+         <property name="attachmentBL">
+            <ref bean="attachmentBL" />
+        </property>
+         <property name="responseStrategyBL">
+            <ref bean="responseStrategyBL" />
+        </property>
+         <property name="ig599BL">
+            <ref bean="ig599BL" />
+        </property>
+         <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+	</bean>
+	<!--组合场景 -->
+	<bean id="igdrm02BL" class="com.deliverik.infogovernor.drm.bl.IGDRM02BLImpl"> 
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="ig480BL">
+			<ref bean="ig480BL" />
+		</property>
+		<property name="ig481BL">
+			<ref bean="ig481BL" />
+		</property>
+		<property name="ig482BL">
+			<ref bean="ig482BL" />
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		<property name="ig273BL">
+			<ref bean="ig273BL" />
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL" />
+		</property>
+		<property name="ig560BL">
+			<ref bean="ig560BL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+	</bean>
+	<bean id="igdrm04BL" class="com.deliverik.infogovernor.drm.bl.IGDRM04BLImpl"> 
+		<property name="soc0118BL"  ref="soc0118BL" />
+		<property name="soc0109BL"  ref="soc0109BL" />
+		<property name="soc0107BL"  ref="soc0107BL" />
+		<property name="soc0117BL"  ref="soc0117BL" />
+		<property name="soc0118VWBL"  ref="soc0118VWBL" />
+		<property name="soc0109VWBL"  ref="soc0109VWBL" />
+		<property name="soc0107VWBL"  ref="soc0107VWBL" />
+		<property name="soc0117VWBL"  ref="soc0117VWBL" />
+		<property name="soc0151VWBL"  ref="soc0151VWBL" />
+		<property name="fileUploadBL"  ref="fileUploadBL" />
+		<property name="organizationBL"  ref="organizationBL" />
+		<property name="soc0119BL"  ref="soc0119BL" />
+		<property name="soc0151BL"  ref="soc0151BL" />
+		<property name="codeDetailBL"  ref="codeDetailBL" />
+		<property name="ig611BL"  ref="ig611BL" />
+		<property name="erRelationBL"  ref="erRelationBL" />
+		<property name="emergencyResourceBL"  ref="emergencyResourceBL" />
+	</bean>
+	<bean id="igdrm05BL" class="com.deliverik.infogovernor.drm.bl.IGDRM05BLImpl"> 
+		<property name="soc0118BL"  ref="soc0118BL" />
+		<property name="soc0109BL"  ref="soc0109BL" />
+		<property name="soc0107BL"  ref="soc0107BL" />
+		<property name="soc0117BL"  ref="soc0117BL" />
+		<property name="fileUploadBL"  ref="fileUploadBL" />
+		<property name="organizationBL"  ref="organizationBL" />
+		<property name="soc0119BL"  ref="soc0119BL" />
+		<property name="soc0151BL"  ref="soc0151BL" />
+		<property name="codeDetailBL"  ref="codeDetailBL" />
+	</bean>
+	<!-- taskBL -->
+	<bean id="erRelationBL" class="com.deliverik.infogovernor.drm.bl.task.ErRelationBLImpl">
+		<property name="erRelationDAO" ref="erRelationDAO" />
+	</bean>
+	<bean id="emergencyResourceBL" class="com.deliverik.infogovernor.drm.bl.task.EmergencyResourceBLImpl">
+		<property name="emergencyResourceDAO" ref="emergencyResourceDAO" />
+	</bean>
+	<bean id="eventssBL" class="com.deliverik.infogovernor.drm.bl.task.EventssBLImpl">
+		<property name="eventssDAO" ref="eventssDAO" />
+	</bean>
+	
+	<bean id="scopesBL" class="com.deliverik.infogovernor.drm.bl.task.ScopesBLImpl">
+		<property name="scopesDAO" ref="scopesDAO" />
+	</bean>
+	
+	<bean id="planBL" class="com.deliverik.infogovernor.drm.bl.task.PlanBLImpl">
+		<property name="planDao" ref="planDao" />
+	</bean>
+	<bean id="igdrm10BL" class="com.deliverik.infogovernor.drm.bl.IGDRM10BLImpl"> 
+		<property name="structureRoleBL"  ref="structureRoleBL" />
+		<property name="codeDetailDefBL"  ref="codeDetailDefBL" />
+		<property name="sysManageBL"  ref="sysManageBL" />
+		 <property name="codeCategoryDefiBL">
+            <ref bean="codeCategoryDefiBL" />
+        </property>
+        <property name="userBL">
+            <ref bean="userBL" />
+        </property>
+        <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+        <property name="workFlowDefinitionBL">
+            <ref bean="workFlowDefinitionBL" />
+        </property>
+        <property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+		<property name="customQueryBL">
+            <ref bean="customQueryBL" />
+        </property>
+        <property name="emergencyRelationBL">
+            <ref bean="emergencyRelationBL" />
+        </property>
+        <property name="soc0118VWBL">
+            <ref bean="soc0118VWBL" />
+        </property>
+        <property name="sendMessageBL" ref="sendMessageBL" />
+        <property name="messagePushBL" ref="messagePushBL" />
+        <property name="emergencyLogBL" ref="emergencyLogBL" />
+        <property name="fileUploadBL" ref="fileUploadBL" />
+         <property name="ig561BL" ref="ig561BL" />
+         
+	</bean>
+	<bean id="igdrm06BL" class="com.deliverik.infogovernor.drm.bl.IGDRM06BLImpl"> 
+		<property name="drillplanBL"  ref="drillplanBL" />
+		<property name="drillplanitemBL"  ref="drillplanitemBL" />
+	</bean>
+	<bean id="igdrm07BL" class="com.deliverik.infogovernor.drm.bl.IGDRM07BLImpl"> 
+		<property name="ig500BL"  ref="ig500BL" />
+		<property name="soc0117BL"  ref="soc0117BL" />
+		<property name="soc0118BL"  ref="soc0118BL" />
+		<property name="soc0119BL"  ref="soc0119BL" />
+		<property name="soc0107BL"  ref="soc0107BL" />
+		<property name="structureRoleBL"  ref="structureRoleBL" /> 
+		<property name="userBL"  ref="userBL" /> 
+		<property name="drillplanitemBL"  ref="drillplanitemBL" /> 
+		<property name="workFlowDefinitionBL"  ref="workFlowDefinitionBL" /> 
+		<property name="optionSencesBL" ref="optionSencesBL" />
+<<<<<<< HEAD
+=======
+		<property name="emergencyRelationBL" ref="emergencyRelationBL" />
+		<property name="ig599BL"  ref="ig599BL" />
+		<property name="evaluationContentBL"  ref="evaluationContentBL" />
+>>>>>>> dlk
+	</bean>
+		<bean id="igdrm09BL" class="com.deliverik.infogovernor.drm.bl.IGDRM09BLImpl"> 
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="ig222BL">
+			<ref bean="ig222BL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		 <property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+        <property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+        <property name="ig483BL">
+			<ref bean="ig483BL" />
+		</property>
+        <property name="ig484BL">
+			<ref bean="ig484BL" />
+		</property>
+        <property name="ig480BL">
+			<ref bean="ig480BL" />
+		</property>
+        <property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+	</bean>
+		<bean id="igdrm11BL" class="com.deliverik.infogovernor.drm.bl.IGDRM11BLImpl"> 
+		<property name="ig500BL"  ref="ig500BL" />
+		<property name="signinBL"  ref="signinBL" />
+		<property name="messagePushBL"  ref="messagePushBL" />
+	</bean>
+	<bean id="igdrm14BL" class="com.deliverik.infogovernor.drm.bl.IGDRM14BLImpl">
+		<property name="noticeBL">
+			<ref bean="noticeBL" />
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="sendMailBL">
+			<ref bean="sendMailBL" />
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>
+		<property name="emergencyLogBL">
+			<ref bean="emergencyLogBL" />
+		</property>
+	</bean>
+	
+	<bean id="igdrm16BL" class="com.deliverik.infogovernor.drm.bl.IGDRM16BLImpl"> 
+		<property name="eventssBL"  ref="eventssBL" />
+		<property name="scopesBL"  ref="scopesBL" />
+	</bean>
+	
+	 <!-- 培训任务 -->
+	  <!-- DAO -->
+    <bean id="trainmissionDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.TrainmissionDAOImpl">
+	</bean>
+	<!-- Task BL -->
+	<bean id="trainmissionBL" class="com.deliverik.infogovernor.drm.bl.task.TrainmissionBLImpl">
+		<property name="trainmissionDAO">
+			<ref bean="trainmissionDAO"/>
+		</property>
+	</bean>	
+	  <!-- 培训计划 -->
+	  <!-- DAO -->
+    <bean id="trainplanDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.TrainplanDAOImpl">
+	</bean>
+	<!-- Task BL -->
+	<bean id="trainplanBL" class="com.deliverik.infogovernor.drm.bl.task.TrainplanBLImpl">
+		<property name="trainplanDAO">
+			<ref bean="trainplanDAO"/>
+		</property>
+	</bean>	
+	<!-- Control BL -->
+	<bean id="igdrm15BL" class="com.deliverik.infogovernor.drm.bl.IGDRM15BLImpl">
+		<property name="trainplanBL"     ref="trainplanBL" />
+		<property name="trainmissionBL"  ref="trainmissionBL" />
+		<property name="fileUploadBL"  ref="fileUploadBL" />
+	</bean>
+	
+	<bean id="igdrm18BL" class="com.deliverik.infogovernor.drm.bl.IGDRM18BLImpl">
+		<property name="statisticsBL"     ref="statisticsBL" />
+		<property name="soc0118BL"     ref="soc0118BL" />
+	</bean>
+<!-- 	应急处置 -->
+	<bean id="igdrm19BL" class="com.deliverik.infogovernor.drm.bl.IGDRM19BLImpl">
+	<property name="ig500BL"     ref="ig500BL" />
+	</bean>
+	
+	<!-- 预案 -->
+	<bean id="igdrm20BL" class="com.deliverik.infogovernor.drm.bl.IGDRM20BLImpl">
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0509BL">
+			<ref bean="soc0509BL"/>
+		</property>
+	</bean>
+    <bean id="igdrm21BL" class="com.deliverik.infogovernor.drm.bl.IGDRM21BLImpl">
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0507BL">
+			<ref bean="soc0507BL"/>
+		</property>
+		<property name="planBL">
+			<ref bean="planBL"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0509BL">
+			<ref bean="soc0509BL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL"/>
+		</property>
+		<property name="soc0117VWBL">
+			<ref bean="soc0117VWBL"/>
+		</property>
+		<property name="soc0118VWBL">
+			<ref bean="soc0118VWBL"/>
+		</property>
+		<property name="igdrm01BL">
+			<ref bean="igdrm01BL"/>
+		</property>
+		<property name="igdrm10BL">
+			<ref bean="igdrm10BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="specialPlanBL">
+			<ref bean="specialPlanBL"/>
+		</property>
+	</bean>
+	<!-- DAO -->
+	<bean id="soc0509DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.SOC0509DAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="soc0509BL" class="com.deliverik.infogovernor.drm.bl.task.SOC0509BLImpl">
+		<property name="soc0509DAO">
+			<ref bean="soc0509DAO"/>
+		</property>
+	</bean>
+	<!-- DAO -->
+	<bean id="soc0507DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.drm.model.dao.SOC0507DAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="soc0507BL" class="com.deliverik.infogovernor.drm.bl.task.SOC0507BLImpl">
+		<property name="soc0507DAO">
+			<ref bean="soc0507DAO"/>
+		</property>
+	</bean>
+	<!-- 场景触发条件特殊处理BL -->
+	
+	<bean id="igcs0101BL" class="com.deliverik.infogovernor.drm.strategy.impl.IGStrategyCheck0101BLImpl">
+		<property name="igalarmBL">
+			<ref bean="igalarmBL"/>
+		</property>
+	</bean>
+</beans>

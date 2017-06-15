@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<form-beans>
+	<!-- *****************************************工作项管理Form***************************************** -->
+		<form-bean name="IGWIM0101Form" type="com.deliverik.infogovernor.wim.form.IGWIM0101Form" />
+	</form-beans>
+	<action-mappings>
+	<!-- *****************************************工作项管理Action***************************************** -->
+		 <!-- 工作项定义新增画面初期显示  -->
+        <action path="/IGWIM0101_Disp"
+            type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
+            parameter="DISP"
+            name="IGWIM0101Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/wim/IGWIM0104.jsp"/>
+        </action>
+	</action-mappings>
+	
+</struts-config>
+

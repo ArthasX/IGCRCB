@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+	<!-- DAO -->
+	<bean id="auditCheckRelationDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.AuditCheckRelationDAOImpl">
+	</bean>
+	<bean id="riskAuditDefDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskAuditDefDAOImpl">
+	</bean>
+	<bean id="riskAuditInsDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskAuditInsDAOImpl">
+	</bean>
+	<bean id="riskAuditResultDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskAuditResultDAOImpl">
+	</bean>
+	<bean id="riskAuditDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskAuditDAOImpl">
+	</bean>
+	<bean id="riskCheckResultDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskCheckResultDAOImpl">
+	</bean>
+	<bean id="riskAuditDefResultVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskAuditDefResultVWDAOImpl">
+	</bean>
+	<bean id="riskCheckDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.RiskCheckDAOImpl">
+	</bean>
+	<bean id="checkStrategyDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckStrategyDAOImpl">
+	</bean>
+	<bean id="checkInfoEntityDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckInfoEntityDAOImpl">
+	</bean>
+	<bean id="checkworkInfoResultDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckworkInfoResultDAOImpl">
+	</bean>
+	<bean id="checkWorkResultDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckWorkResultDAOImpl">
+	</bean>
+	<bean id="checkInfoRiskDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckInfoRiskDAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="auditCheckRelationBL" class="com.deliverik.infogovernor.risk.bl.task.AuditCheckRelationBLImpl">
+		<property name="auditCheckRelationDAO">
+			<ref bean="auditCheckRelationDAO"/>
+		</property>
+	</bean>
+	<bean id="riskAuditDefBL" class="com.deliverik.infogovernor.risk.bl.task.RiskAuditDefBLImpl">
+		<property name="riskAuditDefDAO">
+			<ref bean="riskAuditDefDAO"/>
+		</property>
+	</bean>
+	<bean id="riskAuditInsBL" class="com.deliverik.infogovernor.risk.bl.task.RiskAuditInsBLImpl">
+		<property name="riskAuditInsDAO">
+			<ref bean="riskAuditInsDAO"/>
+		</property>
+	</bean>
+	<bean id="riskAuditResultBL" class="com.deliverik.infogovernor.risk.bl.task.RiskAuditResultBLImpl">
+		<property name="riskAuditResultDAO">
+			<ref bean="riskAuditResultDAO"/>
+		</property>
+	</bean>
+	<bean id="riskAuditBL" class="com.deliverik.infogovernor.risk.bl.task.RiskAuditBLImpl">
+		<property name="riskAuditDAO">
+			<ref bean="riskAuditDAO"/>
+		</property>
+	</bean>
+	<bean id="riskCheckResultBL" class="com.deliverik.infogovernor.risk.bl.task.RiskCheckResultBLImpl">
+		<property name="riskCheckResultDAO">
+			<ref bean="riskCheckResultDAO"/>
+		</property>
+	</bean>
+	<bean id="riskCheckBL" class="com.deliverik.infogovernor.risk.bl.task.RiskCheckBLImpl">
+		<property name="riskCheckDAO">
+			<ref bean="riskCheckDAO"/>
+		</property>
+	</bean>
+	<bean id="checkStrategyBL" class="com.deliverik.infogovernor.risk.bl.task.CheckStrategyBLImpl">
+		<property name="checkStrategyDAO">
+			<ref bean="checkStrategyDAO"/>
+		</property>
+	</bean>
+	<bean id="checkInfoEntityBL" class="com.deliverik.infogovernor.risk.bl.task.CheckInfoEntityBLImpl">
+		<property name="checkInfoEntityDAO">
+			<ref bean="checkInfoEntityDAO"/>
+		</property>
+	</bean>
+	<bean id="checkworkInfoResultBL" class="com.deliverik.infogovernor.risk.bl.task.CheckworkInfoResultBLImpl">
+		<property name="checkworkInfoResultDAO">
+			<ref bean="checkworkInfoResultDAO"/>
+		</property>
+	</bean>
+	<bean id="checkWorkResultBL" class="com.deliverik.infogovernor.risk.bl.task.CheckWorkResultBLImpl">
+		<property name="checkWorkResultDAO">
+			<ref bean="checkWorkResultDAO"/>
+		</property>
+	</bean>
+	<bean id="checkInfoRiskBL" class="com.deliverik.infogovernor.risk.bl.task.CheckInfoRiskBLImpl">
+		<property name="checkInfoRiskDAO">
+			<ref bean="checkInfoRiskDAO"/>
+		</property>
+	</bean>
+	
+	
+	
+	<bean id="riskAuditDefResultVWBL" class="com.deliverik.infogovernor.risk.bl.task.RiskAuditDefResultVWBLImpl">
+		<property name="riskAuditDefResultVWDAO">
+			<ref bean="riskAuditDefResultVWDAO"/>
+		</property>
+	</bean>
+	<!-- Control BL -->
+	<bean id="igRIS01BL" class="com.deliverik.infogovernor.risk.bl.IGRIS01BLImpl">
+		<property name="riskAuditBL">
+			<ref bean="riskAuditBL"/>
+		</property>
+		<property name="riskAuditDefBL">
+			<ref bean="riskAuditDefBL"/>
+		</property>
+		<property name="riskAuditInsBL">
+			<ref bean="riskAuditInsBL"/>
+		</property>
+		<property name="riskAuditResultBL">
+			<ref bean="riskAuditResultBL"/>
+		</property>
+		<property name="riskAuditDefResultVWBL">
+			<ref bean="riskAuditDefResultVWBL"/>
+		</property>
+		<property name="riskCheckBL">
+			<ref bean="riskCheckBL"/>
+		</property>
+		<property name="auditCheckRelationBL">
+			<ref bean="auditCheckRelationBL"/>
+		</property>
+		<property name="riskCheckResultBL">
+			<ref bean="riskCheckResultBL"/>
+		</property>
+		<property name="igris02BL">
+			<ref bean="igris02BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+	</bean>
+	<bean id="igris02BL" class="com.deliverik.infogovernor.risk.bl.IGRIS02BLImpl">
+		<property name="riskCheckBL">
+			<ref bean="riskCheckBL"/>
+		</property>
+		<property name="riskCheckResultBL">
+			<ref bean="riskCheckResultBL"/>
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL"/>
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="riskAuditDefBL">
+			<ref bean="riskAuditDefBL"/>
+		</property>
+		<property name="auditCheckRelationBL">
+			<ref bean="auditCheckRelationBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="checkStrategyBL">
+			<ref bean="checkStrategyBL"/>
+		</property>
+		<property name="checkInfoEntityBL">
+			<ref bean="checkInfoEntityBL"/>
+		</property>
+		<property name="checkworkInfoResultBL">
+			<ref bean="checkworkInfoResultBL"/>
+		</property>
+		<property name="checkWorkResultBL">
+			<ref bean="checkWorkResultBL"/>
+		</property>
+		<property name="checkInfoRiskBL">
+			<ref bean="checkInfoRiskBL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+	</bean>
+	<!-- control Bl  检查问题报表查询 -->
+	<bean id="igris05BL" class="com.deliverik.infogovernor.risk.bl.IGRIS05BLImpl">
+		 <property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+		 <property name="checkWorkConutVWBL">
+			<ref bean="checkWorkConutVWBL"/>
+		</property>
+	</bean>
+	<bean id="checkWorkConutVWDAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.risk.model.dao.CheckWorkConutVWDAOImpl">
+	</bean>
+	<bean id="checkWorkConutVWBL" class="com.deliverik.infogovernor.risk.bl.task.CheckWorkConutVWBLImpl">
+	 <property name="checkWorkConutVWDAO">
+			<ref bean="checkWorkConutVWDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 导出Excel表格 -->
+	<bean id="igris05ExcelBL" class="com.deliverik.infogovernor.risk.bl.IGRIS05ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+</beans>

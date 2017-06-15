@@ -1,0 +1,699 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<form-bean name="IGPRR0101Form" type="com.deliverik.infogovernor.prr.form.IGPRR0101Form" />
+		<form-bean name="IGWKM0101Form" type="com.deliverik.infogovernor.wkm.form.IGWKM0101Form" />
+		<form-bean name="IGCRC0203Form" type="com.deliverik.infogovernor.crc.form.IGCRC0203Form" />
+		<form-bean name="IGCRC0204Form" type="com.deliverik.infogovernor.crc.form.IGCRC0204Form" />
+		<form-bean name="IGCRC0401Form" type="com.deliverik.infogovernor.crc.form.IGCRC0401Form" />
+		<form-bean name="IGCRC0402Form" type="com.deliverik.infogovernor.crc.form.IGCRC0402Form" />
+		<form-bean name="IGCRC0403Form" type="com.deliverik.infogovernor.crc.form.IGCRC0403Form" />
+		<form-bean name="IGCRC0405Form" type="com.deliverik.infogovernor.crc.form.IGCRC0405Form" />
+		<form-bean name="IGCRC1005Form" type="com.deliverik.infogovernor.crc.form.IGCRC1005Form" />
+		<form-bean name="IGCRC1301Form" type="com.deliverik.infogovernor.crc.form.IGCRC1301Form" />
+		<form-bean name="IGCRC1303Form" type="com.deliverik.infogovernor.crc.form.IGCRC1303Form" />
+		<form-bean name="IGCRC1304Form" type="com.deliverik.infogovernor.crc.form.IGCRC1304Form" />
+		<form-bean name="IGCRC1401Form" type="com.deliverik.infogovernor.crc.form.IGCRC1401Form" />
+		<form-bean name="IGCRC2001Form" type="com.deliverik.infogovernor.crc.form.IGCRC2001Form" />
+		<form-bean name="IGCRC2101Form" type="com.deliverik.infogovernor.crc.form.IGCRC2101Form" />
+		<form-bean name="IGCRC2201Form" type="com.deliverik.infogovernor.crc.form.IGCRC2201Form" />
+		<form-bean name="IGCRC2301Form" type="com.deliverik.infogovernor.crc.form.IGCRC2301Form" />
+		<form-bean name="IGCRC2401Form" type="com.deliverik.infogovernor.crc.form.IGCRC2401Form" />
+		<form-bean name="IGCRC3001Form" type="com.deliverik.infogovernor.crc.form.IGCRC3001Form" />
+		<form-bean name="IGCRC3003Form" type="com.deliverik.infogovernor.crc.form.IGCRC3003Form" />
+	</form-beans>
+
+	<action-mappings>
+		<!-- 告警查询 -->
+		<action path="/IGCRC0203_Disp"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="SEARCH"
+			name="IGCRC0203Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC0203.jsp" />
+		</action>
+		
+		<!-- 告警修改 -->
+		<action path="/IGCRC0203_Edit"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="EDIT"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="EDIT" path="/crc/IGCRC0204.jsp" />
+		</action>
+		<action path="/IGCRC0203_Edit_SUB"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="EDIT"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="EDIT" path="/crc/IGCRC0207.jsp" />
+		</action>
+		
+		<!-- 告警删除 -->
+		<action path="/IGCRC0203_Delete"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="DELETE"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0203.jsp" />
+		</action>
+		
+		<!-- 告警更新 -->
+		<action path="/IGCRC0203_Upadte"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="UPDATE"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0203.jsp" />
+		</action>
+		<action path="/IGCRC0203_Upadte_SUB"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="UPDATE1"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0206.jsp" />
+		</action>
+		
+		<action path="/IGCRC0203_Alarm"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="Alarm"
+			name="IGCRC0203Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0206.jsp" />
+		</action>
+		<!-- 告警系统导出  -->	
+		<action path="/IGCRC0203_EXCEL"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="EXCEL"
+			name="IGCRC0203Form"
+			scope="request">
+		</action>
+		<!-- 告警系统批量删除 -->
+		<action path="/IGCRC0203_DELETE_SUB"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="DELETE"
+			name="IGCRC0204Form"
+			scope="request">
+			<forward name="DISP" path="/IGCRC0203_Disp.do" />
+		</action>
+		
+		<!-- 弹出事件查询页 -->
+		<action path="/IGCRC0203_SEARCH"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0205Action"
+			parameter="SEARCH" 
+			input="/crc/IGCRC0203.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC0205.jsp" />
+		</action>
+
+		<!-- 弹出事件查询页 选后赋值 -->
+		<action path="/IGCRC0203_RELEVANCE"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0203Action"
+			parameter="RELEVANCE" 
+			name="IGCRC0204Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC0203.jsp" />
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0204"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0204Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出对外服务Excel -->
+		<action path="/IGCRC3002"
+			type="com.deliverik.infogovernor.crc.action.IGCRC3002Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 告警/普通开始 -->
+		<!-- 告警事件普通事件分开查询 -->
+		<action path="/IGCRC0208"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0208Action"
+			parameter="SEARCH" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		<action path="/IGCRC0208_BACK"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0208Action"
+			parameter="SEARCH1" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		
+		<!-- 告警/普通结束-->
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0304"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0304Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+
+		<!-- 变更批量处理查询 -->
+		<action path="/IGCRC0401"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0401Action"
+			parameter="SEARCH"
+			name="IGCRC0401Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC0401C.jsp"/>
+		</action>
+		
+		<!-- 取得主流程信息 -->
+		<action path="/IGCRC0401_GetParInfo"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0401Action"
+			parameter="GETPARINFO"
+			name="IGCRC0401Form"
+			scope="request">
+		</action>
+		
+		<!-- 变更批量处理页面初始化 -->
+		<action path="/IGCRC0402_Disp"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0402Action"
+			parameter="DISP"
+			name="IGCRC0402Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0402.jsp"/>
+		</action>
+		
+		<!-- 变更批量处理 -->
+		<action path="/IGCRC0402"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0402Action"
+			parameter="DISPOSE"
+			name="IGCRC0402Form"
+			scope="request">
+			<forward name="DISP" path="/IGCRC0401.do"/>
+			<forward name="ASSIGN" path="/IGCRC0403_Disp.do"/>
+		</action>
+		
+		<!-- 变更批量分派页面初始化 -->
+		<action path="/IGCRC0403_Disp"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0403Action"
+			parameter="DISP"
+			name="IGCRC0403Form"
+			scope="request">
+			<forward name="DISP" path="/crc/IGCRC0403.jsp"/>
+		</action>
+		<!-- 工单查询导出action配置 -->
+		 <action path="/IGCRC01_Excel"
+            type="com.deliverik.infogovernor.crc.action.IGCRC01Action"
+            parameter="EXCEL"
+            name="IGWKM0101Form"
+            scope="request">
+        </action>
+		<!-- 变更批量分派操作 -->
+		<action path="/IGCRC0403"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0403Action"
+			parameter="ASSIGN"
+			name="IGCRC0403Form"
+			scope="request">
+			<forward name="DISP" path="/IGCRC0401.do"/>
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0404"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0404Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		<action path="/IGCRC0405"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0405Action"
+			parameter="GETATTACHMENT"
+			name="IGCRC0405Form"
+			scope="request"
+			validate="false">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0504"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0504Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0604"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0604Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0804"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0804Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0904"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0904Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC1004"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1004Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更Excel -->
+		<action path="/IGCRC0304"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0304Action"
+			parameter="EXCEL"
+			name="IGWKM0101Form"
+			scope="request">
+		</action>
+		
+		<!-- 文档信息查询 -->
+		<action path="/IGCRC1301"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1301Action"
+			parameter="SEARCH"
+			name="IGCRC1301Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1301.jsp"/>
+		</action>
+		
+		<!-- 文档存量统计 -->
+		<action path="/IGCRC1303"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1303Action"
+			parameter="DISP"
+			name="IGCRC1303Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1304.jsp"/>
+		</action>
+		<action path="/IGCRC1303_Disp"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1303Action"
+			parameter="SEARCH"
+			name="IGCRC1303Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1306.jsp"/>
+		</action>
+		
+		
+		<!-- 部门提交统计 -->
+		<action path="/IGCRC1304"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1304Action"
+			parameter="DISP"
+			name="IGCRC1304Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1305.jsp"/>
+		</action>
+		<action path="/IGCRC1304_DISP"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1304Action"
+			parameter="SEARCH" 
+			name="IGCRC1304Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1307.jsp" />
+		</action>
+		<!-- 导出文档存量统计 -->
+		<action path="/IGCRC1305"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1305Action"
+			parameter="EXCEL"
+			name="IGCRC1303Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出部门提交统计 -->
+		<action path="/IGCRC1306"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1306Action"
+			parameter="EXCEL"
+			name="IGCRC1304Form"
+			scope="request">
+		</action>
+		
+		
+		<action path="/IGCRC1307_INSERT"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1307Action"
+			parameter="INSERT"
+			name="IGCRC1304Form"
+			scope="request">
+		</action>
+		
+		<action path="/IGCRC1308_ROLETREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="ROLETREE" input="/sym/IGSYM0302.jsp" name="IGSYM0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/crc/IGCRC1308.jsp" />
+		</action>
+		
+		<!-- 导出人员工作统计 -->
+		<action path="/IGCRC2101_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2101Action"
+			parameter="EXCEL"
+			name="IGCRC2101Form"
+			scope="request">
+		</action>
+		
+		<!-- 导出变更总体统计 -->
+		<action path="/IGCRC2201_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2201Action"
+			parameter="EXCEL"
+			name="IGCRC2201Form"
+			scope="request">
+		</action>
+		
+		
+		<!-- 导出程序开发统计 -->
+		<action path="/IGCRC2301_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2301Action"
+			parameter="EXCEL"
+			name="IGCRC2301Form"
+			scope="request">
+		</action>
+		
+		<!-- 文档信息查询 -->
+		<action path="/IGCRC1301_OPEN"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1301Action"
+			parameter="OPENSEARCH"
+			name="IGCRC1301Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1302.jsp"/>
+		</action>
+		
+		<!-- 我的文档借阅信息查询 -->
+		<action path="/IGCRC1302"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1302Action"
+			parameter="SEARCH"
+			name="IGWKM0101Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC1303.jsp"/>
+		</action>
+		
+		<!-- 人员工作统计查询 -->
+		<action path="/IGCRC2101"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2101Action"
+			parameter="SEARCH"
+			name="IGCRC2101Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC2101.jsp"/>
+		</action>
+		
+		 <!-- 年度工作统计 -->
+        <!-- <action path="/IGCRC2001_DISP"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2002Action"
+            name="IGDBM1200Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="request">
+            <forward name="DISP"        path="/dbm/IGDBM1200.jsp"/>
+        </action> -->
+        <action path="/IGCRC2001"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2001Action"
+            input="/crc/IGCRC2001.jsp"
+            name="IGCRC2001Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2001.jsp"/>
+        </action>
+        <action path="/IGCRC2001_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2001Action"
+			parameter="EXCEL"
+			name="IGCRC2001Form"
+			scope="request">
+		</action>
+		
+         <!-- 事件平均解决时间统计 -->
+        <action path="/IGCRC2401_DISP"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2401Action"
+            input="/crc/IGCRC2401.jsp"
+            name="IGCRC2401Form"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2401.jsp"/>
+        </action>
+        <action path="/IGCRC2401"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2401Action"
+            input="/crc/IGCRC2401.jsp"
+            name="IGCRC2401Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2401.jsp"/>
+        </action>
+        <action path="/IGCRC2401_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2401Action"
+			parameter="EXCEL"
+			name="IGCRC2401Form"
+			scope="request">
+		</action>
+		
+		   <!-- 事件平均解决时间统计  zhangq新增功能  2014-12-24 -->
+        <action path="/IGCRC2402_DISP"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2402Action"
+            input="/crc/IGCRC2401.jsp"
+            name="IGCRC2401Form"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2402.jsp"/>
+        </action>
+        <action path="/IGCRC2402"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2402Action"
+            input="/crc/IGCRC2402.jsp"
+            name="IGCRC2401Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2402.jsp"/>
+        </action>
+        <action path="/IGCRC2402_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2402Action"
+			parameter="EXCEL"
+			name="IGCRC2401Form"
+			scope="request">
+		</action>
+		 <!-- 告警平均解决时间统计 -->
+        <action path="/IGCRC2403_DISP"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2403Action"
+            input="/crc/IGCRC2403.jsp"
+            name="IGCRC2401Form"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2403.jsp"/>
+        </action>
+        <action path="/IGCRC2403"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2403Action"
+            input="/crc/IGCRC2403.jsp"
+            name="IGCRC2401Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2403.jsp"/>
+        </action>
+        <action path="/IGCRC2403_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2403Action"
+			parameter="EXCEL"
+			name="IGCRC2401Form"
+			scope="request">
+		</action>
+		
+		
+		 <!-- 告警平均响应时间统计 -->
+        <action path="/IGCRC2404_DISP"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2404Action"
+            input="/crc/IGCRC2404.jsp"
+            name="IGCRC2401Form"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2404.jsp"/>
+        </action>
+        <action path="/IGCRC2404"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2404Action"
+            input="/crc/IGCRC2404.jsp"
+            name="IGCRC2401Form"
+            parameter="SEARCH"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/crc/IGCRC2404.jsp"/>
+        </action>
+        <action path="/IGCRC2404_Excel"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2404Action"
+			parameter="EXCEL"
+			name="IGCRC2401Form"
+			scope="request">
+		</action>
+		<action path="/IGCRC3000"
+            type="com.deliverik.infogovernor.crc.action.IGCRC3001Action"
+            parameter="INIT"
+            name="IGCRC3001Form"
+            scope="request">
+            <forward name="DISP"    path="/crc/IGCRC3000.jsp"/>
+        </action>
+        <action path="/IGCRC3001"
+			type="com.deliverik.infogovernor.crc.action.IGCRC3001Action"
+			parameter="DISP"
+			name="IGCRC3001Form"
+			scope="request">
+			<forward name="SUCCESS" path="/crc/IGCRC3001.jsp"/>
+		</action>
+		 <action path="/IGCRC3003"
+			type="com.deliverik.infogovernor.crc.action.IGCRC3003Action"
+			parameter="DISP"
+			name="IGCRC3003Form"
+			scope="request">
+			<forward name="SUCCESS" path="/crc/IGCRC3003.jsp"/>
+		</action>
+		<!-- 变更总体统计查询 -->
+		<action path="/IGCRC2201"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2201Action"
+            input="/crc/IGCRC2201.jsp"
+            name="IGCRC2201Form"
+            parameter="SEARCH"
+            scope="session">
+            <forward name="SUCCESS" path="/crc/IGCRC2201.jsp"/>
+        </action>
+		<!-- 变更总体统计详情 -->
+		<action path="/IGCRC2201_Disp"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2201Action"
+            input="/crc/IGCRC2201.jsp"
+            name="IGCRC2201Form"
+            parameter="DISP"
+            scope="request">
+            <forward name="DISP" path="/crc/IGCRC2201.jsp"/>
+        </action>
+        
+        <!-- 变更钻取 -->
+        <action path="/IGCRC2202"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2202Action"
+            input="/crc/IGCRC2201.jsp"
+            name="IGWKM0101Form"
+            parameter="DISP"
+            scope="session">
+            <forward name="SEARCH" path="/IGCRC2203.do"/>
+        </action>
+        <action path="/IGCRC2202_SEARCH"
+            type="com.deliverik.infogovernor.crc.action.IGCRC2202Action"
+            input="/crc/IGCRC2201.jsp"
+            name="IGWKM0101Form"
+            parameter="SEARCH"
+            scope="session">
+            <forward name="SEARCH" path="/IGCRC2203.do"/>
+        </action>
+		<action path="/IGCRC2203"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH"
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC2202.jsp" />
+		</action>
+		
+		
+		
+		<!-- 程序开发统计查询 -->
+		<action path="/IGCRC2301"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2301Action"
+			parameter="SEARCH"
+			name="IGCRC2301Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC2301.jsp"/>
+		</action>
+		
+		<!-- 程序开发钻取 -->
+		<action path="/IGCRC2302"
+			type="com.deliverik.infogovernor.crc.action.IGCRC2302Action"
+			parameter="SEARCH"
+			name="IGCRC2301Form"
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC2302.jsp"/>
+		</action>
+		<action path="/IGCRC1005_GetParent"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1005Action"
+			parameter="AJAX"
+			name="IGCRC1005Form"
+			scope="request"
+			validate="false">
+		</action>
+		
+		<!-- 变更批量分派操作 -->
+		<action path="/IGCRC0406_ASSIGN"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0406Action"
+			parameter="ASSIGN"
+			name="IGCRC0403Form"
+			scope="request">
+			<forward name="DISP" path="/IGRIS0205.do"/>
+		</action>
+		
+		<!-- 监测指派工作分派操作 -->
+		<action path="/IGCRC0406_ASSIGN_VEN"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0406Action"
+			parameter="ASSIGN"
+			name="IGCRC0403Form"
+			scope="request">
+			<forward name="DISP" path="/IGVEN0201.do"/>
+		</action>
+		
+		<!-- 变更流程查询 -->
+		<action path="/IGCRC1401_SEARCH"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1401Action"
+			input="/crc/IGCRC1401.jsp"
+			parameter="SEARCH"
+			name="IGCRC1401Form"
+			validate="false"
+			scope="session">
+			<set-property key="auth" value="true"/>
+			<forward name="DISP" path="/crc/IGCRC0401C.jsp"/>
+			<forward name="SUCCESS" path="/crc/IGCRC1401.jsp"/>
+		</action>
+		<!-- 返回查询 -->
+		<action path="/IGCRC1401_SEARCH_BACK"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1401Action"
+			input="/crc/IGCRC1401.jsp"
+			parameter="SEARCH1"
+			name="IGCRC1401Form"
+			validate="false"
+			scope="request">
+			<set-property key="auth" value="true"/>
+			<forward name="DISP" path="/crc/IGCRC0401C.jsp"/>
+			<forward name="SUCCESS" path="/crc/IGCRC1401.jsp"/>
+		</action>
+		<!-- excel导出 -->
+		<action path="/IGCRC1401_EXCEL"
+			type="com.deliverik.infogovernor.crc.action.IGCRC1401Action"
+			parameter="EXCEL"
+			name="IGCRC1401Form"
+			scope="request">
+		</action>
+	</action-mappings>
+</struts-config>

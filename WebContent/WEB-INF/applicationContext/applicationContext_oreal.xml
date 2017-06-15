@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<!-- DAO -->
+	<bean id="orealAlertDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.orl.model.dao.OrealAlertDAOImpl">
+	</bean>
+	<bean id="orealPMVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.orl.model.dao.OrealPMVWDAOImpl">
+	</bean>
+	
+	<!-- TaskBL -->
+	<bean id="orealAlertBL" class="com.deliverik.orl.bl.task.OrealAlertBLImpl">
+		<property name="orealAlertDAO">
+			<ref bean="orealAlertDAO"/>
+		</property>
+	</bean>
+	<bean id="orealPMVWBL" class="com.deliverik.orl.bl.task.OrealPMVWBLImpl">
+		<property name="orealPMVWDAO">
+			<ref bean="orealPMVWDAO"/>
+		</property>
+	</bean>
+	
+	<!-- CtrolBL -->
+</beans>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	 <form-beans>
+		<form-bean name="IGIOP0101Form" type="com.deliverik.infogovernor.soc.iop.form.IGIOP0101Form"/>
+		<form-bean name="IGIOP0102Form" type="com.deliverik.infogovernor.soc.iop.form.IGIOP0102Form"/>
+		<form-bean name="IGIOP0103Form" type="com.deliverik.infogovernor.soc.iop.form.IGIOP0103Form"/>
+		<form-bean name="IGIOP0201Form" type="com.deliverik.infogovernor.soc.iop.form.IGIOP0201Form"/>
+		<form-bean name="IGIOP0202Form" type="com.deliverik.infogovernor.soc.iop.form.IGIOP0202Form"/>
+	 </form-beans>
+	<action-mappings>
+	
+		
+		<!-- IP登记段画面初期显示  -->
+        <action path="/IGIOP0101_Disp"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0101Action"
+            parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0101.jsp"/>
+        </action>
+        
+        <!-- IP段登记处理  -->
+		<action path="/IGIOP0101"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0101Action"
+			parameter="INSERT" input="/iop/IGIOP0101.jsp" name="IGIOP0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102.do" />
+		</action>
+		<!-- IP段管理画面初期显示  -->
+        <action path="/IGIOP0102_Disp"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+            parameter="DISP"
+             name="IGIOP0102Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0102.jsp"/>
+        </action>
+        <action path="/IGIOP0102"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+            parameter="SEARCH"
+             name="IGIOP0102Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0102.jsp"/>
+        </action>
+        <action path="/IGIOP0102_Back"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+            parameter="SEARCH1"
+             name="IGIOP0102Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0102.jsp"/>
+        </action>
+        
+        <!-- IP段管理回收处理  -->
+		<action path="/IGIOP0102_Recovery"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="RECOVERY" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102_Back.do" />
+		</action>
+		
+        <!-- IP段管理 段内IP展示处理  -->
+		<action path="/IGIOP0102_View"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="VIEW" input="/iop/IGIOP0103.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/iop/IGIOP0103.jsp" />
+		</action>
+		<!-- IP段管理 IP分配预处理  -->
+		<action path="/IGIOP0102_Edit"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="EDIT" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/iop/IGIOP0104.jsp" />
+		</action>
+		<!-- IP段管理 IP分配处理  -->
+		<action path="/IGIOP0102_Allot"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="ALLOT" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102_Back.do" />
+		</action>
+		<action path="/IGIOP0102_Update"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="UPDATE" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102_Back.do" />
+		</action>
+		<!-- 生成子网IP -->
+		<action path="/IGIOP0102_Create"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="INSERT" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102_Back.do" />
+		</action>
+		<!-- 删除子网 -->
+		<action path="/IGIOP0102_Del"
+			type="com.deliverik.infogovernor.soc.iop.action.IGIOP0102Action"
+			parameter="DELETE" input="/iop/IGIOP0102.jsp" name="IGIOP0102Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGIOP0102_Back.do" />
+		</action>
+		
+		<!-- IP管理 显示  -->
+        <action path="/IGIOP0201_Disp"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0201Action"
+            name="IGIOP0201Form"
+            parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0201.jsp"/>
+        </action>
+        <action path="/IGIOP0201"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0201Action"
+            name="IGIOP0201Form"
+            parameter="SEARCH"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0201.jsp"/>
+        </action>
+        <!-- IP管理  IP回收 -->
+        <action path="/IGIOP0201_Recovery"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0201Action"
+            name="IGIOP0201Form"
+            parameter="RECOVERY"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGIOP0201_Back.do"/>
+        </action>
+        <action path="/IGIOP0201_Back"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0201Action"
+            name="IGIOP0201Form"
+            parameter="SEARCH1"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0201.jsp"/>
+        </action>
+        <!-- IP 管理 IP分配预处理 -->
+        <action path="/IGIOP0202_Edit"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0202Action"
+            name="IGIOP0202Form"
+            parameter="EDIT"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/iop/IGIOP0202.jsp"/>
+        </action>
+        <!-- IP管理  IP分配 -->
+        <action path="/IGIOP0202_Allot"
+            type="com.deliverik.infogovernor.soc.iop.action.IGIOP0202Action"
+            input="/iop/IGIOP0202.jsp"
+            name="IGIOP0202Form"
+            parameter="ALLOT"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGIOP0201_Back.do"/>
+        </action>
+	</action-mappings>
+	
+	<message-resources key="iopResources" parameter="com.deliverik.infogovernor.soc.iop.iopResources" />
+</struts-config>
+

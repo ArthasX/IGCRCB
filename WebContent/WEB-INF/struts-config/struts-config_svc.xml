@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<!-- 所有记录查询  -->
+		<form-bean name="IGSVC0100Form" type="com.deliverik.infogovernor.svc.form.IGSVC0100Form" />
+		<form-bean name="IGSVC0604Form" type="com.deliverik.infogovernor.svc.form.IGSVC0604Form" />
+		<!-- 统计汇总  -->
+		<form-bean name="IGSVC0601Form" type="com.deliverik.infogovernor.svc.form.IGSVC0601Form" />
+		<!-- 业务运行报告  -->
+		<form-bean name="IGSVC0602Form" type="com.deliverik.infogovernor.svc.form.IGSVC0602Form" />
+		<!-- 故障类型统计  -->
+		<form-bean name="IGSVC0635Form" type="com.deliverik.infogovernor.svc.form.IGSVC0635Form" />
+		<!-- 部门服务统计  -->
+		<form-bean name="IGSVC0636Form" type="com.deliverik.infogovernor.svc.form.IGSVC0636Form" />
+		<!-- 部门服务top5统计  -->
+		<form-bean name="IGSVC0637Form" type="com.deliverik.infogovernor.svc.form.IGSVC0637Form" />
+		<!-- 故障类型平均解决时间  -->
+		<form-bean name="IGSVC0638Form" type="com.deliverik.infogovernor.svc.form.IGSVC0638Form" />
+		<!-- 人员工作量统计Form -->
+		<form-bean name="IGSVC0639Form" type="com.deliverik.infogovernor.svc.form.IGSVC0639Form" />
+		<form-bean name="IGSVC0640Form" type="com.deliverik.infogovernor.svc.form.IGSVC0640Form" />
+		<!-- 流程数量统计Form -->
+		<form-bean name="IGSVC0642Form" type="com.deliverik.infogovernor.svc.form.IGSVC0642Form" />
+	</form-beans>
+
+	<action-mappings>
+		<!-- 跳转到所有记录查询页面 -->
+		<action path="/IGSVC0100_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0100Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0100.jsp" />
+			<forward name="INCIDENT" path="/svc/IGSVC0001.jsp" />
+			<forward name="PROBLEM" path="/svc/IGSVC0002.jsp" />
+		</action>
+		<!-- 所有记录查询 -->
+		<action path="/IGSVC0100"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0100Action"
+			parameter="SEARCH" input="/svc/IGSVC0100.jsp" name="IGSVC0100Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0100.jsp" />
+			<forward name="INCIDENT" path="/svc/IGSVC0001.jsp" />
+			<forward name="PROBLEM" path="/svc/IGSVC0002.jsp" />
+		</action>
+		<!-- 我的工作页面 -->
+		<action path="/IGSVC0101_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0101Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0101.jsp" />
+		</action>
+		<!-- 相关工作页面 -->
+		<action path="/IGSVC0102_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0102Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0102.jsp" />
+		</action>
+		<!-- 中止工作页面 -->
+		<action path="/IGSVC0111_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0111Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0113.jsp" />
+		</action>
+		<!-- 我的发起页面 -->
+		<action path="/IGSVC0103_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0103Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0103.jsp" />
+		</action>
+		<!-- 相关发起页面 -->
+		<action path="/IGSVC0104_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0104Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0104.jsp" />
+		</action>
+		<!-- 工作监督页面 -->
+		<action path="/IGSVC0105_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0105Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0105.jsp" />
+		</action>
+
+
+		<action path="/IGSVC0107_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0106Action"
+			parameter="SEARCH" input="/svc/IGSVC0107.jsp" name="IGSVC0100Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0107.jsp" />
+		</action>
+		<!-- 工作查询 -->
+		<action path="/IGSVC0107"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0106Action"
+			parameter="SEARCH" input="/svc/IGSVC0107.jsp" name="IGSVC0100Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0107.jsp" />
+		</action>
+		<!-- 跳转到工作查询页面 -->
+		<action path="/IGSVC0106_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0106Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0106.jsp" />
+		</action>
+		<!-- 工作查询 -->
+		<action path="/IGSVC0106"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0106Action"
+			parameter="SEARCH" input="/svc/IGSVC0106.jsp" name="IGSVC0100Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0106.jsp" />
+		</action>
+		<!-- 跳转返回 -->
+		<action path="/IGSVC0110_Back"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0110Action"
+			parameter="SEARCH1" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0110.jsp" />
+		</action>
+		<!-- 跳转到历史工作页面 -->
+		<action path="/IGSVC0110_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0110Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0110.jsp" />
+		</action>
+		<!-- 历史工作查询 -->
+		<action path="/IGSVC0110"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0110Action"
+			parameter="SEARCH" input="/svc/IGSVC0110.jsp" name="IGSVC0100Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/svc/IGSVC0110.jsp" />
+		</action>
+		
+		<!-- 附件下载 -->
+		<action path="/downloadSvcFile" type="com.deliverik.infogovernor.action.DownloadAction"
+			scope="request">
+			<forward name="DISP" path="/svc/IGSVC0511.jsp" />
+		</action>
+		<!-- 统计汇总 -->
+		<action path="/IGSVC0601"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0601Action" 
+			parameter="DISP" name="IGSVC0601Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0601.jsp" />
+		</action>
+		<!-- 业务运行报告 -->
+		<action path="/IGSVC0602"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0602.jsp" />
+		</action>
+		<!-- 设备运行报告 -->
+		<action path="/IGSVC0606"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0612.jsp" />
+		</action>
+	
+		<!-- 业务运行报告 -->
+		<action path="/IGSVC0603_Pop"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0625.jsp" />
+		</action>
+		<!-- 业务运行报告查询 -->
+		<action path="/IGSVC0625"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			input="/IGSVC0603_Pop.do"
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0625.jsp" redirect="false" />
+			<forward name="REPORT" path="/svc/IGSVC0621.jsp" redirect="false" />
+		</action>
+		<!-- 业务运行报告查看 -->
+		<action path="/IGSVC0625_Read"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			input="/IGSVC0603_Pop.do"
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0626.jsp" redirect="false" />
+			<forward name="PERSON" path="/svc/IGSVC0632.jsp" redirect="false" />
+		</action>
+		<action path="/IGSVC0625_Read1"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			input="/IGSVC0603_Pop.do"
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0627.jsp" redirect="false" />
+		</action>
+		<action path="/IGSVC0625_Read2"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			input="/IGSVC0603_Pop.do"
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0628.jsp" redirect="false" />
+		</action>
+		
+		<!-- 设备运行报告 -->
+		<action path="/IGSVC0606_Pop"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0629.jsp" />
+		</action>
+		<!-- 设备运行报告查询 -->
+		<action path="/IGSVC0629"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			input="/IGSVC0606_Pop.do"
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0629.jsp" redirect="false" />
+			<forward name="REPORT1" path="/svc/IGSVC0622.jsp" redirect="false" />
+		</action>
+		<!-- 人员统计报告 -->
+		<action path="/IGSVC0608_Pop"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0630.jsp" />
+		</action>
+		<!-- 人员统计报告查询 -->
+		<action path="/IGSVC0630"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			input="/IGSVC0608_Pop.do"
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0630.jsp" redirect="false" />
+			<forward name="REPORT2" path="/svc/IGSVC0623.jsp" redirect="false" />
+			
+		</action>
+		<!-- 年度工作报告-->
+		<action path="/IGSVC0610_Pop"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0631.jsp" />
+		</action>
+		<action path="/IGSVC0631"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0611Action" 
+			input="/IGSVC0610_Pop.do"
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0631.jsp" redirect="false" />
+			<forward name="REPORT4" path="/svc/IGSVC0624.jsp" redirect="false" />
+		</action>
+		
+		
+		
+		
+		
+		
+		
+		<!-- 业务运行报告查询 -->
+		<action path="/IGSVC0603"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0602.jsp" redirect="false" />
+			<forward name="REPORT" path="/svc/IGSVC0621.jsp" redirect="false" />
+		</action>
+		
+		
+		<!-- 设备运行报告查询 -->
+		<action path="/IGSVC0603_1"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0612.jsp" redirect="false" />
+			<forward name="REPORT1" path="/svc/IGSVC0622.jsp" redirect="false" />
+		</action>
+		<!-- 业务运行报告查看 -->
+		<action path="/IGSVC0604"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0603.jsp" redirect="false" />
+			<forward name="PERSON" path="/svc/IGSVC0613.jsp" redirect="false" />
+		</action>
+		<action path="/IGSVC0604_1"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0604.jsp" redirect="false" />
+		</action>
+		<action path="/IGSVC0604_2"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0604Action" 
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0605.jsp" redirect="false" />
+		</action>
+		<!-- 业务运行报告查看详细 -->
+		<action path="/IGSVC0605"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0605Action" input="/svc/IGSVC0606.jsp"
+			parameter="DISP" name="IGSVC0604Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="INCIDENT" path="/svc/IGSVC0606.jsp" />
+			<forward name="PROBLEM" path="/svc/IGSVC0607.jsp" />
+			
+			<forward name="WA" path="/svc/IGSVC0614.jsp" />
+			<forward name="WB" path="/svc/IGSVC0615.jsp" />
+			<forward name="WS" path="/svc/IGSVC0633.jsp" />
+			
+			<forward name="CHANGE" path="/svc/IGSVC0609.jsp" />
+			<forward name="DEPLOYMENT" path="/svc/IGSVC0610.jsp" />
+			<forward name="SERVICE" path="/svc/IGSVC0611.jsp" />
+		</action>
+		
+		<!-- 人员统计报告 -->
+		<action path="/IGSVC0608"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0603Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0608.jsp" />
+		</action>
+		<!-- 人员统计报告查询 -->
+		<action path="/IGSVC0609"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0602Action" 
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0608.jsp" redirect="false" />
+			<forward name="REPORT2" path="/svc/IGSVC0623.jsp" redirect="false" />
+			
+		</action>
+		<!-- 年度工作报告-->
+		<action path="/IGSVC0610"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0611Action" 
+			parameter="DISP" name="IGSVC0602Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0620.jsp" />
+		</action>
+		<action path="/IGSVC0611"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0611Action" 
+			parameter="SEARCH" name="IGSVC0602Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0620.jsp" redirect="false" />
+			<forward name="REPORT4" path="/svc/IGSVC0624.jsp" redirect="false" />
+		</action>
+		
+		<action path="/IGSVC0601_STATISTICS"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0601Action" input="/svc/IGSVC0601.jsp"
+			parameter="STATISTICS" name="IGSVC0601Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0601.jsp" />
+		</action>
+		
+		<action path="/IGSVC0635_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0635Action"
+			input="/svc/IGSVC0635.jsp"
+			parameter="DISP"
+			name="IGSVC0635Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0635.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0635" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0635Action"
+			input="/svc/IGSVC0635.jsp"
+			parameter="SEARCH"
+			name="IGSVC0635Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0635.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0636_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0636Action"
+			input="/svc/IGSVC0636.jsp"
+			parameter="DISP"
+			name="IGSVC0636Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0636.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0636" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0636Action"
+			input="/svc/IGSVC0636.jsp"
+			parameter="SEARCH"
+			name="IGSVC0636Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0636.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0637_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0637Action"
+			input="/svc/IGSVC0637.jsp"
+			parameter="DISP"
+			name="IGSVC0637Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0637.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0637" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0637Action"
+			input="/svc/IGSVC0637.jsp"
+			parameter="SEARCH"
+			name="IGSVC0637Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0637.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0638_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0638Action"
+			input="/svc/IGSVC0638.jsp"
+			parameter="DISP"
+			name="IGSVC0638Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0638.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0638" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0638Action"
+			input="/svc/IGSVC0638.jsp"
+			parameter="SEARCH"
+			name="IGSVC0638Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0638.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0640_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0640Action"
+			input="/svc/IGSVC0640.jsp"
+			parameter="DISP"
+			name="IGSVC0640Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0640.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0640" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0640Action"
+			input="/svc/IGSVC0640.jsp"
+			parameter="SEARCH"
+			name="IGSVC0640Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0640.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0641_Disp" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0640Action"
+			input="/svc/IGSVC0640.jsp"
+			parameter="DISP"
+			name="IGSVC0640Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0641.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0641" 
+			type="com.deliverik.infogovernor.svc.action.IGSVC0640Action"
+			input="/svc/IGSVC0640.jsp"
+			parameter="SEARCH"
+			name="IGSVC0640Form"
+			scope="request"
+			validate="false">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSVC0641.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0642_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0642Action"
+			input="/svc/IGSVC0642.jsp"
+			parameter="DISP"
+			name="IGSVC0642Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0642.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0642"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0642Action"
+			input="/svc/IGSVC0642.jsp"
+			parameter="SEARCH"
+			name="IGSVC0642Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/svc/IGSVC0642.jsp"/>
+		</action>
+		
+		<action path="/IGSVC0642_Export"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0642Action"
+			input="/svc/IGSVC0642.jsp"
+			parameter="EXPORT"
+			name="IGSVC0642Form"
+			scope="request"
+			validate="false">
+		</action>
+		
+		<action path="/IGSVC0109_Disp"
+			type="com.deliverik.infogovernor.svc.action.IGSVC0109Action" 
+			validate="false" 
+			input="/svc/IGSVC0109.jsp"
+			scope="request">
+			<forward name="DISP" path="/svc/IGSVC0109.jsp" />
+		</action>	
+	</action-mappings>
+	<message-resources key="svcResources" parameter="com.deliverik.infogovernor.svc.svcResources" />
+</struts-config>

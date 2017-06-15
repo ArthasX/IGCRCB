@@ -1,0 +1,1288 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	 <form-beans>
+	 	<form-bean name="IGAIM0150Form" type="com.deliverik.infogovernor.aim.form.IGAIM0150Form"/>
+	 </form-beans>
+	<action-mappings>
+	 <!-- 设备查询画面初期显示  -->
+        <action path="/IGAIM0101_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+            parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/aim/IGAIM0101.jsp"/>
+        </action>
+        
+        <action path="/IGAIM0214_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+            parameter="DISP"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/aim/IGAIM0214.jsp"/>
+        </action>
+        
+        <!-- 设备查询画面再显示 -->
+        <action path="/IGAIM0101_ReDisp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+            input="/aim/IGAIM0101.jsp"
+            name="IGCIM0101Form"
+            parameter="REDISP"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"        path="/aim/IGAIM0101.jsp"/>
+        </action>
+        
+         
+		<!-- 拓扑关系展示  -->
+		<action path="/IGAIM0100_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0100Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0100.jsp" />
+		</action>
+        <!-- 设备查询处理  -->
+		<action path="/IGAIM0101"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+			parameter="SEARCH" input="/aim/IGAIM0101.jsp" name="IGCIM0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0101.jsp" />
+		</action>
+		
+		<action path="/IGAIM0214"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+			parameter="SEARCH" input="/aim/IGAIM0101.jsp" name="IGCIM0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0214.jsp" />
+		</action>
+		
+		 <!-- 设备登记画面初期显示 -->
+        <action path="/IGAIM0102_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0102Action"
+            input="/aim/IGAIM0102.jsp"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP" path="/aim/IGAIM0102.jsp"/>
+        </action>
+        
+		 <!-- 设备登记/变更处理 -->
+        <action path="/IGAIM0102"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0102Action"
+            input="/aim/IGAIM0102.jsp"
+            parameter="INSERT"
+            name="IGCIM0102Form"
+            validate="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/aim/IGAIM0103.jsp"/>
+            <forward name="DETAIL"      path="/IGAIM0101_Back.do"/>
+        </action>
+
+ 		<!-- 设备登记成功完了后确认画面处理 -->
+		<action path="/IGAIM0103"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0103Action" input="/aim/IGAIM0103.jsp"
+			parameter="DISP" name="IGCIM0103Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0102_Disp.do" />
+			<forward name="CONF" path="/IGAIM0104_Disp.do" />
+		</action>
+		
+		<!-- 设备删除处理  -->
+		<action path="/IGAIM0101_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0101Action"
+			parameter="DELETE" input="/aim/IGAIM0101.jsp" name="IGCIM0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0101_Back.do" />
+		</action>
+		
+		<!-- 设备修改处理显示 (修改机构) -->
+        <action path="/IGAIM0108_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0108Action"
+            parameter="DISP"
+            input="/aim/IGAIM0108.jsp"
+            name="IGCIM0108Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0108.jsp"/>
+        </action>
+         <!-- 设备修改处理 (修改机构) -->
+        <action path="/IGAIM0108"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0108Action"
+            parameter="UPDATE"
+            input="/aim/IGAIM0108.jsp"
+            name="IGCIM0108Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0108.jsp"/>
+        </action>
+        
+        <!-- 配置源数据页面初始化 -->
+        <action path="/IGAIM0110_Disp"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0110Action"
+        	name="IGCIM0110Form"
+        	parameter="DISP"
+        	input="/aim/IGAIM0110.jsp"
+        	validate="false"
+        	scope="session">
+        	<forward name="DISP" path="/aim/IGAIM0110.jsp"/>
+        </action>
+        
+        <!-- 配置源数据指定版本信息显示 -->
+        <action path="/IGAIM0110"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0110Action"
+        	name="IGCIM0110Form"
+        	parameter="HISTORY"
+        	input="/aim/IGAIM0110.jsp"
+        	validate="false"
+        	scope="session">
+        	<forward name="DISP" path="/aim/IGAIM0110.jsp"/>
+        </action>
+        
+        <!-- 配置源数据比较版本操作 -->
+        <action path="/IGAIM0111_Disp"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0111Action"
+        	name="IGCIM0111Form"
+        	parameter="DISP"
+        	input="/aim/IGAIM0111.jsp"
+        	validate="false"
+        	scope="request">
+        	<forward name="DISP" path="/aim/IGAIM0111.jsp"/>
+        </action>
+        
+        <!-- 设备配置信息编辑画面初期化处理 -->
+		<action path="/IGAIM0104_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0104Action" input="/aim/IGAIM0104.jsp"
+			parameter="DISP" name="IGCIM0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0104.jsp" />
+		</action>
+		
+		<!-- 设备配置信息编辑处理 -->
+		<action path="/IGAIM0104"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0104Action" input="/aim/IGAIM0104.jsp"
+			parameter="EDIT" name="IGCIM0104Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0104_Disp.do" />
+			<forward name="BACK1" path="/IGAIM0101_Back.do" />
+			<forward name="BACK2" path="/IGAIM0102_Disp.do" />
+		</action>
+		
+		<!-- 设备关系管理画面初期化处理 -->
+		<action path="/IGAIM0106_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0106Action" input="/aim/IGAIM0106.jsp"
+			parameter="DISP" name="IGCIM0106Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0106.jsp" />
+		</action>
+		
+		<!-- 设备关系管理处理 -->
+		<action path="/IGAIM0106"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0106Action" input="/aim/IGAIM0106.jsp"
+			parameter="EDIT" name="IGCIM0106Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0101_Back.do" />
+			<forward name="ADD" path="/IGAIM0107_Disp.do" />
+		</action>
+
+		<!-- 返回资产关系管理画面（资产关系管理画面）  -->
+		<action path="/IGAIM0106_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0106Action"
+			parameter="REDISP" input="/aim/IGAIM0106.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0106.jsp" />
+		</action>
+
+		<!-- 设备关系管理编辑画面初期化(增加) -->
+		<action path="/IGAIM0107_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0107Action" input="/aim/IGAIM0107.jsp"
+			parameter="DISP" name="IGCIM0107Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0107.jsp" />
+		</action>
+
+		<!-- 设备关系管理编辑画面初期化(变更) -->
+		<action path="/IGAIM0107_Edit_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0107Action" input="/aim/IGAIM0107.jsp"
+			parameter="EDIT_DISP" name="IGCIM0107Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0107.jsp" />
+		</action>
+
+		<!-- 设备关系编辑处理 -->
+		<action path="/IGAIM0107"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0107Action" input="/aim/IGAIM0107.jsp"
+			parameter="EDIT" name="IGCIM0107Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0106_Back.do" />
+		</action>
+
+		<!-- 设备关系删除处理  -->
+		<action path="/IGAIM0106_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0106Action"
+			parameter="DELETE" input="/aim/IGAIM0106.jsp" name="IGCIM0106Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0106_Disp.do" />
+		</action>
+	
+<!-- ************************************审计开始************************************-->
+		
+		<!-- 控制台待处理任务列表显示-->
+		<action path="/IGAIM0301_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0301Action" input="/aim/IGAIM0301.jsp"
+			parameter="DISP" name="IGCIM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0301.jsp" />
+		</action>
+		
+		<!-- 控制台任务查看-->
+		<action path="/IGAIM0303_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0303Action" input="/aim/IGAIM0303.jsp"
+			parameter="DISP" name="IGCIM0303Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0303.jsp" />
+		</action>
+		
+        <!-- 控制台导入处理-->
+		<action path="/IGAIM0301_Import"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0301Action" input="/IGAIM0301_Disp.do"
+			parameter="IMPORT" name="IGCIM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0301_Disp.do" />
+		</action>
+		
+        <!-- 控制台对比处理-->
+		<action path="/IGAIM0301_Compare"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0301Action" input="/IGAIM0301_Disp.do"
+			parameter="COMPARE" name="IGCIM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0301_Disp.do" />
+		</action>
+		
+        <!-- 待处理任务删除处理-->
+		<action path="/IGAIM0301_Delete"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0301Action" input="/IGAIM0301_Disp.do"
+			parameter="DELETE" name="IGCIM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0301_Disp.do" />
+		</action>
+		
+		<!-- 审计对比结果查询初始页-->
+		<action path="/IGAIM0302_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="DISP" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0302.jsp" />
+		</action>
+
+		<!-- 审计对比结果查询-->
+		<action path="/IGAIM0302"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="SEARCH" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0302.jsp" />
+		</action>
+
+		<!-- 审计对比结果保存-->
+		<action path="/IGAIM0302_Save"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="INSERT" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0302.do" />
+		</action>
+
+		<!-- 资产更新-->
+		<action path="/IGAIM0302_Update"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="UPDATE" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0302.do" />
+		</action>
+		
+		<!-- 审计结果详细信息查看-->
+		<action path="/IGAIM0302_Show"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="SHOW" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0312.jsp" />
+		</action>
+		
+		<!-- 审计对比结果导出-->
+		<action path="/IGAIM0302_ExportOne"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="EXPORTONE" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0313.jsp" />
+		</action>
+
+		<!-- 审计对比结果导出-->
+		<action path="/IGAIM0302_Export"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0302Action"
+			parameter="EXPORT" input="/aim/IGAIM0302.jsp" name="IGCIM0302Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0304.jsp" />
+		</action>
+		<!-- 审计任务登记画面初期显示-->
+		<action path="/IGAIM0305_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0305Action"
+			parameter="DISP" input="/aim/IGAIM0305.jsp" name="IGCIM0305Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0305.jsp" />
+		</action>
+		<!-- 审计任务登记处理-->
+		<action path="/IGAIM0305"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0305Action"
+			parameter="INSERT" input="/aim/IGAIM0305.jsp" name="IGCIM0305Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0306.jsp" />
+			<forward name="DETAIL" path="/IGAIM0307.do" />
+		</action>
+		<!-- 审计任务登记处理成功后画面跳转-->
+		<action path="/IGAIM0306"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0306Action"
+			parameter="DISP" input="/aim/IGAIM0306.jsp" name="IGCIM0306Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="CONF" path="/IGAIM0305_Disp.do" />
+			<forward name="BACK" path="/IGAIM0307.do"/>
+		</action>
+		<!-- 审计任务信息查询画面初期显示  -->
+		<action path="/IGAIM0307_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0307Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0307.jsp" />
+		</action>
+		<!-- 审计任务信息查询处理  -->
+		<action path="/IGAIM0307"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0307Action"
+			parameter="SEARCH" input="/aim/IGAIM0307.jsp" name="IGCIM0307Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0307.jsp" />
+		</action>
+		<!-- 审计任务变更初始化 -->
+		<action path="/IGAIM0305_Edit_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0305Action" input="/aim/IGAIM0305.jsp"
+			parameter="EDIT" name="IGCIM0305Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0305.jsp" />
+		</action>
+		<!-- CI查询画面初期显示  -->
+		<action path="/IGAIM0308_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0308Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0308.jsp" />
+		</action>
+		<!--设备配置信息查询处理  -->
+		<action path="/IGAIM0308"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0308Action"
+			parameter="SEARCH" input="/aim/IGAIM0308.jsp" name="IGCIM0308Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0308.jsp" />
+		</action>
+		<!-- 设备配置信息查看画面初期化处理 -->
+		<action path="/IGAIM0309_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0309Action" input="/aim/IGAIM0309.jsp"
+			parameter="DISP" name="IGCIM0309Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0309.jsp" />
+		</action>
+		<!-- 审计任务（弹出页）初期化处理 -->
+		<action path="/IGAIM0310_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0310Action" input="/aim/IGAIM0310.jsp"
+			parameter="DISP" name="IGCIM0307Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0311.jsp" />
+		</action>
+		<!-- 审计任务（弹出页）查询处理 -->
+		<action path="/IGAIM0310"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0310Action" input="/aim/IGAIM0310.jsp"
+			parameter="SEARCH" name="IGCIM0307Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0311.jsp" />
+		</action>
+		<!-- asm20 to CIM02 start-->
+		<!-- 控制台待处理任务列表显示-->
+		<action path="/IGAIM0201_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0201Action" input="/aim/IGAIM0201.jsp"
+			parameter="DISP" name="IGCIM0201Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0201.jsp" />
+		</action>
+		
+		<!-- 控制台任务查看-->
+		<action path="/IGAIM0210_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0210Action" input="/aim/IGAIM0210.jsp"
+			parameter="DISP" name="IGCIM0210Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0210.jsp" />
+		</action>
+		
+        <!-- 控制台导入处理-->
+		<action path="/IGAIM0201_Import"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0201Action" input="/IGAIM0201_Disp.do"
+			parameter="IMPORT" name="IGCIM0201Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0201_Disp.do" />
+		</action>
+		
+        <!-- 待处理任务删除处理-->
+		<action path="/IGAIM0201_Delete"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0201Action" input="/IGAIM0201_Disp.do"
+			parameter="DELETE" name="IGCIM0201Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0201_Disp.do" />
+		</action>
+
+		<!-- 资产预定义登记画面初期显示 -->
+		<action path="/IGAIM0202_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0202Action" input="/aim/IGAIM0202.jsp"
+			parameter="DISP" validate="false" scope="request" name="IGCIM0202Form" >
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0202.jsp" />
+		</action>
+		<!-- 资产预定义信息 添加-->
+		<action path="/IGAIM0202"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0202Action" input="/aim/IGAIM0202.jsp"
+			parameter="INSERT" name="IGCIM0202Form" validate="true" cancellable="true"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0209.jsp" />
+			<forward name="DETAIL" path="/IGAIM0203.do" />
+		</action>
+
+		<!-- 设备登记成功完了后确认画面处理 -->
+		<action path="/IGAIM0209"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0209Action" input="/aim/IGAIM0209.jsp"
+			parameter="DISP" name="IGCIM0209Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0202_Disp.do" />
+		</action>
+		<!-- 资产预定义查询画面初期显示  -->
+		<action path="/IGAIM0203_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0203Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0203.jsp" />
+		</action>
+		<!-- 资产预定义删除处理  -->
+		<action path="/IGAIM0203_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0203Action"
+			parameter="DELETE" input="/aim/IGAIM0203.jsp" name="IGCIM0203Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0203.do" />
+		</action>
+
+		<!-- 资产预定义查询处理  -->
+		<action path="/IGAIM0203"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0203Action"
+			parameter="SEARCH" input="/aim/IGAIM0203.jsp" name="IGCIM0203Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0203.jsp" />
+		</action>
+		
+		<!-- 返回资产预定义查询画面  -->
+		<action path="/IGAIM0203_back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0203Action"
+			parameter="SEARCH1" input="/aim/IGAIM0203.jsp" name="IGCIM0203Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0203.jsp" />
+		</action>
+		
+		<!-- 资产预定义变更初始化 -->
+		<action path="/IGAIM0202_Edit_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0202Action" input="/aim/IGAIM0203.jsp"
+			parameter="EDIT" name="IGCIM0202Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0202.jsp" />
+		</action>
+		<!-- 显示资产预定义详细信息-->
+		<action path="/IGAIM0205_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0205Action" input="/aim/IGAIM0203.jsp"
+			parameter="DISP" name="IGCIM0205Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0205.jsp" />
+		</action>
+		
+		<!-- 手动域快照-->
+		<action path="/IGAIM0205_Snapshot"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0203Action" input="/aim/IGAIM0203.jsp"
+			parameter="SNAPSHOT" name="IGCIM0203Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+		<forward name="DISP" path="/IGAIM0205.do" />
+		</action>
+		<!-- 详细信息界面返回 -->
+		<action path="/IGAIM0205"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0205Action" input="/aim/IGAIM0205.jsp"
+			parameter="BACK" name="IGCIM0205Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0203_back.do" />
+		</action>
+		<!-- 资产预定义信息历史记录(管理)画面初期化处理 -->
+		<action path="/IGAIM0212_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0212Action" input="/aim/IGAIM0212.jsp"
+			parameter="DISP" name="IGCIM0212Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0212.jsp" />
+		</action>
+		<!-- 资产明细查询 -->
+		<action path="/IGAIM0204_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0204Action"
+			parameter="SEARCH" input="/aim/IGAIM0204.jsp" name="IGCIM0204Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0204.jsp" />
+		</action>
+		<!-- Domain添加资产-->
+		<action path="/IGAIM0204"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0204Action"
+			parameter="GRANT" input="/IGAIM0204_Disp.do" name="IGCIM0204Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0204_Disp.do" />
+		</action>
+		<!-- 导入对象登记画面初期显示 -->
+		<action path="/IGAIM0206_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0206Action" input="/aim/IGAIM0206.jsp"
+			parameter="DISP" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0206.jsp" />
+		</action>
+		<!-- 导入对象信息 登记处理-->
+		<action path="/IGAIM0206"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0206Action" input="/aim/IGAIM0206.jsp"
+			parameter="INSERT" name="IGCIM0206Form" validate="true" cancellable="true"
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0208.jsp" />
+		</action>
+		<!-- 导入对象信息登记成功完了后确认画面处理 -->
+		<action path="/IGAIM0208"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0208Action" input="/aim/IGAIM0208.jsp"
+			parameter="DISP" name="IGCIM0208Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="CONF" path="/IGAIM0206_Disp.do" />
+			<forward name="BACK" path="/IGAIM0207.do"/>
+		</action>
+		
+		<!-- 导入对象信息查询画面初期显示  -->
+		<action path="/IGAIM0207_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0207Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0207.jsp" />
+		</action>
+		
+		<!-- 返回导入对象信息查询画面  -->
+		<action path="/IGAIM0207_back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0207Action"
+			parameter="SEARCH1" input="/aim/IGAIM0207.jsp" name="IGCIM0207Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0207.jsp" />
+		</action>
+		
+		<!-- 导入对象信息查询处理  -->
+		<action path="/IGAIM0207"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0207Action"
+			parameter="SEARCH" input="/aim/IGAIM0207.jsp" name="IGCIM0207Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0207.jsp" />
+		</action>
+		
+		<!-- 导入对象信息删除处理  -->
+		<action path="/IGAIM0207_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0207Action"
+			parameter="DELETE" input="/aim/IGAIM0207.jsp" name="IGCIM0207Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0207.do" />
+		</action>
+		
+		<!-- 导入对象状态改变 -->
+		<action path="/ChangeStatus"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0207Action"
+			parameter="CHANGE_STATUS" input="/IGAIM0207.do" name="IGCIM0207Form">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0207.do" />
+		</action>
+		
+		<!-- 导入对象信息历史记录(管理)画面初期化处理 -->
+		<action path="/IGAIM0211_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0211Action" input="/aim/IGAIM0211.jsp"
+			parameter="DISP" name="IGCIM0211Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0211.jsp" />
+		</action>
+		
+		<!-- 导入对象信息历史记录(管理)画面初期化处理 -->
+		<action path="/IGAIM0213_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0213Action" input="/aim/IGAIM0213.jsp"
+			parameter="DISP" name="IGCIM0213Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0213.jsp" />
+		</action>
+		<!-- 导入对象信息历史记录(管理)画面处理 -->
+		<action path="/IGAIM0213"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0213Action" input="/aim/IGAIM0213.jsp"
+			parameter="SEARCH" name="IGCIM0213Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0213.jsp" />
+		</action>
+		<!-- asm20 to CIM02 end -->
+		
+		<!--设备资产 start-->
+		<!-- 应用(管理)查询画面初期显示  -->
+		<action path="/IGAIM0121_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0121.jsp" />
+		</action>
+		
+		<action path="/IGAIM0215_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0215.jsp" />
+		</action>
+
+		<!-- 应用(管理)查询画面再显示 -->
+		<action path="/IGAIM0121_ReDisp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action" input="/aim/IGAIM0121.jsp"
+			name="IGCIM0121Form" parameter="REDISP" validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0121.jsp" />
+		</action>
+
+		<!-- 应用(管理)查询处理  -->
+		<action path="/IGAIM0121"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="SEARCH" input="/aim/IGAIM0121.jsp" name="IGCIM0121Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0121.jsp" />
+		</action>
+		
+		<action path="/IGAIM0215"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="SEARCH" input="/aim/IGAIM0121.jsp" name="IGCIM0121Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0215.jsp" />
+		</action>
+		<!-- 应用(查询)查询画面初期显示  -->
+		<action path="/IGAIM0130_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0130.jsp" />
+		</action>
+
+		<!-- 应用(查询)查询画面再显示 -->
+		<action path="/IGAIM0130_ReDisp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action" input="/aim/IGAIM0130.jsp"
+			name="IGCIM0121Form" parameter="REDISP" validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0130.jsp" />
+		</action>
+
+		<!-- 应用(查询)查询处理  -->
+		<action path="/IGAIM0130"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="SEARCH" input="/aim/IGAIM0130.jsp" name="IGCIM0121Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0130.jsp" />
+		</action>
+
+		<!-- 应用删除处理  -->
+		<action path="/IGAIM0121_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="DELETE" input="/aim/IGAIM0121.jsp" name="IGCIM0121Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0121.do" />
+		</action>
+
+		<!-- 返回应用查询画面  -->
+		<action path="/IGAIM0121_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="SEARCH1" input="/aim/IGAIM0121.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0121.jsp" />
+		</action>
+
+		<!-- 返回应用查询画面  -->
+		<action path="/IGAIM0130_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0121Action"
+			parameter="SEARCH1" name="IGCIM0121Form" input="/aim/IGAIM0130.jsp"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0130.jsp" />
+		</action>
+
+
+		<!-- 应用登记画面初期显示 -->
+		<action path="/IGAIM0122_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0122Action" input="/aim/IGAIM0122.jsp"
+			parameter="DISP" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0122.jsp" />
+		</action>
+
+		<!-- 应用登记/变更处理 -->
+		<action path="/IGAIM0122"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0122Action" input="/aim/IGAIM0122.jsp"
+			parameter="INSERT" name="IGCIM0122Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0123.jsp" />
+			<forward name="DETAIL" path="/IGAIM0121_Back.do" />
+		</action>
+
+		<!-- 应用登记成功完了后确认画面处理 -->
+		<action path="/IGAIM0123"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0123Action" input="/aim/IGAIM0123.jsp"
+			parameter="DISP" name="IGCIM0123Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0122_Disp.do" />
+			<forward name="CONF" path="/IGAIM0124_Disp.do" />
+		</action>
+
+		<!-- 应用配置信息编辑(管理)画面初期化处理 -->
+		<action path="/IGAIM0124_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0124Action" input="/aim/IGAIM0124.jsp"
+			parameter="DISP" name="IGCIM0124Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0124.jsp" />
+		</action>
+
+		<!-- 应用配置信息编辑(查询)画面初期化处理 -->
+		<action path="/IGAIM0131_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0124Action" input="/aim/IGAIM0131.jsp"
+			parameter="DISP" name="IGCIM0124Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0131.jsp" />
+		</action>
+
+		<!-- 应用配置信息编辑处理 -->
+		<action path="/IGAIM0124"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0124Action" input="/aim/IGAIM0124.jsp"
+			parameter="EDIT" name="IGCIM0124Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0124_Disp.do" />
+			<forward name="BACK1" path="/IGAIM0121_Back.do" />
+			<forward name="BACK2" path="/IGAIM0122_Disp.do" />
+		</action>
+
+		<!-- 应用配置信息历史记录(管理)画面初期化处理 -->
+		<action path="/IGAIM0125_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0125Action" input="/aim/IGAIM0125.jsp"
+			parameter="DISP" name="IGCIM0125Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0125.jsp" />
+		</action>
+
+		<!-- 应用配置信息历史记录(查询)画面初期化处理 -->
+		<action path="/IGAIM0132_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0125Action" input="/aim/IGAIM0132.jsp"
+			parameter="DISP" name="IGCIM0125Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0132.jsp" />
+		</action>
+		<action path="/IGAIM0132_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0125Action" input="/aim/IGAIM0132.jsp"
+			parameter="DISP" name="IGCIM0125Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0130.jsp" />
+		</action>
+		
+		<!-- 返回设备查询画面  -->
+		<action path="/IGAIM0101_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0902Action"
+			parameter="SEARCH1" input="/cim/IGCIM0902.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/cim/IGCIM0902.jsp" />
+		</action>
+
+
+		<action path="/IGAIM0125_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0125Action" input="/aim/IGAIM0125.jsp"
+			parameter="BACK" name="IGCIM0125Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGAIM0121_Back.do" />
+		</action>
+
+		<!-- 应用关系管理(管理)画面初期化处理 -->
+		<action path="/IGAIM0126_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0126Action" input="/aim/IGAIM0126.jsp"
+			parameter="DISP" name="IGCIM0126Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0126.jsp" />
+		</action>
+
+		<!-- 应用关系管理(查询)画面初期化处理 -->
+		<action path="/IGAIM0133_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0126Action" input="/aim/IGAIM0133.jsp"
+			parameter="DISP" name="IGCIM0126Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0133.jsp" />
+		</action>
+
+		<!-- 应用关系管理处理 -->
+		<action path="/IGAIM0126"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0126Action" input="/aim/IGAIM0126.jsp"
+			parameter="EDIT" name="IGCIM0126Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0121_Back.do" />
+			<forward name="ADD" path="/IGAIM0127_Disp.do" />
+		</action>
+
+		<!-- 返回资产关系管理画面（资产关系管理画面）  -->
+		<action path="/IGAIM0126_Back"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0126Action"
+			parameter="REDISP" input="/aim/IGAIM0126.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0126.jsp" />
+		</action>
+
+		<!-- 应用关系管理编辑画面初期化(增加) -->
+		<action path="/IGAIM0127_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0127Action" input="/aim/IGAIM0127.jsp"
+			parameter="DISP" name="IGCIM0127Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0127.jsp" />
+		</action>
+
+		<!-- 应用关系管理编辑画面初期化(变更) -->
+		<action path="/IGAIM0127_Edit_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0127Action" input="/aim/IGAIM0127.jsp"
+			parameter="EDIT_DISP" name="IGCIM0127Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/aim/IGAIM0127.jsp" />
+		</action>
+
+		<!-- 应用关系编辑处理 -->
+		<action path="/IGAIM0127"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0127Action" input="/aim/IGAIM0127.jsp"
+			parameter="EDIT" name="IGCIM0127Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGAIM0126_Back.do" />
+		</action>
+
+		<!-- 应用关系删除处理  -->
+		<action path="/IGAIM0126_Del"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0126Action"
+			parameter="DELETE" input="/aim/IGAIM0126.jsp" name="IGCIM0126Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0126_Disp.do" />
+		</action>
+
+		<!-- 应用修改处理显示 (修改机构) -->
+		<action path="/IGAIM0128_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0128Action"
+			parameter="DISP" input="/aim/IGAIM0128.jsp" name="IGCIM0128Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0128.jsp" />
+		</action>
+		<!-- 应用修改处理 (修改机构) -->
+		<action path="/IGAIM0128"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0128Action"
+			parameter="UPDATE" input="/aim/IGAIM0128.jsp" name="IGCIM0128Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0129.jsp" />
+		</action>
+		<!-- FS关系显示 -->
+		<action path="/IGAIM0129_Disp"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0129Action"
+			parameter="DISP" input="/aim/IGAIM0126.jsp" name="IGCIM0129Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0134.jsp" />
+		</action>
+		<!-- FS关系新增 -->
+		<action path="/IGAIM0129_Insert"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0129Action"
+			parameter="INSERT" input="/aim/IGAIM0134.jsp" name="IGCIM0129Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0129_Disp.do" />
+		</action>
+		<!-- FS关系删除 -->
+		<action path="/IGAIM0129_Delete"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0129Action"
+			parameter="DELETE" input="/aim/IGAIM0134.jsp" name="IGCIM0129Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0129_Disp.do" />
+		</action>
+		<!--应用资产 end-->
+	    <!-- 配置包含关系查看-->
+		<action path="/IGAIM0146_Disp"
+			type="com.deliverik.infogovernor.aim.action.IGAIM0146Action"
+			parameter="DISP" input="/IGAIM0146.jsp" name="IGCIM0146Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0146.jsp" />
+		</action>
+		<action path="/IGAIM0140_Disp"
+			type="com.deliverik.infogovernor.aim.action.IGAIM0140Action"
+			parameter="DISP" input="/aim/IGAIM0140.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0140.jsp" />
+		</action>
+		<action path="/IGAIM0148"
+			type="com.deliverik.infogovernor.aim.action.IGAIM0148Action"
+			parameter="DISP" input="/aim/IGAIM0148.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0148.jsp" />
+		</action>
+		<action path="/IGAIM0149"
+			type="com.deliverik.infogovernor.aim.action.IGAIM0149Action"
+			parameter="DISP" input="/aim/IGAIM0149.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0149.jsp" />
+		</action>
+	    <!-- 配置信息历史记录画面初期化处理 -->
+        <action path="/IGAIM0147_Disp"
+            type="com.deliverik.infogovernor.aim.action.IGAIM0147Action"
+            input="/aim/IGAIM0147.jsp"
+            parameter="DISP"
+            name="IGCIM0147Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/aim/IGAIM0147.jsp"/>
+        </action>
+        
+        <!-- 资产类型查询画面初期显示  -->
+        <action path="/IGAIM0401_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0401Action"
+            parameter="DISP"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/aim/IGAIM0401.jsp"/>
+        </action>
+        <!-- 资产类型查询处理  -->
+        <action path="/IGAIM0401"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0401Action"
+            parameter="SEARCH"
+            input="/aim/IGAIM0401.jsp"
+            name="IGCIM0401Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0401.jsp"/>
+        </action>
+        
+		<!-- 返回资产类型查询画面（资产类型变更画面）  -->
+        <action path="/IGAIM0401_Back"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0401Action"
+            parameter="SEARCH1"
+            input="/aim/IGAIM0401.jsp"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0401.jsp"/>
+        </action>
+		
+		<!-- 资产类型登记/变更处理 -->
+        <action path="/IGAIM0402"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0402Action"
+            input="/aim/IGAIM0402.jsp"
+        	parameter="INSERT"
+        	name="IGCIM0402Form"
+            validate="true"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"        path="/aim/IGAIM0403.jsp"/>
+            <forward name="BACK"        path="/IGAIM0401_Back.do"/>
+        </action>
+		<!-- 资产类型变更画面初期显示 -->
+        <action path="/IGAIM0402_Edit_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0402Action"
+            input="/aim/IGAIM1205.jsp"
+            parameter="EDIT"
+            name="IGCIM0402Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"  path="/aim/IGAIM1205.jsp"/>
+        </action>
+        <!-- 资产类型登记画面初期显示 -->
+        <action path="/IGAIM0402_Disp"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0402Action"
+            input="/aim/IGAIM0402.jsp"
+        	parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"        path="/aim/IGAIM0402.jsp"/>
+        </action>
+        
+        <!-- 资产类型登记成功完了后确认画面处理 -->
+        <action path="/IGAIM0403"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0403Action"
+            input="/aim/IGAIM0403.jsp"
+        	parameter="DISP"
+        	name="IGCIM0403Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="CONF"        path="/IGAIM0404_Disp.do"/>
+           	<forward name="BACK"        path="/IGAIM0402_Disp.do"/>
+        </action>
+        
+        <!-- 资产配置信息变更画面显示 -->
+        <action path="/IGAIM0404_Edit_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0404Action"
+            input="/aim/IGAIM0404.jsp"
+            parameter="EDIT"
+            name="IGCIM0404Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/aim/IGAIM0404.jsp"/>
+        </action>
+        <!-- 资产配置信息登记/变更处理 -->
+        <action path="/IGAIM0404"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0404Action"
+            input="/aim/IGAIM0404.jsp"
+        	parameter="INSERT"
+        	name="IGCIM0404Form"
+            validate="true"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"        path="/aim/IGAIM0405.jsp"/>
+            <forward name="DETAIL"      path="/IGAIM0406_Disp.do"/>
+            <forward name="BACK1"       path="/IGAIM0402_Disp.do"/>
+            <forward name="BACK2"       path="/IGAIM0406_Disp.do"/>
+        </action>
+        <!-- 资产配置信息登记画面初期显示 -->
+        <action path="/IGAIM0404_Disp"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0404Action"
+            input="/aim/IGAIM0404.jsp"
+        	parameter="DISP"
+        	name="IGCIM0404Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"        path="/aim/IGAIM0404.jsp"/>
+        </action>
+        
+        <!-- 资产配置信息登记成功后确认画面处理 -->
+        <action path="/IGAIM0405"
+        	type="com.deliverik.infogovernor.soc.cim.action.IGCIM0405Action"
+            input="/aim/IGAIM0405.jsp"
+        	parameter="DISP"
+        	name="IGCIM0405Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="BACK"        path="/IGAIM0404_Disp.do"/>
+           	<forward name="NEXT"        path="/IGAIM0406_Disp.do"/>
+        </action>
+        
+        <!-- 资产配置详细画面显示  -->
+        <action path="/IGAIM0406_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0406Action"
+            parameter="DISP"
+            input="/aim/IGAIM0406.jsp"
+            name="IGCIM0406Form"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0406.jsp"/>
+        </action>
+        <!-- 资产配置详细信息删除处理  -->
+        <action path="/IGAIM0406"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0406Action"
+            parameter="DELETE"
+            input="/aim/IGAIM0406.jsp"
+            name="IGCIM0406Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGAIM0406_Disp.do"/>
+            <forward name="BACK"  path="/IGAIM0401_Back.do"/>
+        </action>
+        <!-- 资产类型属性状态改变 -->
+		<action path="/IGAIM0406_ChangeConfigStatus"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0406Action"
+			parameter="CHANGE_STATUS" input="/aim/IGAIM0406.jsp"  name="IGCIM0406Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0406_Disp.do" />
+		</action>
+		<!-- 资产类型状态改变 -->
+		<action path="/IGAIM0406_ChangeEntityStatus"
+			type="com.deliverik.infogovernor.soc.cim.action.IGCIM0406Action"
+			parameter="CHANGE_ENTITY_STATUS" input="/aim/IGAIM0406.jsp" name="IGCIM0406Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGAIM0406_Disp.do" />
+		</action>
+        
+        <!-- 资产下拉数据标识列表查询处理  -->
+        <action path="/IGAIM0407_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0407Action"
+            input="/aim/IGAIM0407.jsp"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0407.jsp"/>
+        </action>
+        
+        <!-- 资产下拉数据标识列表登记处理显示  -->
+        <action path="/IGAIM0408_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0408Action"
+            input="/aim/IGAIM0408.jsp"
+            name="IGCIM0408Form"
+            parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0408.jsp"/>
+        </action>
+        <!-- 资产下拉数据标识列表登记处理  -->
+        <action path="/IGAIM0408"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0408Action"
+            input="/aim/IGAIM0408.jsp"
+            name="IGCIM0408Form"
+            parameter="INSERT"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0400.jsp"/>
+        </action>
+        
+        <!-- 资产列表显示  -->
+        <action path="/IGAIM0409_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0409Action"
+            parameter="DISP"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0409.jsp"/>
+        </action>
+        <action path="/IGAIM0409_ChangeName"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0409Action"
+            name="IGCIM0409Form"
+            parameter="CHANGE_NAME"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0409.jsp"/>
+        </action>
+        
+        <action path="/IGAIM0410_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0410Action"
+            name="IGCIM0410Form"
+            parameter="DISP"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0410.jsp"/>
+        </action>
+        <action path="/IGAIM0410_ChangeValue"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0410Action"
+            name="IGCIM0410Form"
+            parameter="CHANGE_VALUE"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0410.jsp"/>
+        </action>
+        <action path="/IGAIM0410_ChangeCCDStatus"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0410Action"
+            name="IGCIM0410Form"
+            parameter="CHANGE_STATUS"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0410.jsp"/>
+        </action>
+        
+        <action path="/IGAIM0411"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0411Action"
+            name="IGCIM0411Form"
+            parameter="INSERT"
+            scope="session">
+            <forward name="DISP"  path="/IGAIM0410_Disp.do" />
+        </action>
+        <action path="/IGAIM0411_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0411Action"
+            name="IGCIM0411Form"
+            parameter="DISP"
+            scope="session">
+            <forward name="DISP"  path="/aim/IGAIM0411.jsp"/>
+        </action>
+        
+        <!-- 资产一级模型查询处理  -->
+        <action path="/IGAIM0412_Disp"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0401Action"
+            parameter="EXCCELDISP"
+            input="/aim/IGAIM0412.jsp"
+            name="IGCIM0401Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0412.jsp"/>
+        </action>
+        <!-- 资产一级模型导出EXECL处理  -->
+        <action path="/IGAIM0412_Export"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM0401Action"
+            parameter="EXPORTEXCEL"
+            input="/aim/IGAIM0412.jsp"
+            name="IGCIM0401Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM0413.jsp"/>
+        </action>
+        
+        <!-- 配置信息历史记录画面初期化处理 -->
+        <action path="/IGAIM1203_DISP"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM1203Action"
+            input="/aim/IGAIM1203.jsp"
+            parameter="DISP"
+            name="IGCIM1203Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/aim/IGAIM1203.jsp"/>
+        </action>
+        
+        <!-- 资产配置项信息版本比较画面查询处理 -->
+        <action path="/IGAIM1204"
+            type="com.deliverik.infogovernor.soc.cim.action.IGCIM1204Action"
+            parameter="SEARCH"
+            input="/aim/IGAIM1204.jsp"
+            validate="false"
+            name="IGCIM1204Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/aim/IGAIM1204.jsp"/>
+        </action>
+        <!-- 拓扑查看应用性能 -->
+      	<action path="/IGAIM0150_Disp"
+			type="com.deliverik.infogovernor.aim.action.IGAIM0150Action"
+			parameter="DISP" input="/IGAIM0150.jsp" name="IGAIM0150Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/aim/IGAIM0150.jsp" />
+		</action>
+	</action-mappings>
+	
+</struts-config>
+

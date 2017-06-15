@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+<form-beans>
+ <form-bean name="IGFXK0401Form" type="com.deliverik.infogovernor.fxk.form.IGFXK0401Form" />
+ <form-bean name="IGFXK0700Form" type="com.deliverik.infogovernor.fxk.form.IGFXK0700Form"/>
+ <form-bean name="IGFXK0301Form" type="com.deliverik.infogovernor.fxk.form.IGFXK0301Form"/>
+ <form-bean name="IGFXK0302Form" type="com.deliverik.infogovernor.fxk.form.IGFXK0302Form"/>
+ <form-bean name="IGFXK0601Form" type="com.deliverik.infogovernor.fxk.form.IGFXK0601Form"/>
+
+</form-beans>
+    <action-mappings>
+    	<!-- 资产模型树查询 -->
+    	<action path="/IGFXK0401_TREE"	
+    		type="com.deliverik.infogovernor.fxk.action.IGFXK0401Action"
+    		name="IGFXK0401Form"
+    		scope="request"
+    		parameter="DISP"
+    		validate="false">
+    		<forward name="DISP" path="/fxk/IGFXK0401_TREE.jsp"/>
+    	</action>
+    	<action path="/IGFXK0401_ZTREE"
+			type="com.deliverik.infogovernor.fxk.action.IGFXK0401Action"
+			parameter="ZTREE" name="IGFXK0401Form" validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/fxk/IGFXK0401_ZTREE.jsp"/>
+		</action>
+    	<!-- 获取风险点数据 -->
+    	<action path="/IGFXK0401_GetAsm013"
+    		type="com.deliverik.infogovernor.fxk.action.IGFXK0401Action"
+    		name="IGFXK0401Form"
+    		scope="request"
+    		parameter="GETASM013"
+    		validate="false">
+    	</action>
+    	<!-- 获取检查项数据 -->
+    	<action path="/IGFXK0401_GetAsm014"
+    		type="com.deliverik.infogovernor.fxk.action.IGFXK0401Action"
+    		name="IGFXK0401Form"
+    		scope="request"
+    		parameter="GETASM014"
+    		validate="false">
+    	</action>
+    	
+    	<!-- 风险清单查询 -->
+    	<action path="/IGFXK0401_GetRelationProcess"
+    		type="com.deliverik.infogovernor.fxk.action.IGFXK0401Action"
+    		name="IGFXK0401Form"
+    		scope="request"
+    		parameter="GETRELATIONPROCESS"
+    		validate="false">
+    	</action>
+    	
+    	<!-- 风险管理首页数据查询 -->
+     	<action path="/IGFXK0000"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0101Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="DISP"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0000.jsp"/>
+        </action>
+    
+   		<!-- 风险提示查询画面初期显示 -->
+        <action path="/IGFXK0701_Disp"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0701Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="DISP"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0701.jsp"/>
+        </action>
+        <!-- 风险提醒查询 -->
+        <action path="/IGFXK0701_Search"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0701Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="SEARCH"
+        	validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0701.jsp"/>
+        </action>
+        <action path="/IGFXK0701_Back"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0701Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="SEARCH1"
+        	validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0701.jsp"/>
+        </action>
+        <action path="/IGFXK0702_Disp"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0702Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="DISP"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0702.jsp"/>
+        </action>
+        <action path="/IGFXK0702_Add"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0702Action"
+            input="/fxk/IGFXK0000.jsp"
+            name="IGFXK0700Form"
+        	parameter="INSERT"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0703.jsp"/>
+        </action>
+        <!-- 单条记录查询 -->
+          <action path="/IGFXK0701_Each"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0701Action"
+            input="/fxk/IGFXK0701.jsp"
+            name="IGFXK0700Form"
+        	parameter="EACH"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0704.jsp"/>
+        </action>
+        <!-- 单条记录查询  弹出层查询-->
+         <action path="/IGFXK0701_T"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0701Action"
+            input="/fxk/IGFXK0701.jsp"
+            name="IGFXK0700Form"
+        	parameter="EACH"
+        	validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"  path="/fxk/IGFXK0704_t.jsp"/>
+        </action>
+        
+        <!-- 查 -->
+      
+        <action path="/IGFXK0303_Disp"
+            type="com.deliverik.infogovernor.fxk.action.IGFXK0301Action"
+            parameter="DISP"
+            name="IGFXK0301Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/fxk/IGFXK0303.jsp"/>
+        </action>
+        
+        <action path="/IGFXK0303_Search"
+            type="com.deliverik.infogovernor.fxk.action.IGFXK0301Action"
+            parameter="SEARCH"
+            name="IGFXK0301Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/fxk/IGFXK0303.jsp"/>
+        </action>
+		<!-- 详细画面返回 -->
+		<action path="/IGFXK0303_Back"
+            type="com.deliverik.infogovernor.fxk.action.IGFXK0301Action"
+            parameter="SEARCH1" name="IGFXK0301Form" scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/fxk/IGFXK0303.jsp"/>
+        </action>
+        <!-- 修改显示或者详细画面显示 -->
+		<action path="/IGFXK0304_Disp"
+            type="com.deliverik.infogovernor.fxk.action.IGFXK0302Action"
+            parameter="DISP" name="IGFXK0302Form" scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/fxk/IGFXK0304.jsp"/>
+            <forward name="SEE"    path="/fxk/IGFXK0305.jsp"/>
+        </action>
+		<action path="/IGFXK0304_Edit"
+            type="com.deliverik.infogovernor.fxk.action.IGFXK0302Action"
+            parameter="EDIT" name="IGFXK0302Form" scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGFXK0304_Disp.do"/>
+        </action>
+        
+        <action path="/IGFXK0601_GetEntityInfo"
+        	type="com.deliverik.infogovernor.fxk.action.IGFXK0601Action"
+        	parameter="GETENTITYINFO"
+        	name="IGFXK0601Form"
+        	validate="false"
+        	scope="request">
+        </action>
+        
+    </action-mappings>
+</struts-config>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+   	<bean id="processQueryDAO" class="com.deliverik.infogovernor.prr.model.dao.ProcessQueryDAOImpl">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory"/>
+		</property>
+	</bean>
+	
+	<bean id="processQueryBL" class="com.deliverik.infogovernor.prr.bl.task.ProcessQueryBLImpl">
+		<property name="processQueryDAO">
+			<ref bean="processQueryDAO"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL"/>
+		</property>
+	</bean>
+	<!-- Control BL -->
+	<bean id="igPRR01BL" class="com.deliverik.infogovernor.prr.bl.IGPRR01BLImpl">
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="organizationBL">
+		    <ref bean="organizationBL"/>
+		</property>
+		<property name="attachmentBL">
+		    <ref bean="attachmentBL"/>
+		</property>
+		<property name="actionBL">
+            <ref bean="actionBL"/>
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>       
+     </bean>
+     <bean id="igPRR06BL" class="com.deliverik.infogovernor.prr.bl.IGPRR06BLImpl">
+		<property name="igfxk0403bl">
+			<ref bean="igfxk0403bl"/>
+		</property>
+		<property name="riskPointVMBL">
+			<ref bean="riskPointVMBL"/>
+		</property>
+		<property name="checkItemVWBL">
+			<ref bean="checkItemVWBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+     		<ref bean="workFlowDefinitionBL"/>
+     	</property>
+     	<property name="processQueryBL">
+     		<ref bean="processQueryBL"/>
+     	</property>
+     	<property name="workFlowOperationBL">
+     		<ref bean="workFlowOperationBL"/>
+     	</property>
+	 </bean>
+     <!-- 抄阅人DAO -->
+     
+     <bean id="copyReadUserDAO" class="com.deliverik.infogovernor.prr.model.dao.CopyReadUserDAOImpl" parent="baseHibernateDAO"></bean>
+     <!-- 发文流程统计DAO -->
+     <bean id="dispatchStatisticsVWDAO" class="com.deliverik.infogovernor.prr.model.dao.DispatchStatisticsVWDAOImpl" parent="baseHibernateDAO"></bean>
+     <!-- 抄阅人TaskBL -->
+     <bean id="copyReadUserBL" class="com.deliverik.infogovernor.prr.bl.task.CopyReadUserBLImpl">
+     <property name="copyReadUserDAO">
+			<ref bean="copyReadUserDAO" />
+	 </property>
+     </bean>
+     <!-- 发文流程统计TaskBL -->
+     <bean id="dispatchStatisticsVWBL" class="com.deliverik.infogovernor.prr.bl.task.DispatchStatisticsVWBLImpl">
+     <property name="dispatchStatisticsVWDAO">
+			<ref bean="dispatchStatisticsVWDAO" />
+	 </property>
+     </bean>
+     <bean id="igPRR02BL" class="com.deliverik.infogovernor.prr.bl.IGPRR02BLImpl">
+     <property name="userRoleBL">
+			<ref bean="userRoleBL" />
+	 </property>
+	 <property name="copyReadUserBL">
+		    <ref bean="copyReadUserBL"/>
+	 </property>
+	 <property name="flowSetBL">
+		    <ref bean="flowSetBL"/>
+	 </property>
+	 <property name="codeListUtils">
+            <ref bean="codeListUtils"/>
+     </property>
+	 <property name="sysManageBL">
+            <ref bean="sysManageBL"/>
+     </property>
+	 <property name="roleBL">
+            <ref bean="roleBL"/>
+     </property>
+     <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL"/>
+     </property>
+   	 <property name="userBL">
+            <ref bean="userBL"/>
+     </property>
+   	 <property name="sendMailBL">
+            <ref bean="sendMailBL"/>
+     </property>
+     </bean>
+     
+      <!-- OA角色配置BL -->
+     <bean id="igprr03BL" class="com.deliverik.infogovernor.prr.bl.IGPRR03BLImpl">
+     	<property name="workFlowDefinitionBL">
+     		<ref bean="workFlowDefinitionBL"/>
+     	</property>
+     	<property name="roleBL">
+     		<ref bean="roleBL"/>
+     	</property>
+     	<property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+     </bean>
+     
+   	 <!-- 服务目录 -->
+     <bean id="igprr04BL" class="com.deliverik.infogovernor.prr.bl.IGPRR04BLImpl">
+     	<property name="workFlowDefinitionBL">
+     		<ref bean="workFlowDefinitionBL"/>
+     	</property>
+     	<property name="codeDetailDefBL">
+     		<ref bean="codeDetailDefBL"/>
+     	</property>
+     	<property name="ig380BL">
+     		<ref bean="ig380BL"/>
+     	</property>
+     </bean>
+</beans>

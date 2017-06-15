@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   	<!-- PUB start -->
+	<bean id="igPUB0101BL" class="com.dev.pub.igflow.event.status.IGPUB0101BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igPUB0102BL" class="com.dev.pub.igflow.event.status.IGPUB0102BLImpl">
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igPUB0103BL" class="com.dev.pub.igflow.event.status.IGPUB0103BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<!-- PUB end -->
+	<!-- Control BL -->
+	<bean id="igEVENT0101BL" class="com.dev.ext.igflow.event.status.IGEVENT0101BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT0202BL" class="com.dev.ext.igflow.event.status.IGEVENT0202BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT0304BL" class="com.dev.ext.igflow.event.status.IGEVENT0304BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT0402BL" class="com.dev.ext.igflow.event.status.IGEVENT0402BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<!-- SOC自定义前后处理 -->
+	<bean id="igSOCEvent0101BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0101BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0201BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0201BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0202BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0202BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0203BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0203BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0204BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0204BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0301BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0301BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0302BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0302BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0303BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0303BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0304BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0304BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0401BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0401BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0402BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0402BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0403BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0403BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		</bean>
+		<bean id="igSOCEvent0404BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0404BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0405BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0405BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0406BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0406BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igSOCEvent0501BL" class="com.dev.ext.igflow.event.status.IGSOCEvent0501BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0101BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0101BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0102BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0102BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0103BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0103BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0105BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0105BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0107BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0107BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0108BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0108BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0109BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0109BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0110BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0110BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0201BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0201BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0202BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0202BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0203BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0203BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0204BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0204BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0205BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0205BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0206BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0206BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0207BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0207BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0208BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0208BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0209BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0209BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0210BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0210BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0211BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0211BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0212BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0212BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0213BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0213BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+		
+	<!-- 升级流程-跟踪反馈节点添加参与者 -->
+	<bean id="igBDS0214BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0214BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0215BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0215BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igBDS0216BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0216BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0217BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0217BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="ig512BL">
+			<ref bean="ig512BL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0218BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0218BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0219BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0219BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igBDS0220BL" class="com.dev.ext.igflow.bds.event.status.IGBDS0220BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+	<!-- 检查问题 Control BL -->
+	<!-- 等待制定节点前处理 添加参与者 -->
+	<bean id="igEVENT9901BL" class="com.dev.ext.igflow.event.status.IGEVENT9901BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="riskCheckResultBL">
+			<ref bean="riskCheckResultBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 检查问题 Control BL -->
+	<!-- 审计问题 Control BL -->
+	<!-- 等待制定节点前处理 添加参与者 -->
+	<bean id="igEVENT9902BL" class="com.dev.ext.igflow.event.status.IGEVENT9902BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT9903BL" class="com.dev.ext.igflow.event.status.IGEVENT9903BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<!-- 分派节点前处理创建检查任务同检查问题之间的关系-->
+	<bean id="igEVENT9904BL" class="com.dev.ext.igflow.event.status.IGEVENT9904BLImpl">
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="riskCheckResultBL">
+			<ref bean="riskCheckResultBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 问题流程等待程序开发流程前处理 start -->
+	<bean id="igEVENT0501BL" class="com.dev.ext.igflow.event.status.IGEVENT0501BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	
+<!-- 问题整改 start -->
+	<bean id="igEVENT9101BL" class="com.dev.ext.igflow.event.status.IGEVENT9101BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT9102BL" class="com.dev.ext.igflow.event.status.IGEVENT9102BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<bean id="igEVENT9103BL" class="com.dev.ext.igflow.event.status.IGEVENT9103BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+	<!-- 问题整改 end -->
+
+	<!-- 青岛银行流程策略使用Control BL -->
+	<bean id="igReportSuperTacticsBL" class="com.dev.pub.igflow.event.IGReportSuperTacticsBLImpl">
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		<property name="sendMailBL">
+			<ref bean="sendMailBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="processNoticeStrategyUserBL">
+			<ref bean="ig237BL"/>
+		</property>
+		<property name="ig334BL">
+			<ref bean="ig334BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="ig256BL">
+			<ref bean="ig256BL"/>
+		</property>
+	</bean>
+
+	<!-- 流程状态超时判断 -->
+	<bean id="igReportTacticsBL" class="com.dev.pub.igflow.event.IGReportTacticsBLImpl" parent="igReportSuperTacticsBL">
+		
+	</bean>
+
+	<!-- 流程整体超时通知策略 -->
+	<bean id="igWholeTacticsBL" class="com.dev.pub.igflow.event.IGWholeTacticsBLImpl">
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		<property name="sendMailBL">
+			<ref bean="sendMailBL"/>
+		</property>
+		<property name="ig334BL">
+			<ref bean="ig334BL"/>
+		</property>
+		<property name="ig335BL">
+			<ref bean="ig335BL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+	</bean>
+
+</beans>

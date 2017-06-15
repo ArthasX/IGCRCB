@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ 	<!-- 发送BL(handler)  -->
+	<bean id="messagePushBL" class="com.deliverik.infogovernor.drm.push.MessagePushBLImpl">	</bean>
+	
+	
+	
+	<!-- mina server初始化 -->
+	<bean id="MINAServer" class="com.deliverik.infogovernor.drm.push.server.MINAServer" 
+		init-method="createSession"  
+		 destroy-method="destroy" 	>
+		<property name="messagePushBL">
+			<ref bean="messagePushBL"/>
+		</property>
+		<property name="codeListUtils">
+			<ref bean="codeListUtils"/>
+		</property>
+		<property name="port" value="3333">
+		</property>
+	</bean>
+
+</beans>
+

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+	<!-- DAO -->
+	<bean id="itemsCategoryTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.ItemsCategoryTBDAOImpl">
+	</bean>
+	<bean id="itemsCodesTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.ItemsCodesTBDAOImpl">
+	</bean>
+	<bean id="outStockTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.OutStockTBDAOImpl">
+	</bean>
+	<bean id="inStockTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.InStockTBDAOImpl">
+	</bean>
+	<bean id="stockTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.StockTBDAOImpl">
+	</bean>
+	
+	<bean id="outStockVWDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.OutStockVWDAOImpl">
+	</bean>
+	
+	<bean id="outStockDetailTBDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.OutStockDetailTBDAOImpl">
+	</bean>
+	
+	<bean id="itemsPayVWDAO" parent="baseHibernateDAO"
+		class="com.csebank.items.model.dao.ItemsPayVWDAOImpl">
+	</bean>
+	<!-- TaskBL -->
+	<bean id="itemsCategoryBL" class="com.csebank.items.bl.task.ItemsCategoryBLImpl">
+		<property name="itemsCategoryTBDAO">
+			<ref bean="itemsCategoryTBDAO" />
+		</property>
+	</bean>
+	<bean id="itemsCodesBL" class="com.csebank.items.bl.task.ItemsCodesBLImpl">
+		<property name="itemsCodesTBDAO">
+			<ref bean="itemsCodesTBDAO" />
+		</property>
+	</bean>
+	<bean id="outStockBL" class="com.csebank.items.bl.task.OutStockBLImpl">
+		<property name="outStockTBDAO">
+			<ref bean="outStockTBDAO" />
+		</property>
+	</bean>
+	<bean id="inStockBL" class="com.csebank.items.bl.task.InStockBLImpl">
+		<property name="inStockTBDAO">
+			<ref bean="inStockTBDAO" />
+		</property>
+	</bean>
+	<bean id="stockBL" class="com.csebank.items.bl.task.StockBLImpl">
+		<property name="stockTBDAO">
+			<ref bean="stockTBDAO" />
+		</property>
+	</bean>
+	<bean id="outStockDetailBL" class="com.csebank.items.bl.task.OutStockDetailBLImpl">
+		<property name="outStockDetailTBDAO">
+			<ref bean="outStockDetailTBDAO" />
+		</property>
+	</bean>
+	
+	<bean id="itemsPayBL" class="com.csebank.items.bl.task.ItemsPayBLImpl">
+		<property name="itemsPayVWDAO">
+			<ref bean="itemsPayVWDAO" />
+		</property>
+	</bean>
+	<!-- ControlBL -->
+	<bean id="items01BL" class="com.csebank.items.bl.ITEMS01BLImpl">
+		<property name="itemsCategoryBL">
+			<ref bean="itemsCategoryBL"/>
+		</property>
+		<property name="outStockBL">
+			<ref bean="outStockBL"/>
+		</property>
+		<property name="itemsCodesBL">
+			<ref bean="itemsCodesBL"/>
+		</property>
+		<property name="inStockBL">
+			<ref bean="inStockBL"/>
+		</property>
+		<property name="stockBL">
+			<ref bean="stockBL"/>
+		</property>
+		<property name="outStockVWDAO">
+			<ref bean="outStockVWDAO"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="outStockDetailBL">
+			<ref bean="outStockDetailBL"/>
+		</property>
+		<property name="itemsPayBL">
+			<ref bean="itemsPayBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+	</bean>
+	
+</beans>

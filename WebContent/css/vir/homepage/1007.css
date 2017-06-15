@@ -1,0 +1,175 @@
+#serviceCatalog{
+	width:220px;
+	border:1px solid #3e80bc;
+	float:left;
+	height:483px;
+}
+#serviceCatelogTitle{
+	background-color:#3e80bc;
+	height:25px;
+	line-height:25px;
+	font-weight:bold;
+	padding-left:10px;
+	color:#fff;
+}
+.serviceCatelogContent{
+	height:48px;
+	line-height:48px;
+	background-image:url(../../../images/divtitlebg_48.jpg);
+	padding-left:30px;
+}
+.serviceCatelogContent img{
+	vertical-align:middle;
+}
+.divTitle{
+	height:25px;
+	line-height:25px;
+	background-image:url(../../../images/divtitlebg_25.jpg);
+	color:#407cba;
+	font-weight:bold;
+	padding-left:10px;
+}
+#applyforme{
+	width:450px;
+	float:left;
+	margin-left:10px;
+	height:177px;
+	border:1px solid #ccc;
+}
+#template{
+	width:307px;
+	border:1px solid #ccc;
+	height:177px;
+	float:right;
+}
+#vminfo{
+	float:right;
+	width:768px;
+	height:295px;
+	margin-top:10px;
+	border:1px solid #ccc;
+	margin-left:10px;
+}
+.table_css{
+	border-collapse:collapse;   
+	width:100%;  
+}
+.table_css tr th{
+	background-color:#eee;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	height:25px;
+}
+.table_css tr td{
+	border-bottom:1px solid #ccc;
+	height:25px;
+}
+#towardsleft{
+	width:30px;
+	height:260px;
+	float:left;
+}
+#towardsright{
+	width:30px;
+	height:260px;
+	float:right;
+}
+.prev,.next{
+	margin-top:100px;
+	cursor: hand;
+}
+#hostContent{
+	width:708px;
+	height:260px;
+	overflow:hidden; 
+	position:absolute; 
+	z-index:1; 
+}
+#hostContent ul{
+	overflow:hidden;
+	margin-left:0px;
+	zoom:1; 
+	float:left;  
+}
+#hostContent ul li{ 
+	float:left;
+	margin-left:0px; 
+	width:708px; 
+	height:260px;
+	cursor:pointer; 
+}
+#hostContent li{ 
+	zoom:1; 
+	vertical-align:middle; 
+}
+.slideBox .prevStop{ 
+	display:none;  
+}
+.slideBox .nextStop{ 
+	display:none;  
+}
+.HostContentPanel{
+	height:260px;
+	width:708px;
+}
+.HostContent{
+	height:125px;
+	width:220px;
+	float:left;
+}
+.HostContentHead{
+	width:100%;
+	height:39px;
+	background-image:url(../../../images/hostContentHead.jpg);
+}
+.HostContentBody{
+	width:100%;
+	height:79px;
+	background-image:url(../../../images/hostContentBody.jpg);
+}
+.HostContent img{
+	margin-left:10px;
+	margin-top:5px;
+}
+.HostName{
+	font-weight:bold;
+	color:#407cba;
+}
+.HostContent table tr td{
+	height:22px;
+}
+.progressDiv{
+	width:150px;
+	height:13px;
+	border:1px solid #ccc;
+}
+.progressDiv1{
+	height:100%;
+	width:0%;
+	background-image:url(../../../images/progress.jpg);
+}
+.HostInfoFount{
+	color:#3b3b3b;
+	font-size:9px;
+	line-height:12px;
+	display:block;
+	position: absolute;
+	margin-top:-12px;
+	margin-left:15px;
+	font-weight: bold;
+	font-family: "ËÎÌו";
+}
+#zysqqs{
+	width:660px;
+	float:left;
+	height:180px;
+	margin-top:10px;
+	border:1px solid #ccc;
+}
+#ywlcqs{
+	width:330px;
+	float:right;
+	margin-top:10px;
+	height:180px;
+	border:1px solid #ccc;
+}

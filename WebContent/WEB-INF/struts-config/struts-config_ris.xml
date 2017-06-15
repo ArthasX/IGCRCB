@@ -1,0 +1,1273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<!-- *****************************************审计版本***************************************** -->
+		<form-bean name="IGRIS0101Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0101Form" />
+		<form-bean name="IGRIS0102Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0102Form" />
+		<form-bean name="IGRIS0103Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0103Form" />
+
+		<!-- *****************************************审计发起***************************************** -->
+		<form-bean name="IGRIS0109Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0109Form" />
+		<form-bean name="IGRIS0110Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0110Form" />
+		<form-bean name="IGRIS0111Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0111Form" />
+		<form-bean name="IGRIS0115Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0115Form" />
+
+		<!-- *****************************************风险检查***************************************** -->
+		<form-bean name="IGRIS0201Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0201Form" />
+		<form-bean name="IGRIS0202Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0202Form" />
+		<form-bean name="IGRIS0203Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0203Form" />
+		<form-bean name="IGRIS0204Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0204Form" />
+		<form-bean name="IGRIS0205Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0205Form" />
+		<form-bean name="IGRIS0206Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0206Form" />
+		<!-- *****************************************审计人***************************************** -->
+		<form-bean name="IGRIS0112Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0112Form" />
+		<!-- *****************************************审计报告**************************************** -->
+		<form-bean name="IGRIS0117Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0117Form" />
+		<form-bean name="IGRIS0118Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0118Form" />
+		<!-- *****************************************审计项***************************************** -->
+		<form-bean name="IGRIS0104Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0104Form" />
+		<form-bean name="IGRIS0105Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0105Form" />
+		<form-bean name="IGRIS0106Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0106Form" />
+		<form-bean name="IGRIS0113Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0113Form" />
+		<form-bean name="IGRIS0114Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0114Form" />
+		<form-bean name="IGRIS0501Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0501Form" />
+
+		<!-- *****************************************检查项***************************************** -->
+		<form-bean name="IGRIS0601Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0601Form" />
+		<form-bean name="IGRIS0602Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0602Form" />
+		<form-bean name="IGRIS0603Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0603Form" />
+		<form-bean name="IGRIS0604Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0604Form" />
+		<form-bean name="IGRIS0605Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0605Form" />
+		<form-bean name="IGRIS0606Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0606Form" />
+		<form-bean name="IGRIS0607Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0607Form" />
+		<form-bean name="IGRIS0612Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0612Form" />
+		<form-bean name="IGRIS0614Form"
+			type="com.deliverik.infogovernor.risk.form.IGRIS0614Form" />
+	</form-beans>
+	<action-mappings>
+		<!-- *****************************************审计版本***************************************** -->
+		<!-- 审计版本管理查询处理 -->
+		<action path="/IGRIS0101"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0101Action"
+			parameter="SEARCH" input="/risk/IGRIS0101.jsp" name="IGRIS0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0101.jsp" />
+		</action>
+		<!-- 返回到审计版本管理页面 -->
+		<action path="/IGRIS0101_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0101Action"
+			parameter="SEARCH1" input="/risk/IGRIS0101.jsp" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0101.jsp" />
+		</action>
+		<!-- 跳转到审计版本新增页面 -->
+		<action path="/IGRIS0102_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0102Action" input="/risk/IGRIS0102.jsp"
+			parameter="DISP" name="IGRIS0102Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0102.jsp" />
+		</action>
+		<!-- 审计版本新增 -->
+		<action path="/IGRIS0102"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0102Action" input="/IGRIS0102_Disp.do"
+			parameter="INSERT" name="IGRIS0102Form" validate="true" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0103.jsp" />
+		</action>
+		<!-- 审计版本停用/启用 -->
+		<action path="/IGRIS0102_Change"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0102Action" input="/IGRIS0102_Disp.do"
+			parameter="CHANGE" name="IGRIS0102Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0101_Back.do" />
+		</action>
+		<!-- 跳转到审计版本成功页面 -->
+		<action path="/IGRIS0103"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0103Action" input="/risk/IGRIS0103.jsp"
+			parameter="DISP" name="IGRIS0103Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="ADD" path="/IGRIS0102_Disp.do" />
+			<forward name="SEARCH" path="/IGRIS0101_Back.do" />
+		</action>
+		<!-- *****************************************审计发起***************************************** -->
+		<!-- 审计发起管理查询页面初始化 -->
+		<action path="/IGRIS0109_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0109Action"
+			parameter="DISP" input="/risk/IGRIS0109.jsp" name="IGRIS0109Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0109.jsp" />
+		</action>
+		<!-- 审计发起管理查询处理 -->
+		<action path="/IGRIS0109"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0109Action"
+			parameter="SEARCH" input="/risk/IGRIS0109.jsp" name="IGRIS0109Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0109.jsp" />
+		</action>
+		<!-- 返回到审计发起管理页面 -->
+		<action path="/IGRIS0109_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0109Action"
+			parameter="SEARCH1" input="/risk/IGRIS0109.jsp" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0109.jsp" />
+		</action>
+		<!-- 跳转到审计发起新增页面 -->
+		<action path="/IGRIS0110_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0110Action" input="/risk/IGRIS0110.jsp"
+			parameter="DISP" name="IGRIS0110Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0110.jsp" />
+		</action>
+		<!-- 审计发起新增变更 -->
+		<action path="/IGRIS0110"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0110Action" input="/IGRIS0110_Disp.do"
+			parameter="INSERT" name="IGRIS0110Form" validate="true" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0111.jsp" />
+			<forward name="BACK" path="/IGRIS0109_Back.do" />
+		</action>
+		<!-- 审计发起变更初始化 -->
+		<action path="/IGRIS0110_Edit_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0110Action" input="/risk/IGRIS0110.jsp"
+			parameter="EDIT" name="IGRIS0110Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0110.jsp" />
+		</action>
+		<!-- 审计发起关闭/启用 -->
+		<action path="/IGRIS0110_Change"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0110Action" input="/IGRIS0110_Disp.do"
+			parameter="CHANGE" name="IGRIS0110Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0109_Back.do" />
+		</action>
+		<!-- 跳转到审计发起成功页面 -->
+		<action path="/IGRIS0111"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0111Action" input="/risk/IGRIS0111.jsp"
+			parameter="DISP" name="IGRIS0111Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="ADD" path="/IGRIS0110_Disp.do" />
+			<forward name="SEARCH" path="/IGRIS0109_Back.do" />
+		</action>
+
+
+
+
+
+
+		<!-- *****************************************审计人***************************************** -->
+		<!-- 审计人页面初始化 -->
+		<action path="/IGRIS0112_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0112Action"
+			parameter="DISP" input="/risk/IGRIS0112.jsp" name="IGRIS0112Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0112.jsp" />
+		</action>
+		<!-- 审计人保存 -->
+		<action path="/IGRIS0112"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0112Action" input="/IGRIS0112_Disp.do"
+			parameter="SAVE" name="IGRIS0112Form" validate="false" scope="session">
+			<forward name="DISP" path="/IGRIS0109_Back.do" />
+		</action>
+		<!-- *****************************************审计报告***************************************** -->
+		<!-- 审计报告页面初始化 -->
+		<action path="/IGRIS0117_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0117Action"
+			parameter="DISP" input="/risk/IGRIS0117.jsp" name="IGRIS0117Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0117.jsp" />
+		</action>
+		<!-- 审计报告查询处理 -->
+		<action path="/IGRIS0117"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0117Action" input="/risk/IGRIS0117.jsp"
+			parameter="SEARCH" name="IGRIS0117Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0117.jsp" />
+			<forward name="REPORT" path="/risk/IGRIS0120.jsp" />
+		</action>
+		<!-- 审计发起查询页面初始化 -->
+		<action path="/IGRIS0118_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0118Action"
+			parameter="DISP" input="/risk/IGRIS0118.jsp" name="IGRIS0118Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0118.jsp" />
+		</action>
+		<!-- 审计发起查询处理 -->
+		<action path="/IGRIS0118"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0118Action"
+			parameter="SEARCH" input="/risk/IGRIS0118.jsp" name="IGRIS0118Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0118.jsp" />
+		</action>
+		<!-- *****************************************审计评估***************************************** -->
+		<!-- 审计评估查询页 -->
+		<action path="/IGRIS0113_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0113Action" input="/IGRIS0113_Disp.do"
+			parameter="DISP" name="IGRIS0113Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0113.jsp" />
+		</action>
+		<!-- 审计项评估查询 -->
+		<action path="/IGRIS0113"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0113Action" input="/IGRIS0113_Disp.do"
+			parameter="SEARCH" name="IGRIS0113Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0113.jsp" />
+		</action>
+		<!-- 审计项评估初始化页 -->
+		<action path="/IGRIS0114_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0114Action" input="/IGRIS0114_Disp.do"
+			parameter="DISP" name="IGRIS0114Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0114.jsp" />
+		</action>
+		<!-- 审计项评估初始化页 -->
+		<action path="/IGRIS0114"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0114Action" input="/IGRIS0114_Disp.do"
+			parameter="UPDATE" name="IGRIS0114Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGRIS0113.do" />
+		</action>
+
+		<!-- 风险检查管理查询处理 -->
+		<action path="/IGRIS0115"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0115Action"
+			parameter="SEARCH" input="/risk/IGRIS0115.jsp" name="IGRIS0115Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0115.jsp" />
+		</action>
+
+		<!-- 风险检查管理查询处理 -->
+		<action path="/IGRIS0115_Search"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0115Action"
+			parameter="SEARCH1" input="/risk/IGRIS0116.jsp" name="IGRIS0115Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0116.jsp" />
+		</action>
+
+		<!-- 风险检查管理查询处理 -->
+		<action path="/IGRIS0115_Detail"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0115Action"
+			parameter="DETAIL" input="/risk/IGRIS0116.jsp" name="IGRIS0115Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0119.jsp" />
+		</action>
+		<!-- *****************************************审计项***************************************** -->
+		<!-- 审计项设定管理页 -->
+		<action path="/IGRIS0104_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0104_Disp.do"
+			parameter="DISP" name="IGRIS0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0104.jsp" />
+		</action>
+		<!-- 审计项设定下一级查询 -->
+		<action path="/IGRIS0104_Next"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0104_Disp.do"
+			parameter="NEXT" name="IGRIS0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0104.jsp" />
+		</action>
+
+		<!-- 审计项设定全部下级查询 -->
+		<action path="/IGRIS0104_All"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0104_Disp.do"
+			parameter="ALL" name="IGRIS0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0104.jsp" />
+		</action>
+
+		<!-- 审计项设定成功页 -->
+		<action path="/IGRIS0104_Button"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/risk/IGRIS0104.jsp"
+			parameter="BUTTON" name="IGRIS0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="ALL" path="/IGRIS0104_All.do" />
+			<forward name="NEXT" path="/IGRIS0104_Next.do" />
+		</action>
+
+		<!-- 审计项设定查询 -->
+		<action path="/IGRIS0104_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0104_Disp.do"
+			parameter="SEARCH1" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0104.jsp" />
+		</action>
+		<!-- 审计项停用/启用 -->
+		<action path="/IGRIS0104_Change"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0104_Disp.do"
+			parameter="CHANGE" name="IGRIS0104Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0104_Back.do" />
+		</action>
+		<!-- 审计项设定新增页 -->
+		<action path="/IGRIS0105_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0105Action" input="/IGRIS0105_Disp.do"
+			parameter="DISP" name="IGRIS0105Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0105.jsp" />
+		</action>
+
+		<!-- 审计项设定新增页 -->
+		<action path="/IGRIS0105"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0105Action" input="/IGRIS0105_Disp.do"
+			parameter="INSERT" name="IGRIS0105Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0106.jsp" />
+			<forward name="EDIT" path="/IGRIS0104_Back.do" />
+		</action>
+
+		<!-- 审计项设定修改初始化页 -->
+		<action path="/IGRIS0105_Edit_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0105Action" input="/IGRIS0105_Edit_Disp.do"
+			parameter="EDIT_DISP" name="IGRIS0105Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0105.jsp" />
+		</action>
+		<!-- 审计项设定成功页 -->
+		<action path="/IGRIS0106"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0106Action" input="/risk/IGRIS0106.jsp"
+			parameter="DISP" name="IGRIS0106Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="ADD" path="/IGRIS0105_Disp.do" />
+			<forward name="SEARCH" path="/IGRIS0104_Disp.do" />
+		</action>
+
+		<!-- 审计项树形查询 -->
+		<action path="/IGRIS0104_TREE"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0104Action" input="/IGRIS0107.jsp"
+			parameter="TREE" name="IGRIS0104Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0107.jsp" />
+		</action>
+		<!-- 审计项设定查询 -->
+		<action path="/IGRIS0108_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0108Action" input="/IGRIS0108_Disp.do"
+			parameter="DISP" name="IGRIS0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0108.jsp" />
+		</action>
+
+
+
+		<!-- *****************************************风险检查***************************************** -->
+		<!-- 风险检查管理查询初始化 -->
+		<action path="/IGRIS0201_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="SEARCH" input="/risk/IGRIS0201.jsp" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0201.jsp" />
+		</action>
+
+		<!-- 风险检查管理查询处理 -->
+		<action path="/IGRIS0201"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="SEARCH" input="/risk/IGRIS0201.jsp" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0201.jsp" />
+		</action>
+		<!-- 风险检查项查询 -->
+		<action path="/IGRIS0201_POINT"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action" input="/IGRIS0201.do"
+			parameter="POINT" name="IGRIS0201Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0229.jsp" />
+		</action>
+		
+		<action path="/IGRIS0201_POINT_WINDOW"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action" input="/IGRIS0201.do"
+			parameter="POINT" name="IGRIS0201Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0229.jsp" />
+		</action>
+		
+		<!-- 检查策略复制 -->
+		<action path="/IGRIS0202_COPY"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/IGRIS0201.do"
+			parameter="COPY" name="IGRIS0202Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0201_Disp.do" />
+		</action>
+		<!-- 检查策略详细 -->
+		<action path="/IGRIS0202_Detail"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/IGRIS0201.do"
+			parameter="EDIT" name="IGRIS0202Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0234.jsp" />
+		</action>
+		
+		<!-- 风险检查管理返回查询处理 -->
+		<action path="/IGRIS0201_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="SEARCH1" input="/IGRIS0201_Disp.do" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0201.jsp" />
+		</action>
+
+		<!-- 风险检查管理调整状态处理 -->
+		<action path="/IGRIS0201_Change"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="CHANGE" input="/IGRIS0201_Back.do" name="IGRIS0202Form"
+			validate="false" scope="request">
+			<forward redirect="true" name="DISP" path="/IGRIS0201_Back.do" />
+		</action>
+
+		<!-- 风险检查管理调整启用/停用状态处理 -->
+		<action path="/IGRIS0201_delete"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="DELETE" input="/IGRIS0201_Back.do" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/IGRIS0201_Back.do" />
+		</action>
+
+		<!-- 风险检查查看处理 -->
+		<action path="/IGRIS0201_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="READ" input="/IGRIS0201_Back.do" name="IGRIS0201Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0204.jsp" />
+			<forward name="DISP2" path="/dbm/IGDBM1200RC2.jsp" />
+		</action>
+
+		<!-- 风险检查关联审计项初始化 -->
+		<action path="/IGRIS0201_Relevancedisp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="RELEVANCEDISP" input="/IGRIS0201_Back.do" name="IGRIS0201Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0205.jsp" />
+		</action>
+
+		<!-- 风险检查关联审计项查询 -->
+		<action path="/IGRIS0201_Relevance"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="RELEVANCE" input="/IGRIS0201_Back.do" name="IGRIS0201Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0205.jsp" />
+		</action>
+
+		<!-- 风险检查关联审计项保存 -->
+		<action path="/IGRIS0201_Save"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="SAVE" input="/IGRIS0201_Back.do" name="IGRIS0201Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0201_Relevance.do" />
+		</action>
+
+
+
+
+		<!-- 风险检查新增页面初始化 -->
+		<action path="/IGRIS0202_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/risk/IGRIS0202.jsp"
+			parameter="DISP" name="IGRIS0202Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0202.jsp" />
+		</action>
+		<!-- 风险检查变更页面初始化 -->
+		<action path="/IGRIS0202_Edit"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/IGRIS0201.do"
+			parameter="EDIT" name="IGRIS0202Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0232.jsp" />
+		</action>
+		
+		<!-- 风险检查新增变更 -->
+		<action path="/IGRIS0202"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/IGRIS0202_Disp.do"
+			parameter="INSERT" name="IGRIS0202Form" validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0203.jsp" />
+		</action>
+
+
+		<!-- 风险检查结果查询处理 -->
+		<action path="/IGRIS0203"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="SEARCH" input="/risk/IGRIS0206.jsp" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0206.jsp" />
+		</action>
+
+		<!-- 风险检查结果返回查询处理 -->
+		<action path="/IGRIS0203_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="SEARCH1" input="/risk/IGRIS0206.jsp" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0206.jsp" />
+		</action>
+
+		<!-- 风险检查结果查询处理-问题查找带回 -->
+		<action path="/IGRIS0203_Search"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="SEARCH1" input="/risk/IGRIS0223.jsp" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0223.jsp" />
+		</action>
+
+
+		<!-- 风险检查查看处理 -->
+		<action path="/IGRIS0203_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="READ" input="/IGRIS0203_Back.do" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0207.jsp" />
+		</action>
+
+		<!-- 风险检查查看处理 -->
+		<action path="/IGRIS0203_Window"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="READ" input="/IGRIS0203_Back.do" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0224.jsp" />
+		</action>
+
+		<!-- 风险检查结果保存处理 -->
+		<action path="/IGRIS0203_Insert"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="INSERT" input="/IGRIS0203_Back.do" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGRIS0203_sel.do" />
+			<forward name="ERROR" path="/risk/IGRIS0208.jsp" />
+		</action>
+		<!-- 检查工作批量指派发起 -->
+		<action path="/IGRIS0203_BATCH"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="BATCH" input="/IGRIS0203_Back.do" name="IGRIS0203Form"
+			validate="false" scope="request">
+			<forward name="ASSIGN" path="/IGRIS0403_Disp_Batch.do"/>
+		</action>
+		
+		<!-- 变更批量分派操作 -->
+		<action path="/IGRIS0203_ASSIGN"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="ASSIGN"
+			name="IGRIS0203Form"
+			scope="request">
+			<forward name="DISP" path="/IGRIS0205.do"/>
+		</action>
+		
+		<!-- 变更批量分派页面初始化 -->
+		<action path="/IGRIS0403_Disp_Batch"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0203Action"
+			parameter="BATCH_DISP"
+			name="IGRIS0203Form"
+			scope="request">
+			<forward name="DISP" path="/risk/IGRIS0239.jsp"/>
+		</action>
+		
+		<!-- 检查工作执行查询 -->
+		<action path="/IGRIS0203_sel"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sel" input="/IGRIS0203_Back.do" name="IGRIS0202Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0206.jsp" />
+		</action>
+		
+		<action path="/IGRIS0235_sel"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sel" input="/IGRIS0203_Back.do" name="IGRIS0202Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0235.jsp" />
+		</action>
+		
+		<action path="/IGRIS0238_sel"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sel" input="/IGRIS0203_Back.do" name="IGRIS0202Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0238.jsp" />
+		</action>
+		
+		
+		
+		<action path="/IGRIS0203_sel_readonly"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sel" input="/IGRIS0203_Back.do" name="IGRIS0202Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0235.jsp" />
+		</action>
+		
+		<action path="/IGRIS0203_sel_read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sel" name="IGRIS0202Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0238.jsp" />
+		</action>
+
+		<!-- 检查问题管理检查工作执行查询 -->
+		<action path="/IGRIS0202_sell"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action"
+			parameter="sell" input="/risk/IGRIS0223.jsp" name="IGRIS0202Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0223.jsp" />
+		</action>
+		<!-- 检查项 修改文件下载 -->
+		<action path="/IGRIS0202_loadFIle"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0202Action" input="/risk/IGRIS0206.jsp"
+			parameter="LOADFILE" name="IGRIS0202Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0206.jsp" />
+			<forward name="LOADFILE" path="/symdownloadFinFile.do" />
+		</action>
+
+		<!-- 风险检查日报查询初始化 -->
+		<action path="/IGRIS0204_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="DAYDISP" input="/risk/IGRIS0209.jsp" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0209.jsp" />
+		</action>
+
+		<!-- 风险检查日报查询初始化 -->
+		<action path="/IGRIS0204_Pop"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="POPDISP" input="/risk/IGRIS0219.jsp" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0219.jsp" />
+		</action>
+		<!-- 风险检查日报查询处理 -->
+		<action path="/IGRIS0219"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="POPSEARCH" input="/risk/IGRIS0219.jsp" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0219.jsp" />
+		</action>
+
+		<!-- 风险检查日报返回查询处理 -->
+		<action path="/IGRIS0219_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="POPSEARCH1" input="/IGRIS0204_Pop.do" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0219.jsp" />
+		</action>
+		<!-- 风险检查日报查看处理 -->
+		<action path="/IGRIS0219_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="POPREAD" input="/IGRIS0219_Back.do" name="IGRIS0204Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0220.jsp" />
+		</action>
+
+
+		<!-- 风险检查日报查询处理 -->
+		<action path="/IGRIS0204"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="DAYSEARCH" input="/risk/IGRIS0209.jsp" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0209.jsp" />
+		</action>
+
+		<!-- 风险检查日报返回查询处理 -->
+		<action path="/IGRIS0204_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="DAYSEARCH1" input="/IGRIS0209_Disp.do" name="IGRIS0204Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0209.jsp" />
+		</action>
+		<!-- 风险检查日报查看处理 -->
+		<action path="/IGRIS0204_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0204Action"
+			parameter="DAYREAD" input="/IGRIS0204_Back.do" name="IGRIS0204Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0210.jsp" />
+		</action>
+
+
+
+		<!-- 最近一次风险检查结果查询初始化 -->
+		<action path="/IGRIS0205_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTDISP" input="/risk/IGRIS0211.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0211.jsp" />
+		</action>
+
+		<!-- 最近一次风险检查结果查询初始化(统计分析页用) -->
+
+		<action path="/IGRIS0217"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="POPSEARCH" input="/risk/IGRIS0217.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0217.jsp" />
+		</action>
+		<action path="/IGRIS0217_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="POPSEARCH1" input="/risk/IGRIS0217.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0217.jsp" />
+		</action>
+		<!-- 最近一次风险检查查看处理(统计分析页用) -->
+		<action path="/IGRIS0217_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="POPREAD" input="/IGRIS0217_Back.do" name="IGRIS0205Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0218.jsp" />
+		</action>
+
+		<!-- 最近一次风险检查结果查询处理 -->
+		<action path="/IGRIS0205"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTSEARCH" input="/risk/IGRIS0211.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0211.jsp" />
+		</action>
+		
+		<!-- 检查任务监督查询 -->
+		<action path="/IGRIS0211_SERACH"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTSEARCH" input="/risk/IGRIS0225.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0225.jsp" />
+		</action>
+		
+		
+		<!-- 检查任务监督查询 -->
+		<action path="/IGRIS0237_SERACH"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTSEARCH" input="/risk/IGRIS0237.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0237.jsp" />
+		</action>
+		
+		<action path="/IGRIS0205_LASTSEARCH"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTSEARCH" input="/risk/IGRIS0237.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0237.jsp" />
+		</action>
+
+		<!-- 最近一次风险检查结果查询处理 -->
+		<action path="/IGRIS0205_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTSEARCH1" input="/IGRIS0211_Disp.do" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0211.jsp" />
+		</action>
+
+		<!-- 检查工作监督查询初始化 -->
+		<action path="/IGRIS0205_Supervise_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="SUPERVISE_DISP" input="/risk/IGRIS0225.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0225.jsp" />
+		</action>
+		<!-- 检查工作监督结果查询处理 -->
+		<action path="/IGRIS0205_Supervise"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="SUPERVISE" input="/risk/IGRIS0225.jsp" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0225.jsp" />
+		</action>
+		<!-- 检查工作监督结果返回查询处理 -->
+		<action path="/IGRIS0205_Supervise_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="SUPERVISE1" input="/IGRIS0205_Supervise_Disp.do" name="IGRIS0205Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0225.jsp" />
+		</action>
+
+		<!-- 最近一次风险检查查看处理 -->
+		<action path="/IGRIS0205_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="LASTREAD" input="/IGRIS0205_Back.do" name="IGRIS0205Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0212.jsp" />
+			<forward name="READ" path="/svc/IGSVC0633.jsp" />
+		</action>
+		<!-- 查询检查工作 -->
+		<action path="/IGRIS0205_detailed"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0205Action"
+			parameter="DETAILED" input="/IGRIS0205_Back.do" name="IGRIS0205Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0212.jsp" />
+			<forward name="READ" path="/svc/IGSVC0633.jsp" />
+		</action>
+
+
+
+		<!-- 风险检查阶段结果查询初始化 -->
+		<action path="/IGRIS0206_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="DISP" input="/risk/IGRIS0213.jsp" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0213.jsp" />
+		</action>
+
+		<!-- 风险检查阶段结果查询处理 -->
+		<action path="/IGRIS0206"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="SEARCH" input="/risk/IGRIS0213.jsp" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0213.jsp" />
+		</action>
+
+		<!-- 风险检查阶段结果查询处理 -->
+		<action path="/IGRIS0206_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="SEARCH1" input="/IGRIS0213_Disp.do" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0213.jsp" />
+		</action>
+		<!-- 风险检查阶段结果查看处理 -->
+		<action path="/IGRIS0206_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="READ" input="/IGRIS0206_Back.do" name="IGRIS0206Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0214.jsp" />
+		</action>
+
+		<!-- 风险检查阶段结果查询初始化 -->
+		<action path="/IGRIS0206_Pop"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="POPDISP" input="/risk/IGRIS0221.jsp" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0221.jsp" />
+		</action>
+
+		<!-- 风险检查阶段结果查询处理 -->
+		<action path="/IGRIS0221"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="POPSEARCH" input="/risk/IGRIS0221.jsp" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0221.jsp" />
+		</action>
+
+		<!-- 风险检查阶段结果查询处理 -->
+		<action path="/IGRIS0221_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="POPSEARCH1" input="/IGRIS0206_Pop.do" name="IGRIS0206Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0221.jsp" />
+		</action>
+		<!-- 风险检查阶段结果查看处理 -->
+		<action path="/IGRIS0221_Read"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0206Action"
+			parameter="POPREAD" input="/IGRIS0221_Back.do" name="IGRIS0206Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0222.jsp" />
+		</action>
+
+		<!-- 检查项查询初始化处理 -->
+		<action path="/IGRIS0201_ResultDisp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="DISP" input="/risk/IGRIS0215.jsp" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0215.jsp" />
+		</action>
+		<!-- 检查项查询处理 -->
+		<action path="/IGRIS0201_Result"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="RESULT" input="/risk/IGRIS0215.jsp" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0215.jsp" />
+		</action>
+		<!-- 检查项查询返回处理 -->
+		<action path="/IGRIS0201_ResultBack"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="RESULT1" input="/risk/IGRIS0215.jsp" name="IGRIS0201Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/risk/IGRIS0215.jsp" />
+		</action>
+		<!-- 检查项查看处理 -->
+		<action path="/IGRIS0201_ResultRead"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0201Action"
+			parameter="RESULTREAD" input="/IGRIS0201_ResultBack.do" name="IGRIS0201Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0216.jsp" />
+		</action>
+
+		<!-- 统计 初始化页面 -->
+		<action path="/IGRIS0501_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0501Action"
+			parameter="DISP" input="" name="IGRIS0501Form" validate="false"
+			scope="request">
+			<forward name="DISP" path="/risk/IGRIS0501.jsp" />
+		</action>
+		<action path="/IGRIS0501"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0501Action"
+			parameter="SEARCH" input="/risk/IGRIS0501.jsp" name="IGRIS0501Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0501.jsp" />
+		</action>
+		<action path="/IGRIS0501"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0501Action"
+			parameter="SEARCH" input="/risk/IGRIS0501.jsp" name="IGRIS0501Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/risk/IGRIS0501.jsp" />
+		</action>
+		<!-- 导出检查问题报表Excel -->
+		<action path="/IGRIS0501_Excel"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0501Action"
+			parameter="EXCEL" name="IGRIS0501Form" scope="request">
+		</action>
+
+
+		<!-- *****************************************检查项 bigen***************************************** -->
+		<!-- 检查项资产查询 初始化页面 -->
+		<action path="/IGRIS0614_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="DISP" name="IGRIS0614Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGRIS0601.do" />
+		</action>
+		<!-- 检查项资产查询 -->
+		<action path="/IGRIS0614"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="SEARCH" name="IGRIS0614Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0614.jsp" />
+		</action>
+		<!-- 检查项资产查询 -->
+		
+		<!-- 检查项 修改文件下载 -->
+		<action path="/IGRIS0602_loadFIle"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0604.jsp"
+			parameter="LOADFILE" name="IGRIS0604Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0604.jsp" />
+			<forward name="LOADFILE" path="/symdownloadFinFile.do" />
+		</action>
+		
+		<action path="/IGRIS0614_Del"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="DELETE" name="IGRIS0614Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGRIS0601.do" />
+		</action>
+		
+		<!-- 检查项 修改检查项状态 -->
+		<action path="/IGRIS0604_Status"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action"
+			parameter="STATUS" name="IGRIS0604Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGRIS0601_Back.do" />
+		</action>
+
+
+		<!-- 风险点(管理)查询画面初期显示 -->
+		<!-- type="com.deliverik.infogovernor.risk.action.IGRIS0601Action" parameter="DISP" 
+			scope="session"> <set-property key="auth" value="false"/> <forward name="DISP" 
+			path="/risk/IGRIS0601.jsp"/> </action> -->
+		<!-- 检查项资产查询 -->
+		<!-- <action path="/IGRIS0614" -->
+		<action path="/IGRIS0601_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="DISP" name="IGRIS0614Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0601.jsp" />
+		</action>
+		<action path="/IGRIS0601"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="SEARCH" name="IGRIS0614Form" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0601.jsp" />
+		</action>
+		<!-- 返回风险点(管理)查询画面 -->
+		<action path="/IGRIS0601_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="BACK" name="IGRIS0614Form" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0601.jsp" />
+		</action>
+		
+		<action path="/IGRIS0601_WINDOWS"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="SEARCH1" name="IGRIS0614Form" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0231.jsp" />
+		</action>
+		<action path="/IGRIS0601_Back1"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+			parameter="BACK1" name="IGRIS0614Form" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0231.jsp" />
+		</action>
+		
+		<!-- 风险点(管理)查询画面再显示 -->
+		<action path="/IGRIS0601_ReDisp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action" input="/risk/IGRIS0601.jsp"
+			name="IGRIS0601Form" parameter="REDISP" validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0601.jsp" />
+		</action>
+
+		<!-- 风险点(查询)查询画面初期显示 -->
+		<action path="/IGRIS0608_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0608.jsp" />
+		</action>
+
+		<!-- 风险点(查询)查询画面再显示 -->
+		<action path="/IGRIS0608_ReDisp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action" input="/risk/IGRIS0608.jsp"
+			name="IGRIS0601Form" parameter="REDISP" validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0608.jsp" />
+		</action>
+
+		<!-- 风险点(查询)查询处理 -->
+		<action path="/IGRIS0608"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action"
+			parameter="SEARCH" input="/risk/IGRIS0608.jsp" name="IGRIS0601Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0608.jsp" />
+		</action>
+
+		<!-- 风险点删除处理 -->
+		<action path="/IGRIS0601_Del"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action"
+			parameter="DELETE" input="/risk/IGRIS0601.jsp" name="IGRIS0601Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGRIS0601.do" />
+		</action>
+
+		<!-- 返回风险点(查询)查询画面 -->
+		<action path="/IGRIS0608_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0601Action"
+			parameter="SEARCH1" input="/risk/IGRIS0608.jsp" name="IGRIS0601Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0608.jsp" />
+		</action>
+
+		<!-- 风险点登记画面初期显示 -->
+		<action path="/IGRIS0602_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0602Action" input="/risk/IGRIS0602.jsp"
+			name="IGRIS0602Form" parameter="DISP" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0602.jsp" />
+		</action>
+
+		<!-- 风险点登记/变更处理 -->
+		<action path="/IGRIS0602"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0602Action" input="/risk/IGRIS0602.jsp"
+			parameter="INSERT" name="IGRIS0602Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0603.jsp" />
+			<forward name="DETAIL" path="/IGRIS0601_Back.do" />
+		</action>
+
+		<!-- 风险点登记成功完了后确认画面处理 -->
+		<action path="/IGRIS0603"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0603Action" input="/risk/IGRIS0603.jsp"
+			parameter="DISP" name="IGRIS0603Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGRIS0602_Disp.do" />
+			<forward name="CONF" path="/IGRIS0604_Disp.do" />
+		</action>
+
+		<!-- 风险点配置信息(管理)编辑画面初期化处理 -->
+		<action path="/IGRIS0604_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0604.jsp"
+			parameter="DISP" name="IGRIS0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0604.jsp" />
+		</action>
+		<action path="/IGRIS0604_Disp_Sub"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0618.jsp"
+			parameter="DISP" name="IGRIS0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0618.jsp" />
+		</action>
+		<action path="/IGRIS0615_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0615.jsp"
+			parameter="DISP" name="IGRIS0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0615.jsp" />
+		</action>
+
+		<!-- 风险点配置信息(查询)编辑画面初期化处理 -->
+		<action path="/IGRIS0609_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0609.jsp"
+			parameter="DISP" name="IGRIS0604Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0609.jsp" />
+		</action>
+
+		<!-- 风险点配置信息编辑处理 -->
+		<action path="/IGRIS0604"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0604.jsp"
+			parameter="EDIT" name="IGRIS0604Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0617.jsp" />
+			<forward name="BACK1" path="/IGRIS0601_Back.do" />
+			<forward name="BACK2" path="/IGRIS0602_Disp.do" />
+		</action>
+		<action path="/IGRIS0604_Sub"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0604Action" input="/risk/IGRIS0604.jsp"
+			parameter="EDIT" name="IGRIS0604Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGRIS0601_OPTION.do" />
+			<forward name="BACK1" path="/IGRIS0601_Back.do" />
+			<forward name="BACK2" path="/IGRIS0602_Disp.do" />
+		</action>
+
+		<!-- 风险点配置信息历史记录(管理)画面初期化处理 -->
+		<action path="/IGRIS0605_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0605Action" input="/risk/IGRIS0605.jsp"
+			parameter="DISP" name="IGRIS0605Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0605.jsp" />
+		</action>
+        
+        <action path="/IGRIS0602_INSERT_Disp"
+            type="com.deliverik.infogovernor.risk.action.IGRIS0602Action"
+            input="/risk/IGRIS0602.jsp"
+            name="IGRIS0602Form"
+            parameter="DISP"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/risk/IGRIS0230.jsp"/>
+        </action>
+        
+         <action path="/IGRIS0602_INSERT"
+            type="com.deliverik.infogovernor.risk.action.IGRIS0602Action"
+            input="/risk/IGRIS0602.jsp"
+            parameter="INSERTWINDOW"
+            name="IGRIS0602Form"
+            validate="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+        </action>
+
+		<!-- 风险点配置信息历史记录(查询)画面初期化处理 -->
+		<action path="/IGRIS0610_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0605Action" input="/risk/IGRIS0610.jsp"
+			parameter="DISP" name="IGRIS0605Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0610.jsp" />
+		</action>
+
+		<action path="/IGRIS0605_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0605Action" input="/risk/IGRIS0605.jsp"
+			parameter="BACK" name="IGRIS0605Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGRIS0601_Back.do" />
+		</action>
+
+		<!-- 风险点关系管理(管理)画面初期化处理 -->
+		<action path="/IGRIS0606_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0606Action" input="/risk/IGRIS0606.jsp"
+			parameter="DISP" name="IGRIS0606Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0606.jsp" />
+		</action>
+
+		<!-- 风险点关系管理(查询)画面初期化处理 -->
+		<action path="/IGRIS0611_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0606Action" input="/risk/IGRIS0611.jsp"
+			parameter="DISP" name="IGRIS0606Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0611.jsp" />
+		</action>
+
+		<!-- 风险点关系管理处理 -->
+		<action path="/IGRIS0606"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0606Action" input="/risk/IGRIS0606.jsp"
+			parameter="EDIT" name="IGRIS0606Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGRIS0601_Back.do" />
+			<forward name="ADD" path="/IGRIS0607_Disp.do" />
+		</action>
+
+		<!-- 返回资产关系管理画面（资产关系管理画面） -->
+		<action path="/IGRIS0606_Back"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0606Action"
+			parameter="REDISP" input="/risk/IGRIS0606.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0606.jsp" />
+		</action>
+
+		<!-- 风险点关系管理编辑画面初期化(增加) -->
+		<action path="/IGRIS0607_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0607Action" input="/risk/IGRIS0607.jsp"
+			parameter="DISP" name="IGRIS0607Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0607.jsp" />
+		</action>
+
+		<!-- 风险点关系管理编辑画面初期化(变更) -->
+		<action path="/IGRIS0607_Edit_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0607Action" input="/risk/IGRIS0607.jsp"
+			parameter="EDIT_DISP" name="IGRIS0607Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/risk/IGRIS0607.jsp" />
+		</action>
+
+		<!-- 风险点关系编辑处理 -->
+		<action path="/IGRIS0607"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0607Action" input="/risk/IGRIS0607.jsp"
+			parameter="EDIT" name="IGRIS0607Form" validate="true" cancellable="true"
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="BACK" path="/IGRIS0606_Back.do" />
+		</action>
+
+		<!-- 风险点关系删除处理 -->
+		<action path="/IGRIS0606_Del"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0606Action"
+			parameter="DELETE" input="/risk/IGRIS0606.jsp" name="IGRIS0606Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGRIS0606_Disp.do" />
+		</action>
+
+		<!-- 风险点修改处理显示 (修改机构) -->
+		<action path="/IGRIS0612_Disp"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0612Action"
+			parameter="DISP" input="/risk/IGRIS0612.jsp" name="IGRIS0612Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0612.jsp" />
+		</action>
+
+		<!-- 风险点修改处理 (修改机构) -->
+		<action path="/IGRIS0612"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0612Action"
+			parameter="UPDATE" input="/risk/IGRIS0612.jsp" name="IGRIS0612Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/risk/IGRIS0613.jsp" />
+		</action>
+		<action path="/IGRIS0601_OPTION"
+            type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+            parameter="SEARCH1"
+            name="IGRIS0614Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/risk/IGRIS0231.jsp"/>
+        </action>
+        
+        <action path="/IGRIS0601_SELECT"
+            type="com.deliverik.infogovernor.risk.action.IGRIS0614Action"
+            input="/risk/IGRIS0231.jsp"
+            parameter="SELECT"
+            name="IGRIS0614Form"
+            validate="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+        </action>
+		<!-- *****************************************检查项 end***************************************** -->
+
+
+	</action-mappings>
+</struts-config>

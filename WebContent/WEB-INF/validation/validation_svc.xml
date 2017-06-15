@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+	<!-- Validator -->
+<form-validation>
+	<formset>
+		<!--*************事件发起*************-->
+		<form name="IGSVC0202Form">
+			<field property="prtitle" depends="required,maxbytes">
+				<arg key="事件名称" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="prplantime" depends="required">
+				<arg key="发生时间" resource="false" />
+			</field>
+			<field property="prdesc" depends="required,maxbytes">
+				<arg key="事件描述" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prinfo" depends="required,maxbytes">
+				<arg key="联系方式" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="prurgency" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="primpact" depends="required">
+				<arg key="影响程度" resource="false" />
+			</field>
+		</form>
+		<!--*************更新信息*************-->
+		<form name="IGSVC0206Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审核*************-->
+		<form name="IGSVC0207Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审核*************-->
+		<form name="IGSVC0208Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审核结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************调整*************-->
+		<form name="IGSVC0209Form">
+			<field property="urgencyLevel" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prbusiness" depends="required,maxbytes">
+				<arg key="事件类别" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>128</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************中止*************-->
+		<form name="IGSVC0210Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************分派*************-->
+		<form name="IGSVC0212Form">
+			<field property="prbusiness" depends="required,maxbytes">
+				<arg key="事件类别" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>128</var-value>
+				</var>
+			</field>
+			<field property="prsubtype" depends="required,maxbytes">
+				<arg key="事件类别" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>128</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************问题发起*************-->
+		<form name="IGSVC0302Form">
+			<field property="prtitle" depends="required,maxbytes">
+				<arg key="问题名称" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="prplantime" depends="required">
+				<arg key="发生时间" resource="false" />
+			</field>
+			<field property="prdesc" depends="required,maxbytes">
+				<arg key="问题描述" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prinfo" depends="required,maxbytes">
+				<arg key="联系方式" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="prurgency" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="primpact" depends="required">
+				<arg key="影响程度" resource="false" />
+			</field>
+		</form>
+		<!--*************更新信息*************-->
+		<form name="IGSVC0306Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审核*************-->
+		<form name="IGSVC0307Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审核*************-->
+		<form name="IGSVC0308Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审核结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************调整*************-->
+		<form name="IGSVC0309Form">
+			<field property="urgencyLevel" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************中止*************-->
+		<form name="IGSVC0310Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************变更发起*************-->
+		<form name="IGSVC0402Form">
+			<field property="prtitle" depends="required,maxbytes">
+				<arg key="变更名称" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="prplantime" depends="required">
+				<arg key="执行周期开始时间" resource="false" />
+			</field>
+			<field property="prduration" depends="required">
+				<arg key="执行周期结束时间" resource="false" />
+			</field>
+			<field property="prdesc" depends="required,maxbytes">
+				<arg key="变更描述" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prinfo" depends="required,maxbytes">
+				<arg key="联系方式" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="primplplan" depends="required,maxbytes">
+				<arg key="执行计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prbackplan" depends="required,maxbytes">
+				<arg key="恢复计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prvfyplan" depends="required,maxbytes">
+				<arg key="验证计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="prurgency" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="primpact" depends="required">
+				<arg key="影响程度" resource="false" />
+			</field>
+		</form>
+
+		<!--*************更新信息*************-->
+		<form name="IGSVC0406Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审核*************-->
+		<form name="IGSVC0407Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审核*************-->
+		<form name="IGSVC0408Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审核结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审批*************-->
+		<form name="IGSVC0409Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审批结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************中止*************-->
+		<form name="IGSVC0410Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审批*************-->
+		<form name="IGSVC0413Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************发布发起*************-->
+		<form name="IGSVC0502Form">
+			<field property="prtitle" depends="required,maxbytes">
+				<arg key="发布名称" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="prplantime" depends="required">
+				<arg key="执行周期开始时间" resource="false" />
+			</field>
+			<field property="prduration" depends="required">
+				<arg key="执行周期结束时间" resource="false" />
+			</field>
+			<field property="prdesc" depends="required,maxbytes">
+				<arg key="发布描述" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prinfo" depends="required,maxbytes">
+				<arg key="联系方式" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="primplplan" depends="required,maxbytes">
+				<arg key="执行计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prbackplan" depends="required,maxbytes">
+				<arg key="恢复计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prvfyplan" depends="required,maxbytes">
+				<arg key="验证计划" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="prurgency" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="primpact" depends="required">
+				<arg key="影响程度" resource="false" />
+			</field>
+		</form>
+
+		<!--*************更新信息*************-->
+		<form name="IGSVC0506Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审核*************-->
+		<form name="IGSVC0507Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审核*************-->
+		<form name="IGSVC0508Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审核结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审批*************-->
+		<form name="IGSVC0509Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审批结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************中止*************-->
+		<form name="IGSVC0510Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审批*************-->
+		<form name="IGSVC0513Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		
+		<!--*************服务请求发起*************-->
+		<form name="IGSVC0802Form">
+			<field property="prtitle" depends="required,maxbytes">
+				<arg key="服务请求名称" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>200</var-value>
+				</var>
+			</field>
+			<field property="prdesc" depends="required,maxbytes">
+				<arg key="服务请求描述" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+			<field property="prinfo" depends="required,maxbytes">
+				<arg key="联系方式" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>64</var-value>
+				</var>
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="发起者角色" resource="false" />
+			</field>
+			<field property="prurgency" depends="required">
+				<arg key="紧急程度" resource="false" />
+			</field>
+			<field property="primpact" depends="required">
+				<arg key="影响程度" resource="false" />
+			</field>
+			<field property="prroleid" depends="required">
+				<arg key="发起者角色" resource="false" />
+			</field>
+			
+		</form>
+		<!--*************更新信息*************-->
+		<form name="IGSVC0806Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************中止*************-->
+		<form name="IGSVC0809Form">
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审批*************-->
+		<form name="IGSVC0804Form">
+			<field property="verifyResult" depends="required">
+				<arg key="审批结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************申请审核*************-->
+		<form name="IGSVC0807Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************审核*************-->
+		<form name="IGSVC0808Form">
+			<field property="roleid" depends="required">
+				<arg key="角色" resource="false" />
+			</field>
+			<field property="verifyResult" depends="required">
+				<arg key="审核结果" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************调整处理人*************-->
+		<form name="IGSVC0812Form">
+			<field property="implementorRoleId" depends="required">
+				<arg key="处理人角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+		<!--*************调整审批分派人*************-->
+		<form name="IGSVC0813Form">
+			<field property="approvorRoleId" depends="required">
+				<arg key="审批人角色" resource="false" />
+			</field>
+			<field property="rlcomment" depends="maxbytes">
+				<arg key="备注信息" resource="false" />
+				<var>
+					<var-name>maxbytes</var-name>
+					<var-value>2000</var-value>
+				</var>
+			</field>
+		</form>
+	</formset>
+</form-validation>

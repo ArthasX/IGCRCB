@@ -1,0 +1,3030 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<report xmlns="http://www.eclipse.org/birt/2005/design" version="3.2.21" id="1">
+    <property name="createdBy">Eclipse BIRT Designer Version 2.5.2.v20100208 Build &lt;2.5.0.v20090730-1349></property>
+    <property name="units">in</property>
+    <list-property name="propertyBindings">
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">489</property>
+            <expression name="value" type="javascript">var year=params["年"].value;&#13;
+var month =params["月份"].value;&#13;
+date = year + "-"+month+"-01";&#13;
+var sql ="select months.A as months, ";&#13;
+sql+="              sum(value(host, 0)) as host, ";&#13;
+sql+="              sum(value(switch, 0)) as switch, ";&#13;
+sql+="              sum(value(oth, 0)) as oth, ";&#13;
+sql+="              sum(value(raid, 0)) as raid, ";&#13;
+sql+="              sum(value(line, 0)) line, ";&#13;
+sql+="              sum(value(sw, 0)) as sw from ( ";&#13;
+sql+="            select DISTINCT REPLACE(substr(Date('"+date+"'),1,7), '-', '/')  as A from iguser union ";&#13;
+sql+="            select DISTINCT REPLACE(substr(Date('"+date+"') - 1 MONTH,1,7), '-', '/') as A from iguser union ";&#13;
+sql+="            select DISTINCT REPLACE(substr(Date('"+date+"') - 2 MONTHS,1,7), '-', '/') as A from iguser ";&#13;
+sql+="          ) months  ";&#13;
+sql+="       left join(  ";&#13;
+sql+="              select sum(case when substr(pi.pivarvalue,1,6)='109001' then 1 else 0 end) as sw, ";&#13;
+sql+="                       sum(case when substr(pi.pivarvalue,1,6)='109002' then 1 else 0 end) as  raid, ";&#13;
+sql+="                       sum(case when substr(pi.pivarvalue,1,6)='109003' then 1 else 0 end) as switch, ";&#13;
+sql+="                       sum(case when substr(pi.pivarvalue,1,6)='109004' then 1 else 0 end) as host, ";&#13;
+sql+="                       sum(case when substr(pi.pivarvalue,1,6)='109005' then 1 else 0 end) as line, ";&#13;
+sql+="                       sum(case when substr(pi.pivarvalue,1,6)='109006' then 1 else 0 end) as oth,substr(pr.propentime,1,7) as A ";&#13;
+sql+="                 from processrecord pr, processinfo pi where pr.prid = pi.prid and pr.prtype='ID' ";&#13;
+sql+="                          and pi.pidid=1002 and pi.pivarvalue !='' ";&#13;
+sql+="  group by substr(pr.propentime,1,7) ) datas  ";&#13;
+sql+="  on months.A = datas.A  ";&#13;
+sql+="   group by months.A  ";&#13;
+sql+="  order by months.A desc  ";&#13;
+this.text=sql;</expression>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">489</property>
+        </structure>
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">662</property>
+            <expression name="value" type="javascript">var year=params["年"].value;&#13;
+var month =params["月份"].value;&#13;
+date = year + "-"+month + "-01";&#13;
+var sql ="select name,A.pivarvalue,sum(case when B.months = REPLACE(substr((Date('"+date+"')),1,7), '-', '/') then 1 else 0 end) as monthA, ";&#13;
+sql+="                sum(case when B.months = REPLACE(substr((Date('"+date+"') -1 month),1,7), '-', '/') then 1 else 0 end) as monthB, ";&#13;
+sql+="                sum(case when B.months = REPLACE(substr((Date('"+date+"') -2 months),1,7), '-', '/') then 1 else 0 end) as monthC "; &#13;
+sql+="   from(  ";&#13;
+sql+="    select DISTINCT '软件' as name, '109001' as pivarvalue from processrecord union  ";&#13;
+sql+="    select DISTINCT '盘阵' as name, '109002' as pivarvalue from processrecord  union   ";&#13;
+sql+="    select DISTINCT '交换机' as name, '109003' as pivarvalue from processrecord union   ";&#13;
+sql+="    select DISTINCT '主机' as name, '109004' as pivarvalue  from processrecord union   ";&#13;
+sql+="    select DISTINCT '线路' as name, '109005' as pivarvalue from processrecord union   ";&#13;
+sql+="    select DISTINCT '其他' as name, '109006' as pivarvalue from processrecord ";&#13;
+sql+="   ) A left join(  ";&#13;
+sql+="      select pr.prid, substr(pi.pivarvalue,1,6) as pivarvalue, substr(pr.propentime,1,7) as months from processrecord pr  ";&#13;
+sql+="                  left join processinfo as pi on pr.prid = pi.prid  ";&#13;
+sql+="            where pr.prtype='ID' and pi.pidid=1002 and pi.pivarvalue!='' and pr.prstatus!='C'";&#13;
+sql+="          and substr(pi.pivarvalue,1,6) in ('109001', '109002', '109003', '109004', '109005', '109006') and pr.prpdid = 1011) B  ";&#13;
+sql+="          on A.pivarvalue = substr(B.pivarvalue,1,6) group by name,A.pivarvalue order by A.pivarvalue ";&#13;
+this.text=sql;</expression>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">662</property>
+        </structure>
+        <structure>
+            <property name="name">queryText</property>
+            <property name="id">258</property>
+            <expression name="value" type="javascript">var year=params["年"].value;&#13;
+var month =params["月份"].value+"";&#13;
+var date = year + "-"+month+"-01";&#13;
+   &#13;
+var sql="select pr.prid,pr.prserialnum, pi.pivarvalue, pr.propentime, pr.prdesc, ps.psdname, pr.prclosetime, pii.pivarvalue as pivarvalue1 from processrecord pr ";&#13;
+sql+=" left join processinfo pi on pr.prid = pi.prid  and pi.pidid = 1006 left join processinfo pii on pr.prid = pii.prid  and pii.pidid = 1009  ";&#13;
+sql+=" left join processstatusdef ps on pr.prpdid = ps.pdid and pr.prstatus = ps.psdcode where pr.prtype = 'ID'and pr.prpdid = 1011 and pr.prstatus!='C'";&#13;
+sql+=" and substr(pr.propentime,1,7) =REPLACE(substr(Date('"+date+"'),1,7), '-', '/')";&#13;
+this.text=sql;</expression>
+        </structure>
+        <structure>
+            <property name="name">queryTimeOut</property>
+            <property name="id">258</property>
+        </structure>
+    </list-property>
+    <property name="iconFile">/templates/blank_report.gif</property>
+    <property name="bidiLayoutOrientation">ltr</property>
+    <property name="imageDPI">96</property>
+    <parameters>
+        <scalar-parameter name="年" id="660">
+            <text-property name="promptText">年</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">2011</property>
+                    <property name="label">2011</property>
+                </structure>
+                <structure>
+                    <property name="value">2012</property>
+                    <property name="label">2012</property>
+                </structure>
+                <structure>
+                    <property name="value">2013</property>
+                    <property name="label">2013</property>
+                </structure>
+                <structure>
+                    <property name="value">2014</property>
+                    <property name="label">2014</property>
+                </structure>
+                <structure>
+                    <property name="value">2015</property>
+                    <property name="label">2015</property>
+                </structure>
+                <structure>
+                    <property name="value">2016</property>
+                    <property name="label">2016</property>
+                </structure>
+                <structure>
+                    <property name="value">2017</property>
+                    <property name="label">2017</property>
+                </structure>
+                <structure>
+                    <property name="value">2018</property>
+                    <property name="label">2018</property>
+                </structure>
+                <structure>
+                    <property name="value">2019</property>
+                    <property name="label">2019</property>
+                </structure>
+                <structure>
+                    <property name="value">2020</property>
+                    <property name="label">2020</property>
+                </structure>
+                <structure>
+                    <property name="value">2021</property>
+                    <property name="label">2021</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+        <scalar-parameter name="月份" id="661">
+            <text-property name="promptText">月份</text-property>
+            <property name="valueType">static</property>
+            <property name="dataType">integer</property>
+            <property name="distinct">true</property>
+            <list-property name="selectionList">
+                <structure>
+                    <property name="value">01</property>
+                    <property name="label">01</property>
+                </structure>
+                <structure>
+                    <property name="value">02</property>
+                    <property name="label">02</property>
+                </structure>
+                <structure>
+                    <property name="value">03</property>
+                    <property name="label">03</property>
+                </structure>
+                <structure>
+                    <property name="value">04</property>
+                    <property name="label">04</property>
+                </structure>
+                <structure>
+                    <property name="value">05</property>
+                    <property name="label">05</property>
+                </structure>
+                <structure>
+                    <property name="value">06</property>
+                    <property name="label">06</property>
+                </structure>
+                <structure>
+                    <property name="value">07</property>
+                    <property name="label">07</property>
+                </structure>
+                <structure>
+                    <property name="value">08</property>
+                    <property name="label">08</property>
+                </structure>
+                <structure>
+                    <property name="value">09</property>
+                    <property name="label">09</property>
+                </structure>
+                <structure>
+                    <property name="value">10</property>
+                    <property name="label">10</property>
+                </structure>
+                <structure>
+                    <property name="value">11</property>
+                    <property name="label">11</property>
+                </structure>
+                <structure>
+                    <property name="value">12</property>
+                    <property name="label">12</property>
+                </structure>
+            </list-property>
+            <property name="paramType">simple</property>
+            <property name="controlType">list-box</property>
+            <property name="mustMatch">true</property>
+            <property name="fixedOrder">true</property>
+            <structure name="format">
+                <property name="category">Unformatted</property>
+            </structure>
+        </scalar-parameter>
+    </parameters>
+    <data-sources>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="数据源" id="7">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.ibm.db2.jcc.DB2Driver</property>
+            <property name="odaURL">jdbc:db2://127.0.0.1:50000/ig</property>
+            <property name="odaUser">db2admin</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">ZGIyYWRtaW4=</encrypted-property>
+        </oda-data-source>
+    </data-sources>
+    <data-sets>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="事件服务" id="258">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">PRID</property>
+                    <text-property name="displayName">PRID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PRSERIALNUM</property>
+                    <text-property name="displayName">PRSERIALNUM</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PIVARVALUE</property>
+                    <text-property name="displayName">PIVARVALUE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PROPENTIME</property>
+                    <text-property name="displayName">PROPENTIME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PRDESC</property>
+                    <text-property name="displayName">PRDESC</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PSDNAME</property>
+                    <text-property name="displayName">PSDNAME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PRCLOSETIME</property>
+                    <text-property name="displayName">PRCLOSETIME</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">PIVARVALUE1</property>
+                    <text-property name="displayName">PIVARVALUE1</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">PRID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">PRSERIALNUM</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">PIVARVALUE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">PROPENTIME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">PRDESC</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">PSDNAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">PRCLOSETIME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">8</property>
+                        <property name="name">PIVARVALUE1</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">数据源</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">PRID</property>
+                    <property name="nativeName">PRID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">PRSERIALNUM</property>
+                    <property name="nativeName">PRSERIALNUM</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">PIVARVALUE</property>
+                    <property name="nativeName">PIVARVALUE</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">PROPENTIME</property>
+                    <property name="nativeName">PROPENTIME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">PRDESC</property>
+                    <property name="nativeName">PRDESC</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">PSDNAME</property>
+                    <property name="nativeName">PSDNAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">PRCLOSETIME</property>
+                    <property name="nativeName">PRCLOSETIME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">8</property>
+                    <property name="name">PIVARVALUE1</property>
+                    <property name="nativeName">PIVARVALUE1</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select pr.prid,pr.prserialnum, pi.pivarvalue, pr.propentime, pr.prdesc, ps.psdname, pr.prclosetime, 
+pii.pivarvalue as pivarvalue1
+from processrecord pr
+left join processinfo pi on pr.prid = pi.prid  and pi.pidid = 1006 
+left join processinfo pii on pr.prid = pii.prid  and pii.pidid = 1009 
+left join processstatusdef ps on pr.prpdid = ps.pdid and pr.prstatus = ps.psdcode
+where pr.prtype = 'ID'
+and pr.prpdid = 1011]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="故障表格" id="489">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">MONTHS</property>
+                    <text-property name="displayName">MONTHS</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">HOST</property>
+                    <text-property name="displayName">HOST</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SWITCH</property>
+                    <text-property name="displayName">SWITCH</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">OTH</property>
+                    <text-property name="displayName">OTH</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">RAID</property>
+                    <text-property name="displayName">RAID</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">LINE</property>
+                    <text-property name="displayName">LINE</text-property>
+                </structure>
+                <structure>
+                    <property name="columnName">SW</property>
+                    <text-property name="displayName">SW</text-property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">MONTHS</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">HOST</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">SWITCH</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">OTH</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">RAID</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">6</property>
+                        <property name="name">LINE</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">7</property>
+                        <property name="name">SW</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">数据源</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">MONTHS</property>
+                    <property name="nativeName">MONTHS</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">HOST</property>
+                    <property name="nativeName">HOST</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">SWITCH</property>
+                    <property name="nativeName">SWITCH</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">OTH</property>
+                    <property name="nativeName">OTH</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">RAID</property>
+                    <property name="nativeName">RAID</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">6</property>
+                    <property name="name">LINE</property>
+                    <property name="nativeName">LINE</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+                <structure>
+                    <property name="position">7</property>
+                    <property name="name">SW</property>
+                    <property name="nativeName">SW</property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select months.A as months,sum(value(host, 0)) as host,sum(value(switch, 0)) as switch,sum(value(oth, 0)) as oth, sum(value(raid, 0)) as raid,  
+ sum(value(line, 0)) line,sum(value(sw, 0)) as sw
+from (select DISTINCT REPLACE(substr(current date - 2 MONTHS,1,7), '-', '/')  as A from  iguser union
+ 	select DISTINCT REPLACE(substr(current date - 1 MONTH,1,7), '-', '/') as A 
+from iguser union
+	select DISTINCT REPLACE(substr(current date - 3 MONTHS,1,7), '-', '/') as A
+from iguser
+) months left join
+(select sum(case when pi.pivarvalue='109001' then 1 else 0 end) as sw,
+	sum(case when pi.pivarvalue='109002' then 1 else 0 end) as  raid,
+	sum(case when pi.pivarvalue='109003' then 1 else 0 end) as switch,
+	sum(case when pi.pivarvalue='109004' then 1 else 0 end) as host,
+	sum(case when pi.pivarvalue='109005' then 1 else 0 end) as line,
+	sum(case when pi.pivarvalue='109006' then 1 else 0 end) as oth,
+	substr(pr.propentime,1,7) as A
+	from processrecord pr, processinfo pi
+	where pr.prid = pi.prid 
+	and pr.prtype='ID' 
+	and pi.pidid=1002 
+	and pr.prpdid = 1011
+	and pi.pivarvalue !=''
+	and pr.propentime>=?||'00:00:00' 
+	and pr.propentime <=?||'23:59:59'
+	group by substr(pr.propentime,1,7)
+) datas on months.A = datas.A group by months.A order by months.A desc]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>1.0</Version>
+  <design:DataSetParameters>
+    <design:parameterDefinitions>
+      <design:inOutMode>In</design:inOutMode>
+      <design:attributes>
+        <design:name></design:name>
+        <design:position>1</design:position>
+        <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+        <design:precision>246</design:precision>
+        <design:scale>0</design:scale>
+        <design:nullability>Nullable</design:nullability>
+      </design:attributes>
+      <design:inputAttributes>
+        <design:elementAttributes>
+          <design:optional>true</design:optional>
+        </design:elementAttributes>
+      </design:inputAttributes>
+    </design:parameterDefinitions>
+    <design:parameterDefinitions>
+      <design:inOutMode>In</design:inOutMode>
+      <design:attributes>
+        <design:name></design:name>
+        <design:position>2</design:position>
+        <design:nativeDataTypeCode>12</design:nativeDataTypeCode>
+        <design:precision>246</design:precision>
+        <design:scale>0</design:scale>
+        <design:nullability>Nullable</design:nullability>
+      </design:attributes>
+      <design:inputAttributes>
+        <design:elementAttributes>
+          <design:optional>true</design:optional>
+        </design:elementAttributes>
+      </design:inputAttributes>
+    </design:parameterDefinitions>
+  </design:DataSetParameters>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="chart" id="662">
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">NAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">2</property>
+                        <property name="name">PIVARVALUE</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                    <structure>
+                        <property name="position">3</property>
+                        <property name="name">MONTHA</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">4</property>
+                        <property name="name">MONTHB</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                    <structure>
+                        <property name="position">5</property>
+                        <property name="name">MONTHC</property>
+                        <property name="dataType">integer</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">数据源</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">NAME</property>
+                    <property name="nativeName">NAME</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">PIVARVALUE</property>
+                    <property name="nativeName">PIVARVALUE</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">MONTHA</property>
+                    <property name="nativeName">MONTHA</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">MONTHB</property>
+                    <property name="nativeName">MONTHB</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">MONTHC</property>
+                    <property name="nativeName">MONTHC</property>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select name,A.pivarvalue 
+sum(case when B.months = REPLACE(substr(current date - 1 MONTH,1,7), '-', '/') then 1 else 0 end) as monthA, 
+sum(case when B.months = REPLACE(substr(current date - 2 MONTHS,1,7), '-', '/') then 1 else 0 end) as monthB, 
+sum(case when B.months = REPLACE(substr(current date - 3 MONTHS,1,7), '-', '/') then 1 else 0 end) as monthC
+from(
+	select DISTINCT '软件' as name, '109001' as pivarvalue from processrecord
+	union 
+	select DISTINCT '盘阵' as name, '109002' as pivarvalue from processrecord
+	union 
+	select DISTINCT '交换机' as name, '109003' as pivarvalue from processrecord
+	union 
+	select DISTINCT '主机' as name, '109004' as pivarvalue from processrecord
+	union 
+	select DISTINCT '线路' as name, '109005' as pivarvalue from processrecord
+	union 
+	select DISTINCT '其他' as name, '109006' as pivarvalue from processrecord
+) A
+left join(
+	select pr.prid, pi.pivarvalue, substr(pr.propentime,1,7) as months
+	from processrecord pr 
+	left join processinfo as pi on pr.prid = pi.prid 
+	where pr.prtype='ID' 
+	and pi.pidid=1002 
+	and pi.pivarvalue in ('109001', '109002', '109003', '109004', '109005', '109006') 
+	and pr.prpdid = 1011
+) B on A.pivarvalue = B.pivarvalue 
+group by name,A.pivarvalue ]]></xml-property>
+        </oda-data-set>
+        <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="附件" id="1027">
+            <list-property name="columnHints">
+                <structure>
+                    <property name="columnName">ATTNAME</property>
+                    <text-property name="displayName">ATTNAME</text-property>
+                </structure>
+            </list-property>
+            <list-property name="parameters">
+                <structure>
+                    <property name="name">param_1</property>
+                    <property name="nativeName"></property>
+                    <property name="dataType">integer</property>
+                    <property name="nativeDataType">4</property>
+                    <property name="position">1</property>
+                    <expression name="defaultValue" type="javascript">""</expression>
+                    <property name="isInput">true</property>
+                    <property name="isOutput">false</property>
+                </structure>
+            </list-property>
+            <structure name="cachedMetaData">
+                <list-property name="resultSet">
+                    <structure>
+                        <property name="position">1</property>
+                        <property name="name">ATTNAME</property>
+                        <property name="dataType">string</property>
+                    </structure>
+                </list-property>
+            </structure>
+            <property name="dataSource">数据源</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">ATTNAME</property>
+                    <property name="nativeName">ATTNAME</property>
+                    <property name="dataType">string</property>
+                    <property name="nativeDataType">12</property>
+                </structure>
+            </list-property>
+            <xml-property name="queryText"><![CDATA[select substr(attname,length(attkey)+2) attname
+from attachment as am
+inner join recordlog as rl
+on am.attkey=rl.rlattkey
+where rl.prid=?]]></xml-property>
+            <xml-property name="designerValues"><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<model:DesignValues xmlns:design="http://www.eclipse.org/datatools/connectivity/oda/design" xmlns:model="http://www.eclipse.org/birt/report/model/adapter/odaModel">
+  <Version>1.0</Version>
+  <design:DataSetParameters>
+    <design:parameterDefinitions>
+      <design:inOutMode>In</design:inOutMode>
+      <design:attributes>
+        <design:name></design:name>
+        <design:position>1</design:position>
+        <design:nativeDataTypeCode>4</design:nativeDataTypeCode>
+        <design:precision>10</design:precision>
+        <design:scale>0</design:scale>
+        <design:nullability>Nullable</design:nullability>
+      </design:attributes>
+      <design:inputAttributes>
+        <design:elementAttributes>
+          <design:optional>true</design:optional>
+        </design:elementAttributes>
+      </design:inputAttributes>
+    </design:parameterDefinitions>
+  </design:DataSetParameters>
+</model:DesignValues>]]></xml-property>
+        </oda-data-set>
+    </data-sets>
+    <styles>
+        <style name="report" id="4">
+            <property name="fontFamily">sans-serif</property>
+            <property name="fontSize">10pt</property>
+        </style>
+        <style name="crosstab-cell" id="5">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+        <style name="crosstab" id="6">
+            <property name="borderBottomColor">#CCCCCC</property>
+            <property name="borderBottomStyle">solid</property>
+            <property name="borderBottomWidth">1pt</property>
+            <property name="borderLeftColor">#CCCCCC</property>
+            <property name="borderLeftStyle">solid</property>
+            <property name="borderLeftWidth">1pt</property>
+            <property name="borderRightColor">#CCCCCC</property>
+            <property name="borderRightStyle">solid</property>
+            <property name="borderRightWidth">1pt</property>
+            <property name="borderTopColor">#CCCCCC</property>
+            <property name="borderTopStyle">solid</property>
+            <property name="borderTopWidth">1pt</property>
+        </style>
+    </styles>
+    <page-setup>
+        <simple-master-page name="Simple MasterPage" id="2">
+            <method name="onPageStart"><![CDATA[/**
+ * Called before generation of chart model to GeneratedChartState.
+ * 
+ * @param chart
+ *            Chart
+ * @param icsc
+ *            IChartScriptContext
+ */
+importPackage(Packages.java.text);
+importPackage(Packages.java.util);
+importPackage(Packages.java.lang); 
+importPackage(Packages.org.eclipse.birt.chart.model.data.impl);
+importPackage(Packages.org.eclipse.birt.chart.model.component.impl);
+importPackage(Packages.org.eclipse.birt.chart.model.type.impl);
+importPackage(Packages.org.eclipse.birt.chart.model.attribute);
+importPackage(Packages.org.eclipse.birt.chart.model.attribute.impl);
+function beforeDrawLegendItem( lerh, bounds, icsc )
+{
+	if(lerh.getLabel().getCaption().getValue().equals("月份1")){
+		//var directorNumber =params["设备"].value;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue("月份");
+		if(directorNumber!=undefined){
+		 lerh.getLabel().getCaption().setValue((directorNumber)<=0?(directorNumber-(-12))+"月份":(directorNumber)+"月份");		
+		}else{
+			bounds.setWidth(0);
+      		bounds.setHeight(0);
+      		lerh.getLabel().getCaption().setValue("");
+		}
+	}
+	
+	else if(lerh.getLabel().getCaption().getValue().equals("月份2")){
+		//var directorNumber =params["设备"].value;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue("月份");
+		if(directorNumber!=undefined){		
+	      lerh.getLabel().getCaption().setValue((directorNumber-1)<=0?(directorNumber-(-11))+"月份":(directorNumber-1)+"月份");	 
+		}else{
+			bounds.setWidth(0);
+      		bounds.setHeight(0);
+      		lerh.getLabel().getCaption().setValue("");
+		}
+	}
+	else if(lerh.getLabel().getCaption().getValue().equals("月份3")){
+		//var directorNumber =params["设备"].value;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue("月份");
+		if(directorNumber!=undefined){
+	      lerh.getLabel().getCaption().setValue((directorNumber-2)<=0?(directorNumber-(-10))+"月份":(directorNumber-2)+"月份");	
+		}else{
+			bounds.setWidth(0);
+      		bounds.setHeight(0);
+      		lerh.getLabel().getCaption().setValue("");
+		}
+	}
+}]]></method>
+        </simple-master-page>
+    </page-setup>
+    <body>
+        <grid id="89">
+            <property name="height">0.7083333333333334in</property>
+            <column id="90"/>
+            <row id="91">
+                <property name="backgroundColor">#71A0CC</property>
+                <property name="fontSize">12pt</property>
+                <property name="textAlign">center</property>
+                <cell id="92">
+                    <text id="97">
+                        <property name="fontSize">18pt</property>
+                        <property name="fontWeight">bold</property>
+                        <property name="color">#FFFFFF</property>
+                        <property name="textAlign">center</property>
+                        <property name="contentType">plain</property>
+                        <text-property name="content"><![CDATA[事件服务]]></text-property>
+                    </text>
+                </cell>
+            </row>
+            <row id="108">
+                <property name="height">1px</property>
+                <property name="textLineThrough">none</property>
+                <cell id="109"/>
+            </row>
+            <row id="93">
+                <property name="backgroundColor">#71A0CC</property>
+                <property name="textLineThrough">none</property>
+                <cell id="94">
+                    <text-data id="95">
+                        <property name="color">#FFFFFF</property>
+                        <expression name="valueExpr">"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"+params["年"].value+"年"+"&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;"+params["月份"].value+"月份"</expression>
+                        <property name="contentType">html</property>
+                    </text-data>
+                </cell>
+            </row>
+            <row id="1001">
+                <property name="height">0.010416666666666666in</property>
+                <property name="backgroundColor">white</property>
+                <property name="textLineThrough">none</property>
+                <cell id="1002"/>
+            </row>
+        </grid>
+        <table id="947">
+            <property name="dataSet">故障表格</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">MONTHS</property>
+                    <text-property name="displayName">MONTHS</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["MONTHS"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">HOST</property>
+                    <text-property name="displayName">HOST</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["HOST"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">SWITCH</property>
+                    <text-property name="displayName">SWITCH</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["SWITCH"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">OTH</property>
+                    <text-property name="displayName">OTH</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["OTH"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">RAID</property>
+                    <text-property name="displayName">RAID</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["RAID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">LINE</property>
+                    <text-property name="displayName">LINE</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["LINE"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">SW</property>
+                    <text-property name="displayName">SW</text-property>
+                    <expression name="expression" type="javascript">dataSetRow["SW"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+            <column id="986"/>
+            <column id="987"/>
+            <column id="988"/>
+            <column id="989"/>
+            <column id="990"/>
+            <column id="991"/>
+            <column id="992"/>
+            <header>
+                <row id="948">
+                    <property name="backgroundColor">#71A0CC</property>
+                    <property name="textAlign">center</property>
+                    <cell id="949">
+                        <label id="999">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">故障时间</text-property>
+                        </label>
+                    </cell>
+                    <cell id="951">
+                        <label id="998">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">软件</text-property>
+                        </label>
+                    </cell>
+                    <cell id="953">
+                        <label id="997">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">盘阵</text-property>
+                        </label>
+                    </cell>
+                    <cell id="955">
+                        <label id="996">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">交换机</text-property>
+                        </label>
+                    </cell>
+                    <cell id="957">
+                        <label id="995">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">主机</text-property>
+                        </label>
+                    </cell>
+                    <cell id="959">
+                        <label id="994">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">线路</text-property>
+                        </label>
+                    </cell>
+                    <cell id="961">
+                        <label id="993">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">其它</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="963">
+                    <property name="textAlign">center</property>
+                    <cell id="964">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="965">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">MONTHS</property>
+                        </data>
+                    </cell>
+                    <cell id="966">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="977">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">SW</property>
+                        </data>
+                    </cell>
+                    <cell id="968">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="973">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">RAID</property>
+                        </data>
+                    </cell>
+                    <cell id="970">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="969">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">SWITCH</property>
+                        </data>
+                    </cell>
+                    <cell id="972">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="967">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">HOST</property>
+                        </data>
+                    </cell>
+                    <cell id="974">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="975">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">LINE</property>
+                        </data>
+                    </cell>
+                    <cell id="976">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="971">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">OTH</property>
+                        </data>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="978">
+                    <cell id="979"/>
+                    <cell id="980"/>
+                    <cell id="981"/>
+                    <cell id="982"/>
+                    <cell id="983"/>
+                    <cell id="984"/>
+                    <cell id="985"/>
+                </row>
+            </footer>
+        </table>
+        <table id="709">
+            <property name="dataSet">事件服务</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">PRID</property>
+                    <expression name="expression" type="javascript">dataSetRow["PRID"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">PRSERIALNUM</property>
+                    <expression name="expression" type="javascript">dataSetRow["PRSERIALNUM"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PIVARVALUE</property>
+                    <expression name="expression" type="javascript">dataSetRow["PIVARVALUE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PROPENTIME</property>
+                    <expression name="expression" type="javascript">dataSetRow["PROPENTIME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PRDESC</property>
+                    <expression name="expression" type="javascript">dataSetRow["PRDESC"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PSDNAME</property>
+                    <expression name="expression" type="javascript">dataSetRow["PSDNAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PRCLOSETIME</property>
+                    <expression name="expression" type="javascript">dataSetRow["PRCLOSETIME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PIVARVALUE1</property>
+                    <expression name="expression" type="javascript">dataSetRow["PIVARVALUE1"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+            </list-property>
+            <column id="748"/>
+            <column id="749"/>
+            <column id="750"/>
+            <column id="751"/>
+            <column id="752"/>
+            <column id="753"/>
+            <column id="754"/>
+            <column id="1031"/>
+            <header>
+                <row id="710">
+                    <property name="backgroundColor">#71A0CC</property>
+                    <property name="textAlign">center</property>
+                    <cell id="711">
+                        <label id="756">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">事件ID</text-property>
+                        </label>
+                    </cell>
+                    <cell id="713">
+                        <label id="757">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">事件类别</text-property>
+                        </label>
+                    </cell>
+                    <cell id="715">
+                        <label id="758">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">发生时间</text-property>
+                        </label>
+                    </cell>
+                    <cell id="717">
+                        <label id="759">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">事件描述</text-property>
+                        </label>
+                    </cell>
+                    <cell id="719">
+                        <label id="760">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">状态</text-property>
+                        </label>
+                    </cell>
+                    <cell id="721">
+                        <label id="761">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">完成时间</text-property>
+                        </label>
+                    </cell>
+                    <cell id="723">
+                        <label id="762">
+                            <property name="marginTop">3pt</property>
+                            <property name="textAlign">center</property>
+                            <text-property name="text">最终期限</text-property>
+                        </label>
+                    </cell>
+                    <cell id="1028">
+                        <label id="1032">
+                            <property name="marginTop">3pt</property>
+                            <text-property name="text">附件</text-property>
+                        </label>
+                    </cell>
+                </row>
+            </header>
+            <detail>
+                <row id="725">
+                    <property name="borderBottomColor">#C0C0C0</property>
+                    <property name="borderBottomStyle">solid</property>
+                    <property name="borderBottomWidth">1px</property>
+                    <property name="textAlign">center</property>
+                    <cell id="726">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="727">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PRSERIALNUM</property>
+                            <structure name="action">
+                                <property name="linkType">drill-through</property>
+                                <property name="reportName">processinfo.rptdesign</property>
+                                <property name="targetWindow">_blank</property>
+                                <property name="targetFileType">report-design</property>
+                                <list-property name="paramBindings">
+                                    <structure>
+                                        <property name="paramName">prid</property>
+                                        <expression name="expression" type="javascript">row["PRID"]</expression>
+                                    </structure>
+                                </list-property>
+                            </structure>
+                        </data>
+                    </cell>
+                    <cell id="728">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="729">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PIVARVALUE</property>
+                        </data>
+                    </cell>
+                    <cell id="730">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="1000">
+                            <property name="resultSetColumn">PROPENTIME</property>
+                        </data>
+                    </cell>
+                    <cell id="732">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="733">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PRDESC</property>
+                        </data>
+                    </cell>
+                    <cell id="734">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="735">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PSDNAME</property>
+                        </data>
+                    </cell>
+                    <cell id="736">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="737">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PRCLOSETIME</property>
+                        </data>
+                    </cell>
+                    <cell id="738">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <data id="739">
+                            <property name="marginTop">3pt</property>
+                            <property name="resultSetColumn">PIVARVALUE1</property>
+                        </data>
+                    </cell>
+                    <cell id="1029">
+                        <property name="borderBottomColor">#C0C0C0</property>
+                        <property name="borderBottomStyle">solid</property>
+                        <property name="borderBottomWidth">1px</property>
+                        <table id="1042">
+                            <property name="dataSet">附件</property>
+                            <list-property name="paramBindings">
+                                <structure>
+                                    <property name="paramName">param_1</property>
+                                    <expression name="expression" type="javascript">row["PRID"]</expression>
+                                </structure>
+                            </list-property>
+                            <list-property name="boundDataColumns">
+                                <structure>
+                                    <property name="name">ATTNAME</property>
+                                    <expression name="expression" type="javascript">dataSetRow["ATTNAME"]</expression>
+                                    <property name="dataType">string</property>
+                                </structure>
+                            </list-property>
+                            <column id="1049"/>
+                            <detail>
+                                <row id="1045">
+                                    <cell id="1046">
+                                        <data id="1052">
+                                            <property name="resultSetColumn">ATTNAME</property>
+                                        </data>
+                                    </cell>
+                                </row>
+                            </detail>
+                        </table>
+                    </cell>
+                </row>
+            </detail>
+            <footer>
+                <row id="740">
+                    <property name="textAlign">center</property>
+                    <cell id="741"/>
+                    <cell id="742"/>
+                    <cell id="743"/>
+                    <cell id="744"/>
+                    <cell id="745"/>
+                    <cell id="746"/>
+                    <cell id="747"/>
+                    <cell id="1030"/>
+                </row>
+            </footer>
+        </table>
+        <extended-item extensionName="Chart" id="669">
+            <xml-property name="xmlRepresentation"><![CDATA[<model:ChartWithAxes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:attribute="http://www.birt.eclipse.org/ChartModelAttribute" xmlns:data="http://www.birt.eclipse.org/ChartModelData" xmlns:layout="http://www.birt.eclipse.org/ChartModelLayout" xmlns:model="http://www.birt.eclipse.org/ChartModel" xmlns:type="http://www.birt.eclipse.org/ChartModelType">
+  <Version>2.5.1</Version>
+  <Type>Bar Chart</Type>
+  <SubType>Side-by-side</SubType>
+  <Block>
+    <Children xsi:type="layout:TitleBlock">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>true</Visible>
+      <Label>
+        <Caption>
+          <Value>故障分布情况</Value>
+          <Font>
+            <Size>16.0</Size>
+            <Bold>true</Bold>
+            <Alignment>
+              <horizontalAlignment>Center</horizontalAlignment>
+              <verticalAlignment>Center</verticalAlignment>
+            </Alignment>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Label>
+    </Children>
+    <Children xsi:type="layout:Plot">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>true</Visible>
+      <HorizontalSpacing>5</HorizontalSpacing>
+      <VerticalSpacing>5</VerticalSpacing>
+      <ClientArea>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>0</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>40.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>0.0</Right>
+        </Insets>
+      </ClientArea>
+    </Children>
+    <Children xsi:type="layout:Legend">
+      <Bounds>
+        <Left>0.0</Left>
+        <Top>0.0</Top>
+        <Width>0.0</Width>
+        <Height>0.0</Height>
+      </Bounds>
+      <Stretch>Both</Stretch>
+      <Insets>
+        <Top>3.0</Top>
+        <Left>3.0</Left>
+        <Bottom>3.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Row>-1</Row>
+      <Column>-1</Column>
+      <Rowspan>-1</Rowspan>
+      <Columnspan>-1</Columnspan>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </Outline>
+      <Visible>true</Visible>
+      <ClientArea>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>0</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>2.0</Top>
+          <Left>2.0</Left>
+          <Bottom>2.0</Bottom>
+          <Right>2.0</Right>
+        </Insets>
+      </ClientArea>
+      <Text>
+        <Value></Value>
+        <Font>
+          <Alignment/>
+        </Font>
+      </Text>
+      <Orientation>Horizontal</Orientation>
+      <Direction>Top_Bottom</Direction>
+      <Separator>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+        <Visible>true</Visible>
+      </Separator>
+      <Position>Right</Position>
+      <ItemType>Series</ItemType>
+      <Title>
+        <Caption>
+          <Value></Value>
+          <Font>
+            <Alignment/>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>false</Visible>
+      </Title>
+      <TitlePosition>Above</TitlePosition>
+    </Children>
+    <Bounds>
+      <Left>0.0</Left>
+      <Top>0.0</Top>
+      <Width>582.0</Width>
+      <Height>301.5</Height>
+    </Bounds>
+    <Insets>
+      <Top>3.0</Top>
+      <Left>3.0</Left>
+      <Bottom>3.0</Bottom>
+      <Right>3.0</Right>
+    </Insets>
+    <Row>-1</Row>
+    <Column>-1</Column>
+    <Rowspan>-1</Rowspan>
+    <Columnspan>-1</Columnspan>
+    <Outline>
+      <Style>Solid</Style>
+      <Thickness>1</Thickness>
+      <Color>
+        <Transparency>255</Transparency>
+        <Red>0</Red>
+        <Green>0</Green>
+        <Blue>0</Blue>
+      </Color>
+      <Visible>false</Visible>
+    </Outline>
+    <Background xsi:type="attribute:ColorDefinition">
+      <Transparency>255</Transparency>
+      <Red>255</Red>
+      <Green>255</Green>
+      <Blue>255</Blue>
+    </Background>
+    <Visible>true</Visible>
+  </Block>
+  <Dimension>Two_Dimensional_With_Depth</Dimension>
+  <Script>/**&#xD;
+ * Called before generation of chart model to GeneratedChartState.&#xD;
+ * &#xD;
+ * @param chart&#xD;
+ *            Chart&#xD;
+ * @param icsc&#xD;
+ *            IChartScriptContext&#xD;
+ */&#xD;
+importPackage(Packages.java.text);&#xD;
+importPackage(Packages.java.util);&#xD;
+importPackage(Packages.java.lang); &#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.data.impl);&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.component.impl);&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.type.impl);&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.attribute);&#xD;
+importPackage(Packages.org.eclipse.birt.chart.model.attribute.impl);&#xD;
+function beforeDrawLegendItem( lerh, bounds, icsc )&#xD;
+{&#xD;
+	if(lerh.getLabel().getCaption().getValue().equals(&quot;月份1&quot;)){&#xD;
+		//var directorNumber =params[&quot;设备&quot;].value;&#xD;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue(&quot;月份&quot;);&#xD;
+		if(directorNumber!=undefined){&#xD;
+		 lerh.getLabel().getCaption().setValue((directorNumber)&lt;=0?(directorNumber-(-12))+&quot;月份&quot;:(directorNumber)+&quot;月份&quot;);		&#xD;
+		}else{&#xD;
+			bounds.setWidth(0);&#xD;
+      		bounds.setHeight(0);&#xD;
+      		lerh.getLabel().getCaption().setValue(&quot;&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+	&#xD;
+	else if(lerh.getLabel().getCaption().getValue().equals(&quot;月份2&quot;)){&#xD;
+		//var directorNumber =params[&quot;设备&quot;].value;&#xD;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue(&quot;月份&quot;);&#xD;
+		if(directorNumber!=undefined){		&#xD;
+	      lerh.getLabel().getCaption().setValue((directorNumber-1)&lt;=0?(directorNumber-(-11))+&quot;月份&quot;:(directorNumber-1)+&quot;月份&quot;);	 &#xD;
+		}else{&#xD;
+			bounds.setWidth(0);&#xD;
+      		bounds.setHeight(0);&#xD;
+      		lerh.getLabel().getCaption().setValue(&quot;&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+	else if(lerh.getLabel().getCaption().getValue().equals(&quot;月份3&quot;)){&#xD;
+		//var directorNumber =params[&quot;设备&quot;].value;&#xD;
+		var directorNumber = icsc.getExternalContext().getScriptable().getParameterValue(&quot;月份&quot;);&#xD;
+		if(directorNumber!=undefined){&#xD;
+	      lerh.getLabel().getCaption().setValue((directorNumber-2)&lt;=0?(directorNumber-(-10))+&quot;月份&quot;:(directorNumber-2)+&quot;月份&quot;);	&#xD;
+		}else{&#xD;
+			bounds.setWidth(0);&#xD;
+      		bounds.setHeight(0);&#xD;
+      		lerh.getLabel().getCaption().setValue(&quot;&quot;);&#xD;
+		}&#xD;
+	}&#xD;
+}</Script>
+  <Units>Points</Units>
+  <SeriesThickness>10.0</SeriesThickness>
+  <ExtendedProperties>
+    <Name>enable.area.alt</Name>
+    <Value>false</Value>
+  </ExtendedProperties>
+  <SampleData>
+    <BaseSampleData>
+      <DataSetRepresentation>A, B, C</DataSetRepresentation>
+    </BaseSampleData>
+    <OrthogonalSampleData>
+      <DataSetRepresentation>5,4,12</DataSetRepresentation>
+      <SeriesDefinitionIndex>0</SeriesDefinitionIndex>
+    </OrthogonalSampleData>
+    <OrthogonalSampleData>
+      <DataSetRepresentation>10.0,8.0,24.0</DataSetRepresentation>
+      <SeriesDefinitionIndex>1</SeriesDefinitionIndex>
+    </OrthogonalSampleData>
+    <OrthogonalSampleData>
+      <DataSetRepresentation>15.0,12.0,36.0</DataSetRepresentation>
+      <SeriesDefinitionIndex>2</SeriesDefinitionIndex>
+    </OrthogonalSampleData>
+  </SampleData>
+  <Interactivity/>
+  <EmptyMessage>
+    <Caption>
+      <Value>此图表不包含数据。</Value>
+      <Font>
+        <Alignment>
+          <horizontalAlignment>Center</horizontalAlignment>
+          <verticalAlignment>Center</verticalAlignment>
+        </Alignment>
+      </Font>
+    </Caption>
+    <Background xsi:type="attribute:ColorDefinition">
+      <Transparency>64</Transparency>
+      <Red>127</Red>
+      <Green>127</Green>
+      <Blue>127</Blue>
+    </Background>
+    <Outline>
+      <Color>
+        <Transparency>128</Transparency>
+        <Red>127</Red>
+        <Green>127</Green>
+        <Blue>127</Blue>
+      </Color>
+      <Visible>true</Visible>
+    </Outline>
+    <Insets>
+      <Top>10.0</Top>
+      <Left>10.0</Left>
+      <Bottom>10.0</Bottom>
+      <Right>10.0</Right>
+    </Insets>
+    <Visible>false</Visible>
+  </EmptyMessage>
+  <Axes>
+    <Type>Text</Type>
+    <Title>
+      <Caption>
+        <Value>X 轴标题</Value>
+        <Font>
+          <Size>14.0</Size>
+          <Bold>true</Bold>
+          <Alignment>
+            <horizontalAlignment>Center</horizontalAlignment>
+            <verticalAlignment>Center</verticalAlignment>
+          </Alignment>
+        </Font>
+      </Caption>
+      <Background xsi:type="attribute:ColorDefinition">
+        <Transparency>0</Transparency>
+        <Red>255</Red>
+        <Green>255</Green>
+        <Blue>255</Blue>
+      </Background>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+      </Outline>
+      <Insets>
+        <Top>0.0</Top>
+        <Left>2.0</Left>
+        <Bottom>0.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Visible>false</Visible>
+    </Title>
+    <TitlePosition>Below</TitlePosition>
+    <AssociatedAxes>
+      <Type>Linear</Type>
+      <Title>
+        <Caption>
+          <Value>Y 轴标题</Value>
+          <Font>
+            <Size>14.0</Size>
+            <Bold>true</Bold>
+            <Alignment>
+              <horizontalAlignment>Center</horizontalAlignment>
+              <verticalAlignment>Center</verticalAlignment>
+            </Alignment>
+            <Rotation>90.0</Rotation>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>false</Visible>
+      </Title>
+      <TitlePosition>Left</TitlePosition>
+      <SeriesDefinitions>
+        <Query>
+          <Definition></Definition>
+        </Query>
+        <SeriesPalette>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>166</Green>
+            <Blue>218</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>242</Red>
+            <Green>88</Green>
+            <Blue>106</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>232</Red>
+            <Green>172</Green>
+            <Blue>57</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>64</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>170</Red>
+            <Green>85</Green>
+            <Blue>85</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>192</Red>
+            <Green>192</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>192</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>7</Red>
+            <Green>146</Green>
+            <Blue>94</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>64</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>240</Green>
+            <Blue>120</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>0</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+        </SeriesPalette>
+        <Series xsi:type="type:BarSeries">
+          <Visible>true</Visible>
+          <Label>
+            <Caption>
+              <Value></Value>
+              <Font>
+                <Alignment/>
+              </Font>
+            </Caption>
+            <Background xsi:type="attribute:ColorDefinition">
+              <Transparency>0</Transparency>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+            </Background>
+            <Outline>
+              <Style>Solid</Style>
+              <Thickness>1</Thickness>
+              <Color>
+                <Transparency>255</Transparency>
+                <Red>0</Red>
+                <Green>0</Green>
+                <Blue>0</Blue>
+              </Color>
+              <Visible>false</Visible>
+            </Outline>
+            <Insets>
+              <Top>0.0</Top>
+              <Left>2.0</Left>
+              <Bottom>0.0</Bottom>
+              <Right>3.0</Right>
+            </Insets>
+            <Visible>true</Visible>
+          </Label>
+          <DataDefinition>
+            <Definition>row[&quot;MONTHA&quot;]</Definition>
+            <Grouping>
+              <GroupType>Text</GroupType>
+              <AggregateExpression>Sum</AggregateExpression>
+            </Grouping>
+          </DataDefinition>
+          <SeriesIdentifier>月份1</SeriesIdentifier>
+          <DataPoint>
+            <Components>
+              <Type>Orthogonal_Value</Type>
+            </Components>
+            <Separator>, </Separator>
+          </DataPoint>
+          <LabelPosition>Outside</LabelPosition>
+          <Stacked>false</Stacked>
+          <Triggers>
+            <Condition>onmouseover</Condition>
+            <Action>
+              <Type>Show_Tooltip</Type>
+              <Value xsi:type="attribute:TooltipValue">
+                <Text></Text>
+                <Delay>200</Delay>
+              </Value>
+            </Action>
+          </Triggers>
+          <Riser>Rectangle</Riser>
+        </Series>
+        <Grouping>
+          <GroupType>Text</GroupType>
+          <AggregateExpression>Sum</AggregateExpression>
+        </Grouping>
+      </SeriesDefinitions>
+      <SeriesDefinitions>
+        <Query>
+          <Definition></Definition>
+        </Query>
+        <SeriesPalette>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>242</Red>
+            <Green>88</Green>
+            <Blue>106</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>232</Red>
+            <Green>172</Green>
+            <Blue>57</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>64</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>170</Red>
+            <Green>85</Green>
+            <Blue>85</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>192</Red>
+            <Green>192</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>192</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>7</Red>
+            <Green>146</Green>
+            <Blue>94</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>64</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>240</Green>
+            <Blue>120</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>0</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>166</Green>
+            <Blue>218</Blue>
+          </Entries>
+        </SeriesPalette>
+        <Series xsi:type="type:BarSeries">
+          <Visible>true</Visible>
+          <Label>
+            <Caption>
+              <Value></Value>
+              <Font>
+                <Alignment/>
+              </Font>
+            </Caption>
+            <Background xsi:type="attribute:ColorDefinition">
+              <Transparency>0</Transparency>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+            </Background>
+            <Outline>
+              <Style>Solid</Style>
+              <Thickness>1</Thickness>
+              <Color>
+                <Transparency>255</Transparency>
+                <Red>0</Red>
+                <Green>0</Green>
+                <Blue>0</Blue>
+              </Color>
+              <Visible>false</Visible>
+            </Outline>
+            <Insets>
+              <Top>0.0</Top>
+              <Left>2.0</Left>
+              <Bottom>0.0</Bottom>
+              <Right>3.0</Right>
+            </Insets>
+            <Visible>true</Visible>
+          </Label>
+          <DataDefinition>
+            <Definition>row[&quot;MONTHB&quot;]</Definition>
+            <Grouping>
+              <Enabled>false</Enabled>
+              <GroupType>Text</GroupType>
+              <AggregateExpression>Sum</AggregateExpression>
+            </Grouping>
+          </DataDefinition>
+          <SeriesIdentifier>月份2</SeriesIdentifier>
+          <DataPoint>
+            <Components>
+              <Type>Orthogonal_Value</Type>
+            </Components>
+            <Separator>, </Separator>
+          </DataPoint>
+          <LabelPosition>Outside</LabelPosition>
+          <Stacked>false</Stacked>
+          <Triggers>
+            <Condition>onmouseover</Condition>
+            <Action>
+              <Type>Show_Tooltip</Type>
+              <Value xsi:type="attribute:TooltipValue">
+                <Text>row[&quot;NUM&quot;]</Text>
+                <Delay>200</Delay>
+              </Value>
+            </Action>
+          </Triggers>
+          <Riser>Rectangle</Riser>
+        </Series>
+        <Grouping>
+          <GroupType>Text</GroupType>
+          <AggregateExpression>Sum</AggregateExpression>
+        </Grouping>
+      </SeriesDefinitions>
+      <SeriesDefinitions>
+        <Query>
+          <Definition></Definition>
+        </Query>
+        <SeriesPalette>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>232</Red>
+            <Green>172</Green>
+            <Blue>57</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>64</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>170</Red>
+            <Green>85</Green>
+            <Blue>85</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>192</Red>
+            <Green>192</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>192</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>7</Red>
+            <Green>146</Green>
+            <Blue>94</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>192</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>64</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>240</Green>
+            <Blue>120</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>0</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>0</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>64</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>128</Red>
+            <Green>128</Green>
+            <Blue>128</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>64</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>255</Red>
+            <Green>128</Green>
+            <Blue>0</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>80</Red>
+            <Green>166</Green>
+            <Blue>218</Blue>
+          </Entries>
+          <Entries xsi:type="attribute:ColorDefinition">
+            <Transparency>255</Transparency>
+            <Red>242</Red>
+            <Green>88</Green>
+            <Blue>106</Blue>
+          </Entries>
+        </SeriesPalette>
+        <Series xsi:type="type:BarSeries">
+          <Visible>true</Visible>
+          <Label>
+            <Caption>
+              <Value></Value>
+              <Font>
+                <Alignment/>
+              </Font>
+            </Caption>
+            <Background xsi:type="attribute:ColorDefinition">
+              <Transparency>0</Transparency>
+              <Red>255</Red>
+              <Green>255</Green>
+              <Blue>255</Blue>
+            </Background>
+            <Outline>
+              <Style>Solid</Style>
+              <Thickness>1</Thickness>
+              <Color>
+                <Transparency>255</Transparency>
+                <Red>0</Red>
+                <Green>0</Green>
+                <Blue>0</Blue>
+              </Color>
+              <Visible>false</Visible>
+            </Outline>
+            <Insets>
+              <Top>0.0</Top>
+              <Left>2.0</Left>
+              <Bottom>0.0</Bottom>
+              <Right>3.0</Right>
+            </Insets>
+            <Visible>true</Visible>
+          </Label>
+          <DataDefinition>
+            <Definition>row[&quot;MONTHC&quot;]</Definition>
+            <Grouping>
+              <Enabled>false</Enabled>
+              <GroupType>Text</GroupType>
+              <AggregateExpression>Sum</AggregateExpression>
+            </Grouping>
+          </DataDefinition>
+          <SeriesIdentifier>月份3</SeriesIdentifier>
+          <DataPoint>
+            <Components>
+              <Type>Orthogonal_Value</Type>
+            </Components>
+            <Separator>, </Separator>
+          </DataPoint>
+          <LabelPosition>Outside</LabelPosition>
+          <Stacked>false</Stacked>
+          <Triggers>
+            <Condition>onmouseover</Condition>
+            <Action>
+              <Type>Show_Tooltip</Type>
+              <Value xsi:type="attribute:TooltipValue">
+                <Text>row[&quot;NUM&quot;]</Text>
+                <Delay>200</Delay>
+              </Value>
+            </Action>
+          </Triggers>
+          <Riser>Rectangle</Riser>
+        </Series>
+        <Grouping>
+          <GroupType>Text</GroupType>
+          <AggregateExpression>Sum</AggregateExpression>
+        </Grouping>
+      </SeriesDefinitions>
+      <Orientation>Vertical</Orientation>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Visible>true</Visible>
+      </LineAttributes>
+      <Label>
+        <Caption>
+          <Value></Value>
+          <Font>
+            <Alignment/>
+          </Font>
+        </Caption>
+        <Background xsi:type="attribute:ColorDefinition">
+          <Transparency>0</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Background>
+        <Outline>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>0</Red>
+            <Green>0</Green>
+            <Blue>0</Blue>
+          </Color>
+        </Outline>
+        <Insets>
+          <Top>0.0</Top>
+          <Left>2.0</Left>
+          <Bottom>0.0</Bottom>
+          <Right>3.0</Right>
+        </Insets>
+        <Visible>true</Visible>
+      </Label>
+      <LabelPosition>Left</LabelPosition>
+      <MajorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>196</Red>
+            <Green>196</Green>
+            <Blue>196</Blue>
+          </Color>
+          <Visible>true</Visible>
+        </TickAttributes>
+      </MajorGrid>
+      <MinorGrid>
+        <LineAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </LineAttributes>
+        <TickStyle>Across</TickStyle>
+        <TickAttributes>
+          <Style>Solid</Style>
+          <Thickness>1</Thickness>
+          <Color>
+            <Transparency>255</Transparency>
+            <Red>225</Red>
+            <Green>225</Green>
+            <Blue>225</Blue>
+          </Color>
+          <Visible>false</Visible>
+        </TickAttributes>
+      </MinorGrid>
+      <Scale>
+        <MinorGridsPerUnit>5</MinorGridsPerUnit>
+      </Scale>
+      <Origin>
+        <Type>Min</Type>
+        <Value xsi:type="data:NumberDataElement">
+          <Value>0.0</Value>
+        </Value>
+      </Origin>
+      <PrimaryAxis>true</PrimaryAxis>
+      <Percent>false</Percent>
+    </AssociatedAxes>
+    <SeriesDefinitions>
+      <Query>
+        <Definition></Definition>
+      </Query>
+      <SeriesPalette>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>80</Red>
+          <Green>166</Green>
+          <Blue>218</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>242</Red>
+          <Green>88</Green>
+          <Blue>106</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>232</Red>
+          <Green>172</Green>
+          <Blue>57</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>255</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>64</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>170</Red>
+          <Green>85</Green>
+          <Blue>85</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>192</Red>
+          <Green>192</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>192</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>7</Red>
+          <Green>146</Green>
+          <Blue>94</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>128</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>192</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>0</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>64</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>80</Red>
+          <Green>240</Green>
+          <Blue>120</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>64</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>0</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>0</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>64</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>128</Red>
+          <Green>128</Green>
+          <Blue>128</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>64</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>255</Green>
+          <Blue>255</Blue>
+        </Entries>
+        <Entries xsi:type="attribute:ColorDefinition">
+          <Transparency>255</Transparency>
+          <Red>255</Red>
+          <Green>128</Green>
+          <Blue>0</Blue>
+        </Entries>
+      </SeriesPalette>
+      <Series>
+        <Visible>true</Visible>
+        <Label>
+          <Caption>
+            <Value></Value>
+            <Font>
+              <Alignment/>
+            </Font>
+          </Caption>
+          <Background xsi:type="attribute:ColorDefinition">
+            <Transparency>0</Transparency>
+            <Red>255</Red>
+            <Green>255</Green>
+            <Blue>255</Blue>
+          </Background>
+          <Outline>
+            <Style>Solid</Style>
+            <Thickness>1</Thickness>
+            <Color>
+              <Transparency>255</Transparency>
+              <Red>0</Red>
+              <Green>0</Green>
+              <Blue>0</Blue>
+            </Color>
+            <Visible>false</Visible>
+          </Outline>
+          <Insets>
+            <Top>0.0</Top>
+            <Left>2.0</Left>
+            <Bottom>0.0</Bottom>
+            <Right>3.0</Right>
+          </Insets>
+          <Visible>false</Visible>
+        </Label>
+        <DataDefinition>
+          <Definition>row[&quot;NAME&quot;]</Definition>
+        </DataDefinition>
+        <SeriesIdentifier></SeriesIdentifier>
+        <DataPoint>
+          <Components>
+            <Type>Orthogonal_Value</Type>
+          </Components>
+          <Separator>, </Separator>
+        </DataPoint>
+        <LabelPosition>Outside</LabelPosition>
+        <Stacked>false</Stacked>
+      </Series>
+      <Grouping>
+        <Enabled>true</Enabled>
+        <GroupType>Text</GroupType>
+        <AggregateExpression>Sum</AggregateExpression>
+      </Grouping>
+      <Sorting>Ascending</Sorting>
+      <SortKey>
+        <Definition>row[&quot;PIVARVALUE&quot;]</Definition>
+      </SortKey>
+    </SeriesDefinitions>
+    <Orientation>Horizontal</Orientation>
+    <LineAttributes>
+      <Style>Solid</Style>
+      <Thickness>1</Thickness>
+      <Visible>true</Visible>
+    </LineAttributes>
+    <Label>
+      <Caption>
+        <Value></Value>
+        <Font>
+          <Alignment/>
+        </Font>
+      </Caption>
+      <Background xsi:type="attribute:ColorDefinition">
+        <Transparency>0</Transparency>
+        <Red>255</Red>
+        <Green>255</Green>
+        <Blue>255</Blue>
+      </Background>
+      <Outline>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>0</Red>
+          <Green>0</Green>
+          <Blue>0</Blue>
+        </Color>
+      </Outline>
+      <Insets>
+        <Top>0.0</Top>
+        <Left>2.0</Left>
+        <Bottom>0.0</Bottom>
+        <Right>3.0</Right>
+      </Insets>
+      <Visible>true</Visible>
+    </Label>
+    <LabelPosition>Below</LabelPosition>
+    <MajorGrid>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>196</Red>
+          <Green>196</Green>
+          <Blue>196</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </LineAttributes>
+      <TickStyle>Across</TickStyle>
+      <TickAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>196</Red>
+          <Green>196</Green>
+          <Blue>196</Blue>
+        </Color>
+        <Visible>true</Visible>
+      </TickAttributes>
+    </MajorGrid>
+    <MinorGrid>
+      <LineAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>225</Red>
+          <Green>225</Green>
+          <Blue>225</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </LineAttributes>
+      <TickStyle>Across</TickStyle>
+      <TickAttributes>
+        <Style>Solid</Style>
+        <Thickness>1</Thickness>
+        <Color>
+          <Transparency>255</Transparency>
+          <Red>225</Red>
+          <Green>225</Green>
+          <Blue>225</Blue>
+        </Color>
+        <Visible>false</Visible>
+      </TickAttributes>
+    </MinorGrid>
+    <Scale>
+      <MinorGridsPerUnit>5</MinorGridsPerUnit>
+    </Scale>
+    <Origin>
+      <Type>Value</Type>
+      <Value xsi:type="data:NumberDataElement">
+        <Value>0.0</Value>
+      </Value>
+    </Origin>
+    <PrimaryAxis>true</PrimaryAxis>
+    <CategoryAxis>true</CategoryAxis>
+    <Percent>false</Percent>
+  </Axes>
+  <Orientation>Vertical</Orientation>
+  <UnitSpacing>50.0</UnitSpacing>
+  <Rotation/>
+</model:ChartWithAxes>
+]]></xml-property>
+            <property name="outputFormat">SVG</property>
+            <property name="inheritColumns">false</property>
+            <property name="dataSet">chart</property>
+            <property name="height">4.1875in</property>
+            <property name="width">8.083333333333334in</property>
+            <list-property name="boundDataColumns">
+                <structure>
+                    <property name="name">NAME</property>
+                    <expression name="expression" type="javascript">dataSetRow["NAME"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">PIVARVALUE</property>
+                    <expression name="expression" type="javascript">dataSetRow["PIVARVALUE"]</expression>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="name">MONTHA</property>
+                    <expression name="expression" type="javascript">dataSetRow["MONTHA"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">MONTHB</property>
+                    <expression name="expression" type="javascript">dataSetRow["MONTHB"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="name">MONTHC</property>
+                    <expression name="expression" type="javascript">dataSetRow["MONTHC"]</expression>
+                    <property name="dataType">integer</property>
+                </structure>
+            </list-property>
+        </extended-item>
+    </body>
+</report>

@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/data/cselom/import_sh.sql

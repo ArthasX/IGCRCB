@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="flowSearchBL" class="com.deliverik.framework.igflow.api.FlowSearchBLImpl">
+        <property name="workFlowDefinitionBL">
+            <ref bean="workFlowDefinitionBL" />
+        </property>
+        <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+        <property name="soc0107BL">
+            <ref bean="soc0107BL" />
+        </property>
+        <property name="ig893BL">
+            <ref bean="ig893BL" />
+        </property>
+        <property name="ig256BL">
+            <ref bean="ig256BL" />
+        </property>
+        <property name="soc0118BL">
+            <ref bean="soc0118BL" />
+        </property>
+	</bean>
+	<bean id="sysManageBL" class="com.deliverik.framework.igflow.api.SysManageBLImpl">
+        <property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+        <property name="organizationBL">
+            <ref bean="organizationBL" />
+        </property>
+        <property name="roleBL">
+            <ref bean="roleBL" />
+        </property>
+        <property name="userBL">
+            <ref bean="userBL" />
+        </property>
+        <property name="codeListUtils">
+            <ref bean="codeListUtils" />
+        </property>
+        <property name="sendMailBL">
+            <ref bean="sendMailBL" />
+        </property>
+        <property name="sendMessageBL">
+            <ref bean="sendMessageBL" />
+        </property>
+    </bean>
+    
+	<bean id="flowSetBL" class="com.deliverik.framework.igflow.api.FlowSetBLImpl">
+	    <property name="workFlowDefinitionBL">
+            <ref bean="workFlowDefinitionBL" />
+        </property>
+	    <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+	    <property name="soc0117BL">
+            <ref bean="soc0117BL" />
+        </property>
+        <property name="soc0109BL">
+            <ref bean="soc0109BL" />
+        </property>
+        <property name="fileUploadBL">
+            <ref bean="fileUploadBL" />
+        </property>
+        <property name="userBL">
+            <ref bean="userBL" />
+        </property>
+        <property name="soc0107BL">
+            <ref bean="soc0107BL" />
+        </property>
+        <property name="roleBL">
+            <ref bean="roleBL" />
+        </property>
+        <property name="userRoleBL">
+            <ref bean="userRoleBL" />
+        </property>
+        <property name="soc0118BL">
+            <ref bean="soc0118BL" />
+        </property>
+	</bean>
+	<bean id="flowOptBL" class="com.deliverik.framework.igflow.api.FlowOptBLImpl">
+		<property name="workFlowDefinitionBL">
+            <ref bean="workFlowDefinitionBL" />
+        </property>
+		<property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+        <property name="userBL">
+            <ref bean="userBL" />
+        </property>
+        <property name="roleBL">
+            <ref bean="roleBL" />
+        </property>
+        <property name="ig480BL">
+            <ref bean="ig480BL" />
+        </property>
+        <property name="ig481BL">
+            <ref bean="ig481BL" />
+        </property>
+        <property name="ig482BL">
+            <ref bean="ig482BL" />
+        </property>
+        <property name="ig483BL">
+            <ref bean="ig483BL" />
+        </property>
+        <property name="ig484BL">
+            <ref bean="ig484BL" />
+        </property>
+        <property name="ig485BL">
+            <ref bean="ig485BL" />
+        </property>
+	</bean>
+	<bean id="flowExternalBL" class="com.deliverik.framework.igflow.api.FlowExternalBLImpl">
+		<property name="ig992BL">
+			<ref bean="ig992BL" />
+		</property>
+	</bean>
+</beans>

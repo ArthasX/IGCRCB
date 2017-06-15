@@ -1,0 +1,108 @@
+@charset "utf-8";
+/* CSS Document */
+body{
+	margin:0px;
+	padding:0px;
+	background-color:#FFFFFF
+}
+#login{
+	width:1002px;
+	margin: 60px auto 0px;
+	padding:0px;
+}
+#user_top{
+	width:1002px;
+	height:78px;
+	background-image:url(../images/user_top_bg.gif);
+	background-repeat:repeat-x;
+}
+#user_logo{
+    width:394px;
+	height:65px;
+	background-image:url(../images/user_logo.gif);
+}
+#user_middle{
+	width:1002px;
+	height:249px;
+	background-image:url(../images/user_middle_bg.gif);
+	background-repeat:repeat-x;
+}
+#user_bottom{
+	width:1002px;
+	height:127px;
+	background-image:url(../images/user_bottom_bg.gif);
+	background-repeat:no-repeat;
+	margin: 0px;
+	padding: 0px;
+}
+#user_main{
+    width:318px;
+	height:182px;
+	margin: 62px auto 0px;
+}
+#user_main_top{
+    width:316px;
+	height:60px;
+    background-image:url(../images/user_main_top.gif);
+}
+#user_main_name{
+    width:138px;
+	height:24px;
+	float:left;
+	background-image:url(../images/user_main_name.gif);
+}
+#user_main_pwd{
+    width:138px;
+	height:19px;
+	float:left;
+	background-image:url(../images/user_main_pwd.gif);
+}
+.inputtxt{
+	width: 178px;
+	height: 19px;
+	line-height: 17px;
+	border-top-width: 0px;
+	border-left-width: 0px;
+	background: url(../images/user_main_input.gif) no-repeat;
+	border-bottom-width: 0px;
+	border-right-width: 0px;
+	float:left;
+	text-indent: 2px;
+	margin: 0px;
+}
+#user_main_m{
+    width:316px;
+	height:12px;
+	background-image:url(../images/user_main_m.gif);
+	margin-top: -5px;
+	padding: 0px;
+}
+#user_main_b{
+	width:316px;
+	height:45px;
+	background-image:url(../images/user_main_b.gif);
+	margin-top: -2px;
+	padding: 0px;
+}
+#user_main_b img{
+	width:82px;
+	height:25px;
+	margin-top:12px;
+	margin-left:138px;
+	cursor:hand
+}
+* html #user_main_bottom{
+	width:316px;
+	height:32px;
+	background-image:url(../images/user_main_bottom.gif);
+	background-repeat:no-repeat;
+	margin-top: -7px;
+	padding: 0px;
+}
+*+ html #user_main_bottom{
+	width:316px;
+	height:32px;
+	background-image:url(../images/user_main_bottom.gif);
+	background-repeat:no-repeat;
+	padding: 0px;
+}

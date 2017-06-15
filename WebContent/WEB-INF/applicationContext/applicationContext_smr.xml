@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="regulatoryReportInstanceDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.smr.model.dao.RegulatoryReportInstanceDAOImpl">
+	</bean>
+	<bean id="regulatoryReportDetailDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.smr.model.dao.RegulatoryReportDetailDAOImpl">
+	</bean>
+	<bean id="reportHistoryVWDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.smr.model.dao.ReportHistoryVWDAOImpl">
+	</bean>
+		<bean id="remindConfigureDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.smr.model.dao.RemindConfigureDAOImpl">
+	</bean>
+		<bean id="remindInfoDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.smr.model.dao.RemindInfoDAOImpl">
+	</bean>
+	<bean id="regulatoryReportInstanceBL"
+		class="com.deliverik.infogovernor.smr.bl.task.RegulatoryReportInstanceBLImpl">
+		<property name="regulatoryReportInstanceDAO">
+			<ref bean="regulatoryReportInstanceDAO" />
+		</property>
+	</bean>
+	<bean id="regulatoryReportDetailBL"
+		class="com.deliverik.infogovernor.smr.bl.task.RegulatoryReportDetailBLImpl">
+		<property name="regulatoryReportDetailDAO">
+			<ref bean="regulatoryReportDetailDAO" />
+		</property>
+	</bean>
+		<bean id="remindConfigureBL"
+		class="com.deliverik.infogovernor.smr.bl.task.RemindConfigureBLImpl">
+		<property name="remindConfigureDAO">
+			<ref bean="remindConfigureDAO" />
+		</property>
+	</bean>
+		<bean id="remindInfoBL"
+		class="com.deliverik.infogovernor.smr.bl.task.RemindInfoBLImpl">
+		<property name="remindInfoDAO">
+			<ref bean="remindInfoDAO" />
+		</property>
+	</bean>
+	
+	<bean id="approveSuggestionDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.smr.model.dao.ApproveSuggestionDAOImpl">
+	</bean>
+	<bean id="reportHistoryVWBL" class="com.deliverik.infogovernor.smr.bl.task.ReportHistoryVWBLImpl">
+		<property name="reportHistoryVWDAO">
+			<ref bean="reportHistoryVWDAO"/>
+		</property>
+	</bean>
+	<bean id="approveSuggestionBL"
+		class="com.deliverik.infogovernor.smr.bl.task.ApproveSuggestionBLImpl">
+		<property name="approveSuggestionDAO">
+			<ref bean="approveSuggestionDAO" />
+		</property>
+	</bean>
+		<bean id="igSMR02BL" class="com.deliverik.infogovernor.smr.bl.IGSMR02BLImpl">
+		<property name="approveSuggestionBL">
+			<ref bean="approveSuggestionBL" />
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL" />
+		</property>
+	</bean>
+	
+	<bean id="igSMR01BL" class="com.deliverik.infogovernor.smr.bl.IGSMR01BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL" />
+		</property>
+		<property name="regulatoryReportDetailBL">
+			<ref bean="regulatoryReportDetailBL" />
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>		
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+	</bean>
+	<!-- 需要我处理的年报 -->
+		<bean id="igSMR03BL" class="com.deliverik.infogovernor.smr.bl.IGSMR03BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL" />
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL" />
+		</property>		
+		<property name="regulatoryReportDetailBL">
+			<ref bean="regulatoryReportDetailBL" />
+		</property>		
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>	
+		<property name="flowSetBL">
+			<ref bean="flowSetBL" />
+		</property>	
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>	
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>	
+		<property name="ig337BL">
+			<ref bean="ig337BL" />
+		</property>	
+		<property name="remindConfigureBL">
+			<ref bean="remindConfigureBL" />
+		</property>	
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>	
+		<property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>	
+	</bean>
+	<bean id="igSMR04BL" class="com.deliverik.infogovernor.smr.bl.IGSMR04BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL" />
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL" />
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL" />
+		</property>	
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>	
+        <property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>	
+        <property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>	
+	</bean>
+	
+	<bean id="igSMR05BL" class="com.deliverik.infogovernor.smr.bl.IGSMR05BLImpl">
+		<property name="reportHistoryVWBL">
+			<ref bean="reportHistoryVWBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	<bean id="igSMR06BL" class="com.deliverik.infogovernor.smr.bl.IGSMR06BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL"/>
+		</property>
+		<property name="regulatoryReportDetailBL">
+			<ref bean="regulatoryReportDetailBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL" />
+		</property>
+        <property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+	</bean>
+	<bean id="igSMR07BL" class="com.deliverik.infogovernor.smr.bl.IGSMR07BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL" />
+		</property>
+		<property name="regulatoryReportDetailBL">
+			<ref bean="regulatoryReportDetailBL" />
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>		
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL" />
+		</property>	
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>	
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>	
+		<property name="ig337BL">
+			<ref bean="ig337BL" />
+		</property>	
+		<property name="remindConfigureBL">
+			<ref bean="remindConfigureBL" />
+		</property>	
+        <property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+	</bean>
+	<bean id="igSMR08BL" class="com.deliverik.infogovernor.smr.bl.IGSMR08BLImpl">
+		<property name="fillInQualityAssessVWBL">
+			<ref bean="fillInQualityAssessVWBL" />
+		</property>
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL" />
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL" />
+		</property>
+	</bean>
+	<bean id="fillInQualityAssessVWDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.smr.model.dao.FillInQualityAssessVWDAOImpl">
+	</bean>
+	<bean id="fillInQualityAssessVWBL"
+		class="com.deliverik.infogovernor.smr.bl.task.FillInQualityAssessVWBLImpl">
+		<property name="fillInQualityAssessVWDAO">
+			<ref bean="fillInQualityAssessVWDAO" />
+		</property>
+	</bean>	
+	<bean id="igSMR09BL" class="com.deliverik.infogovernor.smr.bl.IGSMR09BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 	月报 -->
+	<bean id="igSMR11BL" class="com.deliverik.infogovernor.smr.bl.IGSMR11BLImpl">
+		<property name="regulatoryReportInstanceBL">
+			<ref bean="regulatoryReportInstanceBL"/>
+		</property>
+		<property name="regulatoryReportDetailBL">
+			<ref bean="regulatoryReportDetailBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL" />
+		</property>
+        <property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+	</bean>
+</beans>

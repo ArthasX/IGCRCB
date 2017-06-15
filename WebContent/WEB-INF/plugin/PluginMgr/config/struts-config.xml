@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	
+	<form-beans>
+		
+	</form-beans>
+	
+	<action-mappings>
+        <!-- plugin插件管理 -->
+        <action path="/IGPluginMgr_Disp"
+            type="com.deliverik.plugin.PluginMgr.action.IGPluginMgrAction"
+            input="/WEB-INF/plugin/PluginMgr/IGPluginMgr.jsp"
+            parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP" path="/WEB-INF/plugin/PluginMgr/IGPluginMgr.jsp"/>
+        </action>
+        <action path="/IGPluginMgr_Mod"
+            type="com.deliverik.plugin.PluginMgr.action.IGPluginMgrAction"
+            input="/WEB-INF/plugin/PluginMgr/IGPluginMgr.jsp"
+            parameter="MODIFY"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP" path="/IGPluginMgr_Disp.do"/>
+        </action>
+        <action path="/IGPluginMgr_Upd"
+            type="com.deliverik.plugin.PluginMgr.action.IGPluginMgrAction"
+            input="/WEB-INF/plugin/PluginMgr/IGPluginMgr.jsp"
+            parameter="UPDATE"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP" path="/IGPluginMgr_Disp.do"/>
+        </action>
+        <!-- plugin插件管理 -->
+	</action-mappings>
+</struts-config>

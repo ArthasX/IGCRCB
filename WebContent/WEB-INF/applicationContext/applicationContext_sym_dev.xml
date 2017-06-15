@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+ 
+	<bean id="reportFileDefinitionDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.ReportFileDefinitionDAOImpl">
+	</bean>
+	<bean id="reportFileVersionDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.ReportFileVersionDAOImpl">
+	</bean>
+	<bean id="roleReportDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.RoleReportDAOImpl">
+	</bean>
+	<bean id="customReportDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.CustomReportDAOImpl">
+	</bean>
+	<!-- 优先级DAO注入  edit by fangyunlong-->
+	<bean id="priorityDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.PriorityDAOImpl">
+	</bean>	
+	<!-- 短信记录DAO注入  edit by zhaojun-->
+	<bean id="smslogDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.SMSLogDAOImpl">
+	</bean>
+	<bean id="customConfigurationDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.CustomConfigurationDAOImpl">
+	</bean>
+	<bean id="queueDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.QueueDAOImpl">
+	</bean>
+	<bean id="reportFileDefinitionBL" class="com.deliverik.infogovernor.sym.bl.task.ReportFileDefinitionBLImpl">
+		<property name="reportFileDefinitionDAO">
+			<ref bean="reportFileDefinitionDAO"/>
+		</property>
+	</bean>
+	<bean id="customConfigurationBL" class="com.deliverik.infogovernor.sym.bl.task.CustomConfigurationBLImpl">
+		<property name="customConfigurationDAO">
+			<ref bean="customConfigurationDAO"/>
+		</property>
+	</bean>
+	<bean id="reportFileVersionBL" class="com.deliverik.infogovernor.sym.bl.task.ReportFileVersionBLImpl">
+		<property name="reportFileVersionDAO">
+			<ref bean="reportFileVersionDAO"/>
+		</property>
+	</bean>
+	<bean id="customReportBL" class="com.deliverik.infogovernor.sym.bl.task.CustomReportBLImpl">
+		<property name="customReportDAO">
+			<ref bean="customReportDAO"/>
+		</property>
+	</bean>
+	<!-- 优先级BL注入  edit by fangyunlong-->
+	<bean id="priorityBL" class="com.deliverik.infogovernor.sym.bl.task.PriorityBLImpl">
+		<property name="priorityDAO">
+			<ref bean="priorityDAO"/>
+		</property>
+	</bean>
+	<!-- 短信BL注入  edit by zhaojun-->
+	<bean id="smslogBL" class="com.deliverik.infogovernor.sym.bl.task.SMSLogBLImpl">
+		<property name="smslogDAO">
+			<ref bean="smslogDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="queueBL" class="com.deliverik.infogovernor.sym.bl.task.QueueBLImpl">
+		<property name="queueDAO">
+			<ref bean="queueDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 机构管理    edit by liupeng start-->
+	<bean id="igsym01BL" class="com.deliverik.infogovernor.sym.bl.IGSYM01BLImpl">
+		<property name="organizationBL">
+			<ref bean="organizationBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+	</bean>
+	<!-- 机构管理   edit by liupeng end -->
+	<!-- 用户管理   edit by liupeng start -->
+	<bean id="igsym02BL" class="com.deliverik.infogovernor.sym.bl.IGSYM02BLImpl">
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="ig622BL">
+			<ref bean="ig622BL" />
+		</property>
+	</bean>
+	<!-- 用户管理  edit by liupeng end -->
+	<!-- 角色管理  edit by liupeng start -->
+	<bean id="igsym03BL" class="com.deliverik.infogovernor.sym.bl.IGSYM03BLImpl">
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL" />
+		</property>
+		<property name="ig117BL">
+			<ref bean="ig117BL" />
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL" />
+		</property>
+	</bean>
+	<!-- 角色管理  edit by liupeng end -->
+	<!-- 授权管理  edit by liupeng start -->
+	<bean id="userNotRoleVWDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.UserNotRoleVWDAOImpl">
+	</bean>
+	<bean id="userNotRoleBL" class="com.deliverik.infogovernor.sym.bl.task.UserNotRoleBLImpl">
+		<property name="userNotRoleVWDAO">
+			<ref bean="userNotRoleVWDAO" />
+		</property>
+	</bean>
+	<bean id="igsym04BL" class="com.deliverik.infogovernor.sym.bl.IGSYM04BLImpl">
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL" />
+		</property>
+		<property name="actionBL">
+			<ref bean="actionBL" />
+		</property>
+		<property name="roleActionBL">
+			<ref bean="roleActionBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="roleReportBL">
+			<ref bean="roleReportBL" />
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL" />
+		</property>
+		<property name="reportFileVersionBL">
+			<ref bean="reportFileVersionBL"/>
+		</property>
+		<property name="reportFileDefinitionBL">
+			<ref bean="reportFileDefinitionBL" />
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="userNotRoleBL">
+			<ref bean="userNotRoleBL" />
+		</property>
+	</bean>
+	<!-- 授权管理  edit by liupeng end -->
+	<bean id="roleReportBL" class="com.deliverik.infogovernor.sym.bl.task.RoleReportBLImpl">
+		<property name="roleReportDAO">
+			<ref bean="roleReportDAO"/>
+		</property>
+	</bean>
+	<!-- 通知管理  edit by liupeng start -->
+	<bean id="noticeTBDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.NoticeTBDAOImpl">
+	</bean>
+	<bean id="dateWorkVWDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.DateWorkVWDAOImpl">
+	</bean>
+	<bean id="noticeBL" class="com.deliverik.infogovernor.sym.bl.task.NoticeBLImpl">
+		<property name="noticeTBDAO">
+			<ref bean="noticeTBDAO" />
+		</property>
+		<property name="dateWorkVWDAO">
+			<ref bean="dateWorkVWDAO" />
+		</property>
+	</bean>
+	<bean id="igsym05BL" class="com.deliverik.infogovernor.sym.bl.IGSYM05BLImpl">
+		<property name="noticeBL">
+			<ref bean="noticeBL" />
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="sendMailBL">
+			<ref bean="sendMailBL" />
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>
+	</bean>
+	
+	<bean id="igsym10BL" class="com.deliverik.infogovernor.sym.bl.IGSYM10BLImpl">
+        <property name="codeCategoryBL">
+            <ref bean="codeCategoryBL" />
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL" />
+        </property>
+        <property name="codeListUtils">
+            <ref bean="codeListUtils" />
+        </property>
+    </bean>
+	
+	<!-- 通知管理  edit by liupeng end -->
+	
+     <bean id="igsym11BL" class="com.deliverik.infogovernor.sym.bl.IGSYM11BLImpl">
+        <property name="codeCategoryBL">
+            <ref bean="codeCategoryBL" />
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL" />
+        </property>
+        <!-- 优先级bl  -->
+        <property name="priorityBL">
+            <ref bean="priorityBL" />
+        </property>
+    </bean>
+    
+    <bean id="igsym12BL" class="com.deliverik.infogovernor.sym.bl.IGSYM12BLImpl">
+        <property name="codeCategoryBL">
+            <ref bean="codeCategoryBL" />
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL" />
+        </property>
+        <property name="ig117BL">
+			<ref bean="ig117BL"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+    </bean>
+    
+    <bean id="igsym13BL" class="com.deliverik.infogovernor.sym.bl.IGSYM13BLImpl">
+        <property name="sendMailBL">
+			<ref bean="sendMailBL"/>
+		</property>
+		<property name="codeListUtils">
+            <ref bean="codeListUtils" />
+        </property>
+		<property name="ccProxy">
+            <ref bean="ccProxy" />
+        </property>
+    </bean>
+    <bean id="igSYM14BL" class="com.deliverik.infogovernor.sym.bl.IGSYM14BLImpl">
+		<property name="reportFileDefinitionBL">
+			<ref bean="reportFileDefinitionBL"/>
+		</property>
+		<property name="reportFileVersionBL">
+			<ref bean="reportFileVersionBL"/>
+		</property>
+		<property name="object_ListBL">
+			<ref bean="object_ListBL"/>
+		</property>
+		<property name="soc0424BL">
+			<ref bean="soc0424BL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="customConfigurationBL">
+			<ref bean="customConfigurationBL"/>
+		</property>
+	</bean>
+	<!-- 基础数据 数据定义 -->
+	<bean id="igsym15BL" class="com.deliverik.infogovernor.sym.bl.IGSYM15BLImpl">
+        <property name="codeCategoryDefiBL">
+            <ref bean="codeCategoryDefiBL" />
+        </property>
+        <property name="codeDetailDefBL">
+            <ref bean="codeDetailDefBL" />
+        </property>
+        <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL" />
+        </property>
+    </bean>
+    <bean id="igsym16BL" class="com.deliverik.infogovernor.sym.bl.IGSYM16BLImpl">
+        <property name="codeCategoryDefiBL">
+            <ref bean="codeCategoryDefiBL" />
+        </property>
+        <property name="codeDetailDefBL">
+            <ref bean="codeDetailDefBL" />
+        </property>
+        <property name="ig117BL">
+			<ref bean="ig117BL"/>
+		</property>
+    </bean>
+    <!-- 流程策略设定 -->
+    <bean id="igSYM17BL" class="com.deliverik.infogovernor.sym.bl.IGSYM17BLImpl">
+        <property name="codeListUtils">
+            <ref bean="codeListUtils" />
+        </property>
+        <property name="ig380BL">
+            <ref bean="ig380BL" />
+        </property>
+        <property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="ig259BL">
+			<ref bean="ig259BL"/>
+		</property>
+		<property name="ig105BL">
+			<ref bean="ig105BL"/>
+		</property>
+    </bean>
+    <!-- 首页管理设定 -->
+     <bean id="igSYM18BL" class="com.deliverik.infogovernor.sym.bl.IGSYM18BLImpl">
+        <property name="ig622BL">
+            <ref bean="ig622BL" />
+        </property>       
+    </bean>
+    
+    <!-- SOC作息时间设定菜单功能2013/01/30 -->
+    <bean id="igsym19BL" class="com.deliverik.infogovernor.sym.bl.IGSYM19BLImpl">
+    	<property name="processWorkTimeTemplateBL">
+            <ref bean="processWorkTimeTemplateBL" />
+        </property>
+        <property name="processWorkTimeBL">
+            <ref bean="processWorkTimeBL" />
+        </property>
+        <property name="processTimeBL">
+            <ref bean="processTimeBL" />
+        </property>
+        <property name="ig500BL">
+            <ref bean="ig500BL" />
+        </property>
+    </bean>
+    
+    <!--短信规则控制-->
+    <bean id="mSGFILTERDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.sym.model.dao.MSGFILTERDAOImpl">
+	</bean>
+	
+     <bean id="igSYM20BL" class="com.deliverik.infogovernor.sym.bl.IGSYM20BLImpl">
+        <property name="msgfilterbl">
+            <ref bean="msgfilterbl" />
+        </property>       
+     </bean>
+    
+      <bean id="msgfilterbl" class="com.deliverik.infogovernor.sym.bl.task.MSGFILTERBLImpl">
+        <property name="mSGFILTERDAO">
+            <ref bean="mSGFILTERDAO" />
+        </property>       
+    </bean>
+</beans>

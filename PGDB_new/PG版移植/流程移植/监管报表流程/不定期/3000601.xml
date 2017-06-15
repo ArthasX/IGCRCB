@@ -1,0 +1,4368 @@
+<?xml version="1.0" encoding="GBK"?>
+<!DOCTYPE VARIABLE>
+
+<Process PDID="3000601">
+    <CHECKINFO>
+        <ROLEINFO>
+            <DATA>
+                <ROLEID>1095</ROLEID>
+                <ROLENAME>不定期报表填报人</ROLENAME>
+            </DATA>
+            <DATA>
+                <ROLEID>1088</ROLEID>
+                <ROLENAME>监管报表管理</ROLENAME>
+            </DATA>
+            <DATA>
+                <ROLEID>1098</ROLEID>
+                <ROLENAME>不定期报表负责人</ROLENAME>
+            </DATA>
+        </ROLEINFO>
+        <ORGINFO />
+        <USERINFO>
+            <DATA>
+                <USERID>caijj</USERID>
+                <USERNAME>Leon</USERNAME>
+            </DATA>
+            <DATA>
+                <USERID>magm</USERID>
+                <USERNAME>Humphrey</USERNAME>
+            </DATA>
+            <DATA>
+                <USERID>wanghao</USERID>
+                <USERNAME>Victor</USERNAME>
+            </DATA>
+        </USERINFO>
+    </CHECKINFO>
+    <IG380>
+        <DATALIST>
+            <DATA>
+                <PDID>3000601</PDID>
+                <PTID>16</PTID>
+                <PDNAME>T-A-7 信息科技相关案件报告表</PDNAME>
+                <PDDESC />
+                <PDCRTDATE>2013/07/19</PDCRTDATE>
+                <PDSTATUS>i</PDSTATUS>
+                <PDXML>
+                    <WebFlow>
+                        <Steps isFocusedId="">
+                            <Step>
+                                <BaseProperties id="3000601001" text="待发起" stepType="BeginStep" psdtype="0" />
+                                <VMLProperties width="50" height="80" x="120" y="26" />
+                            </Step>
+                            <Step>
+                                <BaseProperties id="3000601002" text="关闭" stepType="EndStep" psdtype="0" />
+                                <VMLProperties width="50" height="80" x="912" y="74" />
+                            </Step>
+                            <Step>
+                                <BaseProperties id="3000601003" text="报表填报" stepType="NormalStep" psdtype="0" />
+                                <VMLProperties width="50" height="80" x="304" y="29" />
+                            </Step>
+                            <Step>
+                                <BaseProperties id="3000601004" text="报表审批" stepType="NormalStep" psdtype="0" />
+                                <VMLProperties width="50" height="80" x="513" y="73" />
+                            </Step>
+                            <Step>
+                                <BaseProperties id="3000601005" text="不定期报表审批" stepType="NormalStep" psdtype="0" />
+                                <VMLProperties width="50" height="80" x="728" y="72" />
+                            </Step>
+                        </Steps>
+                        <Actions>
+                            <Action>
+                                <BaseProperties id="a3000601004" actionType="PolyLine" from="3000601004" to="3000601003" />
+                            </Action>
+                            <Action>
+                                <BaseProperties id="a3000601001" actionType="PolyLine" from="3000601001" to="3000601003" />
+                            </Action>
+                            <Action>
+                                <BaseProperties id="a3000601005" actionType="PolyLine" from="3000601005" to="3000601002" />
+                            </Action>
+                            <Action>
+                                <BaseProperties id="a3000601006" actionType="PolyLine" from="3000601005" to="3000601003" />
+                            </Action>
+                            <Action>
+                                <BaseProperties id="a3000601009" actionType="PolyLine" from="3000601003" to="3000601004" />
+                            </Action>
+                            <Action>
+                                <BaseProperties id="a3000601003" actionType="PolyLine" from="3000601004" to="3000601005" />
+                            </Action>
+                        </Actions>
+                    </WebFlow>
+                </PDXML>
+                <PERMISSION>0</PERMISSION>
+                <FINGERPRINT />
+                <SERIALGENERATOR />
+                <PDACTNAME />
+                <REPORTDESC>&lt;div&gt;&lt;strong&gt;【统计范围】&lt;/strong&gt;机构全辖。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【案件】&lt;/strong&gt;是指经纪检监察部门或司法机关立案的&amp;ldquo;经济案件&amp;rdquo;、&amp;ldquo;违规经营案件&amp;rdquo;和&amp;ldquo;诈骗、抢劫、盗窃案件&amp;rdquo;，其中不包括成功堵截了的案件，监察部门或司法机关均立案的，以1 件计，不得重复填报。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【涉案金额】&lt;/strong&gt;是指案件当事人的犯罪金额。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【风险金额】&lt;/strong&gt;是指涉案金额中冻结部分和未追回部分。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【作案时间】&lt;/strong&gt;是指作案的起止日期，如只作案一次，则起止日期相同。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【资金用途】&lt;/strong&gt;是指作案人将涉案资金用于何处。涉案资金有多种用途的填报金额最大的项目。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【炒股（房地产）等】&lt;/strong&gt;是指资金用于炒股票、证券、期货、房地产等投机炒作行为。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【受影响客户数量】&lt;/strong&gt;是指案件中客户资金或客户敏感信息受损的客户数量。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【涉案机构】&lt;/strong&gt;是指案件中受影响客户所在机构。如涉及多个机构，需分别列出。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【涉案信息系统类别】&lt;/strong&gt;是指作案时利用的信息系统所属类别。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【涉案信息系统名称】&lt;/strong&gt;是指作案时利用的信息系统的详细名称。如涉及多个系统填写最主要系统名称。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【作案方式】&lt;/strong&gt;是指具体的作案方式。分以下7 种情况填写，可多选：&lt;br /&gt;
+1、外部攻击，指作案人通过因特网、外联网等渠道攻击作案。&lt;br /&gt;
+2、内部攻击，指作案人通过机构内部网络，利用系统缺陷作案。&lt;br /&gt;
+3、系统软件缺陷，指作案人利用操作系统、数据库、中间件等系统软件漏洞或缺陷作案。&lt;br /&gt;
+4、应用软件缺陷，指作案人利用应用系统设计缺陷或后门作案。&lt;br /&gt;
+5、内控缺陷，指系统运行、维护或操作等环节上内控设计存在缺陷，被作案人利用作案。&lt;br /&gt;
+6、内控失效，指作案人违反系统运行、维护或操作等内控制度作案。&lt;br /&gt;
+7、其他，指不列入以上6 类方式的案件，需简述作案方式。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【发现渠道】&lt;/strong&gt;是指发现案件的具体方式。分7 种情况填写，可多选。&lt;br /&gt;
+1、内查发现：指本单位或上级单位通过检查等各种形式发现的案件。&lt;br /&gt;
+2、检举揭发：指案件线索来源于各种形式的检举揭发。&lt;br /&gt;
+3、银监会系统检查：指由银监会、银监局、银监分局检查发现的案件。&lt;br /&gt;
+4、坦白自首：指作案人向本单位或其他执法、执纪机关主动坦白交待的案件。&lt;br /&gt;
+5、外查发现：指发案单位和银监会系统以外的监管、执法、执纪等机关通过检查或查处其他案件而发现的案件。&lt;br /&gt;
+6、携款外逃：指作案人携款外逃或失踪等因素导致案件暴露。&lt;br /&gt;
+7、其他：以上六种以外的发现案件渠道。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【案情描述】&lt;/strong&gt;详细描述作案时间、方式及过程，及信息科技方面存在的漏洞与缺陷。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【追究责任情况】&lt;/strong&gt;是指截止报告时点处理作案人员和追究责任人员情况。&lt;/div&gt;
+&lt;div&gt;&lt;br /&gt;
+&lt;strong&gt;【补救措施】&lt;/strong&gt;是指针对系统缺陷或管理缺陷已采取或即将采取的补救措施的描述。&lt;/div&gt;</REPORTDESC>
+                <MESSAGEGENERATOR />
+                <PDSERIALNUMBER />
+                <PDSERVICECATALOG />
+                <PDSERVICECATALOGNAME />
+            </DATA>
+        </DATALIST>
+    </IG380>
+    <IG007>
+        <DATALIST>
+            <DATA>
+                <PIDID>3000601014</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案人</PIDNAME>
+                <PIDLABEL>涉案人</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>04</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>1</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>1</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601026</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案信息系统类别</PIDNAME>
+                <PIDLABEL>涉案信息系统类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>09</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601071</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案金额（万元）</PIDNAME>
+                <PIDLABEL>涉案金额（万元）</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601077</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>作案时间</PIDNAME>
+                <PIDLABEL>作案时间</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>03</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601086</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>受影响客户数量（户）</PIDNAME>
+                <PIDLABEL>受影响客户数量（户）</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>06</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>checkNumZero</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601090</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>资金用途</PIDNAME>
+                <PIDLABEL>资金用途</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>05</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601094</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案机构</PIDNAME>
+                <PIDLABEL>涉案机构</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>07</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601097</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案信息系统名称</PIDNAME>
+                <PIDLABEL>涉案信息系统名称</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>08</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601100</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>作案方式</PIDNAME>
+                <PIDLABEL>作案方式</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>10</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601103</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>发现渠道</PIDNAME>
+                <PIDLABEL>发现渠道</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>11</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601106</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>案情描述</PIDNAME>
+                <PIDLABEL>案情描述</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>12</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601109</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>追究责任情况</PIDNAME>
+                <PIDLABEL>追究责任情况</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>13</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601112</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>补救措施</PIDNAME>
+                <PIDLABEL>补救措施</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>14</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601122</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>标题</PIDNAME>
+                <PIDLABEL>标题</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH>N</HASATTACH>
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID />
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS>0</REMARKS>
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601015</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>姓名</PIDNAME>
+                <PIDLABEL>姓名</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>110</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>11</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601016</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>性别</PIDNAME>
+                <PIDLABEL>性别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>2</PIDTYPE>
+                <PIDOPTION>#男#女</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>150</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601017</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>年龄</PIDNAME>
+                <PIDLABEL>年龄</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>7</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>120</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601018</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>单位</PIDNAME>
+                <PIDLABEL>单位</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>110</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>11</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601019</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>部门</PIDNAME>
+                <PIDLABEL>部门</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>110</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>11</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601020</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>职务</PIDNAME>
+                <PIDLABEL>职务</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>110</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>11</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601021</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>30</PIDWIDTH>
+                <PPIDID>3000601014</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601027</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>类别明细</PIDNAME>
+                <PIDLABEL>类别明细</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>2</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601026</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601028</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>渠道管理类别</PIDNAME>
+                <PIDLABEL>渠道管理类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601030</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>渠道子分类</PIDNAME>
+                <PIDLABEL>渠道子分类</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>前置类#柜员类#ATM#POS#银行卡#自助终端#网上银行#电话银行#手机银行</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601028</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601031</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>客户管理类别</PIDNAME>
+                <PIDLABEL>客户管理类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601033</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>客户管理子分类</PIDNAME>
+                <PIDLABEL>客户管理子分类</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>对私客户关系管理#对公客户关系管理#客户信息管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601031</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601034</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>产品管理类别</PIDNAME>
+                <PIDLABEL>产品管理类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601036</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>产品管理子类别</PIDNAME>
+                <PIDLABEL>产品管理子类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>对公贷款#对公存款#对私贷款#对私存款#支付结算#投资银行#贸易融资#衍生产品#国际结算#基金产品#外汇理财产品#代理业务#信用卡#总账</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601034</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601040</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>财务管理类别</PIDNAME>
+                <PIDLABEL>财务管理类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601041</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>决策支持类别</PIDNAME>
+                <PIDLABEL>决策支持类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601042</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>其他类别</PIDNAME>
+                <PIDLABEL>其他类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>0</PIDWIDTH>
+                <PPIDID>3000601027</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE />
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601044</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>财务管理子类别</PIDNAME>
+                <PIDLABEL>财务管理子类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>预算控制#固定资产#应收应付#资金交易</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601040</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601046</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>决策支持子类别</PIDNAME>
+                <PIDLABEL>决策支持子类别</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>数据仓库#绩效考核#风险管理#资产负债管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601041</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601048</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>其他内容</PIDNAME>
+                <PIDLABEL>其他内容</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>540</PIDWIDTH>
+                <PPIDID>3000601042</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>40</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601049</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601026</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601073</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案金额（万元）</PIDNAME>
+                <PIDLABEL>涉案金额（万元）</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>7</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>278</PIDWIDTH>
+                <PPIDID>3000601071</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION>checkNumNotNegative</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>30</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601074</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>标题2</PIDNAME>
+                <PIDLABEL>标题2</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>L</PIDTYPE>
+                <PIDOPTION>风险金额（万元）</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>182</PIDWIDTH>
+                <PPIDID>3000601071</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601075</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>风险金额（万元）</PIDNAME>
+                <PIDLABEL>风险金额（万元）</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>7</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>248</PIDWIDTH>
+                <PPIDID>3000601071</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION>checkNumNotNegative</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>30</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601076</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601071</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601079</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>作案时间</PIDNAME>
+                <PIDLABEL>作案时间</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>8</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY>1</PIDDISPLAY>
+                <PIDUSE>2</PIDUSE>
+                <PIDWIDTH>265</PIDWIDTH>
+                <PPIDID>3000601077</PPIDID>
+                <PIDROWS>1</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>N</SHOWROWNUM>
+                <SHOWLINE>2</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>Y</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601080</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>开始时间</PIDNAME>
+                <PIDLABEL>开始时间</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>3</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601079</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>checkStartTime</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601081</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>至</PIDNAME>
+                <PIDLABEL>至</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>L</PIDTYPE>
+                <PIDOPTION>至</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>20</PIDWIDTH>
+                <PPIDID>3000601079</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601082</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>结束时间</PIDNAME>
+                <PIDLABEL>结束时间</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>3</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601079</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>checkEndTime</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601083</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>标题2</PIDNAME>
+                <PIDLABEL>标题2</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>L</PIDTYPE>
+                <PIDOPTION>发现时间</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>180</PIDWIDTH>
+                <PPIDID>3000601077</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601084</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>发现时间</PIDNAME>
+                <PIDLABEL>发现时间</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>3</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>265</PIDWIDTH>
+                <PPIDID>3000601077</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION>checkDiscoveryTime</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601085</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601077</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601088</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>受影响客户数量</PIDNAME>
+                <PIDLABEL>受影响客户数量</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>7</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601086</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION>checkNumZero</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601089</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601086</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601092</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>资金用途</PIDNAME>
+                <PIDLABEL>资金用途</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>赌博#经商办企业#炒股（房地产）等#挥霍</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601090</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601093</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601090</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601095</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案机构</PIDNAME>
+                <PIDLABEL>涉案机构</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601094</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601096</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601094</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601098</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>涉案信息系统名称</PIDNAME>
+                <PIDLABEL>涉案信息系统名称</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601097</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601099</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601097</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601101</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>作案方式</PIDNAME>
+                <PIDLABEL>作案方式</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>外部攻击#内部攻击#硬件缺陷#系统软件缺陷#应用软件缺陷#内控缺陷#内控失效</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601100</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601102</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601100</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601104</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>发现渠道</PIDNAME>
+                <PIDLABEL>发现渠道</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>S</PIDTYPE>
+                <PIDOPTION>内查发现#检举揭发#银监会系统检查#坦白自首#外查发现#携款外逃</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601103</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601105</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601103</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601107</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>案情描述</PIDNAME>
+                <PIDLABEL>案情描述</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601106</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601108</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601106</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601110</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>追究责任情况</PIDNAME>
+                <PIDLABEL>追究责任情况</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601109</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601111</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601109</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601113</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>补救措施</PIDNAME>
+                <PIDLABEL>补救措施</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>710</PIDWIDTH>
+                <PPIDID>3000601112</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>Y</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>70</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601114</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>备注</PIDNAME>
+                <PIDLABEL>备注</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>9</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>99</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601112</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>Y</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE />
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601116</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>渠道管理</PIDNAME>
+                <PIDLABEL>渠道管理</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>渠道管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601028</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601117</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>客户管理</PIDNAME>
+                <PIDLABEL>客户管理</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>客户管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601031</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601118</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>产品管理</PIDNAME>
+                <PIDLABEL>产品管理</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>产品管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601034</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601119</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>财务管理</PIDNAME>
+                <PIDLABEL>财务管理</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>财务管理</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601040</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601120</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>决策支持</PIDNAME>
+                <PIDLABEL>决策支持</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>决策支持</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>100</PIDWIDTH>
+                <PPIDID>3000601041</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601121</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>其他</PIDNAME>
+                <PIDLABEL>其他</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>B</PIDTYPE>
+                <PIDOPTION>其他</PIDOPTION>
+                <PIDDEFAULT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>0</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>103</PIDWIDTH>
+                <PPIDID>3000601042</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>sheanxitongleibie_click</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST>N</SELECEDLAST>
+                <NUMBERTYPE>0</NUMBERTYPE>
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601123</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>填报部门</PIDNAME>
+                <PIDLABEL>填报部门</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>01</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>196</PIDWIDTH>
+                <PPIDID>3000601122</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601124</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>填报人</PIDNAME>
+                <PIDLABEL>填报人</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>02</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>196</PIDWIDTH>
+                <PPIDID>3000601122</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601125</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>联系电话</PIDNAME>
+                <PIDLABEL>联系电话</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>03</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>196</PIDWIDTH>
+                <PPIDID>3000601122</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION>checkPhoneNumber</JSFUNCTION>
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601126</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>责任人</PIDNAME>
+                <PIDLABEL>责任人</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>0</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>04</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>196</PIDWIDTH>
+                <PPIDID>3000601122</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+            <DATA>
+                <PIDID>3000601127</PIDID>
+                <PDID>3000601</PDID>
+                <PIDNAME>填报日期</PIDNAME>
+                <PIDLABEL>填报日期</PIDLABEL>
+                <PIDDESC />
+                <PIDTYPE>3</PIDTYPE>
+                <PIDOPTION />
+                <PIDDEFAULT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+                <FINGERPRINT />
+                <PIDSORTID>05</PIDSORTID>
+                <CCID />
+                <PIDGID />
+                <PIDMODE>0</PIDMODE>
+                <PRIVATESCOPE />
+                <HASATTACH />
+                <ROWWIDTH>1</ROWWIDTH>
+                <PIDDISPLAY />
+                <PIDUSE />
+                <PIDWIDTH>180</PIDWIDTH>
+                <PPIDID>3000601122</PPIDID>
+                <PIDROWS>0</PIDROWS>
+                <PIDHIDE>N</PIDHIDE>
+                <SHOWROWNUM>Y</SHOWROWNUM>
+                <SHOWLINE>1</SHOWLINE>
+                <PIDUNIT />
+                <REMARKS />
+                <SHOWSTYLES>0</SHOWSTYLES>
+                <TITLEDISPLAY>L</TITLEDISPLAY>
+                <NEEDIDEA>N</NEEDIDEA>
+                <JSFUNCTION />
+                <PIDRATIO>3_5</PIDRATIO>
+                <PIDSIZE>0</PIDSIZE>
+                <WRITEABLE>Y</WRITEABLE>
+                <SELECEDLAST />
+                <NUMBERTYPE />
+                <ALIGN />
+            </DATA>
+        </DATALIST>
+    </IG007>
+    <IG333>
+        <DATALIST>
+            <DATA>
+                <PSDID>3000601001</PSDID>
+                <PDID>3000601</PDID>
+                <PSDNAME>待发起</PSDNAME>
+                <PSDDESC>流程默认开始状态</PSDDESC>
+                <PSDCODE>Z</PSDCODE>
+                <FINGERPRINT />
+                <PSDTYPE>0</PSDTYPE>
+                <PSDMODE>1</PSDMODE>
+                <PSDFLAG>0</PSDFLAG>
+                <PSDASSIGN />
+                <PSDORG />
+                <PSDCONFIRM>0</PSDCONFIRM>
+                <ASSIGNPSDID />
+                <ASSIGNPBDID />
+                <ASSIGNFLAG />
+                <PARTICIPANTCHANGE />
+                <FORMGLOBALCONTROL />
+                <JSFUNCTION />
+                <ASSIGNPAGETYPE />
+                <BYSEQUENCE />
+            </DATA>
+            <DATA>
+                <PSDID>3000601003</PSDID>
+                <PDID>3000601</PDID>
+                <PSDNAME>报表填报</PSDNAME>
+                <PSDDESC />
+                <PSDCODE>Y</PSDCODE>
+                <FINGERPRINT />
+                <PSDTYPE>0</PSDTYPE>
+                <PSDMODE>1</PSDMODE>
+                <PSDFLAG>0</PSDFLAG>
+                <PSDASSIGN>0</PSDASSIGN>
+                <PSDORG>1</PSDORG>
+                <PSDCONFIRM>0</PSDCONFIRM>
+                <ASSIGNPSDID />
+                <ASSIGNPBDID />
+                <ASSIGNFLAG />
+                <PARTICIPANTCHANGE>0</PARTICIPANTCHANGE>
+                <FORMGLOBALCONTROL>N</FORMGLOBALCONTROL>
+                <JSFUNCTION>initSet</JSFUNCTION>
+                <ASSIGNPAGETYPE />
+                <BYSEQUENCE />
+            </DATA>
+            <DATA>
+                <PSDID>3000601004</PSDID>
+                <PDID>3000601</PDID>
+                <PSDNAME>报表审批</PSDNAME>
+                <PSDDESC />
+                <PSDCODE>X</PSDCODE>
+                <FINGERPRINT />
+                <PSDTYPE>0</PSDTYPE>
+                <PSDMODE>1</PSDMODE>
+                <PSDFLAG>0</PSDFLAG>
+                <PSDASSIGN>0</PSDASSIGN>
+                <PSDORG>1</PSDORG>
+                <PSDCONFIRM>0</PSDCONFIRM>
+                <ASSIGNPSDID />
+                <ASSIGNPBDID />
+                <ASSIGNFLAG />
+                <PARTICIPANTCHANGE>0</PARTICIPANTCHANGE>
+                <FORMGLOBALCONTROL>N</FORMGLOBALCONTROL>
+                <JSFUNCTION />
+                <ASSIGNPAGETYPE />
+                <BYSEQUENCE />
+            </DATA>
+            <DATA>
+                <PSDID>3000601005</PSDID>
+                <PDID>3000601</PDID>
+                <PSDNAME>不定期报表审批</PSDNAME>
+                <PSDDESC />
+                <PSDCODE>W</PSDCODE>
+                <FINGERPRINT />
+                <PSDTYPE>0</PSDTYPE>
+                <PSDMODE>1</PSDMODE>
+                <PSDFLAG>0</PSDFLAG>
+                <PSDASSIGN>0</PSDASSIGN>
+                <PSDORG>1</PSDORG>
+                <PSDCONFIRM>0</PSDCONFIRM>
+                <ASSIGNPSDID />
+                <ASSIGNPBDID />
+                <ASSIGNFLAG />
+                <PARTICIPANTCHANGE>0</PARTICIPANTCHANGE>
+                <FORMGLOBALCONTROL>N</FORMGLOBALCONTROL>
+                <JSFUNCTION>initSet</JSFUNCTION>
+                <ASSIGNPAGETYPE />
+                <BYSEQUENCE />
+            </DATA>
+            <DATA>
+                <PSDID>3000601002</PSDID>
+                <PDID>3000601</PDID>
+                <PSDNAME>关闭</PSDNAME>
+                <PSDDESC>流程默认结束状态</PSDDESC>
+                <PSDCODE>C</PSDCODE>
+                <FINGERPRINT />
+                <PSDTYPE>0</PSDTYPE>
+                <PSDMODE>1</PSDMODE>
+                <PSDFLAG>0</PSDFLAG>
+                <PSDASSIGN />
+                <PSDORG />
+                <PSDCONFIRM>0</PSDCONFIRM>
+                <ASSIGNPSDID />
+                <ASSIGNPBDID />
+                <ASSIGNFLAG />
+                <PARTICIPANTCHANGE />
+                <FORMGLOBALCONTROL />
+                <JSFUNCTION />
+                <ASSIGNPAGETYPE />
+                <BYSEQUENCE />
+            </DATA>
+        </DATALIST>
+    </IG333>
+    <IG258>
+        <DATALIST />
+    </IG258>
+    <IG222>
+        <DATALIST>
+            <DATA>
+                <PPDID>3000601001001</PPDID>
+                <PSDID>3000601001</PSDID>
+                <ROLEID>1088</ROLEID>
+                <ORGID />
+                <USERID />
+                <PPDSUPER />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PPDID>3000601005001</PPDID>
+                <PSDID>3000601005</PSDID>
+                <ROLEID>1088</ROLEID>
+                <ORGID />
+                <USERID>wanghao</USERID>
+                <PPDSUPER />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PPDID>3000601003001</PPDID>
+                <PSDID>3000601003</PSDID>
+                <ROLEID>1095</ROLEID>
+                <ORGID />
+                <USERID>caijj</USERID>
+                <PPDSUPER />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PPDID>3000601004001</PPDID>
+                <PSDID>3000601004</PSDID>
+                <ROLEID>1098</ROLEID>
+                <ORGID />
+                <USERID>magm</USERID>
+                <PPDSUPER />
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG222>
+    <IG132>
+        <DATALIST />
+    </IG132>
+    <IG881>
+        <DATALIST>
+            <DATA>
+                <PIPDID>3000601001001009</PIPDID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001018</PIPDID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001019</PIPDID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001018</PIPDID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001026</PIPDID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001027</PIPDID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001015</PIPDID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001023</PIPDID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001024</PIPDID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001017</PIPDID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001025</PIPDID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001026</PIPDID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001008</PIPDID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001010</PIPDID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601004001010</PIPDID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PPDID>3000601004001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001010</PIPDID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001011</PIPDID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001020</PIPDID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001021</PIPDID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001027</PIPDID>
+                <PIDID>3000601122</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001016</PIPDID>
+                <PIDID>3000601122</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001010</PIPDID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001019</PIPDID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001020</PIPDID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001006</PIPDID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001016</PIPDID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001017</PIPDID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001014</PIPDID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001022</PIPDID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001023</PIPDID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001007</PIPDID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001017</PIPDID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001018</PIPDID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001012</PIPDID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001021</PIPDID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001022</PIPDID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001016</PIPDID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001024</PIPDID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001025</PIPDID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>1</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601001001013</PIPDID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601001</PSDID>
+                <PPDID>3000601001001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601003001015</PIPDID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PPDID>3000601003001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601004001015</PIPDID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PPDID>3000601004001</PPDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PIPDID>3000601005001015</PIPDID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PPDID>3000601005001</PPDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+        </DATALIST>
+    </IG881>
+    <IG273>
+        <DATALIST>
+            <DATA>
+                <PTDID>3000601001</PTDID>
+                <FPSDID>3000601001</FPSDID>
+                <TPSDID>3000601003</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!10#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PTDID>3000601003</PTDID>
+                <FPSDID>3000601004</FPSDID>
+                <TPSDID>3000601005</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!13#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PTDID>3000601004</PTDID>
+                <FPSDID>3000601004</FPSDID>
+                <TPSDID>3000601003</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!12#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PTDID>3000601005</PTDID>
+                <FPSDID>3000601005</FPSDID>
+                <TPSDID>3000601002</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!13#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PTDID>3000601006</PTDID>
+                <FPSDID>3000601005</FPSDID>
+                <TPSDID>3000601003</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!12#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PTDID>3000601009</PTDID>
+                <FPSDID>3000601003</FPSDID>
+                <TPSDID>3000601004</TPSDID>
+                <PTDNAME />
+                <PTDDESC />
+                <PTDTYPE>3</PTDTYPE>
+                <PTDCOND>AAA!10#</PTDCOND>
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG273>
+    <IG286>
+        <DATALIST />
+    </IG286>
+    <IG413>
+        <DATALIST>
+            <DATA>
+                <PEDID>3000601003001</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601003</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>1</PEDTYPE>
+                <PEDBLID>igEVENT1402BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PEDID>3000601003002</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601003</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>2</PEDTYPE>
+                <PEDBLID>igEVENT1404BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PEDID>3000601004001</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601004</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>1</PEDTYPE>
+                <PEDBLID>igEVENT1401BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PEDID>3000601004002</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601004</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>2</PEDTYPE>
+                <PEDBLID>igEVENT1403BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PEDID>3000601005001</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601005</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>1</PEDTYPE>
+                <PEDBLID>igEVENT1401BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PEDID>3000601005002</PEDID>
+                <PDID>3000601</PDID>
+                <PSDID>3000601005</PSDID>
+                <PEDACTIONID />
+                <PEDTYPE>2</PEDTYPE>
+                <PEDBLID>igEVENT1405BL</PEDBLID>
+                <PEDORDER>1</PEDORDER>
+                <PEDEC />
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG413>
+    <IG126>
+        <DATALIST />
+    </IG126>
+    <IG725>
+        <DATALIST>
+            <DATA>
+                <PDBDID>3000601001001</PDBDID>
+                <PSDID>3000601001</PSDID>
+                <PBDID>10</PBDID>
+                <PDBDNAME>提交</PDBDNAME>
+                <PDBDDESC>提交</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED />
+                <CHECKRECORD />
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601003001</PDBDID>
+                <PSDID>3000601003</PSDID>
+                <PBDID>10</PBDID>
+                <PDBDNAME>提交</PDBDNAME>
+                <PDBDDESC>提交</PDBDDESC>
+                <PDBDAUTH>1</PDBDAUTH>
+                <CHECKREQUIRED>1</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL>checkData</ACTURL>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601003002</PDBDID>
+                <PSDID>3000601003</PSDID>
+                <PBDID>01</PBDID>
+                <PDBDNAME>保存</PDBDNAME>
+                <PDBDDESC>保存</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>1</CHECKRECORD>
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601004001</PDBDID>
+                <PSDID>3000601004</PSDID>
+                <PBDID>12</PBDID>
+                <PDBDNAME>驳回</PDBDNAME>
+                <PDBDDESC>驳回</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601004002</PDBDID>
+                <PSDID>3000601004</PSDID>
+                <PBDID>13</PBDID>
+                <PDBDNAME>审批通过</PDBDNAME>
+                <PDBDDESC>审批通过</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601004003</PDBDID>
+                <PSDID>3000601004</PSDID>
+                <PBDID>14</PBDID>
+                <PDBDNAME>报表预览</PDBDNAME>
+                <PDBDDESC>报表预览</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL>preview</ACTURL>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601005001</PDBDID>
+                <PSDID>3000601005</PSDID>
+                <PBDID>12</PBDID>
+                <PDBDNAME>驳回</PDBDNAME>
+                <PDBDDESC>驳回</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601005002</PDBDID>
+                <PSDID>3000601005</PSDID>
+                <PBDID>13</PBDID>
+                <PDBDNAME>审批通过</PDBDNAME>
+                <PDBDDESC>审批通过</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>1</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL>checkData</ACTURL>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601005003</PDBDID>
+                <PSDID>3000601005</PSDID>
+                <PBDID>01</PBDID>
+                <PDBDNAME>保存</PDBDNAME>
+                <PDBDDESC>保存</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>1</CHECKRECORD>
+                <ACTURL />
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PDBDID>3000601005004</PDBDID>
+                <PSDID>3000601005</PSDID>
+                <PBDID>14</PBDID>
+                <PDBDNAME>报表预览</PDBDNAME>
+                <PDBDDESC>报表预览</PDBDDESC>
+                <PDBDAUTH>0</PDBDAUTH>
+                <CHECKREQUIRED>0</CHECKREQUIRED>
+                <CHECKRECORD>0</CHECKRECORD>
+                <ACTURL>preview</ACTURL>
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG725>
+    <IG699>
+        <DATALIST>
+            <DATA>
+                <PDVID>3000601003011</PDVID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004011</PDVID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005011</PDVID>
+                <PIDID>3000601090</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003020</PDVID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004020</PDVID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005020</PDVID>
+                <PIDID>3000601112</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003017</PDVID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004017</PDVID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005017</PDVID>
+                <PIDID>3000601103</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003019</PDVID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004019</PDVID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005019</PDVID>
+                <PIDID>3000601109</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003010</PDVID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004010</PDVID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005010</PDVID>
+                <PIDID>3000601014</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003013</PDVID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004013</PDVID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005013</PDVID>
+                <PIDID>3000601094</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003021</PDVID>
+                <PIDID>3000601122</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004021</PDVID>
+                <PIDID>3000601122</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005021</PDVID>
+                <PIDID>3000601122</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003012</PDVID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004012</PDVID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005012</PDVID>
+                <PIDID>3000601086</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003008</PDVID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004008</PDVID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005008</PDVID>
+                <PIDID>3000601071</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003016</PDVID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004016</PDVID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005016</PDVID>
+                <PIDID>3000601100</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003009</PDVID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004009</PDVID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005009</PDVID>
+                <PIDID>3000601077</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003014</PDVID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004014</PDVID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005014</PDVID>
+                <PIDID>3000601097</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003018</PDVID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004018</PDVID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005018</PDVID>
+                <PIDID>3000601106</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601003015</PDVID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601003</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601004015</PDVID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601004</PSDID>
+                <PIDACCESS>2</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+            <DATA>
+                <PDVID>3000601005015</PDVID>
+                <PIDID>3000601026</PIDID>
+                <PSDID>3000601005</PSDID>
+                <PIDACCESS>3</PIDACCESS>
+                <FINGERPRINT />
+                <PIDREQUIRED>0</PIDREQUIRED>
+            </DATA>
+        </DATALIST>
+    </IG699>
+    <IG213>
+        <DATALIST>
+            <DATA>
+                <PRTDID>3000601001</PRTDID>
+                <PDID>3000601</PDID>
+                <ROLETYPE>IGBP07</ROLETYPE>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PRTDID>3000601002</PRTDID>
+                <PDID>3000601</PDID>
+                <ROLETYPE>IGBP11</ROLETYPE>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PRTDID>3000601003</PRTDID>
+                <PDID>3000601</PDID>
+                <ROLETYPE>IGBP14</ROLETYPE>
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG213>
+    <IG243>
+        <DATALIST>
+            <DATA>
+                <PTDID>3000601001</PTDID>
+                <PDID>3000601</PDID>
+                <PTITLENAME>报表名称</PTITLENAME>
+                <PTITLEACCESS>0</PTITLEACCESS>
+                <PDESCNAME>填报说明</PDESCNAME>
+                <PDESCACCESS>0</PDESCACCESS>
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG243>
+    <IG298>
+        <DATALIST>
+            <DATA>
+                <PSRDID>3000601001001</PSRDID>
+                <PSDID>3000601001</PSDID>
+                <ROLEID>1088</ROLEID>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PSRDID>3000601003001</PSRDID>
+                <PSDID>3000601003</PSDID>
+                <ROLEID>1095</ROLEID>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PSRDID>3000601004001</PSRDID>
+                <PSDID>3000601004</PSDID>
+                <ROLEID>1098</ROLEID>
+                <FINGERPRINT />
+            </DATA>
+            <DATA>
+                <PSRDID>3000601005001</PSRDID>
+                <PSDID>3000601005</PSDID>
+                <ROLEID>1088</ROLEID>
+                <FINGERPRINT />
+            </DATA>
+        </DATALIST>
+    </IG298>
+    <IG156>
+        <DATALIST />
+    </IG156>
+    <IG212>
+        <DATALIST />
+    </IG212>
+    <IG237>
+        <DATALIST />
+    </IG237>
+    <IG373>
+        <DATALIST />
+    </IG373>
+    <IG911>
+        <DATALIST />
+    </IG911>
+    <IG931>
+        <DATALIST />
+    </IG931>
+    <IG700>
+        <DATALIST />
+    </IG700>
+    <IG701>
+        <DATALIST />
+    </IG701>
+    <IG108>
+        <DATALIST />
+    </IG108>
+    <IG233>
+        <DATALIST />
+    </IG233>
+    <IG334>
+        <DATALIST />
+        <CODECATEGORYDATELIST>
+            <DATA>
+                <CCID>700</CCID>
+                <CCNAME>null</CCNAME>
+                <CCINFO>null</CCINFO>
+                <CCEDITABLE>null</CCEDITABLE>
+            </DATA>
+        </CODECATEGORYDATELIST>
+        <CODEDETAILDATELIST>
+            <DATA>
+                <CCID>700</CCID>
+                <CID>001</CID>
+                <CVALUE>CPU价格</CVALUE>
+                <CDINFO>null</CDINFO>
+                <CDORDER>null</CDORDER>
+                <UPDTIME>2013/02/21 13:00</UPDTIME>
+            </DATA>
+            <DATA>
+                <CCID>700</CCID>
+                <CID>002</CID>
+                <CVALUE>内存价格</CVALUE>
+                <CDINFO>null</CDINFO>
+                <CDORDER>null</CDORDER>
+                <UPDTIME>2013/02/21 13:00</UPDTIME>
+            </DATA>
+            <DATA>
+                <CCID>700</CCID>
+                <CID>003</CID>
+                <CVALUE>硬盘价格</CVALUE>
+                <CDINFO>null</CDINFO>
+                <CDORDER>null</CDORDER>
+                <UPDTIME>2013/02/21 13:00</UPDTIME>
+            </DATA>
+        </CODEDETAILDATELIST>
+    </IG334>
+    <IG335>
+        <DATALIST />
+    </IG335>
+    <IG008>
+        <DATALIST />
+    </IG008>
+</Process>
+

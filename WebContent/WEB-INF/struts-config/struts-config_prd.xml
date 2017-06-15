@@ -1,0 +1,1125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+	<!-- *****************************************流程定义***************************************** -->
+		<form-bean name="IGPRD0101Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0101Form" />
+		<form-bean name="IGPRD0102Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0102Form" />
+		<form-bean name="IGPRD0103Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0103Form" />
+	<!-- *****************************************前处理***************************************** -->
+		<form-bean name="IGPRD0126Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0126Form" />
+	<!-- *****************************************分派角色***************************************** -->
+		<form-bean name="IGPRD0114Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0114Form" />
+	<!-- *****************************************规则定义***************************************** -->
+		<form-bean name="IGPRD0109Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0109Form" />
+		<form-bean name="IGPRD0115Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0115Form" />
+	
+	<!-- *****************************************表单信息***************************************** -->
+		<form-bean name="IGPRD0110Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0110Form" />
+		<form-bean name="IGPRD0117Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0117Form" />
+		<form-bean name="IGPRD0111Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0111Form" />
+		<form-bean name="IGPRD0118Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0118Form" />
+		<form-bean name="IGPRD0112Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0112Form" />
+		<form-bean name="IGPRD0119Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0119Form" />
+			
+			
+	<!-- *****************************************流程状态***************************************** -->		
+		<form-bean name="IGPRD0104Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0104Form" />
+		<form-bean name="IGPRD0105Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0105Form" />	
+		<form-bean name="IGPRD0107Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0107Form" />	
+		<form-bean name="IGPRD0108Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0108Form" />	
+		<form-bean name="IGPRD0116Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0116Form" />	
+		<form-bean name="IGPRD0124Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0124Form" />
+		<form-bean name="IGPRD0125Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0125Form" />
+		<form-bean name="IGPRD0139Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0139Form" />
+		<form-bean name="IGPRD0142Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0142Form" />
+		<!-- 130225Begin 流程改造相关 -->
+		<form-bean name="IGPRD0143Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0143Form" />
+		<form-bean name="IGPRD0134Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0134Form" />
+		<form-bean name="IGPRD0131Form" 
+			type="com.deliverik.infogovernor.prd.form.IGPRD0131Form"/>
+		<!-- 用户查询 -->
+		<form-bean name="IGPRD0201Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0201Form" />
+		<!-- 130225End -->
+	<!-- *****************************************按钮事件***************************************** -->	
+		<form-bean name="IGPRD0141Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0141Form" />
+		<form-bean name="IGPRD0158Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0158Form" />
+		<form-bean name="IGPRD0159Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0159Form" />
+		<form-bean name="IGPRD0160Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0160Form" />
+		 <form-bean name="IGPRD0161Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0161Form" />
+		 <form-bean name="IGPRD0165Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0165Form" />
+		 <form-bean name="IGPRD0166Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0166Form" />
+		<form-bean name="IGPRD0171Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0171Form" />
+		<form-bean name="IGPRD0172Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0172Form" />
+	<!-- ***************************************自定义流程页面设置************************************ -->	
+		 <form-bean name="IGPRD0168Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0168Form" />
+		<form-bean name="IGPRD0169Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0169Form" />
+		<form-bean name="IGPRD0145Form"
+			type="com.deliverik.infogovernor.prd.form.IGPRD0145Form" />
+		<form-bean name="IGPRD0146Form" type="com.deliverik.infogovernor.prd.form.IGPRD0146Form" />
+		<form-bean name="IGPRD0173Form" type="com.deliverik.infogovernor.prd.form.IGPRD0173Form"/>
+		<form-bean name="IGPRD0202Form" type="com.deliverik.infogovernor.prd.form.IGPRD0202Form"/>
+	
+		<!-- 流程组定义forms -->
+		<form-bean name="IGPRD0301Form" type="com.deliverik.infogovernor.prd.form.IGPRD0301Form"/>
+		<form-bean name="IGPRD0302Form" type="com.deliverik.infogovernor.prd.form.IGPRD0302Form"/>
+		<form-bean name="IGPRD0303Form" type="com.deliverik.infogovernor.prd.form.IGPRD0303Form"/>
+		<!-- 流程定义图形化界面开始 -->
+		<form-bean name="IGPRD1001Form" type="com.deliverik.infogovernor.prd.form.IGPRD1001Form"/>
+		<form-bean name="IGPRD1002Form" type="com.deliverik.infogovernor.prd.form.IGPRD1002Form"/>
+		
+	</form-beans>
+	<action-mappings>
+	<!-- *****************************************流程定义***************************************** -->
+		<!-- 流程定义管理查询处理  -->
+		<action path="/IGPRD0101"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="SEARCH" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0101.jsp" />
+		</action>
+		<!-- 流程定义升版处理  -->
+		<action path="/IGPRD0101_Upg"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="UPGRADE" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+		</action>
+		<!-- 流程定义复制处理  -->
+		<action path="/IGPRD0101_Copy"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="COPY" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+		</action>
+		<!-- 流程定义导入处理  -->
+		<action path="/IGPRD0101_Import"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="IMPORT" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+			<forward name="ERROR" path="/prd/IGPRD0101e.jsp" />
+		</action>
+		<!-- 流程定义导出处理  -->
+		<action path="/IGPRD0101_Export"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="EXPORT" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+		</action>
+		<!-- 流程定义停用/启用 -->
+		<action path="/IGPRD0102_Change"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0102Action"
+			parameter="CHANGE" input="/IGPRD0101_Back.do" name="IGPRD0102Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+			<forward name="VIEWHISTORY" path="/IGPRD0140_Back.do" />
+		</action>
+		<!-- 流程定义测试 -->
+		<action path="/IGPRD0102_Test"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0102Action"
+			parameter="TEST" input="/IGPRD0101_Back.do" name="IGPRD0102Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+			<forward name="VIEWHISTORY" path="/IGPRD0140_Back.do" />
+		</action>
+		<!-- 跳转到流程定义新增页面 -->
+		<action path="/IGPRD0102_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0102Action" input="/prd/IGPRD0102.jsp"
+			parameter="DISP" name="IGPRD0102Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0102.jsp" />
+		</action>
+		<!-- 流程定义新增变更 -->
+		<action path="/IGPRD0102"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0102Action" input="/IGPRD0102_Disp.do"
+			parameter="INSERT" name="IGPRD0102Form" validate="true" scope="request">
+			<forward name="DISP" path="/IGPRD0103_Disp.do" />
+			<forward name="BACK" path="/IGPRD0101_Back.do" />
+		</action>
+		<!-- 流程定义变更初始化 -->
+		<action path="/IGPRD0102_Edit_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0102Action" input="/prd/IGPRD0102.jsp"
+			parameter="EDIT" name="IGPRD0102Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0102.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0102h.jsp"/>
+		</action>
+		<!-- 返回到流程定义管理页面 -->
+		<action path="/IGPRD0101_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0101Action"
+			parameter="SEARCH1" input="/prd/IGPRD0101.jsp" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0101.jsp" />
+		</action>
+		
+		<!-- 跳转到流程定义成功页面 -->
+		<action path="/IGPRD0103_Disp"
+        	type="com.deliverik.infogovernor.prd.action.IGPRD0103Action"
+            input="/prd/IGPRD0103.jsp"
+        	parameter="DISP"
+        	name="IGPRD0103Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="DISP"        path="/prd/IGPRD0103.jsp"/>
+        </action>
+		<!-- 跳转到流程定义成功页面 -->
+		<action path="/IGPRD0103"
+        	type="com.deliverik.infogovernor.prd.action.IGPRD0103Action"
+            input="/prd/IGPRD0103.jsp"
+        	parameter="DISP"
+        	name="IGPRD0103Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="ADD"        path="/IGPRD0102_Disp.do"/>
+           	<forward name="SEARCH"        path="/IGPRD0101.do"/>
+        </action>
+        <!-- *****************************************分派角色***************************************** -->
+        <!-- 参与者初始化查询处理  -->
+		<action path="/IGPRD0114_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0114Action"
+			parameter="DISP" input="/prd/IGPRD0114.jsp" name="IGPRD0114Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0114.jsp" />
+		</action>
+        <!-- 分派角色设定处理  -->
+		<action path="/IGPRD0114"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0114Action"
+			parameter="ASSIGN" input="/IGPRD0114_Disp.do" name="IGPRD0114Form"
+			validate="true" scope="request">
+			<forward name="DISP" path="/IGPRD0104_Back.do" />
+		</action>
+        <!-- *****************************************前处理***************************************** -->
+		<!-- 前处理添加处理 --> <!-- modify by yangliang  -->
+		<action path="/IGPRD0126_List"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0126Action"
+			parameter="List" input="/prd/IGPRD0106.jsp" name="IGPRD0126Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0136.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0136h.jsp"/>
+		</action>	
+		<action path="/IGPRD0127_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0126Action"
+			parameter="Disp" input="/prd/IGPRD0106.jsp" name="IGPRD0126Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0137.jsp"/>
+		</action>
+		<action path="/IGPRD0126_Insert"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0126Action"
+			parameter="Insert" input="/prd/IGPRD0106.jsp" name="IGPRD0126Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0138.jsp" />
+		</action>
+		<action path="/IGPRD0126_Delete"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0126Action"
+			parameter="Delete" input="/prd/IGPRD0106.jsp" name="IGPRD0126Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0126_List.do"/>
+		</action>
+		<action path="/IGPRD0126_Update"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0126Action"
+			parameter="Update" input="/prd/IGPRD0106.jsp" name="IGPRD0126Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0137.jsp" />
+		</action>
+        <!-- *****************************************规则定义***************************************** -->
+        <!-- 规则定义初始化查询处理  -->
+		<action path="/IGPRD0109_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0109Action"
+			parameter="DISP" input="/prd/IGPRD0109.jsp" name="IGPRD0109Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0109.jsp" />
+			<forward name="DISP1" path="/prd/IGPRD0118.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0109h.jsp"/>
+			<forward name="VIEWHISTORY1" path="/prd/IGPRD0118h.jsp"/>
+		</action>
+        <!-- 规则定义新增处理  -->
+		<action path="/IGPRD0109"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0109Action"
+			parameter="INSERT" input="/IGPRD0109_Disp.do" name="IGPRD0109Form"
+			validate="true" scope="request">
+			<forward name="DISP" path="/IGPRD0109_Disp.do" />
+		</action>
+        <!-- 规则定义删除处理  -->
+		<action path="/IGPRD0109_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0109Action"
+			parameter="DELETE" input="/IGPRD0109_Disp.do" name="IGPRD0109Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0109_Disp.do" />
+		</action>
+        
+        <!-- 并发规则定义初始化查询处理  -->
+		<action path="/IGPRD0115_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0115Action"
+			parameter="DISP" input="/prd/IGPRD0115.jsp" name="IGPRD0115Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0115.jsp" />
+		</action>
+        <!-- 并发规则定义保存处理  -->
+		<action path="/IGPRD0115"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0115Action"
+			parameter="INSERT" input="/IGPRD0115_Disp.do" name="IGPRD0115Form"
+			validate="true" scope="request">
+			<forward name="DISP" path="/IGPRD0104_Back.do" />
+		</action>
+		<!-- 规则定义删除处理  -->
+		<action path="/IGPRD0115_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0115Action"
+			parameter="DELETE" input="/IGPRD0115_Disp.do" name="IGPRD0115Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104_Back.do" />
+		</action>
+		
+        <!-- *****************************************表单信息***************************************** -->
+        <!-- 流程定义管理查询处理  -->
+		<action path="/IGPRD0110"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH" input="/prd/IGPRD0110.jsp" name="IGPRD0110Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0110.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0110h.jsp"/>
+		</action>
+		
+		<action path="/IGPRD0117"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0117Action"
+			parameter="SEARCH" input="/prd/IGPRD0119.jsp" name="IGPRD0117Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0119.jsp" />
+			<forward name="GTBL" path="/prd/IGPRD0122.jsp" />
+			<forward name="BASIC" path="/prd/IGPRD0129.jsp" />
+		</action>
+		<action path="/IGPRD0119"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0119Action"
+			parameter="SEARCH" input="/prd/IGPRD0119.jsp" name="IGPRD0119Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0119.jsp" />
+		</action>
+		<action path="/IGPRD0113_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH" input="/prd/IGPRD0113.jsp" name="IGPRD0110Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0113.jsp" />
+		</action>
+		<action path="/IGPRD0182_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH" input="/prd/IGPRD0182.jsp" name="IGPRD0110Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0182.jsp" />
+		</action>
+		<!-- 流程定义删除 -->
+		<action path="/IGPRD0111_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="DELETE" input="/IGPRD0110.do" name="IGPRD0111Form"
+			scope="request" validate="false">
+			<forward name="DISP" path="/IGPRD0110_Back.do" />
+		</action>
+		<!-- 流程定义删除 -->
+		<action path="/IGPRD0111_Order"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="ORDER" input="/IGPRD0110.do" name="IGPRD0111Form"
+			scope="request" validate="false">
+			<forward name="DISP" path="/IGPRD0110_Back.do" />
+		</action>
+		<action path="/IGPRD0111_Ajax"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="AJAX"
+			scope="request"
+			name="IGPRD0111Form"
+			validate="false">
+		</action>
+		<action path="/IGPRD0111_GetProcessDefinitions"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="GETPROCESSDEFS"
+			scope="request"
+			name="IGPRD0111Form"
+			validate="false">
+		</action>
+		
+		<action path="/IGPRD0118_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0118Action"
+			parameter="DELETE" input="/IGPRD0117.do" name="IGPRD0118Form"
+			scope="request" validate="false">
+			<forward name="DISP" path="/IGPRD0117_Back.do" />
+			<forward name="NO" path="/IGPRD0117.do" />
+		</action>
+		<!-- 跳转到流程定义新增页面 -->
+		<action path="/IGPRD0111_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0111.jsp"
+			parameter="DISP" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0111.jsp" />
+		</action>
+		<!-- 跳转到流程定义新增页面 -->
+		<action path="/IGPRD0111_Edit_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0110.jsp"
+			parameter="EDIT" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0111.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0111h.jsp" />
+		</action>
+		<action path="/IGPRD0118_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0118Action" input="/prd/IGPRD0111.jsp"
+			parameter="DISP" name="IGPRD0118Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0120.jsp" />
+		</action>
+		<!-- 通用表单变更 -->
+		<action path="/IGPRD0118_Edit_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0118Action" input="/prd/IGPRD0118.jsp"
+			parameter="EDIT" name="IGPRD0118Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0120.jsp" />
+		</action>
+		<!-- 流程定义新增变更 -->
+		<action path="/IGPRD0111"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0111.jsp"
+			parameter="INSERT" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0110_Back.do" />
+			<forward name="BACK" path="/IGPRD0110_Back.do" />
+		</action>
+		<action path="/IGPRD0118"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0118Action" input="/IGPRD0118_Disp.do"
+			parameter="INSERT" name="IGPRD0118Form" validate="true" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0121.jsp" />
+			<forward name="BACK" path="/IGPRD0117_Back.do" />
+		</action>
+		<action path="/IGPRD0118_COPYGT"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0118Action" input="/IGPRD0118_Disp.do"
+			parameter="COPYGT" name="IGPRD0118Form" validate="true" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0123.jsp" />
+			<forward name="BASIC" path="/prd/IGPRD0130.jsp" />
+		</action>
+		<!-- 返回到流程定义管理页面 -->
+		<action path="/IGPRD0110_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH1" input="/prd/IGPRD0110.jsp" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0110.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0110h.jsp" />
+		</action>
+		<action path="/IGPRD0117_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0119Action"
+			parameter="SEARCH1" input="/prd/IGPRD0119.jsp" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0119.jsp" />
+		</action>
+		<!-- 跳转到流程定义成功页面 -->
+		<action path="/IGPRD0112"
+        	type="com.deliverik.infogovernor.prd.action.IGPRD0112Action"
+            input="/prd/IGPRD0112.jsp"
+        	parameter="DISP"
+        	name="IGPRD0112Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="ADD"        path="/IGPRD0111_Disp.do"/>
+           	<forward name="SEARCH"        path="/IGPRD0110.do"/>
+        </action>
+        
+        
+        <!-- *****************************************流程状态***************************************** -->
+		<!-- 流程状态查询处理  -->
+		<action path="/IGPRD0104"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0104Action"
+			parameter="SEARCH" input="/prd/IGPRD0104.jsp" name="IGPRD0104Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0104.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0104h.jsp"/>
+		</action>
+		
+		<!-- 返回到流程状态查询页面 -->
+		<action path="/IGPRD0104_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0104Action" name="IGPRD0104Form"
+			parameter="SEARCH1" input="/prd/IGPRD0104.jsp" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0104.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0104h.jsp"/>
+		</action>
+		
+		<!-- 流程状态删除处理  -->
+		<action path="/IGPRD0104_DEL"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0104Action"
+			parameter="DEL" input="/IGPRD0104_Back.do" name="IGPRD0104Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104.do" />
+		</action>
+		<!-- 跳转到流程状态新增页面 -->
+		<action path="/IGPRD0105_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0105Action" input="/prd/IGPRD0104.jsp"
+			parameter="DISP" name="IGPRD0105Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0105.jsp" />
+		</action>
+		<!-- 流程状态新增/变更 -->
+		<action path="/IGPRD0105"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0105Action" input="/IGPRD0105_Disp.do"
+			parameter="INSERT" name="IGPRD0105Form" validate="true" scope="request">
+			<forward name="DISP" path="/IGPRD0104.do" />
+			<forward name="BACK" path="/IGPRD0104_Back.do" />
+		</action>
+		<!-- 流程状态变更初始化 -->
+		<action path="/IGPRD0105_Edit_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0105Action" input="/prd/IGPRD0104.jsp"
+			parameter="EDIT" name="IGPRD0105Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0105.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0105h.jsp" />
+		</action>
+		
+		<!-- 流程状态新增/变更 -->
+		<action path="/IGPRD0105_Z"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0105Action" input="/IGPRD0105_Disp.do"
+			parameter="UPDATEZ" name="IGPRD0105Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104.do" />
+		</action>
+		
+		
+		<!-- 跳转到流程状态新增页面 -->
+		<action path="/IGPRD0105_Z_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0105Action" input="/prd/IGPRD0104.jsp"
+			parameter="EDIT" name="IGPRD0105Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0105Z.jsp" />
+		</action>
+		
+		<!-- 流程状态_参与者页面初始化 -->
+		<action path="/IGPRD0107_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0107Action" input="/IGPRD0104.do"
+			parameter="DISP" name="IGPRD0107Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0107.jsp" />
+			<forward name="DISP2" path="/prd/IGPRD0117.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0107h.jsp"/>
+			<forward name="VIEWHISTORY1" path="/prd/IGPRD0152.jsp"/>
+		</action>
+		<!-- 流程状态_参与者调整 -->
+		<action path="/IGPRD0107"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0107Action" input="/IGPRD0107_Disp.do"
+			parameter="INSERT" name="IGPRD0107Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0107_Disp.do" />
+		</action>
+		
+		<action path="/IGPRD0107_Change"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0107Action"
+			input="/IGPRD0107_Disp.do"
+			parameter="CHANGE"
+			name="IGPRD0107Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/IGPRD0107_Disp.do" />
+		</action>
+		
+		<!-- 流程状态_参与者页面初始化 -->
+		<action path="/IGPRD0108_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0108Action" input="/IGPRD0107_Disp.do"
+			parameter="DISP" name="IGPRD0108Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0108.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0108h.jsp"/>
+		</action>
+		<!-- 流程状态_参与者调整 -->
+		<action path="/IGPRD0108"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0108Action" input="/IGPRD0108_Disp.do"
+			parameter="GIVE" name="IGPRD0108Form" validate="false" scope="session">
+			<forward name="DISP" path="/IGPRD0107_Disp.do" />
+			<forward name="DISP2" path="/IGPRD0134_Disp.do" />
+		</action>
+		
+		<!-- 流程状态_缺省参与者权限页面初始化 -->
+		<action path="/IGPRD0116_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0116Action" input="/prd/IGPRD0116.jsp"
+			parameter="DISP" name="IGPRD0116Form" validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0116.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0116h.jsp"/>
+		</action>
+		<!-- 流程状态_缺省参与者权限设定 -->
+		<action path="/IGPRD0116"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0116Action" input="/prd/IGPRD0116.jsp"
+			parameter="GRANT" name="IGPRD0116Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104.do" />
+		</action>
+		
+		<!-- 流程状态_授权页面初始化 -->
+		<action path="/IGPRD0124_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0124Action" input="/IGPRD0101_Back.do"
+			parameter="DISP" name="IGPRD0124Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0124.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0124h.jsp"/>
+		</action>
+		<!-- 流程状态_授权调整 -->
+		<action path="/IGPRD0124"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0124Action" input="/IGPRD0124_Disp.do"
+			parameter="INSERT" name="IGPRD0124Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0124_Disp.do" />
+		</action>
+        <!-- 流程表单级联管理初始化 -->
+		<action path="/IGPRD0125_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/IGPRD0101_Back.do"
+			parameter="DISP" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0125.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0125h.jsp"/>
+		</action>
+		<action path="/IGPRD0125"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0125.jsp"
+			parameter="INSERTDISP" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0126.jsp" />
+		</action>
+		<action path="/IGPRD0125_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0125.jsp"
+			parameter="DELETE" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0125_Disp.do" />
+		</action>
+		<action path="/IGPRD0125_Insert"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0126.jsp"
+			parameter="INSERT" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0125_Disp.do" />
+		</action>
+		<action path="/IGPRD0125_Setinitial"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0126.jsp"
+			parameter="SETINITIAL" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0127.jsp" />
+		</action>
+		<action path="/IGPRD0125_Setpassivity"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0126.jsp"
+			parameter="SETPASSIVITY" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0128.jsp" />
+		</action>
+		<!-- 流程历史版本 -->
+        <action path="/IGPRD0140"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0140Action"
+			parameter="SEARCH" input="/prd/IGPRD0101.jsp" name="IGPRD0101Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0140.jsp" />
+		</action>
+		<!-- 返回到流程历史版本页面 -->
+		<action path="/IGPRD0140_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0140Action"
+			parameter="SEARCH1" input="/prd/IGPRD0101.jsp" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0140.jsp" />
+		</action>
+		<!-- 按钮事件添加处理 --> 
+		<action path="/IGPRD0141_List"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0141Action"
+			parameter="List" input="/prd/IGPRD0104.jsp" name="IGPRD0141Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0155.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0155h.jsp"/>
+		</action>	
+		<action path="/IGPRD0141_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0141Action"
+			parameter="Disp" input="/prd/IGPRD0155.jsp" name="IGPRD0141Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0156.jsp"/>
+		</action>
+		<action path="/IGPRD0141_Insert"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0141Action"
+			parameter="Insert" input="/prd/IGPRD0155.jsp" name="IGPRD0141Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0157.jsp" />
+		</action>
+		<action path="/IGPRD0141_Delete"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0141Action"
+			parameter="Delete" input="/prd/IGPRD0106.jsp" name="IGPRD0141Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0141_List.do"/>
+		</action>
+		<action path="/IGPRD0141_Update"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0141Action"
+			parameter="Update" input="/prd/IGPRD0155.jsp" name="IGPRD0141Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0156.jsp" />
+		</action>
+		<action path="/IGPRD0125_Edit"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0125Action" input="/prd/IGPRD0126.jsp"
+			parameter="EDIT" name="IGPRD0125Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0129.jsp" />
+		</action>
+         <!-- *****************************************流程状态***************************************** -->
+        <!-- 保存流程图  -->
+		<action path="/IGPRD0104_SAVEXML"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0104Action"
+			parameter="SAVEXML" input="/IGPRD0104_Back.do" name="IGPRD0104Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104.do" />
+		</action>
+		<!-- 流程状态可分派角色定义查询 -->
+		<action path="/IGPRD0139_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0139Action" input="/prd/IGPRD0139.jsp"
+			parameter="DISP" name="IGPRD0139Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0139.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0139h.jsp"/>
+		</action>
+		<!-- 流程状态可分派角色定义设定 -->
+		<action path="/IGPRD0139"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0139Action" input="/prd/IGPRD0139.jsp"
+			parameter="INSERT" name="IGPRD0139Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0139_Disp.do" />
+		</action>
+		
+		<!-- 130225Begin 流程改造相关 -->
+		<!-- 流程状态可分派机构定义查询 -->
+		<action path="/IGPRD0143_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0143Action" input="/prd/IGPRD0143.jsp"
+			parameter="DISP" name="IGPRD0143Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0143.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0143h.jsp"/>
+		</action>
+		<!-- 流程状态可分派机构定义设定 -->
+		<action path="/IGPRD0143"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0143Action" input="/prd/IGPRD0143.jsp"
+			parameter="INSERT" name="IGPRD0143Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0143_Disp.do" />
+		</action>
+		<!-- 130225End -->
+		
+		<!-- 流程策略查询处理  -->
+		<action path="/IGPRD0158_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0158Action"
+			parameter="DISP" input="/prd/IGPRD0158.jsp" name="IGPRD0158Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0158.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0158h.jsp" />
+		</action>
+		<!-- 流程策略设定处理  -->
+		<action path="/IGPRD0158"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0158Action"
+			parameter="EDIT" input="/prd/IGPRD0158.jsp" name="IGPRD0158Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0101_Back.do" />
+		</action>
+		<!-- 流程策略设定处理  -->
+		<action path="/IGPRD0158_Set"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0158Action"
+			parameter="SET" input="/prd/IGPRD0158.jsp" name="IGPRD0158Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0158_Disp.do" />
+		</action>
+		<!-- 流程策略通知人查询处理  -->
+		<action path="/IGPRD0159_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0159Action"
+			parameter="DISP" input="/prd/IGPRD0159.jsp" name="IGPRD0159Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0159.jsp" />
+		</action>
+		<!-- 模态窗口处理  -->
+		<action path="/IGPRD0160_Disp"
+			type="org.apache.struts.actions.ForwardAction"
+			input="/prd/IGPRD0160.jsp" name="IGPRD0160Form"
+			validate="false" scope="request" parameter="/prd/IGPRD0160.jsp"/>
+			
+		<!-- 外部调用-->
+		<action path="/IGPRD0161_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action" input="/prd/IGPRD0161.jsp"
+			parameter="DISP" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0162.jsp" />
+		</action>
+		<!-- 流程外部调用新增变更 -->
+		<action path="/IGPRD0161"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action" input="/IGPRD0161.jsp"
+			parameter="INSERT" name="IGPRD0161Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0163.jsp" />
+		</action>
+		<!-- 外部定义显示 -->
+		<action path="/IGPRD0161_List"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action" input="/IGPRD0161.jsp"
+			parameter="LIST" name="IGPRD0161Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0161.jsp" />
+		</action>
+		<action path="/IGPRD0161_Update"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action"
+			parameter="Update" input="/prd/IGPRD0161.jsp" name="IGPRD0161Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0164.jsp" />
+		</action>
+		<action path="/IGPRD0161_Delete"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action"
+			parameter="Delete" input="/prd/IGPRD0161.jsp" name="IGPRD0161Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0161_List.do"/>
+		</action>
+		<!-- 外部调用返回-->
+		<action path="/IGPRD0161_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0161Action" input="/prd/IGPRD0161.jsp"
+			parameter="DISP1" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0162.jsp" />
+		</action>
+		<!-- 流程状态可调整参与者定义查询 -->
+		<action path="/IGPRD0142_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0142Action" input="/prd/IGPRD0142.jsp"
+			parameter="DISP" name="IGPRD0142Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0142.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0142h.jsp"/>
+		</action>
+		<!-- 流程状态可调整参与者定义设定 -->
+		<action path="/IGPRD0142"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0142Action" input="/prd/IGPRD0142.jsp"
+			parameter="INSERT" name="IGPRD0142Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0104_Back.do" />
+		</action>
+		<!-- 表单初始化配置查询 -->
+		<action path="/IGPRD0165_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0165Action" input="/prd/IGPRD0165.jsp"
+			parameter="DISP" name="IGPRD0165Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0165.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0165h.jsp"/>
+		</action>
+		<!-- 表单初始化配置删除 -->
+		<action path="/IGPRD0165_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0165Action" input="/IGPRD0165_Disp.do"
+			parameter="DELETE" name="IGPRD0165Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0165_Disp.do" />
+		</action>
+		<!-- 表单初始化配置新增初始化 -->
+		<action path="/IGPRD0166_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0166Action" input="/prd/IGPRD0166.jsp"
+			parameter="DISP" name="IGPRD0166Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0166.jsp" />
+		</action>
+		<!-- 表单初始化配置新增 -->
+		<action path="/IGPRD0166_Add"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0166Action" input="/prd/IGPRD0166.jsp"
+			parameter="INSERT" name="IGPRD0166Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0165_Disp.do" />
+		</action>
+		<!-- 表单初始化配置修改初始化 -->
+		<action path="/IGPRD0166_Init"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0166Action" input="/prd/IGPRD0167.jsp"
+			parameter="INIT" name="IGPRD0166Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0167.jsp" />
+		</action>
+		<!-- 表单初始化配置修改 -->
+		<action path="/IGPRD0166_Edit"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0166Action" input="/IGPRD0166_Init.do"
+			parameter="EDIT" name="IGPRD0166Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0165_Disp.do" />
+		</action>
+		<!-- 表单权限配置初始化 -->
+		<action path="/IGPRD0171_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0171Action" input="/prd/IGPRD0171.jsp"
+			parameter="DISP" name="IGPRD0171Form" validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0171.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0171h.jsp"/>
+		</action>
+		<!-- 表单权限配置处理 -->
+		<action path="/IGPRD0171"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0171Action" input="/prd/IGPRD0171.jsp"
+			parameter="INSERT" name="IGPRD0171Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0171_Disp.do" />
+		</action>
+		<!-- 表单权限配置初始化 -->
+		<action path="/IGPRD0172_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0172Action" input="/prd/IGPRD0171.jsp"
+			parameter="DISP" name="IGPRD0172Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0172.jsp" />
+		</action>
+		<!-- 表单权限配置处理 -->
+		<action path="/IGPRD0172"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0172Action" input="/prd/IGPRD0172.jsp"
+			parameter="INSERT" name="IGPRD0172Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0172_Disp.do" />
+		</action>
+		<!-- 自定义流程页面设置初始化查询 -->
+		<action path="/IGPRD0168_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0168Action" input="/IGPRD0101.do"
+			parameter="DISP" name="IGPRD0168Form" validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0168.jsp" />
+		</action>
+			<!-- 自定义流程页面设置登记初始化 -->
+		<action path="/IGPRD0168_init"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0168Action" input="/IGPRD0168_Disp.do"
+			parameter="INIT" name="IGPRD0168Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0169.jsp" />
+		</action>
+			<!-- 自定义流程页面设置登记 -->
+		<action path="/IGPRD0168_Insert"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0168Action" input="/IGPRD0168_Disp.do"
+			parameter="INSERT" name="IGPRD0169Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0170.jsp" />
+		</action>		
+		<!-- 自定义流程页面设置修改 初始化-->
+		<action path="/IGPRD0169_Edit_Init"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0169Action" input="/IGPRD0168_Disp.do"
+			parameter="INIT" name="IGPRD0169Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0177.jsp" />
+		</action>
+			<!-- 自定义流程页面设置修改 -->
+		<action path="/IGPRD0169_Edit"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0169Action" input="/prd/IGPRD0177.jsp"
+			parameter="EDIT" name="IGPRD0169Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0170.jsp" />
+		</action>
+				<!-- 自定义流程页面设置删除-->
+		<action path="/IGPRD0169_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0169Action" input="/prd/IGPRD0177.jsp"
+			parameter="DEL" name="IGPRD0169Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0168_Disp.do" />
+		</action>
+		
+		<!-- 查询条件配置页初始化操作 -->
+		<action path="/IGPRD0145_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0145Action"
+			input="/prd/IGPRD0145.jsp"
+			parameter="DISP"
+			name="IGPRD0145Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0145.jsp"/>
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0145h.jsp"/>
+		</action>
+		
+		<!-- 查询条件配置 -->
+		<action path="/IGPRD0145"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0145Action"
+			input="/prd/IGPRD0145.jsp"
+			parameter="EDIT"
+			name="IGPRD0145Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/IGPRD0145_Disp.do"/>
+		</action>
+		<action path="/IGPRD0145_Width"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0145Action"
+			input="/prd/IGPRD0145.jsp"
+			parameter="WIDTH"
+			name="IGPRD0145Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/IGPRD0145_Disp.do"/>
+		</action>
+		<!-- 流程查询显示列宽度设置页初始化操作 -->
+		<action path="/IGPRD0146_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0146Action"
+			input="/prd/IGPRD0146.jsp"
+			parameter="DISP"
+			name="IGPRD0146Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0146.jsp"/>
+		</action>
+		<action path="/IGPRD0146"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0146Action"
+			input="/prd/IGPRD0146.jsp"
+			parameter="CHANGE"
+			name="IGPRD0146Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0146.jsp"/>
+		</action>
+		<!-- 130225Begin -->
+		<!-- 流程参与者支持机构选择页面初始化操作 -->
+		<action path="/IGPRD0134_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0134Action"
+			input="/prd/IGPRD0134.jsp"
+			parameter="DISP" 
+			name="IGPRD0134Form" 
+			validate="false" 
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0134.jsp" />
+			<forward name="DISP2" path="/prd/IGPRD0135.jsp" />
+			<forward name="DISPHISTORY" path="/prd/IGPRD0134h.jsp" />
+			<forward name="DISP2HISTORY" path="/prd/IGPRD0135h.jsp" />
+		</action>
+		
+		<!-- 流程参与者支持机构选择页面初始化操作 -->
+		<action path="/IGPRD0134"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0134Action"
+			input="/prd/IGPRD0134.jsp"
+			parameter="INSERT" 
+			name="IGPRD0134Form" 
+			validate="false" 
+			scope="request">
+			<forward name="DISP" path="/IGPRD0134_Disp.do" />
+		</action>
+		
+		<!-- 自定义流程机构范围设定页面初始化操作-->
+		<action path="/IGPRD0131_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0131Action"
+			input="/prd/IGPRD0131.jsp"
+			parameter="DISP"
+			name="IGPRD0131Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0131.jsp"/>
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0131h.jsp"/>
+		</action>
+		
+		<!-- 自定义流程机构范围设定页面初始化操作-->
+		<action path="/IGPRD0131"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0131Action"
+			input="/prd/IGPRD0131.jsp"
+			parameter="INSERT"
+			name="IGPRD0131Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/IGPRD0131_Disp.do"/>
+		</action>
+		
+		<!-- 用户查询页面初始化操作 -->
+		<action path="/IGPRD0201_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0201Action"
+			input="/prd/IGPRD0201.jsp"
+			parameter="DISP"
+			name="IGPRD0201Form"
+			validate="false"
+			scope="session">
+			<forward name="DISP" path="/prd/IGPRD0201.jsp"/>
+		</action>
+		
+		<!-- 用户查询操作 -->
+		<action path="/IGPRD0201"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0201Action"
+			input="/prd/IGPRD0201.jsp"
+			parameter="SEARCH"
+			name="IGPRD0201Form"
+			validate="false"
+			scope="session">
+			<forward name="DISP" path="/prd/IGPRD0201.jsp"/>
+		</action>
+		<!-- 130225End -->
+		<!-- 表格式表单编辑列查询处理  -->
+		<action path="/IGPRD0178"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH" input="/prd/IGPRD0110.jsp" name="IGPRD0110Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0178.jsp" />
+			<forward name="VIEWHISTORY" path="/prd/IGPRD0178h.jsp"/>
+		</action>
+		<!-- 流程定义删除 -->
+		<action path="/IGPRD0178_Del"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="DELETE" input="/IGPRD0110.do" name="IGPRD0111Form"
+			scope="request" validate="false">
+			<forward name="DISP" path="/IGPRD0178_Back.do" />
+		</action>
+		<!-- 流程定义删除 -->
+		<action path="/IGPRD0178_Order"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action"
+			parameter="ORDER" input="/IGPRD0110.do" name="IGPRD0111Form"
+			scope="request" validate="false">
+			<forward name="DISP" path="/IGPRD0178_Back.do" />
+		</action>
+		<!-- 返回到表单管理页面 -->
+		<action path="/IGPRD0178_Back"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0110Action"
+			parameter="SEARCH1" input="/prd/IGPRD0110.jsp" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0178.jsp" />
+		</action>
+		<!-- 跳转到流程定义新增页面 -->
+		<action path="/IGPRD0179_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0179.jsp"
+			parameter="DISP" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0179.jsp" />
+		</action>
+		<!-- 流程定义新增变更 -->
+		<action path="/IGPRD0179"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0179.jsp"
+			parameter="INSERT" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGPRD0178_Back.do" />
+			<forward name="BACK" path="/IGPRD0178_Back.do" />
+		</action>
+		<!-- 跳转到流程定义新增页面 -->
+		<action path="/IGPRD0179_Edit_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0111Action" input="/prd/IGPRD0178.jsp"
+			parameter="EDIT" name="IGPRD0111Form" validate="false" scope="request">
+			<forward name="DISP" path="/prd/IGPRD0179.jsp" />
+		</action>
+		<!-- 跳转到流程定义成功页面 -->
+		<action path="/IGPRD0180"
+        	type="com.deliverik.infogovernor.prd.action.IGPRD0112Action"
+            input="/prd/IGPRD0180.jsp"
+        	parameter="DISP"
+        	name="IGPRD0112Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="ADD"        path="/IGPRD0179_Disp.do"/>
+           	<forward name="SEARCH"        path="/IGPRD0178.do"/>
+        </action>
+        <action path="/IGPRD0181"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0117Action"
+			parameter="SEARCH" input="/prd/IGPRD0181.jsp" name="IGPRD0117Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/prd/IGPRD0181.jsp" />
+			<forward name="GTBL" path="/prd/IGPRD0122.jsp" />
+			<forward name="BASIC" path="/prd/IGPRD0129.jsp" />
+		</action>
+		<!-- 表格类表单预览 -->
+		<action path="/IGPRD0173_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0173Action"
+			parameter="DISP"
+			input="/prd/IGPRD0173.jsp"
+			name="IGPRD0173Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prd/IGPRD0173.jsp"/>
+		</action>
+		
+		<!-- 流程定义简略显示 -->
+		<action path="/IGPRD0202_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD0202Action"
+			name="IGPRD0202Form"
+			parameter="DISP"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/prd/IGPRD0202.jsp"/>
+		</action>
+		
+		<!-- 流程图形化定义页面 -->
+		<action path="/IGPRD1001"
+			type="com.deliverik.infogovernor.prd.action.IGPRD1001Action"
+			parameter="SEARCH"
+			name="IGPRD1001Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/prd/IGPRD1001.jsp"/>
+		</action>
+		<action path="/IGPRD1002_Disp"
+			type="com.deliverik.infogovernor.prd.action.IGPRD1002Action"
+			parameter="DISP"
+			name="IGPRD1002Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/prd/IGPRD1002.jsp"/>
+		</action>
+		<action path="/IGPRD1002"
+			type="com.deliverik.infogovernor.prd.action.IGPRD1002Action"
+			parameter="CHANGE"
+			name="IGPRD1002Form"
+			scope="request"
+			validate="false">
+		</action>
+		<action path="/IGPRD1002_ButtonInfo"
+			type="com.deliverik.infogovernor.prd.action.IGPRD1002Action"
+			parameter="GETBUTTON"
+			name="IGPRD1002Form"
+			scope="request"
+			validate="false">
+		</action>
+		
+	</action-mappings>
+</struts-config>

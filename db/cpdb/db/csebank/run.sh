@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/csebank/init_sh.sql

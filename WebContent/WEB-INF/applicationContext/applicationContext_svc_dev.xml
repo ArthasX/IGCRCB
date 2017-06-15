@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="incidentTypeDAO" class="com.deliverik.infogovernor.svc.model.dao.IncidentTypeDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	<bean id="annualTrendVWDAO" class="com.deliverik.infogovernor.svc.model.dao.AnnualTrendVWDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	<bean id="organizationServiceDAO" class="com.deliverik.infogovernor.svc.model.dao.OrganizationServiceDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	<!-- 人员工作量统计DAO -->
+	<bean id="summaryCountPersonDAO" class="com.deliverik.infogovernor.svc.model.dao.SummaryCountPersonDAOImpl" parent="baseHibernateDAO"></bean>
+	<bean id="serviceTopFiveVWDAO" class="com.deliverik.infogovernor.svc.model.dao.ServiceTopFiveVWDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	<bean id="incidentAveSolveTimeVWDAO" class="com.deliverik.infogovernor.svc.model.dao.IncidentAveSolveTimeVWDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	<bean id="incidentTypeBL" class="com.deliverik.infogovernor.svc.bl.task.IncidentTypeBLImpl">
+		<property name="incidentTypeDAO">
+			<ref bean="incidentTypeDAO"/>
+		</property>
+	</bean>
+	<bean id="annualTrendVWBL" class="com.deliverik.infogovernor.svc.bl.task.AnnualTrendVWBLImpl">
+		<property name="annualTrendVWDAO">
+			<ref bean="annualTrendVWDAO"/>
+		</property>
+	</bean>
+	<bean id="organizationServiceBL" class="com.deliverik.infogovernor.svc.bl.task.OrganizationServiceBLImpl">
+		<property name="organizationServiceDAO">
+			<ref bean="organizationServiceDAO"/>
+		</property>
+	</bean>
+	<!-- 人员工作量统计BL -->
+	<bean id="summaryCountPersonBL" class="com.deliverik.infogovernor.svc.bl.task.SummaryCountPersonBLImpl" >
+		<property name="summaryCountPersonDAO" ref="summaryCountPersonDAO" />
+	</bean>
+	
+	<bean id="serviceTopFiveVWBL" class="com.deliverik.infogovernor.svc.bl.task.ServiceTopFiveVWBLImpl">
+		<property name="serviceTopFiveVWDAO">
+			<ref bean="serviceTopFiveVWDAO"/>
+		</property>
+	</bean>
+	<bean id="incidentAveSolveTimeVWBL" class="com.deliverik.infogovernor.svc.bl.task.IncidentAveSolveTimeVWBLImpl">
+		<property name="incidentAveSolveTimeVWDAO">
+			<ref bean="incidentAveSolveTimeVWDAO"/>
+		</property>
+	</bean>
+	<!-- 服务台 -->
+	<bean id="igsvc01BL" class="com.deliverik.infogovernor.svc.bl.IGSVC01BLImpl">
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="processInHandBL">
+			<ref bean="processInHandBL" />
+		</property>
+	</bean>
+	
+	<!-- 流程图形化统计  -->
+	<bean id="igsvc06BL" class="com.deliverik.infogovernor.svc.bl.IGSVC06BLImpl">
+		<property name="ig500BL">
+			<ref bean="ig500BL" />
+		</property>
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="incidentTypeBL">
+			<ref bean="incidentTypeBL" />
+		</property>
+		<property name="organizationServiceBL">
+			<ref bean="organizationServiceBL" />
+		</property>
+		<property name="summaryCountPersonBL">
+			<ref bean="summaryCountPersonBL" />
+		</property>
+		<property name="serviceTopFiveVWBL">
+			<ref bean="serviceTopFiveVWBL" />
+		</property>
+		<property name="incidentAveSolveTimeVWBL">
+			<ref bean="incidentAveSolveTimeVWBL" />
+		</property>
+		<property name="annualTrendVWBL">
+			<ref bean="annualTrendVWBL" />
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL" />
+		</property>
+	</bean>
+
+</beans>

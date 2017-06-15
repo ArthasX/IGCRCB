@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="igDRMEVENT0101BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0101BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL"/>
+		</property>
+		<property name="soc0109BL">
+			<ref bean="soc0109BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="ig480BL">
+			<ref bean="ig480BL"/>
+		</property>
+	</bean>
+	<bean id="igDRMEVENT0201BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0201BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="ig480BL">
+			<ref bean="ig480BL"/>
+		</property>
+	</bean>
+	<bean id="igDRMEVENT0102BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0102BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="ig481BL">
+			<ref bean="ig481BL"/>
+		</property>
+		<property name="ig480BL">
+			<ref bean="ig480BL"/>
+		</property>
+	</bean>
+	<bean id="igDRMEVENT0103BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0103BLImpl">
+		<property name="messagePushBL">
+			<ref bean="messagePushBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="emergencyLogBL">
+			<ref bean="emergencyLogBL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="ig036BL">
+			<ref bean="ig036BL"/>
+		</property>
+		<property name="currentNodeBL">
+			<ref bean="currentNodeBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+	</bean>
+	<bean id="igDRMEVENT0104BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0104BLImpl">
+	<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL"/>
+		</property>
+		<property name="ig222BL">
+			<ref bean="ig222BL"/>
+		</property>
+	</bean>
+	<!-- 应急指挥流程  应急执行节点前处理 -->
+	<bean id="igDRMEVENT0901BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0901BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="emergencyRelationBL">
+			<ref bean="emergencyRelationBL"/>
+		</property>
+		<property name="signinBL">
+			<ref bean="signinBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+		<bean id="igDRMEVENT0701BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0701BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="drillplanitemBL">
+			<ref bean="drillplanitemBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+	</bean>
+	<bean id="igDRMEVENT0702BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0702BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="signinBL">
+			<ref bean="signinBL"/>
+		</property>
+	</bean>
+	<!--应急演练关闭节点前处理-->
+	<bean id="igDRMEVENT0703BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0703BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="drillplanitemBL">
+			<ref bean="drillplanitemBL"/>
+		</property>
+	</bean>
+		<!--应急演练 演练实施节点  前处理-->
+	<bean id="igDRMEVENT0704BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0704BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="emergencyRelationBL">
+			<ref bean="emergencyRelationBL"/>
+		</property>
+		<property name="signinBL">
+			<ref bean="signinBL"/>
+		</property>
+	</bean>
+<!-- 	演练方案定义后处理 -->
+	<bean id="igDRMEVENT0705BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0705BLImpl">
+	</bean>
+	
+	<!-- 应急指挥流程  待发起节点 后处理 -->
+	<bean id="igDRMEVENT0902BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0902BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		
+	</bean>
+	<!-- 应急指挥流程  待发起节点 后处理  初始化签到人员信息 -->
+	<bean id="igDRMEVENT0903BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0903BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="signinBL">
+			<ref bean="signinBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+	</bean>
+	<!-- 应急指挥流程  推送处理BL -->
+	<bean id="igDRMEVENT0906BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0906BLImpl">
+		<property name="messagePushBL">
+			<ref bean="messagePushBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="emergencyLogBL">
+			<ref bean="emergencyLogBL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+	</bean>
+		<!-- 应急指挥流程  推送处理BL -->
+	<bean id="igDRMEVENT0907BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0907BLImpl">
+		<property name="messagePushBL">
+			<ref bean="messagePushBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="emergencyLogBL">
+			<ref bean="emergencyLogBL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+	</bean>
+		<!-- 应急指挥流程关闭节点 前处理 -->
+	<bean id="igDRMEVENT0904BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0904BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+	</bean>
+		<!-- 应急指挥流程资源协调节点后处理 -->
+	<bean id="igDRMEVENT0905BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0905BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+		<property name="signinBL" ref="signinBL" />
+		<property name="workFlowOperationBL" ref="workFlowOperationBL" />
+	</bean>
+	<!-- 场景定义流程赋值处理人前处理 -->
+	<bean id="igDRMEVENT0301BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0301BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="ig898BL">
+			<ref bean="ig898BL"/>
+		</property>
+		<property name="emergencyRelationBL">
+			<ref bean="emergencyRelationBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean  id="igDRMEVENT0105BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0105BLImpl">
+		<property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+	</bean>
+	<bean  id="igDRMEVENT0106BL" class="com.deliverik.infogovernor.drm.igflow.status.IGDRMEVENT0106BLImpl">
+		<property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+		<property name="ig333BL">
+			<ref bean="ig333BL"/>
+		</property>
+		<property name="ig731BL">
+			<ref bean="ig731BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+	</bean>
+</beans>
