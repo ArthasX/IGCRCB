@@ -1,0 +1,331 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.drm.model.dao">
+	<!-- 配置比对查询任务与规则关系 -->
+    <sql-query name="DrillplanDAO.drillVW">
+    <![CDATA[
+    	select d.dname,d.dserial,d.judgetime,d.crttime,d.duserid,d.dusername,d.judgestatus,i.* from drillplan d
+       		left join drillplanitem i on d.did = i.did
+		where 1=1 and i.diid is not null 
+    ]]>
+    </sql-query>
+    <sql-query name="DrillplanDAO.drillVWCount">
+    <![CDATA[
+    	select count(*) from drillplan d
+       		left join drillplanitem i on d.did = i.did
+		where 1=1 and i.diid is not null 
+    ]]>
+    </sql-query>
+    
+    <!-- 计划内发起前处理 -->
+    <sql-query name="DrillplanDAO.drillVWByDiid">
+    <![CDATA[
+    	select * from (SELECT d.dname,
+		d.dserial,
+		d.judgetime,
+		d.crttime,
+		d.duserid,
+		d.dusername,
+		d.judgestatus,
+		i.*
+		FROM drillplan d LEFT JOIN drillplanitem i ON d.did = i.did
+		WHERE 1 = 1 AND i.diid IS NOT NULL) a where a.diid = :diid
+    ]]>
+    </sql-query>
+    
+    <!-- 场景资产项查询 -->
+    <sql-query name="PlanDAO.searchByCond">
+    <![CDATA[
+ select distinct t.* from(
+		select 
+		b.civalue as scename,
+		c.civalue as scedes,
+		d.civalue as scepdid,
+		e.civalue as isplan,
+		f.civalue as sceprid,
+		l.civalue AS times,
+		k.civalue as scetype ,
+		j.cdinfo,
+		a.*,
+		h.orgname,
+		g.pdname as planprocessname,
+		z.fingerprint as needrise,
+		o.civalue as senceclassify
+		from
+			(select eiid ,eid,einame,eilabel,eiinsdate,eiorgsyscoding,esyscoding,eiversion,eiusername,eiuserid,eismallversion,eiupdtime 
+			from soc0118 where esyscoding like '999060%') a 
+			left join soc0107 b on a.eiid = b.eiid and a.eiversion = b.civersion and a.eismallversion = b.cismallversion and b.cid = 'CI600000001001' --场景名称
+			left join soc0107 c on a.eiid = c.eiid and a.eiversion = c.civersion and a.eismallversion = c.cismallversion and c.cid = 'CI600000001002' --场景描述
+			left join soc0107 l on a.eiid = l.eiid and a.eiversion = l.civersion and a.eismallversion = l.cismallversion and l.cid = 'CI600000001003' --预计恢复时间
+			left join soc0107 d on a.eiid = d.eiid and a.eiversion = d.civersion and a.eismallversion = d.cismallversion and d.cid = 'CI600000001004' --场景应急处置步骤
+			left join soc0107 e on a.eiid = e.eiid and a.eiversion = e.civersion and a.eismallversion = e.cismallversion and e.cid = 'CI600000001006' --是否已演练
+			left join soc0107 f on a.eiid = f.eiid and a.eiversion = f.civersion and a.eismallversion = f.cismallversion and f.cid = 'CI600000001007' --定义场景流程ID
+			left join soc0107 k on a.eiid = k.eiid and a.eiversion = k.civersion and a.eismallversion = k.cismallversion and k.cid = 'CI600000001008' --场景类型
+			left join soc0107 o on a.eiid = o.eiid and a.eiversion = o.civersion and a.eismallversion = o.cismallversion and o.cid = 'CI600000001009' --场景分类
+			left join ig380 g on g.pdid = d.civalue 
+			left join organization  h on h.orgsyscoding = a.eiorgsyscoding
+			left join codedetail j on j.cid = a.esyscoding and j.ccid = '510'
+			left join (select m.pgdid,m.fingerprint as fingerprint from ig481 m where (m.fingerprint <> m.pdid) group by m.pgdid,m.fingerprint) z
+			on z.pgdid = d.civalue and k.civalue = '1'
+		) t where 1=1
+       
+    ]]> 
+    </sql-query>   
+    <sql-query name="PlanDAO.getSearchCount">
+    <![CDATA[
+        select distinct t.* from(
+		select 
+		b.civalue as scename,
+		c.civalue as scedes,
+		d.civalue as scepdid,
+		e.civalue as isplan,
+		f.civalue as sceprid,
+		k.civalue as scetype ,
+		j.cdinfo,a.*,
+		h.orgname,
+		g.pdname as planprocessname,
+		o.civalue as senceclassify
+		from
+			(select eiid ,eid,einame,eilabel,eiinsdate,eiorgsyscoding,esyscoding,eiversion,eiusername,eiuserid,eismallversion,eiupdtime from soc0118 where esyscoding like '999060%') a 
+			left join soc0107 b on a.eiid = b.eiid and a.eiversion = b.civersion and a.eismallversion = b.cismallversion and b.cid = 'CI600000001001' --场景名称
+			left join soc0107 c on a.eiid = c.eiid and a.eiversion = c.civersion and a.eismallversion = c.cismallversion and c.cid = 'CI600000001002' --场景描述
+			left join soc0107 d on a.eiid = d.eiid and a.eiversion = d.civersion and a.eismallversion = d.cismallversion and d.cid = 'CI600000001004' --场景应急处置步骤
+			left join soc0107 e on a.eiid = e.eiid and a.eiversion = e.civersion and a.eismallversion = e.cismallversion and e.cid = 'CI600000001006' --是否已演练
+			left join soc0107 f on a.eiid = f.eiid and a.eiversion = f.civersion and a.eismallversion = f.cismallversion and f.cid = 'CI600000001007' --定义场景流程ID
+			left join soc0107 k on a.eiid = k.eiid and a.eiversion = k.civersion and a.eismallversion = k.cismallversion and k.cid = 'CI600000001008' --场景类型
+			left join soc0107 o on a.eiid = o.eiid and a.eiversion = o.civersion and a.eismallversion = o.cismallversion and o.cid = 'CI600000001009' --场景分类
+			left join ig380 g on g.pdid = c.civalue 
+			left join organization  h on h.orgsyscoding = a.eiorgsyscoding
+			left join codedetail j on j.cid = a.esyscoding and j.ccid = '510'
+		) t where 1=1 
+       
+    ]]> 
+    </sql-query>   
+    <!-- 查询演练签到信息 -->
+    <sql-query name="signinDAO.searchSigninListForDrill">
+    <![CDATA[
+		SELECT 
+		T.DRILLPRID,
+		T.SIGNINED,
+		I5.PRSERIALNUM,
+		T.SIUSERID,
+		T.SITIME,
+		(SELECT USERNAME FROM IGUSER WHERE USERID = T.SIUSERID) USERNAME,
+		I5.PRID,
+		I5.PRTYPE,
+		I5.PRSTATUS,
+		I5.PRSUBSTATUS,
+		I5.PRTITLE,
+		I5.PROPENTIME,
+		I5.PRCLOSETIME,
+    	I5.PRDESC,
+    	I5.PROPENTIME
+		FROM (SELECT DRILLPRID,SIUSERID,SIGNINED,SITIME FROM SIGNIN GROUP BY DRILLPRID,SIUSERID,SIGNINED,SITIME) T 
+		INNER JOIN IG500 I5 ON I5.PRID = T.DRILLPRID AND I5.PRCLOSETIME IS NULL AND T.DRILLPRID IS NOT NULL AND 1=1
+    ]]> 
+    </sql-query>   
+    <!-- 查询应急签到信息 -->
+   <sql-query name="signinDAO.searchSigninListForDirect">
+    <![CDATA[
+		SELECT 
+		T.ECPRID,
+		T.SIGNINED,
+		I5.PRSERIALNUM,
+		T.SIUSERID,
+		T.SITIME,
+		(SELECT USERNAME FROM IGUSER WHERE USERID = T.SIUSERID) USERNAME,
+		I5.PRID,
+		I5.PRTYPE,
+		I5.PRSTATUS,
+		I5.PRSUBSTATUS,
+		I5.PRTITLE,
+		I5.PROPENTIME,
+		I5.PRCLOSETIME,
+	    I5.PRDESC,
+    	I5.PROPENTIME
+		FROM (SELECT ECPRID,SIUSERID,SIGNINED,SITIME FROM SIGNIN GROUP BY ECPRID,SIUSERID,SIGNINED,SITIME) T 
+		INNER JOIN IG500 I5 ON I5.PRID = T.ECPRID AND I5.PRTYPE='WDC' AND I5.PRCLOSETIME IS NULL AND T.ECPRID IS NOT NULL AND 1=1 AND I5.PRURGENCY = 0 
+		 ]]> 
+    </sql-query>  
+    
+    <sql-query name="signinDAO.setDirectPrid">
+    <![CDATA[
+    	update signin set ecprid = :ecprid where drillprid = :drillprid
+    ]]>
+    </sql-query>
+    <sql-query name="signinDAO.setScenePrid">
+    	<![CDATA[
+    	      update signin set sceneprid = :sceneprid where ecprid = :ecprid 
+    	]]>
+    </sql-query>
+    <sql-query name="signinDAO.setScenePridFormDrill">
+    	<![CDATA[
+    	      update signin set sceneprid = :sceneprid where drillprid = :drillprid
+    	]]>
+    </sql-query>
+    <!-- 查询演练计划信息 -->
+    <sql-query name="DrillplanDAO.searchDrilledPlanByCond">
+    	<![CDATA[
+	SELECT (SELECT COUNT (*) FROM DRILLPLANITEM WHERE DID = DP.DID) TOTALITEM,
+		(SELECT COUNT (*) FROM DRILLPLANITEM WHERE STATUS = '演练中' AND DID = DP.DID) DRILLINGCOUNT,
+		(SELECT COUNT (*) FROM DRILLPLANITEM WHERE STATUS = '已演练' AND DID = DP.DID) COMPLETECOUNT,
+	    DP.DID, 
+		DP.DUSERID, 
+		DP.DUSERNAME, 
+		DP.CRTTIME, 
+		DP.JUDGETIME, 
+		DP.DSERIAL, 
+		DP.DNAME, 
+		DP.JUDGESTATUS, 
+		DP.DEPICT, 
+		DP.DOPINION, 
+		DP.FINGERPRINT, 
+		DP.JUDGEUSERID, 
+		DP.JUDGEUSERNAME
+	    FROM DRILLPLAN DP WHERE DP.JUDGESTATUS <> 'D' AND 1=1
+    	]]>
+    </sql-query>
+    
+    <!-- 查询签到信息 -->
+    <sql-query name="SigninDAO.searchSigninInitDataByCond">
+    	<![CDATA[
+	 	SELECT SNAME,COUNT(SIUSERID) TOTALCOUNT,SUM(SIGNINED) INCOUNT FROM
+			( SELECT A.SNAME ,SIUSERID,SIGNINED  FROM STRUCTUREROLE A 
+     	 LEFT JOIN (SELECT * FROM SIGNIN WHERE ECPRID =:ECPRID) B ON B.SIROLEID IN A.ROLEID
+     	 GROUP BY SNAME,SIUSERID,SIGNINED
+			 )GROUP BY SNAME
+    	]]>
+    </sql-query>
+    
+     <!-- 查询签到信息 -->
+    <sql-query name="SigninDAO.searchSigninPeopleDataByCond">
+    	<![CDATA[
+	 		SELECT SIUSERNAME AS SNAME ,SIGNINED FROM SIGNIN WHERE 	SIROLEID  IN(SELECT ROLEID FROM STRUCTUREROLE WHERE SNAME = '应急执行层') AND ECPRID =:ECPRID
+    	]]>
+    </sql-query>
+    
+    <!-- 培训计划 查看从表明细Trainmission  -->
+	<sql-query name="TrainmissionDetail.View">
+	<![CDATA[
+	SELECT  
+        tpd.tmid as tmid,
+        tpd.tpid as tpid,
+        tpd.tmcourse as tmcourse,
+        tpd.tmorg as tmorg,
+        tpd.tmtime as tmtime,
+        tpd.tmtarget as tmtarget,
+        tpd.tmatt as tmatt,
+        a.attid AS attid, 
+        a.attkey AS attkey,
+        SUBSTR(a.attname, INSTR(a.attname, '_') + 1) AS attname, 
+        a.atturl AS atturl
+    FROM TRAINMISSION tpd LEFT JOIN attachment a ON a.attkey = tpd.tmatt
+			WHERE tpd.tpid = :tpid
+			order by tpd.tmid asc
+	]]>
+	</sql-query>
+	<sql-query name="StatisticsDAO.planStatistics">
+	<![CDATA[
+	select eid,ename,esyscoding,sumcount,modifycount,drillcount,
+		case sumcount when 0 then '0%' else round(drillcount/sumcount*100,2)||'%' end  as drillrate ,
+		case sumcount when 0 then '0%' else round(modifycount/sumcount*100,2)||'%' end  as modifyrate 
+	from (
+		select a.eid,a.ename,a.esyscoding,count(b.eid) as sumcount, sum(case when b.EIVERSION>1 then 1 else 0 end) as modifycount,count(drillnum) as drillcount 
+		from(select * from soc0117 where esyscoding like '999050___')  a 
+		left join (select * from soc0118 where 1=1 ) b on (a.eid = b.eid)
+		left join (select pareiid,(case when count(civalue)>1 then 1 else 0 end) as drillnum from soc0119 t1 inner join soc0107 t2 on(t1.CLDEIID = t2.EIID and t1.CLDVERSION = t2.CIVERSION and t2.CID='CI600000001006' and t2.civalue='是') group by pareiid) d on(b.eiid = d.pareiid) 
+		group by a.eid,a.ename,a.esyscoding
+	) 
+	]]>
+	</sql-query>
+	<sql-query name="StatisticsDAO.drillStatistics">
+	<![CDATA[
+	select ratename, account,ycount,wcount,
+	case when account=0 then '0%' else round(ycount/account,2)*100||'%' end as yrate,
+	case when account=0 then '0%' else round(wcount/account,2)*100||'%' end as wrate from(
+		select '演练计划' as ratename ,count(1) account ,
+		sum(case  when plancount = comcount then 1 else 0 end ) ycount,
+		sum(case  when plancount = comcount then 0 else 1 end ) wcount
+		from(
+			select a.did,
+			count(diid) as plancount,
+			sum(case  when b.status is not null then 1 else 0 end ) as comcount 
+			from (select did from drillplan where 1=1 ) a
+			left join drillplanitem b on(a.did = b.did) 
+			group by a.DID 
+			)
+		union all	
+		
+		select '演练任务' as ratename ,count(1) account,
+		sum(case  when status = '已演练' then 1 else 0 end ) as ycount,
+		sum(case  when status = '已演练' then 0 else 1 end ) as wcount
+		from drillplanitem where did in (select did from drillplan where 1=1 )
+		
+		union all	
+		select '演练执行' as ratename,count(1) as account,
+		sum(case  when pivarvalue is not null then 1 else 0 end ) as ycount,
+		sum(case  when pivarvalue is not null then 0 else 1 end ) as wcount 
+		from(
+			select * from (select prid from ig500 where 1=1 and  prpdid like '01385%'  ) a
+			left join ig599 b on (a.prid = b.prid and b.PIDID like '%015')
+		)
+	)
+	
+	]]>
+	</sql-query>
+	<sql-query name="StatisticsDAO.drillTypeStatistics">
+	<![CDATA[
+	select sum(1) as account ,pivarvalue,count(1) as num from(
+		select * from (select prid from ig500 where 1=1 and  prpdid like '01385%') a
+		left join ig599 b on (a.prid = b.prid and b.PIDID like '%008')
+	)where pivarvalue is not null group by pivarvalue
+	]]>
+	</sql-query>
+	<sql-query name="StatisticsDAO.getDrillEiids">
+	<![CDATA[
+	SELECT S118.EIID FROM SOC0118 S118
+	INNER JOIN (SELECT PAREIID,CLDEIID FROM SOC0119 S119 INNER JOIN  SOC0107 S107 ON(S119.CLDEIID = S107.EIID AND S119.CLDVERSION = S107.CIVERSION AND S107.CID='CI600000001006' AND S107.CIVALUE='是')) S119 
+	ON S119.PAREIID = S118.EIID AND S118.ESYSCODING = :ESYSCODING
+	WHERE 1 = 1 
+	]]>
+	</sql-query>
+<!-- 	查找演练基本信息 -->
+	<sql-query name="DrillplanitemDAO.searchDrillDetailByAllPrid">
+    <![CDATA[
+    	select a.PRTITLE DRILLNAME, a.PROPENTIME OPENTIME, a.PRCLOSETIME CLOSETIME, a.PRUSERNAME AUTHOR,b.PIVARVALUE DRILLFORMALITY,
+			c.PIVARVALUE DRILLCONTENT, d.PIVARVALUE DRILLOBJECTIVE, g.einame PLANNAME,j.EINAME SENCENAME,k.PIVARVALUE DEPARTMENT
+			from ig500 a  
+			left join ig599 k on a.prid = k.prid and k.PIVARNAME = '演练参与部门'  
+			left join ig599 b on a.prid = b.prid and b.PIVARNAME = '演练形式'  
+			left join ig599 c on a.prid = c.prid and c.PIVARNAME = '演练内容'  
+			left join ig599 d on a.prid = d.prid and d.PIVARNAME = '演练目的'  
+			left join ig599 e on a.prid = e.prid and e.PIVARNAME = '专项预案id' 
+			left join soc0118 g on g.eiid = e.PIVARVALUE 
+			left join ig599 h on a.prid = h.prid and h.PIVARNAME = '演练场景'  
+			left join ig731 i on i.piid = h.piid 
+			left join soc0118 j on j.eiid = i.eiid where 1=1 
+    ]]>
+    </sql-query>
+    
+    <!-- 	查找应急指挥基本信息 -->
+	<sql-query name="DrillplanitemDAO.searchDrillDetailByEmPrid">
+    <![CDATA[
+    	select a.PRTITLE DRILLNAME, a.PROPENTIME OPENTIME, a.PRCLOSETIME CLOSETIME, a.PRUSERNAME AUTHOR,b.PIVARVALUE DRILLFORMALITY,
+			c.PIVARVALUE DRILLCONTENT, d.PIVARVALUE DRILLOBJECTIVE, g.einame PLANNAME,j.EINAME SENCENAME,k.PIVARVALUE DEPARTMENT 
+			from ig500 a  
+			left join ig599 k on a.prid = k.prid and k.PIVARNAME = '业务恢复确认'  
+			left join ig599 b on a.prid = b.prid and b.PIVARNAME = '恢复所需时间'  
+			left join ig599 c on a.prid = c.prid and c.PIVARNAME = '业务受影响范围'  
+			left join ig599 d on a.prid = d.prid and d.PIVARNAME = '业务恢复描述'  
+			left join ig599 e on a.prid = e.prid and e.PIVARNAME = '专项预案'
+			left join ig731 l on l.piid = e.piid 
+			left join soc0118 g on g.eiid = l.eiid
+			left join ig599 h on a.prid = h.prid and h.PIVARNAME = '应急场景'  
+			left join ig731 i on i.piid = h.piid 
+			left join soc0118 j on j.eiid = i.eiid where 1=1 
+    ]]>
+    </sql-query>
+</hibernate-mapping>

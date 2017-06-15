@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- DAO -->
+	<bean id="collect_Symmetrix_InfoDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Symmetrix_InfoDAOImpl">
+	</bean>
+	<bean id="collect_Symmetrix_Monitor_RtDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Symmetrix_Monitor_RtDAOImpl">
+	</bean>
+	<bean id="collect_Symmetrix_Monitor_RtVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Symmetrix_Monitor_RtVWDAOImpl">
+	</bean>
+	<bean id="collect_Dir_FibreVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Dir_FibreVWDAOImpl">
+	</bean>
+	<bean id="collect_Dir_DaVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Dir_DaVWDAOImpl">
+	</bean>
+	<bean id="collect_Dir_RfbVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_Dir_RfbVWDAOImpl">
+	</bean>	
+	<bean id="collect_DisksVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_DisksVWDAOImpl">
+	</bean>
+	<!-- 容量设计  dao-->
+	<bean id="soc0411DAO"
+	 parent="baseHibernateDAO" 
+	 class="com.deliverik.infogovernor.rpt.model.dao.SOC0411DAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="collect_Symmetrix_InfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_Symmetrix_InfoBLImpl">
+		<property name="collect_Symmetrix_InfoDAO">
+			<ref bean="collect_Symmetrix_InfoDAO"/>
+		</property>
+	</bean>
+	
+    <bean id="collect_Dir_FibreVWInfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_Dir_FibreVWInfoBLImpl">
+		<property name="collect_Dir_FibreVWDAO">
+			<ref bean="collect_Dir_FibreVWDAO"/>
+		</property>
+	</bean>
+    <bean id="collect_Dir_DaVWInfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_Dir_DaVWInfoBLImpl">
+		<property name="collect_Dir_DaVWDAO">
+			<ref bean="collect_Dir_DaVWDAO"/>
+		</property>
+	</bean>
+    <bean id="collect_Dir_RfbVWInfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_Dir_RfbVWInfoBLImpl">
+		<property name="collect_Dir_RfbVWDAO">
+			<ref bean="collect_Dir_RfbVWDAO"/>
+		</property>
+	</bean>
+    <bean id="collect_DisksVWInfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_DisksVWInfoBLImpl">
+		<property name="collect_DisksVWDAO">
+			<ref bean="collect_DisksVWDAO"/>
+		</property>
+	</bean>	
+	
+	<bean id="collect_Symmetrix_Monitor_RtBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_Symmetrix_Monitor_RtBLImpl">
+		<property name="collect_Symmetrix_Monitor_RtDAO">
+			<ref bean="collect_Symmetrix_Monitor_RtDAO"/>
+		</property>
+		<property name="collect_Symmetrix_Monitor_RtVWDAO">
+			<ref bean="collect_Symmetrix_Monitor_RtVWDAO"/>
+		</property>
+	</bean>
+	<!--  容量设计bl  -->
+	<bean id="soc0411BL" class="com.deliverik.infogovernor.rpt.bl.task.SOC0411BLImpl">
+        <property name="soc0411DAO">
+            <ref bean="soc0411DAO"/>
+        </property>
+    </bean>
+
+	 <!-- Control BL -->
+    <bean id="igDBS01BL" class="com.deliverik.infogovernor.soc.dbs.bl.IGDBS01BLImpl">
+    	<property name="codeListUtils">
+			<ref bean="codeListUtils"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig731BL">
+			<ref bean="ig731BL"/>
+		</property>
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL"/>
+		</property>
+		<property name="collect_Symmetrix_InfoBL">
+			<ref bean="collect_Symmetrix_InfoBL"/>
+		</property>
+		<property name="collect_Symmetrix_Monitor_RtBL">
+			<ref bean="collect_Symmetrix_Monitor_RtBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		<property name="soc0119BL">
+            <ref bean="soc0119BL"/>
+        </property>
+        <property name="soc0118BL">
+            <ref bean="soc0118BL"/>
+        </property>
+        <property name="workFlowOperationBL">
+            <ref bean="workFlowOperationBL"/>
+        </property>
+         <property name="monitorObjectDefVWBL">
+            <ref bean="monitorObjectDefVWBL"/>
+        </property>
+         <property name="soc0305BL">
+            <ref bean="soc0305BL"/>
+        </property>
+        <!--容量bl注入-->
+        <property name="soc0411BL">
+			<ref bean="soc0411BL"/>
+		</property>
+    </bean>
+    
+    <bean id="igDBS02BL" class="com.deliverik.infogovernor.soc.dbs.bl.IGDBS02BLImpl">
+    	<property name="collect_Dir_FibreVWInfoBL">
+			<ref bean="collect_Dir_FibreVWInfoBL"/>
+		</property>
+		<property name="collect_Dir_DaVWInfoBL">
+			<ref bean="collect_Dir_DaVWInfoBL"/>
+		</property>
+		<property name="collect_Dir_RfbVWInfoBL">
+			<ref bean="collect_Dir_RfbVWInfoBL"/>
+		</property>
+		<property name="collect_DisksVWInfoBL">
+			<ref bean="collect_DisksVWInfoBL"/>
+		</property>
+		<property name="collect_CXVWInfoBL">
+			<ref bean="collect_CXVWInfoBL"/>
+		</property>
+		<property name="collect_Symmetrix_InfoBL">
+			<ref bean="collect_Symmetrix_InfoBL"/>
+		</property>
+    </bean>
+      <bean id="collect_CXVWInfoBL" class="com.deliverik.infogovernor.soc.dbs.bl.task.Collect_CXVWInfoBLImpl">
+		<property name="collect_CXVWDAO">
+			<ref bean="collect_CXVWDAO"/>
+		</property>
+	</bean>	
+    	<bean id="collect_CXVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.dbs.model.dao.Impl.Collect_CXVWDAOImpl">
+	</bean>
+    <bean id="soc0118BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0118BLImpl">
+        <property name="soc0118DAO">
+            <ref bean="soc0118DAO"/>
+        </property>
+        <property name="soc0124DAO">
+            <ref bean="soc0124DAO"/>
+        </property>
+        <property name="userRoleVWDAO">
+            <ref bean="userRoleVWDAO"/>
+        </property>
+         <property name="soc0109DAO">
+            <ref bean="soc0109DAO"/>
+        </property>
+        <property name="soc0107DAO">
+            <ref bean="soc0107DAO"/>
+        </property>
+        <property name="soc0117DAO">
+            <ref bean="soc0117DAO"/>
+        </property>
+        <property name="soc0128DAO">
+            <ref bean="soc0128DAO"/>
+        </property>
+        <property name="soc0123DAO">
+            <ref bean="soc0123DAO"/>
+        </property>
+         <property name="soc0605DAO">
+            <ref bean="soc0605DAO"/>
+        </property>
+         <property name="rehearseDAO">
+            <ref bean="rehearseDAO"/>
+        </property>
+    </bean>
+</beans>
+

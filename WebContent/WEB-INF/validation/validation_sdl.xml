@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE form-validation PUBLIC
+     "-//Apache Software Foundation//DTD Commons Validator Rules Configuration 1.3.0//EN"
+     "http://jakarta.apache.org/commons/dtds/validator_1_3_0.dtd">
+
+<!-- Validator -->
+<form-validation>
+    <formset>
+      
+        
+        <form name="IGSDL0103Form">
+
+            <field property="sieiid" depends="maxbytes">
+                <arg key="相关资产" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+            
+            <field property="siprid" depends="maxbytes">
+                <arg key="相关工作" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>64</var-value>
+                </var>
+            </field>
+            
+        </form>
+        
+        <form name="IGSDL0302Form">
+
+            <field property="sdiyear" depends="required">
+                <arg key="年度" resource="false"/>
+            </field>
+            
+            <field property="sdieiid" depends="required">
+                <arg key="相关资产" resource="false"/>
+            </field>
+            
+        </form>
+        
+         <form name="IGSDL0402Form">
+
+            <field property="sitype" depends="required">
+                <arg key="类别" resource="false"/>
+            </field>
+            
+            <field property="sieiid" depends="required">
+                <arg key="相关资产" resource="false"/>
+            </field>
+             <field property="sibegin" depends="required">
+                <arg key="开始时间" resource="false"/>
+            </field>
+             <field property="siend" depends="required">
+                <arg key="结束时间" resource="false"/>
+            </field>
+            <field property="sidesc" depends="maxbytes">
+                <arg key="描述" resource="false"/>
+                <var>
+                    <var-name>maxbytes</var-name>
+                    <var-value>512</var-value>
+                </var>
+            </field>
+            
+        </form>
+        <form name="IGSDL0501Form">
+
+            <field property="year" depends="required">
+                <arg key="年度" resource="false"/>
+            </field>
+            
+            <field property="eiid" depends="required">
+                <arg key="相关资产" resource="false"/>
+            </field>
+            
+        </form>
+        
+   </formset>
+
+</form-validation>

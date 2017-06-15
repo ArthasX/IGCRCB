@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+ 
+	<!-- DAO -->
+	<bean id="monitorTypeDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorTypeDAOImpl">
+	</bean>
+	<bean id="monitorTypeDefDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorTypeDefDAOImpl">
+	</bean>
+	<bean id="monitorObjectDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorObjectDAOImpl">
+	</bean>
+	<bean id="monitorObjectDefDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorObjectDefDAOImpl">
+	</bean>
+	<bean id="monitorObjectDefVWDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorObjectDefVWDAOImpl">
+	</bean>
+	<bean id="soc0304DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.SOC0304DAOImpl">
+	</bean>
+	<bean id="monitorTaskObjectDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.MonitorTaskObjectDAOImpl">
+	</bean>
+	<bean id="object_ListDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.Object_ListDAOImpl">
+	</bean>
+	<bean id="soc0301DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.SOC0301DAOImpl">
+	</bean>
+	<bean id="soc0306DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.soc.mnt.model.dao.SOC0306DAOImpl">
+	</bean>
+	<bean id="soc0423DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.rpt.model.dao.SOC0423DAOImpl">
+	</bean>
+	<bean id="soc0429DAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.rpt.model.dao.SOC0429DAOImpl">
+	</bean>
+	
+	<bean id="igmnt02BL" class="com.deliverik.infogovernor.soc.mnt.bl.IGMNT02BLImpl">
+		<property name="soc0423BL">
+			<ref bean="soc0423BL"/>
+		</property>
+		<property name="soc0429BL">
+			<ref bean="soc0429BL"/>
+		</property>
+		<property name="soc0113BL">
+			<ref bean="soc0113BL"/>
+		</property>
+		<property name="soc0120BL">
+			<ref bean="soc0120BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="soc0305BL">
+			<ref bean="soc0305BL"/>
+		</property>
+		<property name="soc0306BL">
+			<ref bean="soc0306BL"/>
+		</property>
+	</bean>
+	<bean id="igmnt01BL" class="com.deliverik.infogovernor.soc.mnt.bl.IGMNT01BLImpl">
+		<property name="monitorTypeBL">
+			<ref bean="monitorTypeBL"/>
+		</property>
+		<property name="monitorTypeDefBL">
+			<ref bean="monitorTypeDefBL"/>
+		</property>
+		<property name="monitorObjectBL">
+			<ref bean="monitorObjectBL"/>
+		</property>
+		<property name="monitorObjectDefBL">
+			<ref bean="monitorObjectDefBL"/>
+		</property>
+		<property name="collect_Symmetrix_InfoBL">
+			<ref bean="collect_Symmetrix_InfoBL"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="soc0203BL">
+			<ref bean="soc0203BL"/>
+		</property>
+		<property name="reportFileDefinitionBL">
+			<ref bean="reportFileDefinitionBL"/>
+		</property>
+		<property name="reportFileVersionBL">
+			<ref bean="reportFileVersionBL"/>
+		</property>
+		<property name="soc0304BL">
+			<ref bean="soc0304BL"/>
+		</property>
+		<property name="monitorTaskObjectBL">
+			<ref bean="monitorTaskObjectBL"/>
+		</property>
+		<property name="object_ListBL">
+			<ref bean="object_ListBL"/>
+		</property>
+		<property name="soc0301BL">
+			<ref bean="soc0301BL"/>
+		</property>
+		<property name="soc0423BL">
+			<ref bean="soc0423BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igmnt03BL" class="com.deliverik.infogovernor.soc.mnt.bl.IGMNT03BLImpl">
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="ig545BL">
+			<ref bean="ig545BL"/>
+		</property>
+	</bean>	
+	<bean id="monitorTypeBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorTypeBLImpl">
+		<property name="monitorTypeDAO">
+			<ref bean="monitorTypeDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="monitorTypeDefBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorTypeDefBLImpl">
+		<property name="monitorTypeDefDAO">
+			<ref bean="monitorTypeDefDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="monitorObjectBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorObjectBLImpl">
+		<property name="monitorObjectDAO">
+			<ref bean="monitorObjectDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="monitorObjectDefBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorObjectDefBLImpl">
+		<property name="monitorObjectDefDAO">
+			<ref bean="monitorObjectDefDAO"/>
+		</property>
+	</bean>
+	<bean id="monitorObjectDefVWBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorObjectDefVWBLImpl">
+		<property name="monitorObjectDefVWDAO">
+			<ref bean="monitorObjectDefVWDAO"/>
+		</property>
+	</bean>
+	<bean id="soc0304BL" class="com.deliverik.infogovernor.soc.mnt.bl.task.SOC0304BLImpl">
+		<property name="soc0304DAO">
+			<ref bean="soc0304DAO"/>
+		</property>
+	</bean>
+	<bean id="monitorTaskObjectBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.MonitorTaskObjectBLImpl">
+		<property name="monitorTaskObjectDAO">
+			<ref bean="monitorTaskObjectDAO"/>
+		</property>
+	</bean>
+	<bean id="object_ListBL" class="com.deliverik.infogovernor.soc.mnt.bl.task.Object_ListBLImpl">
+		<property name="object_ListDAO">
+			<ref bean="object_ListDAO"/>
+		</property>
+	</bean>
+	<bean id="soc0301BL" class="com.deliverik.infogovernor.soc.mnt.bl.task.SOC0301BLImpl">
+		<property name="soc0301DAO">
+			<ref bean="soc0301DAO"/>
+		</property>
+	</bean>
+	<bean id="soc0306BL" class="com.deliverik.infogovernor.soc.mnt.bl.task.SOC0306BLImpl">
+		<property name="soc0306DAO">
+			<ref bean="soc0306DAO"/>
+		</property>
+	</bean>
+	<bean id="soc0423BL" class="com.deliverik.infogovernor.rpt.bl.task.SOC0423BLImpl">
+		<property name="soc0423DAO">
+			<ref bean="soc0423DAO"/>
+		</property>
+	</bean>
+	<bean id="soc0429BL" class="com.deliverik.infogovernor.rpt.bl.task.SOC0429BLImpl">
+		<property name="soc0429DAO">
+			<ref bean="soc0429DAO"/>
+		</property>
+	</bean>
+</beans>
+

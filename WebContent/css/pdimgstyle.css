@@ -1,0 +1,32 @@
+BODY {
+	border: none;
+	BACKGROUND-REPEAT: no-repeat;
+	
+	/* 滚动条样式 */
+	 SCROLLBAR-FACE-COLOR: #EBEEF7; 
+	 SCROLLBAR-HIGHLIGHT-COLOR: #7B92D5; 
+	 SCROLLBAR-SHADOW-COLOR: #EBEEF7; 
+	 SCROLLBAR-3DLIGHT-COLOR: #EBEEF7; 
+	 SCROLLBAR-ARROW-COLOR: #7B92D5; 
+	 SCROLLBAR-TRACK-COLOR: #DBE2F9; 
+	 SCROLLBAR-DARKSHADOW-COLOR: #7B92D5; 
+	 SCROLLBAR-BASE-COLOR: #EBEEF7 
+}
+TD {
+	FONT-SIZE: 9pt
+}
+
+.txtput {
+    COLOR: #919CD0; BACKGROUND-COLOR: white; FONT-SIZE: 9pt; BORDER-BOTTOM: 1px double; BORDER-LEFT: 1px double; BORDER-RIGHT: 1px double; BORDER-TOP: 1px double; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+}
+
+.btn {
+	COLOR: #919CD0; BACKGROUND-COLOR: rgb( 252,252,254 ); FONT-SIZE: 9pt; HEIGHT: 18px; BORDER-RIGHT: 1px double; BORDER-TOP: 1px double; BORDER-LEFT: 1px double; BORDER-BOTTOM: 1px double; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif";
+}
+
+.panel_style {
+	WIDTH: 100%;
+}
+.panel_line {
+	BACKGROUND: #FFFFFF
+}

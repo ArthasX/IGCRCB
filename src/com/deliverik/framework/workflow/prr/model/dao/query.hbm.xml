@@ -1,0 +1,678 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.framework.workflow.prr.model.entity">
+
+    <sql-query name="IG359DAO.searchQuery1">
+    <![CDATA[
+			SELECT PRCOUNT.* FROM 
+				(SELECT IG688.EIID AS PRASSETID,IG688.EINAME AS PRASSETNAME,
+				SUM(CASE WHEN (prtype ='I' or prpdid like :ipdid||'%') THEN 1 ELSE 0 END) AS incident,
+				SUM(CASE WHEN (prtype ='P' or prpdid like :ppdid||'%') THEN 1 ELSE 0 END) AS problem,
+				SUM(CASE WHEN (prtype ='C' or prpdid like :cpdid||'%') THEN 1 ELSE 0 END) AS change,
+				SUM(CASE WHEN prtype ='D' THEN 1 ELSE 0 END) AS deployment,
+				SUM(CASE WHEN prtype in ('WA','WB') THEN 1 ELSE 0 END) AS work 
+			FROM IG500,IG731,IG688,IG599
+			WHERE IG500.PRID = IG731.PRID
+			AND IG731.EIID = IG688.EIID
+			AND IG688.ECATEGORY = :prassetcategory
+			AND IG731.PIID = IG599.PIID 
+			AND  IG599.PIVARTYPE='4' AND IG599.PIVARVALUE='N/A' 
+    ]]> 
+    </sql-query>
+    <sql-query name="IG359DAO.searchQuery2">
+    <![CDATA[    GROUP BY IG688.EIID,IG688.EINAME
+			) prcount
+			ORDER BY prassetid
+    ]]> 
+    </sql-query>
+    <sql-query name="IG359DAO.searchUserQuery1">
+    <![CDATA[
+      SELECT prcount.* FROM
+			(SELECT A.ppuserid,A.ppusername,A.incident,A.problem,A.change,A.deployment,A.work,A.ask,C.orgsyscoding as orgid,C.orgname 
+				FROM	
+					(SELECT ppuserid,ppusername,
+							SUM(CASE WHEN (prtype ='I' or prpdid like :ipdid||'%') THEN 1 ELSE 0 END) AS incident,
+							SUM(CASE WHEN (prtype ='P' or prpdid like :ppdid||'%') THEN 1 ELSE 0 END) AS problem,
+							SUM(CASE WHEN (prtype ='C' or prpdid like :cpdid||'%') THEN 1 ELSE 0 END) AS change,
+							SUM(CASE WHEN prtype ='D' THEN 1 ELSE 0 END) AS deployment,
+							SUM(CASE WHEN prtype ='GD' THEN 1 ELSE 0 END) AS work,
+							SUM(CASE WHEN (prtype ='S' or prpdid like :spdid||'%') THEN 1 ELSE 0 END) AS ask
+						FROM 
+							(SELECT * FROM (
+									SELECT ppuserid,ppusername,prtype,prpdid,propentime FROM IG677 
+									WHERE ppstatus='V' AND ppproctime IS NOT NULL 
+									union all
+									SELECT x.sfregisterid , y.username , 'GD' , '',x.sfinstime
+									from ig933 x left join iguser y on(x.sfregisterid = y.userid) WHERE x.sfstatus = '0002'
+							) tempview WHERE 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="IG359DAO.searchUserQuery2">
+    <![CDATA[           
+    					) PR GROUP BY ppuserid,ppusername
+						ORDER BY ppusername) A
+					INNER JOIN IGUSER B ON (A.ppuserid= B.userid)
+					INNER JOIN Organization C ON(B.orgid = C.orgsyscoding)
+			)  prcount
+		where 1=1
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="IG500DAO.queryActiveProcessByFPRoleid">
+    <![CDATA[
+    	select pr.* from USERROLE ur
+		inner join IG677 pr on ( pr.pproleid = ur.roleid and pr.ppproctime is null and (pr.PPUSERID is null or pr.PPUSERID=''))
+		where ur.USERID = :userid and ur.ROLEMANAGER = '1' and pr.prstatus = pr.ppstatus 
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="IG003DAO.searchIG003">
+    <![CDATA[
+    SELECT yearSummary.* FROM
+      (SELECT A.month, CASE WHEN B.currentIncident is NULL THEN 0 ELSE B.currentIncident END AS currentIncident,
+     	CASE WHEN B.precedingIncident is NULL THEN 0 ELSE B.precedingIncident END AS precedingIncident,
+     	CASE WHEN B.currentProblem is NULL THEN 0 ELSE B.currentProblem END AS currentProblem,
+      	CASE WHEN B.precedingProblem is NULL THEN 0 ELSE B.precedingProblem END AS precedingProblem,
+      	CASE WHEN B.currentChange is NULL THEN 0 ELSE B.currentChange END currentChange,
+      	CASE WHEN B.precedingChange is NULL THEN 0 ELSE B.precedingChange END AS precedingChange,
+      	CASE WHEN B.currentDeployment is NULL THEN 0 ELSE B.currentDeployment END AS currentDeployment,
+      	CASE WHEN B.precedingDeployment is NULL THEN 0 ELSE B.precedingDeployment END AS precedingDeployment,
+      	CASE WHEN B.currentWork is NULL THEN 0 ELSE B.currentWork END AS currentWork,
+      	CASE WHEN B.precedingWork is NULL THEN 0 ELSE B.precedingWork END AS precedingWork,
+      	CASE WHEN B.totalCurrent is NULL THEN 0 ELSE B.totalCurrent END AS totalCurrent,
+      	CASE WHEN B.totalPreceding is NULL THEN 0 ELSE B.totalPreceding END AS totalPreceding 
+      	 FROM (SELECT cid AS month FROM CODEDETAIL WHERE ccid = '151' ORDER BY cid ASC) A
+		LEFT OUTER JOIN (
+			SELECT substr(propentime,6,2) as month,
+				SUM(CASE WHEN prtype='I' AND substr(propentime,1,4) =:currentyear THEN 1 ELSE 0 END) AS currentIncident,
+			  	SUM(CASE WHEN prtype='I' AND substr(propentime,1,4) =:precedingyear THEN 1 ELSE 0 END) AS precedingIncident,
+			  	SUM(CASE WHEN prtype='P' AND substr(propentime,1,4) =:currentyear THEN 1 ELSE 0 END) AS currentProblem,
+			  	SUM(CASE WHEN prtype='P' AND substr(propentime,1,4) =:precedingyear THEN 1 ELSE 0 END) AS precedingProblem,
+			  	SUM(CASE WHEN prtype='C' AND substr(propentime,1,4) =:currentyear THEN 1 ELSE 0 END) AS currentChange,
+			  	SUM(CASE WHEN prtype='C' AND substr(propentime,1,4) =:precedingyear THEN 1 ELSE 0 END) AS precedingChange,
+			 	SUM(CASE WHEN prtype='D' AND substr(propentime,1,4) =:currentyear THEN 1 ELSE 0 END) AS currentDeployment,
+			  	SUM(CASE WHEN prtype='D' AND substr(propentime,1,4) =:precedingyear THEN 1 ELSE 0 END) AS precedingDeployment,
+			  	SUM(CASE WHEN prtype like 'W%' AND substr(propentime,1,4) =:currentyear THEN 1 ELSE 0 END) AS currentWork ,
+			  	SUM(CASE WHEN prtype like 'W%' AND substr(propentime,1,4) =:precedingyear THEN 1 ELSE 0 END) AS precedingWork, 
+			  	SUM(CASE WHEN substr(propentime,1,4) =:currentyear AND prtype != 'S' THEN 1 ELSE 0 END) AS totalCurrent, 
+			  	SUM(CASE WHEN substr(propentime,1,4) =:precedingyear AND prtype != 'S' THEN 1 ELSE 0 END) AS totalPreceding
+				FROM IG500
+					WHERE  substr(propentime,1,4) =:currentyear  OR substr(propentime,1,4) =:precedingyear
+						group by substr(propentime,6,2) 
+						order by substr(propentime,6,2)
+				) B ON(A.month=B.month) 
+		) yearSummary
+		order by month
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="IG019DAO.serviceRequestCountQuery">
+    <![CDATA[
+    SELECT prcount.* FROM(
+      SELECT orgsyscoding,orgname, SUM(incident) AS incident, 
+      		SUM(serviceRequest) AS serviceRequest, 
+      		SUM(incident+serviceRequest) count FROM
+	      (SELECT prorgid AS orgsyscoding,prorgname AS orgname,
+	        		0 AS incident,
+					COUNT(1) AS serviceRequest
+			FROM IG500 
+			WHERE  prtype ='S' and prstatus <>'D' 
+    ]]> 
+    </sql-query>
+    <sql-query name="IG019DAO.incidentCountQuery">
+    <![CDATA[
+      UNION ALL
+			SELECT c.orgsyscoding AS orgsyscoding,c.orgname AS orgname,
+	        		COUNT(1) AS incident,
+					0 AS serviceRequest
+			FROM IG500 a
+			INNER JOIN IG599 b ON(a.prid = b.prid  AND b.pivarname='PRT_ORGSYSCODING' AND b.pivarvalue IS NOT NULL AND b.pivarvalue !=' ')
+			INNER JOIN ORGANIZATION c ON(b.pivarvalue = c.orgsyscoding )
+			WHERE prtype ='I'
+    ]]> 
+    </sql-query>
+    <sql-query name="IncidentServiceRequestListVWDAO.serviceRequestListQuery">
+    <![CDATA[
+    SELECT prcount.* FROM IG500 prcount WHERE  1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="IncidentServiceRequestListVWDAO.incidentListQuery">
+    <![CDATA[
+    
+			SELECT prcount.*
+			FROM IG590 prcount
+			INNER JOIN IG599 b ON(prcount.prid = b.prid  AND b.pivarname='PRT_ORGSYSCODING' AND b.pivarvalue IS NOT NULL AND b.pivarvalue !=' ')
+			INNER JOIN ORGANIZATION c ON(b.pivarvalue = c.orgsyscoding )
+			WHERE prtype ='I'
+    ]]> 
+    </sql-query>
+    <sql-query name="IG337DAO.queryRolemanager">
+    <![CDATA[
+			SELECT pp.* FROM IG337 pp
+			INNER JOIN USERROLE ur ON (ur.userid = :userid AND ur.rolemanager = '1' AND pp.pproleid = ur.roleid)
+			INNER JOIN IG500 pr ON (pr.prid = :prid)
+			WHERE pp.prid = pr.prid AND pp.ppstatus = pr.prstatus
+    ]]>
+	</sql-query>
+    <sql-query name="IG337DAO.searchProcessExecutors">
+    <![CDATA[
+			SELECT ur.userid,u.username,ur.roleid,r.rolename,o.orgsyscoding,
+				o.orgname,CASE WHEN pp.ppproctime > '' THEN '2' WHEN pp.pproleid IS NULL THEN '0' ELSE '1' END AS doneFlag,
+				u.usermobile,u.userinfo
+			FROM UserRole ur	
+			INNER JOIN (
+				SELECT pp.pproleid FROM IG337 pp
+				INNER JOIN USERROLE ur ON (ur.userid = :userid AND ur.rolemanager = '1' AND pp.pproleid = ur.roleid)
+				INNER JOIN IG500 pr ON (pr.prid = :prid)
+				WHERE pp.prid = pr.prid AND pp.ppstatus = pr.prstatus
+				GROUP BY pp.pproleid
+			) p ON(p.pproleid = ur.roleid)
+			LEFT OUTER JOIN (
+				SELECT pp.pproleid,pp.ppuserid,pp.ppproctime FROM IG337 pp
+				INNER JOIN USERROLE ur ON (ur.userid = :userid AND ur.rolemanager = '1' AND pp.pproleid = ur.roleid)
+				INNER JOIN IG500 pr ON (pr.prid = :prid)
+				WHERE pp.prid = pr.prid AND pp.ppstatus = pr.prstatus
+			) pp ON(pp.pproleid = ur.roleid AND pp.ppuserid = ur.userid)
+			INNER JOIN IGUser u ON (ur.userid = u.userid)
+			INNER JOIN Role r ON (ur.roleid = r.roleid)
+			INNER JOIN Organization o ON (u.orgid = o.orgsyscoding)
+			WHERE u.deleteflag = '0'
+			ORDER BY doneFlag DESC
+    ]]>
+	</sql-query>
+	<sql-query name="IG337DAO.searchSuperAssignExecutors">
+    <![CDATA[
+			SELECT ur.userid,u.username,ur.roleid,r.rolename,o.orgsyscoding,
+				o.orgname,CASE WHEN pp.ppproctime > ' ' THEN '2' WHEN pp.pproleid IS NULL THEN '0' ELSE '1' END AS doneFlag,
+				u.usermobile,u.userinfo
+			FROM UserRole ur	
+			LEFT OUTER JOIN (
+				SELECT pp.pproleid,pp.ppuserid,pp.ppproctime FROM IG337 pp
+				INNER JOIN IG500 pr ON (pr.prid = :prid)
+				WHERE pp.prid = pr.prid AND pp.ppstatus = pr.prstatus AND pp.pproleid = :roleid
+			) pp ON(pp.pproleid = ur.roleid AND pp.ppuserid = ur.userid)
+			INNER JOIN IGUser u ON (ur.userid = u.userid)
+			INNER JOIN Role r ON (ur.roleid = r.roleid)
+			INNER JOIN Organization o ON (u.orgid = o.orgsyscoding)
+			WHERE ur.roleid = :roleid
+			ORDER BY doneFlag DESC
+    ]]>
+	</sql-query>
+	<sql-query name="IG500DAO.queryServiceRequestList">
+    <![CDATA[
+    		SELECT pr.* FROM IG500 pr WHERE pr.prtype = 'S' 
+    ]]>
+	</sql-query>
+	<sql-query name="IG500DAO.searchIG590">
+    <![CDATA[
+    SELECT pr.* FROM IG592 pr WHERE  1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.queryActiveProcessByUserid">
+    <![CDATA[
+    SELECT DISTINCT pr.* FROM IG592 pr ,IG337 pp  
+    	WHERE  pr.prid = pp.prid AND pp.ppuserid = :ppuserid
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.queryActiveProcessByUseridCount">
+    <![CDATA[
+    SELECT count(DISTINCT pr.PRID) FROM IG592 pr ,IG337 pp  
+    	WHERE  pr.prid = pp.prid AND pp.ppuserid = :ppuserid
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.queryActiveProcessByRoleid">
+    <![CDATA[
+    SELECT DISTINCT pr.* FROM IG592 pr ,IG337 pp  
+    	WHERE  pr.prid = pp.prid AND (pr.prclosetime IS NULL OR pr.prclosetime = '')
+    			AND (pp.ppproctime IS NULL)
+    			AND pp.pproleid = :roleid
+    ]]> 
+    </sql-query>
+    
+	<!-- 自定义流程查询页使用，查询流程条数 -->  
+	<sql-query name="IG500DAO.searchCountProcessRecordByUseridAndRoleid">
+    <![CDATA[
+    select count(pr.prid) from 
+	(    
+		select t.prid from (
+			select r1.* from (
+				select a1.* from 
+				(
+				(select pr1.* from IG500 pr1  left outer join IG337  pp1 on (pr1.prid = pp1.prid) where pp1.ppuserid 
+				  in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+				  or pp1.ppuserid = :userid_q 
+				)  
+				)  a1 left outer join IG333 b1 on (a1.prpdid = b1.pdid)   where b1.psdmode='2' 
+			) r1
+			union 
+			select r2.* from (
+				select a2.* from 
+				(
+				(select pr2.* from IG500 pr2  left outer join IG337  pp2 on (pr2.prid = pp2.prid) where pp2.pproleid in(
+					select role.roleid from UserRole role where role.userid in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+					or pp2.pproleid in(select role.roleid from UserRole role where role.userid = :userid_q )
+				) )  
+				)  a2 left outer join IG333 b2 on (a2.prpdid = b2.pdid)   where b2.psdmode='1' 
+			) r2
+	    ) t   
+	    union 
+		select a1.prid from 
+			(
+			(select pr11.* from IG711 pa1 left outer join (select pr1.* from IG500 pr1) pr11 on (pr11.prid = pa1.paprocessid) where pa1.pauid = :userid_q and pa1.paflag = '1' and pa1.patype = '1'
+			)  
+			) a1 left outer join IG333 b1 on (a1.prpdid = b1.pdid) where b1.psdmode='2' 
+	)  x , IG500 pr where x.prid = pr.prid 
+    ]]> 
+    </sql-query>
+
+	<!-- 自定义流程查询页使用，查询流程记录 -->  
+    <sql-query name="IG500DAO.searchProcessRecordByUseridAndRoleid">
+    <![CDATA[
+    select pr.* from 
+	(    
+		select t.prid from (
+			select r1.* from (
+				select a1.* from 
+				(
+				(select pr1.* from IG500 pr1  left outer join IG337  pp1 on (pr1.prid = pp1.prid) where pp1.ppuserid 
+				  in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+				 or pp1.ppuserid = :userid_q 
+				)  
+				)  a1 left outer join IG333 as b1 on (a1.prpdid = b1.pdid)   where b1.psdmode='2' 
+			) r1
+			union 
+			select r2.* from (
+				select a2.* from 
+				(
+				(select pr2.* from IG500 pr2  left outer join IG337  pp2 on (pr2.prid = pp2.prid) where pp2.pproleid in(
+					select role.roleid from UserRole role where role.userid in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+					or pp2.pproleid in(select role.roleid from UserRole role where role.userid = :userid_q )
+				) )  
+				)  a2 left outer join IG333 b2 on (a2.prpdid = b2.pdid)   where b2.psdmode='1' 
+			) as r2
+	    ) t   
+	    union 
+		select a1.prid from 
+			(
+			(select pr11.* from IG711 pa1 left outer join (select pr1.* from IG500 pr1) pr11 on (pr11.prid = pa1.paprocessid) where pa1.pauid = :userid_q and pa1.paflag = '1' and pa1.patype = '1'
+			)  
+			) a1 left outer join IG333 b1 on (a1.prpdid = b1.pdid) where b1.psdmode='2' 
+	)  x , IG500 pr where x.prid = pr.prid 
+    ]]> 
+    </sql-query>
+    
+    
+    <!-- 自定义流程相关工作查询页使用，查询流程条数 -->  
+	<sql-query name="IG500DAO.searchCountProcessRecordByRoleid">
+    <![CDATA[
+    select count(pr.prid) from 
+	(    
+		select t.prid from (
+			
+				select DISTINCT a2.* from 
+				(
+				(select pr2.* from IG500 pr2  left outer join IG337  pp2 on (pr2.prid = pp2.prid) where pp2.pproleid in(
+					select role.roleid from UserRole role where role.userid in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+					
+				) )  
+				)  a2 left outer join IG333 b2 on (a2.prpdid = b2.pdid)   where b2.psdmode='1' 
+			
+	    ) t   
+	    union 
+		select a1.prid from 
+			(
+			(select pr11.* from IG711 pa1 left outer join (
+			select pr1.* from IG500 pr1 left outer join IG337 pp1 on (pr1.prid = pp1.prid ) where pp1.ppuserid <> :userid_q and pp1.pproleid in (select role.roleid from UserRole role where role.userid = :userid_q )
+			) pr11 on (pr11.prid = pa1.paprocessid) where pa1.pauid = :userid_q and pa1.paflag = '1' and pa1.patype = '1'
+			)  
+			) a1 left outer join IG333 b1 on (a1.prpdid = b1.pdid) where b1.psdmode='2' 
+	)  x , IG500 pr where x.prid = pr.prid
+    ]]> 
+    </sql-query>
+    
+    
+    <!-- 自定义流程相关工作查询页使用，查询流程记录 -->  
+    <sql-query name="IG500DAO.searchProcessRecordByRoleid">
+    <![CDATA[
+    select pr.* from 
+	(    
+		select t.prid from (
+			
+				select DISTINCT a2.* from 
+				(
+				(select pr2.* from IG500 pr2  left outer join IG337  pp2 on (pr2.prid = pp2.prid) where pp2.pproleid in(
+					select role.roleid from UserRole role where role.userid in (select paiid from IG711 where pauid = :userid_q and paflag = '1' and patype = '0' union select case when pauid = :userid_q then pauid end from IG711 where paflag = '1' and patype = '0')
+				) )  
+				)  a2 left outer join IG333 b2 on (a2.prpdid = b2.pdid)   where b2.psdmode='1' 
+			
+	    ) t   
+	    union 
+		select a1.prid from 
+			(
+			(select pr11.* from IG711 pa1 left outer join (
+			select pr1.* from IG500 pr1 left outer join IG337 pp1 on (pr1.prid = pp1.prid ) where pp1.ppuserid <> :userid_q and pp1.pproleid in (select role.roleid from UserRole role where role.userid = :userid_q )
+			) pr11 on (pr11.prid = pa1.paprocessid) where pa1.pauid = :userid_q and pa1.paflag = '1' and pa1.patype = '1'
+			)  
+			) a1 left outer join IG333 b1 on (a1.prpdid = b1.pdid) where b1.psdmode='2' 
+	)  x , IG500 pr where x.prid = pr.prid
+    ]]> 
+    </sql-query>
+    
+    <!-- 获取指定参与者变量（缺省变量和定义变量并集） -->  
+    <sql-query name="IG893DAO.searchIG893">
+    <![CDATA[
+    SELECT pidid,psdid,roleid,pidname,pidlabel,piddesc,pidtype ,(case when defaccess = '0' then defaultaccess else defaccess end )AS pidaccess,(case when defrequired = '0' then defaultrequired else defrequired end )AS pidrequired
+	FROM (
+		SELECT pidid,psdid,roleid,pidname,pidlabel,piddesc,pidtype,max(defaccess) as defaccess,max(defaultaccess) as defaultaccess,max(defrequired) as defrequired,max(defaultrequired) as defaultrequired
+		    FROM (
+					SELECT a.pidid,b.psdid,b.roleid,c.pidname,c.pidlabel,c.piddesc,c.pidtype,a.pidaccess as defaccess,'0' as defaultaccess,a.pidrequired as defrequired,'0' as defaultrequired
+						FROM IG881 a
+						INNER JOIN IG222 b ON (a.ppdid = b.ppdid)
+						INNER JOIN IG007 c ON (a.pidid = c.pidid) 
+						WHERE b.psdid = :psdid AND b.roleid = :roleid
+					UNION ALL
+					SELECT a.pidid,a.psdid,cast(:roleid as Integer) as roleid,b.pidname,b.pidlabel,b.piddesc,b.pidtype,'0' as defaccess,a.pidaccess as defaultaccess,'0' as defrequired,a.pidrequired as defaultrequired
+						FROM IG699 a
+						INNER JOIN IG007 b ON (a.pidid = b.pidid)
+						WHERE psdid = :psdid
+				) a 
+			GROUP BY pidid,psdid,roleid,pidname,pidlabel,piddesc,pidtype
+	) b
+    ]]> 
+    </sql-query>
+    
+    <!-- 自定义流程关闭状态变量查看权限视图（缺省变量和定义变量并集，普通模式按角色过滤，OA模式按用户ID过滤） -->  
+    <sql-query name="ProcessInfoTBDAO.searchProcessInfoForClose">
+    <![CDATA[
+     SELECT 
+		SELECT
+    	pi.piid,
+        pi.prid,
+        pidaccess as pivarname,
+        pi.pivarlabel,
+        pi.pivartype,
+        pi.pivarvalue,
+        pi.piattkey,
+        pi.fingerprint,
+        pi.pidid,
+        pi.pidmode,
+        pi.privatescope 
+    FROM(
+	    SELECT pi.*,(CASE WHEN b.defaccess > ' ' and b.defaccess > '0' THEN b.defaccess ELSE b.defaultaccess END) AS pidaccess
+	  		FROM (SELECT pidid,MAX (defaccess) AS defaccess, MAX(defaultaccess) AS defaultaccess
+	          FROM (SELECT pidid,pidaccess AS defaccess,'' AS defaultaccess
+	                  FROM UserRole ur
+	                  		INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid)
+	                  		INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.psdcode and psd.psdmode = '1')
+	                  		INNER JOIN IG222 ppd ON (ppd.psdid = psd.psdid AND ur.roleid = ppd.roleid)
+	                  		INNER JOIN IG881 pipd ON (pipd.psdid = psd.psdid AND pipd.ppdid = ppd.ppdid)
+	                 	WHERE ur.userid = :userid
+	                UNION ALL
+	                SELECT pidid,'' AS defaccess,pidaccess AS defaultaccess
+	                  FROM UserRole ur
+	                      INNER JOIN IG337 pp ON (ur.ROLEID = pp.PPROLEID AND pp.PRID = :prid)
+	                      INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.PSDCODE AND psd.psdmode = '1')
+	                      INNER JOIN IG699 pdv ON (psd.psdid = pdv.psdid)
+	                 WHERE ur.userid = :userid
+					UNION ALL
+					SELECT pidid,pidaccess defaccess,'' AS defaultaccess
+	                  FROM UserRole ur
+	                  		INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid AND pp.ppuserid = :userid)
+	                  		INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.psdcode AND psd.psdmode = '2')
+	                  		INNER JOIN IG222 ppd ON (ppd.psdid = psd.psdid AND ur.roleid = ppd.roleid)
+	                  		INNER JOIN IG881 pipd ON (pipd.psdid = psd.psdid AND pipd.ppdid = ppd.ppdid)
+	                 	WHERE ur.userid = :userid
+	                UNION ALL
+	                SELECT pidid,'' AS defaccess,pidaccess AS defaultaccess
+	                  FROM UserRole ur
+	                      INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid AND pp.ppuserid = :userid)
+	                      INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.PSDCODE AND psd.psdmode = '2')
+	                      INNER JOIN IG699 pdv ON (psd.psdid = pdv.psdid)
+	                 WHERE ur.userid = :userid) a
+	        		GROUP BY pidid
+					) b
+			INNER JOIN IG599 pi ON (pi.pidid = b.pidid AND pi.prid = :prid)
+		) pi
+		INNER JOIN IG007 PID ON (PI.PIDID = PID.PIDID)
+		WHERE pi.pidaccess > '0'
+		ORDER BY PIDSORTID
+    ]]> 
+    </sql-query>
+   
+    <sql-query name="IG692DAO.findByCond">
+    <![CDATA[                  
+                 sum(1) as total
+		 from IG933 sf  left join IG013  it  on sf.sfeiid = it.eiid 
+                             left join codedetail code on sf.sftype = code.syscoding
+                             left join user u on sf.SFREGISTERID = u.userid
+                            where sf.SFSTATUS='0002' 
+                            and code.pcid is not null     
+                            
+    ]]>
+	</sql-query>
+	<sql-query name="IG692DAO.findByCond2">
+    <![CDATA[
+              
+                               group by code.cvalue
+    ]]>
+	</sql-query>
+	<sql-query name="IG692DAO.findByCond3">
+    <![CDATA[
+                sum(case when sf.sfeiid =0 then 1 else 0 end)as other,
+                sum(1) as total
+              from IG933 sf  left join IG013  it  on sf.sfeiid = it.eiid 
+                             left join codedetail code on sf.sftype = code.syscoding
+                             left join IG013 e on sf.sfeiid = e.eiid
+                             where sf.SFSTATUS='0002' 
+                             and code.pcid is not null   
+                             
+                           
+    ]]>
+	</sql-query>
+	
+	 <!-- 首页上按部门统计工作数量查询 -->  
+    <sql-query name="IG808DAO.searchIG808">
+    <![CDATA[
+        select  orgname,workCount from 
+
+			   ( select pporgid ,count(pporgid)  workCount from 
+								       (select  pr.prid,pporgid,count(pr.prid) from IG500 pr ,IG337 pp 
+									 where  prstatus <>'C' and pporgid<>'' and pr.prid=pp.prid   
+									        and substr(pporgid,1,10)='0002001001' and length(pporgid)=13
+									 group by pr.prid ,pporgid
+									) b
+		          group by pporgid
+			    ) a ,Organization
+        where pporgid = orgsyscoding
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.queryProcessRecordEntityList">
+    <![CDATA[
+	  select pr.* 
+	from IG500 pr
+	inner join IG599 pi on (pi.prid = pr.prid and pi.PIVARTYPE='4' and pi.PIVARVALUE='N/A')
+	where pr.prtype like :prtype||'%' and 
+	exists (select 1 from IG731 pie 
+		left join IG688 ei on pie.eiid = ei.eiid
+		where pie.prid = pr.prid and pie.piid = pi.piid and pi.PIVARTYPE='4' and pi.PIVARVALUE='N/A'
+			and ei.eiid = :prassetid) 
+    ]]> 
+    </sql-query>
+     <!-- 自定义流程关闭状态变量查看权限视图（缺省变量和定义变量并集，普通模式按角色过滤，OA模式按用户ID过滤） -->  
+    <sql-query name="ProcessInfoTBDAO.searchProcessInfoForSee">
+    <![CDATA[
+    SELECT 
+  		pi.piid,
+        pi.prid,
+        pidaccess as pivarname,
+        pi.pivarlabel,
+        pi.pivartype,
+        pi.pivarvalue,
+        pi.piattkey,
+        pi.fingerprint,
+        pi.pidid,
+        pi.pidmode,
+        pi.pidcomment,
+        pi.privatescope
+   		from(
+	    SELECT pi.*,(CASE WHEN b.defaccess > ' ' and b.defaccess<>'0' THEN b.defaccess ELSE b.defaultaccess END) AS pidaccess
+	  		FROM (SELECT pidid,MAX (defaccess) AS defaccess, MAX(defaultaccess) AS defaultaccess
+	          FROM (SELECT pidid,pidaccess AS defaccess,'' AS defaultaccess
+	                  FROM UserRole ur
+	                  		INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid)
+	                  		INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.psdcode and psd.psdmode = '1')
+	                  		INNER JOIN IG222 ppd ON (ppd.psdid = psd.psdid AND ur.roleid = ppd.roleid)
+	                  		INNER JOIN IG881 pipd ON (pipd.psdid = psd.psdid AND pipd.ppdid = ppd.ppdid)
+	                 	WHERE ur.userid = :userid
+	                UNION ALL
+	                SELECT pidid,'' AS defaccess,pidaccess AS defaultaccess
+	                  FROM UserRole ur
+	                      INNER JOIN IG337 pp ON (ur.ROLEID = pp.PPROLEID AND pp.PRID = :prid)
+	                      INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.PSDCODE AND psd.psdmode = '1')
+	                      INNER JOIN IG699 pdv ON (psd.psdid = pdv.psdid)
+	                 WHERE ur.userid = :userid
+					UNION ALL
+					SELECT pidid,pidaccess AS defaccess,'' AS defaultaccess
+	                  FROM UserRole ur
+	                  		INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid AND pp.ppuserid = :userid)
+	                  		INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.psdcode AND psd.psdmode = '2')
+	                  		INNER JOIN IG222 ppd ON (ppd.psdid = psd.psdid AND ur.roleid = ppd.roleid)
+	                  		INNER JOIN IG881 pipd ON (pipd.psdid = psd.psdid AND pipd.ppdid = ppd.ppdid)
+	                 	WHERE ur.userid = :userid
+	                UNION ALL
+	                SELECT pidid,'' AS defaccess,pidaccess AS defaultaccess
+	                  FROM UserRole ur
+	                      INNER JOIN IG337 pp ON (ur.roleid = pp.pproleid AND pp.prid = :prid AND pp.ppuserid = :userid)
+	                      INNER JOIN IG333 psd ON (psd.pdid = :pdid AND pp.ppstatus = psd.PSDCODE AND psd.psdmode = '2')
+	                      INNER JOIN IG699 pdv ON (psd.psdid = pdv.psdid)
+	                 WHERE ur.userid = :userid) a
+	        		GROUP BY pidid
+					) b
+			INNER JOIN IG599 pi ON (pi.pidid = b.pidid AND pi.prid = :prid)
+		) pi
+		INNER JOIN IG007 PID ON (PI.PIDID = PID.PIDID)
+		WHERE pi.pidaccess > '0'
+		ORDER BY PIDSORTID
+    ]]> 
+    </sql-query>
+    
+    <!-- 状态策略查询 -->
+    <sql-query name="IG064DAO.Query">
+    <![CDATA[
+		select prinfo.*,pnsd.psdid as pnsdpsdid,pnsd.psdconfirm as pnsdconfirm,pnsd.sms,pnsd.email,pnsd.notifyd,pnsd.notifyh,pnsd.notifym,
+						pnsd.reportd,pnsd.reporth,pnsd.reportm,pnsd.rolemanager
+			 from (
+				select pr.*,
+					   pp.ppid,
+              		   pp.pproleid,
+               		   pp.pprolename,
+               		   pp.ppuserid,
+               		   pp.ppusername,
+               		   pp.ppinittime,
+              		   case
+                 		   when pp.ppsubstatus is null then '0'
+                 		   else pp.ppsubstatus
+                       end as ppsubstatus,
+               		   pp.ppbacktime
+          			from (select A.prid,
+          						 A.prtitle,
+          						 A.prserialnum,
+                       			 B.psdid,
+                       			 B.pdid,
+                       			 B.psdname,
+                       			 B.psdcode,
+                       			 case
+                         			 when B.psdconfirm is null then '0'
+			 					     else B.psdconfirm
+                       			 end as psdconfirm
+                  			 from IG500 A left outer join IG333 B 
+                  			 	on (A.prstatus = B.psdcode and A.prstatus != 'C' AND A.PRPDID=B.PDID)) pr
+         		inner join IG337 pp 
+         		  on (pr.prid = pp.prid and pr.psdcode = pp.ppstatus and  pp.ppproctime is null)) prinfo
+  		left outer join IG212 pnsd on ((prinfo.psdid = pnsd.psdid and prinfo.psdconfirm = '0' and prinfo.psdconfirm = pnsd.psdconfirm) or
+                                                          (prinfo.psdid = pnsd.psdid and prinfo.psdconfirm = '1' and prinfo.ppsubstatus = '0' and  prinfo.psdconfirm = pnsd.psdconfirm) or
+                                                          (prinfo.psdid = pnsd.psdid and prinfo.psdconfirm = '1' and prinfo.ppsubstatus = '1' and pnsd.psdconfirm = '0')
+        ) where (pnsd.psdid is not null or pnsd.psdid != '') and (pnsd.sms = '1' or pnsd.email = '1') 
+       
+    ]]> 
+    </sql-query>
+            <!-- 取得流程当前已经运行过的状态集合  -->  
+    <sql-query name="IG337DAO.findByCondRun">
+    <![CDATA[
+		SELECT * FROM IG337 
+			WHERE PRID = :prid AND PSDID IN (SELECT PSDID FROM IG337 WHERE PRID = :prid AND PPPROCTIME IS NOT NULL GROUP BY PSDID)	
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.queryProcessRecordEntityListByProcessInfo">
+    	<![CDATA[
+    		select 
+    		pr.*
+    		from ig500 pr
+    		left join ig380 pd on pr.prpdid = pd.pdid
+    	]]>
+    </sql-query>
+    <sql-query name="IG500DAO.queryProcessRecordEntityCountByProcessInfo">
+    	<![CDATA[
+    		select 
+    		count(1)
+    		from ig500 pr
+    		left join ig380 pd on pr.prpdid = pd.pdid
+    	]]>
+    </sql-query>
+        <!-- 查询我自己的工单 -->
+    <sql-query name="IG500DAO.searchMyWorkOrder">
+    <![CDATA[
+		select distinct pr.*
+        from ig500 pr
+        left join ig380 pd on pr.prpdid = pd.pdid
+        left join ig333 psd on psd.pdid = pr.prpdid and psd.psdcode = pr.prstatus
+        left join ig337 pp on pr.PRID = pp.prid and pp.psdid = psd.psdid
+    
+    ]]>  
+   </sql-query> 
+     <!-- 查询统同机构的工单 -->
+    <sql-query name="IG500DAO.searchProcessByOrg">
+    <![CDATA[
+		select distinct pr.*
+  from ig500 pr
+  left join ig337 pp on pr.PRID = pp.prid
+  left join ig380 pd on pr.prpdid = pd.pdid
+  left join iguser iu on pp.pporgid like (case when length(iu.orgid) > 10 then substr(iu.orgid,1,10) else iu.orgid end) || '%' 
+
+    ]]> 
+    </sql-query>
+      <!-- 查询同角色的工单 -->
+    <sql-query name="IG500DAO.searchMyWorkOrderByRole">
+    <![CDATA[
+		select distinct pr.*
+  from ig500 pr
+  left join ig380 pd on pr.prpdid = pd.pdid
+  left join ig337 pp on pr.PRID = pp.prid
+  left join userrole ur on ur.roleid=pp.pproleid
+
+    ]]> 
+    </sql-query>
+    <sql-query name="IG591DAO.searchCurrentStatusName">
+    <![CDATA[
+			SELECT DISTINCT (B.PSDNAME||CASE WHEN A.PEND ='0' THEN '（挂起）' else '' END) FROM IG591 A
+			INNER JOIN IG333 B ON (A.PSDID=B.PSDID)
+    ]]> 
+    </sql-query>
+    <sql-query name="IG500DAO.getRiskAssess">
+    <![CDATA[
+			with temptbale(dateMonth) as(
+				values :MONTHS
+				) 
+
+			SELECT DATEMONTH,PRPDID,PRPDNAME,ACOUNT,CLOSECOUNT FROM temptbale M LEFT JOIN (
+			select substr(prpdid,1,5) AS PRPDID ,prpdname,substr(propentime,1,7) AS PROPENTIME ,count(1) AS ACOUNT ,count(prclosetime) AS CLOSECOUNT from ig500 
+			where prpdid like :prpdid  
+			group by substr(propentime,1,7),substr(prpdid,1,5),prpdname order by  substr(propentime,1,7) desc 
+			)
+ 			T ON( m.dateMonth = t.PROPENTIME) order by DATEMONTH desc
+    ]]> 
+    </sql-query>
+</hibernate-mapping>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions-->
+
+    <form-beans>
+		<form-bean name="IGPRM0003Form" type="com.deliverik.infogovernor.prm.form.IGPRM0003Form"/>
+		<form-bean name="IGPRM0004Form" type="com.deliverik.infogovernor.prm.form.IGPRM0004Form"/>
+		<form-bean name="IGPRM0102Form" type="com.deliverik.infogovernor.prm.form.IGPRM0102Form"/>
+		<form-bean name="IGPRM0202Form" type="com.deliverik.infogovernor.prm.form.IGPRM0202Form"/>
+		<form-bean name="IGPRM0301Form" type="com.deliverik.infogovernor.prm.form.IGPRM0301Form"/>
+		<form-bean name="IGPRM0302Form" type="com.deliverik.infogovernor.prm.form.IGPRM0302Form"/>
+		<form-bean name="IGPRM0304Form" type="com.deliverik.infogovernor.prm.form.IGPRM0304Form"/>
+		<form-bean name="IGPRM0305Form" type="com.deliverik.infogovernor.prm.form.IGPRM0305Form"/>
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions-->
+
+    <action-mappings>
+		<!--流程模版-->
+        <action path="/IGPRM0101_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0101Action"
+            	scope="request">
+            	<forward name="DISP" path="/prm/IGPRM0101.jsp"/>
+        </action>
+        
+        <action path="/changePTStatus"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0101Action"
+            	parameter="CHANGE_STATUS"
+            	name="IGPRM0102Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP" path="/IGPRM0101_Disp.do" redirect="true" />
+        </action>
+        
+        <action path="/IGPRM0102_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0102Action"
+            	scope="request">
+           		<forward name="DISP" path="/prm/IGPRM0102.jsp"/>
+        </action>
+        
+        <action path="/IGPRM0102"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0102Action"
+            	input="/prm/IGPRM0102.jsp"
+            	parameter="INSERT"
+        		name="IGPRM0102Form"
+            	validate="true"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0103.jsp"/>
+        </action>
+        
+		<!--流程类型定义-->
+        <action path="/IGPRM0201_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0201Action"
+            	name="IGPRM0202Form"
+            	input="/prm/IGPRM0201.jsp"
+            	validate="false"
+            	scope="session">
+            	<forward name="DISP"  path="/prm/IGPRM0201.jsp"/>
+        </action>
+        
+        <action path="/changePDStatus"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0201Action"
+            	parameter="CHANGE_STATUS"
+            	name="IGPRM0202Form"
+            	validate="false"
+            	scope="session">
+            	<forward name="DISP"  path="/IGPRM0201_Disp.do" redirect="true" />
+        </action>
+        
+        <action path="/IGPRM0202_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0202Action"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0202.jsp" />
+        </action>
+        
+        <action path="/IGPRM0202"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0202Action"
+            	input="/IGPRM0202_Disp.do"
+            	parameter="INSERT"
+        		name="IGPRM0202Form"
+            	validate="true"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0203.jsp"/>
+        </action>
+        
+		<!--流程信息定义-->
+        <action path="/IGPRM0301_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0301Action"
+            	name="IGPRM0302Form"
+            	validate="false"
+            	scope="request">
+            	<forward name="DISP"  path="/prm/IGPRM0301.jsp"/>
+        </action>
+        
+        <action path="/IGPRM0302_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0302Action"
+            	input="/prm/IGPRM0302.jsp"
+            	name="IGPRM0302Form"
+            	validate="false"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0302.jsp"/>
+           		<forward name="ERROR"  path="/IGPRM0301_Disp.do"/>
+        </action>
+        
+        <action path="/IGPRM0302"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0302Action"
+            	input="/prm/IGPRM0302.jsp"
+            	parameter="INSERT"
+        		name="IGPRM0302Form"
+            	validate="true"
+            	scope="request">
+           		<forward name="DISP" path="/prm/IGPRM0303.jsp"/>
+        </action>
+        <!-- 流程类型缺省审批人初始化 -->
+        <action path="/IGPRM0304_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0304Action"
+            	input="/prm/IGPRM0304.jsp"
+            	name="IGPRM0304Form"
+            	validate="false"
+            	parameter="DISP"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0304.jsp"/>
+        </action>
+        
+        <!-- 流程类型缺省审批人设置 -->
+         <action path="/IGPRM0304"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0304Action"
+            	input="/IGPRM0304_Disp.do"
+            	parameter="APPROVORS"
+        		name="IGPRM0304Form"
+            	validate="false"
+            	scope="request">
+           		<forward name="DISP" path="/IGPRM0304_Disp.do"/>
+        </action>
+        <!-- 流程类型缺省审批分派人初始化 -->
+        <action path="/IGPRM0305_Disp"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0305Action"
+            	input="/prm/IGPRM0305.jsp"
+            	name="IGPRM0305Form"
+            	validate="false"
+            	parameter="DISP"
+            	scope="request">
+           		<forward name="DISP"  path="/prm/IGPRM0305.jsp"/>
+        </action>
+        
+        <!-- 流程类型缺省审批分派人设置 -->
+         <action path="/IGPRM0305"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0305Action"
+            	input="/IGPRM0305_Disp.do"
+            	parameter="APPROVORS"
+        		name="IGPRM0305Form"
+            	validate="false"
+            	scope="request">
+           		<forward name="DISP" path="/IGPRM0305_Disp.do"/>
+        </action>
+
+		<action path="/deleteIG007"
+            	type="com.deliverik.infogovernor.prm.action.IGPRM0301Action"
+            	input="/prm/IGPRM0301.jsp"
+            	parameter="DELETE"
+        		name="IGPRM0301Form"
+            	validate="false"
+            	scope="request">
+        </action>
+		<!-- 跳转到选择流程类型页面 -->
+		<action path="/IGPRM0000_SOC"
+			input="/srv/prm/IGPRM0000.jsp"
+			type="com.deliverik.infogovernor.soc.prm.action.IGPRM0000Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/srv/prm/IGPRM0000.jsp" />
+		</action>
+		<!-- 跳转到选择流程类型页面 -->
+		<action path="/IGPRM0000"
+			input="/prm/IGPRM0000.jsp"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0000Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/prm/IGPRM0000.jsp" />
+		</action>
+		<!-- 跳转到选择流程类型页面 -->
+		<action path="/IGPRM0001"
+			input="/prm/IGPRM0000.jsp"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0001Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/prm/IGPRM0000.jsp" />
+			<forward name="TEST" path="/prm/IGPRM0005.jsp" />
+		</action>
+		<!-- 跳转到选择流程类型页面SOC -->
+		<action path="/IGPRM0001_SOC"
+			input="/srv/prm/IGPRM0000.jsp"
+			type="com.deliverik.infogovernor.soc.prm.action.IGPRM0001Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/srv/prm/IGPRM0000.jsp" />
+			<forward name="TEST" path="/prm/IGPRM0005.jsp" />
+		</action>
+		
+		<!-- 跳转到选择任务调度类型页面 -->
+		<action path="/IGPRM0002"
+			input="/prm/IGPRM0002.jsp"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0002Action" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/prm/IGPRM0002.jsp" />
+		</action>
+		<!-- 跳转到快捷发起选择流程类型页面 -->
+		<action path="/IGPRM0003"
+			input="/prm/IGPRM0003.jsp"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0003Action" 
+			name="IGPRM0003Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/prm/IGPRM0003.jsp" />
+		</action>
+		<!-- 跳转到快捷发起选择流程类型页面 -->
+        <action path="/IGPRM0003_RelevantProcess"
+            input="/prm/IGPRM0003.jsp"
+            type="com.deliverik.infogovernor.prm.action.IGPRM0003Action" 
+            name="IGPRM0003Form"
+            parameter="RelevantProcess"
+            scope="request">
+            <set-property key="auth" value="false" />
+            <forward name="DISP" path="/prm/IGPRM0003.jsp" />
+        </action>
+		<!-- 跳转到服务工单快捷发起选择流程类型页面 -->
+		<action path="/IGPRM0004"
+			input="/prm/IGPRM0004.jsp"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0004Action" 
+			name="IGPRM0004Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/prm/IGPRM0004.jsp" />
+		</action>
+		
+		<action path="/IGPRM0100"
+			type="com.deliverik.infogovernor.prm.action.IGPRM0100Action" 
+			scope="request">
+			<forward name="DISP" path="/prm/IGPRM0100.jsp" />
+		</action>
+		
+    </action-mappings>
+
+</struts-config>

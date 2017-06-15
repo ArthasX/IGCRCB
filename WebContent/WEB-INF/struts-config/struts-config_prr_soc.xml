@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<action-mappings>
+	<!-- *****************************************自定义流程驱动***************************************** -->
+		
+		<!-- 流程发起页初始化 -->
+		<action path="/IGPRR0101_Disp_SOC"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/srv/prr/IGPRR0101.jsp"
+			parameter="DISP" name="IGPRR0101Form" validate="false" scope="session">
+			<forward name="DISP" path="/srv/prr/IGPRR0101.jsp" />
+		</action>
+		
+		<!-- 流程发起 -->
+		<action path="/IGPRR0101_SOC"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/IGPRR0101_Disp_SOC.do"
+			parameter="INIT" name="IGPRR0101Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp_SOC.do" />
+			<forward name="ASSIGN" path="/srv/prr/IGPRR0132.jsp" />
+		</action>
+		<!-- 发起成功 -->
+		<action path="/IGPRR0100_Disp_SOC"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0100Action" input="/srv/prr/IGPRR0100.jsp"
+			parameter="DISP" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/srv/prr/IGPRR0100.jsp" />
+		</action>
+		
+		<!-- 点击工单号-流程处理页初始化 -->
+		<action path="/IGPRR0102_Disp_SOC"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/srv/prr/IGPRR0102.jsp"
+			parameter="DISP" name="IGPRR0102Form" validate="false" scope="session">
+			<forward name="DISP" path="/srv/prr/IGPRR0102.jsp" />
+		</action>
+		
+		<!-- 流程 处理 -->
+		<action path="/IGPRR0102_SOC"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp_SOC.do"
+			parameter="INIT" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp_SOC.do" />
+			<forward name="ASSIGN" path="/srv/prr/IGPRR0103.jsp" />
+			<forward name="EXECUTOR" path="/srv/prr/IGPRR0133.jsp" />
+			<forward name="DISPATCH1" path="/srv/prr/IGPRR0107.jsp" />
+			<forward name="DISPATCH2" path="/srv/prr/IGPRR0108.jsp" />
+			<forward name="DISPATCH3" path="/srv/prr/IGPRR0127.jsp" />
+			<forward name="DISPATCH4" path="/srv/prr/IGPRR0129.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>
+

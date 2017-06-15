@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<!-- DAO -->
+	<bean id="igalarmDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IgalarmDAOImpl">
+	</bean>
+	<bean id="igcrc1301DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC1301DAOImpl">
+	</bean>	
+	<bean id="igcrc1303DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC1303DAOImpl">
+	</bean>	
+	<bean id="igcrc1304DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC1304DAOImpl">
+	</bean>	
+	<bean id="igcrc2001DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC2001DAOImpl">
+	</bean>	
+	<bean id="igcrc2101DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC2101DAOImpl">
+	</bean>
+	<bean id="igcrc2201DAO" 
+		parent="baseHibernateDAO" 
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC2201DAOImpl">
+	</bean>
+	
+	<bean id="igcrc2301DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC2301DAOImpl">
+	</bean>
+	<bean id="igcrc2401DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC2401DAOImpl">
+	</bean>	
+	<bean id="changeProcessVWDAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.ChangeProcessVWDAOImpl">
+	</bean>	
+	<!-- Task BL -->
+	<bean id="igalarmBL" class="com.deliverik.infogovernor.crc.bl.task.IgalarmBLImpl">
+		<property name="igalarmDAO">
+			<ref bean="igalarmDAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc1301BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC1301BLImpl">
+		<property name="igcrc1301DAO">
+			<ref bean="igcrc1301DAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc1303BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC1303BLImpl">
+		<property name="igcrc1303DAO">
+			<ref bean="igcrc1303DAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc1304BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC1304BLImpl">
+		<property name="igcrc1304DAO">
+			<ref bean="igcrc1304DAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc2001bl" class="com.deliverik.infogovernor.crc.bl.task.IGCRC2001BLImpl">
+		<property name="igcrc2001DAO">
+			<ref bean="igcrc2001DAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc2101BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC2101BLImpl">
+		<property name="igcrc2101DAO">
+			<ref bean="igcrc2101DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc2201BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC2201BLImpl">
+		<property name="igcrc2201DAO">
+			<ref bean="igcrc2201DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc2301BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC2301BLImpl">
+		<property name="igcrc2301DAO">
+			<ref bean="igcrc2301DAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc2401bl" class="com.deliverik.infogovernor.crc.bl.task.IGCRC2401BLImpl">
+		<property name="igcrc2401DAO">
+			<ref bean="igcrc2401DAO"/>
+		</property>
+	</bean>
+	<bean id="changeProcessVWBL" class="com.deliverik.infogovernor.crc.bl.task.ChangeProcessVWBLImpl">
+		<property name="changeProcessVWDAO">
+			<ref bean="changeProcessVWDAO"/>
+		</property>
+	</bean>
+	<!-- Control BL -->
+	<bean id="igcrc02bl" class="com.deliverik.infogovernor.crc.bl.IGCRC02BLImpl">
+		<property name="igalarmBL">
+			<ref bean="igalarmBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc0204BL" class="com.deliverik.infogovernor.crc.bl.IGCRC0204BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="igalarmBL">
+			<ref bean="igalarmBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc03BL" class="com.deliverik.infogovernor.crc.bl.IGCRC03BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc04BL" class="com.deliverik.infogovernor.crc.bl.IGCRC04BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL"/>
+		</property>
+	</bean>
+	
+	
+	<bean id="igcrc30BL" class="com.deliverik.infogovernor.crc.bl.IGCRC30BLImpl">
+		
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		
+	</bean>
+	
+	<bean id="igcrc05BL" class="com.deliverik.infogovernor.crc.bl.IGCRC05BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+
+	<bean id="igcrc06BL" class="com.deliverik.infogovernor.crc.bl.IGCRC06BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+	<!-- 告警事件查询导出    2016/10/14 gongyunpeng -->
+	<bean id="igcrc02041ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC02041ExcelBLImpl">
+		<property name="ig599BL">
+			<ref bean="ig599BL"/>
+		</property>
+		<property name="ig898BL">
+			<ref bean="ig898BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc08BL" class="com.deliverik.infogovernor.crc.bl.IGCRC08BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+		<bean id="igcrc09BL" class="com.deliverik.infogovernor.crc.bl.IGCRC09BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+	<bean id="igcrc10BL" class="com.deliverik.infogovernor.crc.bl.IGCRC10BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowOptBL">
+			<ref bean="flowOptBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc13bl" class="com.deliverik.infogovernor.crc.bl.IGCRC13BLImpl">
+		<property name="igcrc1301BL">
+			<ref bean="igcrc1301BL"/>
+		</property>
+		<property name="igcrc1303BL">
+			<ref bean="igcrc1303BL"/>
+		</property>
+		<property name="igcrc1304BL">
+			<ref bean="igcrc1304BL"/>
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+	<bean id="igcrc20bl" class="com.deliverik.infogovernor.crc.bl.IGCRC20BLImpl">
+		<property name="igcrc2001bl">
+			<ref bean="igcrc2001bl"/>
+		</property>
+	</bean>
+	<bean id="igcrc21bl" class="com.deliverik.infogovernor.crc.bl.IGCRC21BLImpl">
+		<property name="igcrc2101BL">
+			<ref bean="igcrc2101BL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igcrc22bl" class="com.deliverik.infogovernor.crc.bl.IGCRC22BLImpl">
+		<property name="igcrc2201BL">
+            <ref bean="igcrc2201BL"/>
+        </property>
+	</bean>
+	
+	<bean id="igcrc23bl" class="com.deliverik.infogovernor.crc.bl.IGCRC23BLImpl">
+		<property name="igcrc2301BL">
+			<ref bean="igcrc2301BL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+	<bean id="igcrc24bl" class="com.deliverik.infogovernor.crc.bl.IGCRC24BLImpl">
+		<property name="igcrc2401bl">
+			<ref bean="igcrc2401bl"/>
+		</property>
+	</bean>
+	<!-- 导出部门提交统计Excel表格 -->
+	<bean id="igcrc14excelbl" class="com.deliverik.infogovernor.crc.bl.IGCRC14ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出文档存量统计Excel表格 -->
+	<bean id="igcrc13excelbl" class="com.deliverik.infogovernor.crc.bl.IGCRC13ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出Excel表格 -->
+	<bean id="igcrc04ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC04ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出对外服务的Excel表格 -->
+	<bean id="igcrc30ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC30ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc03ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC03ExcelBLImpl" parent="excelBaseBL"></bean>
+		
+	<!-- 导出告警系统的Excel表格 -->
+	<bean id="igcrc0203ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC0203ExcelBLImpl" parent="excelBaseBL">		
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc0204ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC0204ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc05ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC05ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc06ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC06ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc08ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC08ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc09ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC09ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出问题的Excel表格 -->
+	<bean id="igcrc10ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC10ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 年度工作统计的Excel表格 -->
+	<bean id="igcrc20ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC20ExcelBLImpl" parent="excelBaseBL"></bean>
+	<!-- 导出人员工作统计Excel表格 -->
+	<bean id="igcrc21ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC21ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出变更总体统计Excel表格 -->
+	<bean id="igcrc22ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC22ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 导出程序开发统计Excel表格 -->
+	
+	<bean id="igcrc23ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC23ExcelBLImpl" parent="excelBaseBL"></bean>
+	<!--事件平均解决时间的Excel表格 -->
+	<bean id="igcrc24ExcelBL" class="com.deliverik.infogovernor.crc.bl.IGCRC24ExcelBLImpl" parent="excelBaseBL"></bean>
+	
+	<!-- 变更流程查询 -->
+	<bean id="igCRC14BL" class="com.deliverik.infogovernor.crc.bl.IGCRC14BLImpl">
+		<property name="changeProcessVWBL">
+			<ref bean="changeProcessVWBL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+	</bean>
+</beans>
+

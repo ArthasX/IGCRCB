@@ -1,0 +1,5 @@
+1.将snmp-server文件夹复制到C:\SOCFile\SOC_Tools\CiImportFileConfig下，本机JDK环境为1.5以上。
+2.在config.properties文件中配置相应的本机服务器IP和端口号等。
+3.关闭windows防火墙。
+4.双击运行snmp-server.bat启动监听服务器，若要停止服务器，关闭命令窗口即可。
+5.接收到的数据在命令行中显示，并且保存在log/snmp.log文件中,同时插入到数据库中用于平台查询

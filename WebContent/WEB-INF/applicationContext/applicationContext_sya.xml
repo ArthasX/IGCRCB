@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="institutionDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.sya.model.dao.InstitutionDAOImpl">
+	</bean>
+	
+	<bean id="institutionBL" class="com.deliverik.infogovernor.sya.bl.task.InstitutionBLImpl">
+		<property name="institutionDAO">
+			<ref bean="institutionDAO"/>
+		</property>
+	</bean>
+	
+	<bean id="igSYA01BL" class="com.deliverik.infogovernor.sya.bl.IGSYA01BLImpl">
+		<property name="institutionBL">
+			<ref bean="institutionBL" />
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+	</bean>
+</beans>

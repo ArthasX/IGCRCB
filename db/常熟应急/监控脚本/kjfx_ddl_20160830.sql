@@ -1,0 +1,2 @@
+ALTER TABLE IGALARM ADD COLUMN shieldflag VARCHAR(1) default '0'; 
+reorg TABLE IGALARM;

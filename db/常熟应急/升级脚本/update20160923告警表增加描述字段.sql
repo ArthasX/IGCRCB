@@ -1,0 +1,3 @@
+--告警表增加描述字段
+ALTER TABLE IGALARM ADD COLUMN shielddesc VARCHAR(512); 
+reorg TABLE IGALARM;

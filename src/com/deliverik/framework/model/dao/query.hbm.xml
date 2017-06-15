@@ -1,0 +1,81 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.model.entity">
+
+	<!--  -->
+	<sql-query name="UserTBDAO.findByCond">
+    <![CDATA[
+    	select u
+		from UserTB as u
+		 where 1=1
+	]]>
+	</sql-query>
+	
+	<!--  -->
+	<sql-query name="UserRoleTBDAO.findByCond">
+    <![CDATA[
+		select ur
+		from UserRoleTB as ur
+		 where 1=1
+	]]>
+	</sql-query>
+	
+	<!--  -->
+	<sql-query name="UserRoleVWDAO.findByCond">
+    <![CDATA[
+		select ur
+		from UserRoleVW as ur
+		 where 1=1
+	]]>
+	</sql-query>
+
+	<!--  -->
+	<sql-query name="OrganizationTBDAO.findByCond">
+    <![CDATA[
+		select org
+		from OrganizationTB as org
+		 where 1=1
+	]]>
+	</sql-query>
+	
+	<!--  -->
+	<sql-query name="RoleTBDAO.findByCond">
+    <![CDATA[
+		select role
+		from RoleTB as role
+		 where 1=1
+	]]>
+	</sql-query>
+	
+		<!--  -->
+	<sql-query name="ParametersTBDAO.findByCond">
+    <![CDATA[
+		select param
+		from ParametersTB as param
+		 where 1=1
+	]]>
+	</sql-query>
+	
+	<!-- 共通配置属性查询 -->
+    <sql-query name="CategoryCommonConfigDAO.ecategoryQuery">
+    <![CDATA[
+        select *
+           from CodeDetail ccc
+        where CCID = '013'
+    ]]> 
+    </sql-query>
+
+    <sql-query name="CategoryCommonConfigDAO.commonConfigQuery">
+    <![CDATA[
+        select ccclabel
+           from CategoryCommonConfig 
+        where 1=1
+    ]]> 
+    </sql-query>
+    
+
+    
+</hibernate-mapping>

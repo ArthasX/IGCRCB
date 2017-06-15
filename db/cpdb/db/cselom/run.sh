@@ -1,0 +1,1 @@
+sqlplus /nolog @/home/oracle/db/cselom/init_sh.sql

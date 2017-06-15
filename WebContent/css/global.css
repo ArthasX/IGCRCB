@@ -1,0 +1,162 @@
+h1 {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+p {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+#menu ul {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+#menu ul li {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+body {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+
+img {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+strong {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+em {
+	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px; padding-top: 0px
+}
+
+h1 {
+	font-weight: bold; font-size: 14px
+}
+img {
+	border-top-width: 0px; border-left-width: 0px; border-bottom-width: 0px; border-right-width: 0px
+}
+#menu ul {
+	list-style-type: none
+}
+
+a {
+	color: #0097cc; text-decoration: underline
+}
+a:hover {
+	color: #51b400; 
+}
+#head #menu {
+	background-image: url(../images/top_bg.jpg); background-repeat: no-repeat
+}
+#menu li a.here {
+	background-image: url(../images/top_bg.jpg); background-repeat: no-repeat
+}
+#menu li a:hover {
+	background-image: url(../images/top_bg2.gif); background-repeat: no-repeat
+}
+#menu li a#menu_home {
+	background-image: url(../images/top_bg2.jpg); background-repeat: no-repeat
+}
+#menu li a.here#menu_home {
+	background-image: url(../images/top_bg.jpg); background-repeat: no-repeat
+}
+#menu li a#menu_home:hover {
+	background-image: url(../images/top_bg2.gif); background-repeat: no-repeat
+}
+#head #logo {
+	background-image: url(../images/top_bg.jpg); background-repeat: no-repeat
+}
+#topnav {
+	background-image: url(../images/top_bg.jpg); background-repeat: no-repeat
+}
+#head {
+	background-image: url(../images/line_bg.jpg); background-repeat: repeat-x
+}
+#menu li {
+	background-image: url(../images/line_bg.jpg); background-repeat: repeat-x;
+}
+#head {
+	background-position: left -41px; width: 100%; height: 105px
+}
+#head #logo {
+	background-position: left -66px; width: 980px; height: 71px
+}
+#head #logo h1 {
+	float: left
+}
+#head #logo p {
+	margin-top: 28px; float: right; margin-right: 30px;font-size: 12px;
+}
+#head #logo p a {
+	color: #94a4c2;
+	text-decoration:none;
+}
+#head #logo p a strong {
+	font-weight: normal
+}
+#head #logo p em {
+	padding-right: 10px; padding-left: 10px; padding-bottom: 0px; padding-top: 0px
+}
+#head #menu {
+	background-position: left -33px; z-index: 1; width: 1002px; white-space: nowrap; position: relative; height: 33px
+}
+#menu li {
+	background-position: right top; float: left; width: 84px; background-repeat: no-repeat; height: 33px;
+}
+#menu li a {
+	padding-right: 10px; display: block; padding-left: 10px; font-weight: bold; font-size: 14px; padding-bottom: 10px; color: #fff; padding-top: 10px; text-align: center; text-decoration: none
+}
+#menu li a.here {
+	background-position: -168px top; color: #000
+}
+#menu li a:hover {
+	background-position: -168px top; color: #000
+}
+#menu li a#menu_home {
+	background-position: left top
+}
+#menu li a.here#menu_home {
+	background-position: left top
+}
+#menu li a#menu_home:hover {
+	background-position: left top
+}
+#head {
+	margin: 0px auto
+}
+#head #logo {
+	margin: 0px auto
+}
+#head #menu {
+	margin: 0px auto
+}
+#head {
+	overflow: hidden
+}
+#head #logo {
+	overflow: hidden
+}
+#head #logo p a strong {
+	color: #0097cc
+}
+* html .focus_bg{
+	background-image: url(../images/top_bg2.gif) !important; 
+	background-repeat: no-repeat !important;
+	background-position: -168px top !important;
+}
+*+ html .focus_bg{
+	background-image: url(../images/top_bg.jpg) !important; 
+	background-repeat: no-repeat !important;
+	background-position: -168px top !important;
+}
+.focus_bg a{
+	color: #000 !important;
+}
+* html .focus_home{
+	background-image: url(../images/top_bg2.gif) !important; 
+	background-repeat: no-repeat !important;
+	background-position: left top !important;
+}
+*+ html .focus_home{
+	background-image: url(../images/top_bg.jpg) !important; 
+	background-repeat: no-repeat !important;
+	background-position: left top !important;
+}
+.focus_home a{
+	color: #000 !important;
+}

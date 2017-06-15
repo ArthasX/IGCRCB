@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<bean id="igFXK07BL"  class="com.deliverik.infogovernor.fxk.bl.IGFXK07BLImpl">
+		<property name="riskmanagerwaringBL">
+			<ref bean="riskmanagerwaringBL" />
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL" />
+		</property>
+		<property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="acceptuserBL">
+			<ref bean="acceptuserBL"/>
+		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL" />
+		</property>
+
+		<property name="sendMailBL">
+			<ref bean="sendMailBL" />
+		</property>
+		<property name="sysManageBL">
+			<ref bean="sysManageBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean ="workFlowOperationBL"/>		
+		</property>
+		<property name="riskcaseVWBL">
+			<ref bean ="riskcaseVWBL"/>		
+		</property>
+		<property name="riskPointVMBL">
+            <ref bean="riskPointVMBL"/>
+        </property>
+        <property name="checkItemVWBL">
+            <ref bean="checkItemVWBL"/>
+        </property>
+	</bean>
+	
+	<bean id="igfxk0403bl" class="com.deliverik.infogovernor.prr.bl.task.IGFXK0403BLImpl"> 
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL" />
+		</property>
+	</bean>
+	
+	<bean id="riskmanagerwaringBL" class="com.deliverik.infogovernor.fxk.bl.task.RiskmanagerwaringBLImpl"> 
+		<property name="riskmanagerwaringDAO">
+			<ref bean="riskmanagerwaringDAO" />
+		</property>
+	</bean>
+ 	<bean id="riskmanagerwaringDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.fxk.model.dao.RiskmanagerwaringDAOImpl">
+	</bean>
+	
+	<bean id="acceptuserBL"  class="com.deliverik.infogovernor.fxk.bl.task.AcceptuserBLImpl">
+		<property name="acceptuserDAO">
+			<ref bean="acceptuserDAO"/>
+		</property>
+	</bean>
+	<bean id="acceptuserDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.fxk.model.dao.AcceptuserDAOImpl" >
+	</bean>
+	<bean id="igfxk04BL" class="com.deliverik.infogovernor.fxk.bl.IGFXK04BLImpl">
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>		
+	<!-- 03 -->
+	<bean id="riskprojectvwDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.fxk.model.dao.RiskprojectvwDAOImpl" />
+	<bean id="riskprojectvwBL"  class="com.deliverik.infogovernor.fxk.bl.task.RiskprojectvwBLImpl" >
+		<property name="riskprojectvwDAO">
+			<ref bean="riskprojectvwDAO"/>
+		</property>
+	</bean>
+	<bean id="igFXK03BL"  class="com.deliverik.infogovernor.fxk.bl.IGFXK03BLImpl" >
+		<property name="riskprojectvwBL">
+			<ref bean="riskprojectvwBL"/>
+		</property>
+		<property name="ig898BL">
+			<ref bean="ig898BL"/>
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		
+		
+	</bean>
+</beans>

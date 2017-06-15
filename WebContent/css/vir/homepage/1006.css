@@ -1,0 +1,163 @@
+#serviceCatalog{
+	width:220px;
+	border:1px solid #3e80bc;
+	float:left;
+	height:562px;
+}
+#serviceCatelogTitle{
+	background-color:#3e80bc;
+	height:25px;
+	line-height:25px;
+	font-weight:bold;
+	padding-left:10px;
+	color:#fff;
+}
+.serviceCatelogContent{
+	height:48px;
+	line-height:48px;
+	background-image:url(../../../images/divtitlebg_48.jpg);
+	padding-left:30px;
+}
+.serviceCatelogContent img{
+	vertical-align:middle;
+}
+.divTitle{
+	height:25px;
+	line-height:25px;
+	background-image:url(../../../images/divtitlebg_25.jpg);
+	color:#407cba;
+	font-weight:bold;
+	padding-left:10px;
+}
+#applyforme{
+	width:450px;
+	float:left;
+	margin-left:10px;
+	height:255px;
+	border:1px solid #ccc;
+}
+#template{
+	width:307px;
+	border:1px solid #ccc;
+	height:255px;
+	float:right;
+}
+#vminfo{
+	float:right;
+	width:768px;
+	height:295px;
+	margin-top:10px;
+	border:1px solid #ccc;
+	margin-left:10px;
+}
+.table_css{
+	border-collapse:collapse;   
+	width:100%;  
+}
+.table_css tr th{
+	background-color:#eee;
+	border-top:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	height:25px;
+}
+.table_css tr td{
+	border-bottom:1px solid #ccc;
+	height:25px;
+}
+#towardsleft{
+	width:30px;
+	height:260px;
+	float:left;
+}
+#towardsright{
+	width:30px;
+	height:260px;
+	float:right;
+}
+.prev,.next{
+	margin-top:100px;
+	cursor: hand;
+}
+#vmContent{
+	width:708px;
+	height:260px;
+	overflow:hidden; 
+	position:absolute; 
+	z-index:1; 
+}
+.vmContentHead{
+	width:100%;
+	height:39px;
+	background-image:url(../../../images/hostContentHead.jpg);
+}
+
+#vmContent ul{
+	overflow:hidden;
+	margin-left:0px;
+	zoom:1; 
+	float:left;  
+}
+#vmContent ul li{ 
+	float:left;
+	margin-left:0px; 
+	width:708px; 
+	height:260px;
+	cursor:pointer; 
+}
+#vmContent li{ 
+	zoom:1; 
+	vertical-align:middle; 
+}
+.slideBox .prevStop{ 
+	display:none;  
+}
+.slideBox .nextStop{ 
+	display:none;  
+}
+.vmContentPanel{
+	height:260px;
+	width:708px;
+}
+.vmContent{
+	height:125px;
+	width:220px;
+	float:left;
+	border:1px solid #ccc;
+}
+.vmContent img{
+	margin-left:10px;
+	margin-top:5px;
+	vertical-align: middle;
+	float:left;
+}
+.vmName{
+	font-weight:bold;
+	color:#407cba;
+	line-height: 16px;
+	font-size: 13px;
+	vertical-align: bottom;
+	height: 20px;
+	margin-top: 5px;
+}
+.vmIp{
+	line-height: 13px;
+	font-size: 9px;
+}
+.vmContent table tr td{
+	height:24px;
+}
+.progressDiv{
+	width:80px;
+	height:8px;
+	border:1px solid #ccc;
+}
+.progressDiv1{
+	height:100%;
+	width:0%;
+	background-color:#4282c0;
+}
+.vmInfoFount{
+	color:#545353;
+	font-size:11px;
+	line-height:11px;
+}

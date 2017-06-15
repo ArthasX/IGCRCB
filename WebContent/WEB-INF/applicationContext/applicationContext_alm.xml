@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- DAO -->
+	<bean id="crm04DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM04DAOImpl">
+	</bean>
+	<bean id="crm05DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM05DAOImpl">
+	</bean>
+	<bean id="crm06DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM06DAOImpl">
+	</bean>
+
+	<bean id="crm01DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM01DAOImpl">
+	</bean>
+	<bean id="crm07DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM07DAOImpl">
+	</bean>
+	<bean id="crm08DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM08DAOImpl">
+	</bean>
+	<bean id="crm09DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.soc.alarm.model.dao.CRM09DAOImpl">
+	</bean>
+
+	
+	
+	
+	
+	<!-- TaskBL -->
+	<bean id="crm04BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM04BLImpl">
+    	<property name="crm04DAO">
+    		<ref bean="crm04DAO"/>
+    	</property>
+    </bean>
+	
+	<bean id="crm05BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM05BLImpl">
+    	<property name="crm05DAO">
+    		<ref bean="crm05DAO"/>
+    	</property>
+    </bean>
+    <bean id="crm06BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM06BLImpl">
+    	<property name="crm06DAO">
+    		<ref bean="crm06DAO"/>
+    	</property>
+    </bean>
+    <bean id="crm07BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM07BLImpl">
+    	<property name="crm07DAO">
+    		<ref bean="crm07DAO"/>
+    	</property>
+    </bean>
+    <bean id="crm08BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM08BLImpl">
+    	<property name="crm08DAO">
+    		<ref bean="crm08DAO"/>
+    	</property>
+    </bean>
+    <bean id="crm09BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM09BLImpl">
+    	<property name="crm09DAO">
+    		<ref bean="crm09DAO"/>
+    	</property>
+    </bean>
+    
+     <bean id="crm01BL" class="com.deliverik.infogovernor.soc.alarm.bl.task.CRM01BLImpl">
+    	<property name="crm01DAO">
+    		<ref bean="crm01DAO"/>
+    	</property>
+    </bean>
+    
+    <!-- CtrolBL -->
+	<bean id="igalm01BL" class="com.deliverik.infogovernor.soc.alarm.bl.IGALM01BLImpl">
+        <property name="crm05BL">
+            <ref bean="crm05BL"/>
+        </property>
+        <property name="crm06BL">
+            <ref bean="crm06BL"/>
+        </property>
+		<property name="crm08BL">
+			<ref bean="crm08BL" />
+		</property>
+		<property name="crm09BL">
+			<ref bean="crm09BL" />
+		</property>
+        <property name="fileUploadBL">
+			<ref bean="fileUploadBL" />
+		</property>
+		<property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+	</bean>
+	
+	
+	
+  <bean id="igalm04BL" class="com.deliverik.infogovernor.soc.alarm.bl.IGALM04BLImpl">
+        <property name="crm04BL">
+            <ref bean="crm04BL"/>
+        </property>
+         <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+    </bean>
+    
+    <bean id="igalm02BL" class="com.deliverik.infogovernor.soc.alarm.bl.IGALM02BLImpl">
+    	<property name="crm07BL">
+            <ref bean="crm07BL"/>
+        </property>
+        <property name="crm08BL">
+			<ref bean="crm08BL" />
+		</property>
+		<property name="crm09BL">
+			<ref bean="crm09BL" />
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL" />
+		</property>
+    </bean>
+    
+   <bean id="igalm07BL" class="com.deliverik.infogovernor.soc.alarm.bl.IGALM07BLImpl">
+    	
+        <property name="crm01BL">
+			<ref bean="crm01BL" />
+		</property>
+		
+    </bean>
+   
+    
+    <bean id="igalm03BL" class="com.deliverik.infogovernor.soc.alarm.bl.IGALM03BLImpl">
+    	<property name="crm06BL">
+            <ref bean="crm06BL"/>
+        </property>
+        <property name="crm08BL">
+            <ref bean="crm08BL"/>
+        </property>
+        <property name="crm09BL">
+            <ref bean="crm09BL"/>
+        </property>
+        <property name="codeDetailBL">
+            <ref bean="codeDetailBL"/>
+        </property>
+    </bean>
+    
+	
+</beans>

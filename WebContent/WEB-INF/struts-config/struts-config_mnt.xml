@@ -1,0 +1,350 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	
+	<form-beans>
+		<form-bean name="IGMNT0101Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0101Form"/>
+		<form-bean name="IGMNT0102Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0102Form"/>
+		<form-bean name="IGMNT0103Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0103Form"/>
+		<form-bean name="IGMNT0104Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0104Form"/>
+		<form-bean name="IGMNT0106Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0106Form"/>	
+		<form-bean name="IGMNT0107Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0107Form"/>
+		<form-bean name="IGMNT0111Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0111Form"/>
+		<form-bean name="IGMNT0112Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0112Form"/>
+		<form-bean name="IGMNT0201Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0201Form"/>
+		<form-bean name="IGMNT0204Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0204Form"/>
+		<form-bean name="IGMNT0206Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0206Form"/>
+		<form-bean name="IGMNT0207Form" type="com.deliverik.infogovernor.soc.mnt.form.IGMNT0207Form"/>
+		
+	</form-beans>
+	
+	<action-mappings>
+
+		<!-- 初期显示 -->
+		<action path="/IGMNT0101_Disp"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0101Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0101.jsp" />
+		</action>
+		
+		<!-- 监控类型阀值查询页面初始化 -->
+		<action path="/IGMNT0102_Disp"
+			name="IGMNT0102Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0102Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0102.jsp" />
+		</action>
+		
+		<!-- 监控类型阀值查询 -->
+		<action path="/IGMNT0102_Search"
+			name="IGMNT0102Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0102Action" 
+			parameter="SEARCH" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0102.jsp" />
+		</action>
+		
+		<!-- 监控类型阀值修改提交 -->
+		<action path="/IGMNT0102_Update"
+			name="IGMNT0102Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0102Action" 
+			parameter="UPDATE" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGMNT0102_Search.do" />
+		</action>
+		
+		<!-- 监控对象登记页面初始化 -->
+		<action path="/IGMNT0103_Disp"
+			name="IGMNT0103Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0103Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0103.jsp" />
+		</action>
+		
+		<!-- 监控对象登记提交 -->
+		<action path="/IGMNT0103_Insert"
+			name="IGMNT0103Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0103Action" 
+			parameter="INSERT" 
+			input="/mnt/IGMNT0103.jsp"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0201.jsp" />
+			
+		</action>
+		
+		<action path="/IGMNT0201"
+			name="IGMNT0201Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0201Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="BACK0" path="/IGMNT0101_Disp.do" />
+			<forward name="BACK1" path="/IGMNT0104_Disp.do" />
+			<forward name="ADD" path="/IGMNT0103_Disp.do" />
+		</action>
+		<!-- 容量告警管理 -->
+		<action path="/IGMNT0112_Disp"
+			name="IGMNT0112Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0112Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0112.jsp" />
+		</action>
+		<!-- 容量告警管理 -->
+		<action path="/IGMNT0112"
+			name="IGMNT0112Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0112Action" 
+			parameter="SEARCH" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0112.jsp" />
+		</action>
+		<action path="/IGMNT0112_SEARCH1"
+			name="IGMNT0112Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0112Action" 
+			parameter="SEARCH1"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0112.jsp" />
+		</action>
+		
+		<action path="/IGMNT0112_Update"
+			name="IGMNT0112Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0112Action" 
+			parameter="UPDATE"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGMNT0112_SEARCH1.do" />
+		</action>
+		
+		<!-- 监控对象管理页面初始化 -->
+		<action path="/IGMNT0104_Disp"
+			name="IGMNT0104Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0104Action" 
+			parameter="DISP" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0104.jsp" />
+		</action>
+		
+		<!-- 监控对象管理查询 -->
+		<action path="/IGMNT0104"
+			name="IGMNT0104Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0104Action" 
+			parameter="SEARCH" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0104.jsp" />
+		</action>
+		
+		<!-- 监控对象状态改变 -->
+		<action path="/IGMNT0104_Change"
+			name="IGMNT0104Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0104Action" 
+			parameter="CHANGE" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGMNT0104_SEARCH1.do" />
+		</action>
+		
+		<!-- 监控对象管理查询 -->
+		<action path="/IGMNT0104_SEARCH1"
+			name="IGMNT0104Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0104Action" 
+			parameter="SEARCH1" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0104.jsp" />
+		</action>
+		
+		<!-- 存储信息删除处理  -->
+		<action path="/IGMNT0104_Del"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0104Action"
+			parameter="DELETE" input="/mnt/IGMNT0104.jsp" name="IGMNT0104Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGMNT0104_SEARCH1.do" />
+		</action>
+		
+		<!-- 监控对象修改页面初始化 -->
+		<action path="/IGMNT0105_Disp"
+			name="IGMNT0103Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0105Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0105.jsp" />
+		</action>
+		
+		<!-- 监控对象修改提交-->
+		<action path="/IGMNT0105"
+			name="IGMNT0103Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0105Action" 
+			parameter="UPDATE" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGMNT0104_SEARCH1.do" />
+		</action>
+		
+		 <!-- 资产项查询HELP处理  -->
+        <action path="/IGMNT0106"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0106Action"
+            parameter="SEARCH"
+            input="/mnt/IGMNT0106.jsp"
+            name="IGMNT0106Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/mnt/IGMNT0106.jsp"/>
+        </action>
+        
+		<!-- 资产项查询HELP画面初期显示  -->
+        <action path="/IGMNT0106_Disp"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0106Action"
+            input="/mnt/IGMNT0106.jsp"
+            parameter="DISP"
+            name="IGMNT0106Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/mnt/IGMNT0106.jsp"/>
+        </action>
+        <!-- DEBUG监控任务初始画面  -->
+        <action path="/IGMNT0107_Disp"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0107Action"
+            parameter="DISP"
+            name="IGMNT0107Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/mnt/IGMNT0107.jsp"/>
+        </action>
+        <!-- DEBUG监控任务添加开始操作  -->
+        <action path="/IGMNT0107_Ins"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0107Action"
+            input="/mnt/IGMNT0107.jsp"
+            parameter="INSERT"
+            name="IGMNT0107Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/mnt/IGMNT0110.jsp"/>
+            <forward name="ERR"    path="/mnt/IGMNT0107.jsp"/>
+        </action>
+        <!-- 实时监控列表 -->
+        <action path="/IGMNT0111_Disp"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0111Action"
+            parameter="DISP"
+            name="IGMNT0111Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/mnt/IGMNT0111.jsp"/>
+        </action>
+        <!-- DMXRealTime  -->
+        <action path="/IGMNT0108_Disp"
+            type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0108Action"
+            input="/IGMNT0107_Disp.do"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP" path="/mnt/IGMNT0108.jsp"/>
+        </action>
+        
+        <!-- DMX实时性能数据导出-->
+		<action path="/IGMNT0109"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0109Action"
+			input="/mnt/IGMNT0109.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0109.jsp" />
+		</action>
+        <!-- 告警管理-->
+		<action path="/IGMNT0206_Disp"
+			name="IGMNT0206Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0206Action"
+			parameter="DISP"
+			input="/mnt/IGMNT0206.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0206.jsp" />
+		</action>
+		<action path="/IGMNT0207_Disp"
+			name="IGMNT0207Form"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0207Action"
+			input="/mnt/IGMNT0207.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0207.jsp" />
+		</action>
+		<!-- 存储事件管理 -->
+	    <!-- 跳转到存储事件页面 -->
+		<!-- 存储事件查询-->
+		<action path="/IGMNT0206"
+		 type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0206Action" 
+		 name="IGMNT0206Form" parameter="SEARCH" input="/asm/IGMNT0206.jsp"
+		 scope="session">
+		    <set-property key="auth" value="false"/>
+		    <forward name="DISP" path="/mnt/IGMNT0206.jsp"></forward>
+		</action>
+		<!-- 存储事件再查询-->
+		<action path="/IGMNT0206_SEARCH1"
+		 type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0206Action" 
+		 name="IGMNT0206Form" parameter="SEARCH1" input="/asm/IGMNT0206.jsp"
+		 scope="session">
+		    <set-property key="auth" value="false"/>
+		    <forward name="DISP" path="/mnt/IGMNT0206.jsp"></forward>
+		</action>
+		<!-- 报警详细信息初始化-->
+		<action path="/IGMNT0209_Disp"
+		 type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0208Action"
+		 name="IGMNT0206Form" parameter="DISP" scope="request">
+		    <set-property key="auth" value="false"/>
+		    <forward name="DISP" path="/mnt/IGMNT0209.jsp"></forward>
+		</action>
+		
+		<!-- 告警处理状态变更-->
+		<action path="/IGMNT0206_Update"
+		 type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0206Action" 
+		 name="IGMNT0206Form" parameter="UPDATE" input="/asm/IGMNT0206.jsp"
+		 scope="request">
+		    <set-property key="auth" value="false"/>
+		    <forward name="DISP" path="/IGMNT0206_SEARCH1.do"></forward>
+		</action>
+		<!-- 性能数据告警查询显示  -->
+		<action path="/IGMNT0207"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0207Action" name="IGMNT0207Form"
+			parameter="SEARCH" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0207.jsp" />
+		</action>
+		
+		<!-- 性能数据告警弹出显示  -->
+		<action path="/IGMNT0207_POP"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0207Action" name="IGMNT0207Form"
+			parameter="POP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/mnt/IGMNT0208.jsp" /><!--asm2702-->
+		</action>
+		<!-- 设备配置信息查看画面初期化处理 -->
+		<action path="/IGMNT0204_Disp"
+			type="com.deliverik.infogovernor.soc.mnt.action.IGMNT0204Action" input="/mnt/IGMNT0204.jsp"
+			parameter="DISP" name="IGMNT0204Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/mnt/IGMNT0204.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources key="mntResources" parameter="com.deliverik.infogovernor.soc.mnt.mntResources" />
+	
+</struts-config>
+

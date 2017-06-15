@@ -1,0 +1,628 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+	<!-- *****************************************自定义流程驱动***************************************** -->
+		<form-bean name="IGPRR0101Form" type="com.deliverik.infogovernor.prr.form.IGPRR0101Form" />
+		<form-bean name="IGPRR0102Form" type="com.deliverik.infogovernor.prr.form.IGPRR0102Form" />
+		<form-bean name="IGPRR0103Form" type="com.deliverik.infogovernor.prr.form.IGPRR0103Form" />
+		<form-bean name="IGPRR0104Form" type="com.deliverik.infogovernor.prr.form.IGPRR0104Form" />
+		<form-bean name="IGPRR0106Form" type="com.deliverik.infogovernor.prr.form.IGPRR0106Form" />
+		<form-bean name="IGPRR0109Form" type="com.deliverik.infogovernor.prr.form.IGPRR0109Form" />
+		<form-bean name="IGPRR0110Form" type="com.deliverik.infogovernor.prr.form.IGPRR0110Form" />
+		<form-bean name="IGPRR0111Form" type="com.deliverik.infogovernor.prr.form.IGPRR0111Form" />
+		<form-bean name="IGPRR0112Form" type="com.deliverik.infogovernor.prr.form.IGPRR0112Form" />
+		<form-bean name="IGPRR0113Form" type="com.deliverik.infogovernor.prr.form.IGPRR0113Form" />
+		<form-bean name="IGPRR0202Form" type="com.deliverik.infogovernor.prr.form.IGPRR0202Form" />
+		<form-bean name="IGPRR0114Form" type="com.deliverik.infogovernor.prr.form.IGPRR0114Form" />
+		<form-bean name="IGPRR0118Form" type="com.deliverik.infogovernor.prr.form.IGPRR0118Form" />
+		<form-bean name="IGPRR0121Form" type="com.deliverik.infogovernor.prr.form.IGPRR0121Form" />
+		<form-bean name="IGPRR0122Form" type="com.deliverik.infogovernor.prr.form.IGPRR0122Form" />
+		<form-bean name="IGPRR0123Form" type="com.deliverik.infogovernor.prr.form.IGPRR0123Form" />
+		<!-- 自定义流程OA模式对应角色配置form -->
+		<form-bean name="IGPRR0301Form" type="com.deliverik.infogovernor.prr.form.IGPRR0301Form" />
+		<!-- 自定义流程OA模式对应角色配置form -->
+		<form-bean name="IGPRR0302Form" type="com.deliverik.infogovernor.prr.form.IGPRR0302Form" />
+		<!-- 人员查询form -->
+		<form-bean name="IGPRR0303Form" type="com.deliverik.infogovernor.prr.form.IGPRR0303Form" />
+		<!-- 服务目录显示form -->
+		<form-bean name="IGPRR0401Form" type="com.deliverik.infogovernor.prr.form.IGPRR0401Form" />
+		<!-- 一级菜单下的服务目录显示form -->
+		<form-bean name="IGPRR0402Form" type="com.deliverik.infogovernor.prr.form.IGPRR0402Form" />
+		<!-- 流程组查询Form -->
+		<form-bean name="IGPRR0501Form" type="com.deliverik.infogovernor.prr.form.IGPRR0501Form" />
+		<!-- 流程组成员列表查询Form -->
+		<form-bean name="IGPRR0502Form" type="com.deliverik.infogovernor.prr.form.IGPRR0502Form" />
+		<form-bean name="IGPRR0601Form" type="com.deliverik.infogovernor.prr.form.IGPRR0601Form" />
+		<form-bean name="IGPRR1001Form" type="com.deliverik.infogovernor.prr.form.IGPRR1001Form" />
+		<form-bean name="IGPRR1002Form" type="com.deliverik.infogovernor.prr.form.IGPRR1002Form" />
+	</form-beans>
+	<action-mappings>
+	<!-- *****************************************自定义流程驱动***************************************** -->
+		
+		<!-- 流程发起页初始化 -->
+		<action path="/IGPRR0101_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/prr/IGPRR0101.jsp"
+			parameter="DISP" name="IGPRR0101Form" validate="false" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0101.jsp" />
+		</action>
+		<!-- 流程发起页初始化 -->
+		<action path="/IGPRR0101_Back"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/prr/IGPRR0101.jsp"
+			parameter="BACK" name="IGPRR0101Form" validate="false" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0101.jsp" />
+		</action>
+		
+		<!-- 流程发起 -->
+		<action path="/IGPRR0101"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/IGPRR0101_Back.do"
+			parameter="INIT" name="IGPRR0101Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+			<forward name="ASSIGN" path="/IGPRR0103_Disp.do" />
+		</action>
+		
+		<!-- 流程处理页初始化 -->
+		<action path="/IGPRR0102_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/prr/IGPRR0102.jsp"
+			parameter="DISP" name="IGPRR0102Form" validate="false" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0102.jsp" />
+		</action>
+		
+		<!-- 非现场监管报表弹出页 -->
+		<action path="/IGPRR0112_Popup"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0112Action"
+			input="/prr/IGPRR0102.jsp"
+			parameter="DISP"
+			name="IGPRR0112Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/smr/IGSMR0502.jsp" />
+		</action>
+		
+		<!-- 非现场监管报表表单复制 -->
+		<action path="/IGPRR0102_Copy"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action"
+			input="/prr/IGPRR0102.jsp"
+			parameter="COPY"
+			name="IGPRR0102Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/smr/IGSMR0502.jsp" />
+		</action>
+		
+		<!-- 日志导出 -->
+		<action path="/IGPRR0102_Dispe"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/prr/IGPRR0102.jsp"
+			parameter="DISPE" name="IGPRR0102Form" validate="false" scope="session">
+			<forward name="DISPE" path="/prr/IGPRR0115.jsp" />
+		</action>
+		
+		<!-- 流程查看页初始化 -->
+		<action path="/IGPRR0112_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0112Action" input="/prr/IGPRR0112.jsp"
+			parameter="DISP" name="IGPRR0112Form" validate="false" scope="request">
+			<forward name="DISP" path="/prr/IGPRR0112.jsp" />
+		</action>
+		
+		<!-- 流程 处理 -->
+		<action path="/IGPRR0102"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="INIT" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+			<forward name="ASSIGN" path="/IGPRR0103_Disp.do" />
+			<forward name="EXECUTOR" path="/prr/IGPRR0133.jsp" />
+			<forward name="DISPATCH1" path="/prr/IGPRR0107.jsp" />
+			<forward name="DISPATCH2" path="/prr/IGPRR0108.jsp" />
+			<forward name="DISPATCH3" path="/prr/IGPRR0127.jsp" />
+			<forward name="DISPATCH4" path="/prr/IGPRR0129.jsp" />
+		</action>
+		<!-- 普通参与者调整执行人 -->
+		<action path="/IGPRR0102_Executor"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="ADJUSTEXECUTOR" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		<!-- 普通参与者调整执行人 -->
+		<action path="/IGPRR0102_SaveExecutor"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="SAVEEXECUTOR" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<!-- 流程 处理_执行人前更新日志 -->
+		<action path="/IGPRR0102_People"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="PEOPLE" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<!-- 指定参与人 -->
+		<action path="/IGPRR0102_Assign"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="ASSIGN" name="IGPRR0102Form" validate="false" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<!-- 人员分派页面初始化操作 -->
+		<action path="/IGPRR0103_Disp" 
+			type="com.deliverik.infogovernor.prr.action.IGPRR0103Action"
+			name="IGPRR0103Form"
+			scope="request"
+			validate="false"
+			parameter="DISP"
+			input="/prr/IGPRR0103.jsp">
+			<forward name="DISP" path="/prr/IGPRR0103.jsp"/>
+		</action>
+		
+		<!-- 查看流程图  -->
+		<action path="/IGPRR0111_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0111Action" input="/prr/IGPRR0111.jsp"
+			parameter="FLOWXML" name="IGPRR0111Form" validate="false" scope="request">
+			<forward name="FLOWXML" path="/prr/IGPRR0111.jsp" />
+		</action>
+		
+		<!-- 查询子流程的流程图 -->
+		<action path="/IGPRR0111_Ajax"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0111Action"
+			input="/prr/IGPRR0111.jsp"
+			parameter="CHILDFLOWXML"
+			name="IGPRR0111Form"
+			validate="false"
+			scope="request">
+		</action>
+
+		<!-- 指定参与人 -->
+		<action path="/IGPRR0102_Dispatch"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/prr/IGPRR0107.jsp"
+			parameter="DISPATCH" name="IGPRR0102Form" validate="false" scope="session">
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+
+		<!-- 跳转到执行人页面 -->
+		<action path="/IGPRR0104_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0104Action" input="/prr/IGPRR0104.jsp"
+			parameter="DISP" name="IGPRR0104Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0104.jsp" />
+		</action>
+		
+		<!-- 执行人 -->
+		<action path="/IGPRR0104"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0104Action" input="/IGPRR0104_Disp.do"
+			parameter="MANAGER" name="IGPRR0104Form" validate="true" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<!-- 跳转到OA执行人页面 -->
+		<action path="/IGPRR0109_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0109Action" input="/prr/IGPRR0109.jsp"
+			parameter="DISP" name="IGPRR0109Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0109.jsp" />
+		</action>
+		
+		<!-- OA执行人 -->
+		<action path="/IGPRR0109"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0109Action" input="/IGPRR0109_Disp.do"
+			parameter="MANAGER" name="IGPRR0109Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<!-- 流程状态日志 -->
+		<action path="/IGPRR0110"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0110Action" input="/prr/IGPRR0110.jsp"
+			parameter="SEARCH" name="IGPRR0110Form" validate="false" scope="request">
+			<forward name="DISP" path="/prr/IGPRR0110.jsp" />
+		</action>
+		
+		<!-- 表单日志查看页初始化 -->
+		<action path="/IGPRR0106_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0106Action" input="/prr/IGPRR0106.jsp"
+			parameter="DISP" name="IGPRR0106Form" validate="false" scope="request">
+			<forward name="DISP" path="/prr/IGPRR0106.jsp" />
+		</action>
+		
+		<!-- 跳转到SUPER分派页面 -->
+		<action path="/IGPRR0113_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0113Action" input="/prr/IGPRR0113.jsp"
+			parameter="DISP" name="IGPRR0113Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0128.jsp" />
+			<forward name="OA" path="/prr/IGPRR0114.jsp" />
+			<forward name="OA2" path="/prr/IGPRR0120.jsp" />
+			<forward name="ROLE" path="/prr/IGPRR0114.jsp" />
+			<forward name="NORMAL_ROLE" path="/prr/IGPRR0130.jsp" />
+			<forward name="NORMAL_USER" path="/prr/IGPRR0131.jsp" />
+		</action>
+		
+		<!-- 跳转到管理员分派页面 -->
+		<action path="/IGPRR0113_Admin"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0113Action" input="/prr/IGPRR0113.jsp"
+			parameter="ADMIN" name="IGPRR0113Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0128.jsp" />
+			<forward name="OA" path="/prr/IGPRR0114.jsp" />
+			<forward name="ROLE" path="/prr/IGPRR0114.jsp" />
+			<forward name="NORMAL_ROLE" path="/prr/IGPRR0130.jsp" />
+			<forward name="NORMAL_USER" path="/prr/IGPRR0131.jsp" />
+		</action>
+		
+		<!-- SUPER分派 -->
+		<action path="/IGPRR0113"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0113Action" input="/IGPRR0113_Disp.do"
+			parameter="SUPER" name="IGPRR0113Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		<!-- SUPER分派 -->
+		<action path="/IGPRR0113_org"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0113Action" 
+			input="/IGPRR0113_Disp.do"
+			parameter="SUPERORG" 
+			name="IGPRR0113Form" 
+			validate="true" 
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/IGPRR0100_Disp.do" />
+		</action>
+		
+		<action path="/IGPRR0100_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0100Action" input="/IGPRR0100.jsp"
+			parameter="DISP" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0100.jsp" />
+		</action>
+		<!-- 流程快捷发起页面 -->
+		<action path="/IGPRR0116_Disp" type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/prr/IGPRR0116.jsp" 
+			parameter="DISP" name="IGPRR0101Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/prr/IGPRR0116.jsp" />
+		</action>
+		
+		<!-- 流程快捷发起 -->
+		<action path="/IGPRR0116"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/prr/IGPRR0116.jsp"
+			parameter="INIT" name="IGPRR0101Form" validate="true" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0117.jsp" />
+			<forward name="ASSIGN" path="/IGPRR0103_Disp.do" />
+		</action>
+		<!-- 普通参与者调整执行人 -->
+		<action path="/IGPRR0134_SaveExecutor"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0102Action" input="/IGPRR0102_Disp.do"
+			parameter="SAVEEXECUTOR" name="IGPRR0102Form" validate="true" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0117.jsp" />
+		</action>
+		<!-- 运维计划流程发起页初始化 -->
+		<action path="/IGPRR0202_Quartz"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0202Action" input="/IGPRR0202_Quartz.do"
+			parameter="DISP" name="IGPRR0202Form" validate="false" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0202.jsp" />
+		</action>
+		
+		<!-- 运维计划流程发起 -->
+		<action path="/IGPRR0202_Quartz_Insert"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0202Action" input="/IGPRR0202_Quartz.do"
+			parameter="INSERT" name="IGPRR0202Form" validate="true" scope="session">
+			<forward name="DISP" path="/sdl/IGSDL0107.jsp" />
+		</action>
+		
+		<!-- 抄阅人查询页面初始化 -->
+		<action path="/IGPRR0114_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0114Action" input="/IGPRR0102.do"
+			parameter="DISP" name="IGPRR0114Form" validate="true" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0137.jsp" />
+		</action>
+		<!-- 抄阅人查询 -->
+		<action path="/IGPRR0114_Search"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0114Action" input="/IGPRR0102.do"
+			parameter="SEARCH" name="IGPRR0114Form" validate="true" scope="session">
+			<forward name="SEARCH" path="/svc/IGSVC1501.jsp" />
+		</action>
+		<!-- 抄阅人查询初始 -->
+		<action path="/IGPRR0114_Search_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0114Action" input="/IGPRR0102.do"
+			parameter="SEARCH1" name="IGPRR0114Form" validate="true" scope="request">
+			<forward name="SEARCH1" path="/svc/IGSVC1501.jsp" />
+		</action>
+		<!-- 添加抄阅人 -->
+		<action path="/IGPRR0114_SAVE"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0114Action" input="/IGPRR0114_Disp.do"
+			parameter="SAVE" name="IGPRR0114Form" validate="true" scope="request">
+			<forward name="SUCCESS" path="/IGPRR0100_Disp.do" />
+		</action>
+		<!-- 确认查看时间 -->
+		<action path="/IGPRR0114_UPDATE"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0114Action" input="/IGPRR0114_Disp.do"
+			parameter="UPDATE" name="IGPRR0114Form" validate="true" scope="request">
+			<forward name="UPDATE" path="/IGPRR0100_Disp.do" />
+		</action>
+		<!-- 项目日志导出 -->
+		<action path="/IGPRR0115_Export"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0115Action"
+			input="/IGPRR0115.do"
+			parameter="EXPORT" name="IGPRR0115Form"
+			validate="false" scope="session">
+		</action>
+		<!-- 执行人添加参与者按钮 查询 begin -->
+		<action path="/IGPRR0118_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0118Action" input="/prr/IGPRR0118.jsp"
+			parameter="INIT" name="IGPRR0118Form" validate="false" scope="session">
+			<forward name="DISP" path="/prr/IGPRR0118.jsp" />
+		</action>
+		<!-- 执行人添加参与者按钮end -->
+		<!-- 执行人添加参与者按钮 添加 begin -->
+		<action path="/IGPRR0118"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0118Action" input="/prr/IGPRR0118.jsp"
+			parameter="ADD" name="IGPRR0118Form" validate="false" scope="session">
+			<forward name="DISP" path="/IGPRR0102_Disp.do" />
+		</action>
+		<!-- 执行人添加参与者按钮end -->
+		<!-- 130225Begin 参与者类型为：机构时，执行人添加参与者按钮 -->
+			<action path="/IGPRR0121_Disp"
+				type="com.deliverik.infogovernor.prr.action.IGPRR0121Action" input="/prr/IGPRR0121.jsp"
+				parameter="INIT" name="IGPRR0121Form" validate="false" scope="session">
+				<forward name="DISP" path="/prr/IGPRR0121.jsp" />
+			</action>
+			<action path="/IGPRR0121"
+				type="com.deliverik.infogovernor.prr.action.IGPRR0121Action" input="/prr/IGPRR0121.jsp"
+				parameter="ADD" name="IGPRR0121Form" validate="false" scope="session">
+				<forward name="DISP" path="/IGPRR0102_Disp.do" />
+			</action>
+		<!-- 130225End -->
+		<!-- 处理人信息 -->
+		<action path="/IGPRR0122_Disp" 
+			type="com.deliverik.infogovernor.prr.action.IGPRR0122Action"
+			input="/prr/IGPRR0122.jsp"
+			parameter="DISP"
+			name="IGPRR0122Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prr/IGPRR0122.jsp"/>
+		</action>
+		<!-- 表单日志显示操作 -->
+		<action path="/IGPRR0123"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0123Action"
+			input="/prr/IGPRR0123.jsp"
+			parameter="SEARCH"
+			name="IGPRR0123Form"
+			validate="false"
+			scope="request">
+			<forward name="DISP" path="/prr/IGPRR0123.jsp"/>
+		</action>
+		<!-- 自定义流程对应OA模式角色配置页面初始化操作 -->
+		<action path="/IGPRR0301_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0301Action" 
+			input="/prr/IGPRR0301.jsp"
+			parameter="DISP" 
+			name="IGPRR0301Form" 
+			validate="false" 
+			scope="request">
+			<forward name="DISP" path="/prr/IGPRR0301.jsp" />
+		</action>
+		
+		<!-- 自定义流程对应OA模式角色配置页面初始化操作 -->
+		<action path="/IGPRR0301_Edit"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0301Action" 
+			input="/prr/IGPRR0301.jsp"
+			parameter="EDIT" 
+			name="IGPRR0301Form" 
+			validate="false" 
+			scope="request">
+			<forward name="DISP" path="/prr/IGPRR0300.jsp" />
+		</action>
+		
+		<!-- 自定义流程对应OA模式角色配置页面初始化操作 -->
+		<action path="/IGPRR0301_Delete"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0301Action" 
+			input="/prr/IGPRR0301.jsp"
+			parameter="DELETE" 
+			name="IGPRR0301Form" 
+			validate="false" 
+			scope="request">
+			<forward name="DISP" path="/IGPRR0301_Disp.do" />
+		</action>
+		
+		<!-- 角色查询操作 -->
+		<action path="/IGPRR0302_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0302Action" 
+			input="/prr/IGPRR0302.jsp"
+			parameter="DISP" 
+			name="IGPRR0302Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0302.jsp" />
+		</action>
+		<!-- 角色查询操作 -->
+		<action path="/IGPRR0302_Odd"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0302Action" 
+			input="/prr/IGPRR0302j.jsp"
+			parameter="DISP" 
+			name="IGPRR0302Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0302j.jsp" />
+		</action>
+		
+		<!-- 角色查询操作 -->
+		<action path="/IGPRR0302"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0302Action" 
+			input="/prr/IGPRR0302.jsp"
+			parameter="SEARCH" 
+			name="IGPRR0302Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0302.jsp" />
+		</action>
+		<!-- 角色查询操作 -->
+		<action path="/IGPRR0302_OSearch"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0302Action" 
+			input="/prr/IGPRR0302j.jsp"
+			parameter="SEARCH" 
+			name="IGPRR0302Form" 
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0302j.jsp" />
+		</action>
+		
+		<!-- 添加配置角色 -->
+		<action path="/IGPRR0302_Add"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0302Action" 
+			input="/prr/IGPRR0302.jsp"
+			parameter="ADD" 
+			name="IGPRR0302Form" 
+			validate="false" 
+			scope="session">
+		</action>
+		
+		<!-- 人员查询页面初始化操作 -->
+		<action path="/IGPRR0303_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0303Action" 
+			input="/prr/IGPRR0303.jsp"
+			parameter="SEARCH"
+			name="IGPRR0303Form"
+			validate="false"
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0303.jsp"/>
+		</action>
+		<!-- 人员查询操作 -->
+		<action path="/IGPRR0303"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0303Action" 
+			input="/prr/IGPRR0303.jsp"
+			parameter="SEARCH"
+			name="IGPRR0303Form"
+			validate="false"
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0303.jsp"/>
+		</action>
+		
+		<!-- 服务目录页面初始化 -->
+		<action path="/IGPRR0401_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0401Action"
+			scope="request"
+			input="/prr/IGPRR0401.jsp"
+			validate="false"
+			name="IGPRR0401Form"
+			parameter="DISP">
+			<forward name="DISP" path="/prr/IGPRR0401.jsp"/>
+		</action>
+		
+		<!-- 一级菜单下的服务目录显示页面初始化 -->
+		<action path="/IGPRR0402_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0402Action"
+			scope="request"
+			input="/prr/IGPRR0402.jsp"
+			validate="false"
+			name="IGPRR0402Form"
+			parameter="DISP">
+			<forward name="DISP" path="/prr/IGPRR0402.jsp"/>
+		</action>
+		
+		<action path="/IGPRR0101_Quartz"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0101Action" input="/crc/IGCRC0701.jsp"
+			parameter="DISP" name="IGPRR0101Form" validate="false" scope="session">
+			<forward name="DISP" path="/crc/IGCRC0701.jsp" />
+		</action>
+		<action path="/IGPRR0101_QuartzSdl_Insert"
+			type="com.deliverik.infogovernor.wkm.extwb.action.IGEXTWB0001Action"
+			parameter="INSERT" 
+			name="IGPRR0101Form"
+			validate="true" 
+			input="/IGPRR0101_QuartzSdl_Insert.do"
+			scope="session">
+			<forward name="DISP" path="/sdl/IGSDL0107.jsp" />
+		</action>
+		
+		<!-- 根据流程prid获取流程工单号 -->
+		<action path="/IGPRR0111_GetSerialNum"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0111Action"
+			input="/prr/IGPRR0111.jsp"
+			parameter="GETSERIAL"
+			name="IGPRR0111Form"
+			validate="false"
+			scope="request">
+		</action>
+		<!-- 流程组查询显示页面初始化 -->
+		<action path="/IGPRR0501_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0501Action"
+			parameter="DISP"
+			name="IGPRR0501Form"
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0501.jsp" />
+		</action>
+		<!-- 流程组查询显示 -->
+		<action path="/IGPRR0501"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0501Action"
+			parameter="SEARCH" 
+			input="/prr/IGPRR0501.jsp" 
+			name="IGPRR0501Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0501.jsp" />
+		</action>
+		<!-- 流程组查询返回 -->
+		<action path="/IGPRR0501_BACK"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0501Action"
+			parameter="SEARCH1" 
+			input="/prr/IGPRR0501.jsp" 
+			name="IGPRR0501Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/prr/IGPRR0501.jsp" />
+		</action>
+		<action path="/IGPRR0502_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0502Action"
+			parameter="DISP"
+			name="IGPRR0502Form"
+			scope="request">
+			<forward name="DISP" path="/prr/IGPRR0502.jsp" />
+		</action>
+		
+		<!-- 流程通用查询页面初始化 -->
+		<action path="/IGPRR0601_Disp"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0601Action"
+			parameter="DISP"
+			name="IGPRR0601Form"
+			scope="session"
+			validate="false"
+			input="/prr/IGPRR0601.jsp">
+			<forward name="DISP" path="/prr/IGPRR0601.jsp"/>
+		</action>
+		
+		<!-- 流程通用查询 -->
+		<action path="/IGPRR0601"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0601Action"
+			parameter="SEARCH"
+			name="IGPRR0601Form"
+			scope="session"
+			validate="false"
+			input="/prr/IGPRR0601.jsp">
+			<forward name="DISP" path="/prr/IGPRR0601.jsp"/>
+		</action>
+		
+		<!-- 流程通用查询 -->
+		<action path="/IGPRR0601_Back"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0601Action"
+			parameter="SEARCH1"
+			name="IGPRR0601Form"
+			scope="session"
+			validate="false"
+			input="/prr/IGPRR0601.jsp">
+			<forward name="DISP" path="/prr/IGPRR0601.jsp"/>
+		</action>
+		
+		<!-- 流程通用查询导出 -->
+		<action path="/IGPRR0601_Export"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0601Action"
+			parameter="EXPORT"
+			name="IGPRR0601Form"
+			scope="session"
+			validate="false"
+			input="/prr/IGPRR0601.jsp">
+		</action>
+	</action-mappings>
+</struts-config>
+
