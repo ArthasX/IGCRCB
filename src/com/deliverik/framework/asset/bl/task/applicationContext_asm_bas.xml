@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<bean id="ig117DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG117DAOImpl">
+	</bean>
+	<bean id="ig013DAO"
+	parent="baseHibernateDAO"
+	class="com.deliverik.framework.asset.model.dao.IG013DAOImpl">
+	</bean>
+	<bean id="eiBelongRelationDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.EiBelongRelationDAOImpl">
+	</bean>
+	<bean id="ig688DAO"
+	parent="baseHibernateDAO"
+	class="com.deliverik.framework.asset.model.dao.IG688DAOImpl">
+	</bean>
+
+	<bean id="ig225DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG225DAOImpl">
+	</bean>
+	
+	<bean id="ig545DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG545DAOImpl">
+	</bean>
+
+    <bean id="ig800DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG800DAOImpl">
+    </bean>
+
+    <bean id="ig002DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG002DAOImpl">
+    </bean>
+    
+    <bean id="ig749DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG749DAOImpl">
+    </bean>
+    
+    <bean id="ig313DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG313DAOImpl">
+    </bean>
+
+    <bean id="ig601DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG601DAOImpl">
+    </bean>
+
+    <bean id="ig778DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG778DAOImpl">
+    </bean>
+
+    <bean id="ig912DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG912DAOImpl">
+    </bean>
+	
+	<bean id="ig011DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG011DAOImpl">
+    </bean>
+    
+	<bean id="ig790DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG790DAOImpl">
+    </bean>
+	
+	<bean id="ig445DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG445DAOImpl">
+    </bean>
+    
+	<bean id="ig887DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.asset.model.dao.IG887DAOImpl">
+    </bean>
+
+	<bean id="ig809DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG809DAOImpl">
+	</bean>
+	
+	<bean id="compareTemplateDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.CompareTemplateDAOImpl">
+	</bean>
+
+	<bean id="ig499DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG499DAOImpl">
+	</bean>
+
+	<bean id="ig611DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.asset.model.dao.IG611DAOImpl">
+	</bean>
+	
+	<bean id="ig117BL" class="com.deliverik.framework.asset.bl.task.IG117BLImpl">
+		<property name="ig117DAO">
+			<ref bean="ig117DAO"/>
+		</property>
+	</bean>
+	 <bean id="eiBelongRelationBL" class="com.deliverik.framework.asset.bl.task.EiBelongRelationBLImpl">
+        <property name="eiBelongRelationDAO">
+            <ref bean="eiBelongRelationDAO"/>
+        </property>
+    </bean>
+    <bean id="ig013BL" class="com.deliverik.framework.asset.bl.task.IG013BLImpl">
+        <property name="ig013DAO">
+            <ref bean="ig013DAO"/>
+        </property>
+        <property name="ig688DAO">
+            <ref bean="ig688DAO"/>
+        </property>
+        <property name="userRoleVWDAO">
+            <ref bean="userRoleVWDAO"/>
+        </property>
+        
+         <property name="ig225DAO">
+            <ref bean="ig225DAO"/>
+        </property>
+        <property name="ig800DAO">
+            <ref bean="ig800DAO"/>
+        </property>
+        <property name="ig117DAO">
+            <ref bean="ig117DAO"/>
+        </property>
+        <property name="ig887DAO">
+            <ref bean="ig887DAO"/>
+        </property>
+        <property name="ig749DAO">
+            <ref bean="ig749DAO"/>
+        </property>
+    </bean>
+
+	<bean id="ig225BL" class="com.deliverik.framework.asset.bl.task.IG225BLImpl">
+		<property name="ig225DAO">
+			<ref bean="ig225DAO"/>
+		</property>
+		<property name="ig117BL">
+			<ref bean="ig117BL"/>
+		</property>
+	</bean>
+	
+	<bean id="ig545BL" class="com.deliverik.framework.asset.bl.task.IG545BLImpl">
+		<property name="ig545DAO">
+			<ref bean="ig545DAO"/>
+		</property>
+	</bean>
+
+    <bean id="ig800BL" class="com.deliverik.framework.asset.bl.task.IG800BLImpl">
+        <property name="ig800DAO">
+            <ref bean="ig800DAO"/>
+        </property>
+        <property name="ig002DAO">
+            <ref bean="ig002DAO"/>
+        </property>
+        <property name="ig225DAO">
+            <ref bean="ig225DAO"/>
+        </property>
+        <property name="ig013BL">
+            <ref bean="ig013BL"/>
+        </property>
+    </bean>
+
+    <bean id="ig313BL" class="com.deliverik.framework.asset.bl.task.IG313BLImpl">
+        <property name="ig313DAO">
+            <ref bean="ig313DAO"/>
+        </property>
+    </bean>
+
+    <bean id="ig601BL" class="com.deliverik.framework.asset.bl.task.IG601BLImpl">
+        <property name="ig601DAO">
+            <ref bean="ig601DAO"/>
+        </property>
+        <property name="ig013DAO">
+            <ref bean="ig013DAO"/>
+        </property>
+        <property name="ig225DAO">
+            <ref bean="ig225DAO"/>
+        </property>
+        <property name="ig800DAO">
+            <ref bean="ig800DAO"/>
+        </property>
+        <property name="ig117DAO">
+            <ref bean="ig117DAO"/>
+        </property>
+    </bean>
+
+    <bean id="ig778BL" class="com.deliverik.framework.asset.bl.task.IG778BLImpl">
+        <property name="ig778DAO">
+            <ref bean="ig778DAO"/>
+        </property>
+        <property name="ig013DAO">
+            <ref bean="ig013DAO"/>
+        </property>
+        <property name="ig225DAO">
+            <ref bean="ig225DAO"/>
+        </property>
+        <property name="ig800DAO">
+            <ref bean="ig800DAO"/>
+        </property>
+        <property name="ig117DAO">
+            <ref bean="ig117DAO"/>
+        </property>
+    </bean>
+
+    <bean id="ig912BL" class="com.deliverik.framework.asset.bl.task.IG912BLImpl">
+        <property name="ig912DAO">
+            <ref bean="ig912DAO"/>
+        </property>
+        <property name="ig790DAO">
+            <ref bean="ig790DAO"/>
+        </property>
+    </bean>
+    
+	<bean id="ig189BL" class="com.deliverik.framework.asset.bl.task.IG189BLImpl">
+        <property name="ig011DAO">
+            <ref bean="ig011DAO"/>
+        </property>
+        <property name="ig445DAO">
+            <ref bean="ig445DAO"/>
+        </property>
+    </bean>
+
+	<bean id="ig809BL" class="com.deliverik.framework.asset.bl.task.IG809BLImpl">
+		<property name="ig809DAO">
+			<ref bean="ig809DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="compareTemplateBL" class="com.deliverik.framework.asset.bl.task.CompareTemplateBLImpl">
+        <property name="compareTemplateDAO">
+            <ref bean="compareTemplateDAO"/>
+        </property>
+    </bean>
+	 <bean id="ig499BL" class="com.deliverik.framework.asset.bl.task.IG499BLImpl">
+        <property name="ig499DAO">
+            <ref bean="ig499DAO"/>
+        </property>
+    </bean>
+	 <bean id="ig611BL" class="com.deliverik.framework.asset.bl.task.IG611BLImpl">
+        <property name="ig611DAO">
+            <ref bean="ig611DAO"/>
+        </property>
+    </bean>
+</beans>
+

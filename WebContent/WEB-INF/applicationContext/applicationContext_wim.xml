@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+	<!-- DAO -->
+	
+	<!-- 工作项定义DAO -->
+	<bean id="workDefinitionDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.wim.model.dao.WorkDefinitionDAOImpl">
+	</bean>
+	<!-- 工作实例DAO -->
+	<bean id="workInstanceDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.wim.model.dao.WorkInstanceDAOImpl">
+	</bean>
+	<!-- 工作日志DAO -->
+	<bean id="workLogDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.wim.model.dao.WorkLogDAOImpl">
+	</bean>
+	
+	<!-- Task BL -->
+	
+	<!-- 工作项定义TaskBL -->
+	<bean id="workDefinitionBL" class="com.deliverik.infogovernor.wim.bl.task.WorkDefinitionBLImpl">
+		<property name="workDefinitionDAO">
+			<ref bean="workDefinitionDAO"/>
+		</property>
+	</bean>
+	<!-- 工作实例TaskBL -->
+	<bean id="workInstanceBL" class="com.deliverik.infogovernor.wim.bl.task.WorkInstanceBLImpl">
+		<property name="workInstanceDAO">
+			<ref bean="workInstanceDAO"/>
+		</property>
+	</bean>
+	<!-- 工作日志TaskBL -->
+	<bean id="workLogBL" class="com.deliverik.infogovernor.wim.bl.task.WorkLogBLImpl">
+		<property name="workLogDAO">
+			<ref bean="workLogDAO"/>
+		</property>
+	</bean>
+
+	<!-- 工作项定义ControlBL -->
+	<bean id="igwim01BL" class="com.deliverik.infogovernor.wim.bl.IGWIM01BLImpl">
+		<property name="workDefinitionBL">
+			<ref bean="workDefinitionBL"/>
+		</property>
+	</bean>
+</beans>

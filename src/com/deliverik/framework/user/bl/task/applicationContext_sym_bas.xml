@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<bean id="organizationTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.OrganizationTBDAOImpl">
+	</bean>
+	<bean id="userInfoVWDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.UserInfoVWDAOImpl">
+	</bean>
+	<bean id="userTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.UserTBDAOImpl">
+	</bean>
+	<bean id="roleTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.RoleTBDAOImpl">
+	</bean>
+	<bean id="userRoleTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.UserRoleTBDAOImpl">
+	</bean>
+	<bean id="userRoleVWDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.UserRoleVWDAOImpl">
+	</bean>
+	<bean id="roleActionTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.RoleActionTBDAOImpl">
+	</bean>
+	<bean id="actionTBDAO" parent="baseHibernateDAO"
+		class=" com.deliverik.framework.user.model.dao.ActionTBDAOImpl">
+	</bean>
+	<bean id="roleActionVWDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.user.model.dao.RoleActionVWDAOImpl">
+    </bean>
+	<bean id="ig622DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.user.model.dao.IG622DAOImpl">
+    </bean>
+	<bean id="userBL" class="com.deliverik.framework.user.bl.task.UserBLImpl">
+		<property name="userTBDAO">
+			<ref bean="userTBDAO" />
+		</property>
+		<property name="userInfoVWDAO">
+			<ref bean="userInfoVWDAO" />
+		</property>
+	</bean>
+	<bean id="organizationBL" class="com.deliverik.framework.user.bl.task.OrganizationBLImpl">
+		<property name="organizationTBDAO">
+			<ref bean="organizationTBDAO" />
+		</property>
+	</bean>
+	<bean id="userRoleBL" class="com.deliverik.framework.user.bl.task.UserRoleBLImpl">
+		<property name="userRoleTBDAO">
+			<ref bean="userRoleTBDAO" />
+		</property>
+		<property name="userRoleVWDAO">
+			<ref bean="userRoleVWDAO" />
+		</property>
+	</bean>
+	<bean id="roleBL" class="com.deliverik.framework.user.bl.task.RoleBLImpl">
+		<property name="roleTBDAO">
+			<ref bean="roleTBDAO" />
+		</property>
+	</bean>
+	<bean id="actionBL" class="com.deliverik.framework.user.bl.task.ActionBLImpl">
+		<property name="actionTBDAO">
+			<ref bean="actionTBDAO" />
+		</property>
+	</bean>
+	<bean id="roleActionBL" class="com.deliverik.framework.user.bl.task.RoleActionBLImpl">
+		<property name="roleActionTBDAO">
+			<ref bean="roleActionTBDAO" />
+		</property>
+	</bean>
+	<bean id="ig622BL" class="com.deliverik.framework.user.bl.task.IG622BLImpl" init-method="init">
+		<property name="ig622DAO">
+			<ref bean="ig622DAO" />
+		</property>
+	</bean>
+</beans>
+

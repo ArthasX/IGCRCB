@@ -1,0 +1,567 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+	<!-- DAO -->
+	<bean id="soc0151DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0151DAOImpl">
+	</bean>
+	<bean id="soc0151VWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0151VWDAOImpl">
+	</bean>
+	<bean id="soc0117DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0117DAOImpl">
+	</bean>
+    <bean id="soc0118DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0118DAOImpl">
+    </bean>
+	
+	<bean id="soc0117VWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0117VWDAOImpl">
+	</bean>
+    <bean id="soc0118VWDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0118VWDAOImpl">
+    </bean>
+	<bean id="soc0109VWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0109VWDAOImpl">
+	</bean>
+	
+
+
+    <bean id="soc0107VWDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0107VWDAOImpl">
+    </bean>
+
+    <bean id="soc0124DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0124DAOImpl">
+    </bean>
+
+	<bean id="soc0109DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0109DAOImpl">
+	</bean>
+	
+
+
+    <bean id="soc0107DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0107DAOImpl">
+    </bean>
+
+    <bean id="soc0129DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0129DAOImpl">
+    </bean>
+    
+    <bean id="soc0123DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0123DAOImpl">
+    </bean>
+    
+    <bean id="soc0605DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0605DAOImpl">
+	</bean>
+	 <bean id="soc0606DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0606DAOImpl">
+	</bean>
+	<bean id="entityItemUntreatedVWDAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.EntityItemUntreatedVWDAOImpl">
+	</bean>
+    <bean id="soc0607DAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0607DAOImpl">
+	</bean>
+    <bean id="soc0111DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0111DAOImpl">
+    </bean>
+    
+    <bean id ="soc0112DAO" 
+      parent="baseHibernateDAO"
+      class="com.deliverik.framework.soc.asset.model.dao.SOC0112DAOImpl">
+    </bean>
+    
+    <bean id ="soc0126DAO" 
+      parent="baseHibernateDAO"
+      class="com.deliverik.framework.soc.asset.model.dao.SOC0126DAOImpl">
+    </bean>
+    
+    <bean id ="soc0120DAO" 
+      parent="baseHibernateDAO"
+      class= "com.deliverik.framework.soc.asset.model.dao.SOC0120DAOImpl">
+    </bean>
+    
+    <bean id ="soc0113DAO" 
+      parent="baseHibernateDAO"
+      class= "com.deliverik.framework.soc.asset.model.dao.SOC0113DAOImpl">
+    </bean>
+    
+    <bean id="soc0119DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0119DAOImpl">
+    </bean>
+    
+    <bean id="soc0141DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0141DAOImpl">
+    </bean>
+    
+	<bean id="soc0128DAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.framework.soc.asset.model.dao.SOC0128DAOImpl">
+    </bean>
+
+
+	<bean id="soc0110DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0110DAOImpl">
+	</bean>
+	<bean id="soc0115DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0115DAOImpl">
+	</bean>
+	<bean id="soc0116DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0116DAOImpl">
+	</bean>
+	<bean id="soc0121DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0121DAOImpl">
+	</bean>
+	
+	<bean id="soc0101DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0101DAOImpl">
+	</bean>
+	
+	<bean id="soc0102DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0102DAOImpl">
+	</bean>
+	
+	<bean id="soc0103DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0103DAOImpl">
+	</bean>
+	
+	<bean id="soc0104DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0104DAOImpl">
+	</bean>
+	
+	<bean id="soc0105DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0105DAOImpl">
+	</bean>
+	<bean id="soc0106DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0106DAOImpl">
+	</bean>
+	
+	<bean id="soc0114DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0114DAOImpl">
+	</bean>
+	<bean id="soc0125DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0125DAOImpl">
+	</bean>
+	<bean id="soc0131DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0131DAOImpl">
+	</bean>
+	<bean id="soc0130DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SOC0130DAOImpl">
+	</bean>
+	
+	<bean id="soc0305DAO" 
+	    parent="baseHibernateDAO"
+	    class="com.deliverik.framework.soc.asset.model.dao.SOC0305DAOImpl">
+	</bean>
+	
+	<bean id="soc0307DAO" 
+	    parent="baseHibernateDAO"
+	    class="com.deliverik.framework.soc.asset.model.dao.SOC0307DAOImpl">
+	</bean>
+	<!-- 资产关系表DAO -->
+	<bean id="soc0152DAO" 
+	    parent="baseHibernateDAO"
+	    class="com.deliverik.framework.soc.asset.model.dao.SOC0152DAOImpl">
+	</bean>
+	
+	<bean id="cicollecttaskDAO" 
+		parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.CicollecttaskDAOImpl">
+	</bean>
+	
+	<bean id="timer01DAO" 
+		parent="baseHibernateDAO" 
+		class="com.deliverik.framework.soc.asset.model.dao.Timer01DAOImpl">
+	</bean>
+	
+	<bean id="timer02DAO" 
+		parent="baseHibernateDAO" 
+		class="com.deliverik.framework.soc.asset.model.dao.Timer02DAOImpl">
+	</bean>
+	
+	<!-- 告警系统显示信息 -->
+	<bean id="indicatorLightsSystemDAO" parent="baseHibernateDAO"
+	    class="com.deliverik.framework.soc.asset.model.dao.IndicatorLightsSystemDAOImpl">
+	</bean>
+	<!-- 告警系统显示区域表 -->
+	<bean id="indicatorLightsXmlDAO"
+	    parent="baseHibernateDAO"
+	   class="com.deliverik.framework.soc.asset.model.dao.IndicatorLightsXmlDAOImpl">
+	</bean>
+	<!-- 监控告警ip -->
+	<bean id="monitoringAlarmIPVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.MonitoringAlarmIPVWDAOImpl">
+	</bean>
+	<!-- 同步告警系统 -->
+	<bean id="synchronizationAlarmSystemVWDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.framework.soc.asset.model.dao.SynchronizationAlarmSystemVWDAOImpl">
+	</bean>
+	<bean id="indicatorLightsSystemBL" class="com.deliverik.framework.soc.asset.bl.task.IndicatorLightsSystemBLImpl">
+		<property name="indicatorLightsSystemDAO">
+			<ref bean="indicatorLightsSystemDAO"/>
+		</property>
+	</bean>
+	<bean id="indicatorLightsXmlBL" class="com.deliverik.framework.soc.asset.bl.task.IndicatorLightsXmlBLImpl">
+		<property name="indicatorLightsXmlDAO">
+			<ref bean="indicatorLightsXmlDAO"/>
+		</property>
+	</bean>
+	<!-- 监控告警ipBL -->
+	<bean id="monitoringAlarmIPVWBL" class="com.deliverik.framework.soc.asset.bl.task.MonitoringAlarmIPVWBLImpl">
+		<property name="monitoringAlarmIPVWDAO">
+			<ref bean="monitoringAlarmIPVWDAO" />
+		</property>
+	</bean>
+	<!-- 同步告警系统BL -->
+	<bean id="synchronizationAlarmSystemVWBL" class="com.deliverik.framework.soc.asset.bl.task.SynchronizationAlarmSystemVWBLImpl">
+		<property name="synchronizationAlarmSystemVWDAO">
+			<ref bean="synchronizationAlarmSystemVWDAO" />
+		</property>
+	</bean>
+	
+	<!-- Task BL -->
+	<bean id="igDomainGraphBL" class="com.deliverik.framework.soc.asset.bl.task.IGDomainGraphBLImpl">
+        <property name="soc0114BL">
+            <ref bean="soc0114BL"/>
+        </property>
+    </bean>
+    
+    <bean id="socDomainGraphBL" class="com.deliverik.framework.soc.asset.bl.task.SocDomainGraphBLImpl">
+        <property name="soc0114BL">
+            <ref bean="soc0114BL"/>
+        </property>
+        <property name="soc0111BL">
+            <ref bean="soc0111BL"/>
+        </property>
+        <property name="soc0121BL">
+            <ref bean="soc0121BL"/>
+        </property>
+    </bean>
+    
+    <bean id="socImpactGraphBL" class="com.deliverik.framework.soc.asset.bl.task.SocImpactGraphBLImpl">
+        <property name="soc0114BL">
+            <ref bean="soc0114BL"/>
+        </property>
+        <property name="soc0111BL">
+            <ref bean="soc0111BL"/>
+        </property>
+        <property name="soc0118BL">
+            <ref bean="soc0118BL"/>
+        </property>
+    </bean>
+    
+	<bean id="soc0151BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0151BLImpl">
+		<property name="soc0151DAO">
+			<ref bean="soc0151DAO"/>
+		</property>
+	</bean>
+	<bean id="soc0151VWBL" class="com.deliverik.framework.soc.asset.bl.task.SOC0151VWBLImpl">
+		<property name="soc0151VWDAO">
+			<ref bean="soc0151VWDAO"/>
+		</property>
+	</bean>
+	<bean id="soc0117BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0117BLImpl">
+		<property name="soc0117DAO">
+			<ref bean="soc0117DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="soc0130BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0130BLImpl">
+		<property name="soc0130DAO">
+			<ref bean="soc0130DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="soc0131BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0131BLImpl">
+		<property name="soc0131DAO">
+			<ref bean="soc0131DAO"/>
+		</property>
+	</bean>
+    <bean id="soc0118BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0118BLImpl">
+        <property name="soc0118DAO">
+            <ref bean="soc0118DAO"/>
+        </property>
+        <property name="soc0124DAO">
+            <ref bean="soc0124DAO"/>
+        </property>
+        <property name="userRoleVWDAO">
+            <ref bean="userRoleVWDAO"/>
+        </property>
+        
+         <property name="soc0109DAO">
+            <ref bean="soc0109DAO"/>
+        </property>
+        <property name="soc0107DAO">
+            <ref bean="soc0107DAO"/>
+        </property>
+        <property name="soc0117DAO">
+            <ref bean="soc0117DAO"/>
+        </property>
+        <property name="soc0128DAO">
+            <ref bean="soc0128DAO"/>
+        </property>
+        <property name="soc0123DAO">
+            <ref bean="soc0123DAO"/>
+        </property>
+        <property name="soc0605DAO">
+            <ref bean="soc0605DAO"/>
+        </property>
+        <property name="rehearseDAO">
+            <ref bean="rehearseDAO"/>
+        </property>
+    </bean>
+
+	<bean id="soc0109BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0109BLImpl">
+		<property name="soc0109DAO">
+			<ref bean="soc0109DAO"/>
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL"/>
+		</property>
+	</bean>
+
+    <bean id="soc0107BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0107BLImpl">
+        <property name="soc0107DAO">
+            <ref bean="soc0107DAO"/>
+        </property>
+        <property name="soc0129DAO">
+            <ref bean="soc0129DAO"/>
+        </property>
+        <property name="soc0109DAO">
+            <ref bean="soc0109DAO"/>
+        </property>
+        <property name="soc0118BL">
+            <ref bean="soc0118BL"/>
+        </property>
+        <property name="soc0606DAO">
+            <ref bean="soc0606DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0118VWBL" class="com.deliverik.framework.soc.asset.bl.task.SOC0118VWBLImpl">
+        <property name="soc0118VWDAO">
+            <ref bean="soc0118VWDAO"/>
+        </property>
+        <property name="userRoleVWDAO">
+            <ref bean="userRoleVWDAO"/>
+        </property>
+        
+         <property name="soc0109VWDAO">
+            <ref bean="soc0109VWDAO"/>
+        </property>
+        <property name="soc0107VWDAO">
+            <ref bean="soc0107VWDAO"/>
+        </property>
+        <property name="soc0117VWDAO">
+            <ref bean="soc0117VWDAO"/>
+        </property>
+        <property name="rehearseDAO">
+            <ref bean="rehearseDAO"/>
+        </property>
+    </bean>
+
+	<bean id="soc0109VWBL" class="com.deliverik.framework.soc.asset.bl.task.SOC0109VWBLImpl">
+		<property name="soc0109VWDAO">
+			<ref bean="soc0109VWDAO"/>
+		</property>
+		<property name="soc0117VWBL">
+			<ref bean="soc0117VWBL"/>
+		</property>
+	</bean>
+
+    <bean id="soc0107VWBL" class="com.deliverik.framework.soc.asset.bl.task.SOC0107VWBLImpl">
+        <property name="soc0107VWDAO">
+            <ref bean="soc0107VWDAO"/>
+        </property>
+        <property name="soc0109VWDAO">
+            <ref bean="soc0109VWDAO"/>
+        </property>
+        <property name="soc0118VWBL">
+            <ref bean="soc0118VWBL"/>
+        </property>
+        <property name="soc0129DAO">
+            <ref bean="soc0129DAO"/>
+        </property>
+    </bean>
+    	<bean id="soc0117VWBL" class="com.deliverik.framework.soc.asset.bl.task.SOC0117VWBLImpl">
+		<property name="soc0117VWDAO">
+			<ref bean="soc0117VWDAO"/>
+		</property>
+	</bean>
+    <bean id="entityItemUntreatedVWBL" class="com.deliverik.framework.soc.asset.bl.task.EntityItemUntreatedVWBLImpl">
+    	<property name="entityItemUntreatedVWDAO">
+    		<ref bean="entityItemUntreatedVWDAO"/>
+    	</property>
+    </bean>
+    <bean id="cicollecttaskBL" class="com.deliverik.framework.soc.asset.bl.task.CicollecttaskBLImpl">
+    	<property name="cicollecttaskDAO">
+    		<ref bean="cicollecttaskDAO"/>
+    	</property>
+    </bean>
+    
+    <bean id="timer01BL" class="com.deliverik.framework.soc.asset.bl.task.Timer01BLImpl">
+    	<property name="timer01DAO">
+    		<ref bean="timer01DAO"/>
+    	</property>
+    </bean>
+    
+    <bean id="timer02BL" class="com.deliverik.framework.soc.asset.bl.task.Timer02BLImpl">
+    	<property name="timer02DAO">
+    		<ref bean="timer02DAO"/>
+    	</property>
+    </bean>
+
+    <bean id="soc0119BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0119BLImpl">
+        <property name="soc0119DAO">
+            <ref bean="soc0119DAO"/>
+        </property>
+    </bean>
+
+
+
+	 <bean id="soc0110BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0110BLImpl">
+        <property name="soc0110DAO">
+            <ref bean="soc0110DAO"/>
+        </property>
+    </bean>
+     <bean id="soc0111BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0111BLImpl">
+        <property name="soc0111DAO">
+            <ref bean="soc0111DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0112BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0112BLImpl">
+        <property name="soc0112DAO">
+            <ref bean="soc0112DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0126BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0126BLImpl">
+        <property name="soc0126DAO">
+            <ref bean="soc0126DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0120BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0120BLImpl">
+        <property name="soc0120DAO">
+            <ref bean="soc0120DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0115BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0115BLImpl">
+        <property name="soc0115DAO">
+            <ref bean="soc0115DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0116BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0116BLImpl">
+        <property name="soc0116DAO">
+            <ref bean="soc0116DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0113BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0113BLImpl">
+        <property name="soc0113DAO">
+            <ref bean="soc0113DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0121BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0121BLImpl">
+        <property name="soc0121DAO">
+            <ref bean="soc0121DAO"/>
+        </property>
+      	<property name="soc0141DAO">
+            <ref bean="soc0141DAO"/>
+        </property> 
+    </bean>
+    
+    <bean id="soc0101BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0101BLImpl">
+        <property name="soc0101DAO">
+            <ref bean="soc0101DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0102BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0102BLImpl">
+        <property name="soc0102DAO">
+            <ref bean="soc0102DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0103BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0103BLImpl">
+        <property name="soc0103DAO">
+            <ref bean="soc0103DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0104BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0104BLImpl">
+        <property name="soc0104DAO">
+            <ref bean="soc0104DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0105BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0105BLImpl">
+        <property name="soc0105DAO">
+            <ref bean="soc0105DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0106BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0106BLImpl">
+        <property name="soc0106DAO">
+            <ref bean="soc0106DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0114BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0114BLImpl">
+        <property name="soc0114DAO">
+            <ref bean="soc0114DAO"/>
+        </property>
+    </bean>
+    <bean id="soc0125BL"
+		class="com.deliverik.framework.soc.asset.bl.task.SOC0125BLImpl">
+		<property name="soc0125DAO">
+			<ref bean="soc0125DAO"/>
+		</property>
+	</bean>
+    <bean id="soc0305BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0305BLImpl">
+        <property name="soc0305DAO">
+            <ref bean="soc0305DAO"/>
+        </property>
+        <property name="soc0307DAO">
+            <ref bean="soc0307DAO"/>
+        </property>
+    </bean>
+    <!-- 资产关系表BL -->
+     <bean id="soc0152BL" class="com.deliverik.framework.soc.asset.bl.task.SOC0152BLImpl">
+        <property name="soc0152DAO">
+            <ref bean="soc0152DAO"/>
+        </property>
+    </bean>
+</beans>
+

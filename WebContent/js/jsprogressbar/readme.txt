@@ -1,0 +1,1 @@
+使用时需要引入prototype.js

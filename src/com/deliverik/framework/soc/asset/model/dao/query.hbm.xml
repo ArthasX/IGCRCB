@@ -1,0 +1,1271 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.framework.soc.asset.model.entity">
+	 <!-- 资产项查询 -->
+    <sql-query name="EntityItemVWDAO.getSearchCount">
+    <![CDATA[
+        select count(*)
+           from SOC0124 ei
+        where 1=1 AND ECATEGORY NOT IN ('007','008')
+    ]]> 
+    </sql-query>   
+    
+     <sql-query name="EntityItemVWDAO.configItemQuery">
+    <![CDATA[
+        select A.EIID
+           from SOC0118 A, SOC0107 B, SOC0109 C 
+        where A.EIID = B.EIID
+          and A.EIVERSION = B.CIVERSION
+          and C.CID = B.CID
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="SOC0437DAO.searchCutItem">
+    <![CDATA[
+		select * from(
+		select a.einame tsname,a.eiid,b.civalue tsize,'' freesize,'' usesize,e.civalue usagerate,
+		a.cvalue,a.cvid,f.instance,f.dbname,a.eid from 
+		(select p.eiid,p.einame,t.cvalue,t.cvid,p.eiversion,p.eismallversion,p.eid from soc0118 p left join soc0437 t on p.eiid=t.eiid where eid='CM02010004') a,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020100040009') b,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020100040012') e,
+		(select i.einame instance,u.brcldeiid eiid,o.einame dbname,i.eiversion,i.eismallversion from soc0110 u,soc0118 i,
+		(select i.einame,u.brcldeiid,i.eiversion,i.eismallversion from soc0110 u,soc0118 i 
+		where u.brassetrelation='CR020004000001' and i.eid='CM02010001' 
+		and (u.brpareiid=i.eiid and u.brparversion=i.eiversion and u.brparsmallversion=i.eismallversion)) o
+		where u.brassetrelation='CR020100020002' and i.eid='CM02010002' 
+		and (u.brpareiid=i.eiid and u.brparversion =i.eiversion and u.brparsmallversion=i.eismallversion)
+		and (u.brpareiid =o.brcldeiid and u.brparversion=o.eiversion and u.brparsmallversion=o.eismallversion)) f
+		where (a.eiid=b.eiid and a.eiversion =b.civersion and a.eismallversion=b.cismallversion) 
+		and (a.eiid=e.eiid and a.eiversion =e.civersion and a.eismallversion=e.cismallversion)
+		and (a.eiid=f.eiid and a.eiversion =f.eiversion and a.eismallversion=f.eismallversion)
+		union all
+		select a.einame tsname,a.eiid,b.civalue tsize,'' freesize,'' usesize,e.civalue usagerate,
+		a.cvalue,a.cvid,f.instance,f.dbname,a.eid from 
+		(select p.eiid,p.einame,t.cvalue,t.cvid,p.eiversion,p.eismallversion,p.eid from soc0118 p left join soc0437 t 
+		on p.eiid=t.eiid where eid='CM02030003') a,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020300030004') b,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020300030006') e,
+		(select i.einame instance,u.brcldeiid eiid,o.einame dbname,i.eiversion,i.eismallversion from soc0110 u,soc0118 i,
+		(select i.einame,u.brcldeiid,i.eiversion,i.eismallversion from soc0110 u,soc0118 i 
+		where u.brassetrelation='CR020004000001' and i.eid='CM02030001' 
+		and (u.brpareiid=i.eiid and u.brparversion=i.eiversion and u.brparsmallversion=i.eismallversion)) o
+		where u.brassetrelation='CR020300010002' and i.eid='CM02030002' 
+		and (i.eiid =o.brcldeiid and i.eiversion=o.eiversion and i.eismallversion=o.eismallversion)) f
+		where (a.eiid=b.eiid and a.eiversion =b.civersion and a.eismallversion =b.cismallversion) 
+		and (a.eiid=e.eiid and a.eiversion =e.civersion and a.eismallversion =e.cismallversion)
+		and (a.eiid=f.eiid and a.eiversion =f.eiversion and a.eismallversion =f.eismallversion)
+		union all
+		select a.einame tsname,a.eiid,b.civalue tsize,'' freesize,'' usesize,e.civalue usagerate,
+		a.cvalue,a.cvid,f.instance,'' dbname,a.eid from 
+		(select p.eiid,p.einame,t.cvalue,t.cvid,p.eiversion,p.eismallversion,p.eid from soc0118 p left join soc0437 t 
+		on p.eiid=t.eiid where eid='CM02070003') a,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020700030002') b,
+		(select eiid,civalue,civersion,cismallversion from soc0107 where cid='CI020700030009') e,
+		(select i.einame instance,u.brcldeiid eiid,i.eiversion,i.eismallversion from soc0110 u,soc0118 i 
+		where u.brassetrelation='CR020700010002' and i.eid='CM02070001' 
+		and (u.brpareiid=i.eiid and u.brparversion=i.eiversion and u.brparsmallversion=i.eismallversion)) f
+		where (a.eiid=b.eiid and a.eiversion =b.civersion and a.eismallversion=b.cismallversion) 
+		and (a.eiid=e.eiid and a.eiversion =e.civersion and a.eismallversion=e.cismallversion)
+		and (a.eiid=f.eiid and a.eiversion =f.eiversion and a.eismallversion=f.eismallversion)) a where 1=1
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="EntityItemVWDAO.findByCond">
+    <![CDATA[
+        select ei.*
+           from SOC0124 ei
+        where 1=1 AND ECATEGORY NOT IN ('007','008')
+    ]]> 
+    </sql-query>
+    
+    <!-- 全件检索审计资产属性及属性对比类型  -->
+	<sql-query name="AuditConfigItemDAO.getConfigAucmptype">
+	<![CDATA[
+			select ac.ciid, ac.cid, ac.ciexpire, ac.cicurver, ac.cistatus, ac.ciupdtime, 
+				   (case when ar.auflag = '0' then ar.auvalue else (select ci.civalue from SOC0107 ci where ci.eiid = ac.eiid and ci.cid = ac.cid and ci.eid = ac.eid) end) as civalue,
+				   ac.civerinfo, ac.eid, ac.eiid, ac.esyscoding, ac.civersion, ac.cismallversion, ac.fingerprint
+			from SOC0101 ac
+			left join SOC0103 ar on ac.ciid = ar.ciid
+			where ac.eiid = :eiid
+	]]> 
+	</sql-query>
+    
+    <!-- 清空资产属性表数据  -->
+	<sql-query name="AuditConfigItemDAO.deleteAuditConfigItem">
+	<![CDATA[
+			delete from SOC0101
+	]]> 
+	</sql-query>
+    
+    <!-- 清空资产表数据  -->
+	<sql-query name="AuditEntityItemDAO.deleteAuditEntityItem">
+	<![CDATA[
+			delete from SOC0102
+	]]> 
+	</sql-query>
+	
+	<!-- 清空审计导入表数据  -->
+	<sql-query name="AuditWaitTaskDAO.deleteAll">
+	<![CDATA[
+			delete from SOC0105
+	]]> 
+	</sql-query>
+	
+	 <!-- 资产域定义版本查询-->
+    <sql-query name="EiDomainDefDAO.searchEiDomainDefByPK">
+    <![CDATA[
+       select ei.eiddid,ei.name,ei.version,ei.description,ei.createtime,ei.updatetime,ei.fingerprint
+           from SOC0111 ei where 1=1
+    ]]> 
+    </sql-query>
+	
+	<!-- 资产预定义查询 -->
+    <sql-query name="EiDomainDefDAO.getSearchCount">
+    <![CDATA[
+        select count(*)
+           from SOC0111 ei,
+             (select max(version) as version,eiddid from SOC0111 group by eiddid) B 
+             where ei.eiddid=B.eiddid and ei.version=B.version
+    ]]> 
+    </sql-query>
+    <!-- 资产预定义查询 -->
+    <sql-query name="EiDomainDefDAO.getSearchEiDomainDef">
+    <![CDATA[
+       select ei.eiddid,ei.name,ei.version,ei.description,ei.createtime,ei.updatetime,ei.fingerprint
+           from SOC0111 ei,
+           (select max(version) as version,eiddid from SOC0111 group by eiddid) B 
+            where ei.eiddid=B.eiddid and ei.version=B.version
+    ]]> 
+    </sql-query>
+    <!-- 导入对象查询 -->
+    <sql-query name="ImportVersionDAO.getSearchCount">
+    <![CDATA[
+           select count(*) from  ( select im.*
+           from SOC0120 im,(select max(impversion) as impversion,impeiname from SOC0120 group by impeiname) B 
+           where im.impeiname=B.impeiname and im.impversion=B.impversion) as im where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="ImportVersionDAO.getSearchImportVersion">
+    <![CDATA[
+		    select im.*
+           from SOC0120 im,(select max(impversion) as impversion,impeiname from SOC0120 group by impeiname) B 
+           where im.impeiname=B.impeiname and im.impversion=B.impversion 
+    ]]> 
+    </sql-query>
+    <!-- 导入对象查询-->
+    <sql-query name="ImportVersionDAO.getSearchImportVersionAutoCollect">
+    <![CDATA[
+		   select iv.*, eimptypeid   from  ( select im.*
+           from SOC0120 im,(select max(impversion) as impversion,impeiname from SOC0120 group by impeiname) B 
+           where im.impeiname=B.impeiname and im.impversion=B.impversion) as iv 
+           left join SOC0113 eigon iv.impcitype=eimptypeid
+    ]]> 
+    </sql-query>
+    <!-- 导入对象版本查询-->
+    <sql-query name="ImportVersionDAO.searchImportVersionByImpname">
+    <![CDATA[
+       select im.*
+           from SOC0120 im where 1=1
+    ]]> 
+    </sql-query>
+    
+     <sql-query name="EiDomainDetailDAO.findBySQL">
+    <![CDATA[
+    	select ei.eiddid,ei.eiddversion,ei.einame,ei.eiImportversion,ei.createtime,ei.deleteflag,ei.fingerprint,ei.modifyFlag    
+          from SOC0112 ei,
+            (select eiddversion,eiddid,einame,max(eiImportversion) as eiImportversion from SOC0112 group by eiddid,einame,eiddversion)B
+          where ei.eiddid = B.eiddid and ei.einame = B.einame and ei.eiImportversion = B.eiImportversion and ei.eiddversion = B.eiddversion 
+    ]]> 
+    </sql-query>
+	
+    <!-- 审计对比结果查询 -->
+	<sql-query name="AuditResultDAO.findByCondOne">
+	<![CDATA[
+	 		select ar.autid,ar.eiid,ar.autime,ar.eiversion,ar.eismallversion,ar.einame,
+	 		ar.aucmptype,ar.esyscoding,ar.auflag from SOC0103 ar where 1 = 1 
+	]]> 
+	</sql-query>
+	
+	<!-- 更新当前数据为不合理（审计对比结果） -->
+	<sql-query name="AuditResultDAO.updateAuditResultWithout">
+	<![CDATA[
+	 		update SOC0103 ar
+	 		set ar.auflag = '0'
+	 		where 1 = 1 
+	]]> 
+	</sql-query>
+	
+	<!-- 资产明细顶级 -->
+    <sql-query name="EiDomainDefVWDAO.getSearchCount">
+    <![CDATA[
+    	select count(*) from 
+		(select ei.EIDDID,ei.EIDDVERSION,b.impeiid as eiid,ei.eiimportversion,ei.einame,ei.createtime,
+		ei.fingerprint,ei.deleteflag,e.eircount
+		from SOC0126 ei,SOC0120 b,SOC0124 e
+		where ei.einame=b.impeiname and ei.eiimportversion=b.impversion and b.impeiid=e.eiid
+			and b.impeiid <> 0
+    ]]> 
+    </sql-query>
+    <!-- 资产明细全部-->
+    <sql-query name="EiDomainDefVWDAO.getSearchCountAll">
+    <![CDATA[
+    	select count(*)
+		from(
+		select a.EIDDID,a.EIDDVERSION,b.impeiid,a.eiimportversion,a.einame,a.createtime
+		from 
+		SOC0126 a,SOC0120 b 
+		where 
+		a.einame=b.impeiname and a.eiimportversion=b.impversion
+		and b.impeiid <> 0
+		) ei,SOC0119 d where ei.impeiid = d.eirootmark
+    ]]> 
+    </sql-query>
+    
+    <!-- 资产明细顶级 -->
+    <sql-query name="EiDomainDetailVWDAO.findBySQL">
+    <![CDATA[
+    	select eiddid,eiddversion,eiid,eiimportversion,einame,createtime,fingerprint,deleteflag,eircount from 
+		(
+		select ei.EIDDID,ei.EIDDVERSION,b.impeiid as eiid,ei.eiimportversion,ei.einame,ei.createtime,
+		ei.fingerprint,ei.deleteflag,e.eircount
+		from SOC0126 ei,SOC0120 b,SOC0124 e
+		where ei.einame=b.impeiname and ei.eiimportversion=b.impversion and b.impeiid=e.eiid
+			and b.impeiid <> 0
+     ]]> 
+    </sql-query>
+    
+    <!-- 资产明细全部 -->
+    <sql-query name="EiDomainDetailVWDAO.findBySQLAll">
+    <![CDATA[
+    	select ei.eiddid,ei.eiddversion,ei.einame,ei.eiImportversion,ei.createtime,d.eiid
+		from(
+		select a.EIDDID,a.EIDDVERSION,b.impeiid,a.eiimportversion,a.einame,a.createtime
+		from 
+		SOC0126 a,SOC0120 b 
+		where
+		a.einame=b.impeiname and a.eiimportversion=b.impversion and b.impeiid <> 0
+		) ei,entityitem d where ei.impeiid = d.eirootmark
+    ]]> 
+    </sql-query>
+     <!-- 资产明细顶级（影响CI）总条数-->
+    <sql-query name="EiDomainDefVWDAO.getSearchCountHead">
+    <![CDATA[
+    	select count(*)
+ 		from(
+		select p.domainid,p.domainversion,ei.name,p1.einame,p1.eiid,p1.eiversion,p1.createtime as eiupdtime,e.eircount from SOC0114 p,SOC0125 ei,SOC0114 p1,SOC0124 e
+		where  p.domainid=ei.eiddid  and p.domainversion=ei.version and p1.eiid=e.eiid
+    ]]> 
+    </sql-query>
+      <!-- 资产明细顶级（影响CI） -->
+    <sql-query name="EiDomainDefVWDAO.findBySQLHead">
+    <![CDATA[
+    	select domainid,domainversion,name,einame,eiversion,eiupdtime,eiid,eircount
+ 		from(
+		select p.domainid,p.domainversion,ei.name,p1.einame,p1.eiid,p1.eiversion,p1.createtime as eiupdtime,e.eircount from SOC0114 p,SOC0125 ei,SOC0114 p1,SOC0124 e
+		where  p.domainid=ei.eiddid  and p.domainversion=ei.version and p1.eiid=e.eiid
+    ]]> 
+    </sql-query>
+    
+      <!-- 资产明细顶级（影响CI） -->
+    <sql-query name="EiDomainDefVWDAO.sqlEnd">
+    <![CDATA[
+    	  and p.linkflag = '1' 
+			and p.domainid = p1.domainid and p.domainversion = p1.domainversion and p.linkid = p1.linkid and (p1.Esyscoding like '999001001%' or p1.Esyscoding like '999001006%' or p1.Esyscoding like '999001009%')
+			and p.linkorder >= p1.linkorder 
+		group by p.domainid,p.domainversion,ei.name,p1.einame,p1.eiid,p1.eiversion ,p1.createtime,e.eircount
+		) e
+    ]]> 
+    </sql-query>
+    
+    <!-- 拓扑图 -->
+	<sql-query name="EiLinkMapDAO.queryEiLinkMapList">
+	<![CDATA[
+	 		SELECT A.* FROM SOC0114 A
+	 		
+	 		INNER JOIN (SELECT LINKID FROM SOC0114 
+	 		
+		 		WHERE DOMAINID = :domainid_eq AND DOMAINVERSION = :domainversion_eq 
+		 		
+		 		AND EIID = :eiid_eq AND LINKFLAG = :linkflag_eq) B ON(A.LINKID = B.LINKID)
+	 		
+	 		ORDER BY A.LINKID ASC, A.LINKORDER ASC
+	]]> 
+	</sql-query>
+	
+	<sql-query name="ConfigItemVWDAO.ConfigItemQuery">
+    <![CDATA[
+    SELECT ci.* FROM (
+		    SELECT  C.eiid,
+		    C.eilabel,
+		    C.einame,
+		    '' as srename,
+		    c.eidesc,
+	        C.cid,
+	        C.eid,
+	        C.cname,
+	        C.cdesc,
+	        C.cunit,
+	        C.cstatus,
+	        C.ccategory,
+	        C.cseq,
+	        C.clabel,
+	        C.coption,
+	        C.cattach,
+	        C.crequired,
+	        C.esyscoding,
+	        D.ciid,
+	        D.civalue,
+	        D.ciupdtime,
+	        D.ciexpire,
+	        D.cistatus,
+	        D.civersion,
+	        D.cismallversion,
+	        D.civerinfo,
+	        C.corder 
+	    FROM    
+	        (
+	            SELECT  A.eiid,
+	                A.eiversion,
+	                A.eismallversion,
+	                A.eilabel,
+	                A.einame,
+	                A.eidesc,
+	                B.eid,
+	                B.esyscoding,
+	                B.cid,
+	                B.cname,
+	                B.cdesc,
+	                B.cunit,
+	                B.cstatus,
+	                B.ccategory,
+	                B.cseq,
+	                B.clabel,
+	                B.coption,
+	                B.crequired,
+	                B.cattach,
+	                B.corder 
+	            FROM SOC0118 A, (SELECT eid,cid,
+	                cname,
+	                cdesc,
+	                cunit,
+	                cstatus,
+	                ccategory,
+	                cseq,
+	                clabel,
+	                coption,
+	                crequired,
+	                cattach,
+	                corder,
+	                esyscoding FROM SOC0109 WHERE esyscoding in (:esyscodingList) AND cstatus != '2' 
+	 ]]> 
+    </sql-query>
+    
+    <sql-query name="ConfigItemVWDAO.ConfigItemQueryAppend">
+    <![CDATA[                
+	                ) B
+	            WHERE A.eiid = :eiid 
+	        ) C left outer join SOC0107 D
+	    ON  (    C.cid = D.cid 
+	        AND  C.eiid = D.eiid
+	        AND  C.eiversion = D.civersion
+	        AND  C.eismallversion = D.cismallversion
+	        )
+        ) ci order by ci.ccategory, ci.eiid, ci.corder, ci.cid
+    ]]> 
+    </sql-query>
+    
+	<sql-query name="ConfigItemVWDAO.ConfigItemQueryByVW">
+    <![CDATA[
+    SELECT ci.* FROM (
+		    SELECT  
+		    C.eiid,
+		    C.eilabel,
+		    C.einame,
+		    '' as srename,
+		    c.eidesc,
+	        C.cid,
+	        C.eid,
+	        C.cname,
+	        C.cdesc,
+	        C.cunit,
+	        C.cstatus,
+	        C.ccategory,
+	        C.cseq,
+	        C.clabel,
+	        C.coption,
+	        C.cattach,
+	        C.crequired,
+	        C.esyscoding,
+	        D.ciid,
+	        D.civalue,
+	        D.ciupdtime,
+	        D.ciexpire,
+	        D.cistatus,
+	        D.civersion,
+	        D.cismallversion,
+	        D.civerinfo,
+	        C.corder 
+	    FROM    
+	        (
+	            SELECT  
+	            A.id,
+	            A.eiid,
+	                A.eiversion,
+	                A.eismallversion,
+	                A.eilabel,
+	                A.einame,
+	                A.eidesc,
+	                B.eid,
+	                B.esyscoding,
+	                B.cid,
+	                B.cname,
+	                B.cdesc,
+	                B.cunit,
+	                B.cstatus,
+	                B.ccategory,
+	                B.cseq,
+	                B.clabel,
+	                B.coption,
+	                B.crequired,
+	                B.cattach,
+	                B.corder 
+	            FROM SOC0118VW A, (SELECT id,eid,cid,
+	                cname,
+	                cdesc,
+	                cunit,
+	                cstatus,
+	                ccategory,
+	                cseq,
+	                clabel,
+	                coption,
+	                crequired,
+	                cattach,
+	                corder,
+	                esyscoding FROM SOC0109vw WHERE esyscoding in (:esyscodingList) AND cstatus != '2' 
+	 ]]> 
+    </sql-query>
+    
+    <sql-query name="ConfigItemVWDAO.ConfigItemQueryAppendByVW">
+    <![CDATA[                
+	               ) B
+	            WHERE A.id = B.id and A.eiid = :eiid and A.id = :id
+	        ) C left outer join SOC0107vw D
+	    ON  (  C.id = D.id
+	    		AND C.cid = D.cid 
+	        AND  C.eiid = D.eiid
+	        AND  C.eiversion = D.civersion
+	        AND  C.eismallversion = D.cismallversion
+	        )
+        ) ci order by ci.ccategory, ci.eiid, ci.corder, ci.cid
+    ]]> 
+    </sql-query>
+    
+    <!-- 资产关系最大版本检索 -->
+    <sql-query name="EntityItemRelationDAO.searchMaxEntityItemRelationVW1">
+    <![CDATA[
+    	select a.* from soc0119 a
+ 	inner join soc0118 b on (a.pareiid=b.eiid and a.parversion=b.eiversion and a.parsmallversion=b.eismallversion)
+ 	inner join soc0118 c on (a.cldeiid=c.eiid and a.cldversion=c.eiversion and a.cldsmallversion=c.eismallversion)
+			WHERE a.deleteflag = '0' 
+    ]]> 
+    </sql-query>
+    
+    <!-- 资产关系最大版本检索 -->
+    <sql-query name="EntityItemRelationDAO.searchMaxEntityItemRelationVW2">
+    <![CDATA[
+			GROUP BY pareiid, cldeiid,deleteflag) b
+		ON (a.pareiid = b.pareiid AND a.parversion = b.parversion AND a.parsmallversion = b.parsmallversion
+			AND a.cldeiid = b.cldeiid AND a.cldversion = b.cldversion AND a.cldsmallversion = b.cldsmallversion
+			AND a.deleteflag=b.deleteflag)
+    ]]> 
+    </sql-query>
+    
+    
+     <!-- 配置包含关系最大版本检索 -->
+    <sql-query name="SOC0110DAO.searchEiBelongRelationVW">
+    <![CDATA[
+    	SELECT brpareiid, brparversion, MAX(brparsmallversion) AS brparsmallversion,
+				brcldeiid, brcldversion, MAX(brcldsmallversion) AS brcldsmallversion
+		FROM SOC0110
+		WHERE brtype in ('1') AND deleteflag = '0' AND eirootmark = :eirootmark AND brparversion = :brparversion AND brcldversion = :brcldversion
+		GROUP BY brpareiid, brparversion, brcldeiid, brcldversion
+    ]]> 
+    </sql-query>
+    
+    <!-- 配置包含关系最大版本检索 -->
+    <sql-query name="SOC0110DAO.searchEiBelongRelationVW2">
+    <![CDATA[
+    	SELECT brpareiid, brparversion, MAX(brparsmallversion) AS brparsmallversion,
+				brcldeiid, brcldversion, MAX(brcldsmallversion) AS brcldsmallversion
+		FROM SOC0110
+		WHERE brtype in ('1','2') AND deleteflag = '0' AND eirootmark = :eirootmark AND brparversion = :brparversion AND brcldversion = :brcldversion
+		GROUP BY brpareiid, brparversion, brcldeiid, brcldversion
+    ]]> 
+    </sql-query>
+    
+     <!-- 配置包含关系最大版本检索 -->
+    <sql-query name="SOC0110DAO.searchMaxEiBelongRelationVW1">
+    <![CDATA[
+    	SELECT * FROM SOC0110 a 
+    	INNER JOIN (
+	    	SELECT brpareiid, MAX(brparversion) AS brparversion, MAX(brparsmallversion) AS brparsmallversion,
+					brcldeiid, MAX(brcldversion) AS brcldversion, MAX(brcldsmallversion) AS brcldsmallversion
+			FROM SOC0110
+			WHERE deleteflag = '0' 
+    ]]> 
+    </sql-query>
+    
+    <!-- 配置包含关系最大版本检索 -->
+    <sql-query name="SOC0110DAO.searchMaxEiBelongRelationVW2">
+    <![CDATA[
+			GROUP BY brpareiid, brcldeiid) b
+		ON (a.brpareiid = b.brpareiid AND a.brparversion = b.brparversion AND a.brparsmallversion = b.brparsmallversion
+			AND a.brcldeiid = b.brcldeiid AND a.brcldversion = b.brcldversion AND a.brcldsmallversion = b.brcldsmallversion)
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="PlatformManagerDAO.searchPlatformManagerVW">
+    	<![CDATA[
+    		select a.eiid,a.einame,a.eiusername,a.eiinsdate,b.civalue as mageA,c.civalue as mageB from soc0118 a
+			left join soc0107 b on a.eiid = b.eiid and a.eiversion = b.civersion and b.cid = 'CI030100010002'
+			left join soc0107 c on a.eiid = c.eiid and a.eiversion = c.civersion and c.cid = 'CI030100010003'
+			where a.esyscoding like '999003001%' and( b.civalue ='' or c.civalue='')
+    	]]>
+    </sql-query>
+    <sql-query name="PlatformManagerDAO.getCountPlatformManagerVW">
+    	<![CDATA[
+    		select COUNT(*) from soc0118 a
+			left join soc0107 b on a.eiid = b.eiid and a.eiversion = b.civersion and b.cid = 'CI030100010002'
+			left join soc0107 c on a.eiid = c.eiid and a.eiversion = c.civersion and c.cid = 'CI030100010003'
+			where a.esyscoding like '999003001%' and( b.civalue ='' or c.civalue='')
+    	]]>
+    </sql-query>
+    
+    
+    <!-- 历史版本最后更新时间 -->
+    <sql-query name="ConfigItemVersionTimeVWDAO.searchVersionUpdateTime">
+    <![CDATA[
+       SELECT VERSIONTIME.* FROM(
+       SELECT C.civersion, C.cismallversion, MAX(C.ciupdtime) as ciupdtime
+       FROM SOC0107 C
+       WHERE C.eiid=:eiid
+       GROUP BY C.civersion, C.cismallversion,C.ciupdtime  order by  C.civersion desc,C.cismallversion desc,C.ciupdtime desc
+	      )VERSIONTIME       
+    ]]> 
+    </sql-query>
+    <!-- 历史版本最后更新时间（应急资源） -->
+    <sql-query name="ConfigItemVersionTimeVWDAO.searchVersionUpdateTime1">
+    <![CDATA[
+      	SELECT VERSIONTIME.* FROM(
+       SELECT C.civersion, C.cismallversion, MAX(C.ciupdtime) as ciupdtime
+       FROM SOC0107vw C
+       WHERE C.eiid=:eiid and id =:id
+       GROUP BY C.civersion, C.cismallversion,C.ciupdtime  order by  C.civersion desc,C.cismallversion desc,C.ciupdtime desc
+	      )VERSIONTIME         
+    ]]> 
+    </sql-query>
+    
+    <!-- 设备关系信息（FS-LV-VG） -->
+	<sql-query name="FsLvVgDao.findFsLvVgByVW">
+	<![CDATA[
+	 	select i.mountpoint,i.fstype,i.vgnamelv,i.lvname from (select f.mountpoint,f.type as fstype,g.civalue as VGNAMELV,h.civalue as LVNAME
+		from (
+		select d.mountpoint,d.type,e.srcldeiid,e.srcldversion,e.srcldsmallversion
+		from(
+		select a.srcldeiid,a.srcldversion,a.srcldsmallversion,a.srcreatetime,b.civalue as mountpoint,c.civalue as type 
+			from SOC0121 a 
+			left join SOC0107 b on (a.srcldeiid = b.eiid
+					and a.srcldversion = b.civersion
+					and a.srcldsmallversion = b.cismallversion
+					and b.cid = 'CI010200160005' )
+			left join SOC0107 c on (a.srcldeiid = c.eiid
+					and a.srcldversion = c.civersion
+					and a.srcldsmallversion = c.cismallversion
+					and c.cid = 'CI010200160003' )
+			where
+			a.srdomainid = :srdomainid_eq
+			and a.srdomainversion =:srdomainversion_eq
+			and a.deleteflag = '0'
+			and a.srpareiid = :srpareiid_eq
+			and a.srparversion = :srparversion_eq
+			and a.srparsmallversion =:srparsmallversion_eq
+			and a.srcreatetime = :srcreatetime_eq
+			and a.srassetrelation ='CR010100010002'
+			and a.srarithmetictype ='2'
+		) d join SOC0121 e on (
+			e.srdomainid = :srdomainid_eq
+			and e.srdomainversion = :srdomainversion_eq
+			and e.deleteflag = '0'
+			and d.srcldeiid = e.srpareiid 
+			and d.srcldversion = e.srparversion 
+			and d.srcldsmallversion = e.srparsmallversion
+			and d.srcreatetime = e.srcreatetime
+			and e.srassetrelation ='CR010200160001'
+			and e.srarithmetictype ='2'
+			)
+		) f left join SOC0107 g on (f.srcldeiid = g.eiid
+			and f.srcldversion = g.civersion
+			and f.srcldsmallversion = g.cismallversion
+			and g.cid = 'CI010200050008' )
+		     left join SOC0107 h on (f.srcldeiid = h.eiid
+			and f.srcldversion = h.civersion
+			and f.srcldsmallversion = h.cismallversion
+			and h.cid = 'CI010200050004' )) i
+	]]> 
+	</sql-query>
+	
+	<!-- 设备关系信息(VG-PV-Meta) -->
+	<sql-query name="VgPvMetaDao.findVgPvMetaByVW">
+	<![CDATA[
+		select q.vgname,q.pseudoname,q.iopaths,q.hbapath,q.symmsn,q.symfaport,q.symlogicaldevice
+			from
+			(
+			select j.vgname,k.civalue as pseudoname,l.civalue as iopaths,m.civalue as hbapath,n.civalue as symmsn,o.civalue as symfaport,p.civalue as 
+			symlogicaldevice
+			from
+			(
+			select i.srcldeiid,i.srcldversion,i.srcldsmallversion,h.vgname
+			from
+			(
+			select f.srcldeiid,f.srcldversion,f.srcldsmallversion,f.srcreatetime,g.civalue as vgname
+			from
+			(
+			select e.srcldeiid,e.srcldversion,e.srcldsmallversion,e.srcreatetime
+			from
+			(
+				select a.srcldeiid,a.srcldversion,a.srcldsmallversion,a.srcreatetime
+				from SOC0121 a 
+				where 
+				a.srdomainid = :srdomainid_eq
+				and a.srdomainversion = :srdomainversion_eq
+				and a.deleteflag = '0'
+				and a.srpareiid = :srpareiid_eq
+				and a.srparversion = :srparversion_eq
+				and a.srparsmallversion =:srparsmallversion_eq
+				and a.srcreatetime = :srcreatetime_eq
+				and a.srassetrelation ='CR010100010004'
+				and a.srarithmetictype ='2'
+			) d left join SOC0121 e on (
+				e.srdomainid = :srdomainid_eq
+				and e.srdomainversion = :srdomainversion_eq
+				and e.deleteflag = '0'
+				and d.srcldeiid = e.srpareiid 
+				and d.srcldversion = e.srparversion 
+				and d.srcldsmallversion = e.srparsmallversion
+				and d.srcreatetime = e.srcreatetime
+				and e.srassetrelation ='CR010200040001'
+				and e.srarithmetictype ='2' 
+			)
+			)  f left join SOC0107 g on (
+				       f.srcldeiid = g.eiid
+				and f.srcldversion = g.civersion
+				and f.srcldsmallversion = g.cismallversion
+				and g.cid = 'CI010100170009')
+			) h join SOC0121 i on (
+				      i.srdomainid = :srdomainid_eq
+				and i.srdomainversion = :srdomainversion_eq
+				and i.deleteflag = '0'
+				and h.srcldeiid = i.srpareiid 
+				and h.srcldversion = i.srparversion 
+				and h.srcldsmallversion = i.srparsmallversion
+				and h.srcreatetime = i.srcreatetime
+				and i.srassetrelation ='CR010200170002'
+				and i.srarithmetictype ='2'
+			)
+			) j left join SOC0107 k on (
+				       j.srcldeiid = k.eiid
+				and j.srcldversion = k.civersion
+				and j.srcldsmallversion = k.cismallversion
+				and k.cid = 'CI010200190001')
+			     left join SOC0107 l on (
+				       j.srcldeiid = l.eiid
+				and j.srcldversion = l.civersion
+				and j.srcldsmallversion = l.cismallversion
+				and l.cid = 'CI010200190006')
+			      left join SOC0107 m on (
+				       j.srcldeiid = m.eiid
+				and j.srcldversion = m.civersion
+				and j.srcldsmallversion = m.cismallversion
+				and m.cid = 'CI010200190005')
+			       left join SOC0107 n on (
+				       j.srcldeiid = n.eiid
+				and j.srcldversion = n.civersion
+				and j.srcldsmallversion = n.cismallversion
+				and n.cid = 'CI010200190002')
+			      left join SOC0107 o on (
+				       j.srcldeiid = o.eiid
+				and j.srcldversion = o.civersion
+				and j.srcldsmallversion = o.cismallversion
+				and o.cid = 'CI010200190007')
+			      left join SOC0107 p on (
+				       j.srcldeiid = p.eiid
+				and j.srcldversion = p.civersion
+				and j.srcldsmallversion = p.cismallversion
+				and p.cid = 'CI010200190003')
+			) q
+	]]> 
+	
+	</sql-query>
+	
+	<sql-query name="EiDomainDetailVWDAO.findAllBySQLAll">
+    <![CDATA[
+       SELECT EIDDID,EIDDVERSION,EINAME,EIIMPORTVERSION,CREATETIME,DELETEFLAG,FINGERPRINT, 0 as eiid FROM SOC0126 where 1=1 AND DELETEFLAG = '0'
+    ]]> 
+    </sql-query>
+	
+    <!-- 告警件数查询 -->
+    <sql-query name="SOC0307DAO.getSearchCount">
+    <![CDATA[
+     	select count(*) from SOC0307 where 1=1 
+    ]]> 
+    </sql-query>
+    <!-- 告警条件查询 -->
+    <sql-query name="SOC0307DAO.findByCond">
+    <![CDATA[
+    	select * from ( select * from SOC0307 where 1=1 
+    ]]> 
+    </sql-query><!--select vw.* from ( select * from SOC0307 where 1=1 -->
+    
+    <sql-query name="CodeDetailTBDAO.findQuery">
+    <![CDATA[
+        select ccid,cid,cvalue,pccid,pcid,updtime,syscoding,psyscoding,cdstatus,businesscode,cdinfo
+           from CodeDetail 
+        where 1=1
+    ]]> 
+    </sql-query>
+    
+     <sql-query name="SOC0118DAO.searchTableRelation">
+    <![CDATA[
+ 		select * from
+          (select i.einame businessName,t1.einame instanceName,t2.einame tableSpaceName,
+           t3.einame tableName,(CASE WHEN i.civalue ='null' THEN '0' ELSE i.civalue END) as numRows from 
+          (select g.einame,g.tsID,g.instanceID,g.tabID,h.civalue from 
+          (select e.einame,e.tsID,e.eiversion,e.eismallversion,e.instanceID,f.brcldeiid tabID from 
+          (select c.einame,d.brcldeiid tsID,c.eiversion,c.eismallversion,instanceID from 
+          (select a.eiid,a.einame,eiversion,a.eismallversion,b.cldeiid instanceID from 
+          (select eiid,einame,eiversion,eismallversion from soc0118 where eid='CM03010001') a ,
+          (select pareiid,parversion,parsmallversion,cldeiid from soc0119 where eirrelation='CR030001000003' and deleteflag='0') b 
+           where a.eiid=b.pareiid and a.eiversion = b.parversion and a.eismallversion = b.parsmallversion) c,
+          (select brpareiid,brcldversion,brcldsmallversion,brcldeiid from soc0110 where brassetrelation='CR020100020002')d where 
+           c.instanceID =d.brpareiid and c.eiversion = d.brcldversion and c.eismallversion = d.brcldsmallversion) e,
+	      (select brpareiid,brcldversion,brcldsmallversion,brcldeiid from soc0110 where brassetrelation='CR020100020004') f
+	       where e.tsID =f.brpareiid and e.eiversion=f.brcldversion and e.eismallversion =f.brcldsmallversion
+	       )g,(select * from soc0107 where cid='CI020100050007')h 
+           where g.tabid= h.eiid and g.eiversion = h.civersion and g.eismallversion =h.cismallversion 
+           )i,soc0118 t1,soc0118 t2,soc0118 t3 where 
+           i.instanceID = t1.eiid and i.tsID =t2.eiid and i.tabID =t3.eiid) f where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="SOC0163DAO.searchQuery">
+    <![CDATA[
+    	select * from (
+	select a.eiid,a.eid,a.einame,b.ename,a.eilabel,a.eiorgsyscoding,a.esyscoding,a.eiupdtime,a.eiversion,a.eismallversion,a.eirootmark,d.civalue as ip from soc0118 a
+	left join soc0117 b on a.eid = b.eid
+	left join soc0118 c on c.eiid = a.eirootmark
+	left join soc0107 d on c.eiversion = d.civersion and c.eismallversion = d.cismallversion and d.eiid = a.eirootmark and  d.cid = 'CI010100010005'
+	) t where 1=1
+    ]]>
+    </sql-query>
+    <sql-query name="SOC0163DAO.searchNetAssetQuery">
+    <![CDATA[
+    	select * from (
+	select a.eiid,a.eid,a.einame,b.ename,a.eilabel,a.eiorgsyscoding,a.esyscoding,a.eiupdtime,a.eiversion,a.eismallversion,a.eirootmark,d.civalue as ip from soc0118 a
+	left join soc0117 b on a.eid = b.eid
+	left join soc0118 c on c.eiid = a.eirootmark
+	left join soc0107 d on c.eiversion = d.civersion and c.eismallversion = d.cismallversion and d.eiid = a.eirootmark 
+	and case when c.eid = 'CM01010045' then d.cid = 'CI010100450001' when c.eid = 'CM01010046' then d.cid = 'CI010100460001' when c.eid = 'CM01010047' then d.cid = 'CI010100470001' end
+	) t where 1=1
+    ]]>
+    </sql-query>
+        <!-- 3D机房支持IP查询 -->
+    <sql-query name="EquipmentInquireVWDAO.getEquipmentAndIP">
+    <![CDATA[
+  
+    select
+       temp2.eiid  eiid,
+       temp2.ename    ename,
+       temp2.einame   einame,
+       temp2.eilabel  eilabel,
+       temp2.civalue1 businesssys,
+       temp2.civalue2 pattern,
+       temp2.civalue3 ip,
+       temp2.civalue4 site,
+       temp2.creiid computerContainerId,
+       temp2.einame2  computerContainer,
+       temp3.roomid computerroomId,
+       temp3.crname   computerroom
+  from (select 
+               temp0.eiid   eiid,
+  			   temp0.ename    ename,
+               temp0.eilabel  eilabel,
+               temp0.einame   einame,
+               temp0.civalue1 civalue1,
+               temp0.civalue2 civalue2,
+               temp0.civalue3 civalue3,
+               temp0.civalue4 civalue4,
+               temp1.einame2  einame2,
+               temp1.creiid   creiid
+          from ( select e.ename     ename,
+                       ei.eiid     eiid,
+                       ei.einame   einame,
+                       ei.eilabel  eilabel,
+                       ci1.civalue civalue1,
+                       ci2.civalue civalue2,
+                       ci3.civalue civalue3,
+                       ec.U_VALUE civalue4
+                  from SOC0117 e
+                  inner join SOC0117 e1 on e1.esyscoding = substr(e.esyscoding,1,6)
+                  left join SOC0117 e2 on e2.esyscoding = substr(e.esyscoding,1,9)
+                  left join SOC0118 ei on e.eid = ei.eid
+                  left join SOC0109 c1 on c1.eid = e1.eid
+                                    and c1.cname = '业务系统'
+                  left join SOC0109 tc1 on tc1.eid = e2.eid and tc1.cname =  '业务系统'
+                  left join SOC0109 c2 on c2.eid = e1.eid
+                                    and c2.cname = '型号'
+                  left join SOC0109 c3 on c3.eid = e1.eid
+                                    and c3.cname = 'IP地址描述'
+                  left join SOC0109 tc3 on tc3.eid = e2.eid and tc3.cname =  'IP地址描述'
+                  left join SOC0107 ci1 on ci1.eiid = ei.eiid
+                                     and ci1.cid = case when c1.cid is null then tc1.cid else c1.cid end
+                                     and ci1.civersion =ei.eiversion
+                  left join SOC0107 ci2 on ci2.eiid = ei.eiid
+                                     and ci2.cid = c2.cid
+                                     and ci2.civersion = ei.eiversion
+                  left join SOC0107 ci3 on ci3.eiid = ei.eiid
+                                     and ci3.cid = case when c3.cid is null then tc3.cid else c3.cid end 
+                                     and  ci3.civersion =ei.eiversion
+                
+                left join SOC0602 ec on ec.EIID = ei.eiid
+                 where exists
+                 (select 1
+                          from (select ei.esyscoding esyscoding, ei.eid eid
+                                  from SOC0118 ei
+                                 where ei.esyscoding like '999001%'
+                                ) temp
+                         where temp.eid = ei.eid)) temp0
+          left join (select cc.eiid   eiid,
+                           cr.eiid   creiid,
+                           cc.EINAME einame1,
+                           cc.EILABEL eilabel,
+                           cr.EINAME einame2
+                      from SOC0119 eir
+                      left join SOC0118 cc on cc.EIID = eir.cldeiid
+                      left join SOC0118 cr on cr.EIID = eir.pareiid
+                     where eir.eirrelationcode = '001-008'
+                       and eir.deleteflag = '0') temp1 on temp0.eiid =
+                                                          temp1.eiid) temp2
+  left join
+
+ (select distinct cc.eiid eiid,cr.eiid roomid, cc.EINAME ccname, cr.EINAME crname
+    from SOC0119 eir
+    left join SOC0118 cc on cc.EIID = eir.cldeiid 
+    left join (select case
+                              when b.eiid is null then
+                               a.eiid
+                              else
+                               b.EIID
+                            end as eiid,
+                            a.einame einame
+                       from SOC0601 a
+                       left join SOC0601 b on b.RELATEROOM is not null
+                                        and to_char(a.EIID,'99999') = b.RELATEROOM
+                      where a.RELATEROOM is null
+                     
+                     union
+                     select a.EIID eiid, a.einame einame
+                       from SOC0601 a
+                      where a.RELATEROOM is null) cr on cr.EIID = eir.pareiid
+   	 where eir.eirrelationcode = '007-008'
+     and eir.deleteflag = '0') temp3 on temp2.creiid = temp3.eiid
+     
+     where 1=1
+    
+    
+    ]]> 
+    </sql-query>
+    <!-- 查询当前机房内的设备在哪个机柜  -->
+    <sql-query name="SOC0602DAO.traceZhuJiLocation">
+    <![CDATA[
+		SELECT A.EINAME,A.EILABEL,B.EIID AS CONTAINER_EIID,B.EINAME AS CONTAINER_EINAME,B.EILABEL AS CONTAINER_EILABEL
+		FROM SOC0602 A INNER JOIN soc0603 B ON A.CONTAINER_EIID=B.EIID 
+		WHERE 1=1 
+    ]]>
+    </sql-query>
+    	<!-- 机房查询UPS和空调 -->
+    <sql-query name="SOC0603DAO.findByComputerContainer">
+    <![CDATA[
+	SELECT * FROM (SELECT A.EIID AS EIID, A.EID AS EID, A.EILABEL AS EILABEL, A.EINAME AS EINAME, A.EIDESC AS EIDESC, A.EIVERSION AS EIVERSION, A.EIINSDATE AS EIINSDATE, 
+	C.CIVALUE AS X_VALUE, D.CIVALUE AS Y_VALUE, T.CIVALUE AS U_VALUE, E.CIVALUE AS U_TOTAL, F.CIVALUE AS X_WIDTH, 
+	G.CIVALUE AS Y_WIDTH, K.CIVALUE AS GRAPHSTATUS, L.CIVALUE AS GRAPHTYPEID, M.CIVALUE AS GRAPHTYPENAME, N.CIVALUE AS GRAPHINDEX, O.CIVALUE AS VOLTAGE, P.CIVALUE AS WEIGHT, 
+	S.CIVALUE AS WIDTH,  Q.CIVALUE AS STANDARD, I.EIID AS ROOM_EIID, I.EILABEL AS ROOM_EILABEL, I.EINAME AS ROOM_EINAME, V.ESYSCODING AS CONTAINERTYPE, U.CIVALUE AS EITYPE
+    FROM SOC0118 A INNER JOIN SOC0117 B ON (A.EID = B.EID AND (B.ESYSCODING LIKE '999001035001%' OR B.ESYSCODING LIKE '999001035002%')) 
+    LEFT OUTER JOIN SOC0600 C ON (A.EIVERSION = C.CIVERSION AND A.EIID = C.EIID AND C.CLABEL = 'IG_0021') 
+    LEFT OUTER JOIN SOC0600 D ON (A.EIVERSION = D.CIVERSION AND A.EIID = D.EIID AND D.CLABEL = 'IG_0022') 
+    LEFT OUTER JOIN SOC0600 E ON (A.EIVERSION = E.CIVERSION AND A.EIID = E.EIID AND E.CLABEL = 'IG_0023') 
+    LEFT OUTER JOIN SOC0600 F ON (A.EIVERSION = F.CIVERSION AND A.EIID = F.EIID AND F.CLABEL = 'IG_0024') 
+    LEFT OUTER JOIN SOC0600 G ON (A.EIVERSION = G.CIVERSION AND A.EIID = G.EIID AND G.CLABEL = 'IG_0025') 
+    LEFT OUTER JOIN SOC0600 K ON (A.EIVERSION = K.CIVERSION AND A.EIID = K.EIID AND K.CLABEL = 'IG_0031') 
+    LEFT OUTER JOIN SOC0600 L ON (A.EIVERSION = L.CIVERSION AND A.EIID = L.EIID AND L.CLABEL = 'IG_0032') 
+    LEFT OUTER JOIN SOC0600 M ON (A.EIVERSION = M.CIVERSION AND A.EIID = M.EIID AND M.CLABEL = 'IG_0033') 
+    LEFT OUTER JOIN SOC0600 N ON (A.EIVERSION = N.CIVERSION AND A.EIID = N.EIID AND N.CLABEL = 'IG_0030') 
+    LEFT OUTER JOIN SOC0600 O ON (A.EIVERSION = O.CIVERSION AND A.EIID = O.EIID AND O.CLABEL = 'IG_0034') 
+    LEFT OUTER JOIN SOC0600 P ON (A.EIVERSION = P.CIVERSION AND A.EIID = P.EIID AND P.CLABEL = 'IG_0035') 
+    LEFT OUTER JOIN SOC0600 S ON (A.EIVERSION = S.CIVERSION AND A.EIID = S.EIID AND S.CLABEL = 'IG_0104') 
+    LEFT OUTER JOIN SOC0600 Q ON (A.EIVERSION = Q.CIVERSION AND A.EIID = Q.EIID AND Q.CLABEL = 'IG_0036') 
+    LEFT OUTER JOIN SOC0600 T ON (A.EIVERSION = T.CIVERSION AND A.EIID = T.EIID AND T.CLABEL = 'IG_0106') 
+    LEFT OUTER JOIN SOC0600 U ON (A.EIVERSION = U.CIVERSION AND A.EIID = U.EIID AND U.CLABEL = 'IG_0108') 
+    LEFT OUTER JOIN SOC0118 V ON (A.EIID = V.EIID)
+    LEFT OUTER JOIN SOC0119 H ON (A.EIID = H.CLDEIID AND H.EIRRELATION = 'A' AND H.DELETEFLAG!='1')
+    LEFT OUTER JOIN SOC0118 I ON (H.PAREIID = I.EIID) 
+    LEFT OUTER JOIN SOC0117 J ON (I.EID = J.EID AND J.ECATEGORY = '007')) TABLE1 WHERE 1=1
+    ]]> 
+	</sql-query>
+	<!-- 机房机柜查询统计 -->
+    <sql-query name="SOC0604DAO.RoomAndContainerQuery">
+    <![CDATA[
+    SELECT ecount.* FROM (
+    select d.room_eiid as room_id, 
+		d.room_einame as room_name,     
+			d.eiid as container_id,
+		d.einame as container_name, 
+					  e.eid as eid,
+	          e.eilabel as eilabel,
+	         e.U_VALUE as position,
+	              e.ename as ename,
+	              e.model as model from  soc0602 e inner join soc0603  d on(e.container_eiid=d.eiid 
+	               
+    ]]> 
+    </sql-query>
+    
+    <!-- 资产项查询 -->
+    <sql-query name="SOC0605DAO.getSearchCount">
+    <![CDATA[
+        select count(*)
+           from SOC0605 ei
+        where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="SOC0605DAO.findByCond">
+    <![CDATA[
+        select ei.*
+           from SOC0605 ei
+        where 1=1
+    ]]> 
+    </sql-query>
+    <sql-query name="SOC0605DAO.configItemQuery">
+    <![CDATA[
+        select A.EIID
+           from SOC0118 A, SOC0109 B, SOC0107 C 
+        where A.EIID = B.EIID
+          and A.EIVERSION = B.CIVERSION
+          and C.CID = B.CID
+    ]]> 
+    </sql-query>
+    <sql-query name="SOC0606DAO.ConfigItemQuery">
+    <![CDATA[
+		SELECT ci.*
+		  FROM (SELECT C.eiid,
+		               C.eilabel,
+		               C.einame,
+		               '' as srename,
+		               C.cid,
+		               C.eid,
+		               C.cname,
+		               C.cdesc,
+		               C.cunit,
+		               C.cstatus,
+		               C.ccategory,
+		               C.cseq,
+		               C.clabel,
+		               C.coption,
+		               C.cattach,
+		               C.crequired,
+		               C.esyscoding,
+		               C.corder,
+		               D.ciid,
+		               D.civalue,
+		               D.ciupdtime,
+		               D.ciexpire,
+		               D.cistatus,
+		               D.civersion,
+		               D.cismallversion,
+		               D.civerinfo,
+		               D.cicurver
+		          FROM (SELECT A.eiid,
+		                       A.eiversion,
+		                       A.eismallversion,
+		                       A.eilabel,
+		                       A.einame,
+		                       B.eid,
+		                       B.esyscoding,
+		                       B.cid,
+		                       B.cname,
+		                       B.cdesc,
+		                       B.cunit,
+		                       B.cstatus,
+		                       B.ccategory,
+		                       B.cseq,
+		                       B.clabel,
+		                       B.coption,
+		                       B.crequired,
+		                       B.cattach,
+		                       B.corder
+		                  FROM SOC0118 A,
+		                       (SELECT eid,
+		                               cid,
+		                               cname,
+		                               cdesc,
+		                               cunit,
+		                               cstatus,
+		                               ccategory,
+		                               cseq,
+		                               clabel,
+		                               coption,
+		                               crequired,
+		                               cattach,
+		                               esyscoding,
+		                               CORDER
+		                          FROM SOC0109
+		                         WHERE esyscoding in (:esyscodingList)
+		                           AND cstatus != '2'
+	 ]]> 
+    </sql-query>
+    
+    <sql-query name="SOC0606DAO.ConfigItemQueryAppend">
+    <![CDATA[                
+	        ) B
+	                 WHERE A.eiid = :eiid) C
+	          left outer join SOC0107 D
+	            ON (C.cid = D.cid AND C.eiid = D.eiid AND
+	               C.eiversion = D.civersion AND
+	               C.eismallversion = D.cismallversion)) ci
+	 order by ci.ccategory, ci.corder, ci.eid, ci.cid
+    ]]> 
+    </sql-query>
+    
+    <sql-query name="SOC0606DAO.ConfigItemQueryAppend2">
+    <![CDATA[                
+	        ) B
+	                 WHERE A.eiid = :eiid) C
+	          left outer join SOC0107 D
+	            ON (C.cid = D.cid AND C.eiid = D.eiid) where D.civersion=:civersion) ci
+	 order by ci.ccategory, ci.corder, ci.eid, ci.cid
+    ]]> 
+    </sql-query>
+    <sql-query name="SOC0606DAO.InitConfigItemQuery">
+    <![CDATA[
+    SELECT ci.* FROM (
+		    SELECT rownum eiid,
+		    null eilabel,
+		    cname einame,
+		    '' as srename,
+	        C.cid,
+	        C.eid,
+	        C.cname,
+	        C.cdesc,
+	        C.cunit,
+	        C.cstatus,
+	        C.ccategory,
+	        C.cseq,
+	        C.clabel,
+	        C.coption,
+	        C.cattach,
+	        C.crequired,
+	        C.esyscoding,
+          D.cvalue civalue,
+	        null ciid,
+	       null ciupdtime,
+	        null ciexpire,
+	        null cistatus,
+	        null civersion,
+	       null cismallversion,
+	       null civerinfo,
+	       null cicurver
+	    FROM  (
+	            SELECT  
+	                B.eid,
+	                B.esyscoding,
+	                B.cid,
+	                B.cname,
+	                B.cdesc,
+	                B.cunit,
+	                B.cstatus,
+	                B.ccategory,
+	                B.cseq,
+	                B.clabel,
+	                B.coption,
+	                B.crequired,
+	                B.cattach
+	            FROM 
+                   (SELECT eid,cid,
+	                cname,
+	                cdesc,
+	                cunit,
+	                cstatus,
+	                ccategory,
+	                cseq,
+	                clabel,
+	                coption,
+	                crequired,
+	                cattach,
+	                esyscoding FROM SOC0109 WHERE esyscoding in (:esyscodingList) AND cstatus != '2' 
+	 ]]> 
+    </sql-query>
+    
+    <sql-query name="SOC0606DAO.InitConfigItemQueryAppend">
+    <![CDATA[                
+	                ) B
+	          
+	        ) C left outer join IG611 D
+	    ON  (    C.cid = D.cid 
+	        AND  D.eid = :eid
+	        
+	        )
+        ) ci order by ci.ccategory,ci.eid,ci.cid
+    ]]> 
+    </sql-query>
+    <sql-query name="EntityItemUntreatedVWDAO.EntityItemUntreatedVWDAO">
+    <![CDATA[
+		SELECT A.EIID AS EIID, A.EINAME AS EINAME, A.EILABEL AS EILABEL,A.esyscoding as esyscoding,
+		B.CIVALUE AS U_TOTAL,
+		D.CIVALUE AS CONTAINERTYPE,
+		E.CIVALUE AS EITYPE
+		FROM SOC0118 A
+		LEFT OUTER JOIN soc0600 B ON (A.EIVERSION = B.CIVERSION AND A.EIID = B.EIID AND B.CLABEL = 'IG_0023')
+		LEFT OUTER JOIN soc0600 C ON (A.EIVERSION = C.CIVERSION AND A.EIID = C.EIID AND C.CLABEL = 'IG_0031')
+		LEFT OUTER JOIN soc0600 D ON (A.EIVERSION = D.CIVERSION AND A.EIID = D.EIID AND D.CLABEL = 'IG_0105')
+		LEFT OUTER JOIN soc0600 E ON (A.EIVERSION = E.CIVERSION AND A.EIID = E.EIID AND E.CLABEL = 'IG_0108')
+		where (A.esyscoding = '999008' or A.esyscoding = '999001035001' or A.esyscoding = '999001035002') 
+		and (C.CIVALUE!='1' or C.CIVALUE is null)
+    ]]> 
+  </sql-query>
+  <!-- 查询资产关系  -->
+  <sql-query name="SOC0607DAO.checkExistEntityItemRelation">
+  <![CDATA[
+   		select * from SOC0119 a where 1=1 
+  ]]>
+  </sql-query>
+  <sql-query name="SOC0118.searchHost">
+  	<![CDATA[
+  		select eiid,einame,ip from (
+			select a.eiid,a.einame,b.civalue ip,c.civalue hj,d.civalue sjkjq ,e.civalue fwqjq,f.civalue qtjq from soc0118 a
+			left join soc0107 b on a.eiid = b.eiid and a.eiversion = b.civersion and a.eismallversion = b.cismallversion and b.cid = 'CI010100010005' 
+			left join soc0107 c on a.eiid = c.eiid and a.eiversion = c.civersion and a.eismallversion = c.cismallversion and c.cid = 'CI010100010071'
+			left join soc0107 d on a.eiid = d.eiid and a.eiversion = d.civersion and a.eismallversion = d.cismallversion and d.cid = 'CI010100010075'
+			left join soc0107 e on a.eiid = e.eiid and a.eiversion = e.civersion and a.eismallversion = e.cismallversion and e.cid = 'CI010100010076'
+			left join soc0107 f on a.eiid = f.eiid and a.eiversion = f.civersion and a.eismallversion = f.cismallversion and f.cid = 'CI010100010077'
+			where  a.esyscoding like '999001001%') t  where 1=1
+  	]]>
+  </sql-query>
+
+	<!-- 资产模型下拉列表值域获取 soc0151(ig545)表 -->
+	<sql-query name="ConfigurationCodeDetailDAO.ConfigurationCodeDetail">
+	<![CDATA[
+		select distinct cfgv.ccdcategory, cfgv.ccdlabel
+		from soc0151 cfgv
+		where 1=1 and cfgv.ccdtype = :ccdtype and cfgv.ccdstatus = :ccdstatus 
+	]]>
+	</sql-query>
+	<!-- 资产模型下拉列表值域获取 soc0151(ig545)表 -->
+	<sql-query name="ConfigurationCodeDetailDAO.ConfigurationCodeDetailByVW">
+	<![CDATA[
+		select distinct cfgv.ccdcategory, cfgv.ccdlabel
+		from soc0151vw cfgv
+		where 1=1 and cfgv.ccdtype = :ccdtype and cfgv.ccdstatus = :ccdstatus and and cfgv.id = :id 
+	]]>
+	</sql-query>
+	<!-- 	风险库分布情况soc0118表 -->
+	<sql-query name="SOC0118DAO.getRiskRepository">
+	<![CDATA[
+		select t1.riskcont,t1.riskesyscoding ,t2.inspectcont,t2.inspectesyscoding,t2.ename  
+		from(  select a.*,b.ename from (select count(a.eid) as riskcont,substr(a.esyscoding,1,9) as riskesyscoding 	 
+				from soc0118 a 		
+				where substr(a.esyscoding,1,6)= '999017'  		
+				group by substr(a.esyscoding,1,9) )a 	 
+				left join soc0117 b on  a.riskesyscoding = b.esyscoding) t1   
+		left join 	( select a.*,b.ename from (select count(a.eid) as inspectcont,substr(a.esyscoding,1,9) as inspectesyscoding 	 
+						from soc0118 a 		 
+						where substr(a.esyscoding,1,6)= '999018' 	 	
+						group by substr(a.esyscoding,1,9) )a 	 
+						left join soc0117 b on  a.inspectesyscoding = b.esyscoding) t2 on t1.ename = t2.ename 
+	]]>
+	</sql-query>
+	<!-- 	模型下资产数量soc0118表 （专项预案、应急资源专用）-->
+	<sql-query name="SOC0117DAO.getEntityNum">
+	<![CDATA[
+		select a.eid,a.ename,a.esyscoding ,a.eparcoding,count(b.eiid) as account  from soc0117 a left join soc0118 b on (b.esyscoding like a.esyscoding||'%' and b.eistatus is null) where a.esyscoding like :esyscoding and estatus = '1' group by a.eid,a.ename,a.esyscoding,a.eparcoding order by esyscoding
+	]]>
+	</sql-query>
+	<!-- 	模型下资产数量（应急资源专用）-->
+	<sql-query name="SOC0117DAO.getEntityNumNEW">
+	<![CDATA[
+		SELECT
+		     a.erid ,
+		     a.esyscoding ,
+		    a.ername ,
+		    a.ercode ,
+		    a.erparcode,
+		    COUNT(b.eiid) AS account
+		FROM
+		    emergencyresource a LEFT JOIN errelation b
+		        ON(
+		        b.ercode LIKE a.ercode || '%'
+		        AND b.deleteflag <> '1'
+		        and b.fingerprint = :resourceType
+		    )
+		WHERE
+		    a.ercode LIKE :ercode AND a.erstatus = '1'
+		GROUP BY
+		    a.erid ,
+		     a.esyscoding ,
+		    a.ername ,
+		    a.ercode ,
+		    a.erparcode
+		ORDER BY
+		    ercode
+    	]]>
+	</sql-query>
+	<!-- 	获取编号为存数字的最大数-->
+	<sql-query name="SOC0117DAO.getEidNotLkeCmNum">
+	<![CDATA[
+		select max(to_number(eid)) from soc0117 where eid not like 'CM%'
+	]]>
+	</sql-query>
+	<!-- 获取可导出一级资产列表 -->
+	<sql-query name="SOC0117DAO.searchEntityForExport">
+	<![CDATA[
+		select t2.* from igce0001 t1 left join soc0117 t2 on (t1.eid = t2.eid) where t1.ceexportstatus = 'Y'
+	]]>
+	</sql-query>
+	
+	<!-- 查询场景定义流程节点与参与人信息 -->
+	<sql-query name="SOC0107DAO.searchProcessDefineUserByEiidInfo">
+	<![CDATA[
+	SELECT A.PSDNAME,A.PSDID,A.USERID,A.ROLEID,A.USERNAME,A.ROLENAME from (
+		SELECT
+		    ig333.PSDNAME ,
+		    CAST(ig333.PSDID AS VARCHAR(38))  AS PSDID,
+		    ig222.USERID ,
+		    ig222.ROLEID ,
+		    iguser.USERNAME ,
+		    role.ROLENAME
+		FROM
+		    IG333 ig333 
+		LEFT JOIN IG222 ig222 
+		    ON ig333.PSDID = ig222.PSDID
+		LEFT JOIN IGUSER iguser
+		    ON ig222.USERID = iguser.USERID 
+		LEFT JOIN ROLE role
+		    ON role.ROLEID = ig222.ROLEID
+		WHERE
+			ig333.PSDCODE <> 'C'
+			AND ig333.PSDCODE <> 'Z' 
+		    AND ig333.PDID = (SELECT CIVALUE FROM SOC0107 soc0107 WHERE soc0107.CID = :cid  and soc0107.EIID = :eiid and civersion = (select eiversion from soc0118 where EIID = :eiid) )
+		ORDER BY PSDID ASC) A
+		    group by  A.PSDNAME,A.PSDID,A.USERID,A.ROLEID,A.USERNAME,A.ROLENAME
+	]]>
+	</sql-query>
+</hibernate-mapping>

@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	
+	<bean id="igVIM0101BL" class="com.dev.vim.igflow.event.status.IGVIM0101BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0102BL" class="com.dev.vim.igflow.event.status.IGVIM0102BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0103BL" class="com.dev.vim.igflow.event.status.IGVIM0103BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0104BL" class="com.dev.vim.igflow.event.status.IGVIM0104BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0105BL" class="com.dev.vim.igflow.event.status.IGVIM0105BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0106BL" class="com.dev.vim.igflow.event.status.IGVIM0106BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0107BL" class="com.dev.vim.igflow.event.status.IGVIM0107BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0201BL" class="com.dev.vim.igflow.event.status.IGVIM0201BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0202BL" class="com.dev.vim.igflow.event.status.IGVIM0202BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0203BL" class="com.dev.vim.igflow.event.status.IGVIM0203BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0204BL" class="com.dev.vim.igflow.event.status.IGVIM0204BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0205BL" class="com.dev.vim.igflow.event.status.IGVIM0205BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	<bean id="igVIM0206BL" class="com.dev.vim.igflow.event.status.IGVIM0206BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim03BL">
+			<ref bean="vim03BL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvim3001BL" class="com.dev.vim.igflow.event.status.IGVIM3001BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vcd03BL">
+			<ref bean="vcd03BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvim0401BL" class="com.dev.vim.igflow.event.status.IGVIM0401BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim07BL">
+			<ref bean="vim07BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvim0402BL" class="com.dev.vim.igflow.event.status.IGVIM0402BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vim07BL">
+			<ref bean="vim07BL"/>
+		</property>
+	</bean>
+	
+	<bean id="igvim3002BL" class="com.dev.vim.igflow.event.status.IGVIM3002BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="vcd03BL">
+			<ref bean="vcd03BL"/>
+		</property>
+	</bean>
+</beans>

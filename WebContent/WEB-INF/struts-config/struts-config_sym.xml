@@ -1,0 +1,2090 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<!--
+			****************** 机构管理 ****************** edit by liupeng start
+		-->
+		<!-- 机构查询删除  -->
+		<form-bean name="IGSYM0101Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0101Form" />
+		<!-- 机构新增修改  -->
+		<form-bean name="IGSYM0102Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0102Form" />
+		<!-- 成功后跳转  -->
+		<form-bean name="IGSYM0103Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0103Form" />
+		<!--
+			****************** 机构管理 ****************** edit by liupeng end
+		-->
+		<!--
+			****************** 用户管理 ****************** edit by liupeng start
+		-->
+		<!-- 用户查询删除  -->
+		<form-bean name="IGSYM0201Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0201Form" />
+		<!-- 用户新增修改  -->
+		<form-bean name="IGSYM0202Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0202Form" />
+		<!-- 成功后跳转  -->
+		<form-bean name="IGSYM0203Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0203Form" />
+		<!-- 用户查询 -->
+		<form-bean name="IGSYM0204Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0204Form" />
+		<!--
+			****************** 用户管理 ****************** edit by liupeng end
+		-->
+		<!--
+			****************** 角色管理 ****************** edit by liupeng start
+		-->
+		<!-- 角色查询删除  -->
+		<form-bean name="IGSYM0301Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0301Form" />
+		<!-- 角色新增修改  -->
+		<form-bean name="IGSYM0302Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0302Form" />
+		<!-- 成功后跳转  -->
+		<form-bean name="IGSYM0303Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0303Form" />
+		<form-bean name="IGSYM0305Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0305Form" />
+		<!--
+			****************** 角色管理 ****************** edit by liupeng end
+		-->
+		<!--
+			****************** 授权管理 ****************** edit by liupeng start
+		-->
+		<!-- 用户查询  -->
+		<form-bean name="IGSYM0401Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0401Form" />
+		<!-- 用户角色查询  -->
+		<form-bean name="IGSYM0402Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0402Form" />
+		<!-- 角色查询  -->
+		<form-bean name="IGSYM0403Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0403Form" />
+		<!-- 菜单查询  -->
+		<form-bean name="IGSYM0404Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0404Form" />
+		<!-- 角色用户查询  -->
+		<form-bean name="IGSYM0405Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0405Form" />
+		<!-- 角色负责人查询  -->
+		<form-bean name="IGSYM0407Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0407Form" />
+		<!-- 根据角色类型查询用户  -->
+		<form-bean name="IGSYM0408Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0408Form" />
+		<!-- 根据角色类型查询不属于该角色的用户  -->
+		<form-bean name="IGSYM0418Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0418Form" />
+		<form-bean name="IGSYM0419Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0419Form" />
+		<!--
+			****************** 授权管理 ****************** edit by liupeng end
+		-->
+		<!-- 报表授权查询  -->
+		<form-bean name="IGSYM0410Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0410Form" />
+		<form-bean name="IGSYM0412Form" 
+			type="com.deliverik.infogovernor.sym.form.IGSYM0412Form"/>
+		<!-- 报表查询  -->
+		<form-bean name="IGSYM0413Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0413Form" />
+		<!-- 角色查询  -->
+		<form-bean name="IGSYM0414Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0414Form" />
+		<!-- 按角色授权报表查询  -->
+		<form-bean name="IGSYM0415Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0415Form" />
+			
+		<!--
+			****************** 通知管理 ****************** edit by liupeng start
+		-->
+		<!-- 通知查询删除  -->
+		<form-bean name="IGSYM0501Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0501Form" />
+		<!-- 通知新增修改  -->
+		<form-bean name="IGSYM0502Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0502Form" />
+		<!-- 成功后跳转  -->
+		<form-bean name="IGSYM0503Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM0503Form" />
+		<!--
+			****************** 通知管理 ****************** edit by liupeng end
+		-->
+		
+       <!--
+            ****************** 基础数据管理 ****************** 
+        -->
+        <form-bean name="IGSYM1001Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1001Form" />
+        <form-bean name="IGSYM1004Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1004Form" />
+        <form-bean name="IGSYM1006Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1006Form" />
+        
+             <form-bean name="IGSYM1101Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1101Form" />
+            <form-bean name="IGSYM1102Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1102Form" />
+            <form-bean name="IGSYM1103Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1103Form" />
+            <form-bean name="IGSYM1104Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1104Form" />
+             <form-bean name="IGSYM1105Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1105Form" />
+             <form-bean name="IGSYM1106Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1106Form" />
+             <form-bean name="IGSYM1109Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1109Form" />
+            
+        <form-bean name="IGSYM1201Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1201Form" />
+		<form-bean name="IGSYM1202Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1202Form" />
+			
+		<form-bean name="IGSYM1301Form" type="com.deliverik.infogovernor.sym.form.IGSYM1301Form" />
+        <form-bean name="IGSYM1302Form" type="com.deliverik.infogovernor.sym.form.IGSYM1302Form" />
+        <form-bean name="IGSYM1303Form" type="com.deliverik.infogovernor.sym.form.IGSYM1303Form" />
+        <form-bean name="IGSYM1401Form" type="com.deliverik.infogovernor.sym.form.IGSYM1401Form"/>
+		<form-bean name="IGSYM1402Form" type="com.deliverik.infogovernor.sym.form.IGSYM1402Form"/>
+		<form-bean name="IGSYM1403Form" type="com.deliverik.infogovernor.sym.form.IGSYM1403Form"/>
+		<form-bean name="IGSYM1405Form" type="com.deliverik.infogovernor.sym.form.IGSYM1405Form"/>
+		<form-bean name="IGSYM1406Form" type="com.deliverik.infogovernor.sym.form.IGSYM1406Form"/>
+		<form-bean name="IGSYM1407Form" type="com.deliverik.infogovernor.sym.form.IGSYM1407Form" />
+		<form-bean name="IGSYM1408Form" type="com.deliverik.infogovernor.sym.form.IGSYM1408Form" />
+		
+		<form-bean name="IGSYM1501Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1501Form" />
+        <form-bean name="IGSYM1502Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1502Form" />
+        <form-bean name="IGSYM1503Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1503Form" />
+        <form-bean name="IGSYM1504Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1504Form" />
+        <form-bean name="IGSYM1505Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1505Form" />
+		<form-bean name="IGSYM1506Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1506Form" />
+			
+		<!-- ****************** 流程策略设定 ****************** -->
+		<!-- 流程定义查询  -->
+		<form-bean name="IGSYM1701Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1701Form" />
+		<!-- 流程策略设定  -->
+		<form-bean name="IGSYM1702Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1702Form" />
+		<form-bean name="IGSYM1508Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1508Form" />
+        
+         <!-- 资源组授权 2012/11/19 -->
+		<form-bean name="IGSYM0422Form" type="com.deliverik.infogovernor.sym.form.IGSYM0422Form" />
+        <!-- ***************************首页管理新增form  -->
+        <form-bean name="IGSYM1802Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1802Form" />
+        
+        <!-- SOC原功能_作息时间设定 -->    
+        <form-bean name="IGSYM1901Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1901Form" />
+		<form-bean name="IGSYM1902Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1902Form" />
+		<form-bean name="IGSYM1903Form"
+			type="com.deliverik.infogovernor.sym.form.IGSYM1903Form" />
+			
+		<!--短信IP规则控制 -->
+        <form-bean name="IGSYM1803Form"
+            type="com.deliverik.infogovernor.sym.form.IGSYM1803Form" />
+	</form-beans>
+	<action-mappings>
+		<!-- 数据信息树 -->
+		<action path="/IGSYM1201_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="CODETREE"  name="IGSYM1201Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1200.jsp" />
+		</action>
+		<!-- 项目类别数据信息树 -->
+		<action path="/IGSYM1204_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="PROJECTTREE"  name="IGSYM1201Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1204.jsp" />
+		</action>
+		<action path="/IGSYM1202_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="SPECIALCODETREE"  name="IGSYM1201Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1202.jsp" />
+		</action>
+		<action path="/IGSYM1202_TREE_BY_STATUS"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="CODETREEBYSTATUS"  name="IGSYM1201Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1202.jsp" />
+		</action>
+		<action path="/IGSYM1202_TREE_BY_STATUS_FOR_SVC"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="SVCSTATUS"  name="IGSYM1201Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1203.jsp" />
+		</action>
+		<!-- entity树 -->
+		<action path="/IGSYM1201_ENTITY_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="ENTITYTREE"  name="IGSYM1202Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1201.jsp" />
+		</action>
+		<action path="/IGSYM1201_ENTITY_TREE_BYLEVEL"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="ENTITYTREEBYLEVEL"  name="IGSYM1202Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1201.jsp" />
+		</action>
+		<action path="/IGSYM1203_ENTITY_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="ENTITYTREE03"  name="IGSYM1202Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1203.jsp" />
+			<forward name="RESET" path="/sym/IGSYM1205.jsp" />
+		</action>
+		<action path="/IGSYM1203_XLSENTITY_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1201Action"
+			parameter="EXCELENTITYTREE"  name="IGSYM1202Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1203.jsp" />
+		</action>
+		<!--
+			****************** 机构管理 ****************** edit by liupeng start
+		-->
+		<!-- 跳转到机构查询页面 -->
+		<action path="/IGSYM0101_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0101.jsp" />
+		</action>
+		<!-- 机构树形查询 -->
+		<action path="/IGSYM0101_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="TREE" input="/sym/IGSYM0101.jsp" name="IGSYM0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0100.jsp" />
+		</action>
+		<!-- 机构树形查询 -->
+		<action path="/IGSYM0101_CONDTREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="CONDTREE" input="/sym/IGSYM0101.jsp" name="IGSYM0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0100.jsp" />
+		</action>
+		<!-- 机构树形查询 -->
+		<action path="/IGSYM0101_0410TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="0410TREE" input="/sym/IGSYM0101.jsp" name="IGSYM0301Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0104.jsp" />
+		</action>
+		<action path="/IGSYM0101_ROLETREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="ROLETREE" input="/sym/IGSYM0302.jsp" name="IGSYM0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0100.jsp" />
+		</action>
+		<!-- 机构查询 -->
+		<action path="/IGSYM0101"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="SEARCH" input="/sym/IGSYM0101.jsp" name="IGSYM0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0101.jsp" />
+		</action>
+		<!-- 机构查询  横向显示-->
+		<action path="/IGSYM0101_S"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="SEARCH" input="/sym/IGSYM0101.jsp" name="IGSYM0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0101_t.jsp" />
+		</action>
+		<!-- 机构查询 -->
+		<action path="/IGSYM0101_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="SEARCH1" input="/sym/IGSYM0101.jsp" name="IGSYM0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0101.jsp" />
+		</action>
+		<!-- 机构删除 -->
+		<action path="/IGSYM0101_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="DELETE" input="/IGSYM0101.do" name="IGSYM0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0101.do" />
+		</action>
+		<!-- 机构状态改变 -->
+		<action path="/changeORGStatus"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="CHANGE_STATUS" input="/IGSYM0101.do" name="IGSYM0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0101_RE.do" />
+		</action>
+		<!-- 跳转到机构新增页面 -->
+		<action path="/IGSYM0102_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0102Action" input="/sym/IGSYM0102.jsp"
+			parameter="DISP" name="IGSYM0102Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0102.jsp" />
+		</action>
+		<!-- 机构新增变更 -->
+		<action path="/IGSYM0102"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0102Action" input="/IGSYM0102_Disp.do"
+			parameter="INSERT" name="IGSYM0102Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0103.jsp" />
+			<forward name="DETAIL" path="/IGSYM0101_Back.do" />
+		</action>
+		<!-- 机构变更初始化 -->
+		<action path="/IGSYM0102_Edit_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0102Action" input="/sym/IGSYM0102.jsp"
+			parameter="EDIT" name="IGSYM0102Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0102.jsp" />
+		</action>
+		<!-- 返回到机构管理页面 -->
+		<action path="/IGSYM0101_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0101Action"
+			parameter="SEARCH1" input="/sym/IGSYM0101.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0101.jsp" />
+		</action>
+		<!-- 跳转到管理成功页面 -->
+		<action path="/IGSYM0103"
+        	type="com.deliverik.infogovernor.sym.action.IGSYM0103Action"
+            input="/sym/IGSYM0103.jsp"
+        	parameter="DISP"
+        	name="IGSYM0103Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="CONF"        path="/IGCOM0202.do?linkID=IGSYM0101&amp;actname=ACT09SYM0101"/>
+           	<forward name="BACK"        path="/IGSYM0102_Disp.do"/>
+        </action>
+		<!--
+			****************** 机构管理 ****************** edit by liupeng end
+		-->
+		<!--
+			****************** 用户管理 ****************** edit by liupeng start
+		-->
+		<!-- 跳转到用户查询页面 -->
+		<action path="/IGSYM0201_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0201.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0201"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="SEARCH" input="/sym/IGSYM0201.jsp" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0201.jsp" />
+		</action>
+		<!-- 事件 里面  用户查询 -->
+		<action path="/IGSYM1904_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="SEARCH" input="/sym/IGSYM0201.jsp" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1904.jsp" />
+		</action>
+		<!-- 检查项 里面  用户查询 -->
+		<action path="/IGSYM1905_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="SEARCH" input="/sym/IGSYM0201.jsp" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1905.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0205_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0205Action"
+			parameter="DISP" input="/sym/IGSYM0206.jsp" name="IGSYM0204Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0206.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0205"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0205Action"
+			parameter="SEARCH" input="/sym/IGSYM0206.jsp" name="IGSYM0204Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0206.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0201_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="SEARCH1" input="/sym/IGSYM0201.jsp" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0201.jsp" />
+		</action>
+		<!-- 用户删除 -->
+		<action path="/IGSYM0201_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="DELETE" input="/IGSYM0201.do" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0201_Back.do" />
+		</action>
+		<!-- 跳转到用户新增页面 -->
+		<action path="/IGSYM0202_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0202Action" input="/sym/IGSYM0202.jsp"
+			parameter="DISP" name="IGSYM0202Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0202.jsp" />
+			<forward name="OUT" path="/sym/IGSYM0207.jsp" />
+		</action>
+		<!-- 用户新增变更 -->
+		<action path="/IGSYM0202"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0202Action" input="/IGSYM0202_Disp.do"
+			parameter="INSERT" name="IGSYM0202Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0203.jsp" />
+			<forward name="DETAIL" path="/IGSYM0201_Back.do" />
+		</action>
+		<!-- 用户变更初始化 -->
+		<action path="/IGSYM0202_Edit_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0202Action" input="/sym/IGSYM0202.jsp"
+			parameter="EDIT" name="IGSYM0202Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0202.jsp" />
+		</action>  
+		
+		<!-- 用户变更初始化 new-->
+		<action path="/IGSYM0204"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0204Action" 
+			parameter="EDIT" name="IGSYM0202Form" validate="false" scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0204.jsp" />
+		</action>
+		<!-- 用户变更 处理-->
+		<action path="/IGSYM0204_UPDATE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0204Action" 
+			parameter="UPDATE" name="IGSYM0202Form" validate="true" scope="session" input="/sym/IGSYM0204.jsp">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0205.jsp" />
+		</action>
+		
+		
+		<!-- 返回到用户管理页面 -->
+		<action path="/IGSYM0201_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="SEARCH1" input="/sym/IGSYM0201.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0201.jsp" />
+		</action>
+		<!-- 跳转到用户管理成功页面 -->
+		<action path="/IGSYM0203"
+        	type="com.deliverik.infogovernor.sym.action.IGSYM0203Action"
+            input="/sym/IGSYM0203.jsp"
+        	parameter="DISP"
+        	name="IGSYM0203Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="CONF"        path="/IGCOM0202.do?linkID=IGSYM0201&amp;actname=ACT09SYM0201"/>
+           	<forward name="BACK"        path="/IGSYM0202_Disp.do"/>
+        </action>
+		<!--
+			****************** 用户管理 ****************** edit by liupeng end
+		-->
+		<!--
+			****************** 角色管理 ****************** edit by liupeng start
+		-->
+		
+		<!--
+			****************** 角色管理域树****************** edit by duchong start
+		-->
+		<action path="/IGSYM0304"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0304Action" 
+			parameter="DOMAINTREE" name="IGSYM0101Form" validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0300.jsp" />
+
+		</action>
+		<!--
+			****************** 角色管理域树****************** edit by duchong end
+		-->
+		<!--
+			****************** 角色的资产管理内容树****************** edit by duchong start
+		-->
+		<action path="/IGSYM0304_ASSET"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0304Action" 
+			parameter="ASSETDOMAINTREE" name="IGSYM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0304.jsp" />
+			<forward name="RESET" path="/sym/IGSYM0307.jsp" />
+
+		</action>
+		<!--
+			****************** 角色的资产管理内容树****************** edit by duchong end
+		-->
+		<!-- 风险分类内容树 -->
+		<action path="/IGSYM0304_RISK"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0304Action" 
+			parameter="ASSETDOMAINTREE" name="IGSYM0301Form" validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0309.jsp" />
+			<forward name="RESET" path="/sym/IGSYM0307.jsp" />
+
+		</action>
+		<!-- 跳转到角色查询页面(弹出页使用) -->
+		<action path="/IGSYM0306_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0306Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0306.jsp" />
+		</action>
+		<!-- 角色查询(弹出页使用) -->
+		<action path="/IGSYM0306"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0306Action"
+			parameter="SEARCH" input="/sym/IGSYM0306.jsp" name="IGSYM0301Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0306.jsp" />
+		</action>
+		<!-- 跳转到角色查询页面 -->
+		<action path="/IGSYM0301_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0301.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0301"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="SEARCH" input="/sym/IGSYM0301.jsp" name="IGSYM0301Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0301.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0301_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="SEARCH1" input="/sym/IGSYM0301.jsp" name="IGSYM0301Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0301.jsp" />
+		</action>
+		<!-- 角色删除 -->
+		<action path="/IGSYM0301_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="DELETE" input="/IGSYM0301.do" name="IGSYM0301Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0301.do" />
+		</action>
+		<!-- 跳转到角色新增页面 -->
+		<action path="/IGSYM0302_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0302Action" input="/sym/IGSYM0302.jsp"
+			parameter="DISP" name="IGSYM0302Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0302.jsp" />
+		</action>
+		<!-- 角色新增变更 -->
+		<action path="/IGSYM0302"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0302Action" input="/sym/IGSYM0302.jsp"
+			parameter="INSERT" name="IGSYM0302Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0303.jsp" />
+			<forward name="DETAIL" path="/IGSYM0301_Back.do" />
+		</action>
+		<!-- 角色变更初始化 -->
+		<action path="/IGSYM0302_Edit_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0302Action" input="/sym/IGSYM0302.jsp"
+			parameter="EDIT" name="IGSYM0302Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0302.jsp" />
+		</action>
+		<!-- 返回到角色管理页面 -->
+		<action path="/IGSYM0301_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0301Action"
+			parameter="SEARCH1" input="/sym/IGSYM0301.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0301.jsp" />
+		</action>
+		<!-- 跳转到角色管理成功页面 -->
+		<action path="/IGSYM0303"
+        	type="com.deliverik.infogovernor.sym.action.IGSYM0303Action"
+            input="/sym/IGSYM0303.jsp"
+        	parameter="DISP"
+        	name="IGSYM0303Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="CONF"        path="/IGCOM0202.do?linkID=IGSYM0301&amp;actname=ACT09SYM0301"/>
+           	<forward name="BACK"        path="/IGSYM0302_Disp.do"/>
+        </action>
+        
+        <!-- 跳转到角色查询页面 -->
+		<action path="/IGSYM0305_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0305Action"
+			name="IGSYM0305Form"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0305.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0305"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0305Action"
+			parameter="SEARCH" input="/sym/IGSYM0305.jsp" name="IGSYM0305Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0305.jsp" />
+		</action>
+		 <!-- 跳转到角色查询页面 -->
+		<action path="/IGSYM0305R_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0305Action"
+			name="IGSYM0305Form"
+			parameter="RDISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0308.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0305R"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0305Action"
+			parameter="RSEARCH" input="/sym/IGSYM0305.jsp" name="IGSYM0305Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0308.jsp" />
+		</action>
+		
+		<!-- 用户查询(全查不涉及分页) -->
+		<action path="/IGSYM0205_NoPage"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0205Action"
+			parameter="SEARCH_NOPAGE" input="/sym/IGSYM0208.jsp" name="IGSYM0204Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0208.jsp" />
+		</action>
+		<!-- 角色查询(全查不涉及分页) -->
+		<action path="/IGSYM0305_NoPage"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0305Action"
+			parameter="SEARCH_NOPAGE" input="/sym/IGSYM0308.jsp" name="IGSYM0305Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0308.jsp" />
+		</action>
+		
+		<!-- 跳转属于该角色用户  -->
+		<action path="/IGSYM0418_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0418Action"
+			parameter="DISP" scope="request" name="IGSYM0418Form" input="/sym/IGSYM0418.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0418.jsp" />
+		</action>
+		<!-- 删除该角色用户  -->
+		<action path="/IGSYM0418_Delete"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0418Action"
+			parameter="DELETE" scope="request" name="IGSYM0418Form" input="/sym/IGSYM0418.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0418_Disp.do" />
+		</action>
+		<!-- 添加该角色用户  -->
+		<action path="/IGSYM0418_Insert"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0418Action"
+			parameter="INSERT" scope="request" name="IGSYM0418Form" input="/sym/IGSYM0418.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0418.jsp" />
+		</action>
+		<!-- 选择该角色用户  -->
+		<action path="/IGSYM0419_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0419Action"
+			parameter="DISP" scope="session" name="IGSYM0419Form" input="/sym/IGSYM0419.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0419.jsp" />
+		</action>
+		<action path="/IGSYM0419"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0419Action"
+			parameter="SEARCH" scope="session" name="IGSYM0419Form" input="/sym/IGSYM0419.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0419.jsp" />
+		</action>
+		<action path="/IGSYM0419_Save"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0419Action"
+			parameter="SAVE" scope="request" name="IGSYM0419Form" input="/sym/IGSYM0419.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0419.jsp?sign=1" />
+		</action>
+        
+        <!--
+			****************** 角色管理 ****************** edit by liupeng end
+		-->
+		<!-- 跳转到用户查询页面 -->
+		<action path="/IGSYM0401_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0401Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0401.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0401"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0401Action"
+			parameter="SEARCH" input="/sym/IGSYM0401.jsp" name="IGSYM0401Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0401.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0401_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0401Action"
+			parameter="SEARCH1" input="/sym/IGSYM0401.jsp" name="IGSYM0401Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0401.jsp" />
+		</action>
+		<!-- 用户角色查询 -->
+		<action path="/IGSYM0402_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0402Action"
+			parameter="SEARCH" input="/sym/IGSYM0402.jsp" name="IGSYM0402Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0402.jsp" />
+		</action>
+		<!-- 角色授权-->
+		<action path="/IGSYM0402"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0402Action"
+			parameter="GRANT" input="/IGSYM0402_Disp.do" name="IGSYM0402Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0402_Disp.do" />
+		</action>
+		<!-- 跳转到角色查询页面 -->
+		<action path="/IGSYM0403_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0403Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0403.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0403"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0403Action"
+			parameter="SEARCH" input="/sym/IGSYM0403.jsp" name="IGSYM0403Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0403.jsp" />
+		</action>
+		<!-- 角色查询 -->
+		<action path="/IGSYM0403_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0403Action"
+			parameter="SEARCH1" input="/sym/IGSYM0403.jsp" name="IGSYM0403Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0403.jsp" />
+		</action>
+		<!-- 角色菜单查询 -->
+		<action path="/IGSYM0404_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0404Action"
+			parameter="SEARCH" input="/sym/IGSYM0404.jsp" name="IGSYM0404Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0404.jsp" />
+		</action>
+		<!-- 角色菜单授权-->
+		<action path="/IGSYM0404"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0404Action"
+			parameter="GRANT" input="/IGSYM0404_Disp.do" name="IGSYM0404Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0404_Disp.do" />
+		</action>
+		<!-- 跳转到角色用户查询页面 -->
+		<action path="/IGSYM0405_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0405.jsp" />
+		</action>
+		<!-- 角色用户查询 -->
+		<action path="/IGSYM0405"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="SEARCH" input="/sym/IGSYM0405.jsp" name="IGSYM0405Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0405.jsp" />
+		</action>
+		
+		<!-- 角色用户查询 -->
+		<action path="/IGSYM0405_Org"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="SEARCH" input="/sym/IGSYM0405.jsp" name="IGSYM0405Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0405.jsp" />
+		</action>
+		
+		<!-- 快捷发起跳转到角色用户查询页面 -->
+		<action path="/IGSYM0420_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0420.jsp" />
+		</action>
+		<!-- 快捷发起角色用户查询 -->
+		<action path="/IGSYM0420"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="SEARCH" input="/sym/IGSYM0405.jsp" name="IGSYM0405Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0420.jsp" />
+		</action>
+		
+		<!-- 快捷发起角色用户查询 -->
+		<action path="/IGSYM0420_Org"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0405Action"
+			parameter="SEARCH" input="/sym/IGSYM0405.jsp" name="IGSYM0405Form"
+			scope="request">
+			<forward name="DISP" path="/sym/IGSYM0420.jsp" />
+		</action>
+		
+			<!-- 跳转到角色用户查询页面(无工作数量显示) -->
+			<action path="/IGSYM0417_Disp"
+				type="com.deliverik.infogovernor.sym.action.IGSYM0417Action"
+				parameter="DISP" scope="session">
+				<set-property key="auth" value="false" />
+				<forward name="DISP" path="/sym/IGSYM0417.jsp" />
+			</action>
+			<!-- 角色用户查询 (无工作数量显示)-->
+			<action path="/IGSYM0417"
+				type="com.deliverik.infogovernor.sym.action.IGSYM0417Action"
+				parameter="SEARCH" input="/sym/IGSYM0417.jsp" name="IGSYM0405Form"
+				scope="session">
+				<set-property key="auth" value="false" />
+				<forward name="DISP" path="/sym/IGSYM0417.jsp" />
+			</action>
+			<!-- 角色用户查询 (无工作数量显示) -->
+			<action path="/IGSYM0417_Org"
+				type="com.deliverik.infogovernor.sym.action.IGSYM0417Action"
+				parameter="SEARCH" input="/sym/IGSYM0417.jsp" name="IGSYM0405Form"
+				scope="request">
+				<set-property key="auth" value="false" />
+				<forward name="DISP" path="/sym/IGSYM0417.jsp" />
+			</action>
+		
+		<!-- 跳转到角色用户查询页面 -->
+		<action path="/IGSYM0406_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0406Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0406.jsp" />
+		</action>
+		<!-- 角色用户查询 -->
+		<action path="/IGSYM0406"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0406Action"
+			parameter="SEARCH" input="/sym/IGSYM0406.jsp" name="IGSYM0405Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0406.jsp" />
+		</action>
+		
+		<!-- 跳转到角色用户查询页面 (无工作数量显示) -->
+		<action path="/IGSYM0416_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0416Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0416.jsp" />
+		</action>
+		<!-- 角色用户查询(无工作数量显示)  -->
+		<action path="/IGSYM0416"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0416Action"
+			parameter="SEARCH" input="/sym/IGSYM0416.jsp" name="IGSYM0405Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0416.jsp" />
+		</action>
+		
+		
+		
+		<!-- 跳转到角色负责人查询页面 -->
+		<action path="/IGSYM0407_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0407Action"
+			parameter="DISP" scope="request" name="IGSYM0407Form" input="/sym/IGSYM0407.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0407.jsp" />
+		</action>
+		<!-- 角色负责人 -->
+		<action path="/IGSYM0407"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0407Action"
+			parameter="SAVE" input="/IGSYM0407_Disp.do" name="IGSYM0407Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0301_RE.do" />
+		</action>
+		<!-- 角色用户查询 -->
+		<action path="/IGSYM0408"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0408Action"
+			parameter="SEARCH" input="/sym/IGSYM0408.jsp" name="IGSYM0408Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0408.jsp" />
+		</action>
+		<!-- 跳转到值班负责人查询页面 -->
+		<action path="/IGSYM0409_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0409Action"
+			parameter="DISP" scope="request" name="IGSYM0407Form" input="/sym/IGSYM0409.jsp">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0409.jsp" />
+		</action>
+		<!-- 角色负责人 -->
+		<action path="/IGSYM0409"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0409Action"
+			parameter="SAVE" input="/IGSYM0409_Disp.do" name="IGSYM0407Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0301_RE.do" />
+		</action>
+		
+		<!-- 跳转到角色授权页面 -->
+		<action path="/IGSYM0413_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0413Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0413.jsp" />
+		</action>
+		<action path="/IGSYM0413"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0413Action"
+			parameter="SEARCH" input="/sym/IGSYM0413.jsp" name="IGSYM0413Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/sym/IGSYM0413.jsp" />
+		</action>
+		<!-- 报表变更初始化 -->
+		<action path="/IGSYM0413_Exa_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0413Action" input="/sym/IGSYM0410.jsp"
+			parameter="INIT" name="IGSYM0413Form" validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM0411.jsp" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0413_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0413Action"
+			parameter="SEARCH1" input="/sym/IGSYM0413.jsp" name="IGSYM0413Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0413.jsp" />
+		</action>
+		<!-- 返回到报表授权页面 -->
+		<action path="/IGSYM0413_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0413Action"
+			parameter="SEARCH1" input="/sym/IGSYM0413.jsp" scope="session">
+			<forward name="DISP" path="/sym/IGSYM0413.jsp" />
+		</action>
+		<!-- 报表角色查询 -->
+		<action path="/IGSYM0410_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0410Action"
+			parameter="SEARCH" input="/sym/IGSYM0410.jsp" name="IGSYM0410Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0410.jsp" />
+		</action>
+		<!-- 报表授权-->
+		<action path="/IGSYM0410"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0410Action"
+			parameter="GRANT" input="/IGSYM0410_Disp.do" name="IGSYM0410Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0410_Disp.do" />
+		</action>
+		<!-- 报表版本查询处理  -->
+		<action path="/IGSYM0412_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0412Action"
+			parameter="DISP" input="/sym/IGSYM0412.jsp" name="IGSYM0412Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM0412.jsp" />
+		</action>
+		<!-- 跳转到角色查询页面 -->
+		<action path="/IGSYM0414_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0414Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0414.jsp" />
+		</action>
+		
+		<!-- 角色查询 -->
+		<action path="/IGSYM0414"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0414Action"
+			parameter="SEARCH" input="/sym/IGSYM0414.jsp" name="IGSYM0414Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0414.jsp" />
+		</action>
+		
+		<!-- 角色报表查询 -->
+		<action path="/IGSYM0415_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0415Action"
+			parameter="SEARCH" input="/sym/IGSYM0415.jsp" name="IGSYM0415Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0415.jsp" />
+		</action>
+		
+		<!-- 报表菜单授权-->
+		<action path="/IGSYM0415"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0415Action"
+			parameter="GRANT" input="/IGSYM0415_Disp.do" name="IGSYM0415Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0415_Disp.do" />
+		</action>
+		<!-- 用户查询 -->
+		<action path="/IGSYM0415_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0414Action"
+			parameter="SEARCH1" input="/sym/IGSYM0414.jsp" name="IGSYM0414Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0414.jsp" />
+		</action>
+		<!--
+			****************** 通知管理 ****************** edit by liupeng start
+		-->
+		<!-- 跳转到通知查询页面 -->
+		<action path="/IGSYM0501_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0501.jsp" />
+		</action>
+		<!-- 通知查询 -->
+		<action path="/IGSYM0501"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="SEARCH" input="/sym/IGSYM0501.jsp" name="IGSYM0501Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0501.jsp" />
+		</action>
+		<!-- 通知查询 -->
+		<action path="/IGSYM0501_RE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="SEARCH1" input="/sym/IGSYM0501.jsp" name="IGSYM0501Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0501.jsp" />
+		</action>
+		<!-- 通知删除 -->
+		<action path="/IGSYM0501_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="DELETE" input="/IGSYM0501.do" name="IGSYM0501Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM0501.do" />
+		</action>
+		<!-- 跳转到通知新增页面 -->
+		<action path="/IGSYM0502_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0502Action" input="/sym/IGSYM0502.jsp"
+			parameter="DISP" name="IGSYM0502Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0502.jsp" />
+		</action>
+		<!-- 通知新增变更 -->
+		<action path="/IGSYM0502"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0502Action" input="/IGSYM0502_Disp.do"
+			parameter="INSERT" name="IGSYM0502Form" validate="true" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0503.jsp" />
+			<forward name="DETAIL" path="/IGSYM0501_Back.do" />
+		</action>
+		<!-- 通知变更初始化 -->
+		<action path="/IGSYM0502_Edit_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0502Action" input="/sym/IGSYM0502.jsp"
+			parameter="EDIT" name="IGSYM0502Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0502.jsp" />
+		</action>
+		<!-- 返回到通知管理页面 -->
+		<action path="/IGSYM0501_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="SEARCH1" input="/sym/IGSYM0501.jsp" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0501.jsp" />
+		</action>
+		<!-- 跳转到管理成功页面 -->
+		<action path="/IGSYM0503"
+        	type="com.deliverik.infogovernor.sym.action.IGSYM0503Action"
+            input="/sym/IGSYM0503.jsp"
+        	parameter="DISP"
+        	name="IGSYM0503Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="CONF"        path="/IGCOM0202.do?linkID=IGSYM0501&amp;actname=ACT09SYM0501"/>
+           	<forward name="BACK"        path="/IGSYM0502_Disp.do"/>
+        </action>
+        
+        <!-- protal页通知详细查询 -->
+        <action path="/IGSYM0504"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0501Action"
+			parameter="NOTICE" input="/com/IGCOM0201.jsp" name="IGSYM0501Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="NOTICE" path="/sym/IGSYM0504.jsp" />
+			<forward name="NOTICE_DETAIL" path="/sym/IGSYM0505.jsp" />
+		</action>
+        
+		<!--
+			****************** 通知管理 ****************** edit by liupeng end
+		-->
+
+        <!--
+            ****************** 基础数据管理 ******************
+        -->
+        <!-- 数据分类查询画面初期显示  -->
+        <action path="/IGSYM1001_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1001Action"
+            parameter="DISP"
+            name="IGSYM1001Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1001.jsp"/>
+        </action>
+
+        <!-- 数据分类删除处理  -->
+        <action path="/IGSYM1001_Delete"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1001Action"
+            parameter="DELETE"
+            name="IGSYM1001Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGSYM1001_Disp.do"/>
+        </action>
+
+        <!-- 数据信息登记画面初期显示 -->
+        <action path="/IGSYM1004_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1004Action"
+            input="/sym/IGSYM1004.jsp"
+            parameter="DISP"
+            name="IGSYM1004Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1004.jsp"/>
+        </action>
+
+        <!-- 层次数据信息登记画面初期显示 -->
+        <action path="/IGSYM1004_List_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1004Action"
+            input="/sym/IGSYM1004.jsp"
+            parameter="LIST"
+            name="IGSYM1004Form"
+            validate="false"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1004.jsp"/>
+            <forward name="BACK3"       path="/IGSYM1008_Disp.do"/>
+        </action>
+
+        <!-- 数据信息登记/变更处理 -->
+        <action path="/IGSYM1004"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1004Action"
+            input="/sym/IGSYM1004.jsp"
+            parameter="INSERT"
+            name="IGSYM1004Form"
+            validate="true"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1005.jsp"/>
+            <forward name="DETAIL"      path="/IGSYM1006_Disp.do"/>
+            <forward name="BACK1"       path="/IGSYM1002_Disp.do"/>
+            <forward name="BACK2"       path="/IGSYM1006_Disp.do"/>
+            <forward name="BACK3"       path="/IGSYM1008_Disp.do"/>
+            <forward name="ERROR"       path="/IGSYM1004_Disp.do"/>
+        </action>
+
+        <!-- 数据信息变更画面显示 -->
+        <action path="/IGSYM1004_Edit_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1004Action"
+            input="/sym/IGSYM1004.jsp"
+            parameter="EDIT"
+            name="IGSYM1004Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1004.jsp"/>
+        </action>
+
+        <!-- 数据详细画面显示  -->
+        <action path="/IGSYM1006_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1006Action"
+            parameter="DISP"
+            input="/sym/IGSYM1006.jsp"
+            name="IGSYM1006Form"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/sym/IGSYM1006.jsp"/>
+        </action>
+
+        <!-- 数据详细信息删除处理  -->
+        <action path="/IGSYM1006"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1006Action"
+            parameter="BACK"
+            input="/sym/IGSYM1006.jsp"
+            name="IGSYM1006Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="BACK"  path="/IGSYM1001_Disp.do"/>
+        </action>
+
+        <action path="/IGSYM1006_Del"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1006Action"
+            parameter="DELETE"
+            input="/sym/IGSYM1006.jsp"
+            name="IGSYM1006Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGSYM1006_Disp.do"/>
+         </action>
+    
+    	 <!-- 数据分类查询画面（弹出页使用） -->
+        <action path="/IGSYM1108_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1108Action"
+            parameter="DISP"
+            name="IGSYM1101Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1108.jsp"/>
+        </action>
+    
+    
+    	 <!-- 数据分类查询画面 -->
+        <action path="/IGSYM1101_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1101Action"
+            parameter="DISP"
+            name="IGSYM1101Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1101.jsp"/>
+        </action>
+        
+        
+        <action path="/IGSYM1101_Del"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1101Action"
+            input="/IGSYM1101_Disp.do"
+            parameter="DEL"
+            name="IGSYM1101Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGSYM1101_Disp.do"/>
+        </action>
+        <!-- 数据分类登记画面 -->
+        <action path="/IGSYM1107_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1101Action"
+            input="/sym/IGSYM1101.jsp"
+            parameter="INSERTDISP"
+            name="IGSYM1101Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1107.jsp"/>
+        </action>
+        <!-- 数据分类登记处理 -->
+        <action path="/IGSYM1107"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1101Action"
+            input="/sym/IGSYM1107.jsp"
+            parameter="INSERT"
+            name="IGSYM1101Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGSYM1101_Disp.do"/>
+        </action>
+        
+        
+        
+         <!-- 数据分类登记画面初期显示 -->
+        <action path="/IGSYM1102_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1102Action"
+            input="/sym/IGSYM1102.jsp"
+            parameter="DISP"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1102.jsp"/>
+        </action>
+        
+         <!-- 数据分类登记/变更处理 -->
+        <action path="/IGSYM1102"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1102Action"
+            input="/sym/IGSYM1102.jsp"
+            parameter="INSERT"
+            name="IGSYM1102Form"
+            validate="true"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1103.jsp"/>
+            <forward name="BACK"        path="/IGSYM1101_Disp.do"/>
+        </action>
+
+        <!-- 数据分类变更画面初期显示 -->
+        <action path="/IGSYM1102_Edit_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1102Action"
+            input="/sym/IGSYM1102.jsp"
+            parameter="EDIT"
+            name="IGSYM1102Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1102.jsp"/>
+        </action>
+        
+        <!-- 数据分类登记成功完了后确认画面处理 -->
+        <action path="/IGSYM1103"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1103Action"
+            input="/sym/IGSYM1103.jsp"
+            parameter="DISP"
+            name="IGSYM1103Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="CONF"        path="/IGSYM1104_Disp.do"/>
+            <forward name="BACK"        path="/IGSYM1101_Disp.do"/>
+        </action>
+        
+          <!-- 数据信息登记画面初期显示 -->
+        <action path="/IGSYM1104_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1104Action"
+            input="/sym/IGSYM1104.jsp"
+            parameter="DISP"
+            name="IGSYM1104Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1104.jsp"/>
+        </action>
+
+        <!-- 数据信息登记/变更处理 -->
+        <action path="/IGSYM1104"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1104Action"
+            input="/sym/IGSYM1104.jsp"
+            parameter="INSERT"
+            name="IGSYM1104Form"
+            validate="true"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1105.jsp"/>
+            <forward name="BACK1"       path="/IGSYM1106_Disp.do?back=1"/>
+            <forward name="BACK2"       path="/IGSYM1106_Disp.do?back=1"/>
+            <forward name="DETAIL"      path="/IGSYM1106_Disp.do"/>
+            <forward name="BACK3"       path="/IGSYM1106_Disp.do?back=2"/>
+        </action>
+
+        <!-- 数据信息变更画面显示 -->
+        <action path="/IGSYM1104_Edit_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1104Action"
+            input="/sym/IGSYM1104.jsp"
+            parameter="EDIT"
+            name="IGSYM1104Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1104.jsp"/>
+        </action>
+
+
+        <!-- 数据登记成功后确认画面处理 -->
+        <action path="/IGSYM1105"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1105Action"
+            input="/sym/IGSYM1105.jsp"
+            parameter="DISP"
+            name="IGSYM1105Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="BACK"        path="/IGSYM1104_Disp.do"/>
+            <forward name="NEXT"        path="/IGSYM1106_Disp.do?back=3"/>
+        </action>
+        
+         <!-- 数据详细画面显示  -->
+        <action path="/IGSYM1106_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1106Action"
+            parameter="DISP"
+            input="/sym/IGSYM1106.jsp"
+            name="IGSYM1106Form"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/sym/IGSYM1106.jsp"/>
+        </action>
+
+        <!-- 数据详细信息处理  -->
+        <action path="/IGSYM1106"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1106Action"
+            parameter="BACK"
+            input="/sym/IGSYM1106.jsp"
+            name="IGSYM1106Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="BACK"  path="/sym/IGSYM1106.jsp"/>
+            <forward name="BACK1"  path="/IGSYM1101_Disp.do"/>
+        </action>
+        
+        <!-- 数据详细信息删除处理  -->
+         <action path="/IGSYM1106_Del"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1106Action"
+            parameter="DELETE"
+            input="/sym/IGSYM1106.jsp"
+            name="IGSYM1106Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGSYM1106_Disp.do"/>
+         </action>
+         
+         <!-- 流程优先级配置画面初期显示 -->
+        <action path="/IGSYM1109_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1109Action"
+            parameter="DISP"
+            validate="false"
+            name="IGSYM1109Form"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1109.jsp"/>
+        </action>
+        
+        <!-- 流程优先级配置保存逻辑处理 -->
+        <action path="/IGSYM1109"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1109Action"
+            input="/sym/IGSYM1109.jsp"
+            parameter="EDIT"
+            name="IGSYM1109Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"      path="/sym/IGSYM1109.jsp"/>
+        </action>
+        
+         <!-- 短信测试  -->
+         <action path="/IGSYM1301_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1301Action"
+            parameter="DISP"
+            input="/sym/IGSYM1301.jsp"
+            name="IGSYM1301Form"
+            scope="request">
+            <forward name="DISP"  path="/sym/IGSYM1301.jsp"/>
+         </action>
+         
+         <action path="/IGSYM1301"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1301Action"
+            parameter="INSERT"
+            input="/sym/IGSYM1301.jsp"
+            name="IGSYM1301Form"
+            scope="request">
+            <forward name="INPUT"  path="/IGSYM1301_Disp.do"/>
+            <forward name="DISP"  path="/IGSYM1303_Disp.do"/>
+         </action>
+         
+         <!-- 邮件测试  -->
+         <action path="/IGSYM1302_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1302Action"
+            parameter="DISP"
+            input="/sym/IGSYM1302.jsp"
+            name="IGSYM1302Form"
+            scope="request">
+            <forward name="DISP"  path="/sym/IGSYM1302.jsp"/>
+         </action>
+         
+         <action path="/IGSYM1302"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1302Action"
+            parameter="INSERT"
+            input="/sym/IGSYM1302.jsp"
+            name="IGSYM1302Form"
+            scope="request">
+            <forward name="INPUT"  path="/IGSYM1302_Disp.do"/>
+            <forward name="DISP"  path="/IGSYM1303_Disp.do"/>
+         </action>
+         
+         <action path="/IGSYM1303_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1303Action"
+            name="IGSYM1303Form"
+            scope="request">
+            <forward name="DISP"  path="/sym/IGSYM1303.jsp"/>
+         </action>
+         <!-- 通知附件查询 -->
+		<action path="/IGSYM0502_loadFIle"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0502Action" input="/sym/IGSYM0502.jsp"
+			parameter="LOADFILE" name="IGSYM0502Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0502.jsp" />
+			<forward name="LOADFILE" path="/symdownloadFinFile.do" />
+		</action>
+		<action path="/IGSYM0505_loadFIle"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0502Action" input="/sym/IGSYM0505.jsp"
+			parameter="LOADFILE" name="IGSYM0502Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sym/IGSYM0505.jsp" />
+			<forward name="LOADFILE" path="/symdownloadFinFile.do" />
+		</action>
+		
+		
+         <!-- 附件下载 -->
+        <action path="/symdownloadFinFile"
+        	type="com.deliverik.infogovernor.action.DownloadAction"
+            scope="request">
+           	<forward name="DISP" path="/IGKGM0206_Disp.do" />
+        </action>
+        
+        <!-- 报表管理查询初始化  -->
+        <action path="/IGSYM1401_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1401Action"
+            parameter="DISP"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1401.jsp"/>
+        </action>
+        
+        <!-- 报表管理查询处理  -->
+		<action path="/IGSYM1401"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1401Action"
+			parameter="SEARCH" input="/sym/IGSYM1401.jsp" name="IGSYM1401Form"
+			validate="false" scope="session">
+			<forward name="DISP" path="/sym/IGSYM1401.jsp" />
+		</action>
+		
+		<!-- 返回到报表管理页面 -->
+		<action path="/IGSYM1401_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1401Action"
+			parameter="SEARCH1" input="/sym/IGSYM1401.jsp" scope="session">
+			<forward name="DISP" path="/sym/IGSYM1401.jsp" />
+		</action>
+		
+		<!-- 报表删除 -->
+		<action path="/IGSYM1401_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1401Action"
+			parameter="DELETE" input="/IGSYM1401.do" name="IGSYM1401Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM1401.do" />
+		</action>
+		
+		<!-- 报表版本升级 -->
+		<action path="/IGSYM1401_Version"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1401Action"
+			parameter="VERSION" input="/IGSYM1401.do" name="IGSYM1401Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM1401.do" />
+		</action>
+		
+		<!-- 跳转到报表新增页面 -->
+		<action path="/IGSYM1402_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1402Action" input="/sym/IGSYM1402.jsp"
+			parameter="DISP" name="IGSYM1402Form" validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM1402.jsp" />
+		</action>
+		
+		<!-- 报表新增 -->
+		<action path="/IGSYM1402"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1402Action" input="/IGSYM1402_Disp.do"
+			parameter="INSERT" name="IGSYM1402Form" validate="true" scope="request">
+			<forward name="DISP" path="/sym/IGSYM1403.jsp" />
+		</action>
+		
+		<!-- 报表变更初始化 -->
+		<action path="/IGSYM1402_Edit_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1402Action" input="/sym/IGSYM1404.jsp"
+			parameter="INIT" name="IGSYM1402Form" validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM1404.jsp" />
+		</action>
+		
+		<!-- 报表变更 -->
+		<action path="/IGSYM1402_EDIT"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1402Action" input="/sym/IGSYM1404.jsp"
+			parameter="EDIT" name="IGSYM1402Form" validate="true" scope="request">
+			<forward name="DISP" path="/IGSYM1401_Back.do" />
+		</action>
+		
+		<!-- 跳转到报表成功页面 -->
+		<action path="/IGSYM1403"
+        	type="com.deliverik.infogovernor.sym.action.IGSYM1403Action"
+            input="/sym/IGSYM1403.jsp"
+        	parameter="DISP"
+        	name="IGSYM1403Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+           	<forward name="ADD"        path="/IGSYM1402_Disp.do"/>
+           	<forward name="SEARCH"        path="/IGCOM0202.do?linkID=IGSYM1401&amp;actname=ACT09SYM1101"/>
+        </action>
+        
+        <!-- 报表版本查询处理  -->
+		<action path="/IGSYM1405_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1405Action"
+			parameter="DISP" input="/sym/IGSYM1405.jsp" name="IGSYM1405Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM1405.jsp" />
+		</action>
+		
+        <!-- 报表指定当前版本处理  -->
+		<action path="/IGSYM1405_Assign"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1405Action"
+			parameter="ASSIGN" input="/sym/IGSYM1405.jsp" name="IGSYM1405Form"
+			validate="false" scope="request">
+			<forward name="DISP" path="/IGSYM1405_Disp.do" />
+		</action>
+		
+		  <!-- 报表预览处理 -->
+        <action path="/IGSYM1406_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1406Action"
+            input="/sym/IGSYM1406.jsp" 
+            name="IGSYM1406Form" 
+            scope="request">
+            <forward name="DISP"  path="/sym/IGSYM1406.jsp"/>
+        </action>
+         
+          <!-- 数据定义查询画面 -->
+        <action path="/IGSYM1501_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1501Action"
+            parameter="DISP"
+            name="IGSYM1501Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1501.jsp"/>
+        </action>
+        
+        <!-- 数据定义删除画面 -->
+        <action path="/IGSYM1501_Del"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1501Action"
+            input="/IGSYM1501_Disp.do"
+            parameter="DEL"
+            name="IGSYM1501Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGSYM1501_Disp.do"/>
+        </action>
+        <!-- 数据定义分类登记画面 -->
+        <action path="/IGSYM15012_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1501Action"
+            input="/sym/IGSYM1501.jsp"
+            parameter="INSERTDISP"
+            name="IGSYM1501Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1502.jsp"/>
+        </action>
+        <!-- 数据定义分类登记处理 -->
+        <action path="/IGSYM1501"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1501Action"
+            input="/sym/IGSYM1502.jsp"
+            parameter="INSERT"
+            name="IGSYM1501Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/IGSYM1501_Disp.do"/>
+        </action>
+         <!-- 数据定义详细画面显示  -->
+        <action path="/IGSYM1502_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1502Action"
+            parameter="DISP"
+            input="/sym/IGSYM1503.jsp"
+            name="IGSYM1502Form"
+            cancellable="true"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/sym/IGSYM1503.jsp"/>
+        </action>
+        <!-- 数据定义信息登记画面初期显示 -->
+        <action path="/IGSYM1503_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1503Action"
+            input="/sym/IGSYM1504.jsp"
+            parameter="DISP"
+            name="IGSYM1503Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1504.jsp"/>
+        </action>
+        <!-- 数据定义信息登记/变更处理 -->
+        <action path="/IGSYM1503"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1503Action"
+            input="/sym/IGSYM1504.jsp"
+            parameter="INSERT"
+            name="IGSYM1503Form"
+            validate="true"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1505.jsp"/>
+            <forward name="BACK1"       path="/IGSYM1502_Disp.do?back=1"/>
+            <forward name="BACK2"       path="/IGSYM1502_Disp.do?back=1"/>
+            <forward name="DETAIL"      path="/IGSYM1502_Disp.do"/>
+            <forward name="BACK3"       path="/IGSYM1502_Disp.do?back=2"/>
+        </action>
+        <!-- 数据定义登记成功后确认画面处理 -->
+        <action path="/IGSYM1504"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1504Action"
+            input="/sym/IGSYM1505.jsp"
+            parameter="DISP"
+            name="IGSYM1504Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="BACK"        path="/IGSYM1503_Disp.do"/>
+            <forward name="NEXT"        path="/IGSYM1502_Disp.do?back=3"/>
+        </action>
+        <!-- 数据定义详细信息删除处理  -->
+         <action path="/IGSYM1502_Del"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1502Action"
+            parameter="DELETE"
+            input="/sym/IGSYM1503.jsp"
+            name="IGSYM1502Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGSYM1502_Disp.do"/>
+         </action>
+          <!-- 数据定义详细信息删除处理  -->
+         <action path="/IGSYM1502_RealDel"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1502Action"
+            parameter="REALDELETE"
+            input="/sym/IGSYM1503.jsp"
+            name="IGSYM1502Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGSYM1502_Disp.do"/>
+         </action>
+         <!-- 数据定义详细信息处理  -->
+        <action path="/IGSYM1502"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1502Action"
+            parameter="BACK"
+            input="/sym/IGSYM1503.jsp"
+            name="IGSYM1502Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="BACK"  path="/sym/IGSYM1503.jsp"/>
+            <forward name="BACK1"  path="/IGSYM1501_Disp.do"/>
+        </action>
+        
+         <!-- 数据定义信息树 -->
+		<action path="/IGSYM1505_TREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"
+			parameter="CODETREE"  name="IGSYM1505Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1506.jsp" />
+		</action>
+		<!-- 数据定义信息变更画面显示 -->
+        <action path="/IGSYM1503_Edit_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1503Action"
+            input="/sym/IGSYM1504.jsp"
+            parameter="EDIT"
+            name="IGSYM1503Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1504.jsp"/>
+        </action>
+         <!-- 数据分类查询画面（弹出页使用） -->
+        <action path="/IGSYM1506_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1506Action"
+            parameter="DISP"
+            name="IGSYM1508Form"
+            cancellable="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/sym/IGSYM1507.jsp"/>
+        </action>
+		<!-- 项目类别数据信息树 -->
+<!--		<action path="/IGSYM12041_TREE"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="PROJECTTREE"  name="IGSYM1505Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1204.jsp" />-->
+<!--		</action>-->
+<!--		<action path="/IGSYM12021_TREE"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="SPECIALCODETREE"  name="IGSYM1505Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1202.jsp" />-->
+<!--		</action>-->
+<!--		<action path="/IGSYM12021_TREE_BY_STATUS"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="CODETREEBYSTATUS"  name="IGSYM1505Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1202.jsp" />-->
+<!--		</action>-->
+		<!-- entity树 -->
+<!--		<action path="/IGSYM12011_ENTITY_TREE"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="ENTITYTREE"  name="IGSYM1506Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1201.jsp" />-->
+<!--		</action>-->
+<!--		<action path="/IGSYM1505_ENTITY_TREE_BYLEVEL"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="ENTITYTREEBYLEVEL"  name="IGSYM1506Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1201.jsp" />-->
+<!--		</action>-->
+<!--		<action path="/IGSYM1505_ENTITY_TREE"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="ENTITYTREE03"  name="IGSYM1506Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1203.jsp" />-->
+<!--		</action>-->
+<!--		<action path="/IGSYM1505_XLSENTITY_TREE"-->
+<!--			type="com.deliverik.infogovernor.sym.action.IGSYM1505Action"-->
+<!--			parameter="EXCELENTITYTREE"  name="IGSYM1506Form"-->
+<!--			scope="request">-->
+<!--			<set-property key="auth" value="false" />-->
+<!--			<forward name="DISP" path="/sym/IGSYM1203.jsp" />-->
+<!--		</action>-->
+
+        <!-- ****************** 流程策略设定 ****************** -->
+        <!-- 流程定义查询页面 -->
+		<action path="/IGSYM1701_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1701Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1701.jsp" />
+		</action>
+		<!-- 流程定义查询 -->
+		<action path="/IGSYM1701"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1701Action"
+			parameter="SEARCH" input="/sym/IGSYM1701.jsp" name="IGSYM1701Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1701.jsp" />
+		</action>
+		<!-- 返回流程定义查询 -->
+		<action path="/IGSYM1701_Back"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1701Action"
+			parameter="SEARCH1" input="/sym/IGSYM1701.jsp" name="IGSYM1701Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1701.jsp" />
+		</action>
+		  <!-- 流程策略编辑画面初期显示 -->
+        <action path="/IGSYM1702_Disp"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1702Action"
+            input="/sym/IGSYM1702.jsp"
+            parameter="DISP"
+            validate="false"
+            name="IGSYM1702Form"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/sym/IGSYM1702.jsp"/>
+        </action>
+        
+        <!-- 流程策略编辑处理 -->
+        <action path="/IGSYM1702"
+            type="com.deliverik.infogovernor.sym.action.IGSYM1702Action"
+            input="/sym/IGSYM1702.jsp"
+            parameter="EDIT"
+            name="IGSYM1702Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"      path="/IGSYM1701_Back.do"/>
+        </action>
+        
+        <!-- 报表预览  by tag -->
+		<action path="/IGSYM1407_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1407Action" input="/sym/IGSYM1407.jsp"
+			name="IGSYM1407Form" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1407.jsp" />
+		</action>
+		
+		<!-- 报表查询框架-->
+		<action path="/IGSYM1407"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1407Action" input="/sym/IGSYM1407.jsp"
+			name="IGSYM1407Form" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1407.jsp" />
+		</action>
+		
+		<!-- 报表框架 -->
+		<action path="/IGSYM1408"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1408Action" name="IGSYM1408Form"
+			input="/sym/IGSYM1408.jsp" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1408.jsp" />
+		</action>
+		
+		<!-- 新增资源组授权 2012/11/15 -->
+		<action path="/IGSYM0421_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0421Action"
+			parameter="DISP" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0421.jsp" />
+		</action>
+		<action path="/IGSYM0422_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0422Action"
+			parameter="DISP" name="IGSYM0422Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM0422.jsp" />
+			<forward name="ERROR" path="/com/IGCOM0004.jsp" />
+		</action>
+		
+		<action path="/IGSYM0422_Grant"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0422Action"
+			parameter="GRANT"
+			input="/sym/IGSYM0422.jsp"
+			name="IGSYM0422Form" scope="request">
+			<forward name="DISP" path="/IGSYM0422_Disp.do" />
+			<forward name="ERROR" path="/com/IGCOM0004.jsp" />
+		</action>
+		<!-- 首页管理 查询-->
+		<action path="/IGSYM1801_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1801Action" input="/sym/IGSYM1801.jsp"
+			 parameter="DISP"  scope="request">
+			<forward name="Disp" path="/sym/IGSYM1801.jsp" />
+		</action>
+		<!-- 首页管理 新增初始化 -->
+		<action path="/IGSYM1801_Insert_Init"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1801Action" input="/sym/IGSYM1801.jsp"
+			 parameter="INSERT_INIT"  scope="request">
+			<forward name="Disp" path="/sym/IGSYM1802.jsp" />
+		</action>
+		<!-- 首页管理 新增处理 -->
+		<action path="/IGSYM1801_Insert"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1801Action" input="/sym/IGSYM1801.jsp"
+			 parameter="INSERT"  name="IGSYM1802Form" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1803.jsp" />
+		</action>
+		<!-- 首页管理 修改初始化处理 -->
+		<action path="/IGSYM1802_Edit_Init"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1802Action" input="/IGSYM1801_Disp.do"
+			 parameter="INIT"  name="IGSYM1802Form" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1804.jsp" />
+		</action>
+		<!-- 首页管理 修改处理 -->
+		<action path="/IGSYM1802_Edit"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1802Action" input="/sym/IGSYM1804.jsp"
+			 parameter="EDIT"  name="IGSYM1802Form" scope="request">
+			<forward name="Disp" path="/sym/IGSYM1803.jsp" />
+		</action>
+		<!-- 首页管理 修改处理 -->
+		<action path="/IGSYM1802_Del"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1802Action" input="/sym/IGSYM1801.jsp"
+			 parameter="DEL"  name="IGSYM1802Form" scope="request">
+			<forward name="Disp" path="/IGSYM1801_Disp.do" />
+		</action>
+		<!-- 报表详细信息 -->
+		<action path="/IGSYM1402_Exa_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1402Action" input="/sym/IGSYM0410.jsp"
+			parameter="INIT" name="IGSYM1402Form" validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM0411.jsp" />
+		</action>
+		
+		<!-- SOC原功能_作息时间设定2013/01/29 -->
+		<!-- 作息日期模板查询画面 -->
+		<action path="/IGSYM1901_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1901Action"
+			parameter="DISP" name="IGSYM1901Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1901.jsp" />
+		</action>
+		<!-- 作息日期模板重查询画面 -->
+		<action path="/IGSYM1901_ReDisp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1901Action"
+			parameter="REDISP" name="IGSYM1901Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1901.jsp" />
+		</action>
+		<!-- 作息日期设定画面 -->
+		<action path="/IGSYM1902_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1902Action"
+			parameter="DISP" name="IGSYM1902Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1902.jsp" />
+		</action>
+		<!-- 作息日期设定 -->
+		<action path="/IGSYM1902_INSERT"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1902Action"
+			parameter="INSERT" name="IGSYM1902Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM1901_Disp.do" />
+		</action>
+		<!-- 作息日期修改画面 -->
+		<action path="/IGSYM1903_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1903Action"
+			parameter="DISP" name="IGSYM1903Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1903.jsp" />
+		</action>
+		<!-- 作息日期修改 -->
+		<action path="/IGSYM1903_UPDATE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1903Action"
+			parameter="UPDATE" name="IGSYM1903Form" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM1901_Disp.do" />
+		</action>
+		
+		<!--短信Ip规则控制 -->
+		<action path="/IGSYM1803_Disp"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1803Action" input="/sym/IGSYM1805.jsp"
+			parameter="SEARCH" name="IGSYM1803Form" validate="false" scope="request">
+			<forward name="DISP" path="/sym/IGSYM1805.jsp" />
+		</action>
+		
+		<action path="/IGSYM1803_Insert"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1803Action" input="/sym/IGSYM1805.jsp"
+			parameter="Insert" name="IGSYM1803Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGSYM1803_Disp.do" />
+		</action>
+		
+		<action path="/IGSYM1803_UPDATE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1803Action" input="/sym/IGSYM1805.jsp"
+			parameter="UPDATE" name="IGSYM1803Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGSYM1803_Disp.do" />
+		</action>
+		
+		<action path="/IGSYM1803_DELETE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1803Action" input="/sym/IGSYM1805.jsp"
+			parameter="DELETE" name="IGSYM1803Form" validate="false" scope="request">
+			<forward name="DISP" path="/IGSYM1803_Disp.do" />
+		</action>
+		
+		<action path="/IGSYM1803_ChangeState"
+			type="com.deliverik.infogovernor.sym.action.IGSYM1803Action"
+			parameter="CHANGE_STATUS" input="/IGSYM1803_Disp.do" name="IGSYM1803Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSYM1803_Disp.do" />
+		</action>
+		
+				<!-- 业务连续性 drm -->
+		<action path="/IGORGTREE"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0104Action"
+			parameter="ROLETREE" input="/sym/IGSYM0310.jsp" name="IGSYM0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGORG.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources key="symResources" parameter="com.deliverik.infogovernor.sym.symResources" />
+</struts-config>
+

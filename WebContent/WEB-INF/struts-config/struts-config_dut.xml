@@ -1,0 +1,521 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+	<form-beans>
+	<!-- *****************************************值班检查设定Form***************************************** -->
+		<form-bean name="IGDUT0101Form" type="com.deliverik.infogovernor.dut.form.IGDUT0101Form" />
+	<!-- *****************************************值班管理Form***************************************** -->
+		<form-bean name="IGDUT0102Form" type="com.deliverik.infogovernor.dut.form.IGDUT0102Form" />
+	<!-- *****************************************值班检查项查询Form***************************************** -->
+		<form-bean name="IGDUT0104Form" type="com.deliverik.infogovernor.dut.form.IGDUT0104Form" />
+		<form-bean name="IGDUT0201Form" type="com.deliverik.infogovernor.dut.form.IGDUT0201Form" />
+		<form-bean name="IGDUT0202Form" type="com.deliverik.infogovernor.dut.form.IGDUT0202Form" />
+	<!-- *****************************************值班日报Form***************************************** -->
+		<form-bean name="IGDUT0203Form" type="com.deliverik.infogovernor.dut.form.IGDUT0203Form" />
+	<!-- *****************************************值班交接Form***************************************** -->
+		<form-bean name="IGDUT0204Form" type="com.deliverik.infogovernor.dut.form.IGDUT0204Form" />
+	<!-- *****************************************值班启动Form***************************************** -->
+		<form-bean name="IGDUT0206Form" type="com.deliverik.infogovernor.dut.form.IGDUT0206Form" />
+	<!-- *****************************************值班中止Form***************************************** -->
+		<form-bean name="IGDUT0207Form" type="com.deliverik.infogovernor.dut.form.IGDUT0207Form" />
+		
+	<!-- *****************************************值班情况汇总Form***************************************** -->
+		<form-bean name="IGDUT0302Form" type="com.deliverik.infogovernor.dut.form.IGDUT0302Form" />
+		<form-bean name="IGDUT0301Form" type="com.deliverik.infogovernor.dut.form.IGDUT0301Form" />
+
+    
+    <!-- *****************************************日常维修Form***************************************** -->
+        <form-bean name="IGDUT0304Form" type="com.deliverik.infogovernor.dut.form.IGDUT0304Form" />
+        <form-bean name="IGDUT0305Form" type="com.deliverik.infogovernor.dut.form.IGDUT0305Form" />
+        
+
+		
+	<!-- *****************************************延时解锁Form***************************************** -->
+	<form-bean name="IGDUT0401Form" type="com.deliverik.infogovernor.dut.form.IGDUT0401Form" />
+	<form-bean name="IGDUT0402Form" type="com.deliverik.infogovernor.dut.form.IGDUT0402Form" />
+
+	</form-beans>
+	<action-mappings>
+	<!-- *****************************************值班管理Action***************************************** -->
+		 <!-- 值班检查检查项查询画面初期显示  -->
+        <action path="/IGDUT0104_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0104Action"
+            parameter="DISP"
+            name="IGDUT0104Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0104.jsp"/>
+        </action>
+
+        <!-- 值班检查检查项查询处理  -->
+        <action path="/IGDUT0104"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0104Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0104.jsp"
+            name="IGDUT0104Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0104.jsp"/>
+        </action>
+		 <!-- 值班检查管理查询画面初期显示  -->
+        <action path="/IGDUT0102_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0102Action"
+            parameter="DISP"
+            name="IGDUT0102Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0102.jsp"/>
+        </action>
+
+        <!-- 值班检查管理查询处理  -->
+        <action path="/IGDUT0102"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0102Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0102.jsp"
+            name="IGDUT0102Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0102.jsp"/>
+        </action>
+        
+		<!-- 返回值班检查管理页面 -->
+		<action path="/IGDUT0102_Back"
+			type="com.deliverik.infogovernor.dut.action.IGDUT0102Action"
+			parameter="SEARCH1" 
+			input="/dut/IGDUT0102.jsp" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dut/IGDUT0102.jsp" />
+		</action>
+		
+		
+        <!-- 值班检查状态改变处理  -->
+        <action path="/IGDUT0102_Change"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0102Action"
+            parameter="CHANGE"
+            input="/dut/IGDUT0102.jsp"
+            name="IGDUT0102Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="CHANGE"  path="/IGDUT0102_Back.do"/>
+        </action>
+        
+        <!-- *****************************************值班检查设定Action***************************************** -->
+		 <!-- 值班检查设定画面初期显示  -->
+        <action path="/IGDUT0101_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0101Action"
+            parameter="DISP"
+            name="IGDUT0101Form"
+            validate="false"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0101.jsp"/>
+        </action>
+
+        <!-- 值班检查设定新增  -->
+        <action path="/IGDUT0101"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0101Action"
+            parameter="INSERT"
+            input="/dut/IGDUT0101.jsp"
+            name="IGDUT0101Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0170.jsp"/>
+            <forward name="DISP1" path="/IGDUT0102_Back.do" />
+        </action>
+        <!-- 值班检查设定变更初始化 -->
+		<action path="/IGDUT0101_Edit_Disp"
+			type="com.deliverik.infogovernor.dut.action.IGDUT0101Action" 
+			input="/dut/IGDUT0101.jsp"
+			parameter="EDIT" 
+			name="IGDUT0101Form" 
+			validate="false" 
+			scope="session">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/dut/IGDUT0101.jsp" />
+		</action>
+		
+        
+        
+        <!-- 值班计划画面显示  -->
+        <action path="/IGDUT0201_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0201Action"
+            parameter="DISP"
+            validate="false"
+            name="IGDUT0201Form"
+            scope="request">
+            <forward name="DISP"  path="/dut/IGDUT0201.jsp"/>
+        </action>
+        
+        <action path="/IGDUT0202_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0202Action"
+            parameter="DISP"
+            validate="false"
+            name="IGDUT0202Form"
+            scope="request">
+            <forward name="DISP"  path="/dut/IGDUT0202.jsp"/>
+        </action>
+        <action path="/IGDUT0202"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0202Action"
+            parameter="INSERT"
+            validate="true"
+            name="IGDUT0202Form"
+            scope="request">
+            <forward name="DISP"  path="/IGDUT0202_Disp.do"/>
+        </action>
+        
+        <!-- 值班日报画面初期显示  -->
+        <action path="/IGDUT0203_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0203Action"
+            parameter="DISP"
+            input="/dut/IGDUT0273.jsp"
+            name="IGDUT0203Form"
+            validate="false"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0203.jsp"/>
+        </action>
+
+        <!-- 值班日报保存  -->
+        <action path="/IGDUT0203"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0203Action"
+            parameter="INSERT"
+            input="/dut/IGDUT0203.jsp"
+            name="IGDUT0203Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0272.jsp"/>
+        </action>
+        
+        
+         <!-- 值班交接画面初期显示  -->
+        <action path="/IGDUT0204_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0204Action"
+            parameter="DISP"
+            input="/dut/IGDUT0275.jsp"
+            name="IGDUT0204Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0204.jsp"/>
+        </action>
+
+        <!-- 值班交接  -->
+        <action path="/IGDUT0204"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0204Action"
+            parameter="COMPLETE"
+            input="/dut/IGDUT0204.jsp"
+            name="IGDUT0204Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGDUT0205_Disp.do"/>
+        </action>
+        
+         <!-- 值班交接画面初期显示  -->
+        <action path="/IGDUT0205_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0205Action"
+            parameter="DISP"
+            input="/dut/IGDUT0205.jsp"
+            name="IGDUT0204Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0205.jsp"/>
+        </action>
+
+        <!-- 值班交接确认  -->
+        <action path="/IGDUT0205"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0205Action"
+            parameter="CONFIRM"
+            input="/dut/IGDUT0205.jsp"
+            name="IGDUT0204Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0271.jsp"/>
+        </action>
+        
+         <!-- 值班中止画面初期显示  -->
+        <action path="/IGDUT0207_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0207Action"
+            parameter="DISP"
+            input="/dut/IGDUT0277.jsp"
+            name="IGDUT0207Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0207.jsp"/>
+        </action>
+
+        <!-- 值班中止  -->
+        <action path="/IGDUT0207"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0207Action"
+            parameter="TERMINATE"
+            input="/dut/IGDUT0207.jsp"
+            name="IGDUT0207Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0274.jsp"/>
+        </action>
+        
+		 <!-- 值班情况汇总管理查询画面初期显示  -->
+        <action path="/IGDUT0302_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0302Action"
+            parameter="DISP"
+            name="IGDUT0302Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0302.jsp"/>
+        </action>
+
+        <!-- 值班情况汇总管理查询处理  -->
+        <action path="/IGDUT0302"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0302Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0302.jsp"
+            name="IGDUT0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0302.jsp"/>
+        </action>
+        
+        <!-- 值班结果说明修改处理  -->
+        <action path="/changeDrresult"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0302Action"
+            parameter="UPDATE"
+            input="/dut/IGDUT0302.jsp"
+            name="IGDUT0302Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGDUT0302.do"/>
+        </action>
+        
+		<!-- 返回值班情况汇总页面 -->
+		<action path="/ "
+			type="com.deliverik.infogovernor.dut.action.IGDUT0302Action"
+			parameter="SEARCH1" 
+			input="/dut/IGDUT0302.jsp" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dut/IGDUT0302.jsp" />
+		</action>
+		
+        
+		 <!-- 值班情况按检查项汇总初期显示  -->
+        <action path="/IGDUT0303_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0303Action"
+            parameter="DISP"
+            name="IGDUT0302Form"
+            scope="session">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0303.jsp"/>
+        </action>
+
+        <!-- 值班情况按检查项汇总管理查询处理  -->
+        <action path="/IGDUT0303"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0303Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0303.jsp"
+            name="IGDUT0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0303.jsp"/>
+        </action>
+        
+		<!-- 值班情况按日期汇总日历画面初期显示-->
+        <action path="/IGDUT0301_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0301Action"
+            parameter="DISP"
+            name="IGDUT0301Form"
+            scope="session">
+            <forward name="DISP" path="/dut/IGDUT0301.jsp"/>
+        </action>
+
+        <!-- 值班计划启动查询处理  -->
+        <action path="/IGDUT0206_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0206Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0276.jsp"
+            name="IGDUT0206Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0206.jsp"/>
+        </action>
+				
+        <!-- 值班检查状态改变处理  -->
+        <action path="/IGDUT0206_Change"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0206Action"
+            parameter="CHANGE"
+            input="/dut/IGDUT0206.jsp"
+            name="IGDUT0206Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="CHANGE"  path="/dut/IGDUT0278.jsp"/>
+        </action>
+<!-- *****************************************值班检查设定Action***************************************** -->        
+        <!-- 日常维修登记添加 -->
+        <action path="/IGDUT0304_Insert"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0304Action"
+            parameter="INSERT"
+            input="/dut/IGDUT0304.jsp"
+            name="IGDUT0304Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0306.jsp"/>
+        </action>
+        <!-- 日常维修登记显示 -->
+        <action path="/IGDUT0304_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0304Action"
+            parameter="DISP"
+            input="/dut/IGDUT0304.jsp"
+            name="IGDUT0304Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0304.jsp"/>
+        </action>
+       	<!-- 日常维修查询显示  -->
+        <action path="/IGDUT0305_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0305Action"
+            parameter="SELECT"
+            input="/dut/IGDUT0305.jsp"
+            name="IGDUT0305Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0305.jsp"/>
+        </action>
+        <!-- 日常维修查询显返回  -->
+        <action path="/IGDUT0403_Back"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0305Action"
+            parameter="SEARCH1"
+            input="/dut/IGDUT0305.jsp"
+            name="IGDUT0305Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0305.jsp"/>
+        </action>
+        <!-- 日常维修to更新显示  -->
+        <action path="/IGDUT0304_ToUpdate"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0304Action"
+            parameter="TOUPDATE"
+            input="/dut/IGDUT0304.jsp"
+            name="IGDUT0304Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0304.jsp"/>
+        </action>
+        <!-- 日常维护删除 -->
+        <action path="/IGDUT0305_Delete"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0305Action"
+            parameter="DELETE"
+            input="/dut/IGDUT0305.jsp"
+            name="IGDUT0305Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0305.jsp"/>
+        </action>
+         <!-- 日常维护分页查询 -->
+        <action path="/IGDUT0305_Select"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0305Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0305.jsp"
+            name="IGDUT0305Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0305.jsp"/>
+        </action>
+        
+        <!-- 延时解锁登记画面初期显示  -->
+        <action path="/IGDUT0401_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0401Action"
+            parameter="DISP"
+            name="IGDUT0401Form"
+            validate="false"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0401.jsp"/>
+        </action>
+        <!-- 延时解锁登记处理 -->
+        <action path="/IGDUT0401"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0401Action"
+            parameter="INSERT"
+            input="/dut/IGDUT0401.jsp"
+            name="IGDUT0401Form"
+            validate="true"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT040101.jsp"/>
+            <forward name="DISP1" path="/IGDUT0402_Back.do" />
+        </action>
+        <!-- 延时解锁管理画面初期显示  -->
+        <action path="/IGDUT0402_Disp"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0402Action"
+            parameter="DISP"
+            name="IGDUT0402Form"
+            validate="false"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/dut/IGDUT0402.jsp"/>
+        </action>
+        <!-- 延时解锁查询处理  -->
+        <action path="/IGDUT0402"
+            type="com.deliverik.infogovernor.dut.action.IGDUT0402Action"
+            parameter="SEARCH"
+            input="/dut/IGDUT0402.jsp"
+            name="IGDUT0402Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/dut/IGDUT0402.jsp"/>
+        </action>
+        <!-- 延时解锁变更初始化 -->
+		<action path="/IGDUT0401_Edit_Disp"
+			type="com.deliverik.infogovernor.dut.action.IGDUT0401Action" 
+			input="/dut/IGDUT0401.jsp"
+			parameter="EDIT" 
+			name="IGDUT0401Form" 
+			validate="false" 
+			scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/dut/IGDUT0401.jsp" />
+		</action>
+		<!-- 返回延时解锁管理页面 -->
+		<action path="/IGDUT0402_Back"
+			type="com.deliverik.infogovernor.dut.action.IGDUT0402Action"
+			parameter="SEARCH1" 
+			input="/dut/IGDUT0402.jsp" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dut/IGDUT0402.jsp" />
+		</action>
+		<!-- 延时解锁删除 -->
+		<action path="/IGDUT0402_Del"
+			type="com.deliverik.infogovernor.dut.action.IGDUT0402Action"
+			parameter="DELETE" input="/IGDUT0402.do" name="IGDUT0402Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGDUT0402.do" />
+		</action>
+	</action-mappings>
+	
+	
+</struts-config>
+

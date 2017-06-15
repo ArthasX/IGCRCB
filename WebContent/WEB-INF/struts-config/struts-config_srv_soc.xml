@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+		<!-- 事件查询  -->
+		<form-bean name="IGSRV0201Form"
+			type="com.deliverik.infogovernor.soc.srv.form.IGSRV0201Form" />
+	</form-beans>
+
+	<action-mappings>
+		<!-- 首页通用查询 -->
+		<action path="/IGSRV0111"
+			type="com.deliverik.infogovernor.soc.srv.action.IGSRV0111Action"
+			parameter="SEARCH" input="/srv/IGSRV0111.jsp" name="IGSRV0201Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/srv/IGSRV0111.jsp" />
+		</action>
+		<!-- 首页流程删除 -->
+		<action path="/IGSRV0111_del"
+			type="com.deliverik.infogovernor.soc.srv.action.IGSRV0111Action"
+			parameter="DEL" input="/srv/IGSRV0111.jsp" name="IGSRV0201Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGSRV0111.do" />
+			<forward name="DISP2" path="/srv/IGSRV0112.jsp" />
+		</action>
+	</action-mappings>
+	
+	<message-resources key="srvResources" parameter="com.deliverik.infogovernor.soc.srv.srvResources" />
+</struts-config>

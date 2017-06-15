@@ -1,0 +1,1814 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+
+
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    	 <form-bean name="IGCOM0101Form" type="com.deliverik.infogovernor.form.IGCOM0101Form"/>
+    	 <form-bean name="IGCOM0201Form" type="com.deliverik.infogovernor.form.IGCOM0201Form"/>
+    	 <form-bean name="IGCOM0202Form" type="com.deliverik.infogovernor.form.IGCOM0202Form"/>
+	 	 <form-bean name="IGCOM0215Form" type="com.deliverik.infogovernor.form.IGCOM0215Form"/>
+         <form-bean name="IGCOM0301Form" type="com.deliverik.infogovernor.form.IGCOM0301Form"/>
+         <form-bean name="IGCOM0302Form" type="com.deliverik.infogovernor.form.IGCOM0302Form"/>
+         <form-bean name="IGCOM0303Form" type="com.deliverik.infogovernor.form.IGCOM0303Form"/>
+         <form-bean name="IGCOM0304Form" type="com.deliverik.infogovernor.form.IGCOM0304Form"/>
+         <form-bean name="IGCOM0305Form" type="com.deliverik.infogovernor.form.IGCOM0305Form"/>
+         <form-bean name="IGCOM0307Form" type="com.deliverik.infogovernor.form.IGCOM0307Form"/>
+         <form-bean name="IGCOM0308Form" type="com.deliverik.infogovernor.form.IGCOM0308Form"/>
+         <form-bean name="IGCOM0314Form" type="com.deliverik.infogovernor.form.IGCOM0314Form"/>
+         <form-bean name="IGCOM0318Form" type="com.deliverik.infogovernor.form.IGCOM0318Form"/>
+         <form-bean name="IGCOM0319Form" type="com.deliverik.infogovernor.form.IGCOM0319Form"/>
+         <form-bean name="IGCOM0320Form" type="com.deliverik.infogovernor.form.IGCOM0320Form"/>
+         <form-bean name="IGCOM0321Form" type="com.deliverik.infogovernor.form.IGCOM0321Form"/>
+         <form-bean name="IGCOM0322Form" type="com.deliverik.infogovernor.form.IGCOM0322Form"/>
+         <form-bean name="IGCOM0324Form" type="com.deliverik.infogovernor.form.IGCOM0324Form"/>
+         <form-bean name="IGCOM0327Form" type="com.deliverik.infogovernor.form.IGCOM0327Form"/>
+         <form-bean name="IGCOM0329Form" type="com.deliverik.infogovernor.form.IGCOM0329Form"/>
+         <form-bean name="IGCOM0328Form" type="com.deliverik.infogovernor.form.IGCOM0328Form"/>
+         <form-bean name="IGCOM0401Form" type="com.deliverik.infogovernor.form.IGCOM0401Form"/>
+         <form-bean name="IGCOM0404Form" type="com.deliverik.infogovernor.form.IGCOM0404Form"/>
+         
+         <!-- SOC运维服务 2013/01/31 -->
+         <form-bean name="IGPOR0101Form" type="com.deliverik.infogovernor.form.IGPOR0101Form"/>
+    	 <form-bean name="IGPOR0102Form" type="com.deliverik.infogovernor.form.IGPOR0102Form"/>
+    	 <form-bean name="IGPOR0103Form" type="com.deliverik.infogovernor.form.IGPOR0103Form"/>
+    	 
+    	 
+    	 <form-bean name="IGASM2713Form" type="com.deliverik.infogovernor.asset.form.IGASM2713Form"/>
+    	 <form-bean name="IGASM2814Form" type="com.deliverik.infogovernor.asset.form.IGASM2814Form"/>
+    	 
+    </form-beans>
+
+
+<!-- ========================================= Global Exception Definitions -->
+
+    <global-exceptions>
+
+        <exception type="org.apache.struts.chain.commands.InvalidPathException"
+                   key="IGCO00000.E003"
+                   path="/com/IGCOM0000.jsp" />
+
+        <exception type="com.deliverik.framework.chain.commands.AuthException"
+                   key="IGCO00000.E002"
+                   path="/com/IGCOM0000.jsp" />
+
+        <exception type="com.deliverik.framework.chain.commands.CheckServiceTimeException"
+                   key="IGCO00000.E006"
+                   path="/com/IGCOM0000.jsp" />
+
+        <exception type="java.lang.Exception"
+                   key="IGCO00000.E001"
+                   path="/com/IGCOM0000.jsp" />
+
+    </global-exceptions>
+
+
+<!-- =========================================== Global Forward Definitions -->
+
+    <global-forwards>
+		<forward name="login.css"   path="/css/login.css" />
+		<forward name="iglist.css"   path="/css/iglist.css" />
+		<forward name="master.css"   path="/css/master.css" />
+		<forward name="master1.css"   path="/css/master1.css" />
+		<forward name="portal.css"   path="/css/portal.css" />
+        <forward name="common.js"    path="/js/common.js" />
+        <forward name="SoftKey.js"       path="/js/SoftKey.js" />
+		<forward name="png.js"       path="/js/png.js" />
+		<forward name="prototype.js" path="/js/prototype-1.5.0.js" />
+		<forward name="prototype-1.1.js" path="/js/prototype.js" />
+		<forward name="calendar.js"  path="/js/calendar.js" />
+		<forward name="SpryTabbedPanels.js"  path="/js/SpryTabbedPanels.js" />
+		<forward name="FusionCharts.js"  path="/js/FusionCharts.js" />
+		<forward name="SpryTabbedPanels.css"  path="/css/SpryTabbedPanels.css" />
+		<forward name="SpryTabbedPanels2.css"  path="/css/SpryTabbedPanels2.css" />
+		<forward name="swfobject_modified.js"  path="/js/ywScripts/swfobject_modified.js" />
+		<forward name="tree.js"  path="/js/tree.js" />
+		<forward name="tree.css"  path="/css/tree.css" />
+		<forward name="pop.css"  path="/css/pop.css" />		
+        <forward name="index.swf"    path="/images/index.swf" />
+        <forward name="Pie2D.swf"    path="/images/Pie2D.swf" />
+        <forward name="MSStackedColumn2DLineDY.swf"    path="/images/MSStackedColumn2DLineDY.swf" />
+        <forward name="Column2D.swf"    path="/images/Column2D.swf" />
+        <forward name="/error"       path="/com/IGCOM0000.jsp"  />
+        <forward name="/portal"      path="/portal.do"  />
+        <forward name="/logout"      path="/logout.do"  />
+        <forward name="/timeout"       path="/com/IGCOM0002.jsp"  />
+        <forward name="/error1"       path="/com/IGCOM0004.jsp"  />
+        <forward name="/error2"       path="/com/IGCOM0003.jsp"  />
+        <forward name="editdata.js"    path="/js/editdata.js" />
+        <forward name="pdimgstyle.css"   path="/css/pdimgstyle.css" />
+        <forward name="context.js"    path="/js/inc/contextMenu/context.js" />
+        <forward name="webflow.js"    path="/js/inc/webflow.js" />
+        <forward name="function.js"    path="/js/inc/function.js" />
+        <forward name="shiftlang.js"    path="/js/inc/shiftlang.js" />
+        <forward name="movestep.js"    path="/js/inc/movestep.js" />
+        <forward name="eir_context.js"    path="/js/eirinc/contextMenu/context.js" />
+        <forward name="eir_webflow.js"    path="/js/eirinc/webflow.js" />
+        <forward name="eir_function.js"    path="/js/eirinc/function.js" />
+        <forward name="eir_shiftlang.js"    path="/js/eirinc/shiftlang.js" />
+        <forward name="eir_movestep.js"    path="/js/eirinc/movestep.js" />
+        <forward name="SpryTabbedPanels1.css"  path="/css/SpryTabbedPanels1.css" />
+        <forward name="SpryTabbedPanels1.js"  path="/js/SpryTabbedPanels1.js" />
+        <forward name="script.js"    path="/js/script.js" />
+     	<forward name="jquery.min.js"  path="/js/JquerytzCheckbox/jquery.min.js" />
+		<forward name="jquery.tzCheckbox.js"  path="/js/JquerytzCheckbox/jquery.tzCheckbox.js" />
+		<forward name="jquery.script.js"  path="/js/JquerytzCheckbox/script.js" />
+		<forward name="jquery.tzCheckbox.css"  path="/css/jquery.tzCheckbox.css" />
+    </global-forwards>
+
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+
+        <!-- 登录画面初期显示  -->
+        <action path="/IGCOM0101_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0101Action"
+            parameter="DISP"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0101.jsp"/>
+        </action>
+
+        <!-- 登录画面登录处理 -->
+        <action path="/IGCOM0101"
+            type="com.deliverik.infogovernor.action.IGCOM0101Action"
+            parameter="LOGIN"
+            input="/com/IGCOM0101.jsp"
+            name="IGCOM0101Form"
+            validate="true"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/IGCOM0105.do"/>
+            <forward name="PERSION"  path="/IGCOM0104.do"/>
+            <forward name="MANAGER"  path="/IGDBM0103.do"/>
+            <forward name="BUSSESS"  path="/IGCOM0202.do?linkID=IGCOM0405"/>
+            <forward name="ITEMS"  path="/IGCOM0202.do?linkID=ITEMS0201"/>
+            <forward name="LOM"  path="/IGCOM0202.do?linkID=IGCOM0213"/>
+            <forward name="NOROLE"  path="/com/IGCOM0101.jsp"/>
+        </action>
+		<!-- 首页跳转处理 -->
+        <action path="/IGCOM0105"
+            type="com.deliverik.infogovernor.action.IGCOM0105Action"
+            scope="request">
+        </action>
+
+        <!-- 领导首页画面处理 -->
+        <action path="/IGCOM0104"
+            type="com.deliverik.infogovernor.action.IGCOM0103Action"
+            name="IGCOM0201Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/com/IGCOM0103.jsp"/>
+        </action>
+        
+        
+        <!-- 业务人员首页画面-->
+        <action path="/IGCOM0405"
+            type="com.deliverik.infogovernor.action.IGCOM0405Action"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/com/IGCOM0405.jsp"/>
+        </action>
+        
+        <!-- DashBoard领导仪表盘 -->
+		<action path="/IGCOM0406"
+			type="com.deliverik.infogovernor.action.IGCOM0406Action" 
+			parameter="DISP" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/com/IGCOM0406.jsp" />
+		</action>
+        <!-- SOC服务管理 -->
+        <!-- Portal画面处理 -->
+        <action path="/IGPOR0101"
+            type="com.deliverik.infogovernor.action.IGPOR0101Action"
+            name="IGPOR0101Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/portal/IGPOR0101.jsp"/>
+        </action>    
+        <action path="/IGPOR0102"
+            type="com.deliverik.infogovernor.action.IGPOR0102Action"
+            name="IGPOR0102Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/portal/IGPOR0102.jsp"/>
+        </action>
+        <action path="/IGPOR0103"
+            type="com.deliverik.infogovernor.action.IGPOR0103Action"
+            name="IGPOR0103Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="SUCCESS"  path="/portal/IGPOR0103.jsp"/>
+        </action>
+        <action path="/IGPOR0103_DW"
+            type="com.deliverik.infogovernor.action.IGPOR0103Action"
+            parameter="CHANGE"
+            input="/portal/IGPOR0103.jsp"
+            name="IGPOR0103Form"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="IGPOR0103"  path="/portal/IGPOR0103.jsp"/>
+        </action>
+        
+        <!-- 退出登录处理 -->
+        <action path="/IGCOM0102"
+            type="com.deliverik.infogovernor.action.IGCOM0102Action">
+            <forward name="LOGOUT"  path="/index.jsp"/>
+        </action>
+        
+        <!-- session -->
+        <action path="/IGCOM0103" 
+        	type="org.apache.struts.actions.ForwardAction"
+        	parameter="/com/IGCOM0002.jsp"/>
+        	
+		<!-- 首页处理 -->
+        <action path="/IGCOM0201"
+            type="com.deliverik.infogovernor.action.IGCOM0101Action"
+            parameter="DISP0201"
+            input="/com/IGCOM0201.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+	    	<forward name="PERSION"  path="/IGCOM0104.do"/>
+            <forward name="MANAGER"  path="/IGDBM0103.do"/>
+            <forward name="BUSSESS"  path="/IGDBM0102.do"/>
+            <forward name="ITEMS"  path="/IGCOM0202.do?linkID=ITEMS0201"/>
+            <forward name="LOM"  path="/IGCOM0202.do?linkID=IGCOM0213"/>
+            <forward name="BUSSESS"  path="/IGCOM0202.do?linkID=IGCOM0405"/>
+        </action>
+        
+        <!-- 菜单处理-->
+        <action path="/IGCOM0202"
+            type="com.deliverik.infogovernor.action.IGCOM0202Action"
+            parameter="DISP"
+            input="/com/IGCOM0202.jsp"
+            name="IGCOM0202Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            
+            <!-- 二级菜单首页 -->
+            <forward name="IGCOM0500"  path="/com/IGCOM0500.jsp"/><!-- 建设中 -->
+            
+            
+            <forward name="IGCOM0201"  path="/com/IGCOM0201.jsp"/>
+            <forward name="IGCOM0202"  path="/com/IGCOM0202.jsp"/>
+            <forward name="IGCOM0203"  path="/com/IGCOM0203.jsp"/>
+            <forward name="IGCOM0204"  path="/com/IGCOM0204.jsp"/>
+            <forward name="IGCOM0205"  path="/com/IGCOM0205.jsp"/>
+            <forward name="IGCOM0206"  path="/com/IGCOM0206.jsp"/>
+            <forward name="IGCOM0207"  path="/com/IGCOM0207.jsp"/>
+            <forward name="IGCOM0208"  path="/com/IGCOM0208.jsp"/>
+            <forward name="IGCOM0209"  path="/com/IGCOM0209.jsp"/>
+            <forward name="IGCOM0210"  path="/com/IGCOM0210.jsp"/>
+            <forward name="IGCOM0211"  path="/IGCOM0211.do"/>
+	    	<forward name="ITEMS0201"  path="/ITEMS0173.do"/>
+	    	<forward name="IGCOM0213"  path="/com/IGCOM0213.jsp"/>
+	    	<forward name="IGCOM0214"  path="/com/IGCOM0214.jsp"/>
+	    	
+	    	<forward name="IGCRC0203"  path="/IGCRC0203_Disp.do"/>
+	    	<forward name="IGCRC0402"  path="/IGCRC0401.do"/>
+	    	<!-- 变更管理 -->
+	    	<forward name="IGCRC1401"  path="/IGCRC1401_SEARCH.do"/>
+	    	<forward name="IGCRC1401_BACK"  path="/IGCRC1401_SEARCH_BACK.do"/>
+	    	
+	    	<!--虚拟化管理-->
+	    	<forward name="IGVIR0600"  path="/vir/IGVIR0600.jsp"/>
+	    	
+	    	<!-- 计费管理 -->
+	    	<forward name="IGVIR0900"  path="/vir/IGVIR0900.jsp"/>
+	    	<forward name="IGVIR0901"  path="/IGVIR0901_Insert_Disp.do"/>
+	    	<forward name="IGVIR0902"  path="/IGVIR0901_Disp.do"/>
+	    	
+	    	<forward name="IGCOM0218"  path="/IGRPT0200.do"/>
+	    	<forward name="IGCOM0217"  path="/IGCOM0217.do"/>
+	    	<forward name="IGCOM0219"  path="/com/IGCOM0219.jsp"/>
+	    	<forward name="IGCOM0223"  path="/com/IGCOM0223.jsp"/>
+	    	<forward name="IGCOM0224"  path="/com/IGCOM0224.jsp"/>
+	    	<forward name="IGCOM0225"  path="/com/IGCOM0225.jsp"/>
+	    	<forward name="IGCOM0226"  path="/com/IGCOM0226.jsp"/>
+	    	<forward name="IGCOM0227"  path="/com/IGCOM0227.jsp"/>
+	    	<forward name="IGMTM0000"  path="/WEB-INF/plugin/alert/view/jsp/IGMTM0000.jsp"/><!-- 监控管理首页 -->
+            <forward name="IGCOM0221"  path="/com/IGCOM0221.jsp"/><!-- 监控管理首页 -->
+             <!-- DashBOARD -->
+            <forward name="IGDBM0000"  path="/dbm/IGDBM0000.jsp"/>	<!-- DashBOARD首页 -->
+            <forward name="IGCOM0220"  path="/com/IGCOM0220.jsp"/>  <!-- 统计分析首页 -->
+            <forward name="IGDBM0101"  path="/IGDBM0101.do"/> <!-- 行长首页 -->
+            <forward name="IGDBM0102"  path="/IGDBM0102.do"/> <!-- 处长首页 -->
+            <forward name="IGDBM0103"  path="/IGDBM0103.do"/> <!-- 流程主题 -->
+            <forward name="IGDBM0104"  path="/IGDBM0104.do"/> <!-- 基础设施 -->
+            <forward name="IGDBM0105"  path="/IGDBM0105.do"/> <!-- 问题流程综合分析 -->
+            <forward name="IGDBM0106"  path="/IGDBM0106.do"/> <!-- 事件流程综合分析 -->
+            <forward name="IGDBM0107"  path="/IGDBM0107.do"/> <!-- 变更流程综合分析 -->
+            <forward name="IGDBM0108"  path="/IGDBM0108.do"/> <!-- 工作流程综合分析 -->
+            <forward name="IGDBM0109"  path="/IGDBM0109.do"/> <!-- 系统可用率分析 -->
+            <forward name="IGDBM0110"  path="/IGDBM0110.do"/> <!-- 渠道业务实时情况 -->
+            <forward name="IGCOM0403"  path="/IGCOM0104.do"/> <!-- 运维首页 -->
+            <forward name="IGCOM0405"  path="/IGCOM0405.do"/> <!-- 业务人员首页 -->
+            <forward name="IGDBM0111"  path="/IGDBM0111.do"/> <!-- topoMap -->
+            <forward name="IGDBM0201"  path="/IGDBM0201_Disp.do"/> <!-- 全网IP过滤 -->
+            <forward name="IGDBM1201"  path="/IGDBM1201.do"/> <!-- 科技运行综合分析一 -->
+            <forward name="IGDBM1202"  path="/IGDBM1202.do"/> <!-- 科技运行综合分析二 -->
+            <forward name="IGDBM1203"  path="/IGDBM1203.do"/> <!-- 信息安全综合分析 -->
+            <forward name="IGDBM1204"  path="/IGDBM1204.do"/> <!-- 科技风险综合分析 -->
+            
+            <!-- SOC存储运维服务管理菜单2013/01/29 -->
+            <forward name="Portal"  path="/IGPOR0101.do"/>
+            <!-- 审计菜单处理 -->
+            <forward name="IGIAM0101" path="/IGIAM0101_Disp.do"/>
+            <forward name="IGIAM0102" path="/IGIAM0103_Disp.do"/>
+            <forward name="IGIAM0103" path="/IGIAM0104_Disp.do"/>
+            <forward name="IGIAM0104" path="/IGIAM0105_Disp.do"/>
+            <forward name="IGIAM0201" path="/IGIAM0201_Disp.do"/>
+            <forward name="IGIAM0202" path="/IGIAM0202_Disp.do"/>
+       		<forward name="IGIAM0301" path="/IGIAM0301_Disp.do"/>
+            <forward name="IGIAM0302" path="/IGIAM0303_Disp.do"/>
+            <forward name="IGIAM0303" path="/IGIAM0304_Disp.do"/>
+            <forward name="IGIAM0401" path="/IGIAM0401_Disp.do"/>
+            <forward name="IGIAM0402" path="/IGIAM0402_Disp.do"/>
+            <forward name="IGIAM0501" path="/IGIAM0501_Disp.do"/>
+            <forward name="IGIAM0502" path="/IGIAM0502.do" />
+            
+            
+             <!-- 服务管理菜单 -->
+            <forward name="IGSDL0105" path="/IGSDL0105_Disp.do" />
+            <forward name="IGSDL0110" path="/IGSDL0110_Disp.do" />
+            <forward name="IGSDL0112" path="/IGSDL0112_Disp.do" />
+            <forward name="IGSDL0203" path="/IGSDL0203_Disp.do" />
+            <forward name="IGSCH0104" path="/IGSCH0104.do" />
+            <forward name="IGSCH0105" path="/IGSCH0105.do" />
+            <forward name="IGSCH0102" path="/IGSCH0001_Disp.do" />
+            <forward name="IGSCH0401" path="/IGSCH0401_Disp.do" />  
+            <forward name="IGSCH0101" path="/IGSCH0101_Disp.do" />
+            <forward name="IGSCH0000" path="/IGPRM0002.do" />    
+            <forward name="IGSDL0201" path="/IGSDL0201_Disp.do" />
+            <forward name="IGSDL0202" path="/IGSDL0202_Disp.do" />
+            <forward name="IGSDL0205" path="/IGSDL0205_Disp.do" />
+            <forward name="IGSDL0206" path="/IGSDL0206_Disp.do" />
+            <forward name="IGSDL0207" path="/IGSDL0207_Disp.do" />
+            <forward name="IGSDL0301" path="/IGSDL0301_Disp.do" />
+            <forward name="IGSDL0302" path="/IGSDL0302_Disp.do" />
+            <forward name="IGSDL0401" path="/IGSDL0401_Disp.do" />
+            <forward name="IGSDL0402" path="/IGSDL0402_Disp.do" />
+            <forward name="IGSDL0501" path="/IGSDL0501_Disp.do" />
+            <forward name="IGSDL0504" path="/IGSDL0504_Disp.do" />
+            <forward name="IGSDL0601" path="/IGSDL0601_Disp.do" />
+            <forward name="IGSDL0701" path="/IGSDL0701_Disp.do" />
+            <forward name="IGRIS0101" path="/IGRIS0101.do" />
+            <forward name="IGRIS0104" path="/IGRIS0104_Disp.do" />
+            <forward name="IGRIS0105" path="/IGRIS0105_Disp.do" />
+            <forward name="IGRIS0109" path="/IGRIS0109_Disp.do" />
+            <forward name="IGRIS0110" path="/IGRIS0110_Disp.do" />
+            <forward name="IGRIS0113" path="/IGRIS0113_Disp.do" />
+            <forward name="IGRIS0118" path="/IGRIS0118_Disp.do" />
+            <forward name="IGRIS0201" path="/IGRIS0201_Disp.do" />
+            <forward name="IGRIS0202" path="/IGRIS0202_Disp.do" />
+            <forward name="IGRIS0203" path="/IGRIS0203.do" />
+            <forward name="IGRIS0203_sel" path="/IGRIS0203_sel.do" />
+            <forward name="IGRIS0204" path="/IGRIS0204_Disp.do" />
+            <forward name="IGRIS0205" path="/IGRIS0205.do" />
+            <forward name="IGRIS0206" path="/IGRIS0206_Disp.do" />
+            <forward name="IGRIS0225" path="/IGRIS0205_Supervise.do" />
+            <forward name="IGRIS0226" path="/IGSTA0102.do" />
+            <forward name="IGRIS0301" path="/IGWKM0108.do" />
+            <forward name="IGRIS0304" path="/IGWKM0106.do" />
+            <forward name="IGRIS0305" path="/IGWKM0107.do" />
+            <forward name="IGDUT0101" path="/IGDUT0101_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0102" path="/IGDUT0102_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0201" path="/IGDUT0201_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0203" path="/IGDUT0203_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0204" path="/IGDUT0204_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0206" path="/IGDUT0206_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0207" path="/IGDUT0207_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0301" path="/IGDUT0301_Disp.do?dadcategory=1" />
+            <forward name="IGDUT0303" path="/IGDUT0303_Disp.do?dadcategory=1" />
+            <forward name="IGPRJ0102" path="/IGPRJ0102_Disp.do"/>
+            <forward name="IGPRJ0101" path="/IGPRJ0101_Disp.do"/>
+            <forward name="IGFIN0101" path="/IGFIN0101_Disp.do"/>
+            <forward name="IGFIN0102" path="/IGFIN0102_Disp.do"/>
+            <forward name="IGFIN0201" path="/IGFIN0201_Disp.do"/>
+            <forward name="IGFIN0202" path="/IGFIN0202_Disp.do"/>
+            <forward name="IGFIN0206" path="/IGFIN0206_Disp.do"/>
+            <forward name="IGFIN0301" path="/IGFIN0301.do"/>
+            <forward name="IGFIN0302" path="/IGFIN0302.do"/>
+            <forward name="IGDUT0304" path="/IGDUT0304_Disp.do"/>
+            <forward name="IGDUT0305" path="/IGDUT0305_Disp.do"/>
+            
+            <forward name="IGDUT0401" path="/IGDUT0401_Disp.do"/>
+            <forward name="IGDUT0402" path="/IGDUT0402_Disp.do"/>
+            
+            <!-- 流程管理 -->
+            <forward name="IGWKM0202" path="/IGPRM0001.do"/>
+            <forward name="IGWKMSOC0202" path="/IGPRM0001_SOC.do"/>
+            <forward name="IGEXTWA0101" path="/IGEXTWA0101_Disp.do"/>
+            <forward name="IGEXTWA0102" path="/IGEXTWA0102_Disp.do"/>
+            <forward name="IGEXTWB0101" path="/IGEXTWB0101_Disp.do"/>
+            <forward name="IGEXTWB0102" path="/IGEXTWB0102_Disp.do"/>
+            <forward name="IGWKM0101" path="/IGWKM0101_Disp.do" />
+            <forward name="IGWKM0102" path="/IGWKM0102.do?propentime=month" />
+            <forward name="IGWKM0103" path="/IGWKM0103.do" />
+            <forward name="IGWKM0104" path="/IGPRR0101_Disp.do" />
+            <forward name="IGWKM0110" path="/IGWKM0110_Disp.do" />
+            <forward name="IGSVC0101" path="/IGSVC0101_Disp.do"/>
+            <forward name="IGSVC0102" path="/IGSVC0102_Disp.do"/>
+            <forward name="IGSVC0103" path="/IGSVC0103_Disp.do"/>
+            <forward name="IGSVC0104" path="/IGSVC0104_Disp.do"/>
+            <forward name="IGSVC0105" path="/IGSVC0105_Disp.do"/>
+            <forward name="IGSVC0106" path="/IGSVC0106_Disp.do"/>
+            <forward name="IGSVC0110" path="/IGSVC0110.do"/>
+            <forward name="IGSVC0111" path="/IGSVC0111_Disp.do"/>
+            <forward name="IGSVC0201" path="/IGSVC0201_Disp.do"/>
+            <forward name="IGSVC0202" path="/IGPRM0000.do?prtype=I"/>
+            <forward name="IGSRV0202" path="/IGPRM0000_SOC.do?prtype=ID"/>
+            <forward name="IGSVC0203" path="/IGSVC0213.do?prstatus=P"/>
+            <forward name="IGSVC0204" path="/IGSVC0213.do?prstatus=E"/>
+            <forward name="IGSVC0205" path="/IGSVC0213.do?prstatus=V"/>
+            <forward name="IGSVC0206" path="/IGSVC0213.do?propentime=month"/>
+            <!--  -->
+            <forward name="IGSVC0230" path="/IGSVC0230_Disp.do"/>
+            <forward name="IGSVC0330" path="/IGSVC0330_Disp.do"/>
+            <forward name="IGSVC0430" path="/IGSVC0435_Disp.do"/>
+             <!--  -->
+            <forward name="IGSVC0301" path="/IGSVC0301_Disp.do"/>
+            <forward name="IGSVC0302" path="/IGPRM0000.do?prtype=P"/>
+            <forward name="IGSVC0303" path="/IGSVC0313.do?prstatus=P"/>
+            <forward name="IGSVC0304" path="/IGSVC0313.do?prstatus=E"/>
+            <forward name="IGSVC0305" path="/IGSVC0313.do?prstatus=V"/>
+            <forward name="IGSVC0306" path="/IGSVC0313.do?propentime=month"/>
+            <forward name="IGSVC0401" path="/IGSVC0401_Disp.do"/>
+            <forward name="IGSVC0402" path="/IGPRM0000.do?prtype=C"/>
+            <forward name="IGSRV0402" path="/IGPRM0000_SOC.do?prtype=CD"/>
+            <forward name="IGSVC0403" path="/IGSVC0415.do?prstatus=I"/>
+            <forward name="IGSVC0404" path="/IGSVC0415.do?prstatus=A"/>
+            <forward name="IGSVC0405" path="/IGSVC0415.do?prstatus=E"/>
+            <forward name="IGSVC0406" path="/IGSVC0415.do?prstatus=V"/>
+            <forward name="IGSVC0407" path="/IGSVC0415.do?propentime=month"/>
+            <forward name="IGSVC0501" path="/IGSVC0501_Disp.do"/>
+            <forward name="IGSVC0502" path="/IGPRM0000.do?prtype=D"/>
+            <forward name="IGSVC0503" path="/IGSVC0515.do?prstatus=I"/>
+            <forward name="IGSVC0504" path="/IGSVC0515.do?prstatus=A"/>
+            <forward name="IGSVC0505" path="/IGSVC0515.do?prstatus=E"/>
+            <forward name="IGSVC0506" path="/IGSVC0515.do?prstatus=V"/>
+            <forward name="IGSVC0507" path="/IGSVC0515.do?propentime=month"/>
+            <forward name="IGSVC0601" path="/IGSVC0601.do"/>
+            <forward name="IGSVC0602" path="/IGSVC0602.do"/>
+            <forward name="IGSVC0606" path="/IGSVC0606.do"/>
+            <forward name="IGSVC0608" path="/IGSVC0608.do"/>
+            <forward name="IGSVC0639" path="/IGSVC0639_Disp.do"/>
+            <forward name="IGSVC0610" path="/IGSVC0610.do"/>
+            <forward name="IGSVC0635" path="/IGSVC0635_Disp.do"/>
+            <forward name="IGSVC0636" path="/IGSVC0636_Disp.do"/>
+            <forward name="IGSVC0637" path="/IGSVC0637_Disp.do"/>
+            <forward name="IGSVC0638" path="/IGSVC0638_Disp.do"/>
+            <forward name="IGSVC0640" path="/IGSVC0640_Disp.do"/>
+            <forward name="IGSVC0641" path="/IGSVC0641_Disp.do"/>
+            <forward name="IGSVC0642" path="/IGSVC0642_Disp.do"/>
+            <forward name="IGSVC0801" path="/IGSVC0801_Disp.do"/>
+            <forward name="IGSVC0802" path="/IGPRM0000.do?prtype=S"/>
+            <forward name="IGSVC0803" path="/IGSVC0814.do?prstatus=I"/>
+            <forward name="IGSVC0804" path="/IGSVC0814.do?prstatus=A"/>
+            <forward name="IGSVC0805" path="/IGSVC0814.do?prstatus=E"/>
+            <forward name="IGSVC0806" path="/IGSVC0814.do?prstatus=V"/>
+            <forward name="IGSVC0807" path="/IGSVC0814.do?propentime=month"/>
+            <forward name="IGSVC0901" path="/IGSVC0901_Disp.do"/>
+            <forward name="IGSVC1001" path="/IGSVC1001_Disp.do"/>
+            <forward name="IGSVC1001_SEARCH" path="/IGSVC1001.do"/>
+            <forward name="IGSVC1002" path="/IGSVC1002_Disp.do"/>
+            <forward name="IGSVC1004" path="/IGSVC1004_Disp.do"/>
+            <forward name="IGCOM0402_POP" path="/IGCOM0402_POP.do"/>
+            <forward name="IGSVC1101" path="/IGSVC1101_Disp.do"/>
+            <forward name="IGSVC1102" path="/IGPRM0000.do?prtype=WS"/>
+            <forward name="IGSVC1201" path="/IGSVC1201_Disp.do"/>
+            <forward name="IGSVC1202" path="/IGSVC1202_Disp.do"/>
+            <forward name="IGSVC1203" path="/IGSVC1203_Disp.do"/>
+            <forward name="IGSVC1301_DISP" path="/IGSVC1301_DISP.do"/>
+            <forward name="IGSVC1302_DISP" path="/IGSVC1302_DISP.do"/>
+            <forward name="IGSVC1401" path="/IGSVC1401_Disp.do"/>
+            	<!-- 日常工作计划 -->
+			<forward name="IGDWP0101" path="/IGDWP0101.do"/>
+			<forward name="IGDWP0102" path="/IGDWP0102_Disp.do"/>
+            <!-- SOC运维服务菜单跳转 -->
+            <forward name="IGSVC1501" path="/IGSVC1501_Disp.do"/>
+            
+            <!-- 知识管理 -->
+            <forward name="IGKGM0201" path="/IGKGM0201_Disp.do"/>
+            <forward name="IGKGM0202" path="/IGKGM0202.do"/>
+            <forward name="IGKGM0205" path="/IGKGM0205.do"/>
+            <forward name="IGKGM0208" path="/IGKGM0208.do"/>
+            <forward name="IGKGM0209" path="/IGKGM0209_Disp.do"/>
+            <forward name="IGKGM0210" path="/IGKGM0228_Down.do"/>
+            <forward name="IGKGM0231" path="/IGKGM0231.do"/>
+            <forward name="IGKGM0232" path="/IGKGM0232.do"/>
+            
+            <!-- 配置管理 -->
+            <forward name="IGASM0101" path="/IGASM0101_Disp.do"/>
+            <forward name="IGASM0102" path="/IGASM0102_Disp.do"/>
+            <forward name="IGASM0109" path="/IGASM0109_Disp.do"/>
+            <forward name="IGASM0112" path="/IGASM0112_Disp.do"/>
+            <forward name="IGASM0114" path="/IGASM0114_Disp.do"/>
+            <forward name="IGASM0201" path="/IGASM0201_Disp.do"/>
+            <forward name="IGASM0202" path="/IGASM0202_Disp.do"/>
+            <forward name="IGASM0301" path="/IGASM0301_Disp.do"/>
+            <forward name="IGASM0302" path="/IGASM0302_Disp.do"/>
+            <forward name="IGASM0308" path="/IGASM0308_Disp.do"/>
+            <forward name="IGASM0310" path="/IGASM0310_Disp.do"/>
+            <forward name="IGASM0312" path="/IGASM0312_Disp.do"/>
+            <forward name="IGASM0316" path="/IGASM0316_Disp.do"/>
+            <forward name="IGASM1701" path="/IGASM1701_Disp.do"/>
+            <forward name="IGASM1702" path="/IGASM1702_Disp.do"/>
+            <forward name="IGASM1703" path="/IGASM1708_Disp.do"/>
+            <forward name="IGASM0320" path="/IGASM0320.do"/>
+            <forward name="IGASM0401" path="/IGASM0401_Disp.do"/>
+            <forward name="IGASM0402" path="/IGASM0402_Disp.do"/>
+            <forward name="IGASM0403" path="/IGASM0408_Disp.do"/>
+            
+            <!-- 应付款登记(20,21)&查询(22)forward -->
+            <forward name="IGASM0420" path="/IGASM0420_Disp.do"/>
+
+            <forward name="IGASM0422" path="/IGASM0422_Disp.do"/>
+            <forward name="IGASM0424" path="/IGASM0424_Disp.do"/>
+            
+            <forward name="IGASM0501" path="/IGASM0501.do"/>
+            <forward name="IGASM0502" path="/IGASM0502_Disp.do"/>
+            <forward name="IGASM0503" path="/IGASM0508.do"/>
+            <forward name="IGASM0601" path="/IGASM0601_Disp.do"/>
+            <forward name="IGASM0602" path="/IGASM0602_Disp.do"/>
+            <forward name="IGASM0603" path="/IGASM0608_Disp.do"/>
+        	<forward name="IGASM0701" path="/IGASM0701_Disp.do"/>
+            <forward name="IGASM0702" path="/IGASM0702_Disp.do"/>
+            <forward name="IGASM0801" path="/IGASM0801_Disp.do"/>
+            <forward name="IGASM0802" path="/IGASM0802_Disp.do"/>
+            <forward name="IGASM0803" path="/IGASM0808_Disp.do"/>
+            <forward name="IGASM0901" path="/IGASM0901_Disp.do"/>
+            <forward name="IGASM0902" path="/IGASM0902_Disp.do"/>
+            <forward name="IGASM0903" path="/IGASM0908_Disp.do"/>
+            <forward name="IGASM1001" path="/IGASM1001_Disp.do"/>
+            <forward name="IGASM1101" path="/IGASM1101_Disp.do"/>
+            <forward name="IGASM1102" path="/IGASM1102_Disp.do"/>
+            <forward name="IGASM1111" path="/IGASM1111_Disp.do"/>
+            <forward name="IGASM1112" path="/IGASM1112_Disp.do"/>
+             <!-- 3D机房支持IP查询 -->
+            <forward name="IGASM1120" path="/IGASM1120_Disp.do"/>
+            <forward name="IGASM1201" path="/IGASM1201_Disp.do"/>
+            <forward name="IGASM1202" path="/IGASM1202_Disp.do"/>
+            <forward name="IGASM1301" path="/IGASM1301_Disp.do"/>
+            <forward name="IGASM1302" path="/IGASM1302_Disp.do"/>
+            <forward name="IGASM1303" path="/IGASM1303_Disp.do"/>
+            <forward name="IGASM1501" path="/IGASM1501_Disp.do"/>
+            <forward name="IGASM1502" path="/IGASM1502_Disp.do"/>
+            <forward name="IGASM1503" path="/IGASM1508_Disp.do"/>
+            <forward name="IGASM1601" path="/IGASM1601_Disp.do"/>
+            <forward name="IGASM1602" path="/IGASM1602_Disp.do"/>
+            <forward name="IGASM1603" path="/IGASM1608_Disp.do"/>
+            <forward name="IGASM1801" path="/IGASM1801_Disp.do"/>
+            <forward name="IGASM1802" path="/IGASM1802_Disp.do"/>
+            <forward name="IGASM1803" path="/IGASM1808_Disp.do"/>
+            <forward name="IGASM0340" path="/IGASM0340_Disp.do"/>
+            <forward name="IGASM1901" path="/IGASM1901_Disp.do"/>
+            <forward name="IGASM1902" path="/IGASM1902_Disp.do"/>
+            <forward name="IGASM1903" path="/IGASM1908_Disp.do"/>
+            <forward name="IGASM2001" path="/IGASM2001_Disp.do"/>
+            <forward name="IGASM2002" path="/IGASM2002_Disp.do"/>
+            <forward name="IGASM2003" path="/IGASM2003_Disp.do"/>
+            <forward name="IGASM2006" path="/IGASM2006_Disp.do"/>
+            <forward name="IGASM2007" path="/IGASM2007_Disp.do"/>
+            <forward name="IGASM2008" path="/IGASM2013_Disp.do"/>
+            <forward name="IGASM2009" path="/IGASM2009_Disp.do"/>
+            <forward name="IGASM2101" path="/IGASM2101_Disp.do"/>
+            <forward name="IGASM2102" path="/IGASM2102_Disp.do"/>
+            <forward name="IGASM2103" path="/IGASM2105_Disp.do"/>
+            <forward name="IGASM2104" path="/IGASM2107_Disp.do"/>
+            <forward name="IGASM2105" path="/IGASM2108_Disp.do"/>
+            <forward name="IGASM2201" path="/IGASM2201_Disp.do"/>
+            <forward name="IGASM2202" path="/IGASM2202_Disp.do"/>
+            <forward name="IGASM2203" path="/IGASM2205_Disp.do"/>
+            <forward name="IGASM2204" path="/IGASM2207_Disp.do"/>
+            <forward name="IGASM2205" path="/IGASM2208_Disp.do"/>
+            <forward name="IGASM2301" path="/IGASM2301_Disp.do"/>
+            <forward name="IGASM2401" path="/IGASM2401_Disp.do"/>
+            <forward name="IGASM2402" path="/IGASM2402_Disp.do"/>
+            <forward name="IGASM2403" path="/IGASM2408_Disp.do"/>
+            <forward name="IGASM2501" path="/IGASM2501_Disp.do"/>
+            <forward name="IGASM2601" path="/IGASM2601_Disp.do"/>
+            
+            <!-- 风险库 -->
+            <forward name="IGASM2701" path="/IGASM2701.do"/>
+            <forward name="IGASM2702" path="/IGASM2702_Disp.do"/>
+            <!-- <forward name="IGASM2703" path="/IGASM2708_Disp.do"/> -->
+            <forward name="IGASM2703" path="/IGASM2714.do"/>
+            <!-- 检查项 -->
+            <forward name="IGASM2801" path="/IGASM2801.do"/>
+            <forward name="IGASM2802" path="/IGASM2802_Disp.do"/>
+            <forward name="IGASM2803" path="/IGASM2814.do"/>
+            <!-- 风险指标 -->
+            <forward name="IGASM3101" path="/IGASM3101.do"/>
+            <forward name="IGASM3102" path="/IGASM3102_Disp.do"/>
+            <forward name="IGASM3103" path="/IGASM3115_Disp.do"/>
+            <forward name="IGASM3114" path="/IGASM3114.do"/>
+            <!-- 风险事件管理 -->
+            <forward name="IGASM3201" path="/IGASM3201.do"/>
+            <forward name="IGASM3202" path="/IGASM3202_Disp.do"/>
+            
+            <!-- 应急制度 -->
+             <forward name="IGASM5001" path="/IGASM5001.do"/>
+             <forward name="IGASM5002" path="/IGASM5013.do"/>
+             <forward name="IGASM5003" path="/IGASM5002_Disp.do"/>
+            <!-- 风险监测管理 -->
+	    	<forward name="IGVEN0201" path="/IGVEN0201.do" />
+	    	
+            <!-- 系统管理 -->
+            <forward name="IGSYM0101" path="/IGSYM0101.do"/>
+            <forward name="IGSYM0102" path="/IGSYM0102_Disp.do"/>
+            <forward name="IGSYM0201" path="/IGSYM0201.do"/>
+            <forward name="IGSYM0202" path="/IGSYM0202_Disp.do"/>
+            <forward name="IGSYM0301" path="/IGSYM0301.do"/>
+            <forward name="IGSYM0302" path="/IGSYM0302_Disp.do"/>
+            <forward name="IGSYM0401" path="/IGSYM0401.do"/>
+            <forward name="IGSYM0403" path="/IGSYM0403.do"/>
+            <forward name="IGSYM0413" path="/IGSYM0413_Disp.do"/>
+            <forward name="IGSYM0414" path="/IGSYM0414_Disp.do"/>
+            <forward name="IGSYM0501" path="/IGSYM0501.do"/>
+            <forward name="IGSYM0502" path="/IGSYM0502_Disp.do"/>
+            <forward name="IGSYM1001" path="/IGSYM1001_Disp.do"/>
+            <forward name="IGSYM1002" path="/IGSYM1002_Disp.do"/>
+            <forward name="IGSYM1007" path="/IGSYM1007_Disp.do"/>
+            <forward name="IGSYM1011" path="/IGSYM1011_Disp.do"/>
+            <forward name="IGPRM0101" path="/IGPRM0101_Disp.do"/>
+            <forward name="IGPRM0102" path="/IGPRM0102_Disp.do"/>
+            <forward name="IGPRM0201" path="/IGPRM0201_Disp.do"/>
+            <forward name="IGPRM0202" path="/IGPRM0202_Disp.do"/>
+            <forward name="IGSVC0109" path="/IGSVC0109_Disp.do"/>
+            <forward name="IGSYM1101" path="/IGSYM1101_Disp.do"/>
+            <forward name="IGSYM1109" path="/IGSYM1109_Disp.do"/>
+            
+            <forward name="IGKGM0110" path="/IGKGM0110_Disp.do"/>
+            <forward name="IGPRD0101" path="/IGPRD0101.do"/>
+            <forward name="IGPRD0102" path="/IGPRD0102_Disp.do"/>
+            <forward name="IGPRD0103" path="/IGPRD0119.do"/>
+            <forward name="IGPRD0161" path="/IGPRD0161_List.do"/>
+            <forward name="IGPRD0119" path="/IGPRD0119.do"/>
+            <forward name="IGSYM1301" path="/IGSYM1301_Disp.do"/>
+            <forward name="IGSYM1302" path="/IGSYM1302_Disp.do"/>
+            <forward name="IGSYM1401" path="/IGSYM1401_Disp.do" />
+            <forward name="IGSYM1402" path="/IGSYM1402_Disp.do" />
+            <forward name="IGSYM1501" path="/IGSYM1501_Disp.do"/>
+            <forward name="IGSYM1701" path="/IGSYM1701_Disp.do"/>
+            <forward name="IGSYM1801" path="/IGSYM1801_Disp.do"/>
+            
+            <!-- SOC原作息时间设定三级菜单2013/01/30 -->
+            <forward name="IGSYM1901" path="/IGSYM1901_Disp.do"/>
+            
+            <!-- 监控及其他 -->
+            <!-- 告警管理 -->
+            <forward name="IGMNT0101" path="/IGMNT0101_Disp.do"/>
+            <forward name="IGMNT0102" path="/IGMNT0104_Disp.do"/>
+	        <forward name="IGMNT0103" path="/IGMNT0111_Disp.do"/>
+	        <forward name="IGMNT0104" path="/IGMNT0107_Disp.do"/>
+	        <forward name="IGMNT0105" path="/IGMNT0112_Disp.do"/>
+
+            <forward name="IGMNT0206" path="/IGMNT0206_Disp.do"/>
+            <forward name="IGMNT0207" path="/IGMNT0207_Disp.do"/>
+            
+            <!-- 报表管理 -->
+            <forward name="IGRPT0103" path="/IGRPT0103.do"/>
+            
+            <!-- 耗材管理 -->
+            <forward name="ITEMS0101" path="/ITEMS0101_Disp.do" />
+            <forward name="ITEMS0106" path="/ITEMS0106_Disp.do" />
+            <forward name="ITEMS0109" path="/ITEMS0109_Disp.do" />
+            <forward name="ITEMS0112" path="/ITEMS0112_Disp.do" />
+            <forward name="ITEMS0120" path="/ITEMS0120_Disp.do" />
+            <forward name="ITEMS0123" path="/ITEMS0123_Disp.do" />
+            <forward name="ITEMS0125" path="/ITEMS0125_Disp.do" />
+            <forward name="ITEMS0126" path="/ITEMS0126_Disp.do" />
+            <forward name="ITEMS0128" path="/ITEMS0128_Disp.do" />
+            <forward name="ITEMS0129" path="/ITEMS0129_Disp.do" />
+            <forward name="ITEMS0130" path="/ITEMS0130_Disp.do" />
+            <forward name="ITEMS0141" path="/ITEMS0141_Disp.do" />
+            <forward name="ITEMS0142" path="/ITEMS0142_Disp.do" />
+            <forward name="ITEMS0143" path="/ITEMS0143_Disp.do" />
+            <forward name="ITEMS0144" path="/ITEMS0144_Disp.do" />
+            <forward name="ITEMS0145" path="/ITEMS0145_Disp.do" />
+            <forward name="ITEMS0147" path="/ITEMS0147_Disp.do" />
+            <forward name="ITEMS0148" path="/ITEMS0165_Disp.do" />
+            <forward name="ITEMS0169" path="/ITEMS0169_Disp.do" />
+            <forward name="ITEMS0171" path="/ITEMS0171_Disp.do" />
+            <forward name="ITEMS0135" path="/ITEMS0135_Disp.do" />
+            <forward name="ITEMS0174" path="/ITEMS0174_Disp.do" />
+            
+            <!-- 综合管理 -->
+            <forward name="IGASM0308" path="/IGASM0308_Disp.do" />
+            <forward name="IGASM0310" path="/IGASM0310_Disp.do" />
+            <forward name="IGASM0312" path="/IGASM0312_Disp.do" />
+            <forward name="IGASM1401" path="/IGASM1401_Disp.do" />
+            <forward name="IGASM1408" path="/IGASM1408_Disp.do" />
+            <forward name="IGASM1402" path="/IGASM1402_Disp.do" />
+            <forward name="IGASM1414" path="/IGASM1414_Disp.do" />					
+			<forward name="IGUCI0201"  path="/IGUCI0201_Disp.do"/>
+			<forward name="IGUCI0203"  path="/IGUCI0203_Disp.do"/>
+			<forward name="IGUCI0206"  path="/IGUCI0210_Disp.do"/>
+            <forward name="IGUCI0204" path="/IGUCI0204_Disp.do"/>
+			<forward name="IGUCI0205" path="/IGUCI0205_Disp.do"/>			
+			
+			<!-- 风险评估 --> 
+			<forward name="IGRAM0101" path="/IGRAM0101.do" />
+            <forward name="IGRAM0301" path="/IGRAM0301_Disp.do" />
+            <forward name="IGRAM0401" path="/IGRAM0401_Disp.do" />
+            <forward name="IGRAM0501" path="/IGRAM0501.do" />    
+			
+             <!-- 后勤管理 -->
+            <forward name="IGLOM0101" path="/IGLOM0101_Disp.do" />
+            <forward name="IGLOM0102" path="/IGLOM0102_Disp.do" />
+            <forward name="IGLOM0103" path="/IGLOM0103_Disp.do" />
+            <forward name="IGLOM0104" path="/IGLOM0104_Disp.do" />
+            <forward name="IGLOM0106" path="/IGLOM0106_Disp.do" />
+            <forward name="IGLOM0108" path="/IGLOM0108_Disp.do" />
+            <forward name="IGLOM0109" path="/IGLOM0109_Disp.do" />
+            <forward name="IGLOM0114" path="/IGLOM0114_Disp.do" />
+            <forward name="IGLOM0120" path="/IGLOM0120_Disp.do" />
+            <forward name="IGLOM0117" path="/IGLOM0117_Disp.do" />
+            <forward name="IGLOM0115" path="/IGLOM0115_Disp.do"/>
+            <forward name="IGLOM0116" path="/IGLOM0107_Disp.do"/>
+            <forward name="IGLOM0201" path="/IGLOM0201_Disp.do" />
+            <forward name="IGLOM0202" path="/IGLOM0202_Disp.do" />
+            <forward name="IGLOM0203" path="/IGLOM0203_Disp.do" />
+            <forward name="IGLOM0204" path="/IGLOM0204_Disp.do" />
+            <forward name="IGLOM0211" path="/IGLOM0211_Disp.do" />
+            <forward name="IGLOM0212" path="/IGLOM0212_Disp.do" />
+            <forward name="IGLOM0215" path="/IGLOM0215_Disp.do" />
+            <forward name="IGLOM0217" path="/IGLOM0217_Disp.do" />
+            <forward name="IGLOM0218" path="/IGLOM0218_Disp.do" />
+            <forward name="IGLOM0219" path="/IGLOM0219_Disp.do" />
+            <forward name="IGLOM0216" path="/IGLOM0216_Disp.do" />
+            <forward name="IGLOM0205" path="/IGLOM0205_Disp.do" />
+            <forward name="IGLOM0208" path="/IGLOM0208_Disp.do" />
+            <forward name="IGLOM0213" path="/IGLOM0213_Disp.do" />
+            <forward name="IGLOM0214" path="/IGLOM0214_Disp.do" />
+            <forward name="IGLOM0220" path="/IGLOM0220_Disp.do" />
+            <forward name="IGLOM0250" path="/IGLOM0250_Disp.do" />
+            <forward name="IGLOM0301" path="/IGLOM0301_Disp.do" />
+            <forward name="IGLOM0302" path="/IGLOM0302_Disp.do" />
+            <forward name="IGLOM0303" path="/IGLOM0303_Disp.do" />
+            <forward name="IGLOM0304" path="/IGLOM0304_Disp.do?lpdstatus_q=" />
+            <forward name="IGLOM0320" path="/IGLOM0320_Disp.do?lpdstatus_q=1" />
+            <forward name="IGLOM0321" path="/IGLOM0321_Disp.do?lpdstatus_q=2" />
+            <forward name="IGLOM0306" path="/IGLOM0306_Disp.do?lpdstatus_q=6" />
+            <forward name="IGLOM0307" path="/IGLOM0307_Disp.do" />
+            <forward name="IGLOM0308" path="/IGLOM0308_Disp.do" />
+            <forward name="IGLOM0309" path="/IGLOM0309_Disp.do" />
+            <forward name="IGLOM0311" path="/IGLOM0311_Disp.do" />
+            <forward name="IGLOM0313" path="/IGLOM0313_Disp.do" />
+            <forward name="IGLOM0317" path="/IGLOM0317_Disp.do" />
+            <forward name="IGLOM0501" path="/IGLOM0501_Disp.do" />
+            <forward name="IGLOM0502" path="/IGLOM0502_Disp.do" />
+            <forward name="IGLOM0503" path="/IGLOM0503_Disp.do" />
+            <forward name="IGLOM0504" path="/IGLOM0504_Disp.do" />
+            <forward name="IGLOM0505" path="/IGLOM0505_Disp.do" />
+            <forward name="IGLOM0506" path="/IGLOM0506_Disp.do" />
+            <forward name="IGLOM0507" path="/IGLOM0507_Disp.do" />
+            <forward name="IGLOM0508" path="/IGLOM0508_Disp.do" />
+            <forward name="IGLOM0512" path="/IGLOM0512_Disp.do" />
+            <forward name="IGLOM0509" path="/IGLOM0509_Disp.do" />
+            <forward name="IGLOM0514" path="/IGLOM0514_Disp.do" />
+            <forward name="IGLOM0515" path="/IGLOM0515_Disp.do" />
+            <forward name="IGLOM0518" path="/IGLOM0518_Disp.do" />
+            <forward name="IGLOM0519" path="/IGLOM0519_Disp.do" />
+            <forward name="IGLOM0401" path="/IGLOM0401_Disp.do" />
+            <forward name="IGLOM0402" path="/IGLOM0402_Disp.do"/>
+            <forward name="IGLOM0405" path="/IGLOM0405_Disp.do"/>
+            <forward name="IGLOM0406" path="/IGLOM0406_Disp.do"/>
+            <forward name="IGLOM0407" path="/IGLOM0407_Disp.do"/>
+            <forward name="IGLOM0520" path="/IGLOM0520_Disp.do" />
+            <forward name="IGLOM0513" path="/IGLOM0513_Disp.do" />
+            
+            <!-- 自动报告 -->
+            <forward name="IGRPT0201" path="/IGRPT0201_Disp.do"/>
+            <forward name="IGRPT0204" path="/IGRPT0204_Disp.do"/>
+            <forward name="IGRPT0301" path="/IGRPT0301_Disp.do"/>
+            <forward name="IGRPT0401" path="/IGRPT0401_Disp.do"/>
+            
+            <!-- 配置管理 -->
+            <forward name="IGCIM0101" path="/IGCIM0101_Disp.do"/>
+            <forward name="IGCIM0109" path="/IGCIM0109_Disp.do"/>
+            <forward name="IGCIM0102" path="/IGCIM0121_Disp.do"/>
+            <forward name="IGCIM0103" path="/IGCIM0122_Disp.do"/>
+            <forward name="IGCIM0104" path="/IGCIM0128_Disp.do"/>
+            <forward name="IGCIM0105" path="/IGCIM0120_Disp.do"/>
+            <forward name="IGCIM0160" path="/IGCIM0160_Disp.do"/>
+            <forward name="IGCIM0161" path="/IGCIM0161_Disp.do"/>
+            <forward name="IGCIM0201" path="/IGCIM0201_Disp.do"/>
+            <forward name="IGCIM0202" path="/IGCIM0202_Disp.do"/>
+            <forward name="IGCIM0203" path="/IGCIM0203_Disp.do"/>
+            <forward name="IGCIM0206" path="/IGCIM0206_Disp.do"/>
+            <forward name="IGCIM0207" path="/IGCIM0207_Disp.do"/>
+            <forward name="IGCIM0208" path="/IGCIM0213_Disp.do"/>
+            <forward name="IGCIM0209" path="/IGCIM0209_Disp.do"/>
+            <forward name="IGCIM0301" path="/IGCIM0301_Disp.do"/>
+            <forward name="IGCIM0302" path="/IGCIM0302_Disp.do"/>
+            <forward name="IGCIM0303" path="/IGCIM0305_Disp.do"/>
+            <forward name="IGCIM0304" path="/IGCIM0307_Disp.do"/>
+            <forward name="IGCIM0305" path="/IGCIM0308_Disp.do"/>
+            <forward name="IGCIM0157" path="/IGCIM0157_Disp.do"/>
+            
+            <forward name="IGCIM0901" path="/IGCIM0901_Disp.do"/>
+            <forward name="IGCIM0902" path="/IGCIM0902_Disp.do"/>
+            <forward name="IGCIM0903" path="/IGCIM0907_Disp.do"/>
+            <forward name="IGCIM0905" path="/IGCIM0908_Disp.do"/>
+            <forward name="IGCIM0904" path="/IGCIM0909_Disp.do"/>
+            <forward name="IGCIM0906" path="/IGCIM0912_Disp.do"/>
+            <forward name="IGCIM0907" path="/IGCIM0913_Disp.do"/>
+            
+            <forward name="IGCIM0911" path="/IGCIM0911_Disp.do"/>
+            <forward name="IGCIM1001" path="/IGCIM1001_Disp.do"/>
+            <forward name="IGCIM1401" path="/IGCIM1401_Disp.do"/>
+            <forward name="IGCIM1402" path="/IGCIM1402_Disp.do"/>
+            <forward name="IGCIM0135" path="/IGCIM0135_Disp.do"/>
+            <forward name="IGCIM0139" path="/IGCIM0139_Disp.do"/>
+            <forward name="IGCIM0140" path="/IGCIM0140_Disp.do"/>
+            <forward name="IGCIM0136" path="/IGCIM0136_Disp.do"/>
+            <forward name="IGAIM0140" path="/IGAIM0140_Disp.do"/>
+            <forward name="IGAIM0101" path="/IGAIM0101_Disp.do"/>
+            <forward name="IGAIM0102" path="/IGCIM0150_Disp.do"/>
+            <forward name="IGAIM0103" path="/IGAIM0122_Disp.do"/>
+            <forward name="IGAIM0104" path="/IGAIM0128_Disp.do"/>
+            <forward name="IGAIM0214" path="/IGAIM0214_Disp.do"/>
+            <forward name="IGAIM0215" path="/IGAIM0215_Disp.do"/>
+            <forward name="IGAIM0201" path="/IGAIM0201_Disp.do"/>
+            <forward name="IGAIM0202" path="/IGAIM0202_Disp.do"/>
+            <forward name="IGAIM0203" path="/IGAIM0203_Disp.do"/>
+            <forward name="IGAIM0206" path="/IGAIM0206_Disp.do"/>
+            <forward name="IGAIM0207" path="/IGAIM0207_Disp.do"/>
+            <forward name="IGAIM0208" path="/IGAIM0213_Disp.do"/>
+            <forward name="IGAIM0209" path="/IGAIM0209_Disp.do"/>
+            <forward name="IGAIM0301" path="/IGAIM0301_Disp.do"/>
+            <forward name="IGAIM0302" path="/IGAIM0302_Disp.do"/>
+            <forward name="IGAIM0303" path="/IGAIM0305_Disp.do"/>
+            <forward name="IGAIM0304" path="/IGAIM0307_Disp.do"/>
+            <forward name="IGAIM0305" path="/IGAIM0308_Disp.do"/>
+            <forward name="IGAIM0401" path="/IGAIM0401_Disp.do"/>
+            <forward name="IGAIM0402" path="/IGAIM0402_Disp.do"/>
+            <forward name="IGAIM0409" path="/IGAIM0409_Disp.do"/>
+            <forward name="IGAIM0412" path="/IGAIM0412_Disp.do"/>
+            <!--虚拟化管理-->
+            <forward name="IGVIR0601" path="/IGVIR0601_Disp.do"/>
+            <forward name="IGVIR0604" path="/IGVIR0604_Disp.do"/>
+            <forward name="IGVIR0605" path="/IGVIR0605_Disp.do"/>
+            <forward name="IGVIR0606" path="/IGVIR0606_Disp.do"/>
+            
+            <forward name="IGVIR0701" path="/IGVIR0701.do"/>
+            <forward name="IGVIR0702" path="/IGVIR0702.do"/>
+            <forward name="IGVIR1202" path="/IGVIR1202_Disp.do"/>
+            <forward name="IGVIR1301" path="/IGVIR1301_Disp.do"/>
+            <forward name="IGVIR1401" path="/IGVIR1401_Disp.do"/>
+            <forward name="IGVIR1402" path="/IGVIR1402_Disp.do"/>
+            <forward name="IGVIR1403" path="/IGVIR1403_Disp.do"/>
+
+	    <forward name="IGVIR0800" path="/vir/IGVIR0800.jsp"/>
+	    <forward name="IGVIR0801" path="/IGVIR0802.do?searchType=user"/>
+            <forward name="IGVIR0802" path="/IGVIR0801.do"/>
+	    <forward name="IGVIR0803" path="/IGVIR0802.do?searchType=org"/>
+            <forward name="IGVIR0804" path="/IGVIR0803.do"/>
+            <forward name="IGVIR0805" path="/IGVIR0805.do"/>
+            
+	    <forward name="IGVIR1101" path="/IGVIR1104.do?searchType=user"/>
+            <forward name="IGVIR1104" path="/IGVIR1101.do"/>
+	    <forward name="IGVIR1102" path="/IGVIR1104.do?searchType=org"/>
+            <forward name="IGVIR1103" path="/IGVIR1103.do"/>
+            <forward name="IGVIR1105" path="/IGVIR1102.do"/>
+            
+            <forward name="IGCIM0801" path="/IGCIM0801_Disp.do?goPage=2"/>
+            <forward name="IGCIM0802" path="/IGCIM0802_Disp.do"/>
+            <forward name="IGCIM0803" path="/IGCIM0803_Disp.do"/>
+            <forward name="IGCIM0804" path="/IGCIM0804_Disp.do?goPage=1"/>
+            <forward name="IGCIM0805" path="/IGCIM0805_Disp.do"/><!-- 定时采集 -->
+            <forward name="IGCIM0808" path="/IGCIM0808_Disp.do"/><!-- 手动采集 -->
+            <forward name="IGCIM0809" path="/IGCIM0809_Disp.do"/><!-- 关系分析 -->
+            
+            <forward name="IGCIM0500" path="/IGCIM0500_Disp.do"/>
+            <forward name="IGCIM0501" path="/IGCIM0501_Disp.do"/>
+            <forward name="IGCIM0502" path="/IGCIM0502_Disp.do"/>
+            <forward name="IGCIM0503" path="/IGCIM0503_Disp.do"/>
+            <!-- 密码信息 -->
+            <forward name="IGCIM1602" path="/IGCIM1631_Disp.do"/>
+            <forward name="IGCIM1601" path="/IGCIM1601_Disp.do"/>
+            <forward name="IGCIM1701" path="/IGCIM1701_Disp.do"/>
+            <forward name="IGCIM1702" path="/IGCIM1702_Disp.do"/>
+            <forward name="IGCIM1703" path="/IGCIM1703_Disp.do"/>
+            <forward name="IGCIM1101" path="/IGCIM1101_Disp.do"/>
+            
+            <!-- 监控管理 -->
+            <forward name="IGMTM0101" path="/IGMTM0001.do"/>
+            <forward name="IGMTM0102" path="/IGMTM0002.do"/>
+            <forward name="IGATL0101" path="/IGATL0101_Forward.do?goPage=1"/>
+            <forward name="IGATL0102" path="/IGATL0102_Forward.do"/>
+            <forward name="IGATL0103" path="/IGATL0101_Forward.do?goPage=2"/>
+            <forward name="IGATL0104" path="/IGATL0101_Forward.do?goPage=3"/>
+            <forward name="IGMTM0501" path="/IGMTM0501_Disp.do"/>
+            <forward name="IGMTM0701" path="/IGMTM0601_Disp.do"/>
+            <forward name="IGMTM0502" path="/IGMTM0503_Disp.do"/>
+            <forward name="IGMTM0601" path="/IGDBM0103.do"/>
+
+            <forward name="SMSStatus" path="/SMSStatus.do"/>
+            <!-- plugin插件管理 -->
+            <forward name="IGPluginMgr" path="/IGPluginMgr_Disp.do"/>
+            
+            <forward name="IGCOM0222" path="/com/IGCOM0222.jsp" />
+            <forward name="IGUCI0103"  path="/IGUCI0104_Disp.do"/>
+			<forward name="IGUCI0104"  path="/IGUCI0103_Disp.do"/>
+			<forward name="IGUCI0105"  path="/IGUCI0105_Disp.do"/>
+			
+			<!-- 新增资源组授权 2012/11/15 -->
+            <forward name="IGSYM0421" path="/IGSYM0421_Disp.do"/>
+			<!-- 新增资源组授权 2012/11/15 -->
+            <forward name="IGSYS0001" path="/IGSYS0001.do"/>
+            <forward name="IGSYS0101" path="/IGSYS0101_Disp.do"/>
+            <forward name="IGSYS0102" path="/IGSYS0102_Disp.do"/>
+            
+            <!-- 性能指标采集 -->
+            <forward name="IGALM0201" path="/IGALM0201_Disp.do"/>
+            <forward name="IGALM0102" path="/IGALM0102_Disp.do"/>
+            <forward name="IGALM0501" path="/IGALM0501_DiSP.do"/>
+            <forward name="IGALM0301" path="/IGALM0301_Disp.do"/>
+            <forward name="IGALM0202" path="/IGALM0202_Disp.do"/>
+            <!-- 告警信息查询 -->
+            <forward name="IGALM0401" path="/IGALM0401_Disp.do"/>
+            
+            
+            <!-- 影响分析 -->
+            <forward name="IGAFF0101" path="/IGAFF0101_Disp.do"/>
+            <forward name="IGAFF0102" path="/IGAFF0102_Disp.do"/>
+            <forward name="IGAFF0103" path="/IGAFF0103_Disp.do"/>
+            <forward name="IGAFF0104" path="/IGAFF0104_Disp.do"/>
+            <forward name="IGAFF0201" path="/IGAFF0201_Disp.do"/>
+            <forward name="IGAFF0202" path="/IGAFF0202_Disp.do"/>
+            
+            
+			<!-- 网络拓扑管理nms -->
+            <forward name="IGNMS0101_M" path="/IGNMS0101_Disp.do?editModeType=1&amp;topotype=0"/>
+            <forward name="IGNMS0101_L" path="/IGNMS0101_Disp.do?editModeType=2&amp;topotype=0"/>
+            <forward name="IGNMS0102" path="/IGNMS0102_Disp.do"/>
+            <forward name="IGNMS0103" path="/IGNMS0103_Disp.do"/>
+            <forward name="IGNMS0104_M" path="/IGNMS0101_Disp.do?editModeType=1&amp;topotype=1"/>
+            <forward name="IGNMS0104_L" path="/IGNMS0101_Disp.do?editModeType=2&amp;topotype=1"/>
+            
+            
+            <!-- IP管理 -->
+            <forward name="IGIOP0101" path="/IGIOP0101_Disp.do"/>
+            <forward name="IGIOP0102" path="/IGIOP0102_Disp.do"/>
+            <forward name="IGIOP0103" path="/IGIOP0201_Disp.do"/>
+            <forward name="IGIOP0201" path="/IGCIM2001_Disp.do"/>
+            <forward name="IGIOP0202" path="/IGCIM2004_Disp.do"/>
+
+	   		<forward name="IGSTA0103" path="/IGSTA0103_Disp.do"/>
+            <forward name="IGIOP0203" path="/IGCIM0910_Disp.do"/>
+            <forward name="IGSTA0301"  path="/sta/IGSTA0301.jsp"/>
+            
+            <!-- *************配置审计 *************-->
+            <!-- 审计发起 -->
+            <forward name="IGAUT0101" path="/IGPRR0101_Disp.do?pdid=01001"/>
+            <!-- 审计任务审批 -->
+            <forward name="IGAUT0102" path="/IGAUT0101.do"/>
+            <!-- 审计任务执行 -->
+            <forward name="IGAUT0103" path="/IGAUT0102.do"/>
+            <!-- 审计结果填写 -->
+            <forward name="IGAUT0104" path="/IGAUT0103.do"/>
+            <!-- 审计任务查询 -->
+            <forward name="IGAUT0105" path="/IGAUT0104.do"/>
+            <!-- ********审计执行******* -->
+            <forward name="IGAUT0201" path="/IGAUT0201_Disp.do"/>
+            <forward name="IGAUT0202" path="/IGAUT0202_Disp.do"/>
+            <forward name="IGAUT0203" path="/IGAUT0203_Disp.do"/>
+            <forward name="IGAUT0204" path="/IGAUT0204_Disp.do"/>
+            <forward name="IGAUT0205" path="/IGAUT0205_Disp.do"/>
+            <forward name="IGAUT0206" path="/IGAUT0206_Disp.do"/>
+            
+            <forward name="IGSMR0101" path="/IGSMR0101_Disp.do"/>
+            <forward name="IGSMR0301" path="/IGSMR0301.do"/>
+            <forward name="IGSMR0302" path="/IGSMR0301_FIRST.do"/>
+            <forward name="IGSMR0303" path="/IGSMR0301_SECOND.do"/>
+            <forward name="IGSMR0304" path="/IGSMR0302_DISP.do"/>           
+            <forward name="IGSMR0305" path="/IGSMR0303_Disp.do"/>
+            <forward name="IGSMR0601" path="/IGSMR0601_Disp.do"/>
+            <forward name="IGSMR0602" path="/IGSMR0602_DISP.do"/>
+            <forward name="IGSMR0603" path="/IGSMR0602_FIRST.do"/>
+            <forward name="IGSMR0604" path="/IGSMR0602_SECOND.do"/>
+            <forward name="IGSMR0605" path="/IGSMR0603_DISP.do"/>
+            <forward name="IGSMR0701" path="/IGSMR0701_Disp.do"/>
+            <forward name="IGSMR0702" path="/IGSMR0702.do"/>
+            <forward name="IGSMR0703" path="/IGSMR0702_FIRST.do"/>
+            <forward name="IGSMR0704" path="/IGSMR0702_SECOND.do"/>
+            <forward name="IGSMR0705" path="/IGSMR0703_DISP.do"/> 
+            <forward name="IGSMR0306" path="/IGSMR0305_DISP.do"/>
+            <forward name="IGSMR0001" path="/IGSMR0402_Disp.do"/>
+            <forward name="IGSMR0002" path="/IGSMR0604_Disp.do"/>
+            <forward name="IGSMR0003" path="/IGSMR0704_Disp.do"/>
+            <forward name="IGSMR0901" path="/IGSMR0901_Disp.do"/>
+            <forward name="IGSMR0902" path="/IGSMR0902_Disp.do"/>
+            <forward name="IGSMR0903" path="/IGSMR0903_Disp.do"/>
+            <forward name="IGSMR0801" path="/IGSMR0801_DISP.do"/>
+            <forward name="IGSMR1101" path="/IGSMR1101_Disp.do"/>
+            <forward name="IGSMR1102" path="/IGSMR1102_DISP.do"/>
+            <forward name="IGSMR1103" path="/IGSMR1102_FIRST.do"/>
+            <forward name="IGSMR1104" path="/IGSMR1102_SECOND.do"/>
+            <forward name="IGSMR1105" path="/IGSMR1103_DISP.do"/>
+            <!-- 季报统计查询Begin -->
+            <!-- 核心网络系统运行情况查询 -->
+            <forward name="IGSMR0804" path="/IGSMR0804_DISP.do"/>
+            <!-- 核心网络系统运行情况查询 -->
+            <forward name="IGSMR0805" path="/IGSMR0805_DISP.do"/>
+            <!-- 核心网络系统运行情况查询 -->
+            <forward name="IGSMR0806" path="/IGSMR0806_DISP.do"/>
+            
+            <!-- 季报统计查询End -->
+            <!-- 配置对比 -->
+            <forward name="IGCIC0000" path="/cic/IGCIC0000.jsp"/>
+            <forward name="IGCIC0101" path="/IGCIC0101_Disp.do"/>
+            <forward name="IGCIC0201" path="/IGCIC0201.do"/>
+            
+            <!-- syslog -->
+            <forward name="IGLOG0021" path="/IGLOG0021.do"/>
+            <forward name="IGLOG0022" path="/IGLOG0022_DISP.do"/>
+            <forward name="IGLOG0041" path="/IGLOG0041.do"/>
+            <forward name="IGLOG0043" path="/IGLOG0043_DISP.do"/>
+            <forward name="IGLOG0101" path="/syslog/IGLOG0100.jsp"/>
+            
+            <!-- 远程部署 -->
+            <forward name="IGRDP0101" path="/IGRDP0101_Disp.do"/>
+            <forward name="IGRDP0102" path="/IGRDP0101_Search.do"/>
+            <forward name="IGRDP0103" path="/IGRDP0102_Search.do"/>
+            
+            <!-- 风险管理  -->
+            <forward name="IGFXK0000" path="/IGFXK0000.do"/>
+            <forward name="IGFXK0701" path="/IGFXK0701_Search.do"/>
+            <forward name="IGFXK0702" path="/IGFXK0702_Disp.do"/>
+            <!-- 报警事件/普通事件 -->
+            <forward name="IGCRC0208" path="/IGCRC0208.do"/>
+            
+            
+            <!-- 文档管理 -->
+            <forward name="IGDOC0000" path="/crc/IGCRC1500.jsp"/>
+            <forward name="IGCRC1301" path="/IGCRC1301.do"/>
+            <forward name="IGCRC1303" path="/IGCRC1303.do"/>
+            <forward name="IGCRC1304" path="/IGCRC1304.do"/>
+            
+            <forward name="IGCRC1302" path="/IGCRC1302.do"/>
+            
+            <!-- 统计 -->
+            <forward name="IGRIS0501" path="/IGRIS0501_Disp.do"/>
+            <!-- 信息安全 检查项 -->
+            <forward name="IGRIS0601" path="/IGRIS0601.do"/>
+            <forward name="IGRIS0602" path="/IGRIS0602_Disp.do"/>
+            <forward name="IGRIS0603" path="/IGRIS0614.do"/>
+            
+            <forward name="IGASM4001" path="/IGASM4001.do"/>
+            <forward name="IGFXK0303" path="/IGFXK0303_Search.do" />
+            <!-- 年度工作统计 -->
+            <forward name="IGCRC2001"  path="/IGCRC2001.do"/>
+            <!-- 人员工作统计 -->
+            <forward name="IGCRC2101" path="/IGCRC2101.do" />
+            
+            <!-- 变更总体统计 -->
+            <forward name="IGCRC2201" path="/IGCRC2201.do" />
+            <!-- 风险策略登记 -->
+            <forward name="IGVEN0102" path="/IGVEN0102_Disp.do" />
+            <forward name="IGVEN0101" path="/IGVEN0101_Disp.do" />
+            <!-- 程序开发统计 -->
+            <forward name="IGCRC2301" path="/IGCRC2301.do" />
+            
+            <!-- 事件平均解决时间统计 -->
+	    	<forward name="IGCRC2401"  path="/IGCRC2401.do"/>
+	    	<!-- 事件平均响应时间统计 -->
+	    	<forward name="IGCRC2402"  path="/IGCRC2402.do"/>
+	    	<!-- 告警平均解决时间统计 -->
+	    	<forward name="IGCRC2403"  path="/IGCRC2403.do"/>
+	    	<!-- 告警平均解决响应统计 -->
+	    	<forward name="IGCRC2404"  path="/IGCRC2404.do"/>
+	<!-- 业务连续性 drm -->
+			<!-- 应急管理首页 -->
+			<forward name="IGDRM0000"  path="/drm/IGDRM0000.jsp"/>
+	     	<forward name="IGDRM0103" path="/IGDRM0103.do" />
+	     	<forward name="IGDRM0104" path="/IGDRM0104.do" />
+	     	<!-- 应急资源 -->
+	     	<forward name="IGDRM0401" path="/IGDRM0401_Disp.do" />
+	     	<forward name="IGDRM0402" path="/IGDRM0402_Disp.do?resourceType=1" />
+	     	<!-- 演练资源管理 -->
+	     	<!--  2017年3月16日15:56:58  张剑  增加演练资源管理 -->
+	     	<forward name="IGDRM0421" path="/IGDRM0402_Disp.do?resourceType=0" />
+			<!-- 应急资源查询 -->
+	     	<forward name="IGDRM0403" path="/IGDRM04021_Disp.do?resourceType=1" />
+	     	<!-- 演练资源查询 -->
+	     	<!--  2017年3月16日15:56:58  张剑  增加演练资源管理 -->
+	     	<forward name="IGDRM0423" path="/IGDRM04021_Disp.do?resourceType=0" />
+			<!--应急资源模型定义-->
+			<forward name="IGDRM0412" path="/IGDRM0412_Disp.do"/>
+			<!--应急资源模型查询-->
+			<forward name="IGDRM0411" path="/IGDRM0411_Disp.do"/>
+			<!--应急资源模型-取值范围 -->
+			<forward name="IGDRM0419" path="/IGDRM0419_Disp.do"/>
+	     	<!-- 专项预案定义 -->
+	     	<forward name="IGDRM0501" path="/IGDRM2001_Disp.do" />
+			<!-- 专项预案维护 -->
+	     	<forward name="IGDRM0502" path="/IGDRM2004.do" />
+	     	<!-- 专项预案资产管理 -->
+			<forward name="IGDRM0503" path="/IGDRM2105_Manage.do" />
+			<!-- 专项预案查询 -->
+			<forward name="IGDRM0505" path="/IGDRM2105.do" />
+			<!-- 专项预案新增 -->
+			<forward name="IGDRM0504" path="/IGDRM2101_Disp.do" />
+			<!-- 应急处置查询-->
+			<forward name="IGDRM1901" path="/IGDRM1901.do?dwpType=1"/>
+			<!-- 演练处置查询 -->
+			<forward name="IGDRM1902" path="/IGDRM1901.do?dwpType=0"/>
+			<forward name="IGDRM0601" path="/IGDRM0601_Disp.do" />
+			<forward name="IGDRM0602" path="/IGDRM0602_Disp.do" />
+			<!-- 演练计划查询 -->
+			<forward name="IGDRM0603" path="/IGDRM0605_Disp.do" />
+			<forward name="IGDRM0604" path="/IGDRM0602_Disp.do?isAdmin=T" />
+			<forward name="IGDRM0605" path="/IGDRM0604_Disp.do"/>
+			<!-- 演练方案定义 -->
+			<forward name="IGDRM0701" path="/IGDRM0701_Def.do" />
+			<!-- 演练指挥发起 -->
+			<forward name="IGDRM0702" path="/IGDRM0701_Impl.do" />
+			<!-- 全面演练查询 -->
+			<forward name="IGDRM0703" path="/IGDRM0701.do?prpdid=01385" />
+			<!-- 演练评估查询 -->
+			<forward name="IGDRM0704" path="/IGDRM0703.do?prpdid=01385" />
+			<forward name="IGDRM0705" path="/IGPRR0601.do?pdid=01386&amp;prurgency=1" />
+			<!-- 应急评估查询 -->
+			<forward name="IGDRM0706" path="/IGDRM0713.do?prpdid=01386" />
+			<!-- 组织架构维护-->
+			<forward name="IGDRM1003" path="/IGDRM1003_Disp.do?orgFlag=1" />
+			<!-- 组织架构结构图-->
+			<forward name="IGDRM1007" path="/IGDRM1007_Disp.do" />
+			<!-- 应急指挥查询 -->
+			<forward name="IGDRM0903" path="/IGPRR0601.do?pdid=01386&amp;prurgency=0" />
+			<!-- 演练签到 -->
+			<forward name="IGDRM1101" path="/IGDRM1101_Disp.do?isDrill=true" />
+			<!-- 演练代签到 -->
+			<forward name="IGDRM1102" path="/IGDRM1102_Disp.do?isDrill=true" />
+			<!-- 应急签到 -->
+			<forward name="IGDRM1103" path="/IGDRM1101_Disp.do?isDrill=false" />
+			<!-- 应急代签到 -->
+			<forward name="IGDRM1104" path="/IGDRM1102_Disp.do?isDrill=false" />
+			<!-- 通知管理 -->
+			<forward name="IGDRM1401" path="/IGDRM1401_Disp.do"/>
+            <forward name="IGDRM1402" path="/IGDRM1402_Disp.do"/>
+			 <forward name="IGDRM1501" path="/drm/IGDRM1501.jsp"/><!-- 培训计划查询 -->
+			 <forward name="IGDRM1511" path="/drm/IGDRM1511.jsp"/><!-- 培训计划管理 -->
+	    	<!-- 事件菜单处理 -->
+            <forward name="IGDRM1602"  path="/IGDRM1602_Disp.do"/>
+            <forward name="IGDRM1601"  path="/IGDRM1601_Disp.do"/>
+            <!-- 培训记录管理 -->
+           	<forward name="IGDRM1701"  path="/IGDRM1701.do"/>
+           	<forward name="IGDRM1703"  path="/IGDRM1701.do?mode=1"/>
+            <forward name="IGDRM1702"  path="/IGDRM1702_Disp.do"/>
+            <forward name="IGDRM1704"  path="/IGDRM1511_Disp.do"/>
+             <!-- 培训计划定制 -->
+             <forward name="IGDRM1706"  path="/IGDRM1503_INIT_ADD.do"/>
+             <!-- 应急统计 -->
+             <forward name="IGDRM1801"  path="/IGDRM1801.do"/>
+             <forward name="IGDRM1811"  path="/IGDRM1811.do"/>
+	    	<!-- 制度汇编 -->
+           	<forward name="IGSYA0101" path="/IGSYA0101.do" />
+           	<forward name="IGSYA0102" path="/IGSYA0102.do" />
+           	<forward name="IGSYA0103" path="/IGSYA0103.do" />
+           	<forward name="IGSYA0000" path="/sya/IGSYA0000.jsp"/>
+           	<!-- 工作信息查询 -->
+           	<forward name="IGDBM1301_Disp" path="/IGDBM1301_Search.do" />
+           	<!-- 工作信息新增 -->
+           	<forward name="IGDBM1302_Disp" path="/IGDBM1302_Disp.do" />
+          </action>
+        
+        <action path="/IGCOM0402"
+            type="com.deliverik.infogovernor.action.IGCOM0402Action"
+            parameter="DISP"
+            input="/com/IGCOM0402.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="IGCOM0402"  path="/com/IGCOM0402.jsp"/>
+            <forward name="IGCOM0408"  path="/com/IGCOM0408.jsp"/>
+        </action>
+        <action path="/IGCOM0402_DW"
+            type="com.deliverik.infogovernor.action.IGCOM0402Action"
+            parameter="CHANGE"
+            input="/com/IGCOM0402.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="IGCOM0402"  path="/com/IGCOM0402.jsp"/>
+            <forward name="IGCOM0408"  path="/com/IGCOM0408.jsp"/>
+        </action>
+        <action path="/IGCOM0402_POP"
+            type="com.deliverik.infogovernor.action.IGCOM0402Action"
+            parameter="POP"
+            input="/com/IGCOM0402.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="IGCOM0407"  path="/com/IGCOM0407.jsp"/>
+        </action>
+        <action path="/IGCOM0403_DW"
+            type="com.deliverik.infogovernor.action.IGCOM0103Action"
+            parameter="CHANGE"
+            input="/com/IGCOM0103.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="IGCOM0403"  path="/com/IGCOM0103.jsp"/>
+        </action>
+        <action path="/IGCOM0403_POP"
+            type="com.deliverik.infogovernor.action.IGCOM0103Action"
+            parameter="POP"
+            input="/com/IGCOM0103.jsp"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="IGCOM0407"  path="/com/IGCOM0407.jsp"/>
+        </action>
+
+		<!-- 统计分析菜单处理 -->
+        <action path="/IGCOM0211"
+            type="com.deliverik.infogovernor.action.IGCOM0211Action"
+            parameter="DISP"
+            input="/IGCOM0101.do"
+            name="IGCOM0201Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP" path="/com/IGCOM0211.jsp"/>
+        </action>
+        
+        <!-- 资产查询HELP画面初期显示处理 -->
+        <action path="/IGCOM0301_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0301Action"
+            parameter="DISP"
+            input="/com/IGCOM0301.jsp"
+            name="IGCOM0301Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0301.jsp"/>
+        </action>
+
+        <!-- 资产查询HELP画面查询处理 -->
+        <action path="/IGCOM0301"
+            type="com.deliverik.infogovernor.action.IGCOM0301Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0301.jsp"
+            name="IGCOM0301Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0301.jsp"/>
+        </action>
+
+        <!-- 资产查询HELP画面再显示处理 -->
+        <action path="/IGCOM0301_ReDisp"
+            type="com.deliverik.infogovernor.action.IGCOM0301Action"
+            input="/com/IGCOM0301.jsp"
+            name="IGCOM0301Form"
+            parameter="REDISP"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"        path="/com/IGCOM0301.jsp"/>
+        </action>
+
+        <!-- 资产项查询HELP画面初期显示  -->
+        <action path="/IGCOM0302_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            input="/com/IGCOM0302.jsp"
+            parameter="DISP"
+            name="IGCOM0329Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0302.jsp"/>
+        </action>
+		<!-- 资产项查询HELP画面初期显示(多选)  -->
+        <action path="/IGCOM0302_SELECT"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            input="/com/IGCOM0306.jsp"
+            parameter="DISP"
+            name="IGCOM0302Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0306.jsp"/>
+        </action>
+        
+        <!-- 资产类型查询HELP画面再显示 -->
+        <action path="/IGCOM0302_ReDisp"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0302Form"
+            parameter="REDISP"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"        path="/com/IGCOM0302.jsp"/>
+        </action>
+
+        <!-- 资产项查询HELP处理  -->
+        <action path="/IGCOM0302"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0329Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0302.jsp"/>
+        </action>
+        <!-- 资产项查询HELP处理(多选)  -->
+         <action path="/IGCOM0302_SUBMIT"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            parameter="SEARCH2"
+            input="/com/IGCOM0306.jsp"
+            name="IGCOM0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0306.jsp"/>
+        </action>
+         <action path="/IGCOM0306_BACK"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            parameter="SEARCH1"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0306.jsp"/>
+        </action>
+         
+         <action path="/IGCOM0302_BACK"
+            type="com.deliverik.infogovernor.action.IGCOM0302Action"
+            parameter="SEARCH1"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0302.jsp"/>
+        </action>
+        
+	<!-- 复制资产help start-->
+		<!-- 资产项查询HELP画面初期显示  -->
+        <action path="/IGCOM0327_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            input="/com/IGCOM0327.jsp"
+            parameter="DISP"
+            name="IGCOM0327Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0327.jsp"/>
+        </action>
+		<!-- 资产项查询HELP画面初期显示(多选)  -->
+        <action path="/IGCOM0327_SELECT"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            input="/com/IGCOM0306.jsp"
+            parameter="DISP"
+            name="IGCOM0327Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0306.jsp"/>
+        </action>
+        
+        <!-- 资产类型查询HELP画面再显示 -->
+        <action path="/IGCOM0327_ReDisp"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            input="/com/IGCOM0327.jsp"
+            name="IGCOM0327Form"
+            parameter="REDISP"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"        path="/com/IGCOM0327.jsp"/>
+        </action>
+
+        <!-- 资产项查询HELP处理  -->
+        <action path="/IGCOM0327"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0327Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0327.jsp"/>
+        </action>
+        <!-- 资产项查询HELP处理(多选)  -->
+         <action path="/IGCOM0327_SUBMIT"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            parameter="SEARCH2"
+            input="/com/IGCOM0306.jsp"
+            name="IGCOM0327Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0306.jsp"/>
+        </action>
+        <action path="/IGCOM0329_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0329Action"
+            input="/com/IGCOM0329.jsp"
+            parameter="DISP"
+            name="IGCOM0329Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0329.jsp"/>
+        </action>
+        <action path="/IGCOM0329"
+            type="com.deliverik.infogovernor.action.IGCOM0329Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0309.jsp"
+            name="IGCOM0329Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0329.jsp"/>
+        </action>
+        <!-- <action path="/IGCOM0306_BACK"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            parameter="SEARCH1"
+            input="/com/IGCOM0302.jsp"
+            name="IGCOM0302Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0306.jsp"/>
+        </action>
+        -->
+         
+         <action path="/IGCOM0327_BACK"
+            type="com.deliverik.infogovernor.action.IGCOM0327Action"
+            parameter="SEARCH1"
+            input="/com/IGCOM0327.jsp"
+            name="IGCOM0327Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0327.jsp"/>
+        </action>
+		<!-- 复制资产help end -->
+		
+        <!-- 配置详细信息画面初期化处理 -->
+        <action path="/IGCOM0303_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0303Action"
+            input="/com/IGCOM0303.jsp"
+            parameter="DISP"
+            name="IGCOM0303Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0303.jsp"/>
+        </action>
+        <action path="/IGCOM0328_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0328Action"
+            input="/com/IGCOM0328.jsp"
+            parameter="DISP"
+            name="IGCOM0328Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0328.jsp"/>
+        </action>
+        <action path="/IGCOM0328_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0328Action"
+            input="/com/IGCOM0328.jsp"
+            parameter="DISP"
+            name="IGCOM0328Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0328.jsp"/>
+        </action>
+        <action path="/IGCOM0328_Disp_JY"
+            type="com.deliverik.infogovernor.action.IGCOM0328Action"
+            input="/drm/IGDRM0329.jsp"
+            parameter="DISP"
+            name="IGCOM0328Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/drm/IGDRM0329.jsp"/>
+        </action>
+		<action path="/IGCOM0303_Relation"
+            type="com.deliverik.infogovernor.action.IGCOM0303Action"
+            input="/com/IGCOM0309.jsp"
+            parameter="RELATION"
+            name="IGCOM0303Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0309.jsp"/>
+        </action>
+        
+        <action path="/IGCOM0318_Relation"
+            type="com.deliverik.infogovernor.action.IGCOM0318Action"
+            input="/com/IGCOM0318.jsp"
+            name="IGCOM0318Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0318.jsp"/>
+        </action>
+        <!-- 主机关系 -->
+        <action path="/IGCOM0319_Relation"
+            type="com.deliverik.infogovernor.action.IGCOM0319Action"
+            input="/com/IGCOM0319.jsp"
+            parameter="RELATION"
+            name="IGCOM0319Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0319.jsp"/>
+        </action>
+        <!-- 交换机关系 -->
+        <action path="/IGCOM0320_Relation"
+            type="com.deliverik.infogovernor.action.IGCOM0320Action"
+            input="/com/IGCOM0319.jsp"
+            parameter="RELATION"
+            name="IGCOM0320Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0320.jsp"/>
+        </action>
+        
+        <!-- 存储关系 -->
+        <action path="/IGCOM0322_Relation"
+            type="com.deliverik.infogovernor.action.IGCOM0322Action"
+            input="/com/IGCOM0319.jsp"
+            parameter="RELATION"
+            name="IGCOM0322Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP" path="/com/IGCOM0322.jsp" />
+			<forward name="DISP_EN" path="/com/IGCOM0323.jsp" />
+        </action>
+        <!-- 基础数据查询HELP画面初期显示处理 -->
+        <action path="/IGCOM0304_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0304Action"
+            parameter="DISP"
+            input="/com/IGCOM0304.jsp"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0304.jsp"/>
+        </action>
+
+        <!-- 基础数据查询HELP画面查询处理 -->
+        <action path="/IGCOM0304"
+            type="com.deliverik.infogovernor.action.IGCOM0304Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0304.jsp"
+            name="IGCOM0304Form"
+            validate="false"
+            scope="session">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0304.jsp"/>
+        </action>
+   
+        <!-- 资产关系图画面初期显示 -->
+        <action path="/IGCOM0305"
+            type="com.deliverik.infogovernor.action.IGCOM0305Action"
+            parameter="DISP"
+            input="/com/IGCOM0305.jsp"
+            name="IGCOM0305Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0305.jsp"/>
+        </action>
+        
+        <!-- 资产关系图刷新 -->
+        <action path="/IGCOM0305_Update"
+            type="com.deliverik.infogovernor.action.IGCOM0305Action"
+            parameter="UPDATE"
+            input="/IGCOM0305.do"
+            name="IGCOM0305Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGCOM0305.do"/>
+        </action>
+        
+        <!-- 资产关系图保存 -->
+        <action path="/IGCOM0305_Save"
+            type="com.deliverik.infogovernor.action.IGCOM0305Action"
+            parameter="SAVE"
+            input="/IGCOM0305.do"
+            name="IGCOM0305Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGCOM0305.do"/>
+        </action>
+        
+        <!-- 资产关系图重置 -->
+        <action path="/IGCOM0305_Reset"
+            type="com.deliverik.infogovernor.action.IGCOM0305Action"
+            parameter="RESET"
+            input="/IGCOM0305.do"
+            name="IGCOM0305Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/IGCOM0305.do"/>
+        </action>
+        
+        <!-- 配置信息历史记录画面初期化处理 -->
+        <action path="/IGCOM0308_DISP"
+            type="com.deliverik.infogovernor.action.IGCOM0308Action"
+            input="/com/IGCOM0308.jsp"
+            parameter="DISP"
+            name="IGCOM0308Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0308.jsp"/>
+        </action>
+        
+        <!-- 配置信息历史记录画面初期化处理 -->
+        <action path="/IGCOM0315_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0308Action"
+            input="/com/IGCOM0315.jsp"
+            parameter="DISP"
+            name="IGCOM0308Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="DISP"        path="/com/IGCOM0315.jsp"/>
+        </action>
+        
+        <!-- 资产配置项信息版本比较画面查询处理 -->
+        <action path="/IGCOM0307"
+            type="com.deliverik.infogovernor.action.IGCOM0307Action"
+            parameter="SEARCH"
+            input="/com/IGCOM0307.jsp"
+            validate="false"
+            name="IGCOM0307Form"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0307.jsp"/>
+        </action>
+        <!-- 资产关系图画面初期显示 -->
+        <action path="/IGCOM0310"
+            type="com.deliverik.infogovernor.action.IGCOM0314Action"
+            parameter="DISP"
+            input="/com/IGCOM0314.jsp"
+            name="IGCOM0314Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="HOSTDISP"  path="/com/IGCOM0314.jsp"/>
+            <forward name="SWITCHDISP"  path="/com/IGCOM0325.jsp"/>
+            <forward name="STORAGEDISP"  path="/com/IGCOM0326.jsp"/>
+        </action>
+        <!-- 影响分析图画面初期显示 -->
+        <action path="/IGCOM0321"
+            type="com.deliverik.infogovernor.action.IGCOM0321Action"
+            parameter="DISP"
+            input="/com/IGCOM0321.jsp"
+            name="IGCOM0321Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0321.jsp"/>
+        </action>
+        
+        <!-- 域拓扑图 -->
+        <action path="/IGCOM0324"
+            type="com.deliverik.infogovernor.action.IGCOM0324Action"
+            parameter="DISP"
+            input="/com/IGCOM0324.jsp"
+            name="IGCOM0324Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0324.jsp"/>
+        </action>
+          <action path="/IGCOM0316_Disp"
+            type="com.deliverik.infogovernor.action.IGCOM0308Action"
+            input="/com/IGCOM0308.jsp"
+            parameter="TOPOLOGY_DISP"
+            name="IGCOM0308Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="true"/>
+            <forward name="TOPOLOGY_DISP"        path="/com/IGCOM0316.jsp"/>
+        </action>
+          <!-- 流程快捷发起转发处理 -->
+        <action path="/IGCOM0401"
+            type="com.deliverik.infogovernor.action.IGCOM0401Action"
+            input="/com/IGCOM0401.jsp" 
+            name="IGCOM0401Form" 
+            scope="request">
+            <forward name="DISP"  path="/com/IGCOM0401.jsp"/>
+        </action>
+        
+        <!-- 服务工单快捷发起转发流程处理 -->
+        <action path="/IGCOM0404"
+            type="com.deliverik.infogovernor.action.IGCOM0404Action"
+            input="/com/IGCOM0404.jsp" 
+            name="IGCOM0404Form" 
+            scope="request">
+            <forward name="DISP"  path="/com/IGCOM0404.jsp"/>
+        </action>
+                
+         <!-- 统计分析-报表列表画面初期显示 -->
+        <action path="/IGCOM0215"
+            type="com.deliverik.infogovernor.action.IGCOM0215Action"
+            parameter="DISP"
+            input="/com/IGCOM0215.jsp"
+            name="IGCOM0215Form"
+            validate="false"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"  path="/com/IGCOM0215.jsp"/>
+        </action>
+
+        <action path="/download"
+            type="com.deliverik.infogovernor.action.DownloadAction"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="ERR"    path="/com/IGCOM0001.jsp"/>
+            <forward name="INSERT"  path="/IGCRC1307_INSERT.do"></forward>
+        </action>
+        
+        <action path="/IGCOM0217"
+            type="com.deliverik.infogovernor.action.IGCOM0218Action"
+            scope="request">
+            <set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/com/IGCOM0217.jsp"/>
+        </action>
+        
+         <!-- Ajax -->
+        <action path="/ajax" type="com.deliverik.infogovernor.action.AjaxAction" scope="request" validate="false">
+            <set-property key="auth" value="false"/>
+        </action>
+        
+    </action-mappings>
+
+<!-- ======================================== Message Resources Definitions -->
+
+    <message-resources parameter="ApplicationResources" />
+	<message-resources key="comResources" parameter="com.deliverik.infogovernor.comResources" />
+
+<!-- =============================================== Plug Ins Configuration -->
+
+
+
+<!-- =================================================== Validator plugin -->
+
+  <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+    <set-property
+        property="pathnames"
+        value="/org/apache/struts/validator/validator-rules.xml,
+        /WEB-INF/validation/validation.xml,
+        /WEB-INF/validation/validation_com.xml,
+        /WEB-INF/validation/validation_asm.xml,
+        /WEB-INF/validation/validation_sym.xml,
+        /WEB-INF/validation/validation_sdl.xml,
+        /WEB-INF/validation/validation_kgm.xml,
+        /WEB-INF/validation/validation_fin.xml,
+        /WEB-INF/validation/validation_svc.xml,
+        /WEB-INF/validation/validation_wkm.xml,
+        /WEB-INF/validation/validation_prj.xml,
+        /WEB-INF/validation/validation_prm.xml,
+        /WEB-INF/validation/validation_prd.xml, 
+        /WEB-INF/validation/validation_prr.xml, 
+        /WEB-INF/validation/validation_ris.xml,
+        /WEB-INF/validation/validation_dut.xml,
+        /WEB-INF/validation/validation_lom.xml
+    "/>
+  </plug-in>
+
+  <plug-in className="com.system.plugins.PluginsSpringConfigLoader" />
+  
+<!-- for ALERM MAIL -->
+ <plug-in className="com.deliverik.framework.platform.QuartzLoaderPlugIn">
+   <set-property property="quartzConfigLocation"
+       value="/WEB-INF/quartzConfig/quartz.properties" />
+ </plug-in>
+<!-- 风险计划发起相关指派工作JOB -->
+ <plug-in className="com.deliverik.infogovernor.fxk.plugin.IGFXKRiskPlanPlugIn"/>
+
+  <!-- 插件系统初始化 -->
+<plug-in className="com.system.plugins.PluginInit" />
+  
+</struts-config>
+

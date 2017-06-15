@@ -1,0 +1,6 @@
+<root>
+	<processes>
+		<process pdid="01220" pdname="个人工作"/>
+		<process pdid="01200" pdname="指派工作"/>
+	</processes>
+</root>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+	<!-- Control BL -->
+	
+     <!-- 问题整改监督DAO -->
+     <bean id="riskcheckproblemsuperviseVWDAO" class="com.deliverik.infogovernor.sta.model.dao.RiskCheckProblemSuperviseVWDAOImpl" parent="baseHibernateDAO"></bean>
+     <!-- 检查问题统计 -->
+	<bean id="processRecordSummaryVWDAO" parent="baseHibernateDAO" class="com.deliverik.infogovernor.sta.model.dao.ProcessRecordSummaryVWDAOImpl" />
+     <!-- 合同统计 -->
+    <bean id="contractVWDAO" class="com.deliverik.infogovernor.sta.model.dao.ContractVWDAOImpl" parent="baseHibernateDAO"></bean>
+     <!-- 项目统计 -->
+    <bean id="projectStatisticVWDAO" class="com.deliverik.infogovernor.sta.model.dao.ProjectStatisticVWDAOImpl" parent="baseHibernateDAO"></bean>
+     <!-- 问题整改监督TaskBL -->
+     <bean id="riskcheckproblemsuperviseVWBL" class="com.deliverik.infogovernor.sta.bl.task.RiskCheckProblemSuperviseVWBLImpl">
+     <property name="riskcheckproblemsuperviseVWDAO">
+			<ref bean="riskcheckproblemsuperviseVWDAO" />
+	 </property>
+     </bean>
+	<bean id="processRecordSummaryVWBL" class="com.deliverik.infogovernor.sta.bl.task.ProcessRecordSummaryVWBLImpl">
+		<property name="processRecordSummaryVWDAO">
+			<ref bean="processRecordSummaryVWDAO" />
+		</property>
+	</bean>
+	<bean id="contractVWBL" class="com.deliverik.infogovernor.sta.bl.task.ContractVWBLImpl">
+		<property name="contractVWDAO">
+			<ref bean="contractVWDAO" />
+		</property>
+	</bean>
+	<bean id="projectStatisticVWBL" class="com.deliverik.infogovernor.sta.bl.task.ProjectStatisticVWBLImpl">
+		<property name="projectStatisticVWDAO">
+			<ref bean="projectStatisticVWDAO" />
+		</property>
+	</bean>
+      <!-- 问题整改监督BL -->
+     <bean id="igsta01BL" class="com.deliverik.infogovernor.sta.bl.IGSTA01BLImpl">
+     	<property name="riskcheckproblemsuperviseVWBL">
+     		<ref bean="riskcheckproblemsuperviseVWBL"/>
+     	</property>
+     	<property name="contractVWBL">
+     		<ref bean="contractVWBL"/>
+     	</property>
+     	<property name="projectStatisticVWBL">
+     		<ref bean="projectStatisticVWBL"/>
+     	</property>
+     	<property name="soc0117BL">
+     		<ref bean="soc0117BL"/>
+     	</property>
+     	<property name="ig499BL">
+     		<ref bean="ig499BL"/>
+     	</property>
+     </bean>
+</beans>

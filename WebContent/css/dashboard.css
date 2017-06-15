@@ -1,0 +1,150 @@
+@CHARSET "UTF-8";
+
+body,div,ul,li{
+	padding:0;
+	margin:0;
+}
+
+body{
+	margin: 0px;
+	padding: 0px;
+	background: #fff;
+	font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
+	font:12px "宋体";
+	font-weight: bold;
+}
+
+a:link,a:visited{color:#00F;text-decoration:none;}
+a:hover,a:active{color:#c00;text-decoration:underline;}
+ul{ list-style:none;}
+
+img {
+	border-top-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0px;
+	border-left-width: 0px;
+	behavior: url("iepngfix.htc")
+}
+
+.box {
+	margin-right: auto;
+	margin-left: auto;
+	height: 742px;
+	width: 1005px;
+	background-image: url(images/bg.jpg);
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #457baf;
+	border-left-color: #457baf;
+	position: relative;
+}
+
+#flyout {
+	font-size:12px;
+	padding:0;
+	margin:0;
+	list-style:none;
+	width:24px;
+	height:102px;
+	position:absolute;
+	left:982px;
+	top: 8px;
+	z-index: 100;
+	color: #FFFFFF;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+#flyout ul {padding:0; margin:0; list-style:none;}
+
+#flyout li {
+	display:block;
+	width:24px;
+	height:100px;
+	background-image: url(../images/dhcd.png);
+}
+
+#flyout li a {
+	display:block;
+	width:24px;
+	height:100px;
+	text-indent:-999px;
+	text-decoration:none;
+}
+
+#flyout li a.nikon {background:url(images/nikon_button.gif);}
+#flyout li a.canon {background:url(images/canon_button.gif);}
+#flyout li a.pentax {background:url(images/pentax_button.gif);}
+#flyout table {position:absolute; border-collapse:collapse; top:0; left:0; z-index:100; font-size:1em;}
+#flyout li {float:left; margin-bottom:1px;}
+
+#flyout li ul {
+	visibility:hidden;
+	position:absolute;
+	top:-5px;
+	left:-160px;
+	width:100px;
+	height:197px;
+	padding-top:0px;
+}
+
+#flyout li ul li {
+	display:block;
+	display:inline;
+	width:130px;
+	height:22px;
+	border:0;
+	background:transparent;
+	text-align: left;
+	margin-top: 0;
+	margin-right: 10px;
+	margin-bottom: 0;
+	margin-left: 10px;
+}
+
+#flyout li ul li a {
+	text-indent:0;
+	background:transparent;
+	display:block;
+	width:120px;
+	height:22px;
+	line-height:21px;
+	color:#FFFFFF;
+	text-decoration:none;
+	margin-left: 10px;
+	padding-left: 10px;
+}
+
+#flyout li b {
+	visibility:hidden;
+	display:block;
+	width:150px;
+	height:100px;
+	position:absolute;
+	top:0;
+	left:-150px;
+	opacity:0.8;
+	filter:alpha(opacity=80);
+	background-color: #6b6b6b;
+}
+
+* html #flyout li a:hover {position:relative; white-space:normal;}
+* html #flyout li a:hover ul li a:hover {
+	color:#000;
+	background:#bcd;
+}
+
+#flyout li:hover {position:relative;}
+#flyout li:hover ul li a:hover {
+	background:#bcd;
+	color:#000;
+}
+#flyout li:hover b,
+#flyout li a:hover b {
+visibility:visible;
+}
+#flyout li:hover ul,
+#flyout li a:hover ul {
+visibility:visible;
+}

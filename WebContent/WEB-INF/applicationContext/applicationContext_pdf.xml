@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+   
+    <bean id="pdfConfigrationDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.infogovernor.pdf.model.dao.PdfConfigrationDAOImpl">
+    </bean>
+    <bean id="pdfFieldMapDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.infogovernor.pdf.model.dao.PdfFieldMapDAOImpl">
+    </bean>
+    <bean id="pdfTableNodeDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.infogovernor.pdf.model.dao.PdfTableNodeDAOImpl">
+    </bean>
+    <bean id="pdfIg599MapVWDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.infogovernor.pdf.model.dao.PdfIg599MapVWDAOImpl">
+    </bean>
+    <bean id="pdfIg898MapVWDAO"
+        parent="baseHibernateDAO"
+        class="com.deliverik.infogovernor.pdf.model.dao.PdfIg898MapVWDAOImpl">
+    </bean>
+    
+    <bean id="pdfFieldMapBL" class="com.deliverik.infogovernor.pdf.bl.task.PdfFieldMapBLImpl">
+        <property name="pdfFieldMapDAO">
+            <ref bean="pdfFieldMapDAO"/>
+        </property>
+   </bean>
+   <bean id="pdfTableNodeBL" class="com.deliverik.infogovernor.pdf.bl.task.PdfTableNodeBLImpl">
+        <property name="pdfTableNodeDAO">
+            <ref bean="pdfTableNodeDAO"/>
+        </property>
+   </bean>
+   <bean id="pdfConfigrationBL" class="com.deliverik.infogovernor.pdf.bl.task.PdfConfigrationBLImpl">
+        <property name="pdfConfigrationDAO">
+            <ref bean="pdfConfigrationDAO"/>
+        </property>
+   </bean>
+   <bean id="ig599MapBL" class="com.deliverik.infogovernor.pdf.bl.task.PdfIg599MapVWBLImpl">
+        <property name="pdfIg599MapVWDAO">
+            <ref bean="pdfIg599MapVWDAO"/>
+        </property>
+   </bean>
+   <bean id="ig898MapBL" class="com.deliverik.infogovernor.pdf.bl.task.PdfIg898MapVWBLImpl">
+        <property name="pdfIg898MapVWDAO">
+            <ref bean="pdfIg898MapVWDAO"/>
+        </property>
+   </bean>
+   
+   <bean id="pdfTaskBL" class="com.deliverik.infogovernor.pdf.xmlbl.task.PdfTaskBLImpl">
+        <property name="ig599MapBL">
+            <ref bean="ig599MapBL"/>
+        </property>
+        <property name="ig898MapBL">
+            <ref bean="ig898MapBL"/>
+        </property>
+        <property name="pdfTableNodeBL">
+            <ref bean="pdfTableNodeBL"/>
+        </property>
+   </bean>
+   
+    <bean id="igPDF01BL" class="com.deliverik.infogovernor.pdf.xmlbl.IGPDF01BLImpl">
+        <property name="pdfConfigrationBL">
+            <ref bean="pdfConfigrationBL"/>
+        </property>
+        <property name="pdfTaskBL">
+            <ref bean="pdfTaskBL"/>
+        </property>
+    </bean>
+   
+</beans>

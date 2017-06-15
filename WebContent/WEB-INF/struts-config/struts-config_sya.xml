@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+
+<!-- ================================================ Form Bean Definitions -->
+
+    <form-beans>
+    	 <form-bean name="IGSYA0101Form" type="com.deliverik.infogovernor.sya.form.IGSYA0101Form"/>
+    	 <form-bean name="IGSYA0102Form" type="com.deliverik.infogovernor.sya.form.IGSYA0102Form"/>
+    </form-beans>
+
+<!-- =========================================== Action Mapping Definitions -->
+
+    <action-mappings>
+    
+		<!-- 制度 查詢 -->
+		<action path="/IGSYA0101"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0101Action"
+			parameter="SEARCH" input="/sya/IGSYA0000.jsp" name="IGSYA0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0101.jsp" />
+		</action>
+		<action path="/IGSYA0101_Back"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0101Action"
+			parameter="SEARCH1" input="/sya/IGSYA0000.jsp" name="IGSYA0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0101.jsp" />
+		</action>
+		
+		<!-- 制度 登记-->
+		<action path="/IGSYA0102"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0102Action"
+			parameter="DISP" input="/sya/IGSYA0102.jsp" name="IGSYA0102Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0102.jsp" />
+		</action>
+		<action path="/IGSYA0102_INSERT"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0102Action"
+			parameter="INSERT" input="/sya/IGSYA0102.jsp" name="IGSYA0102Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0100.jsp" />
+		</action>
+		
+		<!-- 制度 管理 -->
+		<action path="/IGSYA0103"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0101Action"
+			parameter="SEARCH" input="/sya/IGSYA0000.jsp" name="IGSYA0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0103.jsp" />
+		</action>
+		<action path="/IGSYA0103_Back"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0101Action"
+			parameter="SEARCH1" input="/sya/IGSYA0000.jsp" name="IGSYA0101Form"
+			validate="false" scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sya/IGSYA0103.jsp" />
+		</action>
+		<!-- 制度 编辑 -->
+		<action path="/IGSYA0104"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0102Action" input="/sya/IGSYA0000.jsp"
+			parameter="EDIT" name="IGSYA0102Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sya/IGSYA0102.jsp" />
+		</action>
+		<!-- 制度 查看 -->
+		<action path="/IGSYA0105"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0102Action" input="/sya/IGSYA0102.jsp"
+			parameter="DETAIL" name="IGSYA0102Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/sya/IGSYA0105.jsp" />
+		</action>
+		<!-- 附件下载 -->
+		<action path="/IGSYA0101_loadFIle"
+			type="com.deliverik.infogovernor.sya.action.IGSYA0101Action" input="/sya/IGSYA0000.jsp"
+			parameter="LOADFILE" name="IGSYA0101Form" validate="false" scope="request">
+			<set-property key="auth" value="true" />
+			<forward name="DISP" path="/svc/IGSYA0101.jsp" />
+			<forward name="LOADFILE" path="/syadownloadFinFile.do" />
+		</action>
+		<!-- 附件下载 -->
+        <action path="/syadownloadFinFile"
+        	type="com.deliverik.infogovernor.action.DownloadAction"
+            scope="request">
+        </action>
+    </action-mappings>
+
+</struts-config>

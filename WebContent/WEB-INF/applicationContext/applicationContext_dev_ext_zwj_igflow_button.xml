@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+<bean id="igzwj0104BL" class="com.dev.zwj.igflow.event.button.IGZWJ0104BLImpl">
+	<property name="flowSearchBL">
+		<ref bean="flowSearchBL"/>
+	</property>
+	<property name="mss00008BL">
+		<ref bean="mss00008BL"/>
+	</property>
+	<property name="mss00009BL">
+		<ref bean="mss00009BL"/>
+	</property>
+</bean>
+</beans>

@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+
+
+	<!-- DAO -->
+	<bean id="quartzJobsDAO" parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.scheduling.model.dao.QuartzJobsTBDAOImpl">
+	</bean>
+	<bean id="quartzProcessRecordDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.scheduling.model.dao.QuartzProcessRecordTBDAOImpl">
+	</bean>
+	
+	<bean id="quartzProcessParticipantDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.scheduling.model.dao.QuartzProcessParticipantTBDAOImpl">
+	</bean>
+	
+	<bean id="quartzProcessInfoDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.scheduling.model.dao.QuartzProcessInfoTBDAOImpl">
+	</bean>
+	
+	<bean id="quartzProcessInfoEntityDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.scheduling.model.dao.QuartzProcessInfoEntityDAOImpl">
+	</bean>
+	
+	<!-- task BL -->
+	<bean id="quartzJobsBL"
+		class="com.deliverik.infogovernor.scheduling.bl.task.QuartzJobsBLImpl">
+		<property name="quartzJobsDAO">
+			<ref bean="quartzJobsDAO" />
+		</property>
+	</bean>
+	<bean id="quartzProcessRecordBL" class="com.deliverik.infogovernor.scheduling.bl.task.QuartzProcessRecordBLImpl">
+		<property name="quartzProcessRecordDAO">
+			<ref bean="quartzProcessRecordDAO"/>
+		</property>
+	</bean>
+	<bean id="quartzProcessParticipantBL" class="com.deliverik.infogovernor.scheduling.bl.task.QuartzProcessParticipantBLImpl">
+		<property name="quartzProcessParticipantDAO">
+			<ref bean="quartzProcessParticipantDAO"/>
+		</property>
+	</bean>
+	<bean id="quartzProcessInfoBL" class="com.deliverik.infogovernor.scheduling.bl.task.QuartzProcessInfoBLImpl">
+		<property name="quartzProcessInfoDAO">
+			<ref bean="quartzProcessInfoDAO"/>
+		</property>
+	</bean>
+	<bean id="quartzProcessInfoEntityBL" class="com.deliverik.infogovernor.scheduling.bl.task.QuartzProcessInfoEntityBLImpl">
+		<property name="quartzProcessInfoEntityDAO">
+			<ref bean="quartzProcessInfoEntityDAO"/>
+		</property>
+	</bean>
+	
+	<!-- 个人定时任务BL -->
+	<bean id="IGSCH02BL" class="com.deliverik.infogovernor.scheduling.bl.IGSCH02BLImpl">
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL"/>
+		</property>
+		<property name="quartzProcessRecordBL">
+			<ref bean="quartzProcessRecordBL"/>
+		</property>
+		<property name="quartzProcessParticipantBL">
+			<ref bean="quartzProcessParticipantBL"/>
+		</property>
+		
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL"/>
+		</property>
+		
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		<property name="ig036BL">
+			<ref bean="ig036BL"/>
+		</property>
+		
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL" />
+		</property>
+		
+		<property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		
+		<property name="quartzProcessInfoBL">
+			<ref bean="quartzProcessInfoBL" />
+		</property>
+		
+		<property name="ig731BL">
+			<ref bean="ig731BL" />
+		</property>
+		
+		<property name="quartzProcessInfoEntityBL">
+			<ref bean="quartzProcessInfoEntityBL" />
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="quartzJobDetailsBL">
+			<ref bean="quartzJobDetailsBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+		<property name="igcim13BL">
+			<ref bean="igcim13BL" />
+		</property>
+	</bean>
+	
+	<!-- 企业定时任务BL -->
+	<bean id="IGSCH03BL" class="com.deliverik.infogovernor.scheduling.bl.IGSCH03BLImpl">
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="quartzProcessRecordBL">
+			<ref bean="quartzProcessRecordBL"/>
+		</property>
+		
+		<property name="quartzProcessParticipantBL">
+			<ref bean="quartzProcessParticipantBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL"/>
+		</property>
+		
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		
+		<property name="ig036BL">
+			<ref bean="ig036BL"/>
+		</property>
+		
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL" />
+		</property>
+		
+		<property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		
+		<property name="quartzProcessInfoBL">
+			<ref bean="quartzProcessInfoBL" />
+		</property>
+		
+		<property name="ig731BL">
+			<ref bean="ig731BL" />
+		</property>
+		
+		<property name="quartzProcessInfoEntityBL">
+			<ref bean="quartzProcessInfoEntityBL" />
+		</property>
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		<property name="quartzJobDetailsBL">
+			<ref bean="quartzJobDetailsBL" />
+		</property>
+		<property name="userBL">
+			<ref bean="userBL" />
+		</property>
+	</bean>
+	<bean id="igSCH04BL" class="com.deliverik.infogovernor.scheduling.bl.IGSCH04BLImpl">
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL" />
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+	</bean>
+	<!-- 定时任务查询 -->
+
+	<bean id="IGSCH01BL" class="com.deliverik.infogovernor.scheduling.bl.IGSCH01BLImpl">
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL" />
+		</property>
+		<property name="quartzProcessRecordBL">
+			<ref bean="quartzProcessRecordBL"/>
+		</property>
+		<property name="quartzProcessParticipantBL">
+			<ref bean="quartzProcessParticipantBL"/>
+		</property>
+		<property name="quartzProcessInfoBL">
+			<ref bean="quartzProcessInfoBL"/>
+		</property>
+		<property name="attachmentBL">
+			<ref bean="attachmentBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="ig013BL">
+			<ref bean="ig013BL"/>
+		</property>
+		<property name="quartzProcessInfoEntityBL">
+			<ref bean="quartzProcessInfoEntityBL" />
+		</property>
+		<property name="quartzJobDetailsBL">
+			<ref bean="quartzJobDetailsBL" />
+		</property>
+	</bean>
+	
+	<!-- 运维自定义定时任务BL -->
+	<bean id="IGSCH05BL" class="com.deliverik.infogovernor.scheduling.bl.IGSCH05BLImpl">
+		<property name="quartzJobsBL">
+			<ref bean="quartzJobsBL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="quartzProcessRecordBL">
+			<ref bean="quartzProcessRecordBL"/>
+		</property>
+		
+		<property name="quartzProcessParticipantBL">
+			<ref bean="quartzProcessParticipantBL"/>
+		</property>
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+		<property name="ig337BL">
+			<ref bean="ig337BL"/>
+		</property>
+		
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		
+		<property name="ig036BL">
+			<ref bean="ig036BL"/>
+		</property>
+		
+		<property name="quartzProcessInfoBL">
+			<ref bean="quartzProcessInfoBL" />
+		</property>
+		
+		<property name="ig599BL">
+			<ref bean="ig599BL" />
+		</property>
+		
+		<property name="ig259BL">
+			<ref bean="ig259BL" />
+		</property>
+		<property name="ig380BL">
+			<ref bean="ig380BL" />
+		</property>
+		<property name="ig007BL">
+			<ref bean="ig007BL" />
+		</property>
+		
+		<property name="workFlowOperationBL">
+			<ref bean="workFlowOperationBL" />
+		</property>
+		
+		<property name="quartzJobDetailsBL">
+			<ref bean="quartzJobDetailsBL" />
+		</property>
+		
+		<property name="ig333BL">
+			<ref bean="ig333BL" />
+		</property>
+		
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
+		
+		<property name="ig113BL">
+			<ref bean="ig113BL"/>
+		</property>
+	</bean>
+</beans>
+

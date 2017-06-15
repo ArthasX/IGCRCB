@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.cic.model.dao">
+	<!-- 配置比对查询任务与规则关系 -->
+    <sql-query name="CompareroleDAO.searchComparerolebyRelation">
+    <![CDATA[
+   		select * from (
+	select 
+		t1.crid, 
+		t1.fkcsid,
+		t1.crtype,
+		t1.crname,
+		t1.crsystemid,
+		t1.crsystemname,
+		t1.crversion,
+		t2.cpid,
+		t1.fingerprint
+	from 
+		comparerole t1, compareprocessrolerelation t2 
+	where t1.crid = t2.crid and t1.crversion = t2.crversion) t3
+		where 1=1 
+    ]]>
+    </sql-query>
+	<!-- 配置比对查询比对结果详细 -->
+    <sql-query name="CompareresultDAO.getEname">
+    <![CDATA[
+   		 select * from (
+			select 
+			t1.fkcoid,
+			t4.ename as pename, 
+			t4.esyscoding 
+			from compareresult t1
+			left join soc0117 t4 on (t1.peid = t4.eid)
+		) t5
+		where 1=1  
+    ]]> 
+    </sql-query>
+	<!-- 配置比对查询比对结果详细 -->
+    <sql-query name="CompareresultDAO.searchCompareresultVW">
+    <![CDATA[
+   		  select * from (
+			select 
+			cast (t1.crid as int) ,
+			cast (t1.fkcoid as int) ,
+			cast (t1.fkcpid as int) ,
+			t1.eid,
+			t1.cid,
+			cast (t1.teiid as int) ,
+			t1.tciid,
+			cast (t1.seiid as int) ,
+			t1.sciid,
+			t1.svalue,
+			t1.tvalue,
+			t1.configtype,
+			cast (t1.isbase as int) ,
+			t1.peid,
+			t1.fingerprint,
+			t4.ename as pename, 
+			t4.eid as peid, 
+			t2.ename,
+			t3.cname,
+			t2.esyscoding ,
+			t6.einame		
+			
+			
+			from compareresult t1
+			left join soc0117 t2 on (t1.eid = t2.eid)
+			left join soc0109 t3 on (t1.cid = t3.cid)
+			left join soc0117 t4 on (t1.peid = t4.eid)
+			left join soc0118 t6 on (t1.seiid = t6.eiid)
+		) t5
+		where 1=1 
+    ]]> 
+    </sql-query>
+   
+</hibernate-mapping>

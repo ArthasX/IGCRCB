@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- Control BL -->
+	<bean id="igGENERATOR0101BL" class="com.dev.ext.igflow.generator.serialnum.IGGENERATOR0101BLImpl"/>
+	<!-- 检查问题工单生成 -->
+	<bean id="igGENERATOR0106BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0106BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 配置审计  工单生成    A-->
+	<bean id="igGENERATOR0113BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0113BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 资源申请  工单生成    RA-->
+	<bean id="igGENERATOR0102BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0102BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 资源调整申请   RC -->
+	<bean id="igGENERATOR0103BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0103BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 资源回收  RR -->
+	<bean id="igGENERATOR0104BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0104BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 问题整改 RP -->
+	<bean id="igGENERATOR0105BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0105BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 故障 I -->
+	<bean id="igGENERATOR0114BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0114BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 问题  P -->
+	<bean id="igGENERATOR0112BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0112BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!--风险评估 -->
+	<bean id="igGENERATOR0107BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0107BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 个人工作 -->
+	<bean id="igGENERATOR0115BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0115BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 指派工作 -->
+	<bean id="igGENERATOR0116BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0116BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	<!-- 变更  C -->
+	<bean id="igGENERATOR0108BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0108BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 服务请求  S -->
+	<bean id="igGENERATOR0109BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0109BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- 机房进出管理  V -->
+	<bean id="igGENERATOR0111BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0111BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	
+
+	
+	<bean id="igGENERATOR0110BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0110BLImpl">
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+	</bean>
+	
+	<!-- crcb业务服务请求 YS -->
+	<bean id="igGENERATOR0501BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0501BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- crcb个人工作 PW -->
+	<bean id="igGENERATOR0601BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0601BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- crcb指派工作 AW -->
+	<bean id="igGENERATOR0701BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0701BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+	<!-- crcb程序开发 PD -->
+	<bean id="igGENERATOR0901BLImpl" class="com.dev.cyb.igflow.generator.serialnum.IGGENERATOR0901BLImpl">
+		<property name="flowSearchBL" ref="flowSearchBL" />
+	</bean>
+</beans>

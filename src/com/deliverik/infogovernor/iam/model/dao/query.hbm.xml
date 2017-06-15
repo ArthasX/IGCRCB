@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.iam.model.entity">
+
+  <sql-query name="AUDITPROJECTDAO.problemSumInfo">
+    <![CDATA[
+    	SELECT a.*,COALESCE(cp.zs,0) as ps FROM AUDITPROJECT a LEFT JOIN (
+		SELECT count(*) AS zs , p.APPROJECTID AS apid
+		FROM IG599 r , AUDITPROJECT p 
+		WHERE r.pivarname='项目ID' and r.PIVARVALUE = CAST(p.APPROJECTID AS VARCHAR) and r.PIVARVALUE != '0'
+		GROUP BY p.APPROJECTID ) cp ON a.APPROJECTID = cp.apid	
+		where 1=1	
+    ]]> 
+  </sql-query>
+  
+  <sql-query name="InternalauditprjDAO.projectListInfo">
+    <![CDATA[
+    	SELECT a.* FROM Internalauditprj a WHERE IAPID NOT IN (SELECT APPROJECTID FROM AUDITPROJECT)
+    ]]> 
+  </sql-query>
+</hibernate-mapping>

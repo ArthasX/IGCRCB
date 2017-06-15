@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- DAO -->
+	<bean id="nmsBaseDAO" class="com.deliverik.infogovernor.nms.model.dao.NMSBaseDAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms01DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS01DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms02DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS02DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms03DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS03DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms04DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS04DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms05DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS05DAOImpl" parent="nmsBaseDAO">
+	</bean>
+	
+	<bean id="nms06DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS06DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms07DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS07DAOImpl" parent="nmsBaseDAO">
+	</bean>
+	
+	<bean id="nms08DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS08DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms09DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS09DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms10DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS10DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms11DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS11DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms12DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS12DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms13DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS13DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms15DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS15DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms16DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS16DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<bean id="nms17DAO" class="com.deliverik.infogovernor.nms.model.dao.NMS17DAOImpl" parent="baseHibernateDAO">
+	</bean>
+	
+	<!-- task -->
+	<bean id="nms01BL" class="com.deliverik.infogovernor.nms.bl.task.NMS01BLImpl">
+		<property name="nms01DAO">
+			<ref bean="nms01DAO"/>
+		</property>
+	</bean>
+	<bean id="nms02BL" class="com.deliverik.infogovernor.nms.bl.task.NMS02BLImpl">
+		<property name="nms02DAO">
+			<ref bean="nms02DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms03BL" class="com.deliverik.infogovernor.nms.bl.task.NMS03BLImpl">
+		<property name="nms03DAO">
+			<ref bean="nms03DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms04BL" class="com.deliverik.infogovernor.nms.bl.task.NMS04BLImpl">
+		<property name="nms04DAO">
+			<ref bean="nms04DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms05BL" class="com.deliverik.infogovernor.nms.bl.task.NMS05BLImpl">
+		<property name="nms05DAO">
+			<ref bean="nms05DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms06BL" class="com.deliverik.infogovernor.nms.bl.task.NMS06BLImpl">
+		<property name="nms06DAO">
+			<ref bean="nms06DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms07BL" class="com.deliverik.infogovernor.nms.bl.task.NMS07BLImpl">
+		<property name="nms07DAO">
+			<ref bean="nms07DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms08BL" class="com.deliverik.infogovernor.nms.bl.task.NMS08BLImpl">
+		<property name="nms08DAO">
+			<ref bean="nms08DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms09BL" class="com.deliverik.infogovernor.nms.bl.task.NMS09BLImpl">
+		<property name="nms09DAO">
+			<ref bean="nms09DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms10BL" class="com.deliverik.infogovernor.nms.bl.task.NMS10BLImpl">
+		<property name="nms10DAO">
+			<ref bean="nms10DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms11BL" class="com.deliverik.infogovernor.nms.bl.task.NMS11BLImpl">
+		<property name="nms11DAO">
+			<ref bean="nms11DAO"/>
+		</property>
+	</bean>
+		
+	<bean id="nms12BL" class="com.deliverik.infogovernor.nms.bl.task.NMS12BLImpl">
+		<property name="nms12DAO">
+			<ref bean="nms12DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms13BL" class="com.deliverik.infogovernor.nms.bl.task.NMS13BLImpl">
+		<property name="nms13DAO">
+			<ref bean="nms13DAO"/>
+		</property>
+	</bean>
+	
+	<bean id="nms15BL" class="com.deliverik.infogovernor.nms.bl.task.NMS15BLImpl">
+		<property name="nms15DAO">
+			<ref bean="nms15DAO"/>
+		</property>
+	</bean>
+	
+	<!-- 组设备坐标BL -->
+	<bean id="nms16BL" class="com.deliverik.infogovernor.nms.bl.task.NMS16BLImpl">
+		<property name="nms16DAO">
+			<ref bean="nms16DAO"/>
+		</property>
+	</bean>
+	
+	<!-- 子网区域BL -->
+	<bean id="nms17BL" class="com.deliverik.infogovernor.nms.bl.task.NMS17BLImpl">
+		<property name="nms17DAO">
+			<ref bean="nms17DAO"/>
+		</property>
+	</bean>
+	
+	<!-- control -->
+	<bean id="ignms01BL" class="com.deliverik.infogovernor.nms.bl.IGNMS01BLImpl">
+		<property name="nms01BL">
+			<ref bean="nms01BL"/>
+		</property>
+		<property name="nms02BL">
+			<ref bean="nms02BL"/>
+		</property>
+		<property name="nms03BL">
+			<ref bean="nms03BL"/>
+		</property>
+		<property name="nms04BL">
+			<ref bean="nms04BL"/>
+		</property>
+		<property name="nms05BL">
+			<ref bean="nms05BL"/>
+		</property>
+		<property name="nms06BL">
+			<ref bean="nms06BL"/>
+		</property>
+		<property name="nms07BL">
+			<ref bean="nms07BL"/>
+		</property>
+		<property name="nms08BL">
+			<ref bean="nms08BL"/>
+		</property>
+		<property name="nms09BL">
+			<ref bean="nms09BL"/>
+		</property>
+		<property name="nms10BL">
+			<ref bean="nms10BL"/>
+		</property>
+		<property name="nms11BL">
+			<ref bean="nms11BL"/>
+		</property>
+		<property name="nms12BL">
+			<ref bean="nms12BL"/>
+		</property>
+		<property name="nms13BL">
+			<ref bean="nms13BL"/>
+		</property>
+		<property name="nms16BL">
+			<ref bean="nms16BL"/>
+		</property>
+		<property name="nms17BL">
+			<ref bean="nms17BL"/>
+		</property>
+		<property name="codeListUtils">
+			<ref bean="codeListUtils"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+	</bean>
+</beans>
+

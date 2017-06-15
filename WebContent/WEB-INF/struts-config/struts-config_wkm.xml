@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+	<form-beans>
+	
+		
+		<form-bean name="IGWKM0101Form" type="com.deliverik.infogovernor.wkm.form.IGWKM0101Form" />
+		<form-bean name="IGWKM0102Form" type="com.deliverik.infogovernor.wkm.form.IGWKM0102Form" />
+		<form-bean name="IGWKM0110Form" type="com.deliverik.infogovernor.wkm.form.IGWKM0110Form" />
+	</form-beans>
+
+	<action-mappings>
+		<!-- add by sky start -->
+		<!-- 公共查询部分 -->
+		<action path="/IGWKM0101_Disp"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="DISP"
+			name="IGWKM0101Form"
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0101.jsp" />
+		</action>
+		
+		<action path="/IGWKM0101"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH" 
+			input="/wkm/IGWKM0101.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0101.jsp" />
+		</action>
+		<action path="/IGWKM0103_Disp"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="DISP"
+			name="IGWKM0101Form"
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		<action path="/IGWKM0103"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		
+		<action path="/IGWKM0104"
+			type="com.deliverik.infogovernor.prr.action.IGPRR0105Action" 
+			parameter="DISP" 
+			input="/sym/IGSYM0302.jsp" 
+			name="IGPRR0102Form"
+			validate="false" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wkm/IGWKM0104.jsp" />
+		</action>
+		
+		
+				
+		<action path="/IGCRC0403"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH" 
+			input="/crc/IGCRC0403.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC0403.jsp" />
+		</action>
+		
+		<action path="/IGWKM0108"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH" 
+			input="/risk/IGRIS0301.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0301.jsp" />
+		</action>
+		<action path="/IGWKM0108_BACK"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH1" 
+			input="/risk/IGRIS0301.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0301.jsp" />
+		</action>
+		<action path="/IGWKM0106"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH" 
+			input="/risk/IGRIS0304.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0304.jsp" />
+		</action>
+		<action path="/IGWKM0106_BACK"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH1" 
+			input="/risk/IGRIS0304.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0304.jsp" />
+		</action>
+		<action path="/IGWKM0107"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0305Action"
+			parameter="SEARCH" 
+			input="/risk/IGRIS0305.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0305.jsp" />
+		</action>
+		<action path="/IGWKM0107_BACK"
+			type="com.deliverik.infogovernor.risk.action.IGRIS0305Action"
+			parameter="SEARCH1" 
+			input="/risk/IGRIS0305.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/risk/IGRIS0305.jsp" />
+		</action>
+		<action path="/IGWKM0101_del"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="DEL" 
+			input="/wkm/IGWKM0101.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/IGWKM0101.do" />
+		</action>
+		<action path="/IGWKM0101_BACK"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH1" 
+			input="/wkm/IGWKM0101.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/IGCOM0202.do?linkID=IGWKM0101&amp;prtype=WA&amp;actname=ACT02SVC0902" />
+		</action>
+		<action path="/IGWKM0103_BACK"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0101Action"
+			parameter="SEARCH1" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		
+		<action path="/IGWKM0102"
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0102Action"
+			parameter="SEARCH" input="/wkm/IGWKM0102.jsp" name="IGWKM0102Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wkm/IGWKM0102.jsp" />
+		</action>
+		<!-- add by sky end -->
+		<action path="/IGWKM0110_Disp" 
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0110Action"
+			parameter="DISP"
+			scope="session"
+			input="/wkm/IGWKM0110.jsp"
+			validate="false"
+			name="IGWKM0110Form">
+			<forward name="DISP" path="/wkm/IGWKM0110.jsp"/>
+		</action>
+		<action path="/IGWKM0110" 
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0110Action"
+			parameter="SEARCH"
+			scope="session"
+			input="/wkm/IGWKM0110.jsp"
+			validate="false"
+			name="IGWKM0110Form">
+			<forward name="DISP" path="/wkm/IGWKM0110.jsp"/>
+		</action>
+		<action path="/IGWKM0110_Back" 
+			type="com.deliverik.infogovernor.wkm.action.IGWKM0110Action"
+			parameter="SEARCH1"
+			scope="session"
+			input="/wkm/IGWKM0110.jsp"
+			validate="false"
+			name="IGWKM0110Form">
+			<forward name="DISP" path="/wkm/IGWKM0110.jsp"/>
+		</action>
+		
+	</action-mappings>
+</struts-config>

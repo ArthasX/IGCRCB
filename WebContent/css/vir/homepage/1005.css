@@ -1,0 +1,177 @@
+#processCount{
+	width:220px;
+	border:1px solid #ccc;
+	float:left;
+}
+.divTitle{
+	height:25px;
+	line-height:25px;
+	background-image:url(../../../images/divtitlebg_25.jpg);
+	color:#407cba;
+	font-weight:bold;
+	padding-left:10px;
+}
+#processCountTitlePanel{
+	height:35px;
+}
+.processCountTitle{
+	float:left;
+	height:35px;
+	font-size:18px;
+	line-height:35px;
+	text-align:center;
+	width:73px;
+}
+#processCountContentPanel{
+	height:48px;
+	background-image:url(../../../images/processCountContentBg.gif);
+}
+.processCountContent{
+	padding-top:5px;
+	float:left;
+	height:48px;
+	font-size:18px;
+	line-height:48px;
+	text-align:center;
+	vertical-align:middle;
+	width:73px;
+}
+.rightLogPanel{
+	width:768px;
+	margin-left:10px;
+	float:left;
+	border:1px solid #ccc;
+}
+#serviceCatelog{
+	border:1px solid #3e80bc;
+	width:220px;
+	margin-top:5px;
+	height:460px;
+	float:left;
+}
+#serviceCatelogTitle{
+	background-color:#3e80bc;
+	height:25px;
+	line-height:25px;
+	font-weight:bold;
+	padding-left:10px;
+	color:#fff;
+}
+#orgstopfive{
+	width:260px;
+	margin-top:5px;
+	margin-left:10px;
+	float:left;
+	border:1px solid #ccc;
+}
+#tendency{
+	width:496px;
+	margin-top:5px;
+	margin-left:10px;
+	float:left;
+	border:1px solid #ccc;
+}
+#towardsleft{
+	width:30px;
+	height:260px;
+	float:left;
+}
+#towardsright{
+	width:30px;
+	height:260px;
+	float:right;
+}
+.prev,.next{
+	margin-top:100px;
+	cursor: hand;
+}
+#hostContent{
+	width:708px;
+	height:260px;
+	overflow:hidden; 
+	position:absolute; 
+	z-index:1; 
+}
+#hostContent ul{
+	overflow:hidden;
+	margin-left:0px;
+	zoom:1; 
+	float:left;  
+}
+#hostContent ul li{ 
+	float:left;
+	margin-left:0px; 
+	width:708px; 
+	height:260px;
+	cursor:pointer; 
+}
+#hostContent li{ 
+	zoom:1; 
+	vertical-align:middle; 
+}
+.slideBox .prevStop{ 
+	display:none;  
+}
+.slideBox .nextStop{ 
+	display:none;  
+}
+.HostContentPanel{
+	height:260px;
+	width:708px;
+}
+.HostContent{
+	height:120px;
+	width:220px;
+	float:left;
+}
+.HostContentHead{
+	width:100%;
+	height:39px;
+	background-image:url(../../../images/hostContentHead.jpg);
+}
+.HostContentBody{
+	width:100%;
+	height:79px;
+	background-image:url(../../../images/hostContentBody.jpg);
+}
+.HostContent img{
+	margin-left:10px;
+	margin-top:5px;
+}
+.HostName{
+	font-weight:bold;
+	color:#407cba;
+}
+.HostContent table tr td{
+	height:22px;
+}
+.progressDiv{
+	width:150px;
+	height:13px;
+	border:1px solid #ccc;
+}
+.progressDiv1{
+	height:100%;
+	width:0%;
+	background-image:url(../../../images/progress.jpg);
+}
+.HostInfoFount{
+	color:#3b3b3b;
+	font-size:9px;
+	line-height:12px;
+	display:block;
+	position: absolute;
+	margin-top:-12px;
+	margin-left:15px;
+	font-weight: bold;
+	font-family: "ËÎÌו";
+}
+.serviceCatelogContent{
+	height:48px;
+	line-height:48px;
+	background-image:url(../../../images/divtitlebg_48.jpg);
+	padding-left:30px;
+}
+.serviceCatelogContent img{
+	vertical-align:middle;
+}

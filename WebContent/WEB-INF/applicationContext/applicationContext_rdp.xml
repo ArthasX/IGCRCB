@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+	<!-- DAO -->
+	<bean id="autoTaskDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.rdp.model.dao.AutoTaskDAOImpl">
+	</bean>
+	<bean id="excuteResultDAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.rdp.model.dao.ExcuteResultDAOImpl">
+
+	</bean>
+   	<bean id="realtimedetailDAO"  parent="baseHibernateDAO" class="com.deliverik.infogovernor.rdp.model.dao.RealtimedetailDAOImpl">
+   	</bean>
+   <!-- taskBL -->
+   <bean id="realtimedetailBL" class="com.deliverik.infogovernor.rdp.bl.task.RealtimedetailBLImpl">
+   		<property name="realtimedetailDAO" ref="realtimedetailDAO" />
+   </bean>
+    <bean id="autoTaskBL" class="com.deliverik.infogovernor.rdp.bl.task.AutoTaskBLImpl">
+    	<property name="autoTaskDAO">
+    		<ref bean="autoTaskDAO"/>
+    	</property>
+    </bean>
+    <bean id="excuteResultBL" class="com.deliverik.infogovernor.rdp.bl.task.ExcuteResultBLImpl">
+    	<property name="excuteResultDAO">
+    		<ref bean="excuteResultDAO"/>
+    	</property>
+    </bean>
+    
+    
+    <!-- CtrolBL -->
+	<bean id="igrdp01BL" class="com.deliverik.infogovernor.rdp.bl.IGRDP01BLImpl">
+        <property name="autoTaskBL">
+            <ref bean="autoTaskBL"/>
+        </property>
+		<property name="excuteResultBL">
+			<ref bean="excuteResultBL" />
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL" />
+		</property>
+		<property name="soc0117BL">
+			<ref bean="soc0117BL" />
+		</property>
+		<property name="soc0119BL">
+			<ref bean="soc0119BL" />
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL" />
+		</property>
+		 <property name="realtimedetailBL">
+            <ref bean="realtimedetailBL"/>
+        </property>
+	</bean>
+	
+	
+</beans>

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+		<form-bean name="IGDBM0201Form" type="com.deliverik.infogovernor.dbm.form.IGDBM0201Form"/>
+		<form-bean name="IGDBM1200Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1200Form"/>
+		<form-bean name="IGDBM1201Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1201Form"/>
+		<form-bean name="IGDBM1202Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1202Form"/>
+		<form-bean name="IGDBM1203Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1203Form"/>
+		<form-bean name="IGDBM1204Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1204Form"/>
+		<form-bean name="IGDBM1301Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1301Form"/>
+		<form-bean name="IGDBM1302Form" type="com.deliverik.infogovernor.dbm.form.IGDBM1302Form"/>
+	</form-beans>
+	
+	<action-mappings>
+		<!-- 自定义报表快速链接  -->
+		<!-- 行长首页初期显示 -->
+		<action path="/IGDBM0101"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0101Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0101.jsp" />
+		</action>
+		
+		<!-- 处长首页初期显示 -->
+		<action path="/IGDBM0102"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0102Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0102.jsp" />
+		</action>
+        <!-- 流程主题初期显示 -->
+		<action path="/IGDBM0103"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0103Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0103.jsp" />
+		</action>
+		 <!-- 基础设施显示 -->
+		<action path="/IGDBM0104"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0104Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0104.jsp" />
+		</action>
+
+		 <!-- 问题流程综合分析显示 -->
+		<action path="/IGDBM0105"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0105Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0105.jsp" />
+		</action>
+		 <!-- 事件流程综合分析显示 -->
+		<action path="/IGDBM0106"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0106Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0106.jsp" />
+		</action>
+		 <!-- 变更流程综合分析显示 -->
+		<action path="/IGDBM0107"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0107Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0107.jsp" />
+		</action>
+		 <!-- 工作流程综合分析显示 -->
+		<action path="/IGDBM0108"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0108Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0108.jsp" />
+		</action>
+		<!-- 系统可用率分析显示 -->
+		<action path="/IGDBM0109"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0109Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0109.jsp" />
+		</action>
+		<!-- 渠道业务实时情况 -->
+		<action path="/IGDBM0110"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0110Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0110.jsp" />
+		</action>
+		<!-- topomap -->
+		<action path="/IGDBM0111"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0111Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0111.jsp" />
+		</action>
+		<!-- chuzhang dashboard -->
+		<action path="/IGDBM0112"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0112Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0112.jsp" />
+		</action>
+		
+		<!-- 全网IP过滤初始化显示 -->
+		<action path="/IGDBM0201_Disp"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0201Action"
+			parameter="DISP" input="/dbm/IGDBM0201.jsp" name="IGDBM0201Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM0201.jsp" />
+		</action>
+		<action path="/IGDBM0201"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0201Action"
+			parameter="INSERT" input="/dbm/IGDBM0201.jsp" name="IGDBM0201Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGDBM0201_Disp.do" />
+		</action>
+		<action path="/IGDBM0201_Del"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0201Action"
+			parameter="DEL" input="/dbm/IGDBM0201.jsp" name="IGDBM0201Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGDBM0201_Disp.do" />
+		</action>
+		<action path="/IGDBM0201_BatchDEL"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM0201Action"
+			parameter="BatchDEL" input="/dbm/IGDBM0201.jsp" name="IGDBM0201Form"
+			validate="false" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/IGDBM0201_Disp.do" />
+		</action>
+
+		
+		<!-- 常熟农商银行 -->
+		
+		<!-- 钻取Action -->
+		<action path="/IGDBM1200"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/IGDBM1200_page.do"/>
+		</action>
+		
+		<action path="/IGDBM1200_Risk"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="RISKWORK"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/IGDBM1200_page_Risk.do"/>
+		</action>
+		<action path="/IGDBM1200_RiskRiskrepository"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="RISKRISKREPOSITORY"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/IGDBM1200_page_RiskRiskrepository.do"/>
+		</action>
+		
+		<!-- 钻取Action page-->
+		<action path="/IGDBM1200_page"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH_PAGE"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/dbm/IGDBM1200.jsp"/>
+		</action>
+		
+		<action path="/IGDBM1200_page_Risk"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="RISKWORK_PAGE"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/dbm/IGDBM1200RC1.jsp"/>
+		</action>
+		<action path="/IGDBM1200_page_RiskRiskrepository"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="RISKRISKREPOSITORY_PAGE"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/dbm/IGDBM1200.jsp"/>
+		</action>
+		
+		<!--  科技风险综合分析-电子表钻取Action -->
+		<action path="/IGDBM1200_count"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH_COUNT"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/IGDBM1200_page_count.do"/>
+		</action>
+		<!-- 科技风险综合分析-电子表钻取Action page-->
+		<action path="/IGDBM1200_page_count"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH_COUNT_PAGE"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/dbm/IGDBM1200.jsp"/>
+		</action>
+		<!--  科技风险综合分析-饼图钻取Action -->
+		<action path="/IGDBM1200_ris"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH_RISK"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/IGDBM1200_page_ris.do"/>
+		</action>
+		<!-- 科技风险综合分析-饼图钻取Action page-->
+		<action path="/IGDBM1200_page_ris"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1200Action"
+			parameter="SEARCH_RISK_PAGE"
+			name="IGDBM1200Form"
+			scope="session"
+			validate="false">
+			<forward name="DISP" path="/dbm/IGDBM1200.jsp"/>
+		</action>
+		<!-- 科技风险综合分析 初期化跳转 显示 -->
+		<action path="/IGDBM1204"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="DISP" 
+			scope="request">       
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM1204.jsp" />
+		</action>
+		<!-- 科技风险综合分析 -风险部门工作情况-电子表 -->
+		<action path="/IGDBM1204_getCounter"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getCounter" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技风险综合分析 -本年度风险工作覆盖情况-检查 -->
+		<action path="/IGDBM1204_getRiskCheck"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getRiskCheck" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技风险综合分析 -本年度风险问题及整改占比-问题及整改-->
+		<action path="/IGDBM1204_getRiskProblem"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getRiskProblem" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技风险综合分析 -风险库分布情况-风险库 -->
+		<action path="/IGDBM1204_getRiskRepository"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getRiskRepository" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技风险综合分析 -风险评估工作总体情况-问题及整改完成-柱图 -->
+		<action path="/IGDBM1204_getRiskRectification"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getRiskRectification" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技风险综合分析 -风险评估工作总体情况-检查工作-线图-->
+		<action path="/IGDBM1204_getRiskAssess"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1204Action" 
+			name="IGDBM1204Form" 
+			parameter="getRiskAssess"
+			validate="false" scope="request">
+		</action>
+		
+		
+		<!-- 科技运行综合分析(一)显示 -->
+		<action path="/IGDBM1201"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="DISP" 
+			scope="request">       
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM1201.jsp" />
+		</action>
+		
+		<!-- 业务部门工单情况 -->
+		<action path="/IGDBM1201_ProcessCountYW"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="ProcessCountYW" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技部门工单情况 -->
+		<action path="/IGDBM1201_ProcessCountKJ"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="ProcessCountKJ" 
+			validate="false" scope="request">
+		</action>
+		<!-- 各部门处理工单数量趋势分析 -->
+		<action path="/IGDBM1201_Line"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="Line" 
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1201_businessdepart"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="businessdepart" 
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1201_sciencedepart"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1201Action" 
+			name="IGDBM1201Form" 
+			parameter="sciencedepart" 
+			validate="false" scope="request">
+		</action>
+		<!-- 科技运行综合分析(二)显示 -->
+		<action path="/IGDBM1202"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			 name="IGDBM1202Form" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM1202.jsp" />
+		</action>
+		<action path="/IGDBM1202_qotn"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			 name="IGDBM1202Form" parameter="QOTN"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1202_getWorkOrder"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			parameter="GETWORKORDER"
+			name="IGDBM1202Form"
+			validate="false"
+			scope="request">
+		</action>
+		<action path="/IGDBM1202_changeresult"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			 name="IGDBM1202Form" parameter="CHANGERESULT"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1202_eventtrend"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			 name="IGDBM1202Form" parameter="EVENTTREND"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1202_setCalendar"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1202Action"
+			 name="IGDBM1202Form" parameter="SETCALENDAR"
+			validate="false" scope="request">
+		</action>
+		<!-- 信息安全综合分析 -->
+		<action path="/IGDBM1203"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action" parameter="DISP" scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/dbm/IGDBM1203.jsp" />
+		</action>
+		<action path="/IGDBM1203_safework"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="safework"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1203_rcclass"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="rcclass"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1203_rcclassbymonth"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="rcclassbymonth"
+			validate="false" scope="request">
+		</action>
+
+		<action path="/IGDBM1203_rctestmode"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="rctestmode"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1203_riskcheckresult"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="riskcheckresult"
+			validate="false" scope="request">
+		</action>
+		<action path="/IGDBM1203_questions"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1203Action"
+			 name="IGDBM1203Form" parameter="questions"
+			validate="false" scope="request">
+		</action>
+		<!-- 工作管理查询初始化 -->
+		<action path="/IGDBM1301_Disp"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1301Action"
+			 name="IGDBM1301Form" parameter="DISP" input="/dbm/IGDBM1301.jsp"
+			validate="false" scope="session">
+			<forward name="DISP" path="/dbm/IGDBM1301.jsp"></forward>
+		</action>
+		<!-- 工作管理查询 -->
+		<action path="/IGDBM1301_Search"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1301Action"
+			 name="IGDBM1301Form" parameter="SEARCH" input="/dbm/IGDBM1301.jsp"
+			validate="false" scope="session">
+			<forward name="DISP" path="/dbm/IGDBM1301.jsp"></forward>
+		</action>
+		<!-- 工作管理查询 -->
+		<action path="/IGDBM1301_Back"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1301Action"
+			 name="IGDBM1301Form" parameter="SEARCH1" input="/dbm/IGDBM1301.jsp"
+			validate="false" scope="session">
+			<forward name="DISP" path="/dbm/IGDBM1301.jsp"></forward>
+		</action>
+		<!-- 工作管理新增初始化 -->
+		<action path="/IGDBM1302_Disp"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1302Action"
+			 name="IGDBM1302Form" parameter="DISP"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1302.jsp"></forward>
+		</action>
+		<!-- 工作管理新增 -->
+		<action path="/IGDBM1302_Insert"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1302Action"
+			 name="IGDBM1302Form" parameter="INSERT"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1300.jsp"></forward>
+		</action>
+		<!-- 工作信息完成 -->
+		<action path="/IGDBM1301_Finish"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1301Action"
+			 name="IGDBM1301Form" parameter="FINISH"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1300.jsp"></forward>
+		</action>
+		<!-- 工作信息编辑 -->
+		<action path="/IGDBM1302_Edit"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1302Action"
+			 name="IGDBM1302Form" parameter="EDIT"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1303.jsp"></forward>
+		</action>
+		<!-- 工作信息更新 -->
+		<action path="/IGDBM1302_Update"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1302Action"
+			 name="IGDBM1302Form" parameter="UPDATE"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1300.jsp"></forward>
+		</action>
+		<!-- 工作信息不再提醒 -->
+		<action path="/IGDBM1302_Remind"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1302Action"
+			 name="IGDBM1302Form" parameter="REMIND"
+			validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1300.jsp"></forward>
+		</action>
+		<!--  工作信息导出 -->
+		<action path="/IGDBM0301_Export"
+			type="com.deliverik.infogovernor.dbm.action.IGDBM1303Action" input="/dbm/IGDBM1300.jsp"
+			parameter="EXPORT" name="IGDBM1301Form" validate="false" scope="request">
+			<forward name="DISP" path="/dbm/IGDBM1300.jsp" />			
+		</action>
+	</action-mappings>
+</struts-config>
+
