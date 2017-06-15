@@ -377,4 +377,13 @@ public interface IG500DAO extends BaseHibernateDAO<IG500Info> {
 	 */
 	public List<IG500Info> searchMyUnProcessd(final IG500SearchCond cond,final int start,
 			final int count);
+	
+	/**
+	 * ÑÝÁ·Á÷³Ì²éÑ¯
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<IG500Info> searchDrillProcess(IG500SearchCond cond,final int start, final int count);
 }

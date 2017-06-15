@@ -1,0 +1,70 @@
+package com.deliverik.infogovernor.util;
+
+
+/**
+<<<<<<< HEAD
+ * æµç¨‹æŒ‰è¡¨å•å€¼æ˜¾ç¤ºå›¾ç‰‡å¸¸é‡å®šä¹‰<br>
+ *
+ *
+ *
+ * @author
+ *
+ */
+public enum ProcessDefine {
+
+	/**æ•…éšœç”³æŠ¥_Nokia ï¼ˆæ•…éšœç­‰çº§ï¼‰*/
+	æ•…éšœç”³æŠ¥_Nokia("æ•…éšœç­‰çº§")
+	;
+
+	/** */
+	protected String pidname;
+
+=======
+ * Á÷³Ì°´±íµ¥ÖµÏÔÊ¾Í¼Æ¬³£Á¿¶¨Òå<br>
+ *
+ * 
+ *
+ * @author 
+ *
+ */
+public enum ProcessDefine {
+	
+	/**¹ÊÕÏÉê±¨_Nokia £¨¹ÊÕÏµÈ¼¶£©*/
+	¹ÊÕÏÉê±¨_Nokia("¹ÊÕÏµÈ¼¶")
+	;
+	
+	/** */
+	protected String pidname;
+
+	/**
+	 * 
+	 *
+	 * @param ccid
+	 */
+>>>>>>> dlk
+	private ProcessDefine(String pidname) {
+		this.pidname = pidname;
+	}
+
+	/**
+<<<<<<< HEAD
+	 *
+=======
+	 * 
+>>>>>>> dlk
+	 *
+	 * @param id
+	 */
+	public static ProcessDefine getProcessDefine(String id) {
+		for (ProcessDefine c : ProcessDefine.values()) {
+			if (c.name().equalsIgnoreCase(id)) {
+				return c;
+			}
+		}
+		return null;
+	}
+
+	public String getPidname() {
+		return pidname;
+	}
+}

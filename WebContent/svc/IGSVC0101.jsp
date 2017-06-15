@@ -37,32 +37,62 @@
 		</tr>
 		<logic:present name="IGSVC01011VO" property="workList">
 			<logic:iterate id="bean" name="IGSVC01011VO" property="workList">
-				<tr onmouseover="mouseOver(this);" onmouseout="mouseOut(this,'');" onclick="doLook('${bean.showurl}${bean.prid }&jump=121');">
-					<td>
-						<!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
-						<c:if test="${bean.prpdname =='变更'}">
-							<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${bean.prid}"/></bean:define>		
-							<c:if test="${changeType == '紧急变更'}">
-								<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+				<c:if test="${bean.prtype != 'WDP'}">
+					<tr onmouseover="mouseOver(this);" onmouseout="mouseOut(this,'');" onclick="doLook('${bean.showurl}${bean.prid }&jump=121');">
+						<td>
+							<!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+							<c:if test="${bean.prpdname =='变更'}">
+								<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${bean.prid}"/></bean:define>		
+								<c:if test="${changeType == '紧急变更'}">
+									<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+								</c:if>
 							</c:if>
-						</c:if>
-					</td>
-					<td><bean:write name="bean" property="prserialnum" /></td>
-					<td><bean:write name="bean" property="prtitle" /></td>
-					<td><bean:write name="bean" property="prpdname" /></td>
-					<td><bean:write name="bean" property="prusername" /></td>
-					<td><bean:write name="bean" property="orderstatus" /></td>
-					<bean:define id="participant">
-						<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }"/>&nbsp;
-					</bean:define>
-					<td title="${participant }">
-						<ig:SubstringShowEllipsisWriteTag len="9" showEllipsis="true">
-							${participant }
-						</ig:SubstringShowEllipsisWriteTag>
-					</td>
-					<td><bean:write name="bean" property="propentime" /></td>
-					<td><bean:write name="bean" property="prclosetime" /></td>
-				</tr>
+						</td>
+						<td><bean:write name="bean" property="prserialnum" /></td>
+						<td><bean:write name="bean" property="prtitle" /></td>
+						<td><bean:write name="bean" property="prpdname" /></td>
+						<td><bean:write name="bean" property="prusername" /></td>
+						<td><bean:write name="bean" property="orderstatus" /></td>
+						<bean:define id="participant">
+							<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }"/>&nbsp;
+						</bean:define>
+						<td title="${participant }">
+							<ig:SubstringShowEllipsisWriteTag len="9" showEllipsis="true">
+								${participant }
+							</ig:SubstringShowEllipsisWriteTag>
+						</td>
+						<td><bean:write name="bean" property="propentime" /></td>
+						<td><bean:write name="bean" property="prclosetime" /></td>
+					</tr>
+				</c:if>
+				<c:if test="${bean.prtype == 'WDP'}">
+					<tr onmouseover="mouseOver(this);" onmouseout="mouseOut(this,'');" onclick="showConsole('${bean.prid }');">
+						<td>
+							<!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+							<c:if test="${bean.prpdname =='变更'}">
+								<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${bean.prid}"/></bean:define>		
+								<c:if test="${changeType == '紧急变更'}">
+									<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+								</c:if>
+							</c:if>
+						</td>
+						<td><bean:write name="bean" property="prserialnum" /></td>
+						<td><bean:write name="bean" property="prtitle" /></td>
+						<td><bean:write name="bean" property="prpdname" /></td>
+						<td><bean:write name="bean" property="prusername" /></td>
+						<td><bean:write name="bean" property="orderstatus" /></td>
+						<bean:define id="participant">
+							<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }"/>&nbsp;
+						</bean:define>
+						<td title="${participant }">
+							<ig:SubstringShowEllipsisWriteTag len="9" showEllipsis="true">
+								${participant }
+							</ig:SubstringShowEllipsisWriteTag>
+						</td>
+						<td><bean:write name="bean" property="propentime" /></td>
+						<td><bean:write name="bean" property="prclosetime" /></td>
+					</tr>
+				</c:if>
 			</logic:iterate>
 		</logic:present>
 	</table>
@@ -73,4 +103,15 @@
 </div>
 </div>
 </body>
+<script type="text/javascript">
+
+/**
+ * @Description：如果是演练处置流程，弹出工作台页面
+ * @Date：2017年5月16日14:32:21
+ * @Author wangliang@deliverik.com
+ */
+function showConsole(prid){
+	window.open('IGDRM1010.do?prid='+prid, '应急工作台', 'width=1024, height=768, scrollbars=yes, status=no, top=0, left=0').focus();
+}
+</script>
 </html:html>

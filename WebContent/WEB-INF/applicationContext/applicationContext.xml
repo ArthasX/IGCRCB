@@ -101,7 +101,10 @@
 <!--      <import resource="applicationContext_dev_fxb_igflow_status.xml"/> -->
 	<!-- mina 插件 -->
     <import resource="applicationContext_mina.xml"/>
-        <import resource="../plugin/sms/config/applicationContext.xml" />
+    <import resource="../plugin/sms/config/applicationContext.xml" />
+    <!-- 工作项管理 -->
+    <import resource="applicationContext_wim.xml" />
+    
 	<!-- TransactionInterceptor -->
 	<bean id="txInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
 	  <property name="transactionManager">
@@ -874,6 +877,13 @@
 			    <value>com.deliverik.infogovernor.drm.model.entity.OptionSencesTB</value>
 			    <value>com.deliverik.infogovernor.drm.model.entity.SOC0509TB</value>
 			    <value>com.deliverik.infogovernor.drm.model.entity.SOC0507TB</value>
+			    <!-- 工作项定义实体 -->
+			    <value>com.deliverik.infogovernor.wim.model.entity.WorkDefinitionTB</value>
+			    <!-- 工作实例实体 -->
+			    <value>com.deliverik.infogovernor.wim.model.entity.WorkInstanceTB</value>
+			    <!-- 工作日志实体 -->
+			    <value>com.deliverik.infogovernor.wim.model.entity.WorkLogTB</value>
+
 			</list>
 		</property>
 	</bean>

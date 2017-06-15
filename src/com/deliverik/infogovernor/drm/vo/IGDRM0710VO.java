@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.deliverik.framework.base.BaseVO;
+import com.deliverik.framework.workflow.prr.model.IG500Info;
 import com.deliverik.infogovernor.drm.model.EvaluationContentInfo;
 import com.deliverik.infogovernor.drm.util.StepUtil;
 
@@ -37,8 +38,8 @@ public class IGDRM0710VO  extends BaseVO implements Serializable {
 	private EvaluationContentInfo evaluationInfo;
 	/**节点详细*/
 	private StepUtil step;
-	
-	
+	/**整改流程集合*/
+	private List<IG500Info> zgList;
 	/**  
 	 * 获取step  
 	 * @return step 
@@ -174,6 +175,20 @@ public class IGDRM0710VO  extends BaseVO implements Serializable {
 	
 	public void setSeEvaluationContent(EvaluationContentInfo seEvaluationContent) {
 		this.seEvaluationContent = seEvaluationContent;
+	}
+
+	/**
+	 * @return the zgList
+	 */
+	public List<IG500Info> getZgList() {
+		return zgList;
+	}
+
+	/**
+	 * @param zgList the zgList to set
+	 */
+	public void setZgList(List<IG500Info> zgList) {
+		this.zgList = zgList;
 	}
 	
 }

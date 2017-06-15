@@ -5,6 +5,7 @@
 package com.deliverik.infogovernor.drm.dto;
 
 
+import java.io.OutputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -49,7 +50,12 @@ public class IGDRM07DTO extends BaseDTO {
 	/** 演练详细信息 */
 	protected Map<String,Object> drillDetailMap;
 	
-	
+	/** 文件输出流 */
+	protected OutputStream ops;
+	/**
+	 * 演练流程导出用
+	 */
+	protected IG500Info ig500Info;
 	
 	/**  
 	 * 获取drillDetailMap  
@@ -353,6 +359,34 @@ public class IGDRM07DTO extends BaseDTO {
 	
 	public void setIgdrm0710Form(IGDRM0710Form igdrm0710Form) {
 		this.igdrm0710Form = igdrm0710Form;
+	}
+
+	/**
+	 * @return the ops
+	 */
+	public OutputStream getOps() {
+		return ops;
+	}
+
+	/**
+	 * @param ops the ops to set
+	 */
+	public void setOps(OutputStream ops) {
+		this.ops = ops;
+	}
+
+	/**
+	 * @return the ig500Info
+	 */
+	public IG500Info getIg500Info() {
+		return ig500Info;
+	}
+
+	/**
+	 * @param ig500Info the ig500Info to set
+	 */
+	public void setIg500Info(IG500Info ig500Info) {
+		this.ig500Info = ig500Info;
 	}
     
 

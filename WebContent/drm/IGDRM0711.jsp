@@ -11,6 +11,7 @@
 <html:html>
 <bean:define id="id" value="IGDRM0711" toScope="request" />
 <bean:define id="title" value="评论内容" toScope="request" />
+<jsp:include page="/include/header1.jsp" />
 <link type="text/css" href="css/risk.css" rel="stylesheet" />
 <link type="text/css" href="css/master.css" rel="stylesheet" />
 <script type="text/javascript" src="js/swfobject.js"></script>
@@ -144,7 +145,7 @@
 
 	<script type="text/javascript">
 	function saveDetail(){
-		var suggestion = document.getElementById("suggestion").value;
+		var suggestion = jQuery("#suggestion").val();
 		if(!suggestion){
 			alert("请输入评估内容！");
 			return false;

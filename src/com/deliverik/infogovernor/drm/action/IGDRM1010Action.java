@@ -6,6 +6,7 @@
 package com.deliverik.infogovernor.drm.action;
 
 import java.io.PrintWriter;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -68,12 +69,13 @@ public class IGDRM1010Action extends BaseAction {
 		PrintWriter out = res.getWriter();
 		if( "DISP".equals(mapping.getParameter())){
 			// 应急工作台画面初期显示处理
-			log.debug("========应急工作台画面初期显示处理开始========");
+			log.info("========应急工作台画面初期显示处理开始========");
+			Date d = new Date();
 			dto = ctlBL.initWorkbenchAction(dto);
 			IGDRM10101VO vo = new IGDRM10101VO();
 			vo.setWorkbenchMap(dto.getWorkbenchMap());
 			setVO(req, vo);
-			log.debug("========应急工作台画面初期显示处理终了========");
+			log.info("========应急工作台画面初期显示处理终了  >>>耗时"+(new Date().getTime()-d.getTime())+"========");
 		} else if ("AJAX".equals(mapping.getParameter())) {
 			try {
 				dto = ctlBL.initWorkFlowAction(dto);
@@ -88,6 +90,7 @@ public class IGDRM1010Action extends BaseAction {
 			return null;
 		}else if("COMMIT".equals(mapping.getParameter())){
 			log.info("===========提交操作开始============");
+			Date d = new Date();
 			try { 
 
 				dto = ctlBL.doFlowAction(dto);
@@ -99,11 +102,11 @@ public class IGDRM1010Action extends BaseAction {
 				if (out != null)
 					out.close();
 			}
-			log.info("===========提交操作结束============");
+			log.info("===========提交操作结束  >>>>>>耗时"+(new Date().getTime()-d.getTime())+"============");
 			return null;
 		} else if ("SMS".equals(mapping.getParameter())) {
 
-			log.debug("===========发送短信开始============");
+			log.info("===========发送短信开始============");
 			try {
 				ctlBL.sendSMS(dto);
 				out.print("{\"msg\":\"success\"}");
@@ -115,11 +118,11 @@ public class IGDRM1010Action extends BaseAction {
 					out.close();
 			}
 
-			log.debug("===========发送短信结束============");
+			log.info("===========发送短信结束============");
 			return null;
 
 		} else if ("NOTICE".equals(mapping.getParameter())) {
-			log.debug("===========发送通知开始============");
+			log.info("===========发送通知开始============");
 			try {
 				IGDRM1010Form form = (IGDRM1010Form) actionForm;
 				form.setSendUserid(user.getUserid());
@@ -137,10 +140,10 @@ public class IGDRM1010Action extends BaseAction {
 					out.close();
 			}
 
-			log.debug("===========发送通知结束============");
+			log.info("===========发送通知结束============");
 			return null;
 		} else if ("LOG".equals(mapping.getParameter())) {
-			log.debug("==============查询日志开始==================");
+			log.info("==============查询日志开始==================");
 			try {
 				ctlBL.searchLog(dto);
 				out.print(dto.getJsonResult());
@@ -152,7 +155,7 @@ public class IGDRM1010Action extends BaseAction {
 					out.close();
 			}
 
-			log.debug("==============查询日志完成==================");
+			log.info("==============查询日志完成==================");
 			return null;
 		} else if ("UPLOAD".equals(mapping.getParameter())) {
 			log.info("============附件上传开始===============");

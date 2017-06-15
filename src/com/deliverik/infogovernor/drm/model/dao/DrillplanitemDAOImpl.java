@@ -125,7 +125,7 @@ public class DrillplanitemDAOImpl extends
 	        		q.addScalar("DRILLFORMALITY", Hibernate.STRING);
 	        		q.addScalar("DRILLCONTENT", Hibernate.STRING);
 	        		q.addScalar("DRILLOBJECTIVE", Hibernate.STRING);
-	        		q.addScalar("PLANNAME", Hibernate.STRING);
+//	        		q.addScalar("PLANNAME", Hibernate.STRING);
 	        		q.addScalar("SENCENAME", Hibernate.STRING);
 	        		q.addScalar("DEPARTMENT",Hibernate.STRING);
 	                List<Map<String,Object>> list = q.list();

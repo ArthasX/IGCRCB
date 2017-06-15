@@ -1344,7 +1344,10 @@
             <set-property key="auth" value="true"/>
             <forward name="DISP" path="/drm/IGDRM0712.jsp"/>
         </action>
-        
+        <action path="/IGDRM0703_Export" type="com.deliverik.infogovernor.drm.action.IGDRM0701Action" 
+        	cancellable="true" scope="session"  parameter="EXPORT" name="IGDRM0701Form">
+            <set-property key="auth" value="false"/>
+        </action>
          <action path="/IGDRM0713"
             type="com.deliverik.infogovernor.drm.action.IGDRM0701Action"
             input="/drm/IGDRM0713.jsp"

@@ -100,7 +100,7 @@ a img {
 	       	</tr>
 	       	 <logic:present name="IGDRM07011VO" property="ig500InfoList" >
 	       	 	<logic:iterate id="bean" name="IGDRM07011VO" property="ig500InfoList" indexId="index">
-					<tr style='cursor:hand' bgcolor="<ig:ProcessOverdueLevelBgColorTag prid="${bean.prid }"/>" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" 
+					<tr style='cursor:hand'  onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" 
 					onclick="doLook(getAppRootUrl()+'/IGPRR0102_Disp.do?prid=<bean:write name="bean" property="prid" />&jump=382');">
 	       	 			<td width="8%">${bean.prserialnum }</td>
 						<td width="18%" title="${bean.prdesc }"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.prdesc }</div></td>
@@ -112,22 +112,20 @@ a img {
 						<td width="10%">${bean.propentime }</td>
 						<td width="5%">${bean.prclosetime }</td>
 						<!-- 当前处理人 -->
-						<td title="<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }" />">
-						<ig:SubstringShowEllipsisWriteTag len="8" showEllipsis="true">
-							<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }" />
-						</ig:SubstringShowEllipsisWriteTag>
-						
-					</td>
+						<td title="${bean.pname }" />
+							<div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.pname }</div>
+						</td>
 						<!-- 流程状态 -->
 					<td>	
-						<ig:processDefineTypeValue prid="${bean.prid}"/>
+						${bean.prstatus}
+<%-- 						<ig:processDefineTypeValue prid="${bean.prid}"/> --%>
 					</td>
 					<td>
-						<img alt="指挥流程" src="images/look.gif" prid = '<ig:processFormValue pidname="指挥流程prid" prid="${bean.prid}"/>' data-fn="enterFigure" />
-						<img alt="应急处置流程" src="images/look.gif" prid = '<ig:processFormValue pidname="场景相关流程prid" prid="${bean.prid}"/>'  data-fn="enterFigure" />
+						<img alt="指挥流程" src="images/look.gif" prid = '${bean.pid }' data-fn="enterFigure" />
+<%-- 						<img alt="应急处置流程" src="images/look.gif" prid = '<ig:processFormValue pidname="场景相关流程prid" prid="${bean.prid}"/>'  data-fn="enterFigure" /> --%>
 					</td>
 					<td>
-						<img alt="指挥图" src="images/drmEmy.png" prid = '<ig:processFormValue pidname="指挥流程prid" prid="${bean.prid}"/>' data-fn="enterDirect"  />
+						<img alt="指挥图" src="images/drmEmy.png" prid = '${bean.pid }' data-fn="enterDirect"  />
 					</td>
 	       	 		</tr>
 	       	 	</logic:iterate>

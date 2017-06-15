@@ -130,8 +130,10 @@
 							</tr>
 						
 							<tr height="22px">
-								<td class="tdTtitle"> 应急预案名称</td>
-								<td class="tdContent" title="${detailMap.PLANNAME }"> <div style="width: 330px" class="ellips"> ${detailMap.PLANNAME }</div> </td>
+<!-- 								<td class="tdTtitle"> 应急预案名称</td> -->
+<%-- 								<td class="tdContent" title="${detailMap.PLANNAME }"> <div style="width: 330px" class="ellips"> ${detailMap.PLANNAME }</div> </td> --%>
+								<td class="tdTtitle"> 演练形式</td>
+								<td class="tdContent" title="${detailMap.DRILLFORMALITY }"> <div style="width: 330px" class="ellips"> ${detailMap.DRILLFORMALITY }</div></td>
 								<td class="tdTtitle"> 应急场景</td>
 								<td class="tdContent" title="${detailMap.SENCENAME }"> <div style="width: 330px" class="ellips"> ${detailMap.SENCENAME }</div></td>
 							</tr>
@@ -144,10 +146,8 @@
 							</tr>
 							
 							<tr height="22px">
-								<td class="tdTtitle"> 演练形式</td>
-								<td class="tdContent" title="${detailMap.DRILLFORMALITY }"> <div style="width: 330px" class="ellips"> ${detailMap.DRILLFORMALITY }</div></td>
 								<td class="tdTtitle"> 执行部门</td>
-								<td class="tdContent" title="${detailMap.DEPARTMENT }"> <div style="width: 330px" class="ellips"> ${detailMap.DEPARTMENT }</div></td>
+								<td class="tdContent"  colspan="3" title="${detailMap.DEPARTMENT }"> <div style="width: 330px" class="ellips"> ${detailMap.DEPARTMENT }</div></td>
 							</tr>
 							
 							<tr >
@@ -212,6 +212,45 @@
 					</table>
 				</div>
 			</div>
+			
+			<!--content  基本信息内容-->
+			<logic:present name="IGDRM0710VO" property="zgList" >
+				<div id="zgContent" style="margin-top: 10px;">
+	<!-- 				基本信息题目 -->
+					<div  style="width: 989px;height: 28px;">
+						<div style="background-color: #BB0116;width:133px;height:28px;font-family: 宋体;font-size: 12;font-weight: bold;color: #FFFFFF;text-align: center;line-height: 28px;display: inline-block;">
+							整改信息
+						</div>
+						
+					</div>
+	<!-- 				内容 -->
+					<div id="baseContent" style="width: 989px; border: thin;border-width: 1px;border-color: #CACACA;border-style: solid;">
+						<table style="width:933px; margin:0 auto; margin-top: 17px; margin-bottom: 17px;" class="table_style">
+							<thead>
+								<tr >
+									<th width="10%">编号</th>
+									<th width="40%">名称</th>
+									<th width="30%">发起者</th>
+									<th width="10%">发起时间</th>
+									<th width="10%">状态</th>
+								</tr>
+							</thead>
+							<tbody>
+								<logic:iterate id="bean" name="IGDRM0710VO" property="zgList" indexId="index">
+									<tr style='cursor:hand'  onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" 
+								onclick="openFlowDetail('${bean.prid}')">
+										<td>${bean.prserialnum }</td>
+										<td title="${bean.prtitle }"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.prtitle }</div></td>
+										<td title="${bean.prusername }"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.prusername }</div></td>
+										<td>${bean.propentime }</td>
+										<td title="<ig:processDefineTypeValue prid="${bean.prid}"/>"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${bean.prid}"/></div></td>
+									</tr>
+								</logic:iterate>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</logic:present>
 <!-- 			评估内容 -->
 			<div id="contentWarp" style="margin-top: 18px;">
 <!--	评估题目 -->
@@ -1005,6 +1044,12 @@
 				
 				window.location.href = getAppRootUrl()+"/IGDRM0703.do?prpdid=01385";
 			}
+		}
+		/**
+		*点击整改流程弹出流程详细信息
+		*/
+		function openFlowDetail(prid){
+			window.openSubWindow("/IGPRR0112_Disp.do?prid="+prid, '_blank', '1000', '700');	
 		}
 	</script>
 </body>

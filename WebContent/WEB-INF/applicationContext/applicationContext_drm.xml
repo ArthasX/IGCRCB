@@ -369,6 +369,9 @@
 		<property name="drillplanitemBL"  ref="drillplanitemBL" /> 
 		<property name="workFlowDefinitionBL"  ref="workFlowDefinitionBL" /> 
 		<property name="optionSencesBL" ref="optionSencesBL" />
+		<property name="emergencyRelationBL" ref="emergencyRelationBL" />
+		<property name="ig599BL"  ref="ig599BL" />
+		<property name="evaluationContentBL"  ref="evaluationContentBL" />
 	</bean>
 		<bean id="igdrm09BL" class="com.deliverik.infogovernor.drm.bl.IGDRM09BLImpl"> 
 		<property name="ig333BL">

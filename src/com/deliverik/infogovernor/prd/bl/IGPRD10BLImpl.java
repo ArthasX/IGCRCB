@@ -694,31 +694,17 @@ public class IGPRD10BLImpl extends BaseBLImpl implements IGPRD10BL{
 					preTB.setPedblid("igDRMEVENT0103BL");
 					preTB.setPedorder(2);
 					ig413BL.registIG413Info(preTB);
-//					workFlowDefinitionBL.registWorkFlowEventHandler(preTB);
-					
-					// 设定 场景的前后处理事件（判断是否为关闭节点，停止时间）
-//					IG413TB preTB1 = new IG413TB();
-//					preTB1.setPedid(workFlowDefinitionBL.getWorkFlowEventHandlerPK(curPsdid));
-//					preTB1.setPdid(pdid);
-//					preTB1.setPsdid(curPsdid);
-//					preTB1.setPedtype("1");//前处理
-//					preTB1.setPedblid("igDRMEVENT0103BL");
-//					preTB1.setPedorder(1);
-//					ig413BL.registIG413Info(preTB1);
-//					workFlowDefinitionBL.registWorkFlowEventHandler(preTB1);
-					
 					//设定 场景定义各个节点的处理人
-					IG413TB preTB2 = new IG413TB();
-					preTB2.setPedid(workFlowDefinitionBL.getWorkFlowEventHandlerPK(curPsdid));
-					preTB2.setPdid(pdid);
-					preTB2.setPsdid(curPsdid);
-					preTB2.setPedtype("1");// 前处理
-					preTB2.setPedblid("igDRMEVENT0301BL");
-					preTB2.setPedorder(1);
-					ig413BL.registIG413Info(preTB2);
-//					workFlowDefinitionBL.registWorkFlowEventHandler(preTB2);
-					
-					
+					if(!"001".equals(curPsdid.substring(curPsdid.length()-3,curPsdid.length()))){
+						IG413TB preTB2 = new IG413TB();
+						preTB2.setPedid(workFlowDefinitionBL.getWorkFlowEventHandlerPK(curPsdid));
+						preTB2.setPdid(pdid);
+						preTB2.setPsdid(curPsdid);
+						preTB2.setPedtype("1");// 前处理
+						preTB2.setPedblid("igDRMEVENT0301BL");
+						preTB2.setPedorder(1);
+						ig413BL.registIG413Info(preTB2);
+					}
 					IG413TB flagTB = new IG413TB();
 					flagTB.setPedid(workFlowDefinitionBL.getWorkFlowEventHandlerPK(curPsdid));
 					flagTB.setPdid(pdid);
@@ -727,7 +713,6 @@ public class IGPRD10BLImpl extends BaseBLImpl implements IGPRD10BL{
 					flagTB.setPedblid("igDRMEVENT0103BL");
 					flagTB.setPedorder(1);
 					ig413BL.registIG413Info(flagTB);
-//					workFlowDefinitionBL.registWorkFlowEventHandler(flagTB);
 					
 					//将流程图中不需要的元素删除
 					step.remove(base);

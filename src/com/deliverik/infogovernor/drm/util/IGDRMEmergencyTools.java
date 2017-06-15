@@ -2710,6 +2710,7 @@ public class IGDRMEmergencyTools {
 							flowNode.put("stepType", "finish");
 							
 							flowNode.put("factStartTime",format.format((Date) nowNode.get("factstarttime")));
+							flowNode.put("factOverTime",format.format((Date) nowNode.get("factstoptime")));
 						}
 					} else {
 						// 节点实际使用时间

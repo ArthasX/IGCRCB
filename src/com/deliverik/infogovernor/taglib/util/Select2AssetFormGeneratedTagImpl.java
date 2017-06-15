@@ -138,9 +138,9 @@ public class Select2AssetFormGeneratedTagImpl extends FormGeneratedTagImpl{
 			displayflag = "none";
 		}
 		//标签的生成信息
-		tagString.append(" <select class=\"js-example-basic-single js-states form-control\" style=\"width:180px;display:"+displayflag+";\" name=\"pivarusername[")
+		tagString.append(" <select class=\"js-example-basic-single js-states form-control\" style=\"width:180px;display:"+displayflag+";\" ")
 		.append(index)
-		.append("]\" id=\"assetSelector"+pidid+"\"  >");
+		.append("  id=\"assetSelector"+pidid+"\"  >");
 		tagString.append("</select>");
 		tagString.append("<script>asmNum=").append(index+1).append(";</script>");
 		tagString.append("<input type=\"hidden\" name=\"entityId["+index+"]\" id=\"entity").append(pidid).append("\" eiid=\"").append(pidid + "#"+eiid).append("\" >");

@@ -3,10 +3,16 @@
  */
 package com.deliverik.infogovernor.drm.bl;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,7 +20,15 @@ import java.util.Map;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.apache.poi.POIXMLDocument;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.poi.xwpf.usermodel.XWPFParagraph;
+import org.apache.poi.xwpf.usermodel.XWPFRun;
+import org.apache.poi.xwpf.usermodel.XWPFTable;
+import org.apache.poi.xwpf.usermodel.XWPFTableCell;
+import org.apache.poi.xwpf.usermodel.XWPFTableRow;
 import org.apache.struts.action.ActionMessage;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTcPr;
 import org.springframework.beans.BeanUtils;
 
 import com.deliverik.framework.base.BLException;
@@ -37,24 +51,35 @@ import com.deliverik.framework.soc.asset.model.condition.SOC0129SearchCondImpl;
 import com.deliverik.framework.soc.asset.model.entity.SOC0124VW;
 import com.deliverik.framework.user.bl.task.UserBL;
 import com.deliverik.framework.user.model.UserInfo;
+import com.deliverik.framework.utility.ResourceUtility;
 import com.deliverik.framework.workflow.WorkFlowDefinitionBL;
 import com.deliverik.framework.workflow.prd.model.IG333Info;
 import com.deliverik.framework.workflow.prd.model.condition.IG333SearchCondImpl;
 import com.deliverik.framework.workflow.prr.bl.task.IG500BL;
+import com.deliverik.framework.workflow.prr.bl.task.IG599BL;
 import com.deliverik.framework.workflow.prr.model.IG500Info;
+import com.deliverik.framework.workflow.prr.model.IG599Info;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
+import com.deliverik.framework.workflow.prr.model.condition.IG599SearchCondImpl;
 import com.deliverik.infogovernor.drm.IGDRMCONSTANTS;
 import com.deliverik.infogovernor.drm.bl.task.DrillplanitemBL;
+import com.deliverik.infogovernor.drm.bl.task.EmergencyRelationBL;
+import com.deliverik.infogovernor.drm.bl.task.EvaluationContentBL;
 import com.deliverik.infogovernor.drm.bl.task.OptionSencesBL;
 import com.deliverik.infogovernor.drm.bl.task.StructureRoleBL;
 import com.deliverik.infogovernor.drm.dto.IGDRM07DTO;
+import com.deliverik.infogovernor.drm.form.IGDRM0701Form;
 import com.deliverik.infogovernor.drm.form.IGDRM0702Form;
 import com.deliverik.infogovernor.drm.form.IGDRM0710Form;
+import com.deliverik.infogovernor.drm.model.EmergencyRelationInfo;
+import com.deliverik.infogovernor.drm.model.EvaluationContentInfo;
 import com.deliverik.infogovernor.drm.model.OptionSencesInfo;
 import com.deliverik.infogovernor.drm.model.StructureRoleInfo;
+import com.deliverik.infogovernor.drm.model.condition.EmergencyRelationSearchCondImpl;
+import com.deliverik.infogovernor.drm.model.condition.EvaluationContentSearchCondImpl;
 import com.deliverik.infogovernor.drm.model.condition.OptionSencesSearchCondImpl;
 import com.deliverik.infogovernor.drm.model.condition.StructureRoleSearchCondImpl;
-
+import com.deliverik.infogovernor.drm.util.IGDRMEmergencyTools;  
 /**
  * 演练方案BL
  * 
@@ -83,8 +108,36 @@ public class IGDRM07BLImpl extends BaseBLImpl implements IGDRM07BL {
 
 	protected UserBL userBL;
 
+	 protected EmergencyRelationBL emergencyRelationBL;
+	 
+	 protected EvaluationContentBL evaluationContentBL;
+	 
+	 private IG599BL ig599BL;
+	 
+	/**
+	 * @param ig599bl the ig599BL to set
+	 */
+	public void setIg599BL(IG599BL ig599bl) {
+		ig599BL = ig599bl;
+	}
+
+	/**
+	 * @param evaluationContentBL the evaluationContentBL to set
+	 */
+	public void setEvaluationContentBL(EvaluationContentBL evaluationContentBL) {
+		this.evaluationContentBL = evaluationContentBL;
+	}
+
+	/**
+	 * @param emergencyRelationBL the emergencyRelationBL to set
+	 */
+	public void setEmergencyRelationBL(EmergencyRelationBL emergencyRelationBL) {
+		this.emergencyRelationBL = emergencyRelationBL;
+	}
+
 	/** 备选场景BL */
 	protected OptionSencesBL optionSencesBL;
+	
 
 	public void setOptionSencesBL(OptionSencesBL optionSencesBL) {
 		this.optionSencesBL = optionSencesBL;
@@ -180,7 +233,7 @@ public class IGDRM07BLImpl extends BaseBLImpl implements IGDRM07BL {
 		pDto.setTotalCount(totalCount);
 		ig500cond.setOrder("propentime");
 		ig500cond.setSing("DESC");
-		List<IG500Info> ig500InfoList = ig500BL.searchIG500Info(ig500cond, pDto.getFromCount(), pDto.getPageDispCount());
+		List<IG500Info> ig500InfoList = ig500BL.searchDrillProcess(ig500cond, pDto.getFromCount(), pDto.getPageDispCount());
 		dto.setIg500InfoList(ig500InfoList);
 		return dto;
 	}
@@ -665,4 +718,247 @@ public class IGDRM07BLImpl extends BaseBLImpl implements IGDRM07BL {
 	public void setDrillplanitemBL(DrillplanitemBL drillplanitemBL) {
 		this.drillplanitemBL = drillplanitemBL;
 	}
+	/**
+	 * 导出演练报告
+	 * @param dto
+	 * @return
+	 * @throws BLException
+	 */
+	public IGDRM07DTO exportDrillDetail(IGDRM07DTO dto) throws BLException{
+		String filepathString = ResourceUtility.getString("EXCEL_FILE_ROOT_PATH")+File.separator+"IGDRM0712.docx";//模板路径
+		//获取演练流程
+		IG500Info ig500Info = dto.getIg500Info();
+		//获取处置流程prid
+		EmergencyRelationSearchCondImpl erCond = new EmergencyRelationSearchCondImpl();
+		erCond.setParprid(ig500Info.getPrid());
+		List<EmergencyRelationInfo> drillList = emergencyRelationBL.searchEmergencyRelationInfo(erCond, 0, 0);
+		Integer prid =0;
+		//判断演练是否直接发起应急处置流程，如果不是则需要再查询指挥流程后再查找应急处置流程prid
+//		if("0".equals(IGDRMCONSTANTS.DRILL_RELATE_SCENE)){
+			prid = drillList.get(0).getCldprid();
+//		}else{
+//			erCond.setParprid(drillList.get(0).getCldprid());
+//			erCond.setRelatetype(IGDRMCONSTANTS.DRILL_RELATE_DIRECT);
+//			List<EmergencyRelationInfo> ecpList = emergencyRelationBL.searchEmergencyRelationInfo(erCond, 0, 0);
+//			prid = ecpList.get(0).getCldprid();
+//		}
+		//获取处置流程实例
+		IG500Info czInfo =ig500BL.searchIG500InfoByKey(prid);
+		//应急处置使用时间
+		Map<String, Object> processUsedTime = IGDRMEmergencyTools.getProcessUsedTime(prid);
+		Map<String, String> map = new HashMap<String, String>();
+		map.put("prdesc", ig500Info.getPrdesc());
+		//开始时间和关闭时间
+		String opentimeAndCloseTime = ((czInfo.getPropentime().replaceFirst("/","年")).replaceFirst("/","月")).replaceFirst(" ", "日")+"—"+((czInfo.getPrclosetime().replaceFirst("/","年")).replaceFirst("/","月")).replaceFirst(" ", "日");
+		map.put("openandclosetime", opentimeAndCloseTime);
+		//处理用时
+		String[] allTime = processUsedTime.get("time").toString().split(":");
+		map.put("alltime",Integer.parseInt(allTime[0])+"小时"+ Integer.parseInt(allTime[1])+"分钟"+Integer.parseInt(allTime[2])+"秒");
+		map.put("starttime",((czInfo.getPropentime().replaceFirst("/","年")).replaceFirst("/","月")).replaceFirst(" ", "日"));
+		map.put("overtime",((czInfo.getPrclosetime().replaceFirst("/","年")).replaceFirst("/","月")).replaceFirst(" ", "日"));
+		Map<String, Object> flowMessageMap = IGDRMEmergencyTools.getFlow(prid);
+		//遍历节点信息，获取节点的排序
+		Map<String,String> flowStepSortMap = new HashMap<String,String>();
+		if(flowMessageMap!=null &&flowMessageMap.size()>0){
+			List<Map<String,Object>> flowStepList = (List<Map<String, Object>>) flowMessageMap.get("stepList");
+			if(flowStepList!=null && flowStepList.size()>0){
+				for(Map<String,Object> stepMap:flowStepList){
+					flowStepSortMap.put(stepMap.get("psdid").toString(), stepMap.get("sortNumber").toString());
+				}
+			}
+			
+		}
+		
+		//查询整改意见
+		IG599SearchCondImpl ig599Cond = new IG599SearchCondImpl();
+		ig599Cond.setPivarname("演练流程prid");
+		ig599Cond.setPdid("02280");
+		ig599Cond.setPivarvalue(ig500Info.getPrid().toString());
+		//获取整改流程prid
+		String zgContext = "";
+		List<IG599Info> ig599List= ig599BL.searchIG599InfosByCond(ig599Cond);
+		if(ig599List!=null && ig599List.size()>0){
+			int index = 1;
+			for(IG599Info info:ig599List){
+				//获取整改prid
+				Integer zgPrid = info.getPrid();
+				//计划整改内容
+				ig599Cond = new IG599SearchCondImpl();
+				ig599Cond.setPivarname("计划整改内容");
+				ig599Cond.setPrid(zgPrid);
+				List<IG599Info> zgList= ig599BL.searchIG599InfosByCond(ig599Cond);
+				zgContext+="    "+index+"、"+zgList.get(0).getPivarvalue().replaceAll("&nbsp;", "")+"。&&";
+				index++;
+			}
+		}else{
+			zgContext = "    暂无修改内容。";
+		}
+		//获取评估内容
+		EvaluationContentSearchCondImpl evaluationCond = new EvaluationContentSearchCondImpl();
+		evaluationCond.setPrid(prid);
+		List<EvaluationContentInfo> evaluationContextList = evaluationContentBL.searchEvaluationContent(evaluationCond);
+		String evaluatecontextStr = "";
+		if(evaluationContextList!=null && evaluationContextList.size()>0){
+			int index = 1;
+			for(EvaluationContentInfo info:evaluationContextList){
+				if(info.getSortId()!=0){
+					evaluatecontextStr +="    "+index+"、步骤"+flowStepSortMap.get(info.getPsdid())+"阶段："+info.getStepName()+"&&      原因分析及解决方法："+info.getSuggestion()+"。&&";
+					index++;
+				}
+			}
+		}else{
+			evaluatecontextStr = "暂无问题。";
+		}
+		//添加替换评估内容
+		map.put("evaluate",evaluatecontextStr);
+		//添加替换整改内容
+		map.put("rectify",zgContext);
+		replaceAndGenerateWord(filepathString,dto.getOps(),map,flowMessageMap);
+		return dto;
+	}
+	
+	
+    
+	/**
+	 * 替换word中需要替换的字符  
+	 * @param srcPath 模板路径
+	 * @param ops 输出流
+	 * @param map 替换字符的map  key word中需要替换的文字，value 替换后的文字
+	 * @param flowMessageMap 流程信息
+	 */
+    private void replaceAndGenerateWord(String srcPath,  
+    		OutputStream ops, Map<String, String> map,Map<String, Object> flowMessageMap) {  
+        String[] sp = srcPath.split("\\.");  
+        if ((sp.length > 0) ) {
+        	 XWPFDocument document =null;
+            try {  
+                document = new XWPFDocument(  
+                        POIXMLDocument.openPackage(srcPath));  
+                // 替换段落中的指定文字  
+                Iterator<XWPFParagraph> itPara = document  
+                        .getParagraphsIterator();  
+                while (itPara.hasNext()) {  
+                    XWPFParagraph paragraph = (XWPFParagraph) itPara.next();  
+                    List<XWPFRun> runs = paragraph.getRuns();
+                    for (int i = 0; i < runs.size(); i++) {  
+                        String oneparaString = runs.get(i).getText(  
+                                runs.get(i).getTextPosition());  
+                        if("rectify".equals(oneparaString)){
+                        	String[]  oneparaArr= map.get(oneparaString).split("&&");
+                			for(int index =0;index<oneparaArr.length;index++){
+                				runs.get(i).setText(oneparaArr[index], index);
+                				if(index<oneparaArr.length-1){
+                					runs.get(i).addCarriageReturn();
+                				}
+                			}
+                        }else if("evaluate".equals(oneparaString)){
+                        	String[]  oneparaArr= map.get(oneparaString).split("&&");
+                			for(int index =0;index<oneparaArr.length;index++){
+                				runs.get(i).setText(oneparaArr[index], index);
+                				runs.get(i).addCarriageReturn();
+                			}
+                        }
+                        else{
+                        	if(map.get(oneparaString)!=null){
+                        		oneparaString = oneparaString.replace(oneparaString, map.get(oneparaString)); 
+                        		runs.get(i).setText(oneparaString, 0);
+                        	}
+                        }
+                    }  
+                }  
+                //获取表格，添加表格行数并且赋值
+                Iterator<XWPFTable> tablesIterator = document.getTablesIterator();
+                List<Map<String,Object>> stepList= (List<Map<String,Object>>)flowMessageMap.get("stepList");
+                while(tablesIterator.hasNext()){
+        			XWPFTable next = tablesIterator.next();
+        			//获取流程节点长度
+        			for(int row =0;row<stepList.size();row++){
+        				XWPFTableRow createRow = next.createRow();
+        				List<XWPFTableCell> tableCells = createRow.getTableCells();
+        				Map<String,Object> step = stepList.get(row);
+        				//获取节点处理日志
+        				List<Map<String,String>> stepMessageList = (List<Map<String, String>>) step.get("stepMessageList");
+        				//序号
+        				XWPFTableCell numberCell = tableCells.get(0);
+        				//设置单元格宽度
+        				CTTcPr numberCellPr = numberCell.getCTTc().addNewTcPr();
+        				numberCellPr.addNewTcW().setW(BigInteger.valueOf(600));
+        				XWPFParagraph numberPio =numberCell.getParagraphArray(0);
+        				XWPFRun numberRio = numberPio.createRun();
+        				numberRio.setFontSize(8);
+        				numberRio.setText(step.get("sortNumber").toString());
+        				
+        				//节点名称
+        				XWPFTableCell stepNameCell = tableCells.get(1);
+        				//设置单元格宽度
+        				CTTcPr stepNameCellPr = stepNameCell.getCTTc().addNewTcPr();
+        				stepNameCellPr.addNewTcW().setW(BigInteger.valueOf(1200));
+        				XWPFParagraph stepNamePio =stepNameCell.getParagraphArray(0);
+        				XWPFRun stepNameRio = stepNamePio.createRun();
+        				stepNameRio.setFontSize(8);
+        				stepNameRio.setText(step.get("psdname").toString());
+        				//实际开始时间
+        				XWPFTableCell factStartTimeCell = tableCells.get(2);
+        				//设置单元格宽度
+        				CTTcPr factStartTimeCellPr = factStartTimeCell.getCTTc().addNewTcPr();
+        				factStartTimeCellPr.addNewTcW().setW(BigInteger.valueOf(1200));
+        				XWPFParagraph factStartTimePio =factStartTimeCell.getParagraphArray(0);
+        				XWPFRun factStartTimeRio = factStartTimePio.createRun();
+        				factStartTimeRio.setFontSize(8);
+        				factStartTimeRio.setText(step.get("factStartTime").toString());
+        				//实际结束时间
+        				XWPFTableCell factOverTimeCell = tableCells.get(3);
+        				//设置单元格宽度
+        				CTTcPr factOverTimeCellPr = factOverTimeCell.getCTTc().addNewTcPr();
+        				factOverTimeCellPr.addNewTcW().setW(BigInteger.valueOf(1200));
+        				XWPFParagraph factOverTimePio =factOverTimeCell.getParagraphArray(0);
+        				XWPFRun factOverTimeRio = factOverTimePio.createRun();
+        				factOverTimeRio.setFontSize(8);
+        				factOverTimeRio.setText(step.get("factOverTime").toString());
+        				
+        				//处理日志
+        				XWPFTableCell messageCell = tableCells.get(4);
+        				//设置单元格宽度
+        				CTTcPr messageCellPr = messageCell.getCTTc().addNewTcPr();
+        				messageCellPr.addNewTcW().setW(BigInteger.valueOf(2400));
+        				XWPFParagraph messagePio =messageCell.getParagraphArray(0);
+        				XWPFRun messageRio = messagePio.createRun();
+        				messageRio.setFontSize(8);
+        				messageRio.setText(stepMessageList.get(0).get("logMsg"));
+        				//处理人
+        				XWPFTableCell peopleCell = tableCells.get(5);
+        				//设置单元格宽度
+        				CTTcPr peopleCellPr = peopleCell.getCTTc().addNewTcPr();
+        				peopleCellPr.addNewTcW().setW(BigInteger.valueOf(1200));
+        				XWPFParagraph peoplePio =peopleCell.getParagraphArray(0);
+        				XWPFRun peopleRio = peoplePio.createRun();
+        				peopleRio.setFontSize(8);
+        				peopleRio.setText(step.get("people").toString());
+        			}
+        		}
+                document.write(ops);  
+                ops.close();  
+            } catch (FileNotFoundException e) {  
+                e.printStackTrace();  
+            } catch (IOException e) {  
+                e.printStackTrace();  
+            }
+        } 
+    }
+
+    /**
+     *根据prid查询流程实例 
+     * @param dto
+     * @return
+     * @throws BLException 
+     */
+    public IGDRM07DTO searchDrillByPrid(IGDRM07DTO dto) throws BLException{
+    	IGDRM0701Form form = dto.getIgdrm0701Form();
+    	//获取流程id号
+    	Integer prid = form.getPrid();
+    	//获取演练流程实例
+    	IG500Info ig500Info = ig500BL.searchIG500InfoByKey(prid);
+    	dto.setIg500Info(ig500Info);
+    	return dto;
+    }
 }

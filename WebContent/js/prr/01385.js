@@ -71,13 +71,13 @@ function selectEntity(index,pidid,syscoding){
 	}else{
 		if(syscoding!=null&&syscoding!=undefined&&syscoding.substring(0,6)=='999060'){
 			
-			var sp_eiid = jQ("#pidid"+pdid+"016").val();
-			if(sp_eiid==''){
-				alert("请先选择专项预案！");
-			}else{
+//			var sp_eiid = jQ("#pidid"+pdid+"016").val();
+//			if(sp_eiid==''){
+//				alert("请先选择专项预案！");
+//			}else{
 				
-				openSubIGCOM0302PARAM('?pidid='+pidid + '&esyscoding=' + syscoding+'&sp_eiid='+sp_eiid);
-			}
+				openSubIGCOM0302PARAM('?pidid='+pidid + '&esyscoding=' + syscoding+'&scenceCategory=1');
+//			}
 		}else{
 			
 			openSubIGCOM0302PARAM('?pidid='+pidid + '&esyscoding=' + syscoding);

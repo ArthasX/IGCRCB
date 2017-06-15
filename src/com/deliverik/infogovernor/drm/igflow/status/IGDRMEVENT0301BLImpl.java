@@ -132,7 +132,6 @@ public class IGDRMEVENT0301BLImpl extends BaseBLImpl implements WorkFlowEventHan
     		}
     		
     	}else{
-
     		IG898SearchCondImpl ig898Cond = new IG898SearchCondImpl();
 			Integer prid = 0;
 			if (CollectionUtils.isNotEmpty(drillList)) {
@@ -144,11 +143,10 @@ public class IGDRMEVENT0301BLImpl extends BaseBLImpl implements WorkFlowEventHan
             ig898Cond.setPvalue(psdid);
             List<IG898Info> participantList =  ig898BL.searchIG898(ig898Cond);
             if(participantList != null && participantList.size() > 0){
-            	IG333Info ig333Info = workFlowDefinitionBL.searchProcessStatusDefByKey(psdid);
             	//添加流程实施处理人
            	 	StatusParticipant participant = new StatusParticipant(bean.getLogInfo());
            		//节点状态
-           	 	participant.setStatusname(ig333Info.getPsdname());
+           	 	participant.setStatuscode(psdid);
            	    //删除跃迁节点的原有参与者
                 flowSetBL.deleteStatusParticipant(participant);
                 

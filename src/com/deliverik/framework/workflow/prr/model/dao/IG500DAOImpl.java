@@ -29,6 +29,7 @@ import com.deliverik.framework.workflow.prr.model.IG500Info;
 import com.deliverik.framework.workflow.prr.model.IG500ONLYInfo;
 import com.deliverik.framework.workflow.prr.model.IG677Info;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCond;
+import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG677SearchCond;
 import com.deliverik.framework.workflow.prr.model.entity.IG500ONLYTB;
 import com.deliverik.framework.workflow.prr.model.entity.IG500TB;
@@ -119,6 +120,41 @@ public class IG500DAOImpl extends BaseHibernateDAOImpl<IG500Info> implements IG5
 		
 		List<IG500Info> ret = findByCriteria(c, start, count);
 		return ret;
+	}
+	
+	/**
+	 * ÑÝÁ·Á÷³Ì²éÑ¯
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<IG500Info> searchDrillProcess(IG500SearchCond cond,final int start, final int count){
+		Session session = getSession();
+		
+		StringBuffer querySQL = new StringBuffer(session.getNamedQuery("IG500DAO.searchDrillProcess").getQueryString().replaceAll(":pdid", "'"+cond.getPrpdid()+"'"));
+		
+		IG500SearchCondImpl newCond = (IG500SearchCondImpl)cond;
+		
+		newCond.setPrpdid(null);
+		
+		getSQL(newCond, querySQL);
+		
+		querySQL.append(" order by propentime desc) where rownumber_ >"+start+" and rownumber_<="+(start+count));
+		
+		SQLQuery q = session.createSQLQuery(querySQL.toString());
+		
+		q.setProperties(cond);
+		
+		q.addEntity("IG500TB",IG500TB.class);
+		
+//		setFetchPoint(q, start, count);
+		
+		List<IG500Info> list = q.list();
+		session.clear();
+		return list;
+		
+		
 	}
 	/**
 	 * ?????¨¬?¡Â???¨ª

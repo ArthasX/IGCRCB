@@ -156,6 +156,7 @@
 									<option value="cur">处置中</option>
 									<option value = "his">处置完成</option>
 									<option value="wait">未开始</option>
+									<option value="undone">未完成</option>
 								</select>
 							</td>
 							<td width="17%" style="text-align: center;" > <button  id="showLog"  class="btn hbth" >查看日志</button></td>

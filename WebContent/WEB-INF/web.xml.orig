@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app id="WebApp_ID" version="2.4"
+	xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>InfoGovernor</display-name>
+	
+	<!-- 2012/08/14 -->
+	<!-- Default locale setting.
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOCALE</param-name>
+		<param-value>zh-cn</param-value>
+	</context-param>
+
+	<!--  
+		Default timezone setting.
+		Examples: "Europe/Paris", "GMT+1".
+		Defaults to the container's timezone.		
+	 -->
+	<context-param>
+		<param-name>BIRT_VIEWER_TIMEZONE</param-name>
+		<param-value>GMT+8</param-value>
+	</context-param>
+	
+	<!--
+		Report resources directory for preview. Defaults to ${birt home}
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_WORKING_FOLDER</param-name>
+<!-- 		<param-value>/opt/IG/IGReports/</param-value> -->
+		<param-value>C:/SOCFile/IG/IGReports/</param-value>
+	</context-param>
+	
+	<!--
+		Temporary document files directory. Defaults to ${birt home}/documents
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_DOCUMENT_FOLDER</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!--
+		Flag whether the report resources can only be accessed under the
+		working folder. Defaults to true
+	-->
+	<context-param>
+		<param-name>WORKING_FOLDER_ACCESS_ONLY</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!--
+		Temporary image/chart directory. Defaults to ${birt home}/report/images
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_IMAGE_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Engine log directory. Defaults to ${birt home}/logs -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Report engine log level -->
+	<context-param>
+		<param-name>BIRT_VIEWER_LOG_LEVEL</param-name>
+		<param-value>WARNING</param-value>
+	</context-param>
+
+	<!--
+		Directory where to store all the birt report script libraries (JARs).
+		Defaults to ${birt home}/scriptlib
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_SCRIPTLIB_DIR</param-name>
+		<param-value></param-value>
+	</context-param>
+	
+	<!-- Resource location directory. Defaults to ${birt home} -->
+	<context-param>
+		<param-name>BIRT_RESOURCE_PATH</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Preview report rows limit. An empty value means no limit. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_ROWS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!--
+		Max cube fetch levels limit for report preview (Only used when
+		previewing a report design file using the preview pattern)
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_ROWLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+	<context-param>
+		<param-name>BIRT_VIEWER_MAX_CUBE_COLUMNLEVELS</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Memory size in MB for creating a cube. -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CUBE_MEMORY_SIZE</param-name>
+		<param-value></param-value>
+	</context-param>
+
+	<!-- Defines the BIRT viewer configuration file -->
+	<context-param>
+		<param-name>BIRT_VIEWER_CONFIG_FILE</param-name>
+		<param-value>WEB-INF/viewer.properties</param-value>
+	</context-param>
+
+	<!--
+		Flag whether to allow server-side printing. Possible values are "ON"
+		and "OFF". Defaults to "ON".
+	-->
+	<context-param>
+		<param-name>BIRT_VIEWER_PRINT_SERVERSIDE</param-name>
+		<param-value>OFF</param-value>
+	</context-param>
+
+	<!--
+		Flag whether to force browser-optimized HTML output. Defaults to true
+	-->
+	<context-param>
+		<param-name>HTML_ENABLE_AGENTSTYLE_ENGINE</param-name>
+		<param-value>true</param-value>
+	</context-param>
+
+	<!--
+		Filename generator class/factory to use for the exported reports.
+	-->
+	<context-param>
+		<param-name>BIRT_FILENAME_GENERATOR_CLASS</param-name>
+		<param-value>org.eclipse.birt.report.utility.filename.DefaultFilenameGenerator</param-value>
+	</context-param>
+	
+	<!--
+		Viewer Filter used to set the request character encoding to UTF-8.
+	-->
+	<filter>
+    	<filter-name>ViewerFilter</filter-name>
+        <filter-class>org.eclipse.birt.report.filter.ViewerFilter</filter-class>
+	</filter>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>ViewerServlet</servlet-name>
+    </filter-mapping>
+    <filter-mapping>
+        <filter-name>ViewerFilter</filter-name>
+        <servlet-name>EngineServlet</servlet-name>
+    </filter-mapping>   				
+	<!-- Viewer Servlet Context Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerServletContextListener</listener-class>
+	</listener>
+	<!-- Viewer HttpSession Listener -->
+	<listener>
+		<listener-class>org.eclipse.birt.report.listener.ViewerHttpSessionListener</listener-class>
+	</listener>
+	
+	<session-config>
+		<session-timeout>600</session-timeout>
+	</session-config>
+	
+	<servlet>
+		<servlet-name>pushlet</servlet-name>
+		<servlet-class>nl.justobjects.pushlet.servlet.Pushlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pushlet</servlet-name>
+		<url-pattern>/pushlet.srv</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>action</servlet-name>
+		<servlet-class>com.system.plugins.PluginsConfigLoader</servlet-class>
+		<init-param>
+			<param-name>config</param-name>
+			<param-value>
+			/WEB-INF/struts-config/struts-config_alm.xml,
+			/WEB-INF/struts-config/struts-config_aff.xml,
+			/WEB-INF/struts-config/struts-config_com.xml,
+			/WEB-INF/struts-config/struts-config_change.xml,
+			/WEB-INF/struts-config/struts-config_asm.xml,
+			/WEB-INF/struts-config/struts-config_svc.xml,
+			/WEB-INF/struts-config/struts-config_sym.xml,
+			/WEB-INF/struts-config/struts-config_sya.xml,
+			/WEB-INF/struts-config/struts-config_kgm.xml,
+			/WEB-INF/struts-config/struts-config_sdl.xml,
+			/WEB-INF/struts-config/struts-config_fin.xml,
+			/WEB-INF/struts-config/struts-config_prj.xml,
+			/WEB-INF/struts-config/struts-config_wkm.xml,
+			/WEB-INF/struts-config/struts-config_prm.xml,
+			/WEB-INF/struts-config/struts-config_sch.xml,
+			/WEB-INF/struts-config/struts-config_prd.xml,
+			/WEB-INF/struts-config/struts-config_ris.xml,
+			/WEB-INF/struts-config/struts-config_rpt.xml,
+			/WEB-INF/struts-config/struts-config_prr.xml,
+			/WEB-INF/struts-config/struts-config_dut.xml,
+			/WEB-INF/struts-config/struts-config_mnt.xml,
+			/WEB-INF/struts-config/struts-config_items.xml,
+			/WEB-INF/struts-config/struts-config_iop.xml,
+			/WEB-INF/struts-config/struts-config_mtp.xml,
+			/WEB-INF/struts-config/struts-config_drm.xml,
+			/WEB-INF/struts-config/struts-config_lom.xml,
+			/WEB-INF/struts-config/struts-config_dbm.xml,
+			/WEB-INF/struts-config/struts-config_dev.xml,
+			/WEB-INF/struts-config/struts-config_dbs.xml,
+			/WEB-INF/struts-config/struts-config_cim.xml,
+			/WEB-INF/struts-config/struts-config_aim.xml,
+			/WEB-INF/struts-config/struts-config_nms.xml,
+			/WEB-INF/struts-config/struts-config_vir.xml,
+			/WEB-INF/struts-config/struts-config_aut.xml,
+			/WEB-INF/struts-config/struts-config_ram.xml,
+			<!-- SOC流程使用 -->
+			/WEB-INF/struts-config/struts-config_prr_soc.xml,
+			/WEB-INF/struts-config/struts-config_srv_soc.xml,
+			/WEB-INF/struts-config/struts-config_wkm_soc.xml,
+			/WEB-INF/struts-config/struts-config_sdl_soc.xml,
+			/WEB-INF/struts-config/struts-config_sta.xml,
+			/WEB-INF/struts-config/struts-config_mtp_soc.xml,			
+			/WEB-INF/struts-config/struts-config_zwj.xml,	
+			/WEB-INF/struts-config/struts-config_iam.xml,
+			<!-- 监管报表 -->
+			/WEB-INF/struts-config/struts-config_smr.xml,
+			<!-- 武警POC使用 -->
+			/WEB-INF/struts-config/struts-config_emo.xml,
+			
+						<!-- 配置一致性比对 -->	
+			/WEB-INF/struts-config/struts-config_cic.xml,
+			<!-- syslog -->
+			/WEB-INF/struts-config/struts-config_syslog.xml,
+			<!-- 常熟农商银行 -->
+			/WEB-INF/struts-config/struts-config_crc.xml,
+			<!-- IGCam远程部署 -->
+			/WEB-INF/struts-config/struts-config_rdp.xml,	
+			<!-- 风险管理 -->
+			/WEB-INF/struts-config/struts-config_fxk.xml,
+			<!-- 风险策略 -->
+			/WEB-INF/struts-config/struts-config_ven.xml,
+			/WEB-INF/struts-config/struts-config_dwp.xml,
+<<<<<<< HEAD
+			
+			/WEB-INF/struts-config/struts-config_wki.xml,
+			<!-- 科技服务请求菜单展示 -->
+			/WEB-INF/struts-config/struts-config_mnu.xml
+=======
+			<!-- 工作项管理 -->
+			/WEB-INF/struts-config/struts-config_wim.xml,
+>>>>>>> dlk
+			</param-value>
+		</init-param>
+		<init-param>
+			<param-name>chainConfig</param-name>
+			<param-value>/WEB-INF/chain-config.xml</param-value>
+		</init-param>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+
+	<!-- Standard Action Servlet Mapping -->
+	<servlet-mapping>
+		<servlet-name>action</servlet-name>
+		<url-pattern>*.do</url-pattern>
+	</servlet-mapping>
+	
+	<!-- 2012/08/14 -->
+	<!-- Viewer Servlet, Supports SOAP -->
+	<servlet>
+		<servlet-name>ViewerServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.ViewerServlet</servlet-class>
+	</servlet>
+	<!-- Engine Servlet -->
+	<servlet>
+		<servlet-name>EngineServlet</servlet-name>
+		<servlet-class>org.eclipse.birt.report.servlet.BirtEngineServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>
+		Apache-Axis Servlet</display-name>
+		<servlet-name>AxisServlet</servlet-name>
+		<servlet-class>
+		org.apache.axis.transport.http.AxisServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<display-name>
+		Axis Admin Servlet</display-name>
+		<servlet-name>AdminServlet</servlet-name>
+		<servlet-class>
+		org.apache.axis.transport.http.AdminServlet</servlet-class>
+		<load-on-startup>100</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/frameset</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ViewerServlet</servlet-name>
+		<url-pattern>/run</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/preview</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/download</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/parameter</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/document</url-pattern>
+	</servlet-mapping>	
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/output</url-pattern>
+	</servlet-mapping>		
+	<servlet-mapping>
+		<servlet-name>EngineServlet</servlet-name>
+		<url-pattern>/extract</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/servlet/AxisServlet</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>*.jws</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AxisServlet</servlet-name>
+		<url-pattern>/services/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AdminServlet</servlet-name>
+		<url-pattern>/servlet/AdminServlet</url-pattern>
+	</servlet-mapping>
+	
+	<filter>
+		<filter-name>SessionFilter</filter-name>
+		<filter-class>com.deliverik.infogovernor.common.SessionFilter</filter-class>
+		<init-param>
+			<param-name>loginPage</param-name>
+			<param-value>IGCOM0103.do</param-value>
+		</init-param>
+		<!-- 2012/08/14增加,/IGCOM0104.do,/IGBOMC.do -->
+		<init-param>
+			<param-name>permUri</param-name>
+			<param-value>
+			/,/index.jsp,/IGCOM0101_Disp.do,/IGCOM0101.do,/IGCOM0103.do,/IGCOM0104.do,/IGBOMC.do,/IGSERVICE0101.do,/IGNMS0101_Save.do,/IGNMS0104.do,/IGCOM0302_Disp.do
+			</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>*.do</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>SessionFilter</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.html</welcome-file>
+		<welcome-file>index.htm</welcome-file>
+		<welcome-file>index.jsp</welcome-file>
+		<welcome-file>default.html</welcome-file>
+		<welcome-file>default.htm</welcome-file>
+		<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+
+	<jsp-config>
+		<taglib>
+			<taglib-uri>/tags/struts-bean</taglib-uri>
+			<taglib-location>/WEB-INF/tags/struts-bean.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-html</taglib-uri>
+			<taglib-location>/WEB-INF/tags/struts-html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-logic</taglib-uri>
+			<taglib-location>/WEB-INF/tags/struts-logic.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/struts-nested</taglib-uri>
+			<taglib-location>/WEB-INF/tags/struts-nested.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>/tags/ig-tags</taglib-uri>
+			<taglib-location>/WEB-INF/tags/ig-tags.tld</taglib-location>
+		</taglib>
+		<!-- Birt的tag -->
+		<taglib>
+			<taglib-uri>/birt.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tlds/birt.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+</web-app>

@@ -618,6 +618,8 @@ function selectEntity(index,pidid,syscoding){
 }
 /**业务系统回调*/
 function setParamDRM2101(eid, elabel,ename,eiid, eilabel, einame,ecategory,pidid, eiversion,esyscoding,eiid_id) {
+	
+// 	alert(11);
 	if(setEntityObj != null){
 		var showvalue = null;
 		var showvalues = setEntityObj.parentElement.childNodes;

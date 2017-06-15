@@ -528,7 +528,7 @@ function returnDateOnDblClick(flag){
 }
 
 document.onclick = function(){
-	if(WebCalendar.eventSrc != window.event.srcElement) hiddenCalendar();
+	if(WebCalendar&&WebCalendar.eventSrc&&WebCalendar.eventSrc != window.event.srcElement) hiddenCalendar();
 };
 //ÔÂ·Ý¿Ø¼þ
 function showMonth(obj){

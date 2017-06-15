@@ -223,7 +223,17 @@ public class IGDRM0701Action extends BaseAction {
 			super.<IGDRM07011VO>setVO(req, vo);
 			log.debug("========应急指挥查询结束========");
 		}
-		
+		//导出演练报告
+		if("EXPORT".equals(mapping.getParameter())){
+			dto.setIgdrm0701Form(form);
+			//获取演练流程
+			dto = ctlBL.searchDrillByPrid(dto);
+			res.reset();// 清空输出流
+			res.setHeader("Content-disposition", "attachment; filename=" + new String((dto.getIg500Info().getPrdesc()+"演练总结报告").getBytes("gb2312"), "8859_1") + ".doc");// 设定输出文件头
+			res.setContentType("application/msexcel");
+			dto.setOps(res.getOutputStream());
+			ctlBL.exportDrillDetail(dto);
+		}
         List<ActionMessage> messageList = dto.getMessageList();
         if (messageList != null && messageList.size() > 0) {
             for (ActionMessage message : messageList) {

@@ -37,10 +37,12 @@ import com.deliverik.framework.workflow.prd.bl.task.IG222BL;
 import com.deliverik.framework.workflow.prd.model.IG222Info;
 import com.deliverik.framework.workflow.prd.model.condition.IG222SearchCondImpl;
 import com.deliverik.framework.workflow.prr.bl.task.IG224BL;
+import com.deliverik.framework.workflow.prr.bl.task.IG500BL;
 import com.deliverik.framework.workflow.prr.bl.task.IG599BL;
 import com.deliverik.framework.workflow.prr.model.IG224Info;
 import com.deliverik.framework.workflow.prr.model.IG599Info;
 import com.deliverik.framework.workflow.prr.model.condition.IG224SearchCondImpl;
+import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG599SearchCondImpl;
 import com.deliverik.infogovernor.drm.IGDRMCONSTANTS;
 import com.deliverik.infogovernor.drm.bl.IGDRM07BL;
@@ -149,6 +151,26 @@ public class IGDRM0710Action  extends BaseAction {
 			ecCond.setPrid(Integer.parseInt(prid));
 			ecCond.setFlowType("all");
 			List<EvaluationContentInfo> evaluationList = ecBL.searchEvaluationContent(ecCond, 0, 0);
+			
+			//查询整改意见
+			IG599SearchCondImpl ig599Cond = new IG599SearchCondImpl();
+			ig599Cond.setPivarname("演练流程prid");
+			ig599Cond.setPdid("02280");
+			ig599Cond.setPivarvalue(prid.toString());
+			//记录整改流程prid集合
+			String prid_in = "";
+			//获取整改流程prid
+			List<IG599Info> ig599List= ig599BL.searchIG599InfosByCond(ig599Cond);
+			if(ig599List!=null && ig599List.size()>0){
+				for(IG599Info info :ig599List){
+					prid_in += info.getPrid()+",";
+				}
+				//查询关联的整改流程
+				IG500BL ig500BL = (IG500BL) WebApplicationSupport.getBean("ig500BL");
+				IG500SearchCondImpl ig500Cond = new IG500SearchCondImpl();
+				ig500Cond.setPrid_in(prid_in);
+				vo.setZgList(ig500BL.searchIG500Info(ig500Cond));
+			}
 			if(evaluationList!=null && evaluationList.size()>0){
 				vo.setEvaluationInfo(evaluationList.get(0));
 			}

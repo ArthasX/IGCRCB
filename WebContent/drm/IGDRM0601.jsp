@@ -426,7 +426,7 @@ function checkUserid(str){
 </body>
 	<script>
 		function showDateImg(obj){
-				showDate(jQ(obj).prev()[0]);
+				showTime(jQ(obj).prev()[0]);
 		}
 			
 	</script>

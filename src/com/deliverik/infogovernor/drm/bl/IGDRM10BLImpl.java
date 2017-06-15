@@ -64,6 +64,7 @@ import com.deliverik.framework.workflow.WorkFlowDefinitionBL;
 import com.deliverik.framework.workflow.WorkFlowOperationBL;
 import com.deliverik.framework.workflow.prd.bl.task.WorkFlowStatusEventBean;
 import com.deliverik.framework.workflow.prd.model.IG007Info;
+import com.deliverik.framework.workflow.prd.model.IG309Info;
 import com.deliverik.framework.workflow.prd.model.IG333Info;
 import com.deliverik.framework.workflow.prd.model.IG731Info;
 import com.deliverik.framework.workflow.prd.model.IG893Info;
@@ -179,7 +180,11 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 
 	/** 文件上传BL  */
 	protected FileUploadBL fileUploadBL;
-
+	
+	
+	/**应急管理员角色id*/
+	private static final Integer EMROLEID = 572;
+	
 	/** 状态表单存值表BL */
 	protected IG561BL ig561BL;
 
@@ -1261,6 +1266,9 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 			IGDRM1010Form form = (IGDRM1010Form) dto.getForm();
 			//登录用户取得
 			User user = dto.getUser();
+			
+			//判断当前用户是否是应急管理员
+			boolean isEMMag = userRoleBL.isRoleInUserRole(user.getUserid(), EMROLEID);
 			//设定返回值
 			Map<String, Object> map = new HashMap<String, Object>();
 			//获取流程实例ID
@@ -1304,6 +1312,10 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 				}
 				//查询当前节点处理人
 				List<Map<String, String>> currentUsers = new ArrayList<Map<String,String>>();
+				
+				//当前登录人是否有处理权限
+				boolean hasProcessPower = true;
+				
 				if(StringUtils.isNotEmpty(status)){
 					List<IG337Info> participantList = workFlowOperationBL.searchProcessParticipant(prid, status);
 					int size = participantList.size();
@@ -1326,6 +1338,10 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 						}
 						if(current == null){
 							current = participantList.get(0);
+							//如果不是当前节点处理人,并且没有应急管理员权限 则没有处理权限
+							if(!isEMMag){
+								hasProcessPower = false;
+							}
 						}
 						roleid = current.getPproleid();
 						userid = current.getPpuserid();
@@ -1334,10 +1350,17 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 				map.put("userid", userid);
 				map.put("roleid", roleid);
 				map.put("status", status);
-				map.put("pid", getVariables(pr, roleid, userid, status,currentUsers));
+				map.put("pid", getVariables(pr, roleid, userid, status,currentUsers,isEMMag));
+				map.put("hasProcessPower", hasProcessPower);
+//				//如果当前登录人没有处理权限,则不显示按钮
+				if(!hasProcessPower&&!isEMMag){
+					map.put("buttons",new ArrayList<IG309Info>() );
+				}else
 				if(roleid != null && roleid > 0){
 					map.put("buttons", workFlowDefinitionBL.searchVisibleButton(status, roleid));
 				}
+				
+				
 
 				// 如果是指挥流程的状态列表的查询方法
 				if (IGDRMCONSTANTS.EME_DIRECT_PRTYPE.equals(pr.getPrtype())) {
@@ -1371,6 +1394,10 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 				}
 
 			}
+			//保存登录用户的id
+			map.put("loginid", user.getUserid());
+			//保存登录用户的名称
+			map.put("loginname", user.getUsername());
 			dto.setJsonResult(new Gson().toJson(map));
 		}
 		log.debug("=============初始化流程信息操作结束==============");
@@ -1539,7 +1566,7 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 	 * @return
 	 * @throws BLException
 	 */
-	private List<Map<String, Object>> getVariables(IG500Info pr,Integer roleid,String userid,String status, List<Map<String, String>> currentUsers) throws BLException{
+	private List<Map<String, Object>> getVariables(IG500Info pr,Integer roleid,String userid,String status, List<Map<String, String>> currentUsers,boolean isEMMag) throws BLException{
 		//查询表单信息
 		List<IG007Info> pidList = workFlowDefinitionBL.searchProcessInfoDefsByPdid(pr.getPrpdid());
 		//查询表单值
@@ -1576,12 +1603,18 @@ public class IGDRM10BLImpl extends BaseBLImpl implements IGDRM10BL{
 		rltime.put("required", "0");
 		pidinfo.add(rltime);
 		
+		
 		//添加处理人选择
 		Map<String, Object> users = new HashMap<String, Object>();
 		users.put("id", "users");
 		users.put("name", "处理人");
 		users.put("type", "2");
-		users.put("access", "3");
+		//如果是流程管理员则显示,否则隐藏
+		if(isEMMag){
+			users.put("access", "3");
+		}else{
+			users.put("access", "1");
+		}
 		users.put("rowwidth", "1");
 		users.put("required", "0");
 		users.put("options", currentUsers);

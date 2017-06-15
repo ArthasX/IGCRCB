@@ -8864,9 +8864,18 @@ public class WorkFlowOperationBLImpl extends BaseBLImpl implements WorkFlowOpera
         	ComputingTime computingTime = new ComputingTime();
         	Map<String,String> parentStepMap = computingTime.getOrderStepEstimateTime(scenepdid,"null",propentime);
         	//名称为“XXXX”的应急处置流程已启动，关联预案为“预案名称”，需要您处理的环节有预计开始时间为“XXXX”的“节点1”、预计开始时间为“XXXX”的“节点2”……。
-        	String title = "“" + sceneeiname + "”应急处置流程已启动";
+        	String prTypeName = (StringUtils.isNotEmpty(emcproeiname)?"应急":"演练");
+        	String title = "“" + sceneeiname + "”"+prTypeName+"处置流程已启动";
         	for(Entry<String,List<Map<String,String>>> entry : resultMap.entrySet()){
-            	String desc = "名称为" + title + "，关联预案为“" + emcproeiname + "”，需要您处理的环节有";
+        		String desc = "";
+        		if(StringUtils.isNotEmpty(emcproeiname)){
+	            	 desc = "名称为" + title + "，关联预案为“" + emcproeiname + "”，需要您处理的环节有";
+        			
+        		}else{
+        			
+        			 desc = "名称为" + title + "，需要您处理的环节有";
+        		}
+        		
         		String key = entry.getKey();
         		List<Map<String,String>> value = entry.getValue();
         		User user = userBL.searchUserByKey(key);
@@ -8887,7 +8896,9 @@ public class WorkFlowOperationBLImpl extends BaseBLImpl implements WorkFlowOpera
         			}
         		}
         		//发送邮件
-        		sendMailBL.sendMail(title, desc, new String[]{email}, new String[]{});
+//        		sendMailBL.sendMail(title, desc, new String[]{email}, new String[]{});
+        		sendMessageBL.sendSmsToUser(user.getUserid(), desc);
+        		
         	}
         }
     }

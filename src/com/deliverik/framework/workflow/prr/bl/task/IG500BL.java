@@ -81,7 +81,14 @@ public interface IG500BL extends BaseBL {
 	public List<IG500Info> searchIG500Info(
 			IG500SearchCond cond, int start, int count);
 	
-	
+	/**
+	 * ÑÝÁ·Á÷³Ì²éÑ¯
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<IG500Info> searchDrillProcess(IG500SearchCond cond, int start,  int count);
 
 	/**
 	 * <p>

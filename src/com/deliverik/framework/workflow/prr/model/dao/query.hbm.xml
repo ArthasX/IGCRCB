@@ -675,4 +675,108 @@
  			T ON( m.dateMonth = t.PROPENTIME) order by DATEMONTH desc
     ]]> 
     </sql-query>
+    
+    <!-- 应急演练流程查询 -->
+    <sql-query name="IG500DAO.searchDrillProcess">
+    <![CDATA[
+    
+WITH formTb AS(SELECT i7.pidid,prid,pivarvalue,i7.pdid,i7.PIDNAME FROM ig007 i7 LEFT JOIN ig599 i59 ON (i7.PIDID = i59.PIDID) WHERE i7.PDID like (:pdid||'%' )),
+	 userTb as(SELECT  CASE WHEN((username IS NULL or username ='') AND PPSTATUS <>'C') THEN '未指定' WHEN (username IS NOT null) THEN SUBSTR(username,1,LENGTH(username)-1) ELSE '' END AS username,prid ,PPSTATUS 
+		FROM( SELECT prid,PPSTATUS,varchar(replace(replace(replace(xml2clob(xmlagg(xmlelement(NAME a, PPUSERNAME||'、'))),'<A>',''),'</A>',''),'<A/>','')) username 
+		FROM IG337 WHERE Psdid like (:pdid||'%' )   GROUP BY prid ,PPSTATUS )  )
+
+SELECT 
+FINGERPRINT,
+PCODE,
+PRASSETCATEGORY,
+ PRASSETID,
+PRASSETNAME,
+PRBACKPLAN,
+PRBUSINESS,
+PRCLOSETIME,
+PRCORID,
+PRCORTITLE,
+PRCORTYPE,
+PRDESC,
+PRDURATION,
+PRFACTTIME,
+PRID,
+PRIMPACT,
+PRIMPLPLAN,
+PRINFO,
+PROPENTIME,
+PRORGID,
+PRORGNAME,
+PRPDID,
+PRPDNAME,
+PRPLANTIME,
+PRPRIORITY,
+PRPTDCOND,
+PRROLEID,
+PRROLENAME,
+PRSERIALNUM,
+PRSTRATEGYVERSION,
+PRSUBSTATUS,
+PRSUBTYPE,
+PRTITLE,
+PRTYPE,
+PRURGENCY,
+PRUSERID,
+PRUSERNAME,
+PRVFYPLAN,
+pname,
+case when(pid is not null and pid <>'') then cast(pid as integer) else null end as pid,
+
+prstatus FROM (
+SELECT rownumber() over() as rownumber_ , FINGERPRINT,
+PCODE,
+PRASSETCATEGORY,
+ PRASSETID,
+PRASSETNAME,
+PRBACKPLAN,
+PRBUSINESS,
+PRCLOSETIME,
+PRCORID,
+PRCORTITLE,
+PRCORTYPE,
+PRDESC,
+PRDURATION,
+PRFACTTIME,
+PRID,
+PRIMPACT,
+PRIMPLPLAN,
+PRINFO,
+PROPENTIME,
+PRORGID,
+PRORGNAME,
+PRPDID,
+PRPDNAME,
+PRPLANTIME,
+PRPRIORITY,
+PRPTDCOND,
+PRROLEID,
+PRROLENAME,
+PRSERIALNUM,
+PRSTRATEGYVERSION,
+PRSUBSTATUS,
+PRSUBTYPE,
+PRTITLE,
+PRTYPE,
+PRURGENCY,
+PRUSERID,
+PRUSERNAME,
+PRVFYPLAN,( SELECT username FROM userTb  WHERE userTb.prid = pr.prid AND userTb.PPSTATUS = pr.prstatus) AS pname
+		
+		,(SELECT psdname FROM ig333 i33 WHERE i33.PSDCODE = pr.prstatus AND i33.PDID = pr.PRPDID) AS  prstatus
+		,(SELECT pivarvalue FROM formTb WHERE formTb.prid = pr.prid AND  formTb.pdid = pr.prpdid AND pidname= '指挥流程prid') AS pid
+
+FROM ig500 pr WHERE prpdid like (:pdid||'%' ) 
+
+
+
+    ]]>
+
+    
+    
+    </sql-query>
 </hibernate-mapping>

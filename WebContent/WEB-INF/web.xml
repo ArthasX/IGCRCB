@@ -245,10 +245,12 @@
 			<!-- 风险策略 -->
 			/WEB-INF/struts-config/struts-config_ven.xml,
 			/WEB-INF/struts-config/struts-config_dwp.xml,
-			
+
 			/WEB-INF/struts-config/struts-config_wki.xml,
 			<!-- 科技服务请求菜单展示 -->
 			/WEB-INF/struts-config/struts-config_mnu.xml
+			<!-- 工作项管理 -->
+			/WEB-INF/struts-config/struts-config_wim.xml,
 			</param-value>
 		</init-param>
 		<init-param>

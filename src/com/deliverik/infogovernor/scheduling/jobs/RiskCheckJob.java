@@ -24,6 +24,11 @@ public class RiskCheckJob implements Job {
 		
         IGRIS02BL ris02BL = (IGRIS02BL) WebApplicationSupport.getBean("igris02BL");
         IGRIS02DTO dto = new IGRIS02DTO();
+        
+        if("null".equals(csid))
+        	return;
+        
+        
         dto.setCsid(Integer.valueOf(csid));
         try {
         	ris02BL.initRiskCheckResult(dto);

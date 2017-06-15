@@ -83,20 +83,30 @@ a img {
 			<th width="10%">发起者</th>
 			<th width="10%">发起时间</th>
 			<th width="10%">关闭时间</th>
+			<th width="8%">发起整改流程</th>
+			<th width="5%">导出</th>
 	       	</tr>
 	       	 <logic:present name="IGDRM07011VO" property="ig500InfoList" >
 	       	 	<logic:iterate id="bean" name="IGDRM07011VO" property="ig500InfoList" indexId="index">
 					<tr style='cursor:hand' bgcolor="<ig:ProcessOverdueLevelBgColorTag prid="${bean.prid }"/>" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" 
 					onclick="doLook(getAppRootUrl()+'/IGDRM0710.do?prid=<bean:write name="bean" property="prid" />&jump=382');">
-	       	 			<td width="8%">${bean.prserialnum }</td>
-						<td width="18%" title="${bean.prdesc }"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.prdesc }</div></td>
-						<td width="8%">
+	       	 			<td>${bean.prserialnum }</td>
+						<td title="${bean.prdesc }"><div style="width:100%; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${bean.prdesc }</div></td>
+						<td>
 						<c:if test="${bean.prassetid ==2}">计划内</c:if>
 						<c:if test="${bean.prassetid ==1}">计划外</c:if>
 						</td>
-						<td width="5%">${bean.prusername }</td>
-						<td width="10%">${bean.propentime }</td>
-						<td width="5%">${bean.prclosetime }</td>
+						<td>${bean.prusername }</td>
+						<td>${bean.propentime }</td>
+						<td>${bean.prclosetime }</td>
+						<td><a href="IGCOM0202.do?linkID=IGWKM0104&psdcode=Z&pdid=02280&ptid=20&parameters=${bean.prid }">
+								<img src="images/xx.gif" alt="发起整改流程" width="16" height="16" border="0" />
+							</a>
+						</td>
+						<td><a href="IGDRM0703_Export.do?prid=${bean.prid }">
+								<img src="images/batch.gif" alt="导出" width="16" height="16" border="0" />
+							</a>
+						</td>
 	       	 		</tr>
 	       	 	</logic:iterate>
 	       	 	

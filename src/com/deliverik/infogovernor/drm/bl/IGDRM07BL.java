@@ -102,4 +102,20 @@ public interface IGDRM07BL extends BaseBL {
 	public IGDRM07DTO searchRoleAndUser(IGDRM07DTO dto) throws BLException;
 	/**查询演练基本信息*/
 	public IGDRM07DTO searchDrillDetail(IGDRM07DTO dto,String flowType) throws BLException;
+	
+	/**
+	 * 导出演练报告
+	 * @param dto
+	 * @return
+	 * @throws BLException
+	 */
+	public IGDRM07DTO exportDrillDetail(IGDRM07DTO dto) throws BLException;
+	
+	  /**
+     *根据prid查询流程实例 
+     * @param dto
+     * @return
+     * @throws BLException 
+     */
+    public IGDRM07DTO searchDrillByPrid(IGDRM07DTO dto) throws BLException;
 }

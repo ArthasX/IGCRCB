@@ -220,21 +220,21 @@ public class IG500BLImpl  extends BaseBLImpl implements IG500BL{
 
 	public List<IG500Info> searchIG500Info(
 			IG500SearchCond cond, int start, int count){
-		/*List<ProcessRecord> prList = ig500DAO.findByCond(cond, start, count);
-		List<ProcessRecord> incidentList = new ArrayList<ProcessRecord>();
-		List<ProcessRecord> allList = new ArrayList<ProcessRecord>();
-		for(ProcessRecord pr : prList){
-			if("I".equals(pr.getPrtype())&&StringUtils.isEmpty(pr.getPrclosetime())){
-				incidentList.add(pr);
-			}
-		}
-		allList.addAll(incidentList);
-		prList.removeAll(incidentList);
-		allList.addAll(prList);
-		return allList;*/
 		return ig500DAO.findByCond(cond, start, count);
 	}
 	
+	
+	
+	/**
+	 * 演练流程查询
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<IG500Info> searchDrillProcess(IG500SearchCond cond, int start,  int count){
+		return ig500DAO.searchDrillProcess(cond, start, count);
+	}
 	/**
 	 * 条件检索处理
 	 * @param cond 检索条件

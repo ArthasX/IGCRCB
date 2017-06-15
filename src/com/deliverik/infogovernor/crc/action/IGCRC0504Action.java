@@ -52,12 +52,10 @@ public class IGCRC0504Action extends BaseAction {
 			excelDTO.setProcessList(dto.getProcessList());
 			// 填充表单集合
 			excelDTO.setProcessInfoList(dto.getProcessInfoList());
-			
 			// 填充参与人集合
 			excelDTO.setProcessParticipantList(dto.getProcessParticipantList());
 			// 填充状态定义
 			excelDTO.setProcessStatusDefList(dto.getProcessStatusDefList());
-			
 			excelDTO.setIgwkm0101form(form);
 			// 取得Excel处理BL 
 			IGCRC05ExcelBL excelBL = (IGCRC05ExcelBL) getBean("igcrc05ExcelBL");

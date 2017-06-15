@@ -37,17 +37,6 @@ jQ(function(){
 			}
 		});
 	}
-	//去掉资产的版本号显示
-//	if(jQuery("#psdid[value$='005']").length > 0 || jQuery("#psdid[value$='006']").length > 0 ||jQuery("#psdid[value$='002']").length > 0){
-//		if(jQuery("#pidid"+pdid+"007")){
-//			var aStr = jQuery(jQuery(jQuery("#pidid0228001007").parent().parent().next().children()[1])).find("a").html();
-//			if(aStr !=null && aStr != ""){
-//				aStr = aStr.substring(0,aStr.indexOf("("));
-//				jQuery(jQuery(jQuery("#pidid0228001007").parent().parent().next().children()[1])).find("a").html(aStr);
-//			}
-//			
-//		}
-//	}
 	
 	
 	//整改计划审批节点
@@ -57,8 +46,15 @@ jQ(function(){
 			jQuery(obj).val("同意");
 		}
 	}
-	
-	
+	//获取流程节点ID
+	var psdid = jQuery("#psdid").val();
+	//发起节点为整改名称赋值，并且将演练流程名称变更只读，演练流程prid隐藏，表单整改名称隐藏
+	if(psdid.substring(psdid.length-3,psdid.length)=="001"){
+		jQuery(getFormObj("演练流程名称")).attr("readonly","true");
+		var zgname = getFormObj("演练流程名称").value;
+		jQuery("input[name='prtitle']").val(zgname+"-演练流程整改").attr("readonly","true");
+	jQuery(getFormObj("演练流程prid")).parent().parent().hide();
+	}
 	
 });
 //更新预案名称 表单必填校验

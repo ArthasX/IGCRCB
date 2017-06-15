@@ -86,6 +86,7 @@
                 <div>
                 	<html:hidden name="IGDRM0702Form" property="ename" styleId="ename"  />
 					<html:hidden name="IGDRM0702Form" property="esyscodingbegin" styleId="esyscodingbegin"/>
+					<html:hidden name="IGDRM0702Form" property="scenceCategory" styleId="scenceCategory"/>
 					<html:hidden name="IGDRM0702Form" property="esyscoding" styleId="esyscoding"/>&nbsp;&nbsp;
 	                <label id ="labeiname"></label>
 	                <html:text name="IGDRM0702Form" property="einame" styleId="einame" errorStyleClass="inputError imeDisabled" size="35"/> 

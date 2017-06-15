@@ -538,6 +538,29 @@ text-align: center;
 		          <th width="80px" align="left"><span style="color: #b90216">状态</span></th>
 				</tr>
 	<logic:iterate id="processRecordInfo" name="IGCOM01031VO" indexId="index" length="6" property="processInHandDesc" type="com.deliverik.infogovernor.com.model.ProcessInHandVWInfo">
+	<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="doLook('${processRecordInfo.showurl }${processRecordInfo.prid }&jump=77');">
+		<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+			<c:if test="${processRecordInfo.prpdname =='变更'}">
+				<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
+				<c:if test="${changeType == '紧急变更'}">
+					<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+				</c:if>
+			</c:if>
+		</td>
+	<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
+	<td title="${processRecordInfo.showtitle}" width="145px">
+		<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
+		</td>
+	<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
+	<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
+	<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
+		<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
+	
+	<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
+			<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
+		</td>
+	</tr>
+	<c:if test="${processRecordInfo.prtype != 'WDP'}">
 		<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="doLook('${processRecordInfo.showurl }${processRecordInfo.prid }&jump=77');">
 			<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
 				<c:if test="${processRecordInfo.prpdname =='变更'}">
@@ -547,19 +570,44 @@ text-align: center;
 					</c:if>
 				</c:if>
 			</td>
-    		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
-    		<td title="${processRecordInfo.showtitle}" width="145px">
-	    		<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
+		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
+		<td title="${processRecordInfo.showtitle}" width="145px">
+			<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
 			</td>
-    		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
-    		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
-    		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
+		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
+		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
+		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
 			<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
 		
-    		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
+		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
 				<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
 			</td>
 		</tr>
+	</c:if>
+	<c:if test="${processRecordInfo.prtype == 'WDP'}">
+		<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="showConsole('${processRecordInfo.prid }');">
+			<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+				<c:if test="${processRecordInfo.prpdname =='变更'}">
+					<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
+					<c:if test="${changeType == '紧急变更'}">
+						<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+					</c:if>
+				</c:if>
+			</td>
+		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
+		<td title="${processRecordInfo.showtitle}" width="145px">
+			<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
+			</td>
+		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
+		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
+		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
+			<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
+		
+		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
+				<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
+			</td>
+		</tr>
+	</c:if>
         <tr>
           <td colspan="9"><img src="images/td_line_bg.gif" border="0" height="1" /></td>
      	</tr>
@@ -886,4 +934,17 @@ text-align: center;
 </div>
 </div> 
 </body>
+<script type="text/javascript">
+
+/**
+ * @Description：如果是演练处置流程，弹出工作台页面
+ * @Date：2017年5月16日13:48:38
+ * @Author wangliang@deliverik.com
+ */
+function showConsole(prid){
+	window.open('IGDRM1010.do?prid='+prid, '应急工作台', 'width=1024, height=768, scrollbars=yes, status=no, top=0, left=0').focus();
+	//阻止事件冒泡
+// 	(window.event)&&(window.event.cancelBubble=true); 
+}
+</script>
 </html:html>

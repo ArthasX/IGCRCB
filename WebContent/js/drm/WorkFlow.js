@@ -46,7 +46,6 @@ var WorkFlowContext = function(box){
 	/** 状态信息 */
 	this.statuses = new WorkFlowContext.Statuses(this);
 	
-	
 };
 
 WorkFlowContext.Statuses = function(parent){
@@ -119,6 +118,7 @@ WorkFlowContext.Statuses = function(parent){
 WorkFlowContext.Statuses.prototype.bindFilter = function(){
 	//条件下拉列表绑定事件
 	var _this = this;
+	
 	_this.condBox.find("select[data-filter]").off("change").on("change",function(event){
 		
 		//定义查询条件集合
@@ -133,13 +133,21 @@ WorkFlowContext.Statuses.prototype.bindFilter = function(){
 			var showFlag = true;
 			for(var k in condMap){
 				if("status"==k){
-					if(!_t.hasClass(condMap[k])){
+					
+					//未完成状态 >>>>隐藏已完成的状态的日志
+					if("undone" == condMap[k]){
+						if(_t.hasClass('his')){
+							showFlag = false;
+						}
+					}else if(!_t.hasClass(condMap[k])){
+						//否则根据选择的状态过滤  如果日志状态与选择的不同则隐藏
 						showFlag = false;
 					}
-					continue;
-				}
-				if(_t.find("td[data-name='"+k+"']").text().indexOf(condMap[k])==-1){
-					showFlag = false;
+				}else{
+					if(_t.find("td[data-name='"+k+"']").text().indexOf(condMap[k])==-1){
+						showFlag = false;
+					}
+					
 				}
 			}
 			showFlag&&_t.removeClass("hide");
@@ -147,6 +155,14 @@ WorkFlowContext.Statuses.prototype.bindFilter = function(){
 		jQuery(".box").scrollTop(9999);
 		this.blur();
 		
+	});
+	
+	//如果当前查询条件中有值则直接触发过滤事件 (一般只有<节点状态>条件有值)
+	_this.condBox.find("select[data-filter]").each(function(i,t){
+		if(jQuery(t).val()){
+			jQuery(t).change();
+		}
+			
 	});
 };
 WorkFlowContext.Status = function(data,parent){
@@ -341,7 +357,7 @@ function runTime(){
  * 表单信息
  * @param data 表单数据
  */
-WorkFlowContext.Form = function(data){
+WorkFlowContext.Form = function(data,wapperBox){
 	
 	/** 标识ID */
 	this.id = data.id;
@@ -354,6 +370,14 @@ WorkFlowContext.Form = function(data){
 	
 	/** 必填标识 */
 	this.required = data.required;
+	
+	this.wapper = wapperBox;
+	
+	this.hide = function(){
+		
+		jQuery(this.wapper).prev().andSelf().hide();
+		
+	}
 	
 	/**
 	 * 获取表单值
@@ -940,7 +964,7 @@ WorkFlowContext.Form.Text = function(data,parent){
 		if(data.access == "3"){
 			this.target.id = data.id+"date";
 			this.target.onclick = function(){
-				alert(1);
+			
 				jeDate({
 					dateCell:this, 
 					format:"YYYY/MM/dd",
@@ -1006,11 +1030,16 @@ WorkFlowContext.Forms = function(parent){
 		if(data.rowwidth == "0"){
 			td.colSpan = 3;
 		}
-		var form = new WorkFlowContext.Form(data);
+		var form = new WorkFlowContext.Form(data,td);
 		if(form.getTarget()){
 			td.appendChild(form.getTarget());
 			formkeys[formkeys.length] = form.id;
 			forms[form.id] = form;
+			//隐藏当前 处理人 表单  王亮  2017年5月24日10:38:10
+			if("处理人"==data.name){
+//				form.hide();
+			}
+			
 		}
 		if(data.rowwidth == "0" || currentRow.cells.length == 4){
 			currentRow = null;
@@ -1230,10 +1259,7 @@ WorkFlowContext.prototype.get = function(prid,userid,status,fun){
 				if(data.roleid){
 					_this.roleid = data.roleid;
 				}
-				//设置节点信息
-				if(data.status){
-					_this.status = data.status;
-				}
+				
 				//设置流程定义ID
 				if(data.prpdid){
 					_this.pdid = data.prpdid;
@@ -1251,10 +1277,42 @@ WorkFlowContext.prototype.get = function(prid,userid,status,fun){
 				}
 				//设置表单
 				if(data.pid && data.pid.length > 0){
+					
+					//如果是处置流程需要设置处置说明(自动赋值)
+					//张剑 2017年6月2日14:11:51
+					//常熟新增需求
+				   setDesc:	if(data.prtype=="WDP"){
+						for(var k in data.pid){
+							var pidForm = data.pid[k];
+							if("处置说明" == pidForm.name){
+								for(var key in data.psdList.stepList){
+									var _statusInfo = data.psdList.stepList[key];
+									if(data.status == _statusInfo.psdid){
+										pidForm.value = _statusInfo.nodeStep;
+										break setDesc;
+									}
+								}
+								
+							}
+							
+						}
+					}
+					
+					
+					
 					_this.forms.load(data.pid);
 				}
-				//设置按钮
-				_this.buttons.load(data.buttons);
+				//设置节点信息
+				if(data.status){
+					_this.status = data.status;
+				}
+				if(data.hasProcessPower){
+					//设置按钮
+					_this.buttons.load(data.buttons);
+					
+				}else{
+					_this.buttons.removeAll();
+				}
 				//设置节点信息
 				if(data.psdList&&data.psdList.stepList && data.psdList.stepList.length > 0){
 					_this.statuses.load(data.psdList.stepList);
@@ -1277,6 +1335,13 @@ WorkFlowContext.prototype.get = function(prid,userid,status,fun){
 				//触发响应事件
 				if(_this.onload){
 					_this.onload(data);
+				}
+				//如果处理人下拉列表的用户id不是当前登录用户则隐藏保存、提交、中止按钮  王亮 2017年5月24日10:39:33
+				if(data.loginid!=data.userid){
+					//设置保存、提交、中止按钮隐藏
+//					jQuery("button[value='保存']").hide();
+//					jQuery("button[value='提交']").hide();
+//					jQuery("button[value='中止']").hide();
 				}
 				
 			}
@@ -1309,3 +1374,4 @@ function checkRoles(container,obj){
 		}
 	}
 }
+

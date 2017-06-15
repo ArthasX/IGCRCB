@@ -35,7 +35,7 @@ import com.deliverik.infogovernor.drm.util.IGDRMEmergencyTools;
 /**
  * 应急演练流程-演练实施前处理
  * 
- * 更新演练计划表和计划任务表 修改状态为已演练
+ * 应急演练<演练实施>节点前处理  发起 场景流程
  * 
  * @author zyl
  *
@@ -92,14 +92,14 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
     }
 	
 	/**
-	 * 演练计划发起前处理
+	 * 应急演练<演练实施>节点前处理  发起 场景流程
 	 */
     public void preTreatmentExecute(WorkFlowStatusEventBeanInfo bean) throws BLException {
     	log.debug("========演练实现前发起相关流程开始========");
 		// 获取本流程信息
     	ProcessRecordInfo prInfo = this.flowSearchBL.searchProcessInfo(bean.getLogInfo().getPrid(), null).get(0);
 		//查询需发起的流程
-		String relateVal = flowSearchBL.searchPublicProcessInfo(bean.getLogInfo().getPrid(),IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_NAME);
+//		String relateVal = flowSearchBL.searchPublicProcessInfo(bean.getLogInfo().getPrid(),IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_NAME);
 		
 		WorkFlowLog logInfo = new WorkFlowLog();
         logInfo.setAuthuserid(null);
@@ -113,55 +113,62 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
         
         String relatetype = "";
         
+        //修改为演练流程只能发起场景,不再需要发起指挥流程  对应常熟需求
+        //张剑
+        //2017年6月6日11:03:57
+        
 		//应急指挥
-		if(IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_DIRECT.equals(relateVal)){
-		
-			Map<String,String> formvalue = new HashMap<String,String>();
-			processRecord.setTitle(prInfo.getPrtitle() + "-" + "演练指挥");
-			formvalue.put(IGDRMCONSTANTS.PLAN_NAME, "N/A");
-			formvalue.put(IGDRMCONSTANTS.SCENE_ITEM_NAME, "N/A");
-			formvalue.put(IGDRMCONSTANTS.ITEM_SYSTEM_FORM_NAME, "N/A");
-			formvalue.put(IGDRMCONSTANTS.DIRECT_PARTICIPANT_ADJUST_FORM_NAME, "tab");
-			formvalue.put(IGDRMCONSTANTS.PRACTISE_PRID_LABEL,prInfo.getPrid().toString());
-			formvalue.put("事件名称", prInfo.getPrtitle() + "-" + "演练指挥");
-			processRecord.setFormvalue(formvalue);
-			//流程定义
-			processRecord.setDefid(IGDRMCONSTANTS.DIRECT_PROCESS_DEF_ID);
-			//发起流程
-	        prid = this.flowOptBL.saveProcessAction(processRecord);
-	        
-	        //演练流程表单赋值
-	        PublicProcessInfoValue ptInfo = new PublicProcessInfoValue(bean.getLogInfo());
-	        ptInfo.setFormname(IGDRMCONSTANTS.DRILL_FROM_NAME_DIRECT_PRID);
-	        ptInfo.setFormvalue(prid+"");
-	        flowSetBL.setPublicProcessInfoValue(ptInfo);
-	        
-	        //*********************应急指挥流程*********************
-			//专项预案
-	        Integer emcproeiid = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.SPECIAL_PLAN_NAME).get(0).getEiid();
-			//演练场景
-	        Integer sceneeiiid = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.EMERGENCY_SCENE_NAME).get(0).getEiid();
-			//业务系统
-			List<ProcessInfoEntityInfo> list = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.DRILL_SYSTEM_FORM_NAME);
-			//设置流程-资产关联关系
-			flowSetBL.setProcessEntityRelation(prid, IGDRMCONSTANTS.PLAN_NAME, emcproeiid, null);
-			flowSetBL.setProcessEntityRelation(prid, IGDRMCONSTANTS.SCENE_ITEM_NAME, sceneeiiid, null);
-			flowSetBL.setProcessEntityItem(prid,IGDRMCONSTANTS.ITEM_SYSTEM_FORM_NAME,list);
-			//设置表格关系
-			flowSetBL.setProcessSceneParticipant(prInfo.getPrid(), IGDRMCONSTANTS.DRILL_PARTICIPANT_ADJUST_FORM_NAME, prid, IGDRMCONSTANTS.DIRECT_PARTICIPANT_ADJUST_FORM_NAME, IGDRMCONSTANTS.DIRECT_PROCESS_DEF_ID);
-
-			// 设置指挥流程类型为演练发起
-			Map<String, Object> map = new HashMap<String, Object>();
-			map.put("prurgency", "1");
-			flowSetBL.updateProcessRecord(prid, map);
-			
-			//-----------------初始化签到信息----
-			signinBL.updateSigninForEcp(prInfo.getPrid(), prid);
-
-			relatetype = IGDRMCONSTANTS.DRILL_RELATE_DIRECT;
-		}
+//		if(IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_DIRECT.equals(relateVal)){
+//		
+//			Map<String,String> formvalue = new HashMap<String,String>();
+//			processRecord.setTitle(prInfo.getPrtitle() + "-" + "演练指挥");
+//			formvalue.put(IGDRMCONSTANTS.PLAN_NAME, "N/A");
+//			formvalue.put(IGDRMCONSTANTS.SCENE_ITEM_NAME, "N/A");
+//			formvalue.put(IGDRMCONSTANTS.ITEM_SYSTEM_FORM_NAME, "N/A");
+//			formvalue.put(IGDRMCONSTANTS.DIRECT_PARTICIPANT_ADJUST_FORM_NAME, "tab");
+//			formvalue.put(IGDRMCONSTANTS.PRACTISE_PRID_LABEL,prInfo.getPrid().toString());
+//			formvalue.put("事件名称", prInfo.getPrtitle() + "-" + "演练指挥");
+//			processRecord.setFormvalue(formvalue);
+//			//流程定义
+//			processRecord.setDefid(IGDRMCONSTANTS.DIRECT_PROCESS_DEF_ID);
+//			//发起流程
+//	        prid = this.flowOptBL.saveProcessAction(processRecord);
+//	        
+//	        //演练流程表单赋值
+//	        PublicProcessInfoValue ptInfo = new PublicProcessInfoValue(bean.getLogInfo());
+//	        ptInfo.setFormname(IGDRMCONSTANTS.DRILL_FROM_NAME_DIRECT_PRID);
+//	        ptInfo.setFormvalue(prid+"");
+//	        flowSetBL.setPublicProcessInfoValue(ptInfo);
+//	        
+//	        //*********************应急指挥流程*********************
+//			//专项预案
+//	        Integer emcproeiid = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.SPECIAL_PLAN_NAME).get(0).getEiid();
+//			//演练场景
+//	        Integer sceneeiiid = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.EMERGENCY_SCENE_NAME).get(0).getEiid();
+//			//业务系统
+//			List<ProcessInfoEntityInfo> list = this.flowSearchBL.searchProcessEntityItem(prInfo.getPrid(), IGDRMCONSTANTS.DRILL_SYSTEM_FORM_NAME);
+//			//设置流程-资产关联关系
+//			flowSetBL.setProcessEntityRelation(prid, IGDRMCONSTANTS.PLAN_NAME, emcproeiid, null);
+//			flowSetBL.setProcessEntityRelation(prid, IGDRMCONSTANTS.SCENE_ITEM_NAME, sceneeiiid, null);
+//			flowSetBL.setProcessEntityItem(prid,IGDRMCONSTANTS.ITEM_SYSTEM_FORM_NAME,list);
+//			//设置表格关系
+//			flowSetBL.setProcessSceneParticipant(prInfo.getPrid(), IGDRMCONSTANTS.DRILL_PARTICIPANT_ADJUST_FORM_NAME, prid, IGDRMCONSTANTS.DIRECT_PARTICIPANT_ADJUST_FORM_NAME, IGDRMCONSTANTS.DIRECT_PROCESS_DEF_ID);
+//
+//			// 设置指挥流程类型为演练发起
+//			Map<String, Object> map = new HashMap<String, Object>();
+//			map.put("prurgency", "1");
+//			flowSetBL.updateProcessRecord(prid, map);
+//			
+//			//-----------------初始化签到信息----
+//			signinBL.updateSigninForEcp(prInfo.getPrid(), prid);
+//
+//			relatetype = IGDRMCONSTANTS.DRILL_RELATE_DIRECT;
+//		}
 		//场景
-		else if(IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_SCENE.equals(relateVal)){
+//		else if(IGDRMCONSTANTS.DRILL_RELATE_PROCESS_FORM_SCENE.equals(relateVal)){
+        
+        //发起场景流程
+        
 			
 			processRecord.setTitle(prInfo.getPrtitle() + "-" + "演练处置");
             processRecord.setDefstatus(IGPRDCONSTANTS.PD_STATUS_ENABLE);
@@ -176,7 +183,7 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
         	//流程定义
         	processRecord.setDefid(pdid);
     		//发起流程
-            prid = this.flowOptBL.initProcessAction(processRecord);
+            prid = this.flowOptBL.saveProcessAction(processRecord);
             
             //演练流程表单赋值
 	        PublicProcessInfoValue ptInfo = new PublicProcessInfoValue(bean.getLogInfo());
@@ -194,7 +201,7 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
 			// -----------------初始化签到信息----
 			signinBL.updateSigninForRestore(prInfo.getPrid(), prid);
 			
-		}
+//		}
 		//建立关联关系
 		if(prid != null){
 			EmergencyRelationTB erTb = new EmergencyRelationTB();
@@ -203,8 +210,10 @@ public class IGDRMEVENT0704BLImpl extends BaseBLImpl implements WorkFlowEventHan
 			erTb.setCldType("1");
 			erTb.setRelatetype(relatetype);
 			erTb.setPrrinstime(IGStringUtils.getCurrentDateTime());
-	        emergencyRelationBL.registEmergencyRelationInfo(erTb);
+			emergencyRelationBL.registEmergencyRelationInfo(erTb);
 		}
+		//流程跃迁
+		this.flowOptBL.transitionProcess(prid, bean.getLogInfo().getExecutorid(), "提交", IGStringUtils.getCurrentDateTime());
 		
 		log.debug("========演练实现前发起相关流程结束========");
 		//请求地址通过业务系统ID更新业务系统应急演练状态

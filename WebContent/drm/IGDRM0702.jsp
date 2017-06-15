@@ -823,13 +823,21 @@ jQ(function($) {
 			if(jQ("#psdid").val() == pdid + '003'){
 				jQ("#"+pdid+"023_tableForm").after("<button class=\"buttonCX2\" style=\"padding:2px;\" onclick=\"adjustUser()\">调整参与人</button>");
 			}else{
-				jQ("#"+pdid+"023_tableForm > tbody > tr").each(function(){
-					jQuery(this).children(":first").remove();
-				});
+				if(pdid.indexOf("01385")>-1&&jQuery("#psdid").val().substr(7)=="005"){
+					jQ("#"+pdid+"023_tableForm").after("<button class=\"buttonCX2\" style=\"padding:2px;\" onclick=\"adjustUser()\">调整参与人</button>");
+				}else{
+					jQ("#"+pdid+"023_tableForm > tbody > tr").each(function(){
+						jQuery(this).children(":first").remove();
+					});
+				}
 			}
 		}
 	}
-			
+	
+// 	jQ("#tbentity"+pdid+"013 input[name^='entityName']").on("change",function(){
+		
+// 		alert("sdfsdf")
+// 	}
 	jQ("#assetSelector"+pdid+"013").on("change",function(){
 		var val = jQ("#assetSelector"+pdid+"013").val();
 		jQ("#entity"+pdid+"013").val(val);
@@ -967,52 +975,74 @@ jQ(function($) {
 		});
 	});
 	
-	jQ("#assetSelector"+pdid+"010").on("change",function(){
-		//专项预案
-		var val = jQ("#assetSelector"+pdid+"010").val();
+	
+	if(jQ("#assetSelector"+pdid+"010").length>0){
 		
-		if(!val){
-			if(jQ("#entity"+pdid+"010").attr("eiid")){
-				val = jQ("#entity"+pdid+"010").attr("eiid");
+		//专项预案表单change事件
+		jQ("#assetSelector"+pdid+"010").on("change",function(){
+			//专项预案
+			var val = jQ("#assetSelector"+pdid+"010").val();
+			
+			if(!val){
+				if(jQ("#entity"+pdid+"010").attr("eiid")){
+					val = jQ("#entity"+pdid+"010").attr("eiid");
+				}
+			}else{
+				jQ("#entity"+pdid+"010").val(val);
+				jQ("#pidid"+pdid+"010").val("N/A");
 			}
-		}else{
-			jQ("#entity"+pdid+"010").val(val);
-			jQ("#pidid"+pdid+"010").val("N/A");
-		}
-		
-		jQ("#pidid"+pdid+"016").val(val.split("#")[1]);
-		
-		//清空下拉值
-		jQ("#assetSelector"+pdid+"013").empty();		
-		//清空表格数据
-		jQ("#"+pdid+"023_tableForm tr th input[type='checkbox']").each(function(){this.checked = false;});
-		jQ("#"+pdid+"023_tableForm tr:not(:first)").remove("tr");
-		
-		jQ("#select2-assetSelector"+pdid+"013-container").html("");	
-		jQ("#entity"+pdid+"013").val("");
-		jQ("#pidid"+pdid+"013").val("");
-		
-		//资产id
-		var eiid = val.split("#")[1];
-		
-		if(eiid){
-			jQ.ajax({  
-				type: "post",  
-				url:"IGDRM0702_Ajax.do",
-		       	cache:false,  
-		       	dataType:'json',  
-		       	data:{pidid:pdid+"013",esyscoding:'999060',sp_eiid:eiid,scenceCategory:"1"},
-		       	success: function(data){
-		       		if(data.length > 0){
-		       			jQ("#assetSelector"+pdid+"013").select2({
-			       			 data:data,
-			       			 placeholder:'请选择'
-		       			}).trigger("change");
-					}
-				}  
-			});
-		}
-	});
+			
+			jQ("#pidid"+pdid+"016").val(val.split("#")[1]);
+			
+			//清空下拉值
+			jQ("#assetSelector"+pdid+"013").empty();		
+			//清空表格数据
+			jQ("#"+pdid+"023_tableForm tr th input[type='checkbox']").each(function(){this.checked = false;});
+			jQ("#"+pdid+"023_tableForm tr:not(:first)").remove("tr");
+			
+			jQ("#select2-assetSelector"+pdid+"013-container").html("");	
+			jQ("#entity"+pdid+"013").val("");
+			jQ("#pidid"+pdid+"013").val("");
+			
+			//资产id
+			var eiid = val.split("#")[1];
+			
+			if(eiid){
+				jQ.ajax({  
+					type: "post",  
+					url:"IGDRM0702_Ajax.do",
+			       	cache:false,  
+			       	dataType:'json',  
+			       	data:{pidid:pdid+"013",esyscoding:'999060',sp_eiid:eiid,scenceCategory:"1"},
+			       	success: function(data){
+			       		if(data.length > 0){
+			       			jQ("#assetSelector"+pdid+"013").select2({
+				       			 data:data,
+				       			 placeholder:'请选择'
+			       			}).trigger("change");
+						}
+					}  
+				});
+			}
+		});
+	}else{
+		jQ.ajax({  
+			type: "post",  
+			url:"IGDRM0702_Ajax.do",
+	       	cache:false,  
+	       	dataType:'json',  
+	       	data:{pidid:pdid+"013",esyscoding:'999060',scenceCategory:"1"},
+	       	success: function(data){
+	       		if(data.length > 0){
+	       			jQ("#assetSelector"+pdid+"013").select2({
+		       			 data:data,
+		       			 placeholder:'请选择'
+	       			}).trigger("change");
+				}
+			}  
+		});
+	}
+	
 });
 
 
@@ -1047,7 +1077,7 @@ function checkisDisabled(){
 }
 
 
-//业务系统
+//业务系统变化事件
 function entityChange(){
 	var eiidary = new Array();
 	jQ("#tbentity"+pdid+"021").find("input[name^='entityId']").each(function(){
@@ -1064,37 +1094,37 @@ function entityChange(){
 		});
 	}
 	//清空原有的值
-	jQ("#assetSelector"+pdid+"013").empty();		
+// 	jQ("#assetSelector"+pdid+"013").empty();		
 	jQ("#assetSelector"+pdid+"010").empty();		
 	jQ("#select2-assetSelector"+pdid+"010-container").html("");		
-	jQ("#select2-assetSelector"+pdid+"013-container").html("");	
-	jQ("#entity"+pdid+"013").val("");
+// 	jQ("#select2-assetSelector"+pdid+"013-container").html("");	
+// 	jQ("#entity"+pdid+"013").val("");
 	jQ("#entity"+pdid+"010").val("");	
 	jQ("#pidid"+pdid+"010").val("");	
-	jQ("#pidid"+pdid+"013").val("");
+// 	jQ("#pidid"+pdid+"013").val("");
 	//专项预案id                                                           
-	jQ("#pidid"+pdid+"016").val("");
+// 	jQ("#pidid"+pdid+"016").val("");
 	//清空表格数据
-	jQ("#"+pdid+"023_tableForm tr th input[type='checkbox']").each(function(){this.checked = false;});
-	jQ("#"+pdid+"023_tableForm tr:not(:first)").remove("tr");
+// 	jQ("#"+pdid+"023_tableForm tr th input[type='checkbox']").each(function(){this.checked = false;});
+// 	jQ("#"+pdid+"023_tableForm tr:not(:first)").remove("tr");
 	
-	if(eiidary != null && eiidary.length > 0){
-		jQ.ajax({  
-			type: "post",  
-			url:"IGDRM0702_Ajax.do",
-	       	cache:false,  
-	       	dataType:'json',  
-	       	data:{pidid:pdid+"010",esyscoding:'888001',sp_eiid:eiidary.join(",")},
-	       	success: function(data){
-	       		if(data.length > 0){
-	       			jQ("#assetSelector"+pdid+"010").select2({
-		       			 data:data,
-		       			 placeholder:'请选择'
-	       			}).trigger("change");
-				}
-			}  
-		});
-	}
+// 	if(eiidary != null && eiidary.length > 0){
+// 		jQ.ajax({  
+// 			type: "post",  
+// 			url:"IGDRM0702_Ajax.do",
+// 	       	cache:false,  
+// 	       	dataType:'json',  
+// 	       	data:{pidid:pdid+"010",esyscoding:'888001',sp_eiid:eiidary.join(",")},
+// 	       	success: function(data){
+// 	       		if(data.length > 0){
+// 	       			jQ("#assetSelector"+pdid+"010").select2({
+// 		       			 data:data,
+// 		       			 placeholder:'请选择'
+// 	       			}).trigger("change");
+// 				}
+// 			}  
+// 		});
+// 	}
 }
 //调整参与人
 function adjustUser(){

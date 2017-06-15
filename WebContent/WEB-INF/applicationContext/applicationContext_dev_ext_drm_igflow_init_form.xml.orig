@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+	<!-- 预案定义初始化-->
+	<bean id="igDRMINIT0101BL" class="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0101BLImpl">
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	<bean id="igDRMINIT0102BL" class="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0102BLImpl">
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	<!-- 组合场景定义初始化-->
+	<bean id="igDRMINIT0201BL" class="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0201BLImpl">
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	<!-- 组合场景修订 -->
+	<bean id="igDRMINIT0202BL" class="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0202BLImpl">
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="codeDetailDefBL">
+			<ref bean="codeDetailDefBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="soc0118BL">
+			<ref bean="soc0118BL"/>
+		</property>
+		<property name="soc0107BL">
+			<ref bean="soc0107BL"/>
+		</property>
+		<property name="workFlowDefinitionBL">
+			<ref bean="workFlowDefinitionBL"/>
+		</property>
+	</bean>
+	
+	<bean id="igDRMINIT0701BL" class ="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0701BLImpl">
+		<property name="drillplanBL">
+			<ref bean="drillplanBL"/>
+		</property>
+	</bean>
+	
+<<<<<<< HEAD
+=======
+	<bean id="igDRMINIT0801BL" class ="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0801BLImpl">
+		<property name="ig500BL">
+			<ref bean="ig500BL"/>
+		</property>
+	</bean>
+>>>>>>> dlk
+	<bean id="igDRMINIT0901BLImpl" class ="com.deliverik.infogovernor.drm.igflow.init.form.IGDRMINIT0901BLImpl">
+		<property name="flowSearchBL">
+				<ref bean="flowSearchBL"/>
+		</property>
+		<property name="ig500BL">
+				<ref bean="ig500BL"/>
+		</property>
+		</bean>
+</beans>

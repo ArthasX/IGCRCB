@@ -296,14 +296,13 @@
 	<sql-query name="DrillplanitemDAO.searchDrillDetailByAllPrid">
     <![CDATA[
     	select a.PRTITLE DRILLNAME, a.PROPENTIME OPENTIME, a.PRCLOSETIME CLOSETIME, a.PRUSERNAME AUTHOR,b.PIVARVALUE DRILLFORMALITY,
-			c.PIVARVALUE DRILLCONTENT, d.PIVARVALUE DRILLOBJECTIVE, g.einame PLANNAME,j.EINAME SENCENAME,k.PIVARVALUE DEPARTMENT
+			c.PIVARVALUE DRILLCONTENT, d.PIVARVALUE DRILLOBJECTIVE, j.EINAME SENCENAME,k.PIVARVALUE DEPARTMENT
 			from ig500 a  
 			left join ig599 k on a.prid = k.prid and k.PIVARNAME = '演练参与部门'  
 			left join ig599 b on a.prid = b.prid and b.PIVARNAME = '演练形式'  
 			left join ig599 c on a.prid = c.prid and c.PIVARNAME = '演练内容'  
 			left join ig599 d on a.prid = d.prid and d.PIVARNAME = '演练目的'  
-			left join ig599 e on a.prid = e.prid and e.PIVARNAME = '专项预案id' 
-			left join soc0118 g on g.eiid = e.PIVARVALUE 
+			
 			left join ig599 h on a.prid = h.prid and h.PIVARNAME = '演练场景'  
 			left join ig731 i on i.piid = h.piid 
 			left join soc0118 j on j.eiid = i.eiid where 1=1 
