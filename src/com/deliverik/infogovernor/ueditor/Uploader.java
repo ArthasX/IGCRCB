@@ -18,6 +18,7 @@ import java.util.Random;
 import javax.servlet.http.HttpServletRequest;
 
 
+
 import org.apache.commons.fileupload.FileItemIterator;
 import org.apache.commons.fileupload.FileItemStream;
 import org.apache.commons.fileupload.FileUploadBase.InvalidContentTypeException;
@@ -28,6 +29,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+
+import com.sun.mail.util.BASE64DecoderStream;
 
 import sun.misc.BASE64Decoder;
 /**

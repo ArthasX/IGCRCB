@@ -705,11 +705,10 @@ public class IGSRV0201Form extends BaseForm implements IG500SearchCond {
 		// TODO Auto-generated method stub
 		return null;
 	}
-<<<<<<< HEAD
+
 
 	public String getPrpdname() {
 		return null;
 	}
-=======
->>>>>>> dlk
+
 }

@@ -6,10 +6,7 @@
 package com.deliverik.framework.security;
 
 import java.io.Serializable;
-<<<<<<< HEAD
 import java.util.ArrayList;
-=======
->>>>>>> dlk
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
