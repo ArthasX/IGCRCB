@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+    "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- DAO -->
+	
+	<!-- BL -->
+	
+	<!-- TaskBL -->
+	<bean id="workremindBL" class="com.deliverik.plugin.workItem.bl.WorkRemindBLImpl">
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
+		<property name="codeDetailBL">
+			<ref bean="codeDetailBL"/>
+		</property>
+		<property name="workDefinitionBL">
+			<ref bean="workDefinitionBL"/>
+		</property>
+		<property name="workInstanceBL">
+			<ref bean="workInstanceBL"/>
+		</property>
+		<property name="workLogBL">
+			<ref bean="workLogBL"/>
+		</property>
+	</bean>
+	
+</beans>
+

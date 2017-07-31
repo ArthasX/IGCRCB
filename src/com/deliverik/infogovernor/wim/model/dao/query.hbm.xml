@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.deliverik.infogovernor.wim.model.entity">
+
+  <sql-query name="WorkInstanceDAO.findWeekWorkByCond">
+    <![CDATA[
+	select wi.wiid,wi.wdname,wi.leaderid,wi.wistatus,wi.excutorid,substr(char(wi.begindate),1,10) as begindate,substr(char(wi.confirmdate),1,10) as confirmdate,substr(char(wi.crtDate),1,10) as crtDate,
+	replace((select date(char(replace(substr(char(estimateFinishDate),1,10),'/','-')) )+Integer(trim(char(overtimetipstime))) days from WORKDEFINITION where wdid = wi.wdid),'-','/') as overtime,
+	--实例发起时间2016/05/20+超时提醒时间5；只有2016-05-20格式的才能用日期函数；经过了两次格式的转换
+	case when wi.LEADERID = :userid  and wi.excutorid not like :excutorid then 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week1) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week1 and excutorid=:userid) 	end as week1,
+	case when wi.LEADERID = :userid  and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week2) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week2 and excutorid=:userid) 	end as week2,
+	case when wi.LEADERID = :userid and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week3) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week3 and excutorid=:userid) 	end as week3,
+	case when wi.LEADERID = :userid and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week4) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week4 and excutorid=:userid) 	end as week4,
+	case when wi.LEADERID = :userid and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week5) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week5 and excutorid=:userid) 	end as week5,
+	case when wi.LEADERID = :userid and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week6) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week6 and excutorid=:userid) 	end as week6,
+	case when wi.LEADERID = :userid and wi.excutorid not like :excutorid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week7) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week7 and excutorid=:userid) 	end as week7
+	from WORKINSTANCE wi where (wi.leaderid like :leaderid or wi.excutorid like :excutorid ) and substr(char(wi.crtDate),1,10) <=:week7 order by wi.crtdate desc
+    ]]> 
+  </sql-query>
+  
+  <sql-query name="WorkInstanceDAO.countSearch">
+     <![CDATA[
+	 	select 
+		win.initiatorid,win.wdname,win.cycle,
+		win.leadername,wlo.excutorname,win.wistatus,
+		win.begindate,win.crtdate,
+		wlo.wlid,wlo.wiid,wlo.excutorid,
+		wlo.titledate,wlo.actualdealwithdate,
+		wlo.excutetime,wlo.wldescription,
+		case when wlo.btnaction='1' 
+		 then '已执行'
+		when wlo.btnaction='2' 
+		 then '未执行'
+		end as btnaction
+		from worklog wlo
+		left join workinstance win on wlo.wiid=win.wiid where 1=1
+    ]]> 
+  </sql-query>
+    <sql-query name="WorkInstanceDAO.findTodayWorkByCondForFirstPage">
+    <![CDATA[
+		select 
+		    wi.wiid ,
+		    wi.wistatus ,
+		    wi.wdname ,
+		    wi.INITIATORID ,
+		    wi.cycle ,
+		    wi.leaderid ,
+		    wi.excutorid ,
+		    wi.leadername ,
+		    wi.excutorname ,
+		    wi.crtdate,
+		    replace((select date(char(replace(substr(char(estimateFinishDate),1,10),'/','-')) )+Integer(trim(char(overtimetipstime))) days from WORKDEFINITION where wdid = wi.wdid),'-','/') as overtime
+		FROM
+		    WORKINSTANCE wi
+		WHERE
+		    wi.wistatus IN(
+		        '执行中' ,
+		        '未执行'
+		    )
+		    AND(
+		        wi.excutorid LIKE :excutorid
+		    )
+		    AND NOT EXISTS(
+		        SELECT
+		            *
+		        FROM
+		            worklog wl
+		        WHERE
+		            wl.BTNACTION='1'
+		            AND LOCATE(wl.excutorid ,wi.excutorid ) > 0
+		            AND wl.EXCUTORID = :userid and wl.wiid = wi.wiid
+		    )
+		ORDER BY wi.CRTDATE
+    ]]> 
+    </sql-query>
+    <sql-query name="WorkInstanceDAO.findTodayWorkByCondForFirstPageTop5">
+    <![CDATA[
+    select * from (select rownumber() over() as id,
+			wi.wiid ,
+		    wi.wistatus ,
+		    wi.wdname ,
+		    wi.INITIATORID ,
+		    wi.cycle ,
+		    wi.leaderid ,
+		    wi.excutorid ,
+		    wi.leadername ,
+		    wi.excutorname ,
+		    wi.crtdate,
+		    replace((select date(char(replace(substr(char(estimateFinishDate),1,10),'/','-')) )+Integer(trim(char(overtimetipstime))) days from WORKDEFINITION where wdid = wi.wdid),'-','/') as overtime
+		FROM
+		    WORKINSTANCE wi
+		WHERE
+		    wi.wistatus IN(
+		        '执行中' ,
+		        '未执行'
+		    )
+		    AND (wi.excutorid LIKE :excutorid or wi.leaderid = :leaderid)
+		    
+		    AND NOT EXISTS(
+		        SELECT
+		            *
+		        FROM
+		            worklog wl
+		        WHERE
+		            wl.BTNACTION='1'
+		            AND LOCATE(wl.excutorid ,wi.excutorid ) > 0
+		            AND wl.EXCUTORID = :userid and wl.wiid = wi.wiid
+		    )
+		ORDER BY wi.CRTDATE desc) where id <4
+    ]]> 
+    </sql-query>
+    <sql-query name="WorkInstanceDAO.getTotalExcuteTime">
+    <![CDATA[
+		select 
+			 case when sum(round(trim(char(case when excutetime is null or excutetime = '' then '0' else excutetime end)),2)) is null
+			 then 0 else sum(round(trim(char(case when excutetime is null or excutetime = '' then '0' else excutetime end)),2)) end as totaltime
+		from WORKLOG where wiid = :wiid
+    ]]> 
+  </sql-query>
+  
+  <sql-query name="WorkInstanceDAO.getExcutedMaxTime">
+    <![CDATA[
+		select Max(wi.CONFIRMDATE) maxovertime,wi.WDID wdid from WORKINSTANCE wi
+       left join WORKDEFINITION wd on wd.WDID = wi.WDID
+        where  wd.ESTIMATEFINISHDATE<=:currenttime  and  (wi.wistatus='结束' or wi.wistatus='终止') group by wi.WDID
+    ]]> 
+  </sql-query>
+  
+  
+  
+  
+  
+  
+</hibernate-mapping>
