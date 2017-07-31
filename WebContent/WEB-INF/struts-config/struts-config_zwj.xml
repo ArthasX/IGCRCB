@@ -29,5 +29,15 @@
 			<set-property key="auth" value="false" />
 			<forward name="DISP" path="/zwj/IGZWJ0102.jsp" />
 		</action>
+		<!-- 用户查询弹出页 -->
+        <action path="/IGZWJ0101_Open"
+			type="com.deliverik.infogovernor.zwj.action.IGZWJ0101Action"
+			parameter="OPEN" 
+			input="/zwj/IGZWJ0103.jsp" 
+			name="IGZWJ0101Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/zwj/IGZWJ0103.jsp" />
+		</action>
     </action-mappings>
 </struts-config>

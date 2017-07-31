@@ -6,7 +6,7 @@ package com.deliverik.infogovernor.wim.form;
 import com.deliverik.framework.base.BaseForm;
 
 /**
- * @Description 工作项管理Form
+ * @Description 工作项新增/修改Form
  * 
  * @date 2017年6月9日15:47:38
  * 
@@ -24,6 +24,9 @@ public class IGWIM0101Form extends BaseForm{
 
 	/** 发起人（userid） */
 	protected String initiatorId;
+	
+	/** 发起人名称 */
+	protected String initiatorName;
 
 	/** 周期/频率 */
 	protected String cycle;
@@ -48,15 +51,24 @@ public class IGWIM0101Form extends BaseForm{
 
 	/** 超时提醒时间（天） */
 	protected String overtimeTipsTime;
-
+	
+	/** 超时停止处理时间（天） */
+	protected String overtimeStopDealTime;
+	
 	/** 负责人（userid） */
 	protected String leaderId;
+	
+	/** 负责人名称  */
+	protected String leaderName;
 
 	/** 执行人（userid,userid,userid,...） */
 	protected String excutorId;
+	
+	/** 执行人名称 */
+	protected String excutorName;
 
 	/** 启用状态（0，未启用；1，已启用） */
-	protected Integer wdstatus;
+	protected String wdstatus;
 
 	/** 月 */
 	protected String wdmonth;
@@ -84,7 +96,13 @@ public class IGWIM0101Form extends BaseForm{
 	
 	/** 预留字段 */
 	protected String reservedFiled;
-
+	
+	/** 0为新增 1为变更 */
+	protected String mode = "0";
+	
+	/** 是否是中心负责人以上岗位（1：是，0，否） */
+	protected String isLeader;
+	
 	/**
 	 * wdid取得
 	 *
@@ -137,6 +155,22 @@ public class IGWIM0101Form extends BaseForm{
 	 */
 	public void setInitiatorId(String initiatorId) {
 		this.initiatorId = initiatorId;
+	}
+	
+	/**
+	 * 发起人名称取得
+	 * @return 发起人名称
+	 */
+	public String getInitiatorName() {
+		return initiatorName;
+	}
+
+	/**
+	 * 发起人名称设定
+	 * @param 发起人名称
+	 */
+	public void setInitiatorName(String initiatorName) {
+		this.initiatorName = initiatorName;
 	}
 
 	/**
@@ -284,6 +318,22 @@ public class IGWIM0101Form extends BaseForm{
 	}
 	
 	/**
+	 * 超时停止处理时间（天）取得
+	 * @return 超时停止处理时间（天）
+	 */
+	public String getOvertimeStopDealTime() {
+		return overtimeStopDealTime;
+	}
+
+	/**
+	 * 超时停止处理时间（天）设定
+	 * @param 超时停止处理时间（天）
+	 */
+	public void setOvertimeStopDealTime(String overtimeStopDealTime) {
+		this.overtimeStopDealTime = overtimeStopDealTime;
+	}
+
+	/**
 	 * 负责人（userid）取得
 	 * 
 	 * @return 负责人（userid）
@@ -298,6 +348,22 @@ public class IGWIM0101Form extends BaseForm{
 	 */
 	public void setLeaderId(String leaderId) {
 		this.leaderId = leaderId;
+	}
+	
+	/**
+	 * 负责人名称 取得
+	 * @return 负责人名称 
+	 */
+	public String getLeaderName() {
+		return leaderName;
+	}
+
+	/**
+	 * 负责人名称 设定
+	 * @param 负责人名称 
+	 */
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
 	}
 
 	/**
@@ -317,13 +383,29 @@ public class IGWIM0101Form extends BaseForm{
 	public void setExcutorId(String excutorId) {
 		this.excutorId = excutorId;
 	}
+	
+	/**
+	 * 执行人名称取得
+	 * @return 执行人名称
+	 */
+	public String getExcutorName() {
+		return excutorName;
+	}
+
+	/**
+	 * 执行人名称设定
+	 * @param 执行人名称
+	 */
+	public void setExcutorName(String excutorName) {
+		this.excutorName = excutorName;
+	}
 
 	/**
 	 * 启用状态（0，未启用；1，已启用）取得
 	 *
 	 * @return 启用状态（0，未启用；1，已启用）
 	 */
-	public Integer getWdstatus() {
+	public String getWdstatus() {
 		return wdstatus;
 	}
 
@@ -332,14 +414,13 @@ public class IGWIM0101Form extends BaseForm{
 	 *
 	 * @param 启用状态（0，未启用；1，已启用）
 	 */
-	public void setWdstatus(Integer wdstatus) {
+	public void setWdstatus(String wdstatus) {
 		this.wdstatus = wdstatus;
 	}
-
+	
 	/**
 	 * 月取得
-	 *
-	 * @return 月
+	 * @return the 月
 	 */
 	public String getWdmonth() {
 		return wdmonth;
@@ -347,7 +428,6 @@ public class IGWIM0101Form extends BaseForm{
 
 	/**
 	 * 月设定
-	 *
 	 * @param 月
 	 */
 	public void setWdmonth(String wdmonth) {
@@ -373,18 +453,14 @@ public class IGWIM0101Form extends BaseForm{
 	}
 
 	/**
-	 * 周取得
-	 *
-	 * @return 周
+	 * @return the wdweek
 	 */
 	public String getWdweek() {
 		return wdweek;
 	}
 
 	/**
-	 * 周设定
-	 *
-	 * @param 周
+	 * @param wdweek the wdweek to set
 	 */
 	public void setWdweek(String wdweek) {
 		this.wdweek = wdweek;
@@ -495,5 +571,37 @@ public class IGWIM0101Form extends BaseForm{
 	public void setReservedFiled(String reservedFiled) {
 		this.reservedFiled = reservedFiled;
 	}
+	
+	/**
+	 * 0为新增 1为变更取得
+	 * @return 0为新增 1为变更
+	 */
+	public String getMode() {
+		return mode;
+	}
 
+	/**
+	 * 0为新增 1为变更设定
+	 * @param 0为新增 1为变更
+	 */
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	/**
+	 * 是否是中心负责人以上岗位（1：是，0，否）取得
+	 * @return 是否是中心负责人以上岗位（1：是，0，否）
+	 */
+	public String getIsLeader() {
+		return isLeader;
+	}
+
+	/**
+	 * 是否是中心负责人以上岗位（1：是，0，否）设定
+	 * @param 是否是中心负责人以上岗位（1：是，0，否）
+	 */
+	public void setIsLeader(String isLeader) {
+		this.isLeader = isLeader;
+	}
+	
 }

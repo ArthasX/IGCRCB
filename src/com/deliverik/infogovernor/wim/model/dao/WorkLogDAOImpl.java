@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.deliverik.framework.dao.hibernate.BaseHibernateDAOImpl;
@@ -75,6 +76,7 @@ public class WorkLogDAOImpl extends
 	 */
 	public List<WorkLogInfo> findByCond(final WorkLogSearchCond cond, final int start, final int count){
 		DetachedCriteria c = getCriteria(cond);
+		c.addOrder(Order.desc("actualDealwithDate"));
 		return findByCriteria(c, start, count);
 	}
 
@@ -87,9 +89,9 @@ public class WorkLogDAOImpl extends
 	protected DetachedCriteria getCriteria(WorkLogSearchCond cond){
 		DetachedCriteria c = getDetachedCriteria();
 		
-		//工作日志名称
-		if(StringUtils.isNotEmpty(cond.getWlname())){
-			c.add(Restrictions.like("wlname", "%"+cond.getWlname()+"%"));
+		//关联的工作实例（wiid）
+		if(cond.getWiid()!=null&&cond.getWiid()>0){
+			c.add(Restrictions.eq("wiid", cond.getWiid()));
 		}
 		
 		//执行人（userid）
@@ -115,6 +117,11 @@ public class WorkLogDAOImpl extends
 		//表记录创建日期
 		if(StringUtils.isNotEmpty(cond.getCrtDate())){
 			c.add(Restrictions.like("crtDate", cond.getCrtDate()+"%"));
+		}
+		
+		//表记录创建日期
+		if(StringUtils.isNotEmpty(cond.getBtnAction())){
+			c.add(Restrictions.eq("btnAction", cond.getBtnAction()));
 		}
 		
 		return c;

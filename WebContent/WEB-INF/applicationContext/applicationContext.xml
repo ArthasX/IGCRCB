@@ -202,6 +202,7 @@
 	        <value>com/deliverik/infogovernor/cic/model/dao/query.hbm.xml</value>
 	        <value>com/deliverik/infogovernor/asset/model/dao/query.hbm.xml</value>
 	        <value>com/deliverik/infogovernor/crc/model/dao/query.hbm.xml</value>
+	        <value>com/deliverik/infogovernor/wim/model/dao/query.hbm.xml</value>
 	      </list>
 	    </property>
 		<property name="annotatedClasses">
@@ -879,11 +880,10 @@
 			    <value>com.deliverik.infogovernor.drm.model.entity.SOC0507TB</value>
 			    <!-- 工作项定义实体 -->
 			    <value>com.deliverik.infogovernor.wim.model.entity.WorkDefinitionTB</value>
-			    <!-- 工作实例实体 -->
+			    <!-- 工作定义实体 -->
 			    <value>com.deliverik.infogovernor.wim.model.entity.WorkInstanceTB</value>
-			    <!-- 工作日志实体 -->
+			    <!-- 工作处理记录定义实体 -->
 			    <value>com.deliverik.infogovernor.wim.model.entity.WorkLogTB</value>
-
 			</list>
 		</property>
 	</bean>

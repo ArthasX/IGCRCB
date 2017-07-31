@@ -47,5 +47,45 @@
 		<property name="workDefinitionBL">
 			<ref bean="workDefinitionBL"/>
 		</property>
+		<property name="workInstanceBL">
+			<ref bean="workInstanceBL"/>
+		</property>
+		<property name="workLogBL">
+			<ref bean="workLogBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
+	</bean>
+
+	<!-- 工作查询ControlBL -->
+	<bean id="igwim02BL" class="com.deliverik.infogovernor.wim.bl.IGWIM02BLImpl">
+		<property name="workDefinitionBL">
+			<ref bean="workDefinitionBL"/>
+		</property>
+		<property name="workInstanceBL">
+			<ref bean="workInstanceBL"/>
+		</property>
+		<property name="workLogBL">
+			<ref bean="workLogBL"/>
+		</property>
+		<property name="organizationBL">
+			<ref bean="organizationBL"/>
+		</property>
+		<property name="userBL">
+			<ref bean="userBL"/>
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL"/>
+		</property>
+		<property name="roleBL">
+			<ref bean="roleBL"/>
+		</property>
 	</bean>
 </beans>

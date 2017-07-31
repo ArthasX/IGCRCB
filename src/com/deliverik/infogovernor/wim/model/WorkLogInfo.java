@@ -15,73 +15,88 @@ import com.deliverik.framework.base.BaseModel;
 public interface WorkLogInfo extends BaseModel {
 
 	/**
-	 * 主键取得
-	 *
-	 * @return 主键
-	 */
-	public Integer getWlid();
+	 * 取得 主键
+	 * 
+	 * @return wlid
+	*/
+	public Integer getPK() ;
+	
 
 	/**
-	 * 工作实例表主键取得
-	 *
-	 * @return 工作实例表主键
-	 */
-	public Integer getWiid();
+	 * 取得 主键
+	 * 
+	 * @return wlid
+	*/
+	public Integer getWlid() ;
+	
 
 	/**
-	 * 工作日志名称取得
-	 *
-	 * @return 工作日志名称
-	 */
-	public String getWlname();
+	 * 取得 工作实例表主键
+	 * 
+	 * @return wiid
+	*/
+	public Integer getWiid() ;
+	
 
 	/**
-	 * 执行人（userid）取得
-	 *
-	 * @return 执行人（userid）
-	 */
+	 * 取得 执行人
+	 * 
+	 * @return excutorId
+	*/
 	public String getExcutorId();
+	
 
 	/**
-	 * 操作 取得
-	 *
-	 * @return 操作 
-	 */
-	public String getOperation();
+	 * 取得 执行人名称
+	 * 
+	 * @return excutorName
+	*/
+	public String getExcutorName() ;
+	
 
 	/**
-	 * 日期栏日期取得
-	 *
-	 * @return 日期栏日期
-	 */
-	public String getTitleDate();
+	 * 取得 日期栏日期
+	 * 
+	 * @return titleDate
+	*/
+	public String getTitleDate() ;
+	
 
 	/**
-	 * 执行时间取得
-	 *
-	 * @return 执行时间
-	 */
-	public String getExcuteTime();
+	 * 取得 执行时间（小时）
+	 * 
+	 * @return excuteTime
+	*/
+	public String getExcuteTime() ;
 
 	/**
-	 * 实际处理日期取得
-	 *
-	 * @return 实际处理日期
-	 */
+	 * 取得 实际处理日期
+	 * 
+	 * @return actualDealwithDate
+	*/
 	public String getActualDealwithDate();
+	
 
 	/**
-	 * 执行情况描述取得
-	 *
-	 * @return 执行情况描述
-	 */
-	public String getWlDescription();
+	 * 取得 执行情况描述
+	 * 
+	 * @return wlDescription
+	*/
+	public String getWlDescription() ;
+	
 
 	/**
-	 * 表记录创建日期 取得
-	 *
-	 * @return 表记录创建日期 
-	 */
+	 * 取得 表记录创建日期
+	 * 
+	 * @return crtDate
+	*/
 	public String getCrtDate();
 
+	/**
+	 * 取得 按钮动作
+	 * 
+	 * @return btnAction
+	*/
+	public String getBtnAction();
+	
 }

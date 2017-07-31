@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.struts.action.ActionForm;
@@ -111,6 +112,60 @@ public class IGZWJ0101Action extends BaseAction{
 			super.<IGZWJ01011VO>setVO(request, vo);
 			
 			log.debug("========用户查询处理终了========");
+		}else if("OPEN".equals(mapping.getParameter())){
+			log.info("==========用户弹出页查询Action处理开始==========");
+			//获取分页Bean
+			getPaginDTO(request,"IGZWJ0101");
+			PagingDTO pDto;
+			pDto = (PagingDTO)request.getAttribute("PagingDTO");
+			if ("SEARCH1".equals(mapping.getParameter())){
+				//由详细画面，编辑画面返回查询画面时的再检索处理
+				form = (IGZWJ0101Form) request.getSession().getAttribute("IGZWJ0101Form");
+				if ( form== null){
+					form = new IGZWJ0101Form();
+				}else {
+					if (request.getParameter("PAGING") == null) {
+						pDto.setFromCount(form.getFromCount());
+					} else {
+						form.setFromCount(pDto.getFromCount());
+					}
+				}
+			} else {
+				if (request.getParameter("PAGING") == null) {
+					pDto.setFromCount(0);
+					form = (IGZWJ0101Form) request.getSession().getAttribute("IGZWJ0101Form");
+					if (form !=null) {
+						form.setFromCount(0);
+					}
+				}
+			}
+			int maxCnt = getMaxDataCount("IGCYB0101");
+			UserSearchCondImpl cond = new UserSearchCondImpl();
+//			BeanUtils.copyProperties(cond, form);
+			//将查询条件小写转换成大写
+			cond.setUsername_q(form.getUsername_q());
+			if(StringUtils.isNotEmpty(form.getOrgidstr())){
+				if("0002001017".equals(form.getOrgidstr())){
+					
+					cond.setOrgid_like(form.getOrgidstr());
+				}else{
+					
+					cond.setOrgid(form.getOrgidstr());
+				}
+			}else{
+				cond.setOrgid_like("0002001017");
+			}
+			dto.setUserSearchCond(cond);
+			dto.setMaxSearchCount(maxCnt);
+			dto.setPagingDto(pDto);
+			//调用BL查询
+			dto = ctlBL.searchUserInfoAction(dto);
+			//构造VO
+			IGZWJ01011VO vo = new IGZWJ01011VO();
+			vo.setUserList(dto.getUserList());
+			super.<IGZWJ01011VO>setVO(request, vo);
+			
+			log.info("==========用户弹出页查询Action处理结束==========");
 		}
 		
 		List<ActionMessage> messageList = dto.getMessageList();

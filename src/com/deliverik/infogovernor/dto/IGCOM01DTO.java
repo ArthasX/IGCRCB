@@ -2,6 +2,7 @@ package com.deliverik.infogovernor.dto;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import com.deliverik.framework.base.BaseDTO;
 import com.deliverik.framework.security.UserPermission;
@@ -77,6 +78,27 @@ public class IGCOM01DTO extends BaseDTO implements Serializable{
 	/** 相关检查工作倒序 */
 	private List<RiskCheckResult> lst_RiskCheckResultGroup_Desc;
 	
+	/** 首页我的工作集合 */
+	private List<Map<String,String>> myWorkItemList;
+	
+	/**
+	 * 取得 首页我的工作集合
+	 * 
+	 * @return myWorkItemList 首页我的工作集合
+	 */
+	public List<Map<String, String>> getMyWorkItemList() {
+		return myWorkItemList;
+	}
+
+	/**
+	 * 设定 首页我的工作集合
+	 * 
+	 * @param myWorkItemList 首页我的工作集合
+	 */
+	public void setMyWorkItemList(List<Map<String, String>> myWorkItemList) {
+		this.myWorkItemList = myWorkItemList;
+	}
+
 	/**
 	 * 个人检查工作正序获取
 	 * 

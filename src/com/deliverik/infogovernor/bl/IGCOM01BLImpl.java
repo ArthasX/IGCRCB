@@ -58,6 +58,8 @@ import com.deliverik.infogovernor.sym.model.Notice;
 import com.deliverik.infogovernor.sym.model.condition.NoticeSearchCondImpl;
 import com.deliverik.infogovernor.sym.model.entity.NoticeTB;
 import com.deliverik.infogovernor.vo.IGCOM04032VO;
+import com.deliverik.infogovernor.wim.bl.task.WorkInstanceBL;
+import com.deliverik.infogovernor.wim.model.condition.WorkInstanceSearchCondImpl;
 
 
 /**
@@ -95,6 +97,20 @@ public class IGCOM01BLImpl extends BaseBLImpl implements IGCOM01BL {
 	/** 检查工作查询 */
 	protected RiskCheckResultBL riskCheckResultBL;
 	
+	/** 工作管理工作实例查询BL */
+	protected WorkInstanceBL workInstanceBL;
+	
+	
+	
+	/**
+	 * 设定 工作管理工作实例查询BL
+	 * 
+	 * @param workInstanceBL 工作管理工作实例查询BL
+	 */
+	public void setWorkInstanceBL(WorkInstanceBL workInstanceBL) {
+		this.workInstanceBL = workInstanceBL;
+	}
+
 	/**
 	 * 检查工作查询设置
 	 * 
@@ -1089,6 +1105,26 @@ public class IGCOM01BLImpl extends BaseBLImpl implements IGCOM01BL {
 		List<CRM06Info> lst_CRM06Info = this.crm06BL.searchCRM06(cond);
 		dto.setLst_CRM06Info(lst_CRM06Info);
 		log.debug("========Oracle告警查询处理终了========");
+		return dto;
+	}
+	
+	/**
+	 * <p>
+	 * 获取首页今日我的工作
+	 * </p>
+	 * 
+	 * @author zyl 
+	 */
+	public IGCOM01DTO findTodayWorkByCondForFirstPage(IGCOM01DTO dto) throws BLException{
+		log.debug("========获取首页今日我的工作处理开始========");
+		//当前用户id
+		String userid = dto.getUser().getUserid();
+		//逻辑部分
+		WorkInstanceSearchCondImpl cond = new WorkInstanceSearchCondImpl();
+		cond.setUserid(userid);
+		List<Map<String, String>> myWorkItemList = workInstanceBL.findTodayWorkByCondForFirstPageTop5(cond , 0, 0);
+		dto.setMyWorkItemList(myWorkItemList);
+		log.debug("========获取首页今日我的工作处理终了========");
 		return dto;
 	}
 }

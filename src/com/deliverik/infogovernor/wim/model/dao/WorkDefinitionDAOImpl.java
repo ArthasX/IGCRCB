@@ -9,6 +9,7 @@ import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import com.deliverik.framework.dao.hibernate.BaseHibernateDAOImpl;
@@ -75,6 +76,7 @@ public class WorkDefinitionDAOImpl extends
 	 */
 	public List<WorkDefinitionInfo> findByCond(final WorkDefinitionSearchCond cond, final int start, final int count){
 		DetachedCriteria c = getCriteria(cond);
+		c.addOrder(Order.desc("crtDate"));
 		return findByCriteria(c, start, count);
 	}
 
@@ -92,14 +94,24 @@ public class WorkDefinitionDAOImpl extends
 			c.add(Restrictions.like("wdname", "%"+cond.getWdname()+"%"));
 		}
 		
-		//发起人（userid）
+		//发起人
 		if(StringUtils.isNotEmpty(cond.getInitiatorId())){
-			c.add(Restrictions.eq("initiatorId", cond.getInitiatorId()));
+			c.add(Restrictions.like("initiatorId", "%"+cond.getInitiatorId()+"%"));
+		}
+		
+		//多发起人
+		if(cond.getInitiatorId_in()!=null && cond.getInitiatorId_in().size()>0){
+			c.add(Restrictions.in("initiatorId", cond.getInitiatorId_in()));
+		}
+		
+		//负责人名称
+		if(StringUtils.isNotEmpty(cond.getLeaderName())){
+			c.add(Restrictions.like("leaderName", "%"+cond.getLeaderName()+"%"));
 		}
 		
 		//启用状态（0，未启用；1，已启用）取得
 		if(StringUtils.isNotEmpty(cond.getWdstatus())){
-			c.add(Restrictions.eq("wdstatus", cond.getWdstatus()));
+			c.add(Restrictions.eq("wdstatus",cond.getWdstatus()));
 		}
 		
 		//开始日期从 

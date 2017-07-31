@@ -60,6 +60,9 @@
 		<property name="riskCheckResultBL">
 			<ref bean="riskCheckResultBL"/>
 		</property>
+		<property name="workInstanceBL">
+			<ref bean="workInstanceBL"/>
+		</property>
 	</bean>
 
     <!-- Control BL -->

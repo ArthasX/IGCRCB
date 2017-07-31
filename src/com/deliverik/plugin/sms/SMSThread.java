@@ -217,5 +217,33 @@ public class SMSThread implements Runnable {
 		}
 		SMSThread.smsOpen = smsOpen;
 	}
+	
+	/**
+	 * 工作项短信提醒开关设定
+	 *
+	 * @param smsOpen 短信是否开启
+	 */
+	public static void setWorkItemSmsOpen(boolean smsOpen) {
+
+		CodeDetailBL codeDetailBL = (CodeDetailBL)WebApplicationSupport.getBean("codeDetailBL");
+		CodeDetailTB codeDetail = (CodeDetailTB)codeDetailBL.searchCodeDetailByPK(new CodeDetailTBPK("177","6"));
+		IGDBM13BL ctlBL = (IGDBM13BL) WebApplicationSupport.getBean("igdbm13BL");
+		try {
+			if(smsOpen){
+				codeDetail.setCvalue("1");
+				codeDetailBL.updateCodeDetail(codeDetail);
+				//插入检查每日待处理工作定时任务
+				ctlBL.insertEveryDayjob();
+			}else{
+				codeDetail.setCvalue("0");
+				codeDetailBL.updateCodeDetail(codeDetail);
+				//删除检查每日待处理工作定时任务
+				ctlBL.delEveryDayjob();
+			}
+		} catch (BLException e) {
+			log.error("短信平台出现故障",e);
+		}
+		SMSThread.smsOpen = smsOpen;
+	}
 
 }

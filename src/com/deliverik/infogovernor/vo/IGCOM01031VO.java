@@ -2,6 +2,7 @@ package com.deliverik.infogovernor.vo;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 import com.deliverik.framework.base.BaseVO;
 import com.deliverik.infogovernor.com.model.ProcessInHandVWInfo;
@@ -91,6 +92,27 @@ public class IGCOM01031VO extends BaseVO implements Serializable{
 	/** 系统当前时间 */
 	private String riskChecktime;
 	
+	/** 首页我的工作集合 */
+	private List<Map<String,String>> myWorkItemList;
+	
+	/**
+	 * 取得 首页我的工作集合
+	 * 
+	 * @return myWorkItemList 首页我的工作集合
+	 */
+	public List<Map<String, String>> getMyWorkItemList() {
+		return myWorkItemList;
+	}
+
+	/**
+	 * 设定 首页我的工作集合
+	 * 
+	 * @param myWorkItemList 首页我的工作集合
+	 */
+	public void setMyWorkItemList(List<Map<String, String>> myWorkItemList) {
+		this.myWorkItemList = myWorkItemList;
+	}
+
 	/**
 	 * 系统当前时间获取
 	 * 

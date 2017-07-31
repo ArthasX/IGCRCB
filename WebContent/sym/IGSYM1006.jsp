@@ -1,4 +1,3 @@
-<%@page import="com.deliverik.plugin.sms.WXThread"%>
 <%@page import="com.deliverik.plugin.mail.MAILThread"%>
 <%@page import="com.deliverik.plugin.sms.SMSThread"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
@@ -75,34 +74,6 @@ function setSMSstatus(type, SMSCTLbtnValue){
 		}
 	}
 }
-function setWXstatus(type, WXCTLbtnValue){
-	alert(type+" "+WXCTLbtnValue);
-	if(confirm("请确认是否"+WXCTLbtnValue+"微信服务功能")){
-		var res;
-		var objAjax = new Ajax.Request(getAppRootUrl() + ajaxAction,{asynchronous:false, 
-			parameters: 'type='+type+'&status='+WXCTLbtnValue,
-			 onSuccess:  function(req, json){
-			 var result=req.responseText;
-				if(result != null && result != ""){
-					res = result;
-			   }	
-		    }
-		});
-		$('WXCTLbtn').value=res;
-		if(res!=null && res !=""){
-			if(res == "开启"){
-				$('wx_status').innerHTML="已关闭";
-// 				alert("关闭成功!");
-			}else{
-				$('wx_status').innerHTML="已开启";
-// 				alert("启动成功!");
-			}
-		}else{
-// 			alert("变更状态失败！");
-		}
-	}
-}
-
 
 </script><body>
 <div id="maincontent">
@@ -137,7 +108,7 @@ function setWXstatus(type, WXCTLbtnValue){
 			            </tr>
 			        </table>
 		        </div>
-		        <c:if test="${IGSYM10061VO.codeCategoryInfo.ccid != 159}">
+		        <c:if test="${IGSYM10061VO.codeCategoryInfo.ccid != 159 && IGSYM10061VO.codeCategoryInfo.ccid != 177}">
 				<div class="title">
 				<div class="name">数据详细信息</div>
 				</div>  
@@ -203,45 +174,6 @@ function setWXstatus(type, WXCTLbtnValue){
 		        </div>
 				</c:if>
                 <div id="operate">
-                
-                
-                <c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 160}">
-				<div class="title">
-				<div class="name">微信服务状态</div>
-				</div> 
-				    <table class="table_style" >
-				    <tr>
-				   <th>
-				    	状态
-				    </th>
-				    <th>
-				    	操作
-				    </th>
-				    </tr>
-				    <tr>
-				   <td>
-					&nbsp;&nbsp;&nbsp;
-					<label id="wx_status">
-						
-						
-						<%=(WXThread.iswxOpen()?"已开启":"已关闭") %>
-					<%-- <%=(SMSThread.isSmsOpen()?"已开启":"已关闭") %> --%>
-					</label>
-				    </td>
-				    <td>
-				    	<c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 160}">
-				    	
-							<input id="WXCTLbtn" class="button" type="button" value="<%=(WXThread.iswxOpen()?"关闭":"开启") %>" onclick="setWXstatus('setWXstatus',$('WXCTLbtn').value)" >
-					
-				    	</c:if>    	
-				    </td>
-				    </tr>
-				    </table>
-				    <br/>
-				    <br/>
-				    	
-				    </c:if>
-                
 				<c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 153}">
 				<div class="title">
 				<div class="name">短信服务状态</div>
@@ -283,6 +215,14 @@ function setWXstatus(type, WXCTLbtnValue){
 							</c:if>
 							<c:if test="${IGSYM10061VO.flag == '1'}">
 								<input id="SMSCTLbtn" class="button" type="button" value="关闭" onclick="setSMSstatus('setEveryDayWorkSMSstatus',$('SMSCTLbtn').value)" >
+							</c:if>
+				    	</c:if>
+				    	<c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 177}">
+				    		<c:if test="${IGSYM10061VO.flag == '0'}">
+							<input id="SMSCTLbtn" class="button" type="button" value="开启" onclick="setSMSstatus('setWorkItemSMSstatus',$('SMSCTLbtn').value)" >
+							</c:if>
+							<c:if test="${IGSYM10061VO.flag == '1'}">
+								<input id="SMSCTLbtn" class="button" type="button" value="关闭" onclick="setSMSstatus('setWorkItemSMSstatus',$('SMSCTLbtn').value)" >
 							</c:if>
 				    	</c:if>
 				    </td>
@@ -358,6 +298,47 @@ function setWXstatus(type, WXCTLbtnValue){
 				    <br/>
 				    <br/>
 				    
+				    </c:if>
+				    <c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 177}">
+				<div class="title">
+				<div class="name">短信服务状态${IGSYM10061VO.flag}</div>
+				</div> 
+				    <table class="table_style" >
+				    <tr>
+				   <th>
+				    	状态
+				    </th>
+				    <th>
+				    	操作
+				    </th>
+				    </tr>
+				    <tr>
+				   <td>
+					&nbsp;&nbsp;&nbsp;
+					<label id="sms_status">
+						<c:if test="${IGSYM10061VO.flag == '0'}">
+							已关闭
+						</c:if>
+						<c:if test="${IGSYM10061VO.flag == '1'}">
+							已开启
+						</c:if>
+					<%-- <%=(SMSThread.isSmsOpen()?"已开启":"已关闭") %> --%>
+					</label>
+				    </td>
+				    <td>
+				    	<c:if test="${IGSYM10061VO.codeCategoryInfo.ccid == 177}">
+				    		<c:if test="${IGSYM10061VO.flag == '0'}">
+							<input id="SMSCTLbtn" class="button" type="button" value="开启" onclick="setSMSstatus('setWorkItemSMSstatus',$('SMSCTLbtn').value)" >
+							</c:if>
+							<c:if test="${IGSYM10061VO.flag == '1'}">
+								<input id="SMSCTLbtn" class="button" type="button" value="关闭" onclick="setSMSstatus('setWorkItemSMSstatus',$('SMSCTLbtn').value)" >
+							</c:if>
+				    	</c:if>
+				    </td>
+				    </tr>
+				    </table>
+				    <br/>
+				    <br/>
 				    </c:if>
 			        <div class="content">
 			            <div class="enter">

@@ -138,7 +138,7 @@ public class IGSYM10BLImpl extends BaseBLImpl implements IGSYM10BL {
 		
 		List<CodeDetail> codeDetailList = 
 			this.codeDetailBL.searchCodeDetail(cond,CommonDefineUtils.CODE_DETAIL_ORDER_BY_MODE_0);
-		if("153".equals(form.getCcid())||"159".equals(form.getCcid())||"160".equals(form.getCcid())){// 如果是短信配置(159工作提醒信息设定)
+		if("153".equals(form.getCcid())||"159".equals(form.getCcid())||"177".equals(form.getCcid())){// 如果是短信配置(159工作提醒信息设定)
 			List<CodeDetail> codeDetailListTmp = new ArrayList<CodeDetail>();
 			if("1".equals(ResourceUtility.getString("SENDSMSMODE_CODE"))){ //如果使用短信猫方式发送短信
 				for(CodeDetail cdBean:codeDetailList){

@@ -90,6 +90,12 @@ public interface WorkDefinitionInfo extends BaseModel {
 	 * @return 超时提醒时间（天）
 	 */
 	public String getOvertimeTipsTime();
+	
+	/**
+	 * 超时停止处理时间（天）取得
+	 * @return 超时停止处理时间（天）
+	 */
+	public String getOvertimeStopDealTime();
 
 	/**
 	 * 负责人（userid）取得
@@ -97,6 +103,12 @@ public interface WorkDefinitionInfo extends BaseModel {
 	 * @return 负责人（userid）
 	 */
 	public String getLeaderId();
+	
+	/**
+	 * 负责人名称取得
+	 * @return 负责人名称
+	 */
+	public String getLeaderName();
 
 	/**
 	 * 执行人（userid,userid,userid,...）取得
@@ -104,13 +116,19 @@ public interface WorkDefinitionInfo extends BaseModel {
 	 * @return 执行人（userid,userid,userid,...）
 	 */
 	public String getExcutorId();
+	
+	/**
+	 * 执行人名称取得
+	 * @return 执行人名称
+	 */
+	public String getExcutorName();
 
 	/**
 	 * 启用状态（0，未启用；1，已启用）取得
 	 *
 	 * @return 启用状态（0，未启用；1，已启用）
 	 */
-	public Integer getWdstatus();
+	public String getWdstatus();
 
 	/**
 	 * 月取得

@@ -17,6 +17,9 @@
 <!-- /header1 -->
 <link rel="stylesheet"
 	href="<html:rewrite forward='jquery.tzCheckbox.css'/>" type="text/css">
+<script>
+var jQ = jQuery.noConflict(true);//jquery与prototype冲突
+</script>	
 <script src="<html:rewrite forward='jquery.tzCheckbox.js'/>"></script>
 <style type="text/css">
 #entBox  th{

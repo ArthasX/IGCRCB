@@ -1186,10 +1186,19 @@
            	<forward name="IGDBM1301_Disp" path="/IGDBM1301_Search.do" />
            	<!-- 工作信息新增 -->
            	<forward name="IGDBM1302_Disp" path="/IGDBM1302_Disp.do" />
-           	<!-- 20170302工作信息查询 -->
-           	<forward name="IGWKI0101_Disp" path="/IGWKI0101_Search.do" />
-           <!--  <forward name="IGMNU0101" path="/menu/IGMNU0101.jsp" /> -->
-           <forward name="IGMNU0101" path="/IGMNU0101.do" />
+           	
+           	<!-- ========================================= 工作项管理配置开始 -->
+           	<!-- 工作项管理 -->
+           	<forward name="IGWIM0101" path="/IGWIM0102.do" />
+           	<!-- 工作项查询 -->
+           	<forward name="IGWIM0102" path="/IGWIM0102_Search.do" />
+           	<!-- 工作项定义 -->
+           	<forward name="IGWIM0201" path="/IGWIM0101_Disp.do" />
+           	<!-- 工作查看 -->
+           	<forward name="IGWIM0202" path="/IGWIM0201_Disp.do" />
+           	<!-- 工作统计分析 -->
+           	<forward name="IGWIM0301" path="/IGWIM0201_Count.do" />
+           	<!-- ========================================= 工作项管理配置结束 -->
           </action>
         
         <action path="/IGCOM0402"

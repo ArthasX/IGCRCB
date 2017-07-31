@@ -80,7 +80,11 @@ public class IGCOM0103Action extends BaseAction {
 		}
 
 		dto = ctrlBl.getProcessInHand(dto); // 我的工作相关工作
-		dto = ctrlBl.getKnowledge(dto); // 知识
+//		dto = ctrlBl.getKnowledge(dto); // 知识
+		dto = ctrlBl.findTodayWorkByCondForFirstPage(dto); // 首页我的当日工作查询
+		//查看权限用，不是自己的单子，只能看，不能处理
+		req.setAttribute("myuserid", user.getUserid());
+		req.setAttribute("titledate", IGStringUtils.getCurrentDate());
 		dto = ctrlBl.getNotice(dto); // 通知
 		dto = ctrlBl.getDaysPlans(dto); // 日常计划
 		dto = ctrlBl.getRiskCheckResultGoup(dto);	//首页检查工作查询
@@ -111,7 +115,9 @@ public class IGCOM0103Action extends BaseAction {
 		vo.setYear(form.getYear());
 		vo.setMonth(form.getMonth());
 		req.getSession().setAttribute("AD_SMSSTATUS_REQUEST", SMSThread.isSmsOpen());
-		
+		//存入当前系统时间
+		req.getSession().setAttribute("Current_Time", IGStringUtils.getCurrentDate());
+		vo.setMyWorkItemList(dto.getMyWorkItemList());
 		super.<IGCOM01031VO> setVO(req, vo);
 		return mapping.findForward(Forward);
 	}

@@ -428,6 +428,14 @@
 			<set-property key="auth" value="false" />
 			<forward name="DISP" path="/sym/IGSYM1905.jsp" />
 		</action>
+		<!-- 工作项选择负责人弹出页-->
+		<action path="/IGSYM1905_Open"
+			type="com.deliverik.infogovernor.sym.action.IGSYM0201Action"
+			parameter="OPEN" input="/sym/IGSYM0201.jsp" name="IGSYM0201Form"
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/sym/IGSYM1905_OPEN.jsp" />
+		</action>
 		<!-- 用户查询 -->
 		<action path="/IGSYM0205_Disp"
 			type="com.deliverik.infogovernor.sym.action.IGSYM0205Action"

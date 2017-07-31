@@ -5,6 +5,7 @@
 package com.deliverik.infogovernor.wim.bl.task;
 
 import java.util.List;
+import java.util.Map;
 
 import com.deliverik.framework.base.BLException;
 import com.deliverik.framework.base.BaseBL;
@@ -105,5 +106,58 @@ public interface WorkInstanceBL extends BaseBL {
 	 */
 	public void deleteWorkInstance(WorkInstanceInfo instance)
 		throws BLException;
-
+	/**
+	 * 查询工作
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<Map<String,String>> findWeekWorkByCond(final WorkInstanceSearchCond cond, final int start, final int count);
+	
+	/**
+	 * @Description 工作每日提醒检索数据
+	 * @return 工作实例提醒数据
+	 */
+	public List<WorkInstanceInfo> findInstanceByTips();
+	
+	/**
+	 * 工作信息统计查询
+	 * @param cond 检索条件
+	 * @param start 检索记录起始行号
+	 * @param count 检索记录件数
+	 * @return 检索结果列表
+	 */
+	public List<Map<String,String>> findCountSearch(final WorkInstanceSearchCond cond, final int start, final int count);
+	/**
+	 * 首页查询当日工作
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<Map<String,String>> findTodayWorkByCondForFirstPageTop5(final WorkInstanceSearchCond cond, final int start, final int count);
+	
+	/**
+	 * 首页查询当日工作
+	 * @param cond
+	 * @param start
+	 * @param count
+	 * @return
+	 */
+	public List<Map<String,String>> findTodayWorkByCondForFirstPage(final WorkInstanceSearchCond cond, final int start, final int count);
+	
+	/**
+	 * 查询当前工作已经用时多久了，所有日志里填的处理时间之和
+	 * @param cond 只用到了实例id-wiid
+	 * @return
+	 */
+	public String getTotalExcuteTime(final WorkInstanceSearchCond cond);
+	
+	/**
+	 * 查询所有预计完成时间小于当前时间，并且所有工作都结束
+	 * @param 
+	 * @return 时间最大值和对应工作项id
+	 */
+    public List<Map<String, String>> getExcutedMaxTime();
 }

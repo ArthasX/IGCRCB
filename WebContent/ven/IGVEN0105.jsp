@@ -23,6 +23,9 @@
 <!-- <script type="text/javascript"> -->
 <!-- // var jquery15=jQuery.noConflict(true); -->
 <!-- </script> -->
+<script>
+var jQ = jQuery.noConflict(true);//jquery与prototype冲突
+</script>
 <script src="<html:rewrite forward='jquery.tzCheckbox.js'/>"></script>
 
 <link rel="stylesheet" href="<html:rewrite forward='jquery.tzCheckbox.css'/>" type="text/css">

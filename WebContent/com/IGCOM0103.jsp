@@ -7,6 +7,7 @@
 <%@ taglib uri="/tags/struts-bean" prefix="bean"%>
 <%@ taglib uri="/tags/struts-logic" prefix="logic"%>
 <%@ taglib uri="/tags/ig-tags" prefix="ig"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <%@page import="com.deliverik.framework.workflow.IGPRDCONSTANTS"%><html:html>
@@ -43,6 +44,13 @@ width:100%;
 white-space:nowrap; 
 text-overflow:ellipsis; 
 overflow:hidden;
+}
+
+
+.my_work1 td {
+	height: 21px;
+	color: #666666;
+	line-height: 21px;
 }
 </style>
 
@@ -538,53 +546,55 @@ text-align: center;
 		          <th width="80px" align="left"><span style="color: #b90216">状态</span></th>
 				</tr>
 	<logic:iterate id="processRecordInfo" name="IGCOM01031VO" indexId="index" length="6" property="processInHandDesc" type="com.deliverik.infogovernor.com.model.ProcessInHandVWInfo">
-	<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="doLook('${processRecordInfo.showurl }${processRecordInfo.prid }&jump=77');">
-		<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
-			<c:if test="${processRecordInfo.prpdname =='变更'}">
-				<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
-				<c:if test="${changeType == '紧急变更'}">
-					<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
-				</c:if>
-			</c:if>
-		</td>
-	<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
-	<td title="${processRecordInfo.showtitle}" width="145px">
-		<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
-		</td>
-	<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
-	<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
-	<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
-		<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
-	
-	<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
-			<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
-		</td>
-	</tr>
-	<c:if test="${processRecordInfo.prtype != 'WDP'}">
-		<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="doLook('${processRecordInfo.showurl }${processRecordInfo.prid }&jump=77');">
-			<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
-				<c:if test="${processRecordInfo.prpdname =='变更'}">
-					<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
-					<c:if test="${changeType == '紧急变更'}">
-						<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+		<c:if test="${processRecordInfo.prtype != 'WDP'}">
+			<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="doLook('${processRecordInfo.showurl }${processRecordInfo.prid }&jump=77');">
+				<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+					<c:if test="${processRecordInfo.prpdname =='变更'}">
+						<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
+						<c:if test="${changeType == '紧急变更'}">
+							<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+						</c:if>
 					</c:if>
-				</c:if>
-			</td>
-		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
-		<td title="${processRecordInfo.showtitle}" width="145px">
-			<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
-			</td>
-		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
-		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
-		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
-			<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
+				</td>
+	    		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
+	    		<td title="${processRecordInfo.showtitle}" width="145px">
+		    		<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
+				</td>
+	    		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
+	    		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
+	    		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
+				<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
+			
+	    		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
+					<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
+				</td>
+			</tr>
+		</c:if>
+		<c:if test="${processRecordInfo.prtype == 'WDP'}">
+			<tr style='cursor:hand' class="my_work" onmouseover="mouseOver(this);"  height="27" onmouseout="mouseOut(this,'my_work');"  onclick="showConsole('${processRecordInfo.prid }');">
+				<td width="25px"><!-- 这里先判断是否为变更然后自定义标签再查是否为紧急变更 --> 
+					<c:if test="${processRecordInfo.prpdname =='变更'}">
+						<bean:define id="changeType"><ig:publicProcessInfoValue pidname="变更类别" prid="${processRecordInfo.prid}"/></bean:define>		
+						<c:if test="${changeType == '紧急变更'}">
+							<img src="images/flag_red.gif" alt="紧急变更" border="0" align="middle"/>
+						</c:if>
+					</c:if>
+				</td>
+	    		<td title="${processRecordInfo.prserialnum}" width="90px"><div style="width:90; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.prserialnum}</div></td>
+	    		<td title="${processRecordInfo.showtitle}" width="145px">
+		    		<span ><div style="width:145px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showtitle}</div></span>
+				</td>
+	    		<td style="text-align: left" title="${processRecordInfo.showpdname}" width="75px"><span ><div style="width:75px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showpdname }</div></span></td>
+	    		<td title="${processRecordInfo.propentime}" width="105px"><div style="width:105px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.propentime}</div></td>
+	    		<td onmouseover="searchprocessJC('${processRecordInfo.prid}','jcb${index}');" id="jcb${index}" title="${processRecordInfo.showrolename}" width="80px"><div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.showrolename}</div></td>
+				<td title="${processRecordInfo.ppusername}" width="70px"><div style="width:70px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;">${processRecordInfo.ppusername}</div></td>
+			
+	    		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
+					<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
+				</td>
+			</tr>
+		</c:if>
 		
-		<td title="<ig:processDefineTypeValue prid="${processRecordInfo.prid}"/>" width="80px">
-				<div style="width:80px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;"><ig:processDefineTypeValue prid="${processRecordInfo.prid}"/></div>
-			</td>
-		</tr>
-	</c:if>
-	
         <tr>
           <td colspan="9"><img src="images/td_line_bg.gif" border="0" height="1" /></td>
      	</tr>
@@ -751,55 +761,67 @@ text-align: center;
     </div>
     
     
-    <div class="new_current" id="approveKnowledge" style="">
+    <div class="new_current" id="myWorkItem" style="">
       <div class="new_wtitle">
-      <h1 style="float:left; font-size:12px; color:#FFFFFF; padding-left:15px; line-height:22px;">&nbsp;&nbsp;&nbsp;&nbsp;最新知识</h1>
-      			<logic:equal value="IGKG02" name="roleType">
-				</logic:equal>
-				<logic:present name="IGCOM01031VO" property="knvoList">
-				<bean:size id="listSize" name="IGCOM01031VO" property="appKnList" />
-				<c:if test="${listSize>5}">
-				<div style="float:right; padding-left:50px; line-height:22px;">
-				<a href="IGCOM0202.do?linkID=IGKGM0205&actname=ACT02SVC1304" style="text-decoration: none;cursor: pointer;">
-					<font style="font-family:Arial, Helvetica, sans-serif;color: #b90216; font-size: 12px">
-	        	    	更多>>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					</font>
-				</a>
-				</div>
-				</c:if>
-				</logic:present>
+      <h1 style="float:left; font-size:12px; color:#FFFFFF; padding-left:15px; line-height:22px;">&nbsp;&nbsp;&nbsp;&nbsp;工作项信息</h1>
       </div>
 
       <div class="new_ccont">
-			<table width="675" border="0" cellspacing="0" cellpadding="0" style="margin-left: 13px;">
+			<table width="675" border="0" cellspacing="0" cellpadding="0" style="margin-left: 13px;" >
 				<tr align="left" height="28" style="background-color: #eeeeee;">
 					<th width="2%"></th>
-					<th width="10%"><span style="color: #b90216">编号</span></th>
-					<th width="35%"><span style="color: #b90216">标题</span></th>
-					<th width="15%"><span style="color: #b90216">分类</span></th>
-					<th width="15%"><span style="color: #b90216">贡献人</span></th>
-					<th width="13%"><span style="color: #b90216">归档日期</span></th>
+					<th width="30%"><span style="color: #b90216">工作名称</span></th>
+					<th width="15%"><span style="color: #b90216">负责人</span></th>
+					<th width="15%"><span style="color: #b90216">周期</span></th>
+					<th width="15%"><span style="color: #b90216">执行确认</span></th>
+					<th width="15%"><span style="color: #b90216">发起时间</span></th>
 				</tr>
-        		<logic:present name="IGCOM01031VO" property="knvoList">
-					<logic:iterate id="bean" name="IGCOM01031VO" property="knvoList" indexId="index">
-					<tr class="my_work" onmouseover="mouseOver(this);" height="27" style="cursor: hand;"
-						onmouseout="mouseOut(this,'my_work');"  onclick="doLook('IGKGM0214_LCHECK.do?knid=${bean.knid}&knversion=${bean.knversion}');">
-			            <td></td>
-			            <td>${bean.knserial}</td>
-						<td>${bean.title}</td>
-						<td>${bean.knclassname}</td>
-						<td>${bean.knproffername}</td>
-						<td>${bean.time}</td>
+        		<logic:present name="IGCOM01031VO" property="myWorkItemList">
+					<logic:iterate id="bean" name="IGCOM01031VO" property="myWorkItemList" indexId="index">
+					<tr class="my_work1">
+			            <td ></td>
+			            <td >
+			            	<!-- 如果超时了，则设置超时提醒 -->
+							<c:if test="${Current_Time>=bean.overtime}">
+							<img alt="超时提醒" src="images/wim/overtime1.png" style="margin-top: 2px;">								
+							</c:if>
+			            	${bean.wdname}&nbsp;&nbsp;&nbsp;
+							<c:if test="${myuserid!=bean.leaderid}">${bean.wistatus}
+								</c:if>
+								<c:if test="${myuserid==bean.leaderid}">
+									<a href="javascript:void(0)" onclick="cycleWork('${bean.wiid}')">${bean.wistatus}</a>
+								</c:if>
+						</td>
+						<td >${bean.leadername}</td>
+						<td >
+						<c:if test="${bean.cycle == 'day'}">每日</c:if>
+						<c:if test="${bean.cycle == 'week'}">每周</c:if>
+						<c:if test="${bean.cycle == 'month'}">每月</c:if>
+						<c:if test="${bean.cycle == 'quarter'}">每季度</c:if>
+						<c:if test="${bean.cycle == 'halfyear'}">每半年</c:if>
+						<c:if test="${bean.cycle == 'year'}">每年</c:if>
+						
+						
+						
+						</td>
+						<td >
+						<c:if test="${fn:contains(bean.excutorid, myuserid)==true}">	
+							<span style="display: block;line-height: 21px;float:left;"><a href="javascript:void(0)" onclick="todayWork('${bean.wiid}','${titledate}')" >未执行</a>
+							</span>
+							
+							</c:if>
+							<c:if test="${fn:contains(bean.excutorid, myuserid)==false}">
+									&nbsp;
+									</c:if>
+						</td>
+						<td >${bean.crtdate}</td>
 					</tr>
-					<!-- <tr>
-						<td colspan="9"><img src="images/td_line_bg.gif" border="0" height="1" /></td>
-					</tr> -->
-				</logic:iterate>
+					</logic:iterate>
 	 			<tr>
-	            	<td colspan="5">
-		            	<bean:size id="listSize" name="IGCOM01031VO" property="appKnList" />
+	            	<td colspan="6">
+		            	<bean:size id="listSize" name="IGCOM01031VO" property="myWorkItemList" />
 							<logic:greaterEqual name="listSize" value="5">
-								 <a href="IGKGM0208.do"><img src="images/main_more.gif" border="0" class="more_img"/></a>
+								 <a href="IGWIM0201_FirstPage.do"><img src="images/main_more.gif" border="0" class="more_img"/></a>
 							</logic:greaterEqual>&nbsp;
 					</td>
 	     		</tr>
@@ -922,6 +944,16 @@ function showConsole(prid){
 	window.open('IGDRM1010.do?prid='+prid, '应急工作台', 'width=1024, height=768, scrollbars=yes, status=no, top=0, left=0').focus();
 	//阻止事件冒泡
 // 	(window.event)&&(window.event.cancelBubble=true); 
+}
+
+
+//周期工作确认
+function cycleWork(wiid){
+	openSubWindow('/IGWIM0201_Cycle_Init.do?wiid='+wiid+'&openFlag=2', '_blank','1000','600','center:1');
+}
+//当日工作确认
+function todayWork(wiid,titleDate){
+	openSubWindow('/IGWIM0201_Today_Init.do?wiid='+wiid+'&titleDate='+titleDate+'&openFlag=2', '_blank','1000','600','center:1');
 }
 </script>
 </html:html>

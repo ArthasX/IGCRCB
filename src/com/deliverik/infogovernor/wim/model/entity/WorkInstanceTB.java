@@ -40,272 +40,429 @@ public class WorkInstanceTB extends BaseEntity implements Serializable,
 
 	/** 工作定义表主键 */
 	protected Integer wdid;
+	
+	/** 工作项名称 */
+	protected String wdname;
 
 	/** 工作实例名称 */
 	protected String winame;
 
-	/** 工作状态（0，未执行；1，执行中，2，已执行；3，结束；4，中止；） */
-	protected Integer wistatus;
+	/** 工作状态（未执行；执行中；结束；中止；） */
+	protected String wistatus;
+	
+	/** 发起人（userid） */
+	protected String initiatorId;
 
-	/** 部门（id） */
-	protected String wiDepartmentid;
+	/** 周期/频率 */
+	protected String cycle;
 
-	/** 人员（userid） */
-	protected String wiuserid;
+	/** 工作项描述 */
+	protected String description;
+
+	/** 开始日期 */
+	protected String beginDate;
+
+	/** 负责人 */
+	protected String leaderId;
+	
+	/** 负责人名称 */
+	protected String leaderName;
+	
+	/** 执行人 */
+	protected String excutorId;
+
+	/** 执行人名称 */
+	protected String excutorName;
 
 	/** 发起类型（1，自动发起；2，手动发起） */
 	protected String wiLunchType;
 
 	/** 执行需所时间（小时） */
 	protected String excuteTime;
-
-	/** 实际处理日期 */
-	protected String actualDealwithDate;
-
-	/** 工作确认日期 */
-	protected String confirmDate;
-
+	
 	/** 执行情况描述 */
 	protected String wiDescription;
 
-	/** 按钮动作 */
-	protected String btnAction;
+	/** 工作确认日期 */
+	protected String confirmDate;
 
 	/** 日期栏日期 */
 	protected String titleDate;
 
 	/** 表记录创建日期 */
 	protected String crtDate;
-
+	
 	/**
-	 * 主键取得
-	 *
-	 * @return 主键
-	 */
-	public Integer getWiid() {
+	 * 取得 主键
+	 * 
+	 * @return wiid
+	*/
+	public Integer getPK() {
 		return wiid;
 	}
 
 	/**
-	 * 主键设定
-	 *
-	 * @param 主键
-	 */
-	public void setWiid(Integer wiid) {
-		this.wiid = wiid;
+	 * 取得 主键
+	 * 
+	 * @return wiid
+	*/
+	public Integer getWiid() {
+		return wiid;
 	}
+	
 
 	/**
-	 * 工作定义表主键取得
-	 *
-	 * @return 工作定义表主键
-	 */
+	 * 取得 工作定义表主键
+	 * 
+	 * @return wdid
+	*/
 	public Integer getWdid() {
 		return wdid;
 	}
+	
 
 	/**
-	 * 工作定义表主键
-	 *
-	 * @param wdid 工作定义表主键
-	 */
-	public void setWdid(Integer wdid) {
-		this.wdid = wdid;
+	 * 取得 工作项名称
+	 * 
+	 * @return wdname
+	*/
+	public String getWdname() {
+		return wdname;
 	}
+	
 
 	/**
-	 * 工作实例名称取得
-	 *
-	 * @return 工作实例名称
-	 */
+	 * 取得 工作实例名称
+	 * 
+	 * @return winame
+	*/
 	public String getWiname() {
 		return winame;
 	}
+	
 
 	/**
-	 * 工作实例名称设定
-	 *
-	 * @param 工作实例名称
-	 */
-	public void setWiname(String winame) {
-		this.winame = winame;
-	}
-
-	/**
-	 * 工作状态（0，未执行；1，执行中，2，已执行；3，结束；4，中止；）取得
-	 *
-	 * @return 工作状态（0，未执行；1，执行中，2，已执行；3，结束；4，中止；）
-	 */
-	public Integer getWistatus() {
+	 * 取得 工作状态（未执行；执行中；结束；中止；）
+	 * 
+	 * @return wistatus
+	*/
+	public String getWistatus() {
 		return wistatus;
 	}
+	
 
 	/**
-	 * 工作状态（0，未执行；1，执行中，2，已执行；3，结束；4，中止；）设定
-	 *
-	 * @param 工作状态（0，未执行；1，执行中，2，已执行；3，结束；4，中止；）
-	 */
-	public void setWistatus(Integer wistatus) {
-		this.wistatus = wistatus;
+	 * 取得 发起人（userid）
+	 * 
+	 * @return initiatorId
+	*/
+	public String getInitiatorId() {
+		return initiatorId;
 	}
+	
 
 	/**
-	 * 部门（id）取得
-	 *
-	 * @return 部门（id）
-	 */
-	public String getWiDepartmentid() {
-		return wiDepartmentid;
+	 * 取得 周期频率
+	 * 
+	 * @return cycle
+	*/
+	public String getCycle() {
+		return cycle;
 	}
+	
 
 	/**
-	 * 部门（id）设定
-	 *
-	 * @param 部门（id）
-	 */
-	public void setWiDepartmentid(String wiDepartmentid) {
-		this.wiDepartmentid = wiDepartmentid;
+	 * 取得 工作项描述
+	 * 
+	 * @return description
+	*/
+	public String getDescription() {
+		return description;
 	}
+	
 
 	/**
-	 * wiuserid取得
-	 *
-	 * @return wiuserid
-	 */
-	public String getWiuserid() {
-		return wiuserid;
+	 * 取得 开始日期
+	 * 
+	 * @return beginDate
+	*/
+	public String getBeginDate() {
+		return beginDate;
 	}
+	
 
 	/**
-	 * wiuserid设定
-	 *
-	 * @param wiuserid wiuserid
-	 */
-	public void setWiuserid(String wiuserid) {
-		this.wiuserid = wiuserid;
+	 * 取得 负责人
+	 * 
+	 * @return leaderId
+	*/
+	public String getLeaderId() {
+		return leaderId;
 	}
+	
 
 	/**
-	 * 发起类型（1，自动发起；2，手动发起）取得
-	 *
-	 * @return 发起类型（1，自动发起；2，手动发起）
-	 */
+	 * 取得 负责人名称
+	 * 
+	 * @return leaderName
+	*/
+	public String getLeaderName() {
+		return leaderName;
+	}
+	
+
+	/**
+	 * 取得 执行人
+	 * 
+	 * @return excutorId
+	*/
+	public String getExcutorId() {
+		return excutorId;
+	}
+	
+
+	/**
+	 * 取得 执行人名称
+	 * 
+	 * @return excutorName
+	*/
+	public String getExcutorName() {
+		return excutorName;
+	}
+	
+
+	/**
+	 * 取得 发起类型（1，自动发起；2，手动发起）
+	 * 
+	 * @return wiLunchType
+	*/
 	public String getWiLunchType() {
 		return wiLunchType;
 	}
+	
 
 	/**
-	 * 发起类型（1，自动发起；2，手动发起）设定
-	 *
-	 * @param 发起类型（1，自动发起；2，手动发起）
-	 */
-	public void setWiLunchType(String wiLunchType) {
-		this.wiLunchType = wiLunchType;
-	}
-
-	/**
-	 * 执行需所时间（小时）取得
-	 *
-	 * @return 执行需所时间（小时）
-	 */
+	 * 取得 执行需所时间（小时）
+	 * 
+	 * @return excuteTime
+	*/
 	public String getExcuteTime() {
 		return excuteTime;
 	}
+	
 
 	/**
-	 * 执行需所时间（小时）设定
-	 *
-	 * @param 执行需所时间（小时）
-	 */
-	public void setExcuteTime(String excuteTime) {
-		this.excuteTime = excuteTime;
-	}
-
-	/**
-	 * 实际处理日期取得
-	 *
-	 * @return 实际处理日期
-	 */
-	public String getActualDealwithDate() {
-		return actualDealwithDate;
-	}
-
-	/**
-	 * 实际处理日期设定
-	 *
-	 * @param 实际处理日期
-	 */
-	public void setActualDealwithDate(String actualDealwithDate) {
-		this.actualDealwithDate = actualDealwithDate;
-	}
-
-	/**
-	 * 工作确认日期取得
-	 *
-	 * @return 工作确认日期
-	 */
-	public String getConfirmDate() {
-		return confirmDate;
-	}
-
-	/**
-	 * 工作确认日期设定
-	 *
-	 * @param 工作确认日期
-	 */
-	public void setConfirmDate(String confirmDate) {
-		this.confirmDate = confirmDate;
-	}
-
-	/**
-	 * 执行情况描述取得
-	 *
-	 * @return 执行情况描述
-	 */
+	 * 取得 执行情况描述
+	 * 
+	 * @return wiDescription
+	*/
 	public String getWiDescription() {
 		return wiDescription;
 	}
+	
 
 	/**
-	 * 执行情况描述设定
-	 *
-	 * @param 执行情况描述
-	 */
-	public void setWiDescription(String wiDescription) {
-		this.wiDescription = wiDescription;
+	 * 取得 工作确认日期
+	 * 
+	 * @return confirmDate
+	*/
+	public String getConfirmDate() {
+		return confirmDate;
 	}
+	
 
 	/**
-	 * 按钮动作取得
-	 *
-	 * @return 按钮动作
-	 */
-	public String getBtnAction() {
-		return btnAction;
-	}
-
-	/**
-	 * 按钮动作设定
-	 *
-	 * @param 按钮动作
-	 */
-	public void setBtnAction(String btnAction) {
-		this.btnAction = btnAction;
-	}
-
-	/**
-	 * 日期栏日期取得
-	 *
-	 * @return 日期栏日期
-	 */
+	 * 取得 日期栏日期
+	 * 
+	 * @return titleDate
+	*/
 	public String getTitleDate() {
 		return titleDate;
 	}
 
 	/**
-	 * 日期栏日期设定
-	 *
-	 * @param 日期栏日期
+	 * 取得 时间戳
+	 * 
+	 * @return fingerPrint
+	*/
+	public String getFingerPrint() {
+		return fingerPrint;
+	}
+
+	/**
+	 *  主键设定
+	 * 
+	 * @param wiid
+	 */
+	public void setWiid(Integer wiid) {
+		this.wiid = wiid;
+	}
+	
+
+	/**
+	 *  工作定义表主键设定
+	 * 
+	 * @param wdid
+	 */
+	public void setWdid(Integer wdid) {
+		this.wdid = wdid;
+	}
+	
+
+	/**
+	 *  工作项名称设定
+	 * 
+	 * @param wdname
+	 */
+	public void setWdname(String wdname) {
+		this.wdname = wdname;
+	}
+	
+
+	/**
+	 *  工作实例名称设定
+	 * 
+	 * @param winame
+	 */
+	public void setWiname(String winame) {
+		this.winame = winame;
+	}
+	
+
+	/**
+	 *  工作状态（未执行；执行中；结束；中止；）设定
+	 * 
+	 * @param wistatus
+	 */
+	public void setWistatus(String wistatus) {
+		this.wistatus = wistatus;
+	}
+	
+
+	/**
+	 *  发起人（userid）设定
+	 * 
+	 * @param initiatorId
+	 */
+	public void setInitiatorId(String initiatorId) {
+		this.initiatorId = initiatorId;
+	}
+	
+
+	/**
+	 *  周期频率设定
+	 * 
+	 * @param cycle
+	 */
+	public void setCycle(String cycle) {
+		this.cycle = cycle;
+	}
+	
+
+	/**
+	 *  工作项描述设定
+	 * 
+	 * @param description
+	 */
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+
+	/**
+	 *  开始日期设定
+	 * 
+	 * @param beginDate
+	 */
+	public void setBeginDate(String beginDate) {
+		this.beginDate = beginDate;
+	}
+	
+
+	/**
+	 *  负责人设定
+	 * 
+	 * @param leaderId
+	 */
+	public void setLeaderId(String leaderId) {
+		this.leaderId = leaderId;
+	}
+	
+
+	/**
+	 *  负责人名称设定
+	 * 
+	 * @param leaderName
+	 */
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
+	}
+	
+
+	/**
+	 *  执行人设定
+	 * 
+	 * @param excutorId
+	 */
+	public void setExcutorId(String excutorId) {
+		this.excutorId = excutorId;
+	}
+	
+
+	/**
+	 *  执行人名称设定
+	 * 
+	 * @param excutorName
+	 */
+	public void setExcutorName(String excutorName) {
+		this.excutorName = excutorName;
+	}
+	
+
+	/**
+	 *  发起类型（1，自动发起；2，手动发起）设定
+	 * 
+	 * @param wiLunchType
+	 */
+	public void setWiLunchType(String wiLunchType) {
+		this.wiLunchType = wiLunchType;
+	}
+	
+
+	/**
+	 *  执行需所时间（小时）设定
+	 * 
+	 * @param excuteTime
+	 */
+	public void setExcuteTime(String excuteTime) {
+		this.excuteTime = excuteTime;
+	}
+	
+
+	/**
+	 *  执行情况描述设定
+	 * 
+	 * @param wiDescription
+	 */
+	public void setWiDescription(String wiDescription) {
+		this.wiDescription = wiDescription;
+	}
+	
+
+	/**
+	 *  工作确认日期设定
+	 * 
+	 * @param confirmDate
+	 */
+	public void setConfirmDate(String confirmDate) {
+		this.confirmDate = confirmDate;
+	}
+	
+
+	/**
+	 *  日期栏日期设定
+	 * 
+	 * @param titleDate
 	 */
 	public void setTitleDate(String titleDate) {
 		this.titleDate = titleDate;
@@ -313,7 +470,6 @@ public class WorkInstanceTB extends BaseEntity implements Serializable,
 
 	/**
 	 * 表记录创建日期取得
-	 *
 	 * @return 表记录创建日期
 	 */
 	public String getCrtDate() {
@@ -322,20 +478,10 @@ public class WorkInstanceTB extends BaseEntity implements Serializable,
 
 	/**
 	 * 表记录创建日期设定
-	 *
 	 * @param 表记录创建日期
 	 */
 	public void setCrtDate(String crtDate) {
 		this.crtDate = crtDate;
 	}
-
-	/**
-	 * 主键取得
-	 *
-	 * @return 主键
-	 */
-	public Serializable getPK() {
-		return wiid;
-	}
-
+	
 }

@@ -17,6 +17,7 @@
 			var message1 = '<bean:message key="IGCO10000.W001" arg0="数据信息" />';
             var message2 = '<bean:message key="IGCO10000.W003" arg0="数据信息" />';
 			if ('${IGSYM1004Form.mode}' == '0' || '${IGSYM1004Form.mode}' == '2'){
+				
 			    if($F('cid').strlen()>4){
 	            	alert("数据编号不能大于4个字符！");
 	    			return false;
@@ -36,11 +37,19 @@
 	                return false;
 	            }
 			} else {
-
 				regExp=/[\u4E00-\u9FA5]/g;
 				if(regExp.test($('cvalue').value)){
 					alert("内容不能输入汉字");
 					return false;
+				}
+				if("178"==jQuery("#ccid").val() && "1"==jQuery("#cid").val()){
+					var reg = /^[0-9]*[0-9][0-9]*$/;
+					if(reg.test($('cvalue').value) && $('cvalue').value<24){
+						return true;
+					}else{
+						alert("请输入有效的时间（小时）！");
+						return false;
+					}
 				}
 			    if($F('cid').strlen()>4){
 	            	alert("数据编号不能大于4个字符！");

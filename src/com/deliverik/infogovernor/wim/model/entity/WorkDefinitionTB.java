@@ -67,15 +67,24 @@ public class WorkDefinitionTB extends BaseEntity implements Serializable,
 
 	/** 超时提醒时间（天） */
 	protected String overtimeTipsTime;
+	
+	/** 超时停止处理时间（天） */
+	protected String overtimeStopDealTime;
 
 	/** 负责人（userid） */
 	protected String leaderId;
+	
+	/** 负责人名称 */
+	protected String leaderName;
 
 	/** 执行人（userid,userid,userid,...） */
 	protected String excutorId;
+	
+	/** 执行人名称 */
+	protected String excutorName;
 
 	/** 启用状态（0，未启用；1，已启用） */
-	protected Integer wdstatus;
+	protected String wdstatus;
 
 	/** 月 */
 	protected String wdmonth;
@@ -303,6 +312,22 @@ public class WorkDefinitionTB extends BaseEntity implements Serializable,
 	}
 	
 	/**
+	 * 超时停止处理时间（天）取得
+	 * @return 超时停止处理时间（天）
+	 */
+	public String getOvertimeStopDealTime() {
+		return overtimeStopDealTime;
+	}
+
+	/**
+	 * 超时停止处理时间（天）设定
+	 * @param 超时停止处理时间（天）
+	 */
+	public void setOvertimeStopDealTime(String overtimeStopDealTime) {
+		this.overtimeStopDealTime = overtimeStopDealTime;
+	}
+
+	/**
 	 * 负责人（userid）取得
 	 * 
 	 * @return 负责人（userid）
@@ -317,6 +342,22 @@ public class WorkDefinitionTB extends BaseEntity implements Serializable,
 	 */
 	public void setLeaderId(String leaderId) {
 		this.leaderId = leaderId;
+	}
+	
+	/**
+	 * 负责人名称取得
+	 * @return 负责人名称
+	 */
+	public String getLeaderName() {
+		return leaderName;
+	}
+
+	/**
+	 * 负责人名称设定
+	 * @param 负责人名称
+	 */
+	public void setLeaderName(String leaderName) {
+		this.leaderName = leaderName;
 	}
 
 	/**
@@ -338,11 +379,27 @@ public class WorkDefinitionTB extends BaseEntity implements Serializable,
 	}
 
 	/**
+	 * 执行人名称取得
+	 * @return 执行人名称
+	 */
+	public String getExcutorName() {
+		return excutorName;
+	}
+
+	/**
+	 * 执行人名称设定
+	 * @param 执行人名称
+	 */
+	public void setExcutorName(String excutorName) {
+		this.excutorName = excutorName;
+	}
+
+	/**
 	 * 启用状态（0，未启用；1，已启用）取得
 	 *
 	 * @return 启用状态（0，未启用；1，已启用）
 	 */
-	public Integer getWdstatus() {
+	public String getWdstatus() {
 		return wdstatus;
 	}
 
@@ -351,7 +408,7 @@ public class WorkDefinitionTB extends BaseEntity implements Serializable,
 	 *
 	 * @param 启用状态（0，未启用；1，已启用）
 	 */
-	public void setWdstatus(Integer wdstatus) {
+	public void setWdstatus(String wdstatus) {
 		this.wdstatus = wdstatus;
 	}
 

@@ -121,4 +121,13 @@ public interface IGCOM01BL extends BaseBL {
 	 * @throws Exception
 	 */
 	public IGCOM01DTO searchHQAlertListDetailVWActionByIP(IGCOM01DTO dto) throws Exception;
+	
+	/**
+	 * 首页查询当日工作
+	 * @param dto IGCOM01DTO
+	 * @return IGCOM01DTO
+	 * @throws Exception
+	 * @return
+	 */
+	public IGCOM01DTO findTodayWorkByCondForFirstPage(IGCOM01DTO dto) throws Exception;
 }

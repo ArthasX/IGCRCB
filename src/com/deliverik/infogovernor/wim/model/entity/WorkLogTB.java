@@ -41,19 +41,16 @@ public class WorkLogTB extends BaseEntity implements Serializable,
 	/** 工作实例表主键 */
 	protected Integer wiid;
 
-	/** 工作日志名称 */
-	protected String wlname;
-
-	/** 执行人（userid） */
+	/** 执行人 */
 	protected String excutorId;
-
-	/** 操作 */
-	protected String operation;
+	
+	/** 执行人名称 */
+	protected String excutorName;
 
 	/** 日期栏日期 */
 	protected String titleDate;
 
-	/** 执行时间 */
+	/** 执行时间 （小时）*/
 	protected String excuteTime;
 
 	/** 实际处理日期 */
@@ -65,193 +62,222 @@ public class WorkLogTB extends BaseEntity implements Serializable,
 	/** 表记录创建日期 */
 	protected String crtDate;
 
+	/** 按钮动作 */
+	protected String btnAction;
+	
 	/**
-	 * 主键取得
-	 *
-	 * @return 主键
-	 */
+	 * 取得 主键
+	 * 
+	 * @return wlid
+	*/
 	public Integer getWlid() {
 		return wlid;
 	}
+	
 
 	/**
-	 * 主键设定
-	 *
-	 * @param 主键
+	 * 取得 工作实例表主键
+	 * 
+	 * @return wiid
+	*/
+	public Integer getWiid() {
+		return wiid;
+	}
+	
+
+	/**
+	 * 取得 执行人
+	 * 
+	 * @return excutorId
+	*/
+	public String getExcutorId() {
+		return excutorId;
+	}
+	
+
+	/**
+	 * 取得 执行人名称
+	 * 
+	 * @return excutorName
+	*/
+	public String getExcutorName() {
+		return excutorName;
+	}
+	
+
+	/**
+	 * 取得 日期栏日期
+	 * 
+	 * @return titleDate
+	*/
+	public String getTitleDate() {
+		return titleDate;
+	}
+	
+
+	/**
+	 * 取得 执行时间（小时）
+	 * 
+	 * @return excuteTime
+	*/
+	public String getExcuteTime() {
+		return excuteTime;
+	}
+	
+
+	/**
+	 * 取得 实际处理日期
+	 * 
+	 * @return actualDealwithDate
+	*/
+	public String getActualDealwithDate() {
+		return actualDealwithDate;
+	}
+	
+
+	/**
+	 * 取得 执行情况描述
+	 * 
+	 * @return wlDescription
+	*/
+	public String getWlDescription() {
+		return wlDescription;
+	}
+	
+
+	/**
+	 * 取得 表记录创建日期
+	 * 
+	 * @return crtDate
+	*/
+	public String getCrtDate() {
+		return crtDate;
+	}
+	
+
+	/**
+	 * 取得 按钮动作
+	 * 
+	 * @return btnAction
+	*/
+	public String getBtnAction() {
+		return btnAction;
+	}
+
+
+	/**
+	 *  主键设定
+	 * 
+	 * @param wlid
 	 */
 	public void setWlid(Integer wlid) {
 		this.wlid = wlid;
 	}
+	
+
 
 	/**
-	 * 工作实例表主键取得
-	 *
-	 * @return 工作实例表主键
-	 */
-	public Integer getWiid() {
-		return wiid;
-	}
-
-	/**
-	 * 工作实例表主键设定
-	 *
-	 * @param 工作实例表主键
+	 *  工作实例表主键设定
+	 * 
+	 * @param wiid
 	 */
 	public void setWiid(Integer wiid) {
 		this.wiid = wiid;
 	}
+	
+
 
 	/**
-	 * 工作日志名称取得
-	 *
-	 * @return 工作日志名称
-	 */
-	public String getWlname() {
-		return wlname;
-	}
-
-	/**
-	 * 工作日志名称设定
-	 *
-	 * @param 工作日志名称
-	 */
-	public void setWlname(String wlname) {
-		this.wlname = wlname;
-	}
-
-	/**
-	 * 执行人（userid）取得
-	 *
-	 * @return 执行人（userid）
-	 */
-	public String getExcutorId() {
-		return excutorId;
-	}
-
-	/**
-	 * 执行人（userid）设定
-	 *
-	 * @param 执行人（userid）
+	 *  执行人设定
+	 * 
+	 * @param excutorId
 	 */
 	public void setExcutorId(String excutorId) {
 		this.excutorId = excutorId;
 	}
+	
+
 
 	/**
-	 * 操作取得
-	 *
-	 * @return 操作
+	 *  执行人名称设定
+	 * 
+	 * @param excutorName
 	 */
-	public String getOperation() {
-		return operation;
+	public void setExcutorName(String excutorName) {
+		this.excutorName = excutorName;
 	}
+	
+
 
 	/**
-	 * 操作设定
-	 *
-	 * @param 操作
-	 */
-	public void setOperation(String operation) {
-		this.operation = operation;
-	}
-
-	/**
-	 * 日期栏日期取得
-	 *
-	 * @return 日期栏日期
-	 */
-	public String getTitleDate() {
-		return titleDate;
-	}
-
-	/**
-	 * 日期栏日期设定
-	 *
-	 * @param 日期栏日期
+	 *  日期栏日期设定
+	 * 
+	 * @param titleDate
 	 */
 	public void setTitleDate(String titleDate) {
 		this.titleDate = titleDate;
 	}
+	
+
 
 	/**
-	 * 执行时间取得
-	 *
-	 * @return excuteTime
-	 */
-	public String getExcuteTime() {
-		return excuteTime;
-	}
-
-	/**
-	 * 执行时间设定
-	 *
-	 * @param 执行时间
+	 *  执行时间（小时）设定
+	 * 
+	 * @param excuteTime
 	 */
 	public void setExcuteTime(String excuteTime) {
 		this.excuteTime = excuteTime;
 	}
+	
+
 
 	/**
-	 * 实际处理日期取得
-	 *
-	 * @return 实际处理日期
-	 */
-	public String getActualDealwithDate() {
-		return actualDealwithDate;
-	}
-
-	/**
-	 * 实际处理日期设定
-	 *
-	 * @param 实际处理日期
+	 *  实际处理日期设定
+	 * 
+	 * @param actualDealwithDate
 	 */
 	public void setActualDealwithDate(String actualDealwithDate) {
 		this.actualDealwithDate = actualDealwithDate;
 	}
+	
+
 
 	/**
-	 * 执行情况描述取得
-	 *
-	 * @return 执行情况描述
-	 */
-	public String getWlDescription() {
-		return wlDescription;
-	}
-
-	/**
-	 * 执行情况描述设定
-	 *
-	 * @param 执行情况描述
+	 *  执行情况描述设定
+	 * 
+	 * @param wlDescription
 	 */
 	public void setWlDescription(String wlDescription) {
 		this.wlDescription = wlDescription;
 	}
+	
+
 
 	/**
-	 * 表记录创建日期取得
-	 *
-	 * @return 表记录创建日期
-	 */
-	public String getCrtDate() {
-		return crtDate;
-	}
-
-	/**
-	 * 表记录创建日期设定
-	 *
-	 * @param 表记录创建日期
+	 *  表记录创建日期设定
+	 * 
+	 * @param crtDate
 	 */
 	public void setCrtDate(String crtDate) {
 		this.crtDate = crtDate;
 	}
 
+
 	/**
-	 * 主键取得
-	 *
-	 * @return 主键
+	 *  按钮动作设定
+	 * 
+	 * @param btnAction
 	 */
-	public Serializable getPK() {
+	public void setBtnAction(String btnAction) {
+		this.btnAction = btnAction;
+	}
+	/**
+	 * 取得 主键
+	 * 
+	 * @return wlid
+	*/
+	public Integer getPK() {
 		return wlid;
 	}
-
+	
 }

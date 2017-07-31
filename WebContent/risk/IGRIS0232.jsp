@@ -781,6 +781,9 @@ var gid='IGRIS0202';
 
 <body>
 <script src="<html:rewrite forward='jquery.min.js'/>"></script>
+<script>
+var jQ = jQuery.noConflict(true);//jquery与prototype冲突
+</script>
 <script src="<html:rewrite forward='jquery.tzCheckbox.js'/>"></script>
 <script src="<html:rewrite forward='jquery.script.js'/>"></script>
 <div id="maincontent">

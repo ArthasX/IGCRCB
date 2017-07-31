@@ -129,6 +129,10 @@ public class UserTBDAOImpl extends BaseHibernateDAOImpl<User> implements UserTBD
 		if(!StringUtils.isEmpty(cond.getOrgid())){
 			c.add(Expression.eq("orgid", cond.getOrgid()));
 		}
+		//机构层次码like
+		if(!StringUtils.isEmpty(cond.getOrgid_like())){
+			c.add(Expression.like("orgid", cond.getOrgid_like()+"%"));
+		}
 		//工号
 		if(!StringUtils.isEmpty(cond.getUserinfo())){
 			c.add(Expression.eq("userinfo", cond.getUserinfo()));

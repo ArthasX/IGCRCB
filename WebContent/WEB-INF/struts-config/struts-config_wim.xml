@@ -7,18 +7,205 @@
 	<form-beans>
 	<!-- *****************************************工作项管理Form***************************************** -->
 		<form-bean name="IGWIM0101Form" type="com.deliverik.infogovernor.wim.form.IGWIM0101Form" />
+		<form-bean name="IGWIM0102Form" type="com.deliverik.infogovernor.wim.form.IGWIM0102Form" />
+		<!-- 工作管理 -->
+		<form-bean name="IGWIM0201Form" type="com.deliverik.infogovernor.wim.form.IGWIM0201Form" />
 	</form-beans>
 	<action-mappings>
 	<!-- *****************************************工作项管理Action***************************************** -->
-		 <!-- 工作项定义新增画面初期显示  -->
+	 	<!-- 工作项定义新增画面初期显示  -->
         <action path="/IGWIM0101_Disp"
             type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
             parameter="DISP"
             name="IGWIM0101Form"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/wim/IGWIM0101.jsp"/>
+        </action>
+	 	<!-- 工作项定义信息查看页面  -->
+        <action path="/IGWIM0101_Detail"
+            type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
+            parameter="DISP"
+            name="IGWIM0101Form"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/wim/IGWIM0105.jsp"/>
+        </action>
+		<!-- 工作项定义更新  -->
+        <action path="/IGWIM0101"
+            type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
+            parameter="INSERT"
+            name="IGWIM0101Form"
+            scope="request">
+           	<set-property key="auth" value="false"/>
+            <forward name="DISP"    path="/wim/IGWIM0101_SUCCESS.jsp"/>
+        </action>
+		<!-- 工作项定义状态修改  -->
+        <action path="/IGWIM0101_Modify"
+            type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
+            parameter="MODIFY"
+            scope="request"
+            name="IGWIM0101Form"
+            validate="false">
+        </action>
+        <!-- 工作项实例-手动发起 -->
+		<action path="/IGWIM0101_Manual"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0101Action"
+			parameter="MANUALAJAX"
+			scope="request"
+			validate="false">
+		</action>
+        <!-- 工作项定义管理 -->
+        <action path="/IGWIM0102"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="SEARCH" 
+			name="IGWIM0102Form" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0102.jsp" />
+		</action>
+        <!-- 工作项定义查询-->
+        <action path="/IGWIM0102_Search"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="SEARCH1" 
+			name="IGWIM0102Form" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0104.jsp" />
+		</action>
+		<!--跳转数据导入页面 -->
+		<action path="/IGWIM0102_Import_Disp"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="IMPORTDISP"
+			name="IGWIM0102Form"
+			scope="request"
+			validate="false"
+			input="/wim/IGWIM0102.jsp">
+			<forward name="DISP" path="/wim/IGWIM0103.jsp"/>
+		</action>
+		<!--导入excel数据 -->
+		<action path="/IGWIM0102_Import" 
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="IMPORT"
+			name="IGWIM0102Form"
+			scope="request"
+			validate="false">
+			<forward name="DISP" path="/wim/IGWIM0103.jsp"/>
+		</action>
+		<!-- 工作项管理返回查询处理 -->
+		<action path="/IGWIM0102_Back"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="SEARCH1" 
+			name="IGWIM0102Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wim/IGWIM0102.jsp" />
+		</action>
+        <!-- 工作项删除 -->
+        <action path="/IGWIM0102_Del"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0102Action"
+			parameter="DELETE" 
+			name="IGWIM0102Form"
+			scope="request"
+			validate="false">
+		</action>
+		<!-- 工作管理开始 -->
+ 		<!-- 工作查询画面初期显示  -->
+        <action path="/IGWIM0201_Disp"
+            type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+            parameter="DISP"
+            name="IGWIM0201Form"
             scope="session">
            	<set-property key="auth" value="false"/>
-            <forward name="DISP"    path="/wim/IGWIM0104.jsp"/>
+            <forward name="DISP"    path="/wim/IGWIM0201.jsp"/>
         </action>
+  		<!-- 工作查询 -->
+        <action path="/IGWIM0201"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="SEARCH" 
+			name="IGWIM0201Form" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0201.jsp" />
+		</action>
+		<!-- 工作返回查询处理 -->
+		<action path="/IGWIM0201_Back"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="SEARCH1" 
+			name="IGWIM0201Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wim/IGWIM0201.jsp" />
+		</action>
+        <!-- 周期工作确认处理初始化 -->
+        <action path="/IGWIM0201_Cycle_Init"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="CYCLE_INIT" 
+			name="IGWIM0201Form" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0202.jsp" />
+		</action>
+       <!-- 周期工作确认处理 -->
+        <action path="/IGWIM0201_CYCLE"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="CYCLE" 
+			name="IGWIM0201Form" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0203.jsp" />
+		</action>
+        <!-- 当天工作确认处理初始化 -->
+        <action path="/IGWIM0201_Today_Init"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="Today_Init" 
+			name="IGWIM0201Form" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0203.jsp" />
+		</action>
+       	<!-- 当天工作确认处理 -->
+        <action path="/IGWIM0201_Today"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="TODAY" 
+			name="IGWIM0201Form" 
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0203.jsp" />
+		</action>
+       	<!-- 当天工作确认处理-首页我的工作 -->
+        <action path="/IGWIM0201_FirstPage"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="FIRSTPAGE" 
+			name="IGWIM0201Form" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0205.jsp" />
+		</action>
+		<!-- 工作管理结束 -->
+		
+		<!-- 工作信息统计开始 -->
+		
+		<!-- 工作信息统计查询 -->
+        <action path="/IGWIM0201_Count"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="COUNT" 
+			name="IGWIM0201Form" 
+			scope="session">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/wim/IGWIM0204.jsp" />
+		</action>
+		
+		<!-- 工作信息统计导出 -->
+        <action path="/IGWIM0201_Export"
+			type="com.deliverik.infogovernor.wim.action.IGWIM0201Action"
+			parameter="EXPORT" 
+			name="IGWIM0201Form" 
+			scope="request">
+			<set-property key="auth" value="false" />
+		</action>
+		<!-- 工作信息统计结束 -->
+		
 	</action-mappings>
 	
 </struts-config>
