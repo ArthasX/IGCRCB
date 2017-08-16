@@ -41,6 +41,12 @@
 		<property name="sysManageBL">
 			<ref bean="sysManageBL"/>
 		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL" />
+		</property>
+		<property name="userRoleBL">
+			<ref bean="userRoleBL" />
+		</property>
 	</bean>
 	
 	<bean id="igCRC0403BL" class="com.dev.crc.igflow.event.status.IGCRC0403BLImpl">

@@ -322,6 +322,7 @@ import com.deliverik.infogovernor.util.CodeDefine;
 import com.deliverik.infogovernor.util.SVCHelper;
 import com.deliverik.plugin.mail.MAILThread;
 import com.deliverik.plugin.sms.SMSThread;
+import com.deliverik.plugin.sms.WXThread;
 import com.google.gson.Gson;
 
 /**
@@ -385,6 +386,7 @@ public class AjaxAction extends BaseAction {
 	private static final String ajaxType_EveryDayWorkSMS_setStatus= "setEveryDayWorkSMSstatus"; //SMS status
 	private static final String ajaxType_WorkItemSMS_setStatus= "setWorkItemSMSstatus"; //工作项短信提醒开关 SMS status
 	private static final String ajaxType_MAIL_setStatus= "setMAILstatus"; //MAIL status
+	private static final String ajaxType_WX_setStatus = "setWXstatus";
 	//20121017 add end zjg
 	private static final String ajaxType_SelectUserItem = "selectUserItem"; //选择人员触发
 	private static final String ajaxType_searchButtonList = "searchButtonList";//根据状态ID查询设定的按钮集合
@@ -864,6 +866,8 @@ public class AjaxAction extends BaseAction {
 				setWorkItemSMSstatus(req,out);
 			}else if(ajaxType_MAIL_setStatus.equals(prmType)){
 				setMAILstatus(req,out);
+			}else if (ajaxType_WX_setStatus.equals(prmType)) {
+				setWXstatus(req, out);
 			}else if (ajaxType_checkEntityItemByKey.equals(prmType)) {
 				checkEntityItemByKey(req, out);// 判断分区是否存在
             }else if(ajaxType_DELETE_PART.equals(prmType)){
@@ -9267,6 +9271,25 @@ protected void getRequestModeForBankMaster(HttpServletRequest req, PrintWriter o
 		}else{
 			MAILThread.setMailOpen(false);
 			res="开启";
+		}
+		out.print(res);
+	}
+	
+	/**
+	 * chg weixin status
+	 * 
+	 * @param req
+	 * @param out
+	 */
+	private void setWXstatus(HttpServletRequest req, PrintWriter out) {
+		String res = "";
+		String namez = req.getParameter("status");
+		if (namez.equals("开启")) {
+			WXThread.setwxOpen(true);
+			res = "关闭";
+		} else {
+			WXThread.setwxOpen(false);
+			res = "开启";
 		}
 		out.print(res);
 	}

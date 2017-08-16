@@ -1199,6 +1199,8 @@
            	<!-- 工作统计分析 -->
            	<forward name="IGWIM0301" path="/IGWIM0201_Count.do" />
            	<!-- ========================================= 工作项管理配置结束 -->
+           	
+           	<forward name="IGMNU0101" path="/IGMNU0101.do" />
           </action>
         
         <action path="/IGCOM0402"

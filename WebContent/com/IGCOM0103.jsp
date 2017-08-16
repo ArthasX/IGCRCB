@@ -767,7 +767,7 @@ text-align: center;
       </div>
 
       <div class="new_ccont">
-			<table width="675" border="0" cellspacing="0" cellpadding="0" style="margin-left: 13px;" >
+			<table width="675" border="0" cellspacing="0" cellpadding="0" style="margin-left: 13px; margin-top: 5px;" >
 				<tr align="left" height="28" style="background-color: #eeeeee;">
 					<th width="2%"></th>
 					<th width="30%"><span style="color: #b90216">工作名称</span></th>
@@ -778,19 +778,22 @@ text-align: center;
 				</tr>
         		<logic:present name="IGCOM01031VO" property="myWorkItemList">
 					<logic:iterate id="bean" name="IGCOM01031VO" property="myWorkItemList" indexId="index">
-					<tr class="my_work1">
+					<tr class="my_work">
 			            <td ></td>
 			            <td >
 			            	<!-- 如果超时了，则设置超时提醒 -->
 							<c:if test="${Current_Time>=bean.overtime}">
 							<img alt="超时提醒" src="images/wim/overtime1.png" style="margin-top: 2px;">								
 							</c:if>
-			            	${bean.wdname}&nbsp;&nbsp;&nbsp;
+			            <span ><div title="${bean.wdname}" style="width:130px; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;float: left;">${bean.wdname}</div></span>
+			            	
+			            	<div style="">&nbsp;&nbsp;&nbsp;
 							<c:if test="${myuserid!=bean.leaderid}">${bean.wistatus}
-								</c:if>
-								<c:if test="${myuserid==bean.leaderid}">
-									<a href="javascript:void(0)" onclick="cycleWork('${bean.wiid}')">${bean.wistatus}</a>
-								</c:if>
+							</c:if>
+							<c:if test="${myuserid==bean.leaderid}">
+								<a href="javascript:void(0)" onclick="cycleWork('${bean.wiid}')">${bean.wistatus}</a>
+							</c:if>
+			            	</div>
 						</td>
 						<td >${bean.leadername}</td>
 						<td >
@@ -816,11 +819,14 @@ text-align: center;
 						</td>
 						<td >${bean.crtdate}</td>
 					</tr>
+		        	<tr>
+			          <td colspan="9"><img src="images/td_line_bg.gif" border="0" height="1" /></td>
+			     	</tr>
 					</logic:iterate>
-	 			<tr>
+	 			<tr  class="my_work">
 	            	<td colspan="6">
 		            	<bean:size id="listSize" name="IGCOM01031VO" property="myWorkItemList" />
-							<logic:greaterEqual name="listSize" value="5">
+							<logic:greaterEqual name="listSize" value="3">
 								 <a href="IGWIM0201_FirstPage.do"><img src="images/main_more.gif" border="0" class="more_img"/></a>
 							</logic:greaterEqual>&nbsp;
 					</td>
