@@ -88,4 +88,36 @@ public interface IGCRC02BL extends BaseBL {
 	 *告警事件查询
 	 */
 	public IGCRC02DTO getProcessRecords(IGCRC02DTO dto) throws BLException;
+	
+	
+	/**	
+	 * 功能：查询所有事件并且关联的相关问题
+	 * @param 查询条件
+	 * @return 查询结果列表
+	 * @throws BLException
+	 * 修改记录：null 	
+	 */	
+	public IGCRC02DTO getEventAndProblem(IGCRC02DTO dto) throws BLException;
+	
+	
+	//事件来源
+	public IGCRC02DTO getEventSource(IGCRC02DTO dto) throws BLException;
+	//事件影响范围
+	public IGCRC02DTO getEventAffect(IGCRC02DTO dto) throws BLException;
+	//事件状态
+	public IGCRC02DTO getEventStatus(IGCRC02DTO dto) throws BLException;
+	//问题状态
+	public IGCRC02DTO getProblemStatus(IGCRC02DTO dto) throws BLException;
+	
+	/**
+	 *  事件和问题合集导出
+	 * @param dto
+	 * @return
+	 */
+	public void exportEventAndProblem(IGCRC02DTO dto) throws Exception;
+	
+	/**
+	 *问题查询
+	 */
+	public IGCRC02DTO getProblemProcessRecords(IGCRC02DTO dto) throws BLException;
 }

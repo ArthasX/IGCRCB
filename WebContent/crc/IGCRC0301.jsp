@@ -6,14 +6,14 @@
 <%@ taglib uri="/tags/struts-logic" prefix="logic"%>
 <%@ taglib uri="/tags/ig-tags" prefix="ig"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="com.deliverik.infogovernor.wkm.vo.IGWKM01011VO"%>
+<%@ page import="com.deliverik.infogovernor.crc.model.vo.IGCRC0301VO"%>
 <%@ page import="com.deliverik.framework.workflow.prd.model.IG259Info"%>
 <%@ page import="com.deliverik.framework.workflow.prd.model.IG380Info"%>
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.List"%>
 <%@ page import="com.deliverik.infogovernor.svc.bl.IGPROCESSType"%>
 <%
-IGWKM01011VO vo = (IGWKM01011VO) request.getAttribute("vo");
+IGCRC0301VO vo = (IGCRC0301VO) request.getAttribute("vo");
 Map<String,String> nameURLMap = null;
 List<IG259Info> processTemplateList = null;
 List<IG380Info> processDefinitionList = null;
@@ -26,7 +26,7 @@ if(vo != null){
 <html:html>
 <bean:define id="id" value="IGCRC0301" toScope="request" />
 <bean:define id="type" name="IGWKM0101Form" property="prtype" />
-<bean:define id="title" value="${IGWKM01011VO.actlabel}" toScope="request" />
+<bean:define id="title" value="${IGCRC0301VO.actlabel}" toScope="request" />
 <!-- header1 -->
 <jsp:include page="/include/header1.jsp" />
 <!-- /header1 -->
@@ -139,7 +139,7 @@ if(vo != null){
 		form.submit();
 	}
 	function onSearch(){
-		form.action = "IGWKM0103.do";
+		form.action = "IGCRC0209.do";
 		form.submit();
 	}
 	function sortDeal(){
@@ -153,7 +153,7 @@ if(vo != null){
 	
 </script>
 <link type="text/css" href="css/cs_style.css" rel="stylesheet" />
-<body onload="init();">
+<body >
 <div id="maincontent">
 <!--header  头部和 一级菜单-->
 <jsp:include page="/include/header2.jsp" />
@@ -162,7 +162,7 @@ if(vo != null){
  <!--content  右侧内容-->
 <div id="contentWrap">
 <div id="content">
-	<html:form action="/IGWKM0103" styleId="form" onsubmit="return checkSubmit(this);">
+	<html:form action="/IGCRC0209" styleId="form" onsubmit="return checkSubmit(this);">
 	<div id="location">
 	<div class="image"></div>
 	<p class="fonts1"><ig:navigation/></p>
@@ -173,7 +173,7 @@ if(vo != null){
 	<div>
 		<span style="font-size:15px;"><strong>查询条件</strong></span>
 		<label id="label_img" style="margin-left:736px;margin-top:-1px;">
-    		<img src="images/moreSearch.gif" align="middle" alt="更多搜索条件" onclick="onShow()" style="cursor: hand;" border="0"/>
+<!--     		<img src="images/moreSearch.gif" align="middle" alt="更多搜索条件" onclick="onShow()" style="cursor: hand;" border="0"/> -->
    	    </label>
 	</div>
 	<div>
@@ -181,46 +181,40 @@ if(vo != null){
 	<html:text property="prserialnum" size="12" />
 	<span class="subscribe">问题名称：</span>
 	<html:text property="prtitle"/>
-	<span class="subscribe">问题分类：</span>
-	<input type="text" name="show_tree" id="tree_show_value" readonly="readonly"/>
-	<input type="hidden" name="varnames" id="tree_name" value="问题分类"/>
-	<input type="hidden" name="varvalues" id="tree_value"/>
-	<img src="images/seek.gif" alt="查询" onclick="setTree();" style="cursor: hand"/>
+<!-- 	<span class="subscribe">问题分类：</span> -->
+<!-- 	<input type="text" name="show_tree" id="tree_show_value" readonly="readonly"/> -->
+<!-- 	<input type="hidden" name="varnames" id="tree_name" value="问题分类"/> -->
+<!-- 	<input type="hidden" name="varvalues" id="tree_value"/> -->
+<!-- 	<img src="images/seek.gif" alt="查询" onclick="setTree();" style="cursor: hand"/> -->
     <span class="subscribe" style="width:58px;">处理人：</span>
 	<html:text property="ppusername_like"/>
-	<html:submit styleClass="button" value="查询"  onclick="onSearch()"/>
-	<html:hidden property="selectstatus" name="selectstatus" value="1"/>
-
-	</div>
-	
-	<div style="margin-top:7px;">
 	<span class="subscribe">工单状态：</span>
 	<html:select property="prstatus">
     	<html:options collection="statusBeanList" property="value" labelProperty="label"/>
     </html:select>
-	<logic:present name="AD_ProcessInfoQueryMap" scope="session">
-		<logic:iterate id="map" name="AD_ProcessInfoQueryMap" scope="session" indexId="index">
-		
-			<c:if test="${(index)%4==1 }">
-				</div>
-				<div id="div_${index/4}" style="margin-top:7px;display:none;">
-			</c:if>
-		
-			<bean:define id="bean" name="map" property="value"/>
-			<ig:processInfoQuery pdid="${bean.pdid }" pidname="${bean.pidname }" name="IGWKM0101Form" property="varvalues[${index + 1}]"  style="margin-left:6px;margin-top:8px;" styleClassTagName="subscribe"/>
-			<c:if test="${(index)%4==0 }">
-				<span class="subscribe">发起时间：</span>
+	
+	<html:hidden property="selectstatus" name="selectstatus" value="1"/>
+
+	</div>
+	
+	<div style="margin-top:7px;">		
+	<span class="subscribe">发起时间：</span>
 				<html:text property="propentime" styleId="propentime" errorStyleClass="inputError imeDisabled" size="16" readonly="true" style="width:116px;"/>
 				<img src="images/date.gif" align="middle" onclick="calendar($('propentime'))" border="0" style="cursor: hand" />
 				<span>&nbsp;--&nbsp;</span>
 				<html:text property="prclosetime" styleId="prclosetime" errorStyleClass="inputError imeDisabled" size="16" readonly="true" style="width:116px;"/>
 				<img src="images/date.gif" align="middle" onclick="calendar($('prclosetime'))" border="0" style="cursor: hand" />
+	<span class="subscribe">问题描述：</span>
+	<html:text property="content" styleId="content" errorStyleClass="inputError imeDisabled" size="16"  style="width:116px;"/>
+<%-- 				<logic:present name="AD_ProcessInfoQueryMap" scope="session"> --%>
+<%-- 	<logic:iterate id="map" name="AD_ProcessInfoQueryMap" scope="session" indexId="index"> --%>
+<%-- 	<bean:define id="bean" name="map" property="value" /> --%>
+<%-- 	<ig:processInfoQuery pdid="${bean.pdid }" pidname="${bean.pidname }" name="IGWKM0101Form" property="varvalues[${index+1 }]" style="margin-left:6px;margin-top:8px;" styleClassTagName="subscribe" /> --%>
+<%-- 	</logic:iterate> --%>
+<%-- 	</logic:present> --%>
+	            <html:submit styleClass="button" value="查询"  onclick="onSearch()"/>
 				<input type="button" value="导出" class="button" onclick="onExcel()">
-			</c:if>
-		</logic:iterate> 
-	</logic:present>
-	<span class="subscribe">内容：</span>
-	<html:text  property="content"/>
+	
 	</div>
 	<div style="margin-top:8px;"></div>
 	</div>
@@ -250,33 +244,33 @@ if(vo != null){
 				</logic:equal>
 			</logic:equal></a></th>
 			
-			<th width="8%"><a href="IGWKM0103.do?orderVal=prtype">紧急程度
-			<logic:equal name="IGWKM0101Form" property="order" value="prusername">
-				<logic:equal name="IGWKM0101Form" property="sing" value="ASC">
-					<img src="images/timeup.gif" border="0">
-				</logic:equal>
-				<logic:equal name="IGWKM0101Form" property="sing" value="DESC">
-					<img src="images/timedown.gif" border="0">
-				</logic:equal>
-			</logic:equal></a></th>
-			<th width="8%"><a href="IGWKM0103.do?orderVal=prtype">影响程度
-			<logic:equal name="IGWKM0101Form" property="order" value="prusername">
-				<logic:equal name="IGWKM0101Form" property="sing" value="ASC">
-					<img src="images/timeup.gif" border="0">
-				</logic:equal>
-				<logic:equal name="IGWKM0101Form" property="sing" value="DESC">
-					<img src="images/timedown.gif" border="0">
-				</logic:equal>
-			</logic:equal></a></th>
-			  <th width="10%"><a href="IGWKM0103.do?orderVal=prurgency">问题分类
-			<logic:equal name="IGWKM0101Form" property="order" value="prurgency">
-				<logic:equal name="IGWKM0101Form" property="sing" value="ASC">
-					<img src="images/timeup.gif" border="0">
-				</logic:equal>
-				<logic:equal name="IGWKM0101Form" property="sing" value="DESC">
-					<img src="images/timedown.gif" border="0">
-				</logic:equal>
-			</logic:equal></a></th>
+<!-- 			<th width="8%"><a href="IGWKM0103.do?orderVal=prtype">紧急程度 -->
+<%-- 			<logic:equal name="IGWKM0101Form" property="order" value="prusername"> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="ASC"> --%>
+<!-- 					<img src="images/timeup.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="DESC"> --%>
+<!-- 					<img src="images/timedown.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 			</logic:equal></a></th> --%>
+<!-- 			<th width="8%"><a href="IGWKM0103.do?orderVal=prtype">影响程度 -->
+<%-- 			<logic:equal name="IGWKM0101Form" property="order" value="prusername"> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="ASC"> --%>
+<!-- 					<img src="images/timeup.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="DESC"> --%>
+<!-- 					<img src="images/timedown.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 			</logic:equal></a></th> --%>
+<!-- 			  <th width="10%"><a href="IGWKM0103.do?orderVal=prurgency">问题分类 -->
+<%-- 			<logic:equal name="IGWKM0101Form" property="order" value="prurgency"> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="ASC"> --%>
+<!-- 					<img src="images/timeup.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 				<logic:equal name="IGWKM0101Form" property="sing" value="DESC"> --%>
+<!-- 					<img src="images/timedown.gif" border="0"> -->
+<%-- 				</logic:equal> --%>
+<%-- 			</logic:equal></a></th> --%>
 			<th width="10%"><a href="IGWKM0103.do?orderVal=prstatus">工单状态
 			<logic:equal name="IGWKM0101Form" property="order" value="prstatus">
 				<logic:equal name="IGWKM0101Form" property="sing" value="ASC">
@@ -305,22 +299,25 @@ if(vo != null){
 					<img src="images/timedown.gif" border="0">
 				</logic:equal>
 			</logic:equal></a></th>
+			<th width="10%">后续优化方案</th>
+			<th width="10%">计划解决时间</th>
+			<th width="10%">责任人</th>
 		</tr>
-		<logic:present name="IGWKM01011VO" property="processList">
-			<logic:iterate id="bean" name="IGWKM01011VO" property="processList"
+		<logic:present name="IGCRC0301VO" property="problemproList">
+			<logic:iterate id="bean" name="IGCRC0301VO" property="problemproList"
 				indexId="index">
 				<bean:define id="prtype" name="bean" property="prtype" />
 				
 				<logic:equal name="bean" property="prtype"  value="<%=IGPROCESSType.SELF_DEFINING_WORK_PRTYPE %>">
 					<tr style='cursor:hand' bgcolor="<ig:ProcessOverdueLevelBgColorTag prid="${bean.prid }"/>" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" 
-					onclick="doLook(getAppRootUrl()+'/IGPRR0102_Disp.do?prid=<bean:write name="bean" property="prid" />&jump=78');">
+					onclick="doLook(getAppRootUrl()+'/IGPRR0102_Disp.do?prid=<bean:write name="bean" property="prid" />&jump=477');">
 				</logic:equal>
 				<logic:notEqual name="bean" property="prtype"  value="<%=IGPROCESSType.SELF_DEFINING_WORK_PRTYPE %>">
 					<tr style='cursor:hand' bgcolor="<ig:ProcessOverdueLevelBgColorTag prid="${bean.prid }"/>" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);"
 					onclick="doLook('<%=nameURLMap.get(prtype) %><bean:write name="bean" property="prid" />');">
 				</logic:notEqual>
 					<td> 
-					<ig:ProcessInfoValueLevelImgTag pdname="${bean.prpdname}"  prid="${bean.prid}" />
+<%-- 					<ig:ProcessInfoValueLevelImgTag pdname="${bean.prpdname}"  prid="${bean.prid}" /> --%>
 					</td>
 					<td> 
 						<ig:ProcessOverdueLevelImgTag prstatus="${bean.prstatus}" prid="${bean.prid}" />
@@ -329,15 +326,15 @@ if(vo != null){
 					</td>
 					<td><bean:write name="bean" property="prtitle" />
 					</td>
-					<td>
-					<ig:publicProcessInfoValue pidname="紧急程度" prid="${bean.prid}"/>
-					</td>
-					<td>
-					<ig:publicProcessInfoValue pidname="影响程度" prid="${bean.prid}"/>
-					</td>
-					<td>
-					<ig:publicProcessInfoValue pidname="问题分类" prid="${bean.prid}"/>
-					</td>
+<!-- 					<td> -->
+<%-- 					<ig:publicProcessInfoValue pidname="紧急程度" prid="${bean.prid}"/> --%>
+<!-- 					</td> -->
+<!-- 					<td> -->
+<%-- 					<ig:publicProcessInfoValue pidname="影响程度" prid="${bean.prid}"/> --%>
+<!-- 					</td> -->
+<!-- 					<td> -->
+<%-- 					<ig:publicProcessInfoValue pidname="问题分类" prid="${bean.prid}"/> --%>
+<!-- 					</td> -->
 					<td>
 						<ig:processStaticTypeValue pdid="${bean.prpdid}" psdcode="${bean.prstatus}"/>
 					</td>
@@ -355,6 +352,18 @@ if(vo != null){
 					</td>
 					<td><bean:write name="bean"
 						property="prclosetime" />
+					</td>
+					<td>
+					<bean:write name="bean"
+						property="afterplan" />
+					</td>
+					<td>
+					<bean:write name="bean"
+						property="planstime" />
+					</td>
+					<td>
+					<bean:write name="bean"
+						property="dutypersion" />
 					</td>
 			</logic:iterate>
 		</logic:present>

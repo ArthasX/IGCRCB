@@ -5,10 +5,25 @@
 
 package com.deliverik.infogovernor.crc.bl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.UnderlineStyle;
+import jxl.format.VerticalAlignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+import jxl.write.WriteException;
+import jxl.write.biff.RowsExceededException;
 
 import org.apache.commons.lang.SerializationUtils;
 import org.apache.commons.lang.StringUtils;
@@ -26,19 +41,30 @@ import com.deliverik.framework.igflow.parameter.ProcessInfoDefinitionInfo;
 import com.deliverik.framework.user.bl.task.UserBL;
 import com.deliverik.framework.workflow.WorkFlowDefinitionBL;
 import com.deliverik.framework.workflow.WorkFlowOperationBL;
+import com.deliverik.framework.workflow.prd.model.IG007Info;
 import com.deliverik.framework.workflow.prd.model.IG259Info;
+import com.deliverik.framework.workflow.prd.model.IG333Info;
 import com.deliverik.framework.workflow.prd.model.IG380Info;
+import com.deliverik.framework.workflow.prd.model.condition.IG007SearchCondImpl;
 import com.deliverik.framework.workflow.prd.model.condition.IG259SearchCondImpl;
 import com.deliverik.framework.workflow.prd.model.condition.IG333SearchCondImpl;
+import com.deliverik.framework.workflow.prd.model.condition.IG380SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG337SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG599SearchCondImpl;
+import com.deliverik.infogovernor.crc.bl.task.EventAndProblemVWBL;
+import com.deliverik.infogovernor.crc.bl.task.IGCRC0301BL;
 import com.deliverik.infogovernor.crc.bl.task.IgalarmBL;
 import com.deliverik.infogovernor.crc.dto.IGCRC02DTO;
 import com.deliverik.infogovernor.crc.form.IGCRC0204Form;
+import com.deliverik.infogovernor.crc.form.IGCRC4001Form;
+import com.deliverik.infogovernor.crc.model.EventAndProblemVWInfo;
 import com.deliverik.infogovernor.crc.model.IGCRC0208VWInfo;
+import com.deliverik.infogovernor.crc.model.IGCRC0301VWInfo;
 import com.deliverik.infogovernor.crc.model.IgalarmInfo;
+import com.deliverik.infogovernor.crc.model.condition.EventAndProblemVWSearchCondImpl;
 import com.deliverik.infogovernor.crc.model.condition.IgalarmSearchCondImpl;
+import com.deliverik.infogovernor.crc.model.entity.EventAndProblemVW;
 import com.deliverik.infogovernor.crc.model.entity.IGCRC0208VW;
 import com.deliverik.infogovernor.crc.model.entity.IgalarmTB;
 import com.deliverik.infogovernor.wkm.form.IGWKM0101Form;
@@ -83,6 +109,12 @@ public class IGCRC02BLImpl extends BaseBLImpl implements  IGCRC02BL{
 	
 	/** 集成告警表业务逻辑BL */
 	private IgalarmBL igalarmBL;
+	
+	protected EventAndProblemVWBL eventAndProblemVWBL;
+	
+	/** 问题查询逻辑BL */
+	private IGCRC0301BL igcrc0301BL;
+	
 	
 	/**
 	 * 集成告警表业务逻辑BL设置
@@ -145,6 +177,15 @@ public class IGCRC02BLImpl extends BaseBLImpl implements  IGCRC02BL{
 	}
 	public void setUserBL(UserBL userBL) {
 		this.userBL = userBL;
+	}
+	
+	public void setEventAndProblemVWBL(EventAndProblemVWBL eventAndProblemVWBL) {
+		this.eventAndProblemVWBL = eventAndProblemVWBL;
+	}
+	
+	
+	public void setIgcrc0301BL(IGCRC0301BL igcrc0301bl) {
+		igcrc0301BL = igcrc0301bl;
 	}
 	/***
 	 * 通过dto创建查询条件并查询
@@ -408,4 +449,349 @@ public class IGCRC02BLImpl extends BaseBLImpl implements  IGCRC02BL{
 		}
 		dto.setNameURLMap(nameURLMap);
 	}
+	/**	
+	 * 功能：查询所有事件并且关联的相关问题
+	 * @param 查询条件
+	 * @return 查询结果列表
+	 * @throws BLException
+	 * 修改记录：zhaoziting
+	 */	
+	public IGCRC02DTO getEventAndProblem(IGCRC02DTO dto) throws BLException {
+		log.debug("========查询事件和问题处理开始========");
+		// 查询记录总数
+		EventAndProblemVWSearchCondImpl cond = new EventAndProblemVWSearchCondImpl();
+		IGCRC4001Form form = dto.getIgCRC4001Form();
+		cond.setEventContent(form.getEventContent());
+		cond.setEventNum(form.getEventNum());
+		cond.setEventSource(form.getEventSource());
+		cond.setEventstatus(form.getEventstatus());
+		cond.setEventTitle(form.getEventTitle());
+		cond.setEventusername(form.getEventusername());
+		cond.setHappenTime_from(form.getHappenTime_from());
+		cond.setHappenTime_to(form.getHappenTime_to());
+		cond.setInfluenceRange(form.getInfluenceRange());
+		cond.setInvolveSystem(form.getInvolveSystem());
+		cond.setProblemcontent(form.getProblemcontent());
+		cond.setProblemNum(form.getProblemNum());
+		cond.setProblemopentime_from(form.getProblemopentime_from());
+		cond.setProblemopentime_to(form.getProblemopentime_to());
+		cond.setProblemstatus(form.getProblemstatus());
+		cond.setProblemTitle(form.getProblemTitle());
+		cond.setProblemusername(form.getProblemusername());
+	    cond.setShow_tree(form.getShow_tree());
+		int totalCount = eventAndProblemVWBL.getSearchCount(cond);
+		if (totalCount == 0) {
+			log.debug("========查询数据不存在========");
+			// 查询数据不存在
+			dto.addMessage(new ActionMessage("IGCO10000.I002", 0));
+			this.getProcessTemplate(dto);
+			return dto;
+		}
+		if (totalCount > dto.getMaxSearchCount()) {
+			log.debug("========查询数据件数过多========");
+			// 查询数据件数过多
+			dto.addMessage(new ActionMessage("IGCO00000.E005", dto.getMaxSearchCount(), totalCount));
+			this.getProcessTemplate(dto);
+			return dto;
+		}
+		// 获取分页bean
+		PagingDTO pDto = dto.getPagingDto();
+		// 调用DAO接口查询
+		List<EventAndProblemVWInfo> prList = eventAndProblemVWBL.findByCond(cond, pDto.getFromCount(), pDto.getPageDispCount());	
+		List<EventAndProblemVWInfo> newPrList = new ArrayList<EventAndProblemVWInfo>();
+		String typeString = "";
+		int length = 0;
+		for (EventAndProblemVWInfo bean : prList) {
+			EventAndProblemVW beanVW = (EventAndProblemVW)SerializationUtils.clone(bean);
+			if(StringUtils.isNotEmpty(bean.getEventType())){
+				typeString = bean.getEventType();
+				length = typeString.split("-").length;
+				beanVW.setEventType(typeString.split("-")[length - 1]);
+			}
+			newPrList.add(beanVW);
+		}
+		pDto.setTotalCount(totalCount);
+		dto.addMessage(new ActionMessage("IGCO10000.I002", totalCount));
+		dto.setListep(newPrList);
+		log.debug("========查询事件和问题处理终了========");
+		return dto;
+	}
+	
+	//事件来源
+	public IGCRC02DTO getEventSource(IGCRC02DTO dto) throws BLException {
+		//获取当前流程最大版本号
+		IG380SearchCondImpl dfcond = new IG380SearchCondImpl();
+		dfcond.setPdstatus("a");
+		dfcond.setPdid_like("01080");
+		List<IG380Info> pdlist = workFlowDefinitionBL.searchProcessDefinition(dfcond);
+		IG007SearchCondImpl cond  = new IG007SearchCondImpl();
+		cond.setPdid(pdlist.get(0).getPdid());
+		cond.setPidlabel("事件来源");		
+		List<IG007Info> pc = workFlowDefinitionBL.searchProcessInfoDef(cond);
+		//将事件来源下拉列表变为集合
+		String[] sources = pc.get(0).getPidoption().split("#");
+		List<String> sourcelist = new ArrayList<String>();
+		if(sources!=null&&sources.length>0){
+			for(int i=0;i<sources.length;i++){
+				if(StringUtils.isNotEmpty(sources[i])){					
+					sourcelist.add(sources[i]);
+				}
+			}
+		}
+		dto.setSourcelist(sourcelist);
+		return dto;
+	}
+	//事件影响范围
+	public IGCRC02DTO getEventAffect(IGCRC02DTO dto) throws BLException {
+		//获取当前流程最大版本号
+		IG380SearchCondImpl dfcond = new IG380SearchCondImpl();
+		dfcond.setPdstatus("a");
+		dfcond.setPdid_like("01080");
+		List<IG380Info> pdlist = workFlowDefinitionBL.searchProcessDefinition(dfcond);
+		IG007SearchCondImpl cond  = new IG007SearchCondImpl();
+		cond.setPdid(pdlist.get(0).getPdid());
+		cond.setPidlabel("影响范围");		
+		List<IG007Info> pc = workFlowDefinitionBL.searchProcessInfoDef(cond);
+		//将事件来源下拉列表变为集合
+		String[] sources = pc.get(0).getPidoption().split("#");
+		List<String> affectlist = new ArrayList<String>();
+		if(sources!=null&&sources.length>0){
+			for(int i=0;i<sources.length;i++){
+				if(StringUtils.isNotEmpty(sources[i])){						
+					affectlist.add(sources[i]);
+				}
+			}
+		}
+		dto.setAffectlist(affectlist);
+		return dto;
+	}
+	//事件状态
+	public IGCRC02DTO getEventStatus(IGCRC02DTO dto) throws BLException {
+		//获取当前流程最大版本号
+		IG380SearchCondImpl dfcond = new IG380SearchCondImpl();
+		dfcond.setPdstatus("a");
+		dfcond.setPdid_like("01080");
+		List<IG380Info> pdlist = workFlowDefinitionBL.searchProcessDefinition(dfcond);
+		IG333SearchCondImpl cond  = new IG333SearchCondImpl();
+		cond.setPdid(pdlist.get(0).getPdid());
+		List<IG333Info> pc = workFlowDefinitionBL.searchProcessStatusDef(cond);
+		//将事件来源下拉列表变为集合
+		List<String> eslist = new ArrayList<String>();
+		if(pc!=null&&pc.size()>0){
+			for(IG333Info info:pc){
+				eslist.add(info.getPsdname());
+			}
+		}
+		dto.setEslist(eslist);
+		return dto;
+	}
+	//问题状态
+	public IGCRC02DTO getProblemStatus(IGCRC02DTO dto) throws BLException {
+		//获取当前流程最大版本号
+		IG380SearchCondImpl dfcond = new IG380SearchCondImpl();
+		dfcond.setPdstatus("a");
+		dfcond.setPdid_like("01083");
+		List<IG380Info> pdlist = workFlowDefinitionBL.searchProcessDefinition(dfcond);
+		IG333SearchCondImpl cond  = new IG333SearchCondImpl();
+		cond.setPdid(pdlist.get(0).getPdid());
+		List<IG333Info> pc = workFlowDefinitionBL.searchProcessStatusDef(cond);
+		//将事件来源下拉列表变为集合
+		List<String> pslist = new ArrayList<String>();
+		if(pc!=null&&pc.size()>0){
+			for(IG333Info info:pc){
+				pslist.add(info.getPsdname());
+			}
+		}
+		dto.setPslist(pslist);
+		return dto;
+	}
+	
+	/**
+	 *  事件和问题合集导出
+	 * @param dto
+	 * @return
+	 */
+	public void exportEventAndProblem(IGCRC02DTO dto) throws Exception{
+		log.debug("============= 事件和问题合集导出开始===============");
+		// 查询记录总数
+		EventAndProblemVWSearchCondImpl cond = new EventAndProblemVWSearchCondImpl();
+		IGCRC4001Form form = dto.getIgCRC4001Form();
+		cond.setEventContent(form.getEventContent());
+		cond.setEventNum(form.getEventNum());
+		cond.setEventSource(form.getEventSource());
+		cond.setEventstatus(form.getEventstatus());
+		cond.setEventTitle(form.getEventTitle());
+		cond.setEventusername(form.getEventusername());
+		cond.setHappenTime_from(form.getHappenTime_from());
+		cond.setHappenTime_to(form.getHappenTime_to());
+		cond.setInfluenceRange(form.getInfluenceRange());
+		cond.setInvolveSystem(form.getInvolveSystem());
+		cond.setProblemcontent(form.getProblemcontent());
+		cond.setProblemNum(form.getProblemNum());
+		cond.setProblemopentime_from(form.getProblemopentime_from());
+		cond.setProblemopentime_to(form.getProblemopentime_to());
+		cond.setProblemstatus(form.getProblemstatus());
+		cond.setProblemTitle(form.getProblemTitle());
+		cond.setProblemusername(form.getProblemusername());		
+		// 调用DAO接口查询
+		List<EventAndProblemVWInfo> prList = eventAndProblemVWBL.findByCond(cond, 0, 0);
+		WritableWorkbook wwb;
+		try {
+			wwb = Workbook.createWorkbook(dto.getOps());
+			
+			WritableSheet ws = wwb.createSheet("生产事件汇总信息", 0); // 创建一个工作表
+			// 设置单元格的文字格式
+			WritableFont wf = new WritableFont(WritableFont.ARIAL, 12, WritableFont.NO_BOLD, false, UnderlineStyle.NO_UNDERLINE);
+			WritableFont rootWf = new WritableFont(WritableFont.ARIAL, 12, WritableFont.BOLD, false, UnderlineStyle.NO_UNDERLINE);
+			WritableCellFormat rootWcf = new WritableCellFormat(rootWf);
+			rootWcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+			rootWcf.setAlignment(Alignment.CENTRE);
+			rootWcf.setBorder(Border.ALL, BorderLineStyle.THIN);
+			rootWcf.setLocked(false);
+			// 定义人员信息列格式
+			WritableCellFormat userWcf = new WritableCellFormat(wf);
+			userWcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+			userWcf.setAlignment(Alignment.CENTRE);
+			userWcf.setBorder(Border.ALL, BorderLineStyle.THIN);
+			userWcf.setLocked(false);
+
+			// 定义标题格式
+			WritableCellFormat titWcf = new WritableCellFormat(rootWf);
+			titWcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+			titWcf.setAlignment(Alignment.CENTRE);
+			titWcf.setBorder(Border.ALL, BorderLineStyle.THIN);
+//			titWcf.setBackground(Colour.BLUE);
+			// 定义标题格式
+			WritableCellFormat titWcf2 = new WritableCellFormat(wf);
+			titWcf2.setVerticalAlignment(VerticalAlignment.CENTRE);
+			titWcf2.setAlignment(Alignment.LEFT);
+			titWcf2.setBorder(Border.ALL, BorderLineStyle.THIN);
+
+			int blankRow = 0, blankCol = -1;		//空行，空列
+			// 定义各列的宽度
+			ws.setColumnView(blankCol + 1, 40);
+			ws.setColumnView(blankCol + 2, 40);
+			ws.setColumnView(blankCol + 3, 20);
+			ws.setColumnView(blankCol + 4, 20);
+			ws.setColumnView(blankCol + 5, 20);
+			ws.setColumnView(blankCol + 6, 20);
+			ws.setColumnView(blankCol + 7, 20);
+			ws.setColumnView(blankCol + 8, 20);
+			ws.setColumnView(blankCol + 9, 20);
+			ws.setColumnView(blankCol + 10, 20);
+			ws.setColumnView(blankCol + 11, 20);
+			ws.setColumnView(blankCol + 12, 20);
+			ws.setColumnView(blankCol + 13, 20);
+			ws.setColumnView(blankCol + 14, 20);
+			ws.setColumnView(blankCol + 15, 20);
+			ws.setColumnView(blankCol + 16, 20);
+			Label label = new Label(blankCol + 1, blankRow - 1, "生产事件汇总信息", rootWcf);
+			
+//			ws.addCell(label);
+			
+			ws.addCell(new Label(blankCol + 1, blankRow, "事件单号", titWcf));
+			ws.addCell(new Label(blankCol + 2, blankRow, "发生时间", titWcf));
+			ws.addCell(new Label(blankCol + 3, blankRow, "是否已关闭", titWcf));
+			ws.addCell(new Label(blankCol + 4, blankRow, "事件来源", titWcf));
+			ws.addCell(new Label(blankCol + 5, blankRow, "事件名称", titWcf));
+			ws.addCell(new Label(blankCol + 6, blankRow, "事件分类", titWcf));
+			ws.addCell(new Label(blankCol + 7, blankRow, "涉及应用系统", titWcf));
+			ws.addCell(new Label(blankCol + 8, blankRow, "影响范围", titWcf));
+			ws.addCell(new Label(blankCol + 9, blankRow, "影响范围备注", titWcf));
+			ws.addCell(new Label(blankCol + 10, blankRow, "事件等级", titWcf));
+			ws.addCell(new Label(blankCol + 11, blankRow, "事件原因", titWcf));
+			ws.addCell(new Label(blankCol + 12, blankRow, "应急解决方案", titWcf));
+			ws.addCell(new Label(blankCol + 13, blankRow, "问题单号", titWcf));
+			ws.addCell(new Label(blankCol + 14, blankRow, "后续优化方案", titWcf));
+			ws.addCell(new Label(blankCol + 15, blankRow, "计划解决时间", titWcf));
+			ws.addCell(new Label(blankCol + 16, blankRow, "责任人", titWcf));
+			int curRow = blankRow + 1;	//当前行
+				for(EventAndProblemVWInfo info : prList){
+					//事件单号
+					ws.addCell(new Label(blankCol+1,curRow,info.getEventNum(),userWcf));
+					//发生时间
+					ws.addCell(new Label(blankCol+2,curRow,info.getHappenTime(),userWcf));
+					//是否已关闭
+					ws.addCell(new Label(blankCol+3,curRow,info.getIsClosed(),userWcf));
+					//事件来源
+					ws.addCell(new Label(blankCol+4,curRow,info.getEventSource(),userWcf));
+					//事件名称
+					ws.addCell(new Label(blankCol+5,curRow,info.getEventTitle(),userWcf));
+					//事件分类，取得最后一级
+					if(StringUtils.isNotEmpty(info.getEventType())){						
+						int length = info.getEventType().split("-").length;
+						ws.addCell(new Label(blankCol+6,curRow,info.getEventType().split("-")[length - 1],userWcf));
+					}else{
+						ws.addCell(new Label(blankCol+6,curRow,"",userWcf));
+					}					
+					//涉及应用系统
+					ws.addCell(new Label(blankCol+7,curRow,info.getInvolveSystem(),userWcf));
+					//影响范围
+					ws.addCell(new Label(blankCol+8,curRow,info.getInfluenceRange(),userWcf));
+					//影响范围备注
+					ws.addCell(new Label(blankCol+9,curRow,info.getInfluenceRangeRemarks(),userWcf));
+					//事件等级
+					ws.addCell(new Label(blankCol+10,curRow,info.getEventLevel(),userWcf));
+					//事件原因
+					ws.addCell(new Label(blankCol+11,curRow,info.getEventCause(),userWcf));
+					//应急解决方案
+					ws.addCell(new Label(blankCol+12,curRow,info.getEmergencySolution(),userWcf));
+					//问题单号
+					ws.addCell(new Label(blankCol+13,curRow,info.getProblemNum(),userWcf));
+					//后续优化方案
+					ws.addCell(new Label(blankCol+14,curRow,info.getPptimizationScheme(),userWcf));
+					//计划解决时间
+					ws.addCell(new Label(blankCol+15,curRow,info.getPlannedSolutionTime(),userWcf));
+					//责任人
+					ws.addCell(new Label(blankCol+16,curRow,info.getPersonLiable(),userWcf));
+					
+					curRow+=1;
+				}
+			wwb.write();
+			wwb.close();
+
+		} catch (IOException e) {
+		} catch (RowsExceededException e) {
+		} catch (WriteException e) {
+		}
+		log.debug("============= 事件和问题合集导出完成===============");
+	}
+	
+	/**
+	 *问题查询
+	 */
+	public IGCRC02DTO getProblemProcessRecords(IGCRC02DTO dto) throws BLException {
+		log.debug("========查询工作记录处理开始========");
+		// 查询记录总数
+		int totalCount = igcrc0301BL.searchProcessCount(dto.getPrSearchCond());
+		if (totalCount == 0) {
+			log.debug("========查询数据不存在========");
+			// 查询数据不存在
+			dto.addMessage(new ActionMessage("IGCO10000.I002", 0));
+			this.getProcessTemplate(dto);
+			return dto;
+		}
+		if (totalCount > dto.getMaxSearchCount()) {
+			log.debug("========查询数据件数过多========");
+			// 查询数据件数过多
+			dto.addMessage(new ActionMessage("IGCO00000.E005", dto.getMaxSearchCount(), totalCount));
+			this.getProcessTemplate(dto);
+			return dto;
+		}
+		// 获取分页bean
+		PagingDTO pDto = dto.getPagingDto();
+		// 调用DAO接口查询
+		List<IGCRC0301VWInfo> prList = igcrc0301BL.queryIG500EntityListByProcessInfo(dto.getPrSearchCond(), pDto.getFromCount(), pDto.getPageDispCount());
+		
+		pDto.setTotalCount(totalCount);
+		dto.setProblemproList(prList);
+		dto.addMessage(new ActionMessage("IGCO10000.I002", totalCount));
+		this.setDetailURLToDTO(dto);
+		this.getProcessTemplate(dto);
+		
+		log.debug("========查询工作记录处理终了========");
+		return dto;
+	}
+	
+	
 }

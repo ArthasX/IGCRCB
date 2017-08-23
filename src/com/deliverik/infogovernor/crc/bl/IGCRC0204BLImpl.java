@@ -146,9 +146,9 @@ public class IGCRC0204BLImpl extends BaseBLImpl implements IGCRC0204BL {
 		dto.setProcessInfoList(workFlowOperationBL.searchProcessInfoByCond(processInfoCond));
 
 		// 查询参与人信息条件(暂无)
-		IG337SearchCondImpl processParticipantCond = new IG337SearchCondImpl();
+		//IG337SearchCondImpl processParticipantCond = new IG337SearchCondImpl();
 		// 查询参与人信息
-		dto.setProcessParticipantList(workFlowOperationBL.searchProcessParticipants(processParticipantCond));
+		//dto.setProcessParticipantList(workFlowOperationBL.searchProcessParticipants(processParticipantCond));
 
 		
 		// 查询流状态定义信息条件

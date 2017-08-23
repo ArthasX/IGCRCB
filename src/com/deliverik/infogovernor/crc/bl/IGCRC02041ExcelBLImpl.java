@@ -134,7 +134,7 @@ public class IGCRC02041ExcelBLImpl extends BaseBLImpl implements IGCRC02041Excel
 		sheet.setColumnView(14, 15);
 		sheet.setColumnView(15, 25);
 		sheet.setColumnView(16, 25);
-		sheet.setColumnView(17, 15);
+//		sheet.setColumnView(17, 15);
 
 
 		
@@ -230,7 +230,7 @@ public class IGCRC02041ExcelBLImpl extends BaseBLImpl implements IGCRC02041Excel
 			
 	    	//导出Excel标题
 	    	String [] title = {"工单号","事件名称","具体描述","事件级别","故障系统名称","故障原因"
-	    					  ,"事件处理人","处理方法","发生时间","事件分类","事件来源","严重程度"
+	    					  ,"事件处理人","发生时间","事件分类","事件来源","严重程度"
 	    					  ,"紧急程度","发起人","发起时间","当前处理人","状态","关闭时间"};
 			if(title!=null && title.length != 0){
 				for(int i = 0 ; i < title.length; i++){
@@ -289,28 +289,28 @@ public class IGCRC02041ExcelBLImpl extends BaseBLImpl implements IGCRC02041Excel
 					
 					
 					//处理方法
-					sheet.addCell(new Label(7,i+3, info.getHandlingMethod()));
+//					sheet.addCell(new Label(7,i+3, info.getHandlingMethod()));
 					//发生时间
-					sheet.addCell(new Label(8,i+3, info.getHappenTime()));
+					sheet.addCell(new Label(7,i+3, info.getHappenTime()));
 					
 					
 					// 填充是否需要测试
 					String[] strs = piMap.get(info.getPrid()).get("事件分类").getPivarvalue().split("_");
 					String[] strs2 = strs[strs.length-1].split("-");
-					sheet.addCell(new Label(9,i+3, strs2[strs2.length-1]));
+					sheet.addCell(new Label(8,i+3, strs2[strs2.length-1]));
 					
 					// 填充事件来源
-					sheet.addCell(new Label(10, i+3, piMap.get(info.getPrid()).get("事件来源").getPivarvalue()));
+					sheet.addCell(new Label(9, i+3, piMap.get(info.getPrid()).get("事件来源").getPivarvalue()));
 					
 					//填充影响程度
-					sheet.addCell(new Label(11,i+3, piMap.get(info.getPrid()).get("严重程度").getPivarvalue()));
+					sheet.addCell(new Label(10,i+3, piMap.get(info.getPrid()).get("严重程度").getPivarvalue()));
 					
 					//填充紧急情况
 					IG599Info info599 = piMap.get(info.getPrid()).get("紧急程度");
-					sheet.addCell(new Label(12,i+3, info599.getPivarvalue()));
+					sheet.addCell(new Label(11,i+3, info599.getPivarvalue()));
 					
 					// 填充发起人	
-					sheet.addCell(new Label(13,i+3, info.getPrusername()));
+					sheet.addCell(new Label(12,i+3, info.getPrusername()));
 
 					StringBuffer str = new StringBuffer();
 					// 获取对应流程处理人
@@ -331,17 +331,17 @@ public class IGCRC02041ExcelBLImpl extends BaseBLImpl implements IGCRC02041Excel
 					}
 					
 					//填充发起时间
-					sheet.addCell(new Label(14, i+3, info.getPropentime()));
+					sheet.addCell(new Label(13, i+3, info.getPropentime()));
 					// 填充处理人
-					sheet.addCell(new Label(15, i+3, str.toString()));
+					sheet.addCell(new Label(14, i+3, str.toString()));
 					// 填充工单状态
 					if(IGPRDCONSTANTS.PROCESS_TERMINATE.equals(info.getPrstatus())){
-						sheet.addCell(new Label(16, i+3, "中止"));
+						sheet.addCell(new Label(15, i+3, "中止"));
 					}else{
-						sheet.addCell(new Label(16, i+3, psdMap.get(info.getPrstatus() + "-" + info.getPrpdid()).getPsdname()));
+						sheet.addCell(new Label(15, i+3, psdMap.get(info.getPrstatus() + "-" + info.getPrpdid()).getPsdname()));
 					}
 					// 填充关闭时间
-					sheet.addCell(new Label(17, i+3, info.getPrclosetime()));
+					sheet.addCell(new Label(16, i+3, info.getPrclosetime()));
 			
 				}	
 			}		

@@ -98,6 +98,11 @@
 	 		//其他事件
 	 		jQuery("option[value='监控告警']").remove();
 	 	}
+	 	
+	 	var sjfl = jQuery("#tree_value").val();
+	 	if(sjfl!=""&&sjfl!=null){
+	 		jQuery("#tree_show_value").val(sjfl.split("_tree_")[1]);
+	 	}
 	});
 	function onShow(){
 		document.getElementById("showFlag").value = 1;
@@ -122,11 +127,16 @@
 	function onExcel(){
 		form.action = "IGCRC0204.do";
 		form.submit();
+		return false;
 	}
 	function onSearch(){
 		form.action = "IGCRC0208.do";
 		form.submit();
 	}
+	function checkSubmit(obj){
+		return true;
+	}
+	
 </script>
 <link type="text/css" href="css/cs_style.css" rel="stylesheet" />
 <body onload="init();">
@@ -167,13 +177,14 @@
 									<html:hidden property="selectstatus" name="selectstatus" value="1" />
 								</div>
 								<div style="margin-top: 12px;">
-									<span class="subscribe">事件分类：</span> <input type="text" name="show_tree" id="tree_show_value" readonly="readonly" /> <img src="images/seek.gif" align="middle" alt="查询" onclick="setTree();" style="cursor: hand;" border="0" /> <input type="hidden" name="varnames" id="tree_name" value="事件分类" /> <input type="hidden" name="varvalues" id="tree_value" /> <span class="subscribe" style="width: 58px;">处理人：</span>
+									<span class="subscribe">事件分类：</span> <input type="text" name="show_tree" id="tree_show_value" readonly="readonly" /> <img src="images/seek.gif" align="middle" alt="查询" onclick="setTree();" style="cursor: hand;" border="0" /> <input type="hidden" name="varnames" id="tree_name" value="事件分类" /> <input type="hidden" name="varvalues" id="tree_value" value="${IGWKM0101Form.varvalues[0]}" /> <span class="subscribe" style="width: 58px;">处理人：</span>
 									<html:text property="ppusername_like" />
 									<span class="subscribe">发起时间：</span>
 									<html:text property="propentime" styleId="propentime" errorStyleClass="inputError imeDisabled" size="16" readonly="true" style="width:116px;" />
 									<img src="images/date.gif" align="middle" onclick="calendar($('propentime'))" border="0" style="cursor: hand" /> <span>&nbsp;--&nbsp;</span>
 									<html:text property="prclosetime" styleId="prclosetime" errorStyleClass="inputError imeDisabled" size="16" readonly="true" style="width:116px;" />
-									<img src="images/date.gif" align="middle" onclick="calendar($('prclosetime'))" border="0" style="cursor: hand" /> <input type="button" value="导出" class="button" onclick="onExcel()">
+									<img src="images/date.gif" align="middle" onclick="calendar($('prclosetime'))" border="0" style="cursor: hand" />
+									 <input type="button" value="导出" class="button" onclick="onExcel()">
 								</div>
 								<logic:present name="AD_ProcessInfoQueryMap" scope="session">
 									<logic:iterate id="map" name="AD_ProcessInfoQueryMap" scope="session" indexId="index">
@@ -184,11 +195,7 @@
 										<bean:define id="bean" name="map" property="value" />
 										<ig:processInfoQuery pdid="${bean.pdid }" pidname="${bean.pidname }" name="IGWKM0101Form" property="varvalues[${index+1 }]" style="margin-left:6px;margin-top:8px;" styleClassTagName="subscribe" />
 									</logic:iterate>
-								</logic:present>
-								<br />
-								<br /> <span class="subscribe">内容：</span>
-								<html:text property="content" />
-
+								</logic:present>							
 							</div>
 							<div style="margin-top: 8px;"></div>
 						</div>
@@ -202,28 +209,40 @@
 							<th width="8%">
 							<a href="#">工单号</a>
 							</th>
-							<th width="16%">
+							<th width="9%">
+							<a href="#">发生时间</a>
+							</th>
+							<th width="7%">
+							<a href="#">是否已关闭</a>
+							</th>
+							<th width="8%">事件来源</th>
+							<th width="8%">
 							<a href="#">事件名称</a>
 							</th>
 							<th width="10%">
 							<a href="#">事件分类</a>
 							</th>
-							<th width="6%">事件来源</th>
-							<th width="6%">严重程度</th>
-							<th width="6%">紧急程度</th>
+							<th width="9%">
+							<a href="#">涉及应用系统</a>
+							</th>
 							<th width="8%">
-							<a href="#">发起人</a>
+							<a href="#">影响范围</a>
 							</th>
 							<th width="10%">
-							<a href="#">发生时间</a>
+							<a href="#">影响范围备注</a>
 							</th>
-							<th width="12%">当前处理人</th>
+							<th width="7%">
+							<a href="#">事件等级</a>
+							</th>
 							<th width="8%">
-							<a href="#">状态</a>
+							<a href="#">事件原因</a>
 							</th>
-							<th width="10%">
-							<a href="#">关闭时间</a>
+							<th width="8%">
+							<a href="#">应急解决方案</a>
 							</th>
+<!-- 							<th width="6%">严重程度</th> -->
+<!-- 							<th width="6%">紧急程度</th> -->
+							
 						</tr>
 						<logic:present name="IGCRC0208VO" property="processList">
 							<logic:iterate id="bean" name="IGCRC0208VO" property="processList" indexId="index">
@@ -235,25 +254,18 @@
 									<tr style='cursor: hand' bgcolor="<ig:ProcessOverdueLevelBgColorTag prid="${bean.prid }"/>" onmouseover="mouseOver(this);" onmouseout="mouseOut(this);" onclick="doLook('<%=nameURLMap.get(prtype) %><bean:write name="bean" property="prid" />');">
 								</logic:notEqual>
 								<td><bean:write name="bean" property="prserialnum" /></td>
+								<td><bean:write name="bean" property="happenTime" /></td>
+								<td><bean:write name="bean" property="isClosed" /></td>
+								<td><bean:write name="bean" property="eventSource" /></td>
 								<td><bean:write name="bean" property="prtitle" /></td>
 								<td><bean:write name="bean" property="eventType" /></td>
-								<td><bean:write name="bean" property="eventSource" /></td>
-								<td><bean:write name="bean" property="eventSeverity" /></td>
-								<td><bean:write name="bean" property="eventEmergency" /></td>
-								<td><bean:write name="bean" property="prusername" /></td>
-								<td><bean:write name="bean" property="happenTime" /></td>
-								<bean:define id="participant">
-									<ig:ProcessParticipantForStatusWriteTag prstatus="${bean.prstatus }" prid="${bean.prid }"/>&nbsp;
-								</bean:define>
-								<td title="${participant }">
-									<ig:SubstringShowEllipsisWriteTag len="8" showEllipsis="true">
-										${participant }
-									</ig:SubstringShowEllipsisWriteTag>
-								</td>
-								<td>
-									<bean:write name="bean" property="orderstatus" />
-								</td>
-								<td><bean:write name="bean" property="prclosetime" /></td>
+								<td><bean:write name="bean" property="involveSystem" /></td>
+								<td><bean:write name="bean" property="influenceRange" /></td>
+								<td><bean:write name="bean" property="influenceRangeRemarks" /></td>
+								<td><bean:write name="bean" property="eventLevel" /></td>
+								<td><bean:write name="bean" property="eventCause" /></td>
+								<td><bean:write name="bean" property="emergencySolution" /></td>
+								
 							</logic:iterate>
 						</logic:present>
 					</table>

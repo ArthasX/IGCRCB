@@ -357,26 +357,190 @@ pr.closetime as propentime  ,
 		        pr.prstatus,
 		        pr.prsubstatus,
 		        pr.prpdid,
-		        a.psdname as orderstatus,
-			    b.pivarvalue as eventType,
-			    c.pivarvalue as eventSource,
-			    d.pivarvalue as eventSeverity,
-			    e.pivarvalue as eventEmergency,
-                f.pivarvalue as happenTime,
-                g.pivarvalue as handlingMethod,
-                h.pivarvalue as analysis,
-                i.pivarvalue as stoppageName
+		        f.pivarvalue as happenTime,  
+		        CASE WHEN pr.prclosetime IS NOT NULL THEN '是' ELSE '否' END AS isClosed,
+			    c.pivarvalue as eventSource,			   
+			    REPLACE( b.pivarvalue, LEFT( b.pivarvalue, LOCATE( '_tree_', b.pivarvalue ) + 5 ) ) AS eventType,
+			    j.pivarvalue as involveSystem,
+			    k.pivarvalue as influenceRange,
+			    l.pivarvalue as influenceRangeRemarks,
+			    m.pivarvalue as eventLevel,
+			    n.pivarvalue as eventCause,
+			    o.pivarvalue as emergencySolution,
+		        a.psdname as orderstatus            
 			    from ig500 pr
 			    left join ig380 pd on pr.prpdid = pd.pdid
 			    left join ig599 b on pr.prid = b.prid and b.pivarname = '事件分类'
-			    left join ig599 c on pr.prid = c.prid and c.pivarname = '事件来源'
-			    left join ig599 d on pr.prid = d.prid and d.pivarname = '严重程度'
-			    left join ig599 e on pr.prid = e.prid and e.pivarname = '紧急程度'
-                left join ig599 f on pr.prid = f.prid and f.pivarname = '发生时间'
-                left join ig599 g on pr.prid = g.prid and g.pivarname = '处理方法'
-                left join ig599 h on pr.prid = h.prid and h.pivarname = '原因分析'
-                left join ig599 i on pr.prid = i.prid and i.pivarname = '故障系统名称'
+			    left join ig599 c on pr.prid = c.prid and c.pivarname = '事件来源'			   
+                left join ig599 f on pr.prid = f.prid and f.pivarname = '发生时间'               
+                left join ig599 j on pr.prid = j.prid and j.pivarname = '涉及系统'
+                left join ig599 k on pr.prid = k.prid and k.pivarname = '影响范围'
+                left join ig599 l on pr.prid = l.prid and l.pivarname = '影响范围备注'
+                left join ig599 m on pr.prid = m.prid and m.pivarname = '事件等级'
+                left join ig599 n on pr.prid = n.prid and n.pivarname = '事件原因'
+                left join ig599 o on pr.prid = o.prid and o.pivarname = '应急解决方案'                           
 			    left join ig333 a on pr.PRPDID = a.pdid and pr.PRSTATUS=a.PSDCODE
     	]]>
     </sql-query>
+      <sql-query name="IG500DAO.queryProblem">
+    	<![CDATA[
+    		select 
+			    pr.prid,
+		        pr.prtype,
+		        pr.prserialnum,
+		        pr.prtitle,
+		        pr.prusername,
+		        pr.propentime,
+		        pr.prclosetime,
+		        pr.prstatus,
+		        pr.prsubstatus,
+		        pr.prpdid,
+		        b.PIVARVALUE pbcontent,
+		        c.PIVARVALUE afterplan,
+		        d.PIVARVALUE planstime,
+		        e.PIVARVALUE dutypersion,
+		        a.psdname as orderstatus,
+		        a.psdid as psdid            
+			    from ig500 pr
+			    left join ig380 pd on pr.prpdid = pd.pdid
+			    left join ig599 b on pr.prid = b.prid and b.pivarname = '问题描述'	
+			    left join ig599 c on pr.prid = c.prid and c.pivarname = '后续优化方案'
+			    left join ig599 d on pr.prid = d.prid and d.pivarname = '计划解决时间'
+			    left join ig599 e on pr.prid = e.prid and e.pivarname = '责任人'		              
+			    left join ig333 a on pr.PRPDID = a.pdid and pr.PRSTATUS=a.PSDCODE
+    	]]>
+    </sql-query>
+      <sql-query name="IG500DAO.queryProblemCount">
+    <![CDATA[
+		    select 
+    		count(1)
+    		from ig500 pr
+    		left join ig380 pd on pr.prpdid = pd.pdid
+    ]]>
+  </sql-query>
+      <sql-query name="EventAndProblemVWDAO.queryEventAndProblem">
+    <![CDATA[
+      select * from (       select              
+    (case when a.prid is null then 0 else a.prid end ) || '_sp_' ||(case when b.prid is null then 0 else b.prid end ) as id,
+    eventNum,
+    happenTime, 
+    isClosed, 
+    eventusername,
+    eventSource, 
+    eventTitle,
+    eventType,       
+    involveSystem,
+    influenceRange,
+    influenceRangeRemarks,
+    eventLevel,
+    eventCause,
+    eventstatus,
+    emergencySolution,
+    eventContent,
+   
+    problemNum,
+    problemTitle,
+    problemopentime,
+    problemStatus,
+    problemusername,
+    pptimizationScheme,
+    plannedSolutionTime,
+    personLiable,
+    problemcontent               
+             from   ( select 
+			    pr.prid as prid,
+		        pr.prserialnum as eventNum,
+		        pr.prtitle as eventTitle,
+                case when pr.prclosetime is not null then '是' 
+                else '否' end as isClosed,
+		        pr.propentime as eventopentime,
+		        pr.prclosetime as eventclosetime,
+		        pr.prusername as eventusername,
+		        a.psdname as eventstatus,
+                replace(b.pivarvalue,left(b.pivarvalue,locate('_tree_',b.pivarvalue)+5)) as eventType,
+			    c.pivarvalue as eventSource,			    
+                f.pivarvalue as happenTime,               
+                j.pivarvalue as involveSystem,
+                k.pivarvalue as influenceRange,
+                l.pivarvalue as influenceRangeRemarks,
+                m.pivarvalue as eventLevel,
+                n.pivarvalue as eventCause,
+                o.pivarvalue as emergencySolution,
+                p.PIVARVALUE as eventContent,
+                ppr.CLDPRID as problemprid
+			    from ig500 pr
+			    left join ig380 pd on pr.prpdid = pd.pdid
+			    left join ig599 b on pr.prid = b.prid and b.pivarname = '事件分类'
+			    left join ig599 c on pr.prid = c.prid and c.pivarname = '事件来源'			   
+                left join ig599 f on pr.prid = f.prid and f.pivarname = '发生时间'               
+			    left join ig599 j on pr.prid = j.prid and j.pivarname = '涉及系统'
+			    left join ig599 k on pr.prid = k.prid and k.pivarname = '影响范围'
+                left join ig599 l on pr.prid = l.prid and l.pivarname = '影响范围备注'
+                left join ig599 m on pr.prid = m.prid and m.pivarname = '事件等级'
+                left join ig599 n on pr.prid = n.prid and n.pivarname = '事件原因'
+                left join ig599 o on pr.prid = o.prid and o.pivarname = '应急解决方案'
+                left join ig599 p on pr.prid = p.prid and p.pivarname = '事件内容'
+			    left join ig333 a on pr.PRPDID = a.pdid and pr.PRSTATUS=a.PSDCODE  
+			    left join ig337 pp on pr.prid = pp.prid and pr.PRSTATUS = pp.PPSTATUS  and pp.PPPROCTIME is null
+			    left join ig512 ppr on ppr.PARPRID = pr.prid               
+                where pr.prpdid like '01080%'
+                  group by  pr.prid,
+		        pr.prserialnum,
+		        pr.prtitle,
+		        pr.propentime,
+		        pr.prclosetime,
+		        pr.prusername,
+		        a.psdname,
+			    b.pivarvalue,
+			    c.pivarvalue,			    
+                f.pivarvalue,               
+                j.pivarvalue,
+                k.pivarvalue,
+                l.pivarvalue,
+                m.pivarvalue,
+                n.pivarvalue,
+                o.pivarvalue,
+                p.pivarvalue,             
+                ppr.CLDPRID 
+                order by pr.propentime  DESC )a
+               
+   FULL OUTER JOIN             
+              
+    (select      
+    pr.prid as prid,
+    pr.prserialnum as problemNum,
+    pr.prtitle as problemTitle,
+    pr.propentime as problemopentime,
+    pr.prclosetime as problemclosetime,
+    pr.prusername as problemusername,
+    a.psdname as problemStatus,
+    b.pivarvalue as pptimizationScheme,
+    c.pivarvalue as plannedSolutionTime, 
+    d.pivarvalue as personLiable,
+    e.pivarvalue as problemcontent
+    from ig500 pr 
+    left join ig599 b on pr.prid = b.prid and b.pivarname = '后续优化方案' 
+    left join ig599 c on pr.prid = c.prid and c.pivarname = '计划解决时间' 
+    left join ig599 d on pr.prid = d.prid and d.pivarname = '责任人'
+    left join ig599 e on pr.prid = e.prid and e.pivarname = '问题描述'
+    left join ig333 a on pr.PRPDID = a.pdid and pr.PRSTATUS=a.PSDCODE  
+    inner join ig599 pm0 on pm0.prid = pr.prid 
+    where pr.prpdid like ('01083%') 
+    group by pr.prid,
+    pr.prserialnum,
+    pr.prtitle,
+    pr.propentime,
+    pr.prclosetime,
+    pr.prusername,
+    a.psdname,
+    b.pivarvalue,
+    c.pivarvalue, 
+    d.pivarvalue,
+    e.pivarvalue)b       
+    on a.problemprid=b.prid)temp
+
+    ]]>
+  </sql-query>   
+  
+       
 </hibernate-mapping>

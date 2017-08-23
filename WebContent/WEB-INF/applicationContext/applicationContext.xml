@@ -762,6 +762,12 @@
 				<value>com.deliverik.infogovernor.crc.model.entity.IGCRC1301VW</value>
 				<!-- 事件查询VW -->
 				<value>com.deliverik.infogovernor.crc.model.entity.IGCRC0208VW</value>
+				
+				<!-- 问题查询VW -->
+				<value>com.deliverik.infogovernor.crc.model.entity.IGCRC0301VW</value>
+				
+				<!-- 事件和问题联合查询查询VW -->
+				<value>com.deliverik.infogovernor.crc.model.entity.EventAndProblemVW</value>
 				<!--  -->
 				<value>com.deliverik.infogovernor.crc.model.entity.IGCRC1303VW</value>
 				<!-- 风险点到检查项 关系 -->

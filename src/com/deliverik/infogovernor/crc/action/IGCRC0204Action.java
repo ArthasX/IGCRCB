@@ -39,10 +39,10 @@ public class IGCRC0204Action extends BaseAction {
 		//判断是不是告警
 		String param = form.getParam();
 		if(StringUtils.isBlank(param)){
-			String varnames[] = {"'事件来源'"};
+		/*	String varnames[] = {"'事件来源'"};
 			String varvalues[] = {"'邮件','电话','其他','巡检发现'"};
 			form.setVarnames_in(varnames);
-			form.setVarvalues_in(varvalues);
+			form.setVarvalues_in(varvalues);*/
 		}else if("1".equals(param)){
 			String varnames[] = {"事件来源"};
 			String varvalues[] = {"监控告警"};
@@ -78,16 +78,10 @@ public class IGCRC0204Action extends BaseAction {
 			excelDTO.setFileid("CRC0204");
 			excelDTO.setResponse(response);
 			//excelBL.initExcel(excelDTO);
-			//判断是否是告警
-			if("1".equals(param)){
-				IGCRC02041ExcelBL excelBL1 = (IGCRC02041ExcelBL) getBean("igcrc02041ExcelBL");
-				String fileName = excelBL1.generatedFile(excelDTO);
-				//下载
-				excelBL1.downloadFile(fileName, response);
-				
-			}else{
-				excelBL.initExcel(excelDTO);
-			}
+			//事件与告警共用同一模板2017年8月9日14:07:05吕新
+			
+			excelBL.initExcel(excelDTO);
+
 			
 			log.debug("==============事件管理导出操作结束====================");
 		}

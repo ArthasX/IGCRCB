@@ -1052,7 +1052,8 @@
             <forward name="IGFXK0702" path="/IGFXK0702_Disp.do"/>
             <!-- 报警事件/普通事件 -->
             <forward name="IGCRC0208" path="/IGCRC0208.do"/>
-            
+            <!-- 问题查询 -->
+            <forward name="IGCRC0209" path="/IGCRC0209.do"/>
             
             <!-- 文档管理 -->
             <forward name="IGDOC0000" path="/crc/IGCRC1500.jsp"/>
@@ -1061,6 +1062,8 @@
             <forward name="IGCRC1304" path="/IGCRC1304.do"/>
             
             <forward name="IGCRC1302" path="/IGCRC1302.do"/>
+            
+            <forward name="IGCRC4001" path="/IGCRC4001.do"/>
             
             <!-- 统计 -->
             <forward name="IGRIS0501" path="/IGRIS0501_Disp.do"/>
@@ -1199,8 +1202,12 @@
            	<!-- 工作统计分析 -->
            	<forward name="IGWIM0301" path="/IGWIM0201_Count.do" />
            	<!-- ========================================= 工作项管理配置结束 -->
-           	
+			
+			<!-- 20170302工作信息查询 -->
+           	<forward name="IGWKI0101_Disp" path="/IGWKI0101_Search.do" />
+          	 <!--  <forward name="IGMNU0101" path="/menu/IGMNU0101.jsp" /> -->
            	<forward name="IGMNU0101" path="/IGMNU0101.do" />
+			
           </action>
         
         <action path="/IGCOM0402"

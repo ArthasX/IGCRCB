@@ -15,6 +15,7 @@ import com.deliverik.framework.workflow.prd.model.IG333Info;
 import com.deliverik.framework.workflow.prr.model.IG337Info;
 import com.deliverik.framework.workflow.prr.model.IG500Info;
 import com.deliverik.framework.workflow.prr.model.IG599Info;
+import com.deliverik.infogovernor.crc.model.IGCRC0301VWInfo;
 import com.deliverik.infogovernor.wkm.form.IGWKM0101Form;
 
 /**
@@ -51,6 +52,8 @@ public class IGCRC03DTO extends BaseDTO{
 	protected List<IG337Info> processParticipantList;
 	/** 状态定义*/
 	protected List<IG333Info> processStatusDefList;
+	
+	protected List<IGCRC0301VWInfo> igcrc0301List;
 	
 	/**
 	 * 用户信息取得
@@ -154,4 +157,14 @@ public class IGCRC03DTO extends BaseDTO{
 	public void setProcessStatusDefList(List<IG333Info> processStatusDefList) {
 		this.processStatusDefList = processStatusDefList;
 	}
+
+	public List<IGCRC0301VWInfo> getIgcrc0301List() {
+		return igcrc0301List;
+	}
+
+	public void setIgcrc0301List(List<IGCRC0301VWInfo> igcrc0301List) {
+		this.igcrc0301List = igcrc0301List;
+	}
+	
+	
 }

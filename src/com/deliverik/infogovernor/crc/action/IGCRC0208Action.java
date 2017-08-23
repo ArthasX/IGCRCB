@@ -28,6 +28,7 @@ import com.deliverik.framework.workflow.prd.model.IG333Info;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
 import com.deliverik.infogovernor.crc.bl.IGCRC02BL;
 import com.deliverik.infogovernor.crc.dto.IGCRC02DTO;
+import com.deliverik.infogovernor.crc.form.IGCRC4001Form;
 import com.deliverik.infogovernor.crc.model.vo.IGCRC0208VO;
 import com.deliverik.infogovernor.wkm.bl.IGWKM01BL;
 import com.deliverik.infogovernor.wkm.dto.IGWKM01DTO;
@@ -86,10 +87,10 @@ public class IGCRC0208Action extends BaseAction {
 		}
 		String param = form.getParam();
 		if(StringUtils.isBlank(param)){
-			String varnames[] = {"'事件来源'"};
-			String varvalues[] = {"'邮件','电话','其他','巡检发现'"};
-			form.setVarnames_in(varnames);
-			form.setVarvalues_in(varvalues);
+//			String varnames[] = {"'事件来源'"};
+//			String varvalues[] = {"'监控告警','巡检发现','业务部门','值班人员','其他渠道获取'"};
+//			form.setVarnames_in(varnames);
+//			form.setVarvalues_in(varvalues);
 		}else if("1".equals(param)){
 			String varnames[] = {"事件来源"};
 			String varvalues[] = {"监控告警"};
@@ -295,6 +296,7 @@ public class IGCRC0208Action extends BaseAction {
 			request.setAttribute("showFlag", form.getShowFlag());
 			log.debug("========工作查询处理终了========");
 		}
+		
 		if( "DEL".equals(mapping.getParameter())){
 			dto.setPrid(form.getDelprid());
 			dto = ctlBL.delProcessRecord(dto);

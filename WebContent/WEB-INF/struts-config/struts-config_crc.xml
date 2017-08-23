@@ -25,6 +25,8 @@
 		<form-bean name="IGCRC2401Form" type="com.deliverik.infogovernor.crc.form.IGCRC2401Form" />
 		<form-bean name="IGCRC3001Form" type="com.deliverik.infogovernor.crc.form.IGCRC3001Form" />
 		<form-bean name="IGCRC3003Form" type="com.deliverik.infogovernor.crc.form.IGCRC3003Form" />
+		<form-bean name="IGCRC4001Form" type="com.deliverik.infogovernor.crc.form.IGCRC4001Form" />
+		
 	</form-beans>
 
 	<action-mappings>
@@ -129,6 +131,14 @@
 			scope="request">
 		</action>
 		
+		<!-- 导出事件和问题合集Excel -->
+		<action path="/IGCRC4001_Export"
+			type="com.deliverik.infogovernor.crc.action.IGCRC4001Action"
+			parameter="EXCEL"
+			name="IGCRC4001Form"
+			scope="request">
+		</action>
+		
 		<!-- 导出对外服务Excel -->
 		<action path="/IGCRC3002"
 			type="com.deliverik.infogovernor.crc.action.IGCRC3002Action"
@@ -157,7 +167,44 @@
 			scope="session">
 			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
 		</action>
-		
+		<!-- 告警事件普通事件分开问题查询 -->
+		<action path="/IGCRC0209"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0209Action"
+			parameter="SEARCH" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		<action path="/IGCRC0209_BACK"
+			type="com.deliverik.infogovernor.crc.action.IGCRC0209Action"
+			parameter="SEARCH1" 
+			input="/wkm/IGWKM0103.jsp" 
+			name="IGWKM0101Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/wkm/IGWKM0103.jsp" />
+		</action>
+		<!-- 事件和问题一起查询-->
+		<action path="/IGCRC4001"
+			type="com.deliverik.infogovernor.crc.action.IGCRC4001Action"
+			parameter="SEARCHEVentandProblem" 
+			input="/crc/IGCRC4001.jsp" 
+			name="IGCRC4001Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC4001.jsp" />
+		</action>
+		<action path="/IGCRC4001_Back"
+			type="com.deliverik.infogovernor.crc.action.IGCRC4001Action"
+			parameter="SEARCH1" 
+			input="/crc/IGCRC4001.jsp" 
+			name="IGCRC4001Form"
+			validate="false" 
+			scope="session">
+			<forward name="DISP" path="/crc/IGCRC4001.jsp" />
+		</action>
 		<!-- 告警/普通结束-->
 		<!-- 导出变更Excel -->
 		<action path="/IGCRC0304"

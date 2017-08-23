@@ -49,14 +49,9 @@ public class IGCRC0304Action extends BaseAction {
 			dto = igcrc03bl.getExcelDataList(dto);
 			// 实例ExeclDTO
 			IGCRC03ExcelDTO excelDTO = new IGCRC03ExcelDTO();
-			// 填充流信息集合
-			excelDTO.setProcessList(dto.getProcessList());
-			// 填充表单集合
-			excelDTO.setProcessInfoList(dto.getProcessInfoList());
 			// 填充参与人集合
 			excelDTO.setProcessParticipantList(dto.getProcessParticipantList());
-			// 填充状态定义
-			excelDTO.setProcessStatusDefList(dto.getProcessStatusDefList());
+			excelDTO.setIgcrc0301List(dto.getIgcrc0301List());
 
 			excelDTO.setIgwkm0101form(form);
 			// 取得Excel处理BL 

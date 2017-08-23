@@ -73,22 +73,59 @@ public class IGCRC0208VW implements Serializable,Cloneable,IGCRC0208VWInfo{
 	/** 事件来源  */	
 	private String eventSource;
 	/** 严重程度 */	
-	private String eventSeverity;
+//	private String eventSeverity;
 	/** 紧急程度  */	
-	private String eventEmergency;
+//	private String eventEmergency;
 	/** 流程状态名称 */
 	private String orderstatus;
 	
 	/** 发生时间  */	
 	private String happenTime;
 	/** 处理方法  */	
-	private String handlingMethod;
+//	private String handlingMethod;
 	/** 原因分析  */	
-	private String analysis;
+//	private String analysis;
 	/** 故障系统名称  */	
-	private String stoppageName;
+//	private String stoppageName;
 	/** 事件处理人  */	
 //	private String ppusername;
+	
+	/**
+	 * 涉及系统
+	 */
+	protected String involveSystem;
+	
+	/**
+	 * 影响范围
+	 */
+	protected String influenceRange;
+	
+	/**
+	 * 影响范围备注
+	 */
+	protected String influenceRangeRemarks;
+	
+	/**
+	 * 事件等级
+	 */
+	protected String eventLevel;
+	
+	/**
+	 * 事件原因
+	 */
+	protected String eventCause;
+	
+	/**
+	 * 应急解决方案
+	 */
+	protected String emergencySolution;
+	
+	/**
+	 * 是否已关闭
+	 */
+	protected String isClosed;
+	
+	
 	
 	/**
 	 * prid取得
@@ -202,34 +239,8 @@ public class IGCRC0208VW implements Serializable,Cloneable,IGCRC0208VWInfo{
 	public void setEventSource(String eventSource) {
 		this.eventSource = eventSource;
 	}
-	/**
-	 * 严重程度取得
-	 * @return eventSeverity  严重程度
-	 */
-	public String getEventSeverity() {
-		return eventSeverity;
-	}
-	/**
-	 * 严重程度设定
-	 * @param eventSeverity  严重程度
-	 */
-	public void setEventSeverity(String eventSeverity) {
-		this.eventSeverity = eventSeverity;
-	}
-	/**
-	 * 紧急程度取得
-	 * @return eventEmergency  紧急程度
-	 */
-	public String getEventEmergency() {
-		return eventEmergency;
-	}
-	/**
-	 * 紧急程度设定
-	 * @param eventEmergency  紧急程度
-	 */
-	public void setEventEmergency(String eventEmergency) {
-		this.eventEmergency = eventEmergency;
-	}
+
+
 	/**
 	 * 流程记录工单号取得
 	 * @return prserialnum  流程记录工单号
@@ -300,48 +311,9 @@ public class IGCRC0208VW implements Serializable,Cloneable,IGCRC0208VWInfo{
 	public void setHappenTime(String happenTime) {
 		this.happenTime = happenTime;
 	}
-	/**
-	 * 处理方法取得
-	 * @return handlingMethod  处理方法
-	 */
-	public String getHandlingMethod() {
-		return handlingMethod;
-	}
-	/**
-	 * 处理方法设定
-	 * @param handlingMethod  处理方法
-	 */
-	public void setHandlingMethod(String handlingMethod) {
-		this.handlingMethod = handlingMethod;
-	}
-	/**
-	 * 原因分析取得
-	 * @return analysis  原因分析
-	 */
-	public String getAnalysis() {
-		return analysis;
-	}
-	/**
-	 * 原因分析设定
-	 * @param analysis  原因分析
-	 */
-	public void setAnalysis(String analysis) {
-		this.analysis = analysis;
-	}
-	/**
-	 * 故障系统名称取得
-	 * @return stoppageName  故障系统名称
-	 */
-	public String getStoppageName() {
-		return stoppageName;
-	}
-	/**
-	 * 故障系统名称设定
-	 * @param stoppageName  故障系统名称
-	 */
-	public void setStoppageName(String stoppageName) {
-		this.stoppageName = stoppageName;
-	}
+
+
+
 	/**
 	 * 流程记录流程类型ID取得
 	 * @return prpdid  流程记录流程类型ID
@@ -355,6 +327,48 @@ public class IGCRC0208VW implements Serializable,Cloneable,IGCRC0208VWInfo{
 	 */
 	public void setPrpdid(String prpdid) {
 		this.prpdid = prpdid;
+	}
+	public String getInvolveSystem() {
+		return involveSystem;
+	}
+	public void setInvolveSystem(String involveSystem) {
+		this.involveSystem = involveSystem;
+	}
+	public String getInfluenceRange() {
+		return influenceRange;
+	}
+	public void setInfluenceRange(String influenceRange) {
+		this.influenceRange = influenceRange;
+	}
+	public String getInfluenceRangeRemarks() {
+		return influenceRangeRemarks;
+	}
+	public void setInfluenceRangeRemarks(String influenceRangeRemarks) {
+		this.influenceRangeRemarks = influenceRangeRemarks;
+	}
+	public String getEventLevel() {
+		return eventLevel;
+	}
+	public void setEventLevel(String eventLevel) {
+		this.eventLevel = eventLevel;
+	}
+	public String getEventCause() {
+		return eventCause;
+	}
+	public void setEventCause(String eventCause) {
+		this.eventCause = eventCause;
+	}
+	public String getEmergencySolution() {
+		return emergencySolution;
+	}
+	public void setEmergencySolution(String emergencySolution) {
+		this.emergencySolution = emergencySolution;
+	}
+	public String getIsClosed() {
+		return isClosed;
+	}
+	public void setIsClosed(String isClosed) {
+		this.isClosed = isClosed;
 	}
 	
 	

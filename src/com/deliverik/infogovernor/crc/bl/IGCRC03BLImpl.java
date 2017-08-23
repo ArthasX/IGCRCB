@@ -3,6 +3,8 @@
  */
 package com.deliverik.infogovernor.crc.bl;
 
+import java.util.List;
+
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -18,7 +20,9 @@ import com.deliverik.framework.workflow.prd.model.condition.IG333SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG337SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCondImpl;
 import com.deliverik.framework.workflow.prr.model.condition.IG599SearchCondImpl;
+import com.deliverik.infogovernor.crc.bl.task.IGCRC0301BL;
 import com.deliverik.infogovernor.crc.dto.IGCRC03DTO;
+import com.deliverik.infogovernor.crc.model.IGCRC0301VWInfo;
 import com.deliverik.infogovernor.wkm.form.IGWKM0101Form;
 import com.dev.crc.igflow.event.status.IGCRC0401BLImpl;
 
@@ -52,6 +56,14 @@ public class IGCRC03BLImpl extends BaseBLImpl implements IGCRC03BL {
 
 	/** 平台用户BL */
 	protected UserBL userBL;
+
+	/** 问题查询逻辑BL */
+	private IGCRC0301BL igcrc0301BL;
+	
+	
+	public void setIgcrc0301BL(IGCRC0301BL igcrc0301bl) {
+		igcrc0301BL = igcrc0301bl;
+	}
 
 	/**
 	 * 流程处理BL设定
@@ -116,34 +128,27 @@ public class IGCRC03BLImpl extends BaseBLImpl implements IGCRC03BL {
 			form.setOrder("propentime");
 			form.setSing("desc");
 		}
+		
+		
 		// 查询流程信息条件
 		IG500SearchCondImpl cond = new IG500SearchCondImpl();
 		// 变更管理类型编号
 		this.copyProperties(cond, form);
-		// 查询流程信息
-		dto.setProcessList(workFlowOperationBL.searchProcessByType(cond, 0, 0, form.getType()));
-
-		// 查询表单信息条件
-		IG599SearchCondImpl processInfoCond = new IG599SearchCondImpl();
-		// 变更管理类型编号
-		processInfoCond.setPdid(form.getPrpdid());
-		// 查询表单信息
-		dto.setProcessInfoList(workFlowOperationBL.searchProcessInfoByCond(processInfoCond));
+		List<IGCRC0301VWInfo> prList = igcrc0301BL.queryIG500EntityListByProcessInfo(cond,0,0);
+		
+		dto.setIgcrc0301List(prList);
+		
+		
 
 		// 查询参与人信息条件(暂无)
 		IG337SearchCondImpl processParticipantCond = new IG337SearchCondImpl();
+		processParticipantCond.setPsdid("01083");
 		// 查询参与人信息
 		dto.setProcessParticipantList(workFlowOperationBL
 				.searchProcessParticipants(processParticipantCond));
 
 		
-		// 查询流状态定义信息条件
-		IG333SearchCondImpl processStatusDefCond = new IG333SearchCondImpl();
-		// 变更管理类型编号
-		processStatusDefCond.setPsdid_like(form.getPrpdid());
-		// 查询流状态定义
-		dto.setProcessStatusDefList(workFlowDefinitionBL
-				.searchProcessStatusDef(processStatusDefCond));
+		
 		log.debug("=================获取问题管理相应数据集结束=================");
 		return dto;
 	}

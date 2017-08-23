@@ -5,6 +5,7 @@
 
 package com.deliverik.infogovernor.crc.dto;
 
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +24,10 @@ import com.deliverik.framework.workflow.prr.model.IG599Info;
 import com.deliverik.framework.workflow.prr.model.condition.IG500SearchCond;
 import com.deliverik.infogovernor.crc.form.IGCRC0203Form;
 import com.deliverik.infogovernor.crc.form.IGCRC0204Form;
+import com.deliverik.infogovernor.crc.form.IGCRC4001Form;
+import com.deliverik.infogovernor.crc.model.EventAndProblemVWInfo;
 import com.deliverik.infogovernor.crc.model.IGCRC0208VWInfo;
+import com.deliverik.infogovernor.crc.model.IGCRC0301VWInfo;
 import com.deliverik.infogovernor.crc.model.IgalarmInfo;
 import com.deliverik.infogovernor.wkm.form.IGWKM0101Form;
 
@@ -91,6 +95,29 @@ public class IGCRC02DTO extends BaseDTO implements Serializable{
 	/** 触发时间排序状态码 */
 	private String lasttimestatus;
 	
+	/** 事件问题合并查询结果集合 */
+	protected List<EventAndProblemVWInfo> listep ;
+	
+	/** 事件问题合并查询form */
+	protected IGCRC4001Form igCRC4001Form;
+	
+	/** 事件来源 */
+	protected List<String> sourcelist;
+	
+	/** 事件影响范围 */
+	protected List<String> affectlist;
+	
+	/** 事件状态 */
+	protected List<String> eslist;
+	
+	/** 问题状态 */
+	protected List<String> pslist;
+	
+	/** 问题流程集合 */
+	protected List<IGCRC0301VWInfo> problemproList;
+	
+	/** 文件输出流 */
+	protected OutputStream ops;
 	
 	public List<IGCRC0208VWInfo> getProcessList() {
 		return processList;
@@ -453,5 +480,71 @@ public class IGCRC02DTO extends BaseDTO implements Serializable{
 	public void setLasttimestatus(String lasttimestatus) {
 		this.lasttimestatus = lasttimestatus;
 	}
+
+	public List<EventAndProblemVWInfo> getListep() {
+		return listep;
+	}
+
+	public void setListep(List<EventAndProblemVWInfo> listep) {
+		this.listep = listep;
+	}
+
+	public IGCRC4001Form getIgCRC4001Form() {
+		return igCRC4001Form;
+	}
+
+	public void setIgCRC4001Form(IGCRC4001Form igCRC4001Form) {
+		this.igCRC4001Form = igCRC4001Form;
+	}
+
+	public List<String> getSourcelist() {
+		return sourcelist;
+	}
+
+	public void setSourcelist(List<String> sourcelist) {
+		this.sourcelist = sourcelist;
+	}
+
+	public List<String> getAffectlist() {
+		return affectlist;
+	}
+
+	public void setAffectlist(List<String> affectlist) {
+		this.affectlist = affectlist;
+	}
+
+	public List<String> getEslist() {
+		return eslist;
+	}
+
+	public void setEslist(List<String> eslist) {
+		this.eslist = eslist;
+	}
+
+	public List<String> getPslist() {
+		return pslist;
+	}
+
+	public void setPslist(List<String> pslist) {
+		this.pslist = pslist;
+	}
+
+	public OutputStream getOps() {
+		return ops;
+	}
+
+	public void setOps(OutputStream ops) {
+		this.ops = ops;
+	}
+
+	public List<IGCRC0301VWInfo> getProblemproList() {
+		return problemproList;
+	}
+
+	public void setProblemproList(List<IGCRC0301VWInfo> problemproList) {
+		this.problemproList = problemproList;
+	}
+	
+	
 
 }

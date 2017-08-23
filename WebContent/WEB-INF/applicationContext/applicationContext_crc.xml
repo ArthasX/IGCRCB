@@ -9,6 +9,11 @@
 	    parent="baseHibernateDAO"
 		class="com.deliverik.infogovernor.crc.model.dao.IgalarmDAOImpl">
 	</bean>
+	<bean id="igcrc0301DAO"
+	    parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.IGCRC0301DAOImpl">
+	</bean>	
+	
 	<bean id="igcrc1301DAO"
 	    parent="baseHibernateDAO"
 		class="com.deliverik.infogovernor.crc.model.dao.IGCRC1301DAOImpl">
@@ -46,10 +51,20 @@
 		parent="baseHibernateDAO"
 		class="com.deliverik.infogovernor.crc.model.dao.ChangeProcessVWDAOImpl">
 	</bean>	
+	<bean id="eventAndProblemVWDAO"
+		parent="baseHibernateDAO"
+		class="com.deliverik.infogovernor.crc.model.dao.EventAndProblemVWDAOImpl">
+	</bean>
+	
 	<!-- Task BL -->
 	<bean id="igalarmBL" class="com.deliverik.infogovernor.crc.bl.task.IgalarmBLImpl">
 		<property name="igalarmDAO">
 			<ref bean="igalarmDAO"/>
+		</property>
+	</bean>
+	<bean id="igcrc0301BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC0301BLImpl">
+		<property name="igcrc0301DAO">
+			<ref bean="igcrc0301DAO"/>
 		</property>
 	</bean>
 	<bean id="igcrc1301BL" class="com.deliverik.infogovernor.crc.bl.task.IGCRC1301BLImpl">
@@ -99,6 +114,11 @@
 			<ref bean="changeProcessVWDAO"/>
 		</property>
 	</bean>
+	<bean id="eventAndProblemVWBL" class="com.deliverik.infogovernor.crc.bl.task.EventAndProblemVWBLImpl">
+		<property name="eventAndProblemVWDAO">
+			<ref bean="eventAndProblemVWDAO"/>
+		</property>
+	</bean>
 	<!-- Control BL -->
 	<bean id="igcrc02bl" class="com.deliverik.infogovernor.crc.bl.IGCRC02BLImpl">
 		<property name="igalarmBL">
@@ -113,6 +133,12 @@
 		<property name="workFlowDefinitionBL">
 			<ref bean="workFlowDefinitionBL"/>
 		</property>
+		<property name="eventAndProblemVWBL">
+			<ref bean="eventAndProblemVWBL"/>
+		</property>
+		<property name="igcrc0301BL">
+			<ref bean="igcrc0301BL"/>
+		</property>		
 	</bean>
 	
 	<bean id="igcrc0204BL" class="com.deliverik.infogovernor.crc.bl.IGCRC0204BLImpl">
@@ -151,6 +177,9 @@
 		</property>
 		<property name="userBL">
 			<ref bean="userBL"/>
+		</property>
+		<property name="igcrc0301BL">
+			<ref bean="igcrc0301BL"/>
 		</property>
 	</bean>
 	

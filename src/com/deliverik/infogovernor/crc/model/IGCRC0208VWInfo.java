@@ -52,12 +52,12 @@ public interface IGCRC0208VWInfo extends Serializable{
 	 * 严重程度取得
 	 * @return eventSeverity  严重程度
 	 */
-	public String getEventSeverity();
+//	public String getEventSeverity();
 	/**
 	 * 紧急程度取得
 	 * @return eventEmergency  紧急程度
 	 */
-	public String getEventEmergency();
+//	public String getEventEmergency();
 	
 	/**
 	 * 流程记录工单号取得
@@ -92,21 +92,35 @@ public interface IGCRC0208VWInfo extends Serializable{
 	 * 处理方法取得
 	 * @return handlingMethod  处理方法
 	 */
-	public String getHandlingMethod();
+//	public String getHandlingMethod();
 	/**
 	 * 原因分析取得
 	 * @return analysis  原因分析
 	 */
-	public String getAnalysis();
+//	public String getAnalysis();
 	/**
 	 * 故障系统名称取得
 	 * @return stoppageName  故障系统名称
 	 */
-	public String getStoppageName();
+//	public String getStoppageName();
 	
 	/**
 	 * 流程记录流程类型ID取得
 	 * @return prpdid  流程记录流程类型ID
 	 */
 	public String getPrpdid();
+	
+	public String getInvolveSystem();
+	
+	public String getInfluenceRange();
+	
+	public String getInfluenceRangeRemarks();
+	
+	public String getEventLevel();
+	
+	public String getEventCause();
+	
+	public String getEmergencySolution();
+	
+	public String getIsClosed();
 }
