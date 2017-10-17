@@ -137,6 +137,36 @@
 					</td>
 				</tr>
 			</logic:equal>
+			<logic:equal value="015" name="IGCRC0402Form" property="statusCode">
+				<html:hidden property="buttonName" value="执行成功"/>
+				<bean:define id="buttonName" value="执行成功"/>
+				<html:hidden property="buttonCode" value="13"/>
+				<tr>
+					<th width="15%">
+						<label for="Name"><strong>UAT变更执行开始时间：</strong></label>
+					</th>
+					<td width="35%">
+						<input type="hidden" name="pivarnames" value="UAT变更执行开始时间"/>
+						<input type = "text"   onclick="showTime(this)" name="pivarvalues" readonly="readonly" id = sTime/> 
+					</td>
+					<th width="15%">
+						<label for="Name"><strong>UAT变更执行结束时间：</strong></label>
+					</th>
+					<td width="35%">
+						<input type="hidden" name="pivarnames" value="UAT变更执行结束时间"/>
+						<input type = "text" onclick="showTime(this)" name="pivarvalues" readonly="readonly" id = eTime/> 
+					</td>
+				</tr>
+				<tr>
+					<th width="15%">
+						<label for="Name"><strong>UAT变更执行过程：</strong></label>
+					</th>
+					<td width="85%" colspan="3">
+						<input type="hidden" name="pivarnames" value="UAT变更执行过程"/>
+						<textarea name="pivarvalues" cols="60" rows="6"></textarea>
+					</td>
+				</tr>
+			</logic:equal>
 			<logic:equal value="013" name="IGCRC0402Form" property="statusCode">
 				<html:hidden property="buttonName" value="执行成功"/>
 				<bean:define id="buttonName" value="执行成功"/>

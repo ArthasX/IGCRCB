@@ -216,6 +216,8 @@ function init_001(){
  * 配置：待发起节点提交按钮
  * */
 function checkLaunchedSubmit2(){
+	//获取流程 版本号
+	var pdid = jQuery("#pdid").val();
 	var affect =getFormObj("是否影响业务").value;			// 是否影响业务
 	var a1 = getFormObj("业务影响范围").value;  				// 业务影响范围表单
 	var a2 = getFormObj("计划影响业务时长（分钟）").value;  			// 计划影响业务时长（分钟）表单
@@ -231,7 +233,7 @@ function checkLaunchedSubmit2(){
 	}
 	
 	var type = getFormObj("变更类别").value;
-	if(type == '紧急变更'){
+	if(type == '紧急变更'||type == '快速变更'){
 		var obj = getFormObj("变更原因");
 		if(obj != null && jQuery(getFormObj("变更原因")).parent().find("[name='pidaccess']").val() == '3'){//如果变更原因为 可写
 			if(obj.innerHTML == ''){
@@ -240,7 +242,15 @@ function checkLaunchedSubmit2(){
 			}
 		}
 	}
-	
+	var ptxx = jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]");
+	if(jQuery(ptxx).length>0&&(type == '紧急变更'||type == '快速变更')){
+		for(var i=0;i<jQuery(ptxx).length;i++){
+			if(jQuery(ptxx[i]).val() == ''){
+				alert("请输入平台信息！");
+				return false;
+			}
+		}
+	}
 	return true;
 }
 
@@ -416,7 +426,7 @@ function changeReview2(){
 	}
 	
 	var type = getFormObj("变更类别").value;
-	if(type == '紧急变更'){
+	if(type == '紧急变更'||type == '快速变更'){
 		var obj = getFormObj("变更原因");
 		if(obj != null && jQuery(getFormObj("变更原因")).parent().find("[name='pidaccess']").val() == '3'){//如果变更原因为 可写
 			if(obj.innerHTML == ''){
@@ -615,3 +625,408 @@ function getQueryString(name) {
     var r = window.location.search.substr(1).match(reg);  //匹配目标参数
     if (r != null) return unescape(r[2]); return null; //返回参数值
 } 
+//判断是否是第一次请求，解决第一行按钮每次请求都会增加的问题
+var buttonflag = true;
+//其他平台
+var qitaValue = "";
+//初始化函数(变更接口新增表单)
+jQuery(document).ready(function(){
+	if(jQuery("input[name^='pivarcheckboxElseText']").length>0){
+		qitaValue = jQuery("input[name^='pivarcheckboxElseText']")[0].value;
+	}
+	//获取流程 版本号
+	var pdid = jQuery("#pdid").val();
+	//初始化隐藏平台详细信息表单
+	//如果没有数据隐藏
+	if(jQuery("#"+pdid+"074_tableForm").length>0){
+		if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""&&jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=null){
+			if(!jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").is(':hidden')&&buttonflag){
+				jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+				buttonflag=false;
+			}
+		}else{
+			jQuery("#pidid"+pdid+"074").parent().parent().hide();
+		}
+	}
+	//隐藏HAC数据表单
+	jQuery("th:contains('HAC数据')").hide();
+	jQuery("input[id^="+pdid+"077_]").parent().hide();
+	//改变平台信息表单长度
+	jQuery("input[id^="+pdid+"076_]").css("width","300px");
+	jQuery("input[id^="+pdid+"076_]").attr("readonly",true);
+	jQuery("input[id^="+pdid+"075_]").css("width","200px");
+	jQuery("input[id^="+pdid+"075_]").attr("readonly",true);
+	//添加变更类别事件
+	jQuery("#pidid"+pdid+"046").change(function(){
+		 
+			 var tdval = jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]");
+			 if(jQuery(tdval).length>0){
+				 for(var i=jQuery(tdval).length;i>1;i--){
+					 deleteRows(document.getElementById(pdid+"074_tableForm"),i);
+				 }
+				 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val("");
+				 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").val("");
+				 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"077_]").val("");
+				 jQuery("#pidid"+pdid+"074").parent().parent().hide();
+			 }
+			 
+			 
+			 if(this.value=="紧急变更"||this.value=="快速变更"){
+			//获取已经勾选的更新平台
+			var chk = jQuery("[name ^= 'pivarcheckbox']:checked");
+			if(jQuery(chk).length>0){
+				jQuery("#pidid"+pdid+"074").parent().parent().show();
+				for(var i=0;i<jQuery(chk).length;i++){
+					if(jQuery(chk[i]).parent().html().indexOf("其他")!=-1){//判断是否有其他选择框
+						if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""){
+							var tr = addRows(document.getElementById(pdid+"074_tableForm"),null);
+							if(qitaValue!=""){
+								jQuery(tr).find("input[id^="+pdid+"075_]").val(qitaValue);
+							}else{
+								jQuery(tr).find("input[id^="+pdid+"075_]").val("其他");
+							}
+							
+						}else{//表格式表单第一行数据
+							jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val("其他");
+							if(buttonflag){
+								jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+								buttonflag=false;
+							}
+						}
+					}else{
+						if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""){
+							var tr = addRows(document.getElementById(pdid+"074_tableForm"),null);
+							jQuery(tr).find("input[id^="+pdid+"075_]").val(jQuery(chk[i]).val());
+						}else{//表格式表单第一行数据
+							jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val(jQuery(chk[i]).val());
+							if(buttonflag){
+								jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+								buttonflag=false;
+							}
+						}
+					}
+				}
+			}
+			
+		/*	var chk = jQuery("span:contains('其他')").find("input[type=checkbox]:checked");
+			alert(chk);
+			if(jQuery(chk).length>0){
+				jQuery("#pidid"+pdid+"074").parent().parent().show();
+				for(var i=0;i<jQuery(chk).length;i++){
+					if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""){
+						var tr = addRows(document.getElementById(pdid+"074_tableForm"),null);
+						if(qitaValue!=""){
+							jQuery(tr).find("input[id^="+pdid+"075_]").val(qitaValue);
+						}else{
+							jQuery(tr).find("input[id^="+pdid+"075_]").val("其他");
+						}
+						
+					}else{//表格式表单第一行数据
+						jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val("其他");
+						if(buttonflag){
+							jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+							buttonflag=false;
+						}
+					}
+					
+				}
+			}*/
+			
+		 }
+	});
+	
+	//添加更新平台选择事件
+	jQuery("[name ^= 'pivarcheckbox[']").click(function(){
+		//查看变更类别，如果是紧急变更则显示平台详细信息表单
+		var bgtype = jQuery("#pidid"+pdid+"046").val();
+		
+			if(bgtype=="常规变更"||bgtype==""){			 
+			 }else if(bgtype=="紧急变更"||bgtype=="快速变更"){
+				 if(jQuery(this).parent().html().indexOf("其他")!=-1){
+					 if(this.checked){
+						//显示平台详细信息表单
+							jQuery("#pidid"+pdid+"074").parent().parent().show();
+							//如果表单内还没有数据将数据插入第一行
+							if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""){
+								var tr = addRows(document.getElementById(pdid+"074_tableForm"),null);
+								
+								jQuery(tr).find("input[id^="+pdid+"075_]").val("其他");
+							}else{
+								qitaValue = "";
+								jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val("其他");
+								if(buttonflag){
+									jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+									buttonflag=false;
+								}
+							}
+					 }else{
+						 this.value=qitaValue;
+						 if(this.value==""){
+							 this.value="其他";
+						 }
+						 var trs=jQuery("table#"+pdid+"074_tableForm tr");
+						 var rowindex=trs.index(jQuery("#"+pdid+"074_tableForm").find("input[value='"+this.value+"']").closest("tr"));
+						 //如果表格式表单中只剩一条数据，该数据不删除，清空数据
+						 if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").length==1){
+							 jQuery(tr).find("input[id^="+pdid+"075_]").val("");
+							 jQuery(tr).find("input[id^="+pdid+"076_]").val("");
+							 jQuery(tr).find("input[id^="+pdid+"077_]").val("");
+							 jQuery("#pidid"+pdid+"074").parent().parent().hide();
+						 }else{
+							 deleteRows(document.getElementById(pdid+"074_tableForm"),rowindex);
+						 }
+						 qitaValue="";
+					 }
+				}else{
+					 if(this.checked){
+							//显示平台详细信息表单
+								jQuery("#pidid"+pdid+"074").parent().parent().show();
+								//如果表单内还没有数据将数据插入第一行
+								if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]")[0].value!=""){
+									var tr = addRows(document.getElementById(pdid+"074_tableForm"),null);
+									
+									jQuery(tr).find("input[id^="+pdid+"075_]").val(this.value);
+								}else{
+									
+									jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val(this.value);
+									if(buttonflag){
+										jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+										buttonflag=false;
+									}
+								}
+					 }else{
+						 var trs=jQuery("table#"+pdid+"074_tableForm tr");
+						 var rowindex=trs.index(jQuery("#"+pdid+"074_tableForm").find("input[value='"+this.value+"']").closest("tr"));
+						 //var rowindex = (jQuery("#"+pdid+"074_tableForm").find("input[value='"+this.value+"']")).parent().parent().index();
+						 //如果表格式表单中只剩一条数据，该数据不删除，清空数据
+						 if(jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").length==1){
+							 jQuery(tr).find("input[id^="+pdid+"075_]").val("");
+							 jQuery(tr).find("input[id^="+pdid+"076_]").val("");
+							 jQuery(tr).find("input[id^="+pdid+"077_]").val("");
+							 jQuery("#pidid"+pdid+"074").parent().parent().hide();
+						 }else{
+							 deleteRows(document.getElementById(pdid+"074_tableForm"),rowindex);
+						 }
+					 }
+				}
+			 }
+		
+		
+	});
+	//屏蔽右键菜单
+	jQuery(".rightMenu").each(function(i,o){
+		o.className = "";
+	});
+	
+	jQuery("input[type='reset']").click(function (){
+		
+		 var tdval = jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]");
+		 if(jQuery(tdval).length>1){
+			 for(var i=jQuery(tdval).length;i>1;i--){
+				 
+				 deleteRows(document.getElementById(pdid+"074_tableForm"),i);
+			 }
+			 //TODO
+			 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"075_]").val("");
+			 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"076_]").val("");
+			 jQuery("#"+pdid+"074_tableForm").find("input[id^="+pdid+"077_]").val("");
+			 jQuery("#pidid"+pdid+"074").parent().parent().hide();
+		 }
+	});
+});
+
+/**
+ * 
+ * 二维表模式添加行
+ * 
+ * @param obj 事件源对象
+ * @param insertRowNum 添加行的位置
+ */
+function addRows(obj,insertRowNum){
+	//获取流程 版本号
+	var pdid = jQuery("#pdid").val();
+	//需要添加行的table对象
+	var targetTab = obj;
+	//模板对象
+	var templateTab = document.getElementById(targetTab.id + "_template");
+	//是否显示行号 Y 显示； N 不显示
+	var showrownum = targetTab.showrownum;
+	//遍历模板对象，将其内容添加到当前table对象中
+	var tr = null;
+	for(var i=0;i<templateTab.rows.length;i++){
+		//需要添加的行对象
+		//判断是否指定了行的添加位置，如果指定，在指定位置添加，如果未指定，默认添加到最后一行
+		if(insertRowNum != null){
+			tr = targetTab.insertRow(insertRowNum);
+		}else{
+			tr = targetTab.insertRow(targetTab.rows.length);
+		}
+		
+		//如果显示行号，预留行号显示位置
+		if("Y" == showrownum){
+			var indexCell2 = tr.insertCell(0);
+			indexCell2.align = "center";
+		}
+		//遍历模板列，将其添加到当前对象中
+		for(var j=0;j<templateTab.rows[i].cells.length;j++){
+			var td = tr.insertCell();
+			if( templateTab.rows[i].cells[j].style.textAlign){
+				td.style.textAlign =  templateTab.rows[i].cells[j].style.textAlign;
+			}
+			td.innerHTML = templateTab.rows[i].cells[j].innerHTML;
+			
+		}
+		//隐藏新增的HAC数据表单
+		jQuery("input[id^="+pdid+"077_]").parent().hide();
+		//添加行后，行号有可能被打乱，需要重新排列行号
+		shortRowNum(targetTab);
+		var onAdd = targetTab.onAdd;
+		if(onAdd){
+			onAdd(tr);
+		}
+	}
+
+		jQuery(tr).find("input[id^="+pdid+"076_]").after('<img align="middle" style="cursor: hand;" onclick="havaHac(this);" alt="查询" src="images/seek.gif" border="0"/>');
+
+	return tr;
+}
+
+/**
+ * 二维表模式表格式表单删除行
+ * 
+ * @param obj 事件源对象
+ */
+function deleteRows(tbs,rowindex){
+	//目标table对象
+	var tb = tbs;
+	//需要新增行标识：如果当前行为唯一数据行，则需要新增一行，然后再删除此行
+	var index = 0;
+	for(var i=0;i<tb.rows.length;i++){
+		if(tb.rows[i].name != "titlerow" && tb.rows[i].name != "titletr"){
+			index ++;
+		}
+	}
+	var massage = "\u5df2\u7ecf\u662f\u6700\u540e\u4e00\u884c\uff0c\u4e0d\u80fd\u5220\u9664\uff01";
+	if(index == 1){
+		//last row
+		alert(massage);
+//		addRow(obj, obj.rowIndex);
+	}else{
+		var map = {};
+		jQuery(tb).find("table[id$='_template']").each(function(index,obj){
+			map[obj.id]=obj.outerHTML;
+		});
+		
+		//要删除行的索引
+		//var rowIndex = obj.rowIndex;
+		//删除行操作
+		tb.deleteRow(rowindex); 
+
+		//删除行操作后行号有可能被打乱，需要重新排列
+		shortRowNum(tb);
+		for ( var prop in map) {
+			if (map.hasOwnProperty(prop)) {
+					jQuery("#"+prop.replace("_template","")).parent().append(jQuery(map[prop]).clone(true));
+			}
+		}
+	}
+}
+
+//hac接口数据请求弹出页
+function havaHac(obj){
+	//展示数据
+	var jdata={};
+	//隐藏数据
+	var hdata={};
+	var textdata = "";
+	var hidedata = "";
+	//获取流程 版本号
+	var pdid = jQuery("#pdid").val();
+	//获取平台名称
+	var platname=jQuery(obj).parent().parent().find("input[id^='"+pdid+"075_']").val();
+	var temp = window.showModalDialog("IGHAC0101_TREE.do?platname="+encodeURI(encodeURI(platname)),null,"dialogWidth:380px;dialogHeight:500px;status:no;help:no;resizable:yes");
+	if("_resetall"==temp){
+		jQuery(obj).parent().parent().find("input[id^='"+pdid+"076_']").val("");
+		jQuery(obj).parent().parent().find("input[id^='"+pdid+"077_']").val("");
+	}else if(null!=temp && temp.split(",").length>0){
+		var pints = temp.split(",");
+		
+		for(var i=0;i<pints.length>0;i++){
+			var pid = pints[i].split("|")[0];
+			var pname = pints[i].split("|")[1];
+			var id = pints[i].split("|")[2];
+			var name = pints[i].split("|")[3];
+			if(jdata.hasOwnProperty(pname)){
+				jdata[pname] = jdata[pname]+'/'+name;
+			}else{
+				jdata[pname] = pname+':'+name;
+			}
+			if(hdata.hasOwnProperty(pid)){
+				hdata[pid] = hdata[pid]+'|'+id;
+			}else{
+				hdata[pid] = pid+'&'+id;
+			}
+		}	
+		for(var key in jdata){
+			textdata+=jdata[key]+";";
+		}
+		for(var key in hdata){
+			hidedata+=hdata[key]+";";
+		}
+		//平台信息
+		jQuery(obj).parent().parent().find("input[id^='"+pdid+"076_']").val(textdata);
+		jQuery(obj).parent().parent().find("input[id^='"+pdid+"077_']").val(hidedata);
+	}		
+}
+
+function setCheckBoxElseValue(obj,index){
+	
+	//获取流程 版本号
+	var pdid = jQuery("#pdid").val();
+	
+	var rowValue = document.getElementById("pivarvalue[" + index + "]").value;
+	
+	if(rowValue != null){
+		var strs = rowValue.split("#");
+		var flag = true;
+		var valueStr = "";
+		if(rowValue){
+			for(var i=0;i<strs.length;i++){
+				if(strs[i]){
+					if(strs[i].indexOf("_cev_") > -1){
+						flag = false;
+						if(obj.value){
+							valueStr += "cv_cev_" + obj.value;
+						}
+					}else{
+						valueStr += strs[i];
+					}
+					valueStr += "#";
+				}
+			}
+		}
+		if(flag){
+			if(obj.value){
+				document.getElementById("pivarvalue[" + index + "]").value += "#cv_cev_" + obj.value;
+			}
+		}else{
+			document.getElementById("pivarvalue[" + index + "]").value = valueStr.substring(0, valueStr.length - 1);
+		}
+		
+	}
+
+	if(obj.value){
+		if(qitaValue!=""){
+			jQuery("input[id^="+pdid+"075_][value='"+qitaValue+"']").val(obj.value);
+		}else{
+			jQuery("input[id^="+pdid+"075_][value='其他']").val(obj.value);
+		}
+	}else{
+		if(qitaValue!=""){
+			jQuery("input[id^="+pdid+"075_][value='"+qitaValue+"']").val("其他");
+		}
+	}
+	
+	qitaValue = obj.value;
+}
+

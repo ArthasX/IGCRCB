@@ -50,12 +50,14 @@
 					</html:select>
 					<span class="subscribe">人员：</span>
 					<html:select property="userid" styleId="userid" style="width:80px">
-					<logic:present name="IGWIM02011VO" property="userOrgList" >
-			               <logic:iterate id="bean" name="IGWIM02011VO" property="userOrgList" indexId="index">
-							<option value="${bean.userid}" aa="${bean.orgsyscoding}">${bean.username}</option>
+						<logic:present name="IGWIM02011VO" property="userOrgList" >
+							<logic:iterate id="bean" name="IGWIM02011VO" property="userOrgList" indexId="index">
+								<option value="${bean.userid}" aa="${bean.orgsyscoding}">${bean.username}</option>
 						   </logic:iterate>
 						</logic:present>
 					</html:select>
+					
+					
 					<select id="tempSelect" style="display: none;">
 						<logic:present name="IGWIM02011VO" property="userOrgList" >
 			               <logic:iterate id="bean" name="IGWIM02011VO" property="userOrgList" indexId="index">
@@ -63,6 +65,7 @@
 						   </logic:iterate>
 						</logic:present>
 					</select>
+						
 					<html:submit property="btn_search" style="30-left:5px" styleClass="button" value="查询" onclick="onSearch()"/>
                    </div>
                    </div>
@@ -598,7 +601,10 @@ function todayWork(wiid,titleDate){
 function todayWorkLook(wiid,titleDate){
 	openSubWindow('/IGWIM0201_Today_Init.do?wiid='+wiid+'&titleDate='+titleDate+'&lookFlag=1', '_blank','1000','600');
 }
+//标识
+var sign = true;
 jQuery(document).ready(function(){
+	
 	//选机构级联用户
 	jQuery("#orgsyscoding").change(function () {
 	    var orgsyscoding = jQuery(this).children('option:selected').val();
@@ -613,7 +619,8 @@ jQuery(document).ready(function(){
 		jQuery("#userid").append(jQuery("#tempSelect option[aa='"+'${myorg}'+"']").clone());
 		//筛选人--结束
 		//人设成自己
-		jQuery("#userid option[value="+'${myuserid}'+"]").attr("selected","selected");
+// 		jQuery("#userid option[value="+'${myuserid}'+"]").attr("selected","selected");
+// 		jQuery("#userid").val("");
 	}else{
 		//查询条件给带回去
 		jQuery("#orgsyscoding option[value="+'${IGWIM0201Form.orgsyscoding}'+"]").attr("selected","selected");

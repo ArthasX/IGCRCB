@@ -205,5 +205,10 @@ public interface WorkInstanceSearchCond {
 	 * @return the 工作开始日期到
 	 */
 	public String getBegindate_to();
+	
+	/**
+	 * @return the 登陆用户id
+	 */
+	public String getLogin_userid();
 
 }

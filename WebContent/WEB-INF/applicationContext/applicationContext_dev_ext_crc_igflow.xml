@@ -414,7 +414,12 @@
 	</bean>
 	
 	<bean id="igCRC3004BL" class="com.dev.crc.igflow.event.status.IGCRC3004BLImpl">
-		
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
+		</property>
+		<property name="flowSetBL">
+			<ref bean="flowSetBL" />
+		</property>
 	</bean>
 	
 	<bean id="igFXK0801BL" class="com.dev.crc.igflow.event.status.IGFXK0801BLImpl">
@@ -538,6 +543,14 @@
 		<bean id="igSVC0501BL" class="com.dev.crc.igflow.event.status.IGSVC0501BLImpl">
 		<property name="iGCHANGE01BLImpl">
 			<ref bean="iGCHANGE01BLImpl"/>
+		</property>
+	</bean>
+	<bean id="igSVC0601BL" class="com.dev.crc.igflow.event.status.IGSVC0601BLImpl">
+		<property name="flowSetBL">
+			<ref bean="flowSetBL"/>
+		</property>
+		<property name="flowSearchBL">
+			<ref bean="flowSearchBL"/>
 		</property>
 	</bean>
 </beans>

@@ -26,6 +26,7 @@ IGPRR01011VO vo = (IGPRR01011VO)request.getSession().getAttribute("IGPRR01011VO"
 	int columnNum = 0;
 	boolean privateIsNull = true;
 %>
+<script type="text/javascript" src="js/tableform.js"></script>
 <logic:present name="IGPRR01011VO" property="process">
 <script src="js/prr/<%=(vo.getProcess()!=null && vo.getProcess().getPrpdid()!=null) ? vo.getProcess().getPrpdid().substring(0,5) : "" %>.js" charset="GBK"></script>
 </logic:present>
@@ -33,7 +34,7 @@ IGPRR01011VO vo = (IGPRR01011VO)request.getSession().getAttribute("IGPRR01011VO"
 <link rel="stylesheet" href="<html:rewrite forward='pdimgstyle.css'/>" type="text/css">
 <link rel="stylesheet" href="css/style.css" type="text/css">
 <script src="<html:rewrite forward='script.js'/>"></script>
-<script type="text/javascript" src="js/tableform.js"></script>
+
 <script type="text/javascript">
 var formFileArr = new Array();
 var assetFormArr = new Array();

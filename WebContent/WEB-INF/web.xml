@@ -251,8 +251,10 @@
 			/WEB-INF/struts-config/struts-config_mnu.xml,
 
 			<!-- 工作项管理 -->
-			/WEB-INF/struts-config/struts-config_wim.xml
+			/WEB-INF/struts-config/struts-config_wim.xml,
 
+			<!-- 常熟hac数据处理 -->
+			/WEB-INF/struts-config/struts-config_hac.xml
 			</param-value>
 		</init-param>
 		<init-param>

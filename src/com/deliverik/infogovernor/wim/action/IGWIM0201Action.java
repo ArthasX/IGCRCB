@@ -66,12 +66,15 @@ public class IGWIM0201Action extends BaseAction {
 			dto.setMaxSearchCount(maxCnt);
 			//设置分页DTO
 			dto.setPagingDto(pDto);
-			//获取当前时间，从而获取当前一周，显示出一周的工作
-			dto = ctlBL.getCurrentWorkByDateAction(dto);
 			//获取机构
 			dto = ctlBL.getCenterOrgAction(dto);
 			//获取机构下的人
 			dto = ctlBL.getCenterOrgUserAction(dto);
+			//初始化获取登陆用户的orgid
+			form.setOrgsyscoding(dto.getUser().getOrgid());
+			dto.setForm(form);
+			//获取当前时间，从而获取当前一周，显示出一周的工作
+			dto = ctlBL.getCurrentWorkByDateAction(dto);
 			//获取当前登录用户权限
 			dto = ctlBL.getPermissionByUser(dto);
 			

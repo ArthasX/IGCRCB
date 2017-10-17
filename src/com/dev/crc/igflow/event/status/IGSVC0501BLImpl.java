@@ -42,6 +42,18 @@ public class IGSVC0501BLImpl extends BaseBLImpl implements WorkFlowEventHandlerB
      * 后处理
      */
 	public void afterTreatmentExecute(WorkFlowStatusEventBeanInfo bean) throws BLException {
+		  log.debug("========变更流程关闭节点后处理========");
+
+		    //流程prid
+		    Integer prid = bean.getLogInfo().getPrid();
+		    
+		    Thread thread = new Thread(new IgChangeThread(prid));
+			//线程调用开始
+			thread.start();
+	      
+			log.debug("========变更流程关闭节点后处理结束========");
+			//请求地址通过业务系统ID更新业务系统应急演练状态
+			IGDRMEmergencyTools.changeFlowSystemState(prid, "0",null);
 	}
 	
 	/**
@@ -49,18 +61,7 @@ public class IGSVC0501BLImpl extends BaseBLImpl implements WorkFlowEventHandlerB
 	 */
 	public void preTreatmentExecute(WorkFlowStatusEventBeanInfo bean) throws BLException {
 		
-	    log.debug("========变更流程关闭节点前处理========");
-
-	    //流程prid
-	    Integer prid = bean.getLogInfo().getPrid();
-	    
-	    Thread thread = new Thread(new IgChangeThread(prid));
-		//线程调用开始
-		thread.start();
-      
-		log.debug("========变更流程关闭节点前处理结束========");
-		//请求地址通过业务系统ID更新业务系统应急演练状态
-		IGDRMEmergencyTools.changeFlowSystemState(prid, "0",null);
+	  
 	}
 
 }

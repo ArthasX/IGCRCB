@@ -27,7 +27,7 @@ import com.deliverik.framework.workflow.prd.bl.task.WorkFlowStatusEventBeanInfo;
 
 /**
  * 变更流程 - （部门审批）节点前处理预置发起人角色 的部门负责人为部门审批节点的审批人
- * 
+ *
  * @author wanglei
  *
  */
@@ -45,6 +45,9 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 
 	/** 部门审批 */
 	private String CHANGE_STATUSNAME_BMSP = "部门审批";
+	
+	/** 生产变更执行*/
+	private String CHANGE_EXECUTE_BMSP = "生产变更执行";
 
 	/** 数据运行中心负责人 */
 	private Integer roleid_1227 = 1227;
@@ -63,7 +66,7 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 
 	/* 20170807 快速变更 */
 	/**
-	 * 快速变更审批 roleid  
+	 * 快速变更审批 roleid
 	 */
 	private Integer roleid_ks =Integer.parseInt(MessageResources.getMessageResources("ApplicationResources").getMessage("ROLEID_KS"));// 3043;
 	/**
@@ -79,11 +82,11 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 	}
 	/* 20170807 快速变更 */
 
-	
+
 
 	/**
 	 * 注入更新功能API类
-	 * 
+	 *
 	 * @param flowSetBL
 	 */
 	public void setFlowSetBL(FlowSetBL flowSetBL) {
@@ -103,6 +106,37 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 	 */
 	public void afterTreatmentExecute(WorkFlowStatusEventBeanInfo bean)
 			throws BLException {
+		String changeType = flowSearchBL.searchPublicProcessInfo(bean
+				.getLogInfo().getPrid(), "变更类别");
+		if (changeType.equals("快速变更")) {
+            //封装查询条件对象设定
+            UserRoleVWSearchCondImpl cond = new UserRoleVWSearchCondImpl();
+
+            //封装查询条件为角色id
+            cond.setRoleid(roleid_ks);
+
+            //根据roleid获得角色下的所有人
+            List<UserRoleInfo> userRoleInfoList = userRoleBL.searchUserRoleVW(cond);
+
+            if (userRoleInfoList == null || userRoleInfoList.size() == 0) {
+                throw new BLException("IGSVC0408.E001", CHANGE_STATUSNAME_BMSP);
+            }
+            else {
+                for (UserRoleInfo userRoleInfo : userRoleInfoList) {
+                		// 日志参数信息设定
+                        StatusParticipant participants = new StatusParticipant(
+                                bean.getLogInfo());
+                        // 封装流程状态名称
+                        participants.setStatusname(CHANGE_EXECUTE_BMSP);
+                        // 封装流程处理人id
+                        participants.setUserid(userRoleInfo.getUserid());
+                        // 封装流程处理角色id
+                        participants.setRoleid(roleid_ks);
+                        // 参与角色和参与人添加
+                        flowSetBL.setStatusParticipant(participants);
+                }
+            }
+        }
 	}
 
 	/**
@@ -129,8 +163,8 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 	}
 
 	/**
-	 * 设置审批人   20170809 增加了快读变更的类别  
-	 * 
+	 * 设置审批人   20170809 增加了快读变更的类别
+	 *
 	 * @param bean
 	 * @param applevel
 	 * @param roleid
@@ -229,13 +263,13 @@ public class IGCRC0401BLImpl extends BaseBLImpl implements
 
 	        //封装查询条件对象设定
 	        UserRoleVWSearchCondImpl cond = new UserRoleVWSearchCondImpl();
-	        
+
 	        //封装查询条件为角色id
 	        cond.setRoleid(roleid_ks);
-	        
+
 	        //根据roleid获得角色下的所有人
 	        List<UserRoleInfo> userRoleInfoList = userRoleBL.searchUserRoleVW(cond);
-		 
+
 			if (userRoleInfoList == null || userRoleInfoList.size() == 0) {
 				throw new BLException("IGSVC0408.E001", CHANGE_STATUSNAME_BMSP);
 			}

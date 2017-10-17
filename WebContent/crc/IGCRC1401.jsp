@@ -148,7 +148,7 @@ WebCalendar.timeShow   = true;          //是否返回时间
 				<html:option value=""></html:option>
 				<html:option value="常规变更">常规变更</html:option>
 				<html:option value="紧急变更">紧急变更</html:option>
-				<html:option value="快速变更">紧急变更</html:option>
+				<html:option value="快速变更">快速变更</html:option>
 	    	</html:select>
 		<span class="subscribe">发起时间：</span>
 		<html:text property="propentime" styleId="propentime" errorStyleClass="inputError imeDisabled" size="16" readonly="true" style="width:117px;"/>

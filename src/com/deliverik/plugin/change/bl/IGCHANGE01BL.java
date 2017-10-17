@@ -17,7 +17,7 @@ import com.deliverik.plugin.change.dto.IGCHANGE01DTO;
  */
 public interface IGCHANGE01BL extends BaseBL{
 	
-	public IGCHANGE01DTO registIGCHANGEAction(IGCHANGE01DTO dto) throws BLException;
+	public IGCHANGE01DTO registIGCHANGEAction(IGCHANGE01DTO dto,String[] acceptMsg) throws BLException;
 	
 	public IGCHANGE01DTO saveInitiacteChangeAction(IGCHANGE01DTO dto) throws BLException;
 	

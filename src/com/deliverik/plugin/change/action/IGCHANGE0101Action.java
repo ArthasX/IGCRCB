@@ -62,7 +62,7 @@ public class IGCHANGE0101Action extends BaseAction {
 		}else if("SEARCH".equals(mapping.getParameter())){
 			dto.setIcid(req.getParameter("icid"));
 			dto.setIgchange0101Form(form);
-			ctlBL.registIGCHANGEAction(dto);
+			ctlBL.registIGCHANGEAction(dto,null);
 			//ctlBL.searchCompareRoleList(dto);
 			
 			

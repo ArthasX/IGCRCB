@@ -86,6 +86,9 @@ public class WorkInstanceSearchCondImpl implements
 	/**开始日期到*/
 	protected String begindate_to;
 	
+	/** 登陆用户id */
+	protected String login_userid;
+	
 	/**
 	 * @return the 工作时间
 	 */
@@ -554,4 +557,20 @@ public class WorkInstanceSearchCondImpl implements
 	public void setBegindate_to(String begindate_to) {
 		this.begindate_to = begindate_to;
 	}
+
+
+	/**
+	 * @return the 登陆用户id
+	 */
+	public String getLogin_userid() {
+		return login_userid;
+	}
+	
+	/**
+	 * @param 登陆用户id the login_userid to set
+	 */
+	public void setLogin_userid(String login_userid) {
+		this.login_userid = login_userid;
+	}
+	
 }

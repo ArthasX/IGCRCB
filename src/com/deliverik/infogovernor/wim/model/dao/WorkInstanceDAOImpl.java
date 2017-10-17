@@ -100,8 +100,13 @@ public class WorkInstanceDAOImpl extends
 	public List<Map<String,String>> findWeekWorkByCond(final WorkInstanceSearchCond cond, final int start, final int count){
 		
 		Session session = getSession();
+		String sql = "";
+		if(StringUtils.isNotEmpty(cond.getUserid())){
+			sql = session.getNamedQuery("WorkInstanceDAO.findWeekWorkByCond").getQueryString();
+		}else{
+			sql = session.getNamedQuery("WorkInstanceDAO.findWeekWorkByCondAll").getQueryString();
+		}
 		
-		String sql = session.getNamedQuery("WorkInstanceDAO.findWeekWorkByCond").getQueryString();
 		SQLQuery q = session.createSQLQuery(sql);
 		//工作日期查询条件 必填
 		String workDate = cond.getWorkDate();
@@ -111,9 +116,14 @@ public class WorkInstanceDAOImpl extends
 		for (int i= 0; i< days.size();i++) {
 			q.setParameter("week"+(i+1), sdf.format(days.get(i)));
 		}
-		q.setParameter("leaderid", cond.getUserid()+"%");
-		q.setParameter("userid",cond.getUserid());
-		q.setParameter("excutorid","%"+ cond.getUserid()+"%");
+		if(StringUtils.isNotEmpty(cond.getUserid())){
+			q.setParameter("leaderid", cond.getUserid()+"%");
+			q.setParameter("userid",cond.getUserid());
+			q.setParameter("excutorid","%"+ cond.getUserid()+"%");
+		}else{
+			q.setParameter("curruserid", cond.getLogin_userid());
+			q.setParameter("orgid", cond.getOrgsyscoding());
+		}
 		
 		q.setResultTransformer(Transformers.ALIAS_TO_ENTITY_MAP);
 		q.addScalar("wiid",Hibernate.STRING) ;

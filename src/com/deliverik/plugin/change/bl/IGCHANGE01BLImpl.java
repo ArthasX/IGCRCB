@@ -15,6 +15,7 @@ import com.deliverik.framework.igflow.api.FlowOptBL;
 import com.deliverik.framework.igflow.api.FlowSearchBL;
 import com.deliverik.framework.igflow.api.FlowSetBL;
 import com.deliverik.framework.igflow.api.SysManageBL;
+import com.deliverik.framework.igflow.parameter.ProcessInfoDefinitionInfo;
 import com.deliverik.framework.igflow.parameter.ProcessRecord;
 import com.deliverik.framework.igflow.parameter.WorkFlowLog;
 import com.deliverik.framework.igflow.resultset.UserInfo;
@@ -153,7 +154,7 @@ public class IGCHANGE01BLImpl implements IGCHANGE01BL {
 	public void setUserRoleBL(UserRoleBL userRoleBL) {
 		this.userRoleBL = userRoleBL;
 	}
-	public IGCHANGE01DTO registIGCHANGEAction(IGCHANGE01DTO dto)
+	public IGCHANGE01DTO registIGCHANGEAction(IGCHANGE01DTO dto,String[] acceptMsg)
 			throws BLException {
 		// 流程主键Id
 		Integer prid;
@@ -210,8 +211,37 @@ public class IGCHANGE01BLImpl implements IGCHANGE01BL {
 			record.setFormvalue(formvalue);
 			// 描述
 			record.setDescription(info.getChangeDescription());
+			
 			// 发布流程 返回prid主键
 			prid = flowOptBL.initProcessAction(record);
+			if(acceptMsg==null){
+				if(acceptMsg[7]!=null&&(acceptMsg[7].equals("紧急变更")||acceptMsg[7].equals("快速变更"))){
+					//平台名称
+					String[] ptname = acceptMsg[23].split("#");
+					//平台信息
+					String[] ptmsg = acceptMsg[24].split("#");
+					//权限id
+					String[] qxid = acceptMsg[25].split("#");
+					
+					Map<String, ProcessInfoDefinitionInfo> tableColumnDef = flowSearchBL.searchProcessTableColumnDef(prid);
+					for (int i = 0; i < ptname.length; i++) {
+						flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#更新平台名称", prid, (i+1)+"", ptname[i]);
+						flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#平台信息", prid, (i+1)+"", ptmsg[i]);
+						flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#HAC数据", prid, (i+1)+"", qxid[i]);
+					}
+				}else if(acceptMsg[7]!=null&&acceptMsg[7].equals("常规变更")){
+					Map<String, ProcessInfoDefinitionInfo> tableColumnDef = flowSearchBL.searchProcessTableColumnDef(prid);
+					flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#更新平台名称", prid, "1", "");
+					flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#平台信息", prid, "1", "");
+					flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#HAC数据", prid, "1", "");
+				}
+			}else{
+				Map<String, ProcessInfoDefinitionInfo> tableColumnDef = flowSearchBL.searchProcessTableColumnDef(prid);
+				flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#更新平台名称", prid, "1", "");
+				flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#平台信息", prid, "1", "");
+				flowSetBL.setPublicTableColumnValue(tableColumnDef,"平台详细信息#HAC数据", prid, "1", "");
+			}
+			
 			
 			entity.setFingerPrint("流程发起成功,");
 			// 设置流程日志查询条件

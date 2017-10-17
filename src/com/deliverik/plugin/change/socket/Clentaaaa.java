@@ -16,7 +16,7 @@ public class Clentaaaa {
 		//实例化客户端对象
 		Socket socket = new Socket();
 		//连接server
-		socket.connect(new InetSocketAddress("192.168.1.42",8976));
+		socket.connect(new InetSocketAddress("192.168.0.52",8976));
 		//实例化输出流
 		BufferedOutputStream out = new BufferedOutputStream(socket.getOutputStream());
 		
@@ -28,14 +28,14 @@ public class Clentaaaa {
 		
 		bf.append("施悦(#)");              //pruserId    发起人ID-
 		bf.append("(#)");                //prroleid    发起人角色id-
-		bf.append("11111R00088国结优化(#)");       //changeName  变更名称
+		bf.append("吕新test5(#)");       //changeName  变更名称
 		bf.append("描述(#)");                  //changeDescription 变更描述
-		bf.append("2015/10/29(#)");           //beginTime   开始时间-
-		bf.append("2015/10/29(#)");           //endtime     结束时间-
+		bf.append("2017/10/29(#)");           //beginTime   开始时间-
+		bf.append("2017/10/29(#)");           //endtime     结束时间-
 		bf.append("110002001002001000_tree_应用程序类-核心系统类-国结系统-国际结算业务-国际结算业务(#)");  //changeType   变更类型 
-		bf.append("常规变更(#)");                 //changeCategory 变更类别
+		bf.append("紧急变更(#)");                 //changeCategory 变更类别
 		bf.append("新增需求(#)");               //changeClassify 变更分类
-		bf.append("国结系统(#)");                 //updatePlatform  更新平台
+		bf.append("核心账务系统(#)");                 //updatePlatform  更新平台
 		bf.append("程序不完善(#)");            //changeReasonClassify  变更原因分类
 		bf.append("(#)");              //changeReason 变更原因
 		bf.append("(#)");              //changeContent 变更内容
@@ -49,6 +49,9 @@ public class Clentaaaa {
 		bf.append("(#)");             //verificationProgram 验证计划
 		bf.append("f08e79f8-ca01-431a-b24f-76302c5aac16(#)");     			//tick
 		bf.append("(#)");             //relatedPrid 相关程序开发流程
+		bf.append("核心账务系统(#)");
+		bf.append("SSH:cyccall/watch;(#)");
+		bf.append("7772&12901|12903;(#)");
 		String context = bf.toString();
 		byte[] bytes = context.getBytes();
 		

@@ -205,6 +205,9 @@
 		<property name="ig380BL">
 			<ref bean="ig380BL"/>
 		</property>
+		<property name="sendMessageBL">
+			<ref bean="sendMessageBL"/>
+		</property>
 	</bean>
 	
 	

@@ -556,6 +556,8 @@ v\:* {
 							onclick="window.close();">
 					</div>
 				</div>
+				<input type="hidden" id="psdid" value="${IGPRR0112Form.psdid}">
+				<input type="hidden" id="pdid" value="${IGPRR0112Form.pdid}">
 			</html:form>
 		</div>
 	</div>

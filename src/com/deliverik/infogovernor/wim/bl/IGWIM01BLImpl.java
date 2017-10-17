@@ -373,7 +373,7 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
 	 * @Description 工作实例定时任务管理/更新
 	 * @param dto IGWIM01DTO 参数 WorkDefinitionInfo信息；addOrRemoveFlag：工作项定时任务添加/移除标识addOrRemoveFlag
 	 * @return IGWIM01DTO
-	 * @throws BLException
+	 * @throws BLExceptiono
 	 */
 	public IGWIM01DTO jobManageAction(IGWIM01DTO dto) throws BLException {
 		log.info("==========定时任务管理BL操作开始==========");
@@ -395,7 +395,10 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
 			//添加Job
 			try {
 				//日期格式化工具类
-				SimpleDateFormat format = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				SimpleDateFormat formatTime = new SimpleDateFormat("yyyy/MM/dd HH:mm");
+				
+				//日期格式化工具类
+				SimpleDateFormat formatDate = new SimpleDateFormat("yyyy/MM/dd");
 				
 				//Job取得
 				WorkItemJob workItemJob = new WorkItemJob();	
@@ -453,11 +456,16 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
 				//<<<<<定时任务表达式生成所需参数获取结束>>>>>
 				
 				//开始日期
-				Date beganDate = format.parse(wdInfo.getBeginDate().length()>10?
+				Date beganDate = formatTime.parse(wdInfo.getBeginDate().length()>10?
 						wdInfo.getBeginDate():wdInfo.getBeginDate()+" "+wdHour+":"+wdMinutes);
 				
 				//结束日期
-				Date endDate = format.parse(wdInfo.getEstimateFinishDate());
+				Date endDate = null;
+				if(wdInfo.getEstimateFinishDate().length()>10){
+					formatTime.parse(wdInfo.getEstimateFinishDate());
+				}else{
+					formatDate.parse(wdInfo.getEstimateFinishDate());
+				}
 				
 				//添加工作定时任务
 				JobManager.addJob(WorkItemJob.JOB_NAME, jobGroupName, triggerName, triggerGroupName, workItemJob, 
@@ -686,14 +694,15 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
 		
 		//获取开始日期（yyyy/MM/dd hh:ss）
 		String beginTime = info.getBeginDate();
-		
-		//若周期为日、月或周
-		String startTime = info.getBeginDate().substring(0, 10);	//获取开始日期（yyyy/MM/dd）
-		//拼接开始日期和时间表单，拼接后格式为（yyyy/MM/dd hh:mm）
-		if(StringUtils.isNotEmpty(startTime)){
-			startTime += " "+info.getWdhour()+":"+info.getWdminute();
+		String startTime = info.getBeginDate();
+		if("day".equals(info.getCycle())||"week".equals(info.getCycle())||"month".equals(info.getCycle())){
+			//若周期为日、月或周
+			 startTime = info.getBeginDate().substring(0, 10);	//获取开始日期（yyyy/MM/dd）
+			//拼接开始日期和时间表单，拼接后格式为（yyyy/MM/dd hh:mm）
+			if(StringUtils.isNotEmpty(startTime)){
+				startTime += " "+info.getWdhour()+":"+info.getWdminute();
+			}
 		}
-		
 		
 		//取得用户选择的日期号
 		String chooseDay = info.getWdmonth();
@@ -1603,6 +1612,9 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd hh:mm");
 		Date date = null;
 		try {
+			if(str.length()<=10){
+				str+=" 00:00";
+			}
 			date = sdf.parse(str);
 		} catch (ParseException e) {
 			log.error("字符串强转成日期格式失败，要转换的字符串:"+str+"\n类：WorkRemindBLImpl，方法：strParseDate() Line：331\n"+e.getMessage());
@@ -1619,6 +1631,12 @@ public class IGWIM01BLImpl extends BaseBLImpl implements IGWIM01BL{
      * @throws ParseException  
      */    
     private int daysBetween(String smdate,String bdate) throws ParseException{
+    	if(smdate.length()<=10){
+    		smdate+=" 00:00";
+    	}
+    	if(bdate.length()<=10){
+    		bdate+=" 00:00";
+    	}
     	 SimpleDateFormat sdf=new SimpleDateFormat("yyyy/MM/dd hh:mm");  
          Calendar cal = Calendar.getInstance();    
          cal.setTime(sdf.parse(smdate));    

@@ -143,6 +143,10 @@ var gid='IGWIM0101';
 				alert("预计完成时间不能早于开始时间，请重新选择！");
 				return false;
 			}
+			if(document.forms[0].beginDate.value.length<=10){
+				alert("开始日期格式不正确，请重新选择！");
+				return false;
+			}
 		}else{
 			var beginDate = jQuery("#beginDate").val().substring(0,10);	//获取开始日期（yyyy/MM/dd）
 			beginDate += " "+jQuery("#wdhour").val()+":"+jQuery("#wdminute").val();
@@ -612,10 +616,7 @@ var gid='IGWIM0101';
 		}
 	}
 	
-	jQuery(document).ready(function(){
-		var quency = jQuery("input[name='cycle']:checked").val();
-		toQuency(quency);
-	});
+	
 	
 	
 	//设置负责人
@@ -645,20 +646,20 @@ var gid='IGWIM0101';
 		});
  		
  		//根据周期判断时间元素是否选中，决定开始日期的选取范围
- 		if(jQuery("#everyQuarter").checked || jQuery("#everyHalfyear").checked || jQuery("#everyYear").checked){
- 			jQuery("#beginDate").next("img").removeAttr('onclick');
- 			jQuery("#beginDate").next("img").click(function (){
- 				showTime(document.forms[0].beginDate);
- 			});
-	 		jQuery("#time").hide();
- 		}else{
-			jQuery("#beginDate").next("img").removeAttr('onclick');
- 			jQuery("#beginDate").next("img").click(function (){
-	 				showDate(document.forms[0].beginDate);
- 			});
-	 		jQuery("#time").show();
+//  		if(jQuery("#everyQuarter").attr("checked")==true || jQuery("#everyHalfyear").attr("checked")==true || jQuery("#everyYear").attr("checked")==true){
+//  			jQuery("#beginDate").next("img").removeAttr('onclick');
+//  			jQuery("#beginDate").next("img").click(function (){
+//  				showTime(document.forms[0].beginDate);
+//  			});
+// 	 		jQuery("#time").hide();
+//  		}else{
+// 			jQuery("#beginDate").next("img").removeAttr('onclick');
+//  			jQuery("#beginDate").next("img").click(function (){
+// 	 				showDate(document.forms[0].beginDate);
+//  			});
+// 	 		jQuery("#time").show();
  			
- 		}
+//  		}
  		
  		//如果是修改，设置radio默认选中
  		var modifyFlag = jQuery("#mode").val();
@@ -722,6 +723,20 @@ var gid='IGWIM0101';
  		  			
  		  		}
  	  		}
+ 		}
+ 		var quency = jQuery("input[name='cycle']:checked").val();
+ 		if(quency == 'quarter' || quency == 'halfyear' || quency == 'year'){
+ 			document.getElementById("time").style.display='none';
+ 			jQuery("#beginDate").next("img").removeAttr('onclick');
+ 				jQuery("#beginDate").next("img").click(function (){
+ 					showTime(document.forms[0].beginDate);
+ 				});		
+ 		}else{
+ 			jQuery("#time").show();
+ 			jQuery("#beginDate").next("img").removeAttr('onclick');
+ 				jQuery("#beginDate").next("img").click(function (){
+ 	 				showDate(document.forms[0].beginDate);
+ 				});
  		}
     });
     

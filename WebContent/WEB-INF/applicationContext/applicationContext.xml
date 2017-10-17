@@ -104,7 +104,8 @@
     <import resource="../plugin/sms/config/applicationContext.xml" />
     <!-- 工作项管理 -->
     <import resource="applicationContext_wim.xml" />
-    
+    <!-- 常熟hac数据处理 -->
+    <import resource="applicationContext_hac.xml"/>
 	<!-- TransactionInterceptor -->
 	<bean id="txInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">
 	  <property name="transactionManager">

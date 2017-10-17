@@ -35,6 +35,42 @@
     ]]> 
   </sql-query>
   
+  <sql-query name="WorkInstanceDAO.findWeekWorkByCondAll">
+    <![CDATA[
+	select wi.wiid,wi.wdname,wi.leaderid,wi.wistatus,wi.excutorid,substr(char(wi.begindate),1,10) as begindate,substr(char(wi.confirmdate),1,10) as confirmdate,substr(char(wi.crtDate),1,10) as crtDate,
+	replace((select date(char(replace(substr(char(estimateFinishDate),1,10),'/','-')) )+Integer(trim(char(overtimetipstime))) days from WORKDEFINITION where wdid = wi.wdid),'-','/') as overtime,
+	--实例发起时间2016/05/20+超时提醒时间5；只有2016-05-20格式的才能用日期函数；经过了两次格式的转换
+	case when wi.LEADERID = :curruserid  and wi.excutorid not like :curruserid then 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week1) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week1 and excutorid=:curruserid) 	end as week1,
+	case when wi.LEADERID = :curruserid  and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week2) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week2 and excutorid=:curruserid) 	end as week2,
+	case when wi.LEADERID = :curruserid and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week3) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week3 and excutorid=:curruserid) 	end as week3,
+	case when wi.LEADERID = :curruserid and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week4) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week4 and excutorid=:curruserid) 	end as week4,
+	case when wi.LEADERID = :curruserid and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week5) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week5 and excutorid=:curruserid) 	end as week5,
+	case when wi.LEADERID = :curruserid and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week6) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week6 and excutorid=:curruserid) 	end as week6,
+	case when wi.LEADERID = :curruserid and wi.excutorid not like :curruserid then 
+		(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week7) else 
+	(select count(*) from WORKLOG where wiid = wi.wiid and BTNACTION = '1' and titleDate =:week7 and excutorid=:curruserid) 	end as week7
+	from WORKINSTANCE wi where 
+	--若传递的userid为空，则代表一定是负责人进来的
+    (
+	    wi.leaderid in (select userid from iguser where orgid = :orgid)
+	    OR wi.excutorid in (select userid from iguser where orgid = :orgid)
+	)
+    and substr(char(wi.crtDate),1,10) <=:week7 order by wi.crtdate desc
+    ]]> 
+  </sql-query>
+  
   <sql-query name="WorkInstanceDAO.countSearch">
      <![CDATA[
 	 	select 

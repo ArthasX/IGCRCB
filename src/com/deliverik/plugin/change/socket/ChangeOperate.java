@@ -82,16 +82,17 @@ public class ChangeOperate extends Thread {
 			//读取正文
 			in.read(info);
 			String contextMsg = new String(info,"GBK").trim();
-			System.out.println(contextMsg);
+//			System.out.println(contextMsg);
+			log.info(contextMsg);
 			//分隔符 分割正文
 			String[] acceptMsg = contextMsg.split("\\(\\#\\)");
 			for(int h=0;h<acceptMsg.length;h++){
 				System.out.println(acceptMsg[h]);
 			}
 			
-			if(acceptMsg.length>23 && null!= acceptMsg[23]){
+			if(acceptMsg.length>26 && null!= acceptMsg[26]){
 				//取得文件名及其扩展名
-				fileName = acceptMsg[23];				
+				fileName = acceptMsg[26];				
 			}
 			if(StringUtils.isEmpty(fileName) || null==fileName){
 				System.out.println("没有附件");
@@ -223,7 +224,7 @@ public class ChangeOperate extends Thread {
 				// 设定form
 				dto.setIgchange0101Form(form);
 				// 发起流程
-				ctlBL.registIGCHANGEAction(dto);
+				ctlBL.registIGCHANGEAction(dto,acceptMsg);
 				log.debug("数据查询成功");
 			}
 						

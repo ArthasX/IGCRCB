@@ -16,6 +16,7 @@ import org.apache.struts.action.ActionMessage;
 
 import com.deliverik.framework.base.BLException;
 import com.deliverik.framework.base.BaseBLImpl;
+import com.deliverik.framework.bl.SendMessageBL;
 import com.deliverik.framework.igflow.api.FlowOptBL;
 import com.deliverik.framework.igflow.api.FlowSearchBL;
 import com.deliverik.framework.igflow.api.FlowSetBL;
@@ -98,6 +99,15 @@ public class IGCRC04BLImpl extends BaseBLImpl implements IGCRC04BL {
 
 	/** 查询类API */
 	protected FlowSearchBL flowSearchBL;
+	
+	/** 短信发送BL */
+	protected SendMessageBL sendMessageBL;
+	
+	
+
+	public void setSendMessageBL(SendMessageBL sendMessageBL) {
+		this.sendMessageBL = sendMessageBL;
+	}
 
 	/**
 	 * 流程处理BL设定
@@ -270,43 +280,72 @@ public class IGCRC04BLImpl extends BaseBLImpl implements IGCRC04BL {
 	 * @return
 	 * @throws BLException
 	 */
-	public IGCRC04DTO disposeAction(IGCRC04DTO dto) throws BLException {
+	public IGCRC04DTO disposeAction(final IGCRC04DTO dto) throws BLException {
 		log.debug("==============变更批量处理操作开始===============");
 		if (dto.getForm() != null && dto.getForm() instanceof IGCRC0402Form) {
 			// dto参数取得
-			IGCRC0402Form form = (IGCRC0402Form) dto.getForm();
-			User user = dto.getUser();
+			final IGCRC0402Form form = (IGCRC0402Form) dto.getForm();
+			final User user = dto.getUser();
 			if (form.getPrid() != null && form.getPrid().length > 0) {
 				List<IG333Info> list = workFlowDefinitionBL.searchAssignedStatusDef(form.getPrstatus(), form.getButtonCode());
 				if (list != null && list.size() > 0) {
 					form.setForward("ASSIGN");
 				}
-				for (Integer prid : form.getPrid()) {
-					IG500Info pr = workFlowOperationBL.searchProcessRecordByKey(prid);
-					// 获取用户处理角色
-					UserRoleInfo ur = this.workFlowOperationBL.getUserRolesInProcessParticipants(prid, user.getUserid(), pr.getPrpdid() + form.getPrstatus().substring(7)).get(0);
-					// 取得表单信息
-					if (form.getPivarnames() != null && form.getPivarnames().length > 0 && form.getPivarvalues() != null && form.getPivarvalues().length > 0 && form.getPivarnames().length == form.getPivarvalues().length) {
-						for (int i = 0; i < form.getPivarnames().length; i++) {
-							WorkFlowLog logInfo = new WorkFlowLog();
-							logInfo.setPrid(prid);
-							logInfo.setExecutorid(user.getUserid());
-							logInfo.setExecutorRoleid(ur.getRoleid());
-							PublicProcessInfoValue value = new PublicProcessInfoValue(logInfo);
-							value.setFormname(form.getPivarnames()[i]);
-							value.setFormvalue(form.getPivarvalues()[i]);
-							flowSetBL.setPublicProcessInfoValue(value);
-						}
-					}
-					// 添加日志
-					if (StringUtils.isNotEmpty(form.getRlcomment()) || (form.getFileMap() != null && !form.getFileMap().isEmpty())) {
-						workFlowOperationBL.addRecordLog(prid, user, ur.getRoleid(), form.getRlcomment(), form.getButtonName(), form.getFileMap(), IGPRDCONSTANTS.RECORDLOG_TYPE_CL, null, null);
-					}
-					if (!"ASSIGN".equals(form.getForward())) {
-						// 跃迁
-						flowOptBL.transitionProcess(prid, user.getUserid(), form.getButtonName(), IGStringUtils.getCurrentDateTime());
-					}
-				}
+				
+				Thread deployThread = new Thread(){
+	     			@Override
+	     			public void run() {
+	     				
+	     				for (Integer prid : form.getPrid()) {
+	    					IG500Info pr;
+							try {
+								pr = workFlowOperationBL.searchProcessRecordByKey(prid);
+							
+		    					// 获取用户处理角色
+		    					UserRoleInfo ur = workFlowOperationBL.getUserRolesInProcessParticipants(prid, user.getUserid(), pr.getPrpdid() + form.getPrstatus().substring(7)).get(0);
+		    					// 取得表单信息
+		    					if (form.getPivarnames() != null && form.getPivarnames().length > 0 && form.getPivarvalues() != null && form.getPivarvalues().length > 0 && form.getPivarnames().length == form.getPivarvalues().length) {
+		    						for (int i = 0; i < form.getPivarnames().length; i++) {
+		    							WorkFlowLog logInfo = new WorkFlowLog();
+		    							logInfo.setPrid(prid);
+		    							logInfo.setExecutorid(user.getUserid());
+		    							logInfo.setExecutorRoleid(ur.getRoleid());
+		    							PublicProcessInfoValue value = new PublicProcessInfoValue(logInfo);
+		    							value.setFormname(form.getPivarnames()[i]);
+		    							value.setFormvalue(form.getPivarvalues()[i]);
+		    							flowSetBL.setPublicProcessInfoValue(value);
+		    						}
+		    					}
+		    					// 添加日志
+		    					if (StringUtils.isNotEmpty(form.getRlcomment()) || (form.getFileMap() != null && !form.getFileMap().isEmpty())) {
+		    						workFlowOperationBL.addRecordLog(prid, user, ur.getRoleid(), form.getRlcomment(), form.getButtonName(), form.getFileMap(), IGPRDCONSTANTS.RECORDLOG_TYPE_CL, null, null);
+		    					}
+		    					if (!"ASSIGN".equals(form.getForward())) {
+		    						String prstatus = form.getPrstatus().substring(7);
+		    						if(prstatus=="015"||prstatus=="013"||prstatus=="010"||prstatus=="014"){
+		    							// 跃迁
+			    						try{
+			    							flowOptBL.transitionProcess(prid, user.getUserid(), form.getButtonName(), IGStringUtils.getCurrentDateTime());
+			    						}catch (Exception e) {
+			    							log.error("工单号："+pr.getPrserialnum()+"的变更流程跃迁到生产变更执行节点时与堡垒机通讯失败");
+			    				            //失败后发送短信给处理人
+			    							String message = "工单号："+pr.getPrserialnum()+"的变更流程跃迁到生产变更执行节点时与堡垒机通讯失败，请进入系统查看处理日志。";
+			    							sendMessageBL.sendSmsToUser(user.getUserid(), message);
+			    				        }
+		    						}else{
+		    							flowOptBL.transitionProcess(prid, user.getUserid(), form.getButtonName(), IGStringUtils.getCurrentDateTime());
+		    						}
+		    						
+		    					}
+							} catch (Exception e1) {
+								e1.printStackTrace();
+							}
+	    				}
+	     			}
+	     		};
+	     		deployThread.start();
+	     		
+				
 				if ("ASSIGN".equals(form.getForward())) {
 					dto.addMessage(new ActionMessage("IGCRC0401.I001"));
 				}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+
+<struts-config>
+	<form-beans>
+
+		<!-- hac树状数据请求  -->
+		<form-bean name="IGHAC0101Form" type="com.dev.hac.form.IGHAC0101Form" />
+
+	</form-beans>
+	<action-mappings>
+		<!-- hac树状数据请求  -->
+		<action path="/IGHAC0101_TREE"
+			type="com.dev.hac.action.IGHAC0101Action"
+			parameter="TREE"  name="IGHAC0101Form"
+			scope="request">
+			<set-property key="auth" value="false" />
+			<forward name="DISP" path="/hac/IGHAC0101.jsp" />
+		</action>
+	</action-mappings>
+</struts-config>
+

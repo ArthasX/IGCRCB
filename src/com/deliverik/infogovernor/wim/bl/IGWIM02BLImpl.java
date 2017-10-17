@@ -31,6 +31,7 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.apache.struts.action.ActionMessage;
+import org.eclipse.birt.report.model.api.util.StringUtil;
 import org.springframework.beans.BeanUtils;
 
 import com.deliverik.framework.base.BLException;
@@ -172,7 +173,7 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 		//第一次进页面
 		if(StringUtils.isEmpty(userid)&&StringUtils.isEmpty(workDate)){
 			workDate = IGStringUtils.getCurrentDate();
-			userid = dto.getUser().getUserid();
+//			userid = dto.getUser().getUserid();
 		}
 		//获取日期栏日期
 		List<String> dateToWeek = IGDateUtils.dateToWeekStr(workDate);
@@ -187,6 +188,8 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 		WorkInstanceSearchCondImpl cond = new WorkInstanceSearchCondImpl();
 		cond.setUserid(userid);
 		cond.setWorkDate(workDate);
+		cond.setLogin_userid(dto.getUser().getUserid());
+		cond.setOrgsyscoding(form.getOrgsyscoding());
 		//检索条数
 		int totalCount = workInstanceBL.findWeekWorkByCond(cond, 0, 0).size();
 		
@@ -361,6 +364,10 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 		log.info("=================获取中心部门下的人开始=================");
 		//返回数据格式：List<Map<orgid,orgid>,Map<orgname,orgname>,Map<username,username>,Map<userid,userid>>
 		List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+		//创建添加空行的下拉列表值
+		Map<String,String> orgMap = new HashMap<String, String>();
+		//创建添加空行的下拉列表值
+		Map<String,String> centerMap = new HashMap<String, String>();
 		//获取中心下所有的用户，用于页面选机构表单联动
 		UserSearchCondImpl cond = new UserSearchCondImpl();
 		//科技总经理权限，最高权限，看到所有人
@@ -370,6 +377,15 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 			List<User> userList = userBL.searchUser(cond);
 			if(CollectionUtils.isNotEmpty(userList)){
 				for(User user : userList){
+					//判断此机构是否录入过
+					if(StringUtils.isEmpty(orgMap.get(user.getOrgid()))){
+						orgMap.put(user.getOrgid(), user.getOrgid());
+						Map<String,String> map = new HashMap<String, String>();
+						map.put("orgsyscoding", user.getOrgid());//机构码，联动用
+						map.put("username", "");//用户名，用户显示
+						map.put("userid", "");//用户id，用户查询
+						list.add(map);
+					}
 					Map<String,String> map = new HashMap<String, String>();
 					map.put("orgsyscoding", user.getOrgid());//机构码，联动用
 					map.put("username", user.getUsername());//用户名，用户显示
@@ -378,6 +394,7 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 				}
 			}
 		}else{
+			
 			//负责人权限,查看自己部门的人
 			String orgsyscoding = hasLeaderPower(dto.getUser().getUserid());
 			if(StringUtils.isNotEmpty(orgsyscoding)){
@@ -385,6 +402,14 @@ public class IGWIM02BLImpl extends BaseBLImpl implements IGWIM02BL{
 				List<User> userList = userBL.searchUser(cond);
 				if(CollectionUtils.isNotEmpty(userList)){
 					for(User user : userList){
+						if(StringUtils.isEmpty(centerMap.get(user.getOrgid()))){
+							centerMap.put(user.getOrgid(), user.getOrgid());
+							Map<String,String> map = new HashMap<String, String>();
+							map.put("orgsyscoding", user.getOrgid());//机构码，联动用
+							map.put("username", "");//用户名，用户显示
+							map.put("userid", "");//用户id，用户查询
+							list.add(map);
+						}
 						Map<String,String> map = new HashMap<String, String>();
 						map.put("orgsyscoding", user.getOrgid());//机构码，联动用
 						map.put("username", user.getUsername());//用户名，用户显示
